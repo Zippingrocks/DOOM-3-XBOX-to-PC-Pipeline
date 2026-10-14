@@ -1,6 +1,31 @@
 # Recovery order and acceptance
 
-## Checkpoint 006 acceptance state
+## Checkpoint 007 acceptance state
+
+The first co-op segment now passes the single-host true-`COOP` startup gate.
+The exact checkpoint DLL starts a listen server, creates the local networked
+player, loads all 940 entities, reports zero inhibited entities and exits
+cleanly. No missing spawnclass, HUD image, GUI script command, material token,
+engine error or fatal error remains in the bounded log.
+
+This gate also establishes a PC-safe rendering path for the Xbox co-op status
+message and a selective HUD/material closure. It does not establish a second
+peer: `Server: Player joined the game.` in this run is the local listen-server
+player. Initial player-one/player-two spawn selection, remote snapshot exchange,
+death/rejoin and synchronized progression remain unaccepted until two distinct
+peers are observed.
+
+Five NPC/path-corner warnings remain. Every pair has a static directed route in
+the recovered AAS48, so navigation edits are not justified yet. The next
+diagnostic gate must capture the runtime start/goal area chosen with the actor's
+actual bounds and travel flags, plus dynamic door/obstacle state at the warning
+time. After that, run two peers through the first segment's spawn, GUI sync,
+Turkey Puncher event, checkpoint, death/respawn and transition sequence.
+
+Direct CM.X recovery, all-map dependency closure, matched Xbox
+visual/gameplay comparison and the solo campaign remain separate obligations.
+
+## Previous checkpoint: 006 acceptance state
 
 The first co-op segment now passes the source-runtime spawn gate. A complete
 Win32 `gamex86.dll` build and the 103-test recovery suite pass in CI. The exact
