@@ -22,6 +22,26 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 027 Hell 1 part 2 offline preflight
+
+Require decoded `xc_hell1_2` MAP SHA-256
+`4f80f6508af50fa8198ffcb55c9f5d14bd37dd51cf40f5e991f363e1b2b9a2c4`
+at CRC `3647446564`, PROC SHA-256
+`02a47cda1d04c9a29f798231f99861284f9b0ea14d5d23daa31562ce3652760d`,
+AAS48 SHA-256
+`3109cb83e9c573f5152286b2852578d3835e36f0dff1ec327c54bfc4594047fd`
+and authored CM SHA-256
+`65fc159cc7be4e0231a06c8382db1c6563497731f5fc0cab52ef4e59d279aaf8`.
+Decode all 301 model members. Recover the 15 of 40 direct MAP samples absent
+from stock through INDEXLIST SHA-256
+`0aeeccc057d53de1222d3e844236a95d449647e63cf4562e789756f0f941539f`
+and XSB SHA-256
+`cc6f0a6a83fbc62ec1a88241a09e55acf8ffb5a3c7cae7e00a8062ed9f479f80`;
+the WAV corpus totals 9,239,110 bytes. The final 148,075-byte overlay manifest
+hashes to `14d9052092f3129868831e9d32e2c0f32d8c48ea9c10b8e87492bd76cd19bbd1`
+with zero unresolved names. Preserve the transition to
+`vv/xbox_coop/xc_delta5_1` and medium expectation 735/0.
+
 ### Checkpoint 026 Hell 1 part 1 offline preflight
 
 For `xc_hell1_1`, require decoded MAP SHA-256

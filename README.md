@@ -99,6 +99,18 @@ to `vv/xbox_coop/xc_hell1_2`. Retail flags predict 866/0 entities on default
 medium. No executable or `dmap` was run. Receipt:
 [`evidence/checkpoint-026-offline.json`](evidence/checkpoint-026-offline.json).
 
+## Checkpoint 027: Hell 1 part 2 offline preflight
+
+`xc_hell1_2` now has a complete offline structural and dependency pass. Its
+735-entity MAP, PROC, AAS48 and 101-model direct CM export are source-bound;
+the navigation BSP covers every nonzero node and area, and all 301 selected
+model files decode. All 40 direct MAP samples are covered after 15 source-bound
+XACT recoveries. The 285-file portable overlay has zero unresolved names,
+preserves all three unique callbacks, and transitions to
+`vv/xbox_coop/xc_delta5_1`. Medium predicts 735/0 entities. No executable or
+`dmap` was run. Receipt:
+[`evidence/checkpoint-027-offline.json`](evidence/checkpoint-027-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
