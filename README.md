@@ -14,7 +14,46 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 006
+## Current checkpoint: 007
+
+**The first co-op segment now runs as a true PC `COOP` listen server with a
+joined player and a complete first-map HUD/material closure.**
+
+Private implementation head
+`7f35412a6cf8c238ca4ca6b91e6df3fce75ce6af` contains the checkpoint tools,
+tests and documentation. The exact runtime DLL was built from source commit
+`243dbafe867d9c89ab48cb56e17bdc05c69ab704` by GitHub Actions run
+`38527277656`. Artifact `11876766170` has ZIP SHA-256
+`76e80fe9a5bbb9b3f4cf5661a0916a46f87b279ebe0ce73f03d5d87131606ed8`;
+its 2,721,280-byte `gamex86.dll` has SHA-256
+`815c4a2238bb49dc52e5090913d6d216d898d0fe5d007fe9246424ae3bc6c011`.
+
+The prior true-COOP crash was traced with exact symbols to `idPlayer::DrawHUD`.
+Xbox calls a `uiManager->DrawText` virtual slot that the stock PC executable
+does not expose at the same ABI position. The map-port branch now writes the
+status through HUD state and an injected GUI window, avoiding any executable
+ABI extension. Four Xbox-only HUD icon commands are translated to the matching
+stock-PC GUI visibility assignments.
+
+Six previously missing HUD/Xbox-Live images were recovered selectively from
+`global.d3tfull`. Retail texture type `0x83f3` is evidence-backed as DXT5.
+The overlay builder now resolves selected material roots and strips the
+Xbox-only `dxt5` storage hint while retaining DXT5 in each DDS header. A
+bounded native run starts `xc_mars_city1_1` as `COOP`, spawns all 940
+entities with zero inhibited, logs `Server: Player joined the game.`, emits no
+missing-image, unknown-GUI-command, unknown-material-token, error or fatal line,
+and exits with code 0. The final log SHA-256 is
+`618a4760af9645928c5a090195e5da08e4b36ccc5481f975f2154878f3776675`.
+
+Five dynamic NPC/path-corner warnings remain. Static analysis proves a directed
+walk route for every pair, so the next work is runtime nearest-area selection,
+actor bounds, dynamic obstacles/doors and script timing. This is not yet
+two-peer progression, direct CM.X recovery, all-map closure or fidelity
+acceptance.
+
+See [checkpoint 007](evidence/checkpoint-007.json).
+
+## Previous checkpoint: 006
 
 **The first co-op map now crosses the reconstructed source-DLL boundary with
 every Xbox-only spawn class instantiated.**
@@ -187,7 +226,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-006.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-007.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
