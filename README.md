@@ -14,7 +14,30 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 001
+## Current checkpoint: 002
+
+**The authenticated retail disc is now inventoried and the first genuine co-op
+MAP.X has been deterministically decoded to PC MAP text. This is a source-bound
+conversion milestone, not a playable-map or fidelity milestone.**
+
+The USA/Asia Limited Collector's Edition XDVDFS image (SHA-256
+`444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e`)
+contains 377 filesystem entries and 20 `xc_` co-op GFC/GOB archive pairs. Across
+those co-op archives, the inventory identifies one campaign MAP.X/PROC.X/CM.X
+set per pair plus AAS data and map scripts. `xc_mars_city1_1.map.x` was extracted
+with full block provenance and decoded from its hybrid text/binary representation
+to ordinary Doom 3 Version-2 MAP syntax: 17,210 brush sides, 637 patchDef2
+primitives and 988 patchDef3 primitives. The output remains local licensed data.
+
+Retail STBL blocks carry an exact `ENBL` footer after both stored and zlib bodies.
+Checkpoint 001's strict extractor rejected this authentic footer; the
+implementation branch corrects the contract and adds XDVDFS and MAP.X tools.
+PROC.X, CM.X, AAS runtime compatibility, dependencies, scripts, engine loading
+and two-player progression remain open before a serious playtest.
+
+See [checkpoint 002](evidence/checkpoint-002.json) for hashes and claim limits.
+
+## Previous checkpoint: 001
 
 **Offline recovery tooling delivered; no retail campaign map decoded or ported
 in this checkpoint. Not ready for a near-final campaign playtest.**
@@ -71,3 +94,4 @@ converted-map packages or private captures belong in this public repository.
 Keep source inputs and generated game data local under the reconstruction
 repository's ignored `game/` tree. Publish research descriptions, provenance,
 hashes and reproducible tools/recipes, not licensed game content.
+
