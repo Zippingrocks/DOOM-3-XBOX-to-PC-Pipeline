@@ -1,6 +1,32 @@
 # Recovery order and acceptance
 
 
+## Checkpoint 010 collision status
+
+The first map now passes a deterministic authored-versus-generated world-trace
+comparison gate, but the result is deliberately a non-equivalence finding:
+PC-`dmap` collision cannot be accepted as the Xbox fidelity payload.
+
+The comparison controls for bounds, seed, query coordinates, PC collision
+algorithm and trace shape. It proves equal record coverage and equal hit/no-hit
+counts. It also finds 265 player-box geometry differences and 501
+material/contents differences. Therefore:
+
+- the direct CM.X export is the required runtime candidate;
+- PC `dmap` remains an independent parser/geometry cross-check only;
+- matching broad counts or hit totals is insufficient acceptance;
+- contact material/contents are fidelity fields because they drive clip masks,
+  impact effects and surface behavior;
+- point-ray agreement does not waive player-hull testing.
+
+First-map world collision is now source-bound and natively measured, but it is
+not fully accepted. The next collision gates are shared named collision models,
+monster/projectile masks, movers and triggers, then the same deterministic
+ledger on the remaining co-op maps. Original-Xbox runtime evidence and two-peer
+contact outcomes remain required before final fidelity acceptance.
+
+
+
 ## Checkpoint 009 collision status
 
 Direct Xbox collision is now structurally decoded across the complete extracted
