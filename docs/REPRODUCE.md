@@ -1,4 +1,4 @@
-# Reproduce checkpoint 012
+# Reproduce checkpoint 014
 
 ## Source and boundary
 
@@ -6,7 +6,7 @@ Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
 Use the open campaign-port pull request through an authenticated clone. Preserve
 existing work; use an isolated worktree if the checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 013 ran on Python 3.11/Windows:
+Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
@@ -16,6 +16,79 @@ Expected result on the current branch: 147 tests, zero failures. Checkpoint 012
 captured 142 passing tests; five later synthetic tests cover authored-CM overlay
 selection, identity rejection and path-independent material receipts. Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 014 second-map receipt
+
+Decode `xc_mars_city2_1.map.x`, `.proc.x`, `.cm.x` and `.aas48.x` with the same
+commands documented below for the first map. Compute the MAP geometry CRC before
+exporting CM.X:
+
+```powershell
+python tools/campaign_port/map_geometry_crc.py `
+  game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_1.map `
+  --report game/campaign_port_work/reports/xc_mars_city2_1-map-crc.json
+
+python tools/campaign_port/decode_cm_x.py `
+  game/campaign_port_work/extracted/base/maps/vv/xbox_coop/xc_mars_city2_1.cm.x `
+  game/campaign_port_work/authored-cm/maps/vv/xbox_coop/xc_mars_city2_1.cm `
+  --map-crc 3219770337 `
+  --report game/campaign_port_work/reports/xc_mars_city2_1-cm.json
+```
+
+The expected authored-CM receipt is 2,927,667 bytes and SHA-256
+`dfbebaf505573f89050d3f0b4c2f3ded68ec17de79074d7a9f944a7d2b75999f`.
+The exact decoded MAP receipt is 3,573,456 bytes and SHA-256
+`a194564447251774131297325e1892f156890e8c5ccc0d90ea410459367c1f16`.
+Retain an independent PC `dmap` build; its expected CM receipt for this input is
+5,321,250 bytes and SHA-256
+`a9335129600acd618de9e762d3032303ea41a36a9ae718ca511e0aa0523e6a33`.
+
+Build the authored-CM overlay with the ordinary map set still pointing to the
+PC-compiled MAP/PROC/CM/AAS directory:
+
+```powershell
+python tools/campaign_port/build_runtime_overlay.py `
+  --map game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_1.map `
+  --compiled-root game/campaign_port_work/converted `
+  --authored-cm game/campaign_port_work/authored-cm/maps/vv/xbox_coop/xc_mars_city2_1.cm `
+  --stock-dir base `
+  --out game/campaign_port_work/overlay-xc_mars_city2_1
+```
+
+The checkpoint-014 provisional manifest has 50 file records, 11,425,489
+payload bytes and SHA-256
+`d893d9650a09cd0d364f12ef1765277848371ebd96c4fbc18f76aa19880ed1d0`.
+It is intentionally not an acceptance fixture: no runtime-resource list was
+available, and native player creation exposes dependencies outside the map-root
+closure.
+
+Run the real COOP path with the verified reconstruction DLL and the Xbox
+declarations unchanged:
+
+```powershell
+.\Doom3.exe +set fs_game xbox_coop_port_test_city2_v1 `
+  +set com_allowConsole 1 +set logFile 2 +set r_fullscreen 0 +set r_mode 3 `
+  +set s_noSound 1 +set si_pure 0 +set si_gameType COOP `
+  +set si_map vv/xbox_coop/xc_mars_city2_1 `
+  +set g_xboxCoopPathDiagnostics 1 +spawnServer +wait 600 +quit
+```
+
+The checkpoint DLL SHA-256 is
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
+The expected pre-fix result is an access violation at DLL RVA `0x10caf0` while
+spawning the first instant-hit zsec. In a debugger or minidump, the instruction
+is `mov eax,[ecx+0x248]` with `ecx == 0`, returned to from RVA `0x22c4d`.
+Disassembly of RVA `0x16b70` must also show the `net_instanthit` early-null
+path before claiming the same diagnosis on a different build.
+
+Do not ship or commit the diagnostic that changes `net_instanthit` to zero.
+It is useful only to prove the boundary: changing the machinegun definition
+alone advances to the shotgun and the identical fault; changing every selected
+instant-hit definition produces 1,110 spawned, 0 inhibited and exit 0. The
+accepted repair belongs in `vendor/doom3-gpl/neo/game/ai/AI.cpp`: guard the
+dimension probe when `CreateProjectile` intentionally returns null, preserve a
+zero projectile radius for that case, and continue deriving velocity, gravity
+and speed from `projectileDef`.
 
 Keep licensed inputs and generated outputs below ignored local directories such
 as `game/campaign_port_inputs` and `game/campaign_port_work`. Never add an ISO,

@@ -1,0 +1,141 @@
+{
+  "checkpoint": "014",
+  "date": "2026-10-14",
+  "scope": "second co-op map authored-CM export, native spawn diagnosis, and instant-hit AI integration boundary",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_mars_city2_1",
+    "geometry_crc": 3219770337,
+    "decoded_map": {
+      "bytes": 3573456,
+      "sha256": "a194564447251774131297325e1892f156890e8c5ccc0d90ea410459367c1f16",
+      "entities": 1110,
+      "brushes": 3095,
+      "brush_sides": 18565,
+      "patches": 1840,
+      "patch_points": 30172
+    },
+    "decoded_proc": {
+      "bytes": 3591806,
+      "sha256": "b0232a57f52f4e517230e90511bb2c9a17795c3eb149e2d37cbddfc1a473345c"
+    },
+    "decoded_aas48": {
+      "bytes": 691857,
+      "sha256": "9778ae62f8d9e937afa7d89bc1e4a856dcf6ceac2e97daf8f926ae93dfa908a9"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 1833167,
+      "sha256": "417993aa80d818ed145ca4ecab9ae50266f9dd38dcc98d8d60b89e9a10e24a7e"
+    },
+    "authored_export": {
+      "bytes": 2927667,
+      "sha256": "dfbebaf505573f89050d3f0b4c2f3ded68ec17de79074d7a9f944a7d2b75999f",
+      "models": 219,
+      "vertices": 13620,
+      "edges": 22574,
+      "polygons": 8708,
+      "brushes": 2984,
+      "nodes": 7651
+    },
+    "pc_dmap": {
+      "bytes": 5321250,
+      "sha256": "a9335129600acd618de9e762d3032303ea41a36a9ae718ca511e0aa0523e6a33",
+      "models": 312
+    },
+    "model_set_audit": {
+      "shared": 219,
+      "authored_only": 0,
+      "pc_dmap_only": 93,
+      "pc_dmap_only_with_noclipmodel_1": 93,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_city2_v1",
+    "file_records": 50,
+    "payload_bytes": 11425489,
+    "manifest_bytes": 45558,
+    "manifest_sha256": "d893d9650a09cd0d364f12ef1765277848371ebd96c4fbc18f76aa19880ed1d0",
+    "collision_source": "direct-authored-cm",
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "runtime_resource_list_available": false,
+    "closure_status": "provisional; native load exposes resources inherited by the co-op player definition that the map-root closure did not select"
+  },
+  "native_diagnosis": {
+    "root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34",
+    "unmodified_overlay_run": {
+      "result": "access violation during entity spawn",
+      "fault_rva": "0x0010caf0",
+      "fault_instruction": "mov eax,[ecx+0x248]; ret",
+      "fault_ecx": "0x00000000",
+      "first_faulting_map_entity": "monster_zsec_machinegun_9",
+      "log_bytes": 12689,
+      "log_sha256": "378c0baedad0e7cab931532e0f65828af943b9b6f2dd39ddc941f8f560c1ec3f",
+      "dump_bytes": 44996107,
+      "dump_sha256": "e045ac37de45376d67cd1f63410f9d83034b017428c6a0da919cff45498e3c57"
+    },
+    "binary_evidence": {
+      "idAI_Spawn_call_rva": "0x00022c1e",
+      "idAI_CreateProjectile_rva": "0x00016b70",
+      "idEntity_GetPhysics_rva": "0x0010caf0",
+      "create_projectile_behavior": "returns NULL when projectileDef net_instanthit is true",
+      "spawn_behavior": "dereferences projectile.GetEntity() without a null check to obtain collision bounds"
+    },
+    "single_definition_diagnostic": {
+      "change": "set only projectile_bullet_zsec_machinegun net_instanthit to 0 in an uncommitted retail-derived overlay",
+      "result": "machinegun spawn passed; the next instant-hit AI, monster_zsec_shotgun_2, faulted at the identical RVA",
+      "dump_bytes": 44976932,
+      "dump_sha256": "06175630dcc39bf827ba1761df50af9d4da38339c08d3022523da77fc034d37f"
+    },
+    "all_selected_definitions_diagnostic": {
+      "change": "set net_instanthit to 0 only in the temporary local overlay; not an accepted conversion",
+      "exit_code": 0,
+      "spawned_entities": 1110,
+      "inhibited_entities": 0,
+      "local_player_joined": true,
+      "log_bytes": 18839,
+      "log_sha256": "2b1cbb8a07256acf265416ee839a011ed865374d44badf93f338e592cd691124",
+      "remaining_error": "Joint 'Hips' not found for 'bone_hips' on 'player1' during shutdown",
+      "remaining_missing_assets": [
+        "models/md5/characters/npcs/playermoves/upladder.md5anim",
+        "guis/assets/hud/items/pistol_ammo",
+        "guis/assets/hud/items/shotgun_ammo",
+        "guis/assets/hud/items/machinegun_ammo",
+        "guis/assets/hud/items/health",
+        "guis/assets/hud/items/armor_shard",
+        "guis/assets/hud/items/armor_security",
+        "guis/assets/hud/items/plasma_ammo",
+        "model_sp_marine"
+      ]
+    }
+  },
+  "required_source_fix": {
+    "repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+    "file": "vendor/doom3-gpl/neo/game/ai/AI.cpp",
+    "scope": "idAI::Spawn projectile-dimension probe",
+    "rule": "preserve net_instanthit behavior; if CreateProjectile returns NULL, leave projectileRadius at zero and still derive velocity, gravity, and speed from projectileDef",
+    "status": "diagnosed and runtime-proven with a temporary data diagnostic; source change and rebuilt-DLL verification remain required"
+  },
+  "established": [
+    "the second co-op segment's direct CM.X export is structurally valid PC CM text and matches the independently computed map CRC",
+    "every authored collision model is present in PC dmap output; all 93 generated-only models map to MAP entities marked noclipmodel 1",
+    "the authored CM, decoded PROC and decoded AAS48 cross the native PC loader boundary",
+    "the entity-spawn crash is caused by the reconstructed AI instant-hit integration, not the recovered map or collision payload",
+    "suppressing all selected instant-hit flags permits all 1110 map entities to spawn with none inhibited"
+  ],
+  "not_established": [
+    "an accepted source fix or rebuilt-DLL pass with original net_instanthit values",
+    "complete second-map runtime resource closure",
+    "zero-error player spawn",
+    "whole-map or two-peer progression",
+    "dynamic AI combat with preserved instant-hit behavior",
+    "original-Xbox runtime comparison",
+    "the remaining 18 co-op segments or the solo campaign"
+  ]
+}

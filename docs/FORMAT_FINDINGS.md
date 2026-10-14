@@ -1,5 +1,39 @@
 # Format findings and unknowns
 
+## Checkpoint 014 second-map and instant-hit findings
+
+`xc_mars_city2_1` independently reproduces the direct-CM export contract. Its
+3,573,456-byte decoded MAP has geometry CRC `3219770337`; its 1,833,167-byte
+CM.X expands to a 2,927,667-byte PC CM with 219 models, 13,620 vertices,
+22,574 edges, 8,708 polygons, 2,984 brushes and 7,651 nodes. The independent
+PC-`dmap` CM has 312 models. Every authored name is shared, and every one of
+the 93 generated-only names belongs to a MAP entity marked `noclipmodel 1`.
+No generated-only model remains unexplained by that authored omission flag.
+
+The map, direct CM, decoded PROC and decoded AAS48 all reach the native PC
+loader. Entity spawning initially fails at `gamex86.dll+0x10caf0`, whose body
+is `mov eax,[ecx+0x248]; ret`; the captured context has `ecx == 0`. The caller
+at `gamex86.dll+0x22c48` is the unguarded `projectile.GetEntity()->GetPhysics()`
+probe in `idAI::Spawn`. The reconstructed `idAI::CreateProjectile` at RVA
+`0x16b70` explicitly returns null when `projectileDef` has `net_instanthit 1`.
+The first affected map entity is `monster_zsec_machinegun_9`.
+
+This was cross-checked without accepting an asset mutation. Setting only the
+machinegun projectile's flag to zero in a temporary local overlay moves the
+fault to `monster_zsec_shotgun_2` at the same instruction. Setting all selected
+instant-hit flags to zero allows all 1,110 entities to spawn, inhibits none,
+joins the local player and exits 0. Therefore the conversion must retain the
+Xbox declarations and fix the source integration: `idAI::Spawn` must tolerate
+the intentional null result, keep `projectileRadius` zero for that path, and
+still derive velocity/gravity/speed from the entity definition.
+
+The 50-file second-map closure is not accepted merely because its manifest has
+zero unresolved names. The native run reports a missing ladder animation,
+seven HUD item images, a defaulted `model_sp_marine`, and a player `Hips` joint
+error. Those are inherited co-op-player dependencies not rooted by the current
+map-only closure. They are the next packaging obligation after the gameplay DLL
+guard is rebuilt and verified with the original `net_instanthit` values.
+
 ## Checkpoint 013 authored-CM overlay findings
 
 The runtime-overlay builder can now select a direct CM.X export with

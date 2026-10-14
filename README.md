@@ -14,7 +14,34 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 013
+## Current checkpoint: 014
+
+**The second co-op segment now crosses the MAP/PROC/CM/AAS loader boundary,
+and its first native spawn blocker is isolated to a specific reconstructed
+instant-hit AI null dereference.**
+
+`xc_mars_city2_1` has a direct 219-model authored CM export bound to MAP CRC
+`3219770337`. Independent PC `dmap` output contains all 219 authored models;
+its 93 additional models correspond exactly to MAP entities marked
+`noclipmodel 1`. The authored CM, decoded PROC and decoded AAS48 all load on
+the PC host.
+
+The unmodified runtime faults while spawning `monster_zsec_machinegun_9`.
+Disassembly and a captured minidump identify the chain precisely:
+`idAI::CreateProjectile` returns null for an Xbox projectile with
+`net_instanthit 1`, then `idAI::Spawn` calls `GetPhysics()` on that null value.
+Changing only that projectile flag in a temporary local diagnostic advances
+to `monster_zsec_shotgun_2` and the identical fault; suppressing all selected
+instant-hit flags lets all 1,110 entities spawn with zero inhibited and exit 0.
+That data edit is diagnostic only and is not an accepted conversion. The
+required fix is a narrow source guard that preserves instant-hit combat.
+
+The second-map overlay is still provisional: the clean diagnostic run exposes
+missing co-op-player resources and a player skeleton error that must be added
+to the closure before acceptance. Full receipts and evidence boundaries are in
+[`evidence/checkpoint-014.json`](evidence/checkpoint-014.json).
+
+## Previous checkpoint: 013
 
 **The runtime-overlay builder now selects the direct Xbox-authored CM as a
 reproducible, source-bound payload instead of relying on a manual post-build

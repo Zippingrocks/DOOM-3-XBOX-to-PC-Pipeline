@@ -1,5 +1,29 @@
 # Recovery order and acceptance
 
+## Checkpoint 014 second-map status
+
+The second co-op segment has passed structural export and the native compiled-
+map loader. Direct CM.X expands to 219 authored collision models at the exact
+MAP CRC, and independent PC `dmap` contains all of them. The 93 PC-only models
+are exactly the entities carrying `noclipmodel 1`, so the model-set difference
+has a complete MAP-authored explanation.
+
+Runtime acceptance is not yet granted. The original declarations trigger a
+deterministic source bug: the reconstructed instant-hit path makes
+`idAI::CreateProjectile` return null while `idAI::Spawn` unconditionally probes
+that projectile's physics. A temporary flag-only diagnostic proves the boundary
+by spawning all 1,110 entities with zero inhibited, but changing Xbox
+`net_instanthit` semantics is not a fidelity fix. Acceptance requires a rebuilt
+DLL with the narrow null guard and the original declarations unchanged.
+
+The current 50-file closure is also incomplete despite reporting no unresolved
+map-root dependency. Native loading identifies inherited player dependencies:
+the ladder animation, seven HUD item images, `model_sp_marine`, and the player
+skeleton needed for `bone_hips`. The next gate is: original instant-hit values,
+source-guarded DLL, complete player dependency closure, 1,110/0 spawn result,
+local player creation with zero errors, and no missing resource lines. Combat,
+whole-map progression and two-peer behavior remain later gates.
+
 ## Checkpoint 013 runtime-overlay status
 
 The first-map runtime overlay now stages the direct Xbox-authored CM through a
