@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 043
+## Current checkpoint: 044
+
+**Reachable computed entity names and the last apparent nonterminal script-
+exit cases are now resolved offline across all 41 solo maps.** Function-scoped
+argument domains prove all 39 reachable Comm Outside airlock names local. The
+MCU scripts set `NUM_BRIDGES = 4`, so their pair functions return before the
+profiled 5/7 cases; the 16 reachable 1/3 names are local. These 55 lookups are
+now proven rather than left in a conservative superset.
+
+Monorail 2's `main2` selects train state 3, whose branch returns before four
+first-half direct references. The only MAP callback is a disabled, bound,
+unreferenced trigger, so those records have exact control-flow witnesses. The
+remaining 275 reachable source-residue records are VM-safe receiver/nullable
+uses except one Comm 1 callback whose absent required argument is its final
+statement after the door-bang actions. There are zero unresolved records and
+zero potential nonterminal thread exits. All 211 offline tests pass. Doom 3
+and `dmap` were not launched, and `gamex86.dll` remains unchanged. Receipt:
+[`evidence/checkpoint-044-solo-reachable-script-domains.json`](evidence/checkpoint-044-solo-reachable-script-domains.json).
+
+## Earlier checkpoint: 043
 
 **The solo PC bridges now preserve the retail worldspawn startup contract
 without running map initialization twice.** Official GPL `idWorldspawn::Spawn`

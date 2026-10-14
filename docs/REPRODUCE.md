@@ -1,3 +1,33 @@
+# Reproduce checkpoint 044
+
+## Checkpoint 044: reachable script entity domains
+
+Run the reachability classifier over the unchanged strict-v9 overlays with the
+decoded retail MAP/script source and the current domain profile:
+
+```powershell
+python tools/campaign_port/solo_script_reachability.py `
+  work/solo-overlays-strict-v9 `
+  --source-root work/solo-structural/maps `
+  --dynamic-profile tools/campaign_port/profiles/solo_script_entity_domains.json `
+  --out work/solo-overlays-strict-v9-script-reachability.json
+```
+
+Require 1,025 functions, 524 edges, 652 reachable functions and 373
+unreachable functions. Residue counts must be 55 `reachable-profile-local`,
+275 `reachable-source-residue`, four `source-control-flow-excluded` and 803
+`unreachable-source-residue`, with zero unresolved records. The 275 attention
+effects must split 175/53/24/22/1 across safe-null-receiver,
+safe-or-script-handled-null-lookup, safe-null-receiver-short-circuit,
+nullable-script-argument and source-thread-exit-after-terminal-action.
+
+The domain profile and reachability-report SHA-256 values are
+`28a6489bed4dd405bfa73b1fba35b02fc6420bbe918ad6716d99a36784cbd1b1`
+and
+`cd0e55db9f7a6e5c6f9b74e73a7a6fc871dd8d939328813da7167166fda1af50`.
+Run `python -m unittest discover -s tools/campaign_port/tests -q`; 211 tests
+must pass. Do not launch Doom 3 or `dmap` for this offline checkpoint.
+
 # Reproduce checkpoint 043
 
 ## Checkpoint 043: preserve retail worldspawn dispatch

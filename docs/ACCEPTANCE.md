@@ -1,5 +1,24 @@
 # Recovery order and acceptance
 
+## Checkpoint 044 reachable script-domain status
+
+The 41-map solo corpus now has no reachable computed lookup or nonterminal
+required-entity action that can address an absent entity under the proven
+entrypoints, argument domains and source guards. Fifty-five formerly broad
+computed-name records resolve locally, and four Monorail 2 first-half records
+have fail-closed source/control/callback exclusion witnesses.
+
+The reachability report contains 275 attention records: 175 safe null
+receivers, 53 safe or script-handled null lookups, 24 receiver short-circuits,
+22 nullable script arguments and one required-null call after its callback's
+terminal action. There are zero unresolved records and zero potential
+nonterminal thread exits. All 211 tests pass.
+
+This accepts the offline script entity-flow gate, not native behavior. The one
+terminal Comm 1 residue remains a targeted runtime observation, and all maps
+still require bounded native load, progression and reference-fidelity checks
+once launching Doom 3 will not interrupt the user.
+
 ## Checkpoint 043 worldspawn dispatch status
 
 Every solo overlay now has exactly one static startup dispatch for its retail

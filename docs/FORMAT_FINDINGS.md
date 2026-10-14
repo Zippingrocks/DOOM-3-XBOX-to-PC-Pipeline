@@ -1,5 +1,31 @@
 # Format findings and unknowns
 
+## Checkpoint 044 reachable script-domain findings
+
+A conservative computed-name profile is not the same as a reachable call
+domain. Comm Outside reaches only `airlock_door_open(2,2)` in segment 1 and
+`airlock_door_open(3,2)` plus `airlock_door_close(4,1)` in segment 2. Expanding
+those exact arguments produces 14 and 25 names respectively, all local. The
+MCU pair helpers are broadly profiled with bridge numbers 1, 3, 5 and 7, but
+both scripts assign `NUM_BRIDGES = 4` and return before entity lookup when the
+argument is greater. Only 1 and 3 can reach the lookup, producing eight local
+records per segment. Reachability-domain narrowing must remain a validated
+subset of the broad audit profile; it must never add an un-audited name.
+
+Monorail 2 requires source-control-flow evidence beyond a function-level call
+graph. Its `main2` assigns `TRAIN_MOVING = 3` before the sole script call to
+`move_train`; the state-3 branch calls `train_proceed` and returns before four
+first-half references. Its sole MAP callback entity is `noTouch`, bound to the
+train, has no incoming target, and is absent from direct, computed and GUI
+script references. The profile records all of those witnesses and the auditor
+fails closed when a source regex, caller set or callback witness changes.
+
+The only remaining required-null call is Comm 1 `door_bang`'s final statement,
+which passes the absent `$monster_zsec_shield_4` after the callback's door-bang
+actions have completed. It can terminate only the already-finished thread.
+This is retained as explicit native-attention evidence, not erased or called a
+local entity.
+
 ## Checkpoint 043 PC worldspawn dispatch findings
 
 The stock PC worldspawn has two independent startup paths. After compiling
