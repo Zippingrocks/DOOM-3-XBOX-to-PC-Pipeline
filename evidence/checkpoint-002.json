@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "checkpoint": "002",
+  "request_date_local": "2026-10-13",
+  "timezone": "America/Denver",
+  "retail_image": {
+    "bytes": 3029598208,
+    "sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "xdvdfs_entries": 377,
+    "files": 368,
+    "directories": 9,
+    "coop_archive_pairs": 20
+  },
+  "first_coop_map": {
+    "archive": "xc_mars_city1_1",
+    "map_x_bytes": 2172031,
+    "map_x_sha256": "aa2bd3c6a2fd4a872bdb3012b0aaaa02c389daa2ed9710e9a06aa284ae11585a",
+    "map_output_bytes": 3267832,
+    "map_output_sha256": "ad95ae412d4c0627074927ae67e2d7f85a532336661c9ed209f1da49e061f40d",
+    "decoded_records": {
+      "brush_sides": 17210,
+      "patchDef2": 637,
+      "patchDef3": 988
+    }
+  },
+  "validation": {
+    "new_synthetic_tests_run": 8,
+    "new_synthetic_tests_failed": 0,
+    "retail_xdvdfs_inventory": true,
+    "retail_gfc_inventory": true,
+    "retail_map_x_decoded": true,
+    "pc_engine_load_tested": false,
+    "two_peer_campaign_tested": false
+  },
+  "status": {
+    "coop_archive_pairs_inventoried": 20,
+    "map_x_decoder_implemented": true,
+    "proc_x_decoder_implemented": false,
+    "cm_x_decoder_implemented": false,
+    "near_final_campaign_test_ready": false
+  },
+  "claim_limits": [
+    "Retail and generated game bytes remain local and are not committed.",
+    "A decoded MAP file is not yet a loadable or fidelity-accepted co-op map.",
+    "PROC.X, CM.X, AAS, assets, scripts, transitions and co-op runtime behavior remain separate obligations.",
+    "The 20 archive-pair count is tied only to this exact retail image and xc_ naming evidence."
+  ]
+}
+
