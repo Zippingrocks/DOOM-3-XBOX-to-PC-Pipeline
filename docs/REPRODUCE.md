@@ -12,7 +12,7 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 012 ran on Pyth
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current branch: 144 tests, zero failures. Checkpoint 012
+Expected result on the current branch: 146 tests, zero failures. Checkpoint 012
 captured 142 passing tests; two later synthetic tests cover authored-CM overlay
 selection and CRC mismatch rejection. Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
