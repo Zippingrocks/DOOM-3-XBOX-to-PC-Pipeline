@@ -1,9 +1,9 @@
-# Reproduce checkpoint 005
+# Reproduce checkpoint 006
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `bb2b336a036782ab861df9d20dc337fe438323d0`
+Checkpoint implementation head: `9ebe3701c7e1ab28ee4483477ee071a2fe8cca1a`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
@@ -176,4 +176,38 @@ no missing selected DDS/WAV, EFX, AF-joint, script callback or copy-joint
 warning. Five Xbox-only classname families cannot spawn because the stock DLL
 lacks the new source classes; do not interpret that harness as source-runtime
 acceptance.
+
+## Source-DLL validation
+
+The implementation branch contains
+`.github/workflows/campaign-port-validation.yml`. It runs the 103-test Python
+suite and builds the complete Win32 game DLL:
+
+```powershell
+msbuild vendor/doom3-gpl/neo/game.vcxproj /m /t:Build `
+  /p:Configuration=Release /p:Platform=Win32 /v:minimal
+```
+
+Checkpoint-006 run `38525058861` completed both jobs successfully. Verify the
+downloaded artifact ZIP against SHA-256
+`3650517235dd1fb787c8bbde903a3314aa1aa546ca0e3e6fc9d1add861948ac8`
+and its `gamex86.dll` against SHA-256
+`5c5fb61a0163d70db57dcfc1c098bdfe6a4a093f2e5f280e2ec711c5a1b58e9a`.
+
+Doom 3's non-pure loader prefers a DLL in a PK4 over a loose DLL in the mod
+directory and will overwrite the latter in `fs_savepath`. For a local
+development run, place the verified test DLL beside `Doom3.exe`; that explicit
+path is checked first. Preserve any pre-existing file and remove the test DLL
+afterward. Never distribute the DLL together with retail-derived overlay data.
+
+```powershell
+.\Doom3.exe +set fs_game xbox_coop_port_test_v3 `
+  +set com_skipIntroVideo 1 +set r_fullscreen 0 +set logFile 2 `
+  +map vv/xbox_coop/xc_mars_city1_1 +wait 600 +quit
+```
+
+Expected checkpoint-006 result: exit code 0, 940 entities spawned, zero
+inhibited, zero `Could not spawn` warnings, and the restored callback output.
+The five unique AI path warnings remain actionable; do not treat them as AAS
+record loss because the offline route audit finds all five directed walk paths.
 
