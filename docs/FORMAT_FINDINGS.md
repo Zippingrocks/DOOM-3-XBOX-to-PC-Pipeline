@@ -1,5 +1,31 @@
 # Format findings and unknowns
 
+## Checkpoint 002 retail findings
+
+The retail XDVDFS volume descriptor is at byte `0x10000`, with 2,048-byte
+sectors. Its root directory sector is 264 and its root table is 4,188 bytes.
+Directory child links are little-endian 16-bit offsets in four-byte units;
+extent sectors and sizes are little-endian 32-bit values.
+
+The image contains 20 co-op archives whose names begin `xc_`. Their generated
+map members use `.map.x`, `.proc.x`, `.cm.x` and one or more `.aas*.x` names.
+MAP.X is a hybrid format: ordinary Version-2 MAP text surrounds `# ... #` binary
+records. Brush-side records contain ten little-endian float32 values: four plane
+values and two three-value texture rows. PatchDef2 records contain two float32
+integer dimensions followed by width*height vertices of five float32 values.
+PatchDef3 adds two float32 integer subdivision values before the same vertex
+matrix. Rows are width-major and each row contains `height` vertices.
+
+PROC.X is likewise hybrid text/binary and identifies itself as
+`mapProcFile003`; CM.X begins with a binary collision representation; AAS.X is
+text beginning `DewmAAS "1.07"`. These facts do not yet establish PC runtime
+compatibility. The conversion milestone covers MAP.X only.
+
+Authentic GOB blocks have `STBL`, a codec byte, the stored/zlib body, then the
+four-byte footer `ENBL`. The exact footer is accepted and any other bytes after
+the zlib stream remain an error. This supersedes checkpoint 001's statement
+that all zlib unused data is rejected.
+
 Checkpoint 001, requested October 13, 2026 (America/Denver).
 Every claim below is either a source-code observation, a tool implementation
 contract, or an explicitly open recovery task. No retail campaign payload was
@@ -122,3 +148,4 @@ reader evidence, meaning, transformation, output location and counterexamples.
 Retain unexplained spans. Separately label recovered editable source geometry,
 recovered compiled geometry and newly reconstructed geometry; they are not
 interchangeable forms of evidence.
+
