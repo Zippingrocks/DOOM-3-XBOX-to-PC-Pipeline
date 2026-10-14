@@ -1,6 +1,26 @@
 # Recovery order and acceptance
 
 
+## Checkpoint 012 collision status
+
+The first-map collision gate now includes actual spawned entity clip placements,
+not only model-zero and named-model queries. Generated and authored runs resolve
+the same door clip, co-op trigger and brush static at identical origins, axes,
+bounds, masks and sample coordinates. All 24,576 hit outcomes match.
+
+This still rejects PC-`dmap` collision for fidelity acceptance. The live
+profiles expose 3,367 contact-manifold mismatches, one trajectory mismatch, 97
+material-selection mismatches and 11 point start-contents differences. Matching
+hit counts are insufficient: player movement, response points, trigger contact
+and surface-dependent behavior can observe the remaining differences.
+
+For the PC overlay, the accepted implementation direction is now direct decoded
+CM.X, with PC `dmap` retained as a diagnostic comparison only. The collision
+gate is not complete until the same native evidence covers every co-op CM and
+exercises moving/rotated clips, trigger dispatch, representative actor and
+projectile hulls, and two peers. Original-Xbox runtime comparison remains the
+highest-confidence reference when it becomes available.
+
 ## Checkpoint 011 collision status
 
 The first-map static collision gate now covers world player, monster and rocket
