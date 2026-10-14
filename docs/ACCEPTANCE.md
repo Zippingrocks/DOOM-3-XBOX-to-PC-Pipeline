@@ -1,6 +1,25 @@
 # Recovery order and acceptance
 
-## Checkpoint 005 acceptance state
+## Checkpoint 006 acceptance state
+
+The first co-op segment now passes the source-runtime spawn gate. A complete
+Win32 `gamex86.dll` build and the 103-test recovery suite pass in CI. The exact
+CI DLL, loaded through Doom 3's executable-directory development path, spawns
+all 940 map entities with no inhibited entities and no missing Xbox-only
+spawnclass. The bounded load exits normally.
+
+This moves the acceptance boundary to dynamic navigation and actual co-op
+behavior. Five unique NPC/path-corner failures remain even though the recovered
+AAS contains directed walk routes for every pair. Investigate actor bounds,
+door/obstacle enablement, AAS obstacle removal and script timing before editing
+or regenerating navigation.
+
+The next runtime gate is two simultaneous peers: initial spawn selection,
+trigger synchronization, Turkey Puncher score/event replication, checkpoint
+advance, death/respawn and segment transition. Direct CM.X recovery and matched
+Xbox visual/gameplay comparison remain separate fidelity obligations.
+
+## Previous checkpoint: 005 acceptance state
 
 The first co-op segment has crossed the dependency-resolution and stock-loader
 boundary: decoded geometry/AAS, selected models/animations, HUD images, sounds,
