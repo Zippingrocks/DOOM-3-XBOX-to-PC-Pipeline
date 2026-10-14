@@ -19,9 +19,9 @@ campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 **The first co-op segment now loads the original Xbox-authored collision model
 on PC, and the complete extracted CM.X corpus is structurally decoded.**
 
-Private implementation head `30cb3308b6a8bcfbd1a451eb926833584e993b69`
+Private implementation head `df466ea0c02da92f664c240cb3929c20716c7099`
 adds a strict CM.X decoder, deterministic corpus auditor, regression fixtures
-and handoff documentation. The Python suite now has 130 passing tests. The
+and handoff documentation. The Python suite now has 135 passing tests. The
 decoder expands model headers, vertices, edges, shared planes, brushes,
 polygons and preorder BSP nodes to standard PC CM 1.00 text; it converts
 internal Xbox plane `d` to PC `idPlane::Dist() == -d`.
@@ -32,6 +32,13 @@ vertices, 792,130 edges, 294,185 planes, 50,693 brushes, 356,793 polygons and
 381,933 nodes. Every polygon and brush is referenced by the Xbox BSP and no
 node contains a duplicate primitive reference. The corpus receipt SHA-256 is
 `838535f1924ffa89f15bfbfb8397b705fe1178cc74ac01e88a46e6bbc974762f`.
+
+All 20 top-level co-op map CMs also export deterministically in memory using
+geometry CRCs computed from their paired converted MAPs. The audit binds
+43,791,272 bytes of CM.X to 71,372,306 bytes of would-be PC CM across 3,633
+models; its MAP/CM.X/output manifest digest is
+`3a27835c398b2d5c9bd280a29c397efe47868ea965ae4d9f9900fa2755cf0603`.
+No licensed CM outputs are published or retained by that audit.
 
 The first map's 2,003,187-byte CM.X expands to a 3,320,995-byte PC CM with
 SHA-256
