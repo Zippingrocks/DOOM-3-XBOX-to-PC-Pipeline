@@ -1,5 +1,29 @@
 # Format findings and unknowns
 
+## Checkpoint 053 compiled-script findings
+
+The Xbox `.script.bin` payload is a serialized Doom script program, not native
+machine code. It starts with length-prefixed source metadata and an include-file
+list, then a counted global-data image. Namespaced functions can be recovered as
+records containing statement range, parameter/local sizes, name, file number,
+definition/type indices, parameter sizes and event index. The final statement
+array is counted and consumes the remainder of the file; each statement is
+eight bytes of little-endian `uint16 a, b, c, opcode`.
+
+All 20 co-op binaries independently infer the same 4,100-statement base. Opcode
+96 is `OP_CALL` in the official GPL `Script_Compiler.h`. The operand mapping is
+not inferred from the absent call: all 16 binaries containing `coop.script`
+also yield exactly one compiled `Coop::initCoop -> Coop::showResurrectors` call
+and two `Coop::resurrect_player -> Coop::getNearestLocation` calls.
+
+Against that validated decoder, the corpus has zero `OP_CALL` statements whose
+target is `Coop::initCoop`, and no compiled function name ending
+`::setupCoop`. Therefore finding `Coop::initCoop` as printable text proves only
+that the shared function was defined. It does not override the text-source and
+MAP evidence that the retained `setupCoop` callbacks are stale. This does not
+exclude a C++ function-name lookup outside bytecode and does not establish
+two-peer resurrection behavior.
+
 ## Checkpoint 051 co-op entity-link findings
 
 Co-op link closure needs the same case-insensitive lookup rules as the engine,

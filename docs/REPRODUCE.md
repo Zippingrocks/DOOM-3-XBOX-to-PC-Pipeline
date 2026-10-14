@@ -1,3 +1,31 @@
+# Reproduce checkpoint 053
+
+## Checkpoint 053: Xbox compiled-script function/call audit
+
+Use the exact `.script.bin` members extracted from the 20 authenticated co-op
+archives. Do not regenerate them from the accompanying source text: the purpose
+of this audit is to test the shipped compiled program independently.
+
+```powershell
+python tools/campaign_port/xbox_script_bytecode_audit.py `
+  work/decoded-inputs-all `
+  --require-maps 20 `
+  --output work/coop-script-bytecode-v1.json
+```
+
+Require 20 maps, 4,591,834 input bytes, 217,103 statement records, 5,239
+namespaced function records, 589 `OP_CALL` instructions and the identical
+statement-index base 4,100 in every map. Sixteen maps must contain the shared
+`Coop::initCoop` definition; none may contain a compiled `::setupCoop`
+function or an `OP_CALL` to `Coop::initCoop`.
+
+Validate the decoder positively, not only by the zero result: each of those 16
+maps must expose one `Coop::initCoop -> Coop::showResurrectors` call and two
+`Coop::resurrect_player -> Coop::getNearestLocation` calls. The report SHA-256
+is `267bcb85f423d53de142f0b62be16a6679023d7edfcb7f32788ad7088326cd9c`.
+Run the full suite and require 233 passing tests. Do not launch Doom 3 or
+`dmap`.
+
 # Reproduce checkpoint 052
 
 ## Checkpoint 052: unified co-op callbacks, audio and campaign chain

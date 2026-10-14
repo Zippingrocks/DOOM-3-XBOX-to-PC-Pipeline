@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 052
+## Current checkpoint: 053
+
+**All 20 original-Xbox co-op `script.bin` files now have a structural
+function/call audit, resolving the apparent `Coop::initCoop` contradiction.**
+The format carries length-prefixed source metadata, a global-data image,
+serialized function records and a tail array of 8-byte statements. Every map
+uses the same recovered statement-index base of 4,100. The official GPL opcode
+enum identifies `OP_CALL` as 96; known `initCoop -> showResurrectors` and
+`resurrect_player -> getNearestLocation` calls validate the decoded operands in
+all 16 binaries that include `coop.script`.
+
+The corpus contains 217,103 statements and 589 compiled calls. It contains no
+compiled `setupCoop` function and no compiled call to `Coop::initCoop` in any
+map. The earlier string hits were function definitions supplied by the shared
+include, not call sites. This supports the narrow checkpoint-052 treatment of
+stale MAP callbacks without inventing the block-commented functions. All 233
+offline tests pass; Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-053-xbox-script-bytecode.json`](evidence/checkpoint-053-xbox-script-bytecode.json).
+
+## Earlier checkpoint: 052
 
 **All 20 co-op maps now rebuild through one source-bound toolchain with closed
 script-callback, transition, entity-link, direct-audio and navigation gates.**
@@ -1133,7 +1152,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-052-coop-semantics-audio.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-053-xbox-script-bytecode.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

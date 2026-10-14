@@ -1,0 +1,66 @@
+{
+  "checkpoint": "053",
+  "date": "2026-10-14",
+  "claim": "All 20 retail co-op map script binaries have a structurally decoded function/call audit; none contains a compiled setupCoop function or an OP_CALL to Coop::initCoop.",
+  "inputs": {
+    "checkpoint_052": "evidence/checkpoint-052-coop-semantics-audio.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "compiled_script_files": 20,
+    "compiled_script_bytes": 4591834,
+    "local_report_sha256": "267bcb85f423d53de142f0b62be16a6679023d7edfcb7f32788ad7088326cd9c"
+  },
+  "recovered_layout": {
+    "source_metadata": "length-prefixed source path followed by a serialized include-file list and default-script name",
+    "global_data": "uint32 byte count followed by the global-data image",
+    "function_record": "uint32 firstStatement, numStatements, parmTotal, locals; length-prefixed ASCII name; filenum, def index, type index, parameter-size list and event index",
+    "statement_record": "8 bytes: little-endian uint16 a, b, c, opcode",
+    "statement_index_base": 4100,
+    "statement_index_base_maps": 20,
+    "op_call": 96,
+    "op_call_basis": "The opcode ordinal is derived from the official id Software GPL Script_Compiler.h enum and cross-checked against recovered intra-Coop calls.",
+    "official_script_compiler_h_sha256": "12f7d6447db6591a3016128b423ffad8838456fff678a00d0f47dc2309fb26eb",
+    "official_script_program_h_sha256": "16e8d1088cc00173f2decedfa073d249e0da12217e645c186b0913a3ee9acc93"
+  },
+  "corpus": {
+    "maps": 20,
+    "namespaced_function_records": 5239,
+    "statements": 217103,
+    "op_calls": 589,
+    "maps_with_coop_init_definition": 16,
+    "maps_without_coop_init_definition": ["xc_admin", "xc_caverns1_1", "xc_comm1_1", "xc_hellhole_1"],
+    "setup_coop_function_definitions": 0,
+    "coop_init_op_calls": 0,
+    "failures": 0
+  },
+  "decoder_validation": {
+    "maps_validating_init_to_show_call": 16,
+    "expected_init_to_show_calls_per_map": 1,
+    "maps_validating_resurrect_to_nearest_calls": 16,
+    "expected_resurrect_to_nearest_calls_per_map": 2,
+    "meaning": "The same OP_CALL and callable-varDef interpretation that finds the known calls inside coop.script finds no caller of Coop::initCoop."
+  },
+  "checkpoint_052_resolution": {
+    "compiled_symbol_presence": "Coop::initCoop strings in 16 binaries are function definitions contributed by script/coop.script, not evidence that a map function invokes them.",
+    "setup_coop_status": "No retail co-op script binary contains a compiled namespaced setupCoop function, including xc_caverns2 and xc_site3_1.",
+    "decision": "Retain checkpoint 052's narrowly disabled stale MAP setupCoop callbacks; do not resurrect block-commented source as if it were compiled retail behavior."
+  },
+  "implementation_receipts": {
+    "xbox_script_bytecode_audit_py_sha256": "e7e3996c67f5d52e3ece00ca741b678dc5d0ace6fb7c4e6d65d281e2fa5b68e8",
+    "test_xbox_script_bytecode_audit_py_sha256": "24f051382ea05bd1c5fa06192b0201176fa3b0a61b327794412f755662e0f69b"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 233,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "This is a function-table and OP_CALL audit, not a source decompiler or proof of every opcode's semantics.",
+    "External C++ lookups by function-name string are outside script.bin bytecode and require the Xbox reconstruction source or executable evidence.",
+    "Zero compiled init calls does not prove resurrection gameplay is correct; two-peer runtime validation remains mandatory after offline closure."
+  ]
+}
