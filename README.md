@@ -19,9 +19,9 @@ campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 **The first co-op segment now loads the original Xbox-authored collision model
 on PC, and the complete extracted CM.X corpus is structurally decoded.**
 
-Private implementation head `dd62b41dbeca3755c3770d0c2c9b7d72499154d4`
+Private implementation head `cf08a48e961467b9ef1a77a96f93b949035892e6`
 adds a strict CM.X decoder, deterministic corpus auditor, regression fixtures
-and handoff documentation. The Python suite now has 136 passing tests. The
+and handoff documentation. The Python suite now has 138 passing tests. The
 decoder expands model headers, vertices, edges, shared planes, brushes,
 polygons and preorder BSP nodes to standard PC CM 1.00 text; it converts
 internal Xbox plane `d` to PC `idPlane::Dist() == -d`.
@@ -43,6 +43,9 @@ No licensed CM outputs are published or retained by that audit.
 The first map's 2,003,187-byte CM.X expands to a 3,320,995-byte PC CM with
 SHA-256
 `35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`.
+Its 243 authored model names are a complete subset of the independent PC
+`dmap` CM. Every one of the 34 generated-only names belongs to a recovered MAP
+entity marked `noclipmodel 1`; there are no authored-only or unexplained names.
 A bounded native run loads it directly in 29 ms as 243 models, 15,146 vertices,
 25,468 edges, 10,005 polygons, 2,784 brushes and 7,167 BSP nodes. The map then
 spawns all 940 entities, joins the local player and exits 0. The native log
