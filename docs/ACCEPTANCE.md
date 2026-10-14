@@ -1,5 +1,19 @@
 # Recovery order and acceptance
 
+## Checkpoint 039 runtime-consumed entity-reference status
+
+The solo link auditor now follows the stock PC C++ reference keys in addition
+to generic targets and binds: attachments, elevator doors/status GUIs,
+binary-mover buddies and state triggers, objective cameras, teleporter views,
+spring endpoints, synchronized locks and ownership. The expanded corpus has
+14,700 links: 13,084 local, 16 engine/empty and 1,600 matched to the retail
+decoded source as dangling. Zero case-insensitive duplicates or port-introduced
+unresolved links remain, and all 196 tests pass.
+
+This closes static MAP spawnargs only. Script-computed `sys.getEntity`
+expressions, animation frame-command targets and runtime-created entities remain
+separate gates.
+
 ## Checkpoint 038 solo entity-link status
 
 All 41 solo overlays pass a case-insensitive entity-name and explicit link

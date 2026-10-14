@@ -1,0 +1,54 @@
+{
+  "checkpoint": "039",
+  "date": "2026-10-14",
+  "claim": "All 41 Xbox solo overlays close every static entity-reference spawnarg consumed by the stock PC game source.",
+  "inputs": {
+    "checkpoint_038": "evidence/checkpoint-038-solo-entity-links.json",
+    "official_pc_source_archive": "https://github.com/id-Software/DOOM-3/archive/refs/heads/master.zip"
+  },
+  "entity_links": {
+    "maps": 41,
+    "entities": 38769,
+    "named_entities": 38728,
+    "links": 14700,
+    "named_entity_links": 13084,
+    "engine_or_empty_links": 16,
+    "source_authored_dangling_links": 1600,
+    "case_insensitive_duplicate_names": 0,
+    "port_introduced_unresolved_links": 0,
+    "local_audit_json_sha256": "148912f45e6ad07142f93a87053215d35cba8c6587a07010b4e4d521f0588fb0"
+  },
+  "new_runtime_reference_classes": {
+    "links": 95,
+    "named_entity_links": 84,
+    "source_authored_dangling_links": 11,
+    "keys": [
+      "attachedTo",
+      "attachedView",
+      "buddy*",
+      "camShot",
+      "ent1",
+      "ent2",
+      "guiTarget*",
+      "innerDoor",
+      "owner",
+      "statusGui*",
+      "switchToView",
+      "syncLock",
+      "triggerBlocked*",
+      "triggerClosed*",
+      "triggerOpened*",
+      "visualView"
+    ]
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 196,
+    "failed": 0
+  },
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "This gate covers statically named MAP spawnargs used by stock PC C++ code; script-computed sys.getEntity expressions are a separate gate.",
+    "Source-authored dangling references remain visible and require native activation validation."
+  ]
+}

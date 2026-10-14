@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 038
+## Current checkpoint: 039
+
+**The solo entity-link gate now covers every static entity-reference spawnarg
+identified in the stock PC game source.** Beyond `target*`, bind and camera
+targets, this includes elevator doors/status GUIs, binary-mover buddies and
+open/close/block triggers, objective cameras, teleporter views, attachments,
+spring endpoints, synchronized locks and ownership.
+
+The expanded 41-map audit covers 14,700 links. 13,084 resolve to local named
+entities, 16 are engine/empty sentinels and 1,600 are fingerprinted unchanged
+in the decoded Xbox source. There are still zero case-insensitive duplicate
+names and zero port-introduced unresolved links. The 95 newly covered values
+comprise 84 local resolutions and eleven source-authored split-map remnants.
+All 196 offline tests pass, and Doom 3 remains closed. Receipt:
+[`evidence/checkpoint-039-solo-runtime-links.json`](evidence/checkpoint-039-solo-runtime-links.json).
+
+## Earlier checkpoint: 038
 
 **All 41 retail Xbox single-player overlays now also close the PC entity-name
 and explicit entity-link gates.** The audit parses 38,769 entities and 14,605

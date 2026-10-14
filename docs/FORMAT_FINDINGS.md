@@ -1,5 +1,22 @@
 # Format findings and unknowns
 
+## Checkpoint 039 runtime-consumed reference findings
+
+Reading the stock PC game source expands the MAP entity-reference vocabulary
+beyond `target*`, `bind`, `entityname`, `killtarget` and `cameraTarget`.
+`idCameraView`, `idItem`, `idObjective`, `idSpring`, `idMoveable`, elevators,
+binary movers, doors and influence targets also consume `attachedTo`,
+`attachedView`, `camShot`, `ent1`, `ent2`, `owner`, `visualView`,
+`switchToView`, `innerDoor`, `statusGui*`, `guiTarget*`, `buddy*`, `syncLock`
+and the `triggerBlocked*`/`triggerClosed*`/`triggerOpened*` families as entity
+names.
+
+Across all maps these add 95 references. Eighty-four resolve locally. Eleven
+are source-authored dangling values: three objective cameras, five door buddy
+or open-trigger values and three other split-stage mover references. Each
+matches the decoded source by source entity, origin, key and target. None is
+silently retargeted.
+
 ## Checkpoint 038 PC entity-name and link findings
 
 PC entity lookup is case-insensitive. `idGameLocal::AddEntityToHash` rejects an

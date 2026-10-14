@@ -1,4 +1,16 @@
-# Reproduce checkpoint 038
+# Reproduce checkpoint 039
+
+## Checkpoint 039: runtime-consumed static entity references
+
+Run the checkpoint-038 entity-link command with the current auditor. Its key
+set is derived from `FindEntity`, `GetTargets` and related consumers in the
+official stock PC game source. Require 14,700 links: 13,084 `named-entity`, 16
+`engine-or-empty`, 1,600 `source-authored-dangling`, zero duplicate names and
+zero unresolved records. The report SHA-256 is
+`148912f45e6ad07142f93a87053215d35cba8c6587a07010b4e4d521f0588fb0`.
+Run the full offline suite; 196 tests must pass. Do not launch Doom 3.
+
+## Reproduce checkpoint 038
 
 ## Checkpoint 038: solo PC entity names and links
 
