@@ -1,6 +1,32 @@
 # Recovery order and acceptance
 
-## Checkpoint 007 acceptance state
+## Checkpoint 008 acceptance state
+
+The first co-op segment now passes the bounded single-host navigation,
+dependency and true-`COOP` startup gate. The corrected AAS48, exact
+runtime-tested source DLL and manifest-bound overlay start a listen server,
+create the local player, load all 940 entities and shut down cleanly. The
+bounded log contains zero missing images, models, animations or sounds; zero
+spawnclass, GUI-command or material-token failures; zero AI path warnings; and
+zero error or fatal lines.
+
+The five checkpoint-007 path failures were caused by AAS plane serialization,
+not missing reachability chains or dynamic obstacles. Xbox `xboxData` stores
+the internal `idPlane` fourth component, while standard PC AAS text stores
+`Dist() == -d`. Negating that component during export restores native
+point-to-area lookup. The matching auditor correction and nonzero-distance
+fixtures prevent the earlier decoder/auditor sign errors from masking one
+another.
+
+This accepts first-map navigation only for the observed bounded startup slice.
+It does not yet accept a second peer, encounter progression, doors throughout
+the playable segment, death/rejoin, checkpoint behavior, transition behavior,
+direct CM.X collision recovery, Xbox visual parity or the remaining co-op and
+solo corpus. The next scalable gate is corpus-wide corrected-AAS validation
+and all-map dependency closure, followed by a focused two-peer progression run
+once the offline obligations for that slice are complete.
+
+## Previous checkpoint: 007 acceptance state
 
 The first co-op segment now passes the single-host true-`COOP` startup gate.
 The exact checkpoint DLL starts a listen server, creates the local networked
