@@ -1,0 +1,34 @@
+{
+  "checkpoint": "035-solo-models",
+  "date": "2026-10-14",
+  "status": "complete portable model-format corpus decoded for all 41 Xbox single-player archives; no Doom 3 launch performed",
+  "decoder": {
+    "tool": "decode_model_corpus.py",
+    "tests": 164,
+    "atomic_output": true,
+    "source_hash_verification": true,
+    "case_insensitive_output_collision_check": true,
+    "windows_short_staging": true
+  },
+  "corpus": {
+    "maps": 41,
+    "manifests": 41,
+    "records": 18405,
+    "mdvanim": 14180,
+    "mdvmesh": 670,
+    "md5anim_x": 3555,
+    "source_bytes": 299770233,
+    "output_bytes": 872862190,
+    "file_reads_rehashed": 36810,
+    "missing_files": 0,
+    "hash_mismatches": 0,
+    "manifest_ledger_sha256": "63266b2894ecad3adb2fcb1eccfc1e2cce80fdb55583632887047ca4ac34fc03"
+  },
+  "remaining_offline_work": [
+    "dependency and resource closure",
+    "recover Xbox-only XACT audio",
+    "audit scripts, callbacks, difficulty gates and inter-map routing",
+    "build and rehash portable overlays"
+  ],
+  "deferred_by_user_request": ["Doom 3 launch", "dmap", "native spawn", "visual playthrough"]
+}

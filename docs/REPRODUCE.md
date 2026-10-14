@@ -1116,6 +1116,23 @@ python tools/campaign_port/retarget_md5anim.py source.md5anim `
   --report retarget.json
 ```
 
+For one complete map archive, the fail-closed corpus wrapper selects every
+`.mdvanim`, `.mdvmesh`, and `.md5anim.x`, verifies extracted hashes, maps them
+to `.md5anim`/`.md5mesh`, rejects case-insensitive destination collisions, and
+writes one atomic manifest:
+
+```powershell
+python tools/campaign_port/decode_model_corpus.py map.gfc `
+  --gob map.gob --out campaign_port_work/map-models
+```
+
+On Windows the wrapper stages below the short system temporary path; nesting
+both archive and corpus stages below a deep Steam checkout can exceed the
+classic path limit for legitimate retail animation names. After conversion,
+reopen and hash every raw and decoded member against the manifest. Checkpoint
+035 covers 18,405 records (36,810 file reads) with zero missing files and zero
+hash mismatches.
+
 `d3tfull.py` takes the D3TFULL file or its containing ISO plus selected logical
 image names. For the checkpoint disc identity, recover the six additional HUD
 images directly from the inventoried extent without copying the whole archive:

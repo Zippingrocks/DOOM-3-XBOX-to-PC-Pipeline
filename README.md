@@ -163,6 +163,21 @@ model, dependency, XACT, script and final overlay closure remain. No executable
 or `dmap` was run. Receipt:
 [`evidence/checkpoint-034-solo-structural.json`](evidence/checkpoint-034-solo-structural.json).
 
+## Checkpoint 035: complete Xbox solo model corpus
+
+All portable Xbox model formats embedded in the 41 single-player archives are
+now extracted and decoded with per-file source/output receipts: 14,180 MDV
+animations, 670 MDV meshes, and 3,555 hybrid MD5 animations (18,405 files,
+872,862,190 decoded bytes). The corpus decoder stages atomically, rejects
+case-insensitive output collisions, and uses a short Windows staging path for
+legitimate long retail member names.
+
+A second pass reopened and rehashed all 18,405 raw inputs and all 18,405
+decoded outputs: 36,810 reads, zero missing files and zero hash mismatches. The
+offline suite is 164 tests. Resource, XACT, script and final overlay closure
+remain. No executable or `dmap` was run. Receipt:
+[`evidence/checkpoint-035-solo-models.json`](evidence/checkpoint-035-solo-models.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
