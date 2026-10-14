@@ -1,0 +1,164 @@
+{
+  "checkpoint": "010",
+  "date": "2026-10-14",
+  "scope": "first-map deterministic native trace comparison between PC-dmap collision and direct Xbox-authored CM.X recovery",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "validation": {
+    "unit_tests": {
+      "python": "3.11",
+      "count": 141,
+      "failures": 0
+    },
+    "windows_game_dll_build": "success",
+    "private_build_identifiers_published": false
+  },
+  "inputs": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "map_geometry_crc": 2410032894,
+    "pc_dmap_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "authored_pc_cm_sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931",
+    "trace_count_per_shape": 4096,
+    "seed": 0,
+    "shapes": [
+      "point",
+      "player box (-16,-16,0) to (16,16,64)"
+    ],
+    "content_mask": [
+      "solid",
+      "playerclip"
+    ],
+    "world_bounds": [
+      [
+        -4032,
+        -3864,
+        -72
+      ],
+      [
+        360,
+        -784,
+        640
+      ]
+    ],
+    "input_digest": "8386c90c"
+  },
+  "diagnostic_contract": {
+    "command": "xboxCoopCollisionDigest 4096 0 1",
+    "records_per_run": 8192,
+    "input_binding": "raw IEEE-754 coordinate bits, seed, count and world bounds",
+    "gameplay_fields": [
+      "start contents",
+      "trace fraction",
+      "end position",
+      "contact point",
+      "contact normal and plane distance",
+      "contents",
+      "material"
+    ],
+    "topology_fields": [
+      "contact type",
+      "stable edge or vertex feature",
+      "trace-model feature"
+    ],
+    "normalization": [
+      "point-contents returns raw first-brush contents, so trace suppression applies the requested content mask explicitly",
+      "CONTACT_TRMVERTEX modelFeature is a process-layout-dependent polygon pointer and is normalized to zero"
+    ],
+    "tolerances": {
+      "fraction": 0.000001,
+      "position_and_plane_distance": 0.01,
+      "normal": 0.001
+    }
+  },
+  "receipts": {
+    "pc_dmap_log_bytes": 2070951,
+    "pc_dmap_log_sha256": "729193a3d9614f1041bfa9300398ad25484f497d7f736e860fe195348a5d8e3d",
+    "authored_log_bytes": 2071066,
+    "authored_log_sha256": "e66776c4cb2c8e9962e6431ade61afa7969994e2bb568947ef1d6110d1856712",
+    "comparison_report_bytes": 8402,
+    "comparison_report_sha256": "8a2d6b9028717a189097555e759772686760cc52456a817550f189e46749d577",
+    "licensed_logs_published": false
+  },
+  "paired_result": {
+    "generated_records": 8192,
+    "authored_records": 8192,
+    "shared_records": 8192,
+    "input_mismatches": 0,
+    "missing_records": 0,
+    "skip_mismatches": 0,
+    "hit_mismatches": 0,
+    "point_traced_pairs": 4073,
+    "point_hit_pairs": 1883,
+    "player_box_traced_pairs": 3929,
+    "player_box_hit_pairs": 2102,
+    "start_contents_mismatches": 10,
+    "start_contents_mismatches_by_shape": {
+      "point": 8,
+      "player_box": 2
+    },
+    "exact_gameplay_mismatches": 732,
+    "tolerance_gameplay_mismatches": 650,
+    "geometry_tolerance_mismatches": 265,
+    "geometry_mismatches_by_shape": {
+      "point": 0,
+      "player_box": 265
+    },
+    "metadata_mismatches": 501,
+    "metadata_only_mismatches": 385,
+    "metadata_mismatches_by_shape": {
+      "point": 246,
+      "player_box": 255
+    },
+    "topology_mismatches": 1008,
+    "field_tolerance_mismatches": {
+      "fraction": 54,
+      "end_position": 54,
+      "contact_point": 265,
+      "normal": 39,
+      "plane_distance": 114,
+      "contents": 10,
+      "material": 501
+    },
+    "maximum_absolute_deltas": {
+      "fraction": 0.18976503610610962,
+      "end_position": 416,
+      "contact_point": 3855.75,
+      "normal_component": 1,
+      "plane_distance": 5424
+    }
+  },
+  "native_runs": {
+    "process_exit_codes": [
+      0,
+      0
+    ],
+    "trace_rows_each": 8192,
+    "spawned_entities_each": 940,
+    "inhibited_entities_each": 0,
+    "error_lines_each": 0,
+    "fatal_lines_each": 0,
+    "local_player_joined_each": true,
+    "restored_pc_generated_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "restored_prior_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "the generated and authored world collision files were queried with bit-identical inputs in the same PC collision engine",
+    "both runs have identical trace execution sets and hit/no-hit outcomes",
+    "all executed point traces agree geometrically within the declared tolerances",
+    "player-sized swept boxes expose 265 authored-versus-dmap geometric contact differences",
+    "501 contacts select different material or contents metadata, including 385 metadata-only differences",
+    "PC dmap collision is not a fidelity-equivalent replacement for the direct Xbox-authored collision data",
+    "the test overlay CM and root DLL were restored to their exact pre-test hashes"
+  ],
+  "not_established": [
+    "original-Xbox runtime trace results from an Xbox executable or hardware reference",
+    "entity clip-model, mover, trigger, projectile, monster-box or two-peer contact equivalence",
+    "native trace coverage for the remaining 19 co-op top-level CMs",
+    "full first-segment encounter, checkpoint, death/respawn or transition behavior",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or whole-campaign gameplay fidelity acceptance"
+  ]
+}
