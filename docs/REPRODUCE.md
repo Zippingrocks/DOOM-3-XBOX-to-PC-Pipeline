@@ -22,6 +22,17 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Campaign-wide co-op overlay integrity gate
+
+Before executable testing, select the newest manifest for each of the 20
+`maps/vv/xbox_coop/*.map` overlays. Recompute SHA-256 for every path in each
+manifest's `files` array and require exact equality. Require zero missing files,
+zero hash mismatches, zero unresolved class/resource/string names, and
+`collision_source` equal to `direct-authored-cm` for every map. The 2026-10-14
+offline gate hashed 5,878 records and passed 20/20 overlays. This proves the
+portable inputs are internally intact; it does not replace native loading,
+progression, two-peer, or visual acceptance.
+
 ### Checkpoint 029 Site 3 part 1 offline preflight
 
 Require MAP SHA `7957749b59ae1148ffd7b85c603cb0d634d23af71f3010427112981aed8a8471`

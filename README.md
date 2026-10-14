@@ -132,13 +132,20 @@ solo Caverns 1 end-level value, so the activated route remains an explicit
 gameplay-test item. No executable or `dmap` was run. Receipt:
 [`evidence/checkpoint-029-offline.json`](evidence/checkpoint-029-offline.json).
 
-## Checkpoints 030-033: remaining-map structural pass
+## Checkpoints 030-033: remaining-map offline closure
 
-The four remaining untouched co-op archives—`xc_caverns1_1`, `xc_caverns2`,
+The four remaining co-op archives—`xc_caverns1_1`, `xc_caverns2`,
 `xc_hellhole_1`, and `xc_comm1_1`—now all have decoded MAP, PROC, every shipped
-AAS class, direct authored CM, and their complete model corpora (1,606 model
-files total). Dependency/XACT closure is the remaining offline stage before
-gameplay loading. No executable or `dmap` was run. Interim receipt:
+AAS class, direct authored CM, complete model corpora, direct-sound closure and
+zero-unresolved portable overlays. The four maps recover 19 Xbox-only WAVs.
+Communications applies the same exact two-door `inner1` correction proven in
+Delta 2B, while Caverns 1 disables one callback absent from its complete retail
+script closure.
+
+A campaign-wide integrity pass selected the latest overlay for all 20 co-op
+maps and rehashed all 5,878 payload records: 20/20 passed, with no missing or
+changed files, no unresolved names, and direct-authored CM selected everywhere.
+No executable or `dmap` was run. Final offline receipt:
 [`evidence/checkpoint-030-033-structural.json`](evidence/checkpoint-030-033-structural.json).
 
 ## Previous checkpoint: 022
