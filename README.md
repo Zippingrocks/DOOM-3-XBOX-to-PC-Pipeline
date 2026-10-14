@@ -14,7 +14,39 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 005
+## Current checkpoint: 006
+
+**The first co-op map now crosses the reconstructed source-DLL boundary with
+every Xbox-only spawn class instantiated.**
+
+Private implementation head
+`9ebe3701c7e1ab28ee4483477ee071a2fe8cca1a` adds a Windows validation
+workflow. GitHub Actions run `38525058861` passed both gates: all 103 Python
+recovery tests and a complete v143 Win32 build of `gamex86.dll`. The published
+artifact ZIP matches SHA-256
+`3650517235dd1fb787c8bbde903a3314aa1aa546ca0e3e6fc9d1add861948ac8`;
+the DLL is 2,721,280 bytes with SHA-256
+`5c5fb61a0163d70db57dcfc1c098bdfe6a4a093f2e5f280e2ec711c5a1b58e9a`.
+
+Doom 3 checks for a development DLL beside `Doom3.exe` before extracting the
+stock DLL from `base/game03.pk4`. Using that loose-DLL path with the existing
+provenance-recorded overlay loads `xc_mars_city1_1` in 2.598 seconds, spawns
+940 entities with zero inhibited entities, runs the restored callback and exits
+normally. All prior `idGuiSyncEntity`, `idGuiSyncDoor`,
+`idTarget_IncreaseSpawnLevel`, `idTrigger_Coop_EnableGui` and
+`idTurkeyPuncher` spawn failures are gone. There are zero `Could not spawn`
+warnings.
+
+Five unique NPC/path-corner failures remain. Each corresponding start/goal pair
+has already been proven connected in the recovered AAS by a walk-only directed
+route, so the remaining investigation is dynamic actor bounds, obstacle/door
+state and script timing. This checkpoint does not suppress those warnings or
+claim co-op progression, direct CM.X recovery, all-map closure or fidelity
+acceptance.
+
+See [checkpoint 006](evidence/checkpoint-006.json).
+
+## Previous checkpoint: 005
 
 **The first co-op map now has a reproducible runtime-asset overlay and reaches
 a clean, fully loaded native PC state apart from source-DLL-only behavior.**
@@ -155,7 +187,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-005.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-006.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
