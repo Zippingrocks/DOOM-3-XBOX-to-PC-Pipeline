@@ -1,21 +1,21 @@
-# Reproduce checkpoint 008
+# Reproduce checkpoint 009
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `0181311c92681e09d05adfcd104d9ed9e10117f7`
+Checkpoint implementation head: `30cb3308b6a8bcfbd1a451eb926833584e993b69`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 008 ran on
+Python 3.10+ and the standard library are sufficient. Checkpoint 009 ran on
 Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 116 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 130 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -59,7 +59,7 @@ Retail STBL records must have an exact `ENBL` footer after their stored or zlib
 body. Unknown envelopes, codecs, paths, incomplete streams and extra bytes fail
 closed. Extraction reports retain source hashes and block contributions.
 
-## Decode MAP.X, PROC.X and AAS.X
+## Decode MAP.X, PROC.X, AAS.X and CM.X
 
 Run each decoder against the corresponding extracted member. Output/report paths
 must not already exist.
@@ -71,6 +71,8 @@ python tools/campaign_port/decode_proc_x.py source.proc.x converted.proc `
   --report proc-report.json
 python tools/campaign_port/decode_aas_x.py source.aas48.x converted.aas48 `
   --report aas48-report.json
+python tools/campaign_port/decode_cm_x.py source.cm.x converted.cm `
+  --map-crc 2410032894 --report cm-report.json
 
 python tools/campaign_port/doom3_campaign_port.py inspect converted.proc `
   --require-decoded --report proc-inspection.json
@@ -81,6 +83,25 @@ The packed plane row stores the internal engine equation
 `idPlane::Dist() == -d`. The decoder must negate the packed fourth float.
 A direct copy can still parse while sending native point-to-area lookup into
 the wrong BSP leaves, so keep the nonzero-distance tests enabled.
+
+CM.X uses the same internal-plane convention, so the CM exporter negates every
+brush/polygon plane's fourth float. CM.X does not carry the PC MAP geometry CRC;
+`--map-crc` must be the exact CRC printed in the standard CM generated from the
+same converted MAP. Do not borrow a CRC from another map or suppress the PC
+loader's CRC check.
+
+Audit the complete extracted collision corpus before export:
+
+```powershell
+python tools/campaign_port/cm_corpus_audit.py `
+  game/campaign_port_work/extracted-all `
+  --require-count 1200 --report game/campaign_port_work/cm-x-corpus.json
+```
+
+For this checkpoint the audit must report 1,200 files, 391 unique payloads,
+zero unreferenced polygons/brushes, zero within-node duplicate references and
+corpus manifest SHA-256
+`a4e1fd30551a26de22310c7c13085b527d9cd5e7fdbdeb35ef11a1791c3779ca`.
 
 Repeat over all 20 `xc_` archive pairs. Expected checkpoint-004 coverage is 20
 MAP reports, 20 PROC reports, 20 AAS48 reports and six AAS96 reports. Every PROC
@@ -99,28 +120,33 @@ once to generate PC collision and independently regenerate geometry:
   +dmap maps/vv/xbox_coop/xc_mars_city1_1 +quit
 ```
 
-Replace the generated AAS48 with the decoded AAS48, then use the map name
-relative to `base/maps` for a bounded loader smoke check:
+Replace the generated AAS48 with the decoded AAS48. For direct-collision
+validation, preserve the generated CM byte-for-byte, replace it temporarily
+with the decoded CM carrying the same MAP CRC, and restore the generated file
+after the run. Hash all three states. Then use the map name relative to
+`base/maps` for a bounded loader smoke check:
 
 ```powershell
 .\Doom3.exe +set com_allowConsole 1 +set logfile 2 `
   +map vv/xbox_coop/xc_mars_city1_1 +wait 240 +quit
 ```
 
-Checkpoint 004 expects `[Load AAS]` for the recovered AAS48, no bad-token or
-out-of-date error, 940 spawned entities and a completed map shutdown. Missing
-co-op entity definitions, script functions, GUIs, strings and sounds are known
-runtime blockers recorded in the checkpoint receipt; they are not an AAS decode
-failure. Do not distribute the generated local map products.
+Checkpoint 009 expects `[Load AAS]` for the recovered AAS48 and a collision
+summary of 243 models, 15,146 vertices, 25,468 edges, 10,005 polygons, 2,784
+brushes and 7,167 nodes for the direct first-map CM. The collision load should
+complete in 29 ms on the recorded machine, followed by 940 spawned entities and
+a clean shutdown. Any CM bad-token, CRC, model, index or truncation error is a
+conversion failure. Do not distribute extracted or converted map products.
 
 ## Claim limits
 
 Corpus-wide decoding proves format coverage for this exact retail image, not
 completion percentage. Native `dmap` is independent geometry validation, but
 its CM and shadow products are not original-Xbox equivalence. One successful
-map load proves parser/runtime entry only. Direct CM.X recovery, dependency
-binding, all-map loading, co-op spawns/respawns, transitions, two-peer progression
-and comparison against Xbox visual/gameplay evidence remain required.
+map load proves parser/runtime entry only. Direct CM.X now passes the first-map
+loader boundary, but matched collision traces, all-map CM loading, dependency
+binding, co-op spawns/respawns, transitions, two-peer progression and comparison
+against Xbox visual/gameplay evidence remain required.
 
 ## Runtime asset conversion and overlay
 
@@ -231,7 +257,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 116-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 130-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
