@@ -1,0 +1,108 @@
+{
+  "checkpoint": "022",
+  "date": "2026-10-14",
+  "scope": "ninth co-op segment direct collision, two-class navigation, complete model and XACT audio closure, and bounded runtime load",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 164144,
+    "gfc_sha256": "960f4a494be1bcb40890f53525ea785f12b41c3b2a1dae3872282a38a6df51c9",
+    "gob_bytes": 8417280,
+    "gob_sha256": "3eafec054af28591de0da0a5e62eb8030251c7bebfdd06b72d6a09275df4ad8e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_recycling2_1",
+    "geometry_crc": 1305987032,
+    "decoded_map": {"bytes": 3783693, "sha256": "638d279a2df1553b4eaa94024e27e9fdeb22523f4ffbe360d998fdb64e1f92fc", "entities": 882, "brushes": 3082, "brush_sides": 18620, "patches": 2229, "patch_points": 40855},
+    "decoded_proc": {"bytes": 5164017, "sha256": "6ffd73e7f3714fa60a6e17d1be0c692bea77df0b518c27ed78150f0d55d2fb0c"},
+    "corrected_aas48": {"bytes": 938578, "sha256": "82e45ff243a5a141d884d2a9cd4e3f2f91a4b2a8e7f9bdc9fff1864dae23c4a4", "areas": 1087, "reachabilities": 4759, "nodes": 3697, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "corrected_aas_mancubus": {"bytes": 109391, "sha256": "46db7092f6056fa56de734d31e578dcc9cb040ca0a45ac599cae78dca04c5f82", "areas": 126, "reachabilities": 299, "nodes": 521, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"status": "not present in the source archive"}
+  },
+  "collision": {
+    "cm_x": {"bytes": 2294941, "sha256": "80ddb2030ab62aaba36bac9cb1b183d472dd3837c3e7ab4a05f913d72d7b89c6"},
+    "authored_export": {"bytes": 3515885, "sha256": "e8521f124483b5768c12c0a7ec16f8a053d0913e2da24dedd7f15064a7c975ab", "models": 105, "vertices": 16998, "edges": 28366, "polygons": 10972, "brushes": 2996, "nodes": 10497},
+    "pc_dmap": {"cm_bytes": 7608843, "cm_sha256": "0df8e70861a8e54236ed20c89524f020640832dd8e12f7ac36b23b1051672dc6", "proc_bytes": 7106114, "proc_sha256": "4b9500d548bda13a83a03810ca95be86a8a77a5b000b767c34477d777cbf0b7b", "aas48_bytes": 904725, "aas48_sha256": "b2b3b980fd227f0f75498d1e567a7bf6855163b9e21eb994ae118f1af918c8db", "models": 209},
+    "model_set_audit": {"shared": 105, "authored_only": 0, "pc_dmap_only": 104, "pc_dmap_only_with_noclipmodel_1": 104, "unexplained_pc_dmap_only": 0}
+  },
+  "runtime_assets": {
+    "selected_archive_members": 341,
+    "raw_selected_bytes": 5363052,
+    "decoded_files": 341,
+    "decoded_meshes": 8,
+    "decoded_animations": 333,
+    "decoded_mdv_animations": 246,
+    "decoded_md5anim_x_animations": 87,
+    "decoded_bytes": 15301709,
+    "mpplayer_mesh_sha256": "bb131a86a0e7d307c87af485af68372199fc6a63f4f083473ceddc862b231c4a"
+  },
+  "xact_audio": {
+    "indexlist_bytes": 14150,
+    "indexlist_sha256": "12767056d6cfbfab4942c184c005f6690cc888d988e176f1be6e664f7f37a32c",
+    "xsb_bytes": 30800,
+    "xsb_sha256": "312d824689520bbcc66ee5b57b18d4c137fc5b4a30b9182315bf5421df01df0e",
+    "recovered_wav_files": 29,
+    "encoded_bytes": 2911284,
+    "decoded_wav_bytes": 10514246,
+    "manifest_bytes": 14721,
+    "manifest_sha256": "dfe4ae417b946cd9112c63a0e93489d9692073c4f98aa6977a021f8edbaa3125"
+  },
+  "d3t_images": {
+    "recovered_diffuse": {
+      "path": "textures/base_door/a_deldoorgutter_d02",
+      "archive_key": "3D1761C9",
+      "width": 64,
+      "height": 128,
+      "mip_count": 5,
+      "dds_bytes": 5584,
+      "dds_sha256": "e1a5206cf6a0313c14e7facd90c016852bdc73e5e108d1c8a31420d8d6fc872f"
+    },
+    "inventory_proven_absent": [
+      "textures/base_door/a_deldoorgutter_local",
+      "textures/base_door/a_deldoorgutter_s02"
+    ]
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_recycling2_1_v4",
+    "file_records": 305,
+    "copied_runtime_resources": 266,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 34786744,
+    "manifest_bytes": 157889,
+    "manifest_sha256": "0115ae7f439fbfb11dca0750e27447905db4d546dd06aaf9de7c098d57bbfde4",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 8,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "process_exit_code": 0,
+    "spawned_entities": 880,
+    "inhibited_entities": 2,
+    "inhibited_explanation": "ammo_rockets_large_3 and item_medkit_25 carry both not_medium 1 and not_hard 1 in the retail MAP",
+    "local_player_joined": true,
+    "missing_recovered_sound_lines": 0,
+    "missing_mancubus_aas_lines": 0,
+    "retail_authored_absence_notices": [
+      "models/mapobjects/recycle/recycwallight_broken.ase is absent from Xbox co-op, Xbox solo and stock PC inventories; the stock PC recycling2 run reproduces the warning",
+      "guisurfs/hazard1:1 is a generated GUI-surface image key; the stock PC recycling2 run reproduces the warning",
+      "textures/base_door/a_deldoorgutter_local and a_deldoorgutter_s02 are referenced by the shared retail material but absent from both Xbox D3TFULL and stock PC packages; the exact diffuse a_deldoorgutter_d02 was recovered"
+    ],
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "qconsole_bytes": 16541,
+    "qconsole_sha256": "55ca644c18df489e8df6391cbb83498e7d35b24438c59b15662ba66f021cf4ba",
+    "stock_recycling2_baseline_qconsole_bytes": 16695,
+    "stock_recycling2_baseline_qconsole_sha256": "178e08d139aeff1af1451be0aa9faba9cf13808dc069a3f132c62a70222fa2fb",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {"count": 156, "failures": 0},
+  "established": [
+    "the ninth co-op segment's decoded MAP, PROC, corrected AAS48, corrected AAS Mancubus and direct CM.X load natively",
+    "all 105 authored collision models appear in PC dmap and all 104 generated-only models are explained by noclipmodel 1",
+    "all 341 selected model files decode and all 29 warned sounds recover through the map-specific Xbox XACT chain",
+    "880 entities spawn, exactly two retail difficulty-gated pickups are inhibited, and the local co-op player joins"
+  ],
+  "not_established": ["a normally rebuilt source DLL", "replacement art for two demonstrably unshipped gutter stages", "dynamic combat and whole-map progression", "two-peer behavior", "original-Xbox runtime equivalence", "the remaining 11 co-op segments or the solo campaign"]
+}

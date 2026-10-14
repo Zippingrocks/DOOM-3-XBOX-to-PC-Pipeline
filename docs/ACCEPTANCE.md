@@ -1,5 +1,30 @@
 # Recovery order and acceptance
 
+## Checkpoint 022 ninth-segment status
+
+`xc_recycling2_1` passes structural export, two-class navigation, complete
+model/XACT dependency closure and the bounded native loader/spawn gate. Its
+MAP/PROC, corrected AAS48, corrected AAS Mancubus and direct 105-model CM.X
+all load. Independent PC `dmap` contains every authored collision model; its
+104 additions are exactly MAP entities marked `noclipmodel 1`.
+
+All 341 selected model files decode. Twenty-nine warned sounds recover through
+the segment INDEXLIST/XSB and original global/memory XWB banks. The 305-file
+overlay has zero unresolved resources, classnames or strings, and all 156
+implementation tests pass. True `COOP` spawns 880 entities, deliberately
+inhibits two pickups carrying both `not_medium 1` and `not_hard 1`, and joins
+the player. There are no remaining sound, navigation, joint, callback, class,
+script, error or fatal failures.
+
+Four source-authored absence notices remain explicit rather than guessed.
+Stock PC Recycling 2 independently reproduces the missing
+`recycwallight_broken.ase` and generated `guisurfs/hazard1:1` notices. The
+shared retail `a_deldoorgutter_d02` material's exact diffuse stage is recovered
+from Xbox D3TFULL. Its normal and specular stages are absent from Xbox D3TFULL
+and stock PC packages. A normal rebuilt DLL, an exact art-source witness for
+those two stages, dynamic combat/progression,
+transition, two-peer and Xbox-reference comparison remain open.
+
 ## Checkpoint 021 eighth-segment status
 
 `xc_enpro_2` passes structural export, complete model/XACT dependency closure

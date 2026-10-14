@@ -1,4 +1,4 @@
-# Reproduce checkpoint 021
+# Reproduce checkpoint 022
 
 ## Source and boundary
 
@@ -21,6 +21,54 @@ path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
 duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 022 ninth-segment receipt
+
+For `xc_recycling2_1`, verify GFC/GOB SHA-256 values
+`960f4a494be1bcb40890f53525ea785f12b41c3b2a1dae3872282a38a6df51c9`
+and `3eafec054af28591de0da0a5e62eb8030251c7bebfdd06b72d6a09275df4ad8e`.
+The decoded MAP is 3,783,693 bytes, hashes to
+`638d279a2df1553b4eaa94024e27e9fdeb22523f4ffbe360d998fdb64e1f92fc`
+and has CRC `1305987032`. Direct CM is 3,515,885 bytes with SHA-256
+`e8521f124483b5768c12c0a7ec16f8a053d0913e2da24dedd7f15064a7c975ab`.
+Require a 105/209 model audit: 105 shared, zero authored-only and all 104
+PC-only models explained by `noclipmodel 1`.
+
+Decode both navigation payloads. AAS48 is 938,578 bytes with SHA-256
+`82e45ff243a5a141d884d2a9cd4e3f2f91a4b2a8e7f9bdc9fff1864dae23c4a4`;
+AAS Mancubus is 109,391 bytes with SHA-256
+`46db7092f6056fa56de734d31e578dcc9cb040ca0a45ac599cae78dca04c5f82`.
+Both must have zero unreachable nonzero nodes and zero unreferenced nonzero
+areas. Decode all 341 selected model files: eight meshes and 333 animations,
+totaling 15,301,709 bytes.
+
+Recover the 29 warned sounds using the 14,150-byte
+`xc_recycling2_1.indexlist` (SHA-256
+`12767056d6cfbfab4942c184c005f6690cc888d988e176f1be6e664f7f37a32c`)
+and 30,800-byte XSB (SHA-256
+`312d824689520bbcc66ee5b57b18d4c137fc5b4a30b9182315bf5421df01df0e`).
+Decoded WAVs total 10,514,246 bytes. Recover the exact
+`textures/base_door/a_deldoorgutter_d02` diffuse image from Xbox D3TFULL key
+`3D1761C9`; the 64x128, five-mip DDS is 5,584 bytes and hashes to
+`e1a5206cf6a0313c14e7facd90c016852bdc73e5e108d1c8a31420d8d6fc872f`.
+The finalized 157,889-byte overlay
+manifest hashes to
+`0115ae7f439fbfb11dca0750e27447905db4d546dd06aaf9de7c098d57bbfde4`
+and records 305 files, 266 copied resources, one generated EFX, eight transform
+records and zero unresolved resources, classnames or strings.
+
+Under the isolated checkpoint-014 null-guard diagnostic, true `COOP` must exit
+0, spawn 880 entities, inhibit exactly `ammo_rockets_large_3` and
+`item_medkit_25`, and join player 0. Both inhibited entities carry
+`not_medium 1` and `not_hard 1`. Require zero warned sounds, Mancubus AAS
+failures, invalid joints, callback/class/script failures, errors or fatals.
+The 16,541-byte log hashes to
+`55ca644c18df489e8df6391cbb83498e7d35b24438c59b15662ba66f021cf4ba`.
+Do not fabricate the absent `a_deldoorgutter_local` and
+`a_deldoorgutter_s02` stages or the absent broken light model; preserve their
+inventory and stock-baseline evidence.
+Restore the root DLL and verify SHA-256
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
 
 ### Checkpoint 021 eighth-segment receipt
 

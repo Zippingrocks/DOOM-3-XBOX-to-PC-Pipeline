@@ -1,5 +1,39 @@
 # Format findings and unknowns
 
+## Checkpoint 022 ninth-segment findings
+
+`xc_recycling2_1` extends the direct-CM contract to a ninth co-op segment. Its
+3,783,693-byte MAP has geometry CRC `1305987032`; the 2,294,941-byte CM.X
+expands to a 3,515,885-byte PC CM containing 105 models, 16,998 vertices,
+28,366 edges, 10,972 polygons, 2,996 brushes and 10,497 nodes. Independent PC
+`dmap` emits 209 models. All 105 authored names are shared, and each of the 104
+PC-only names belongs to a MAP entity carrying `noclipmodel 1`.
+
+This archive demonstrates a second navigation class. Corrected AAS48 has 1,087
+areas, 4,759 reachabilities and 3,697 nodes. The shared retail archive carries
+the map's separate `aas_mancubus.x`; its corrected export has 126 areas, 299
+reachabilities and 521 nodes. Both files have complete nonzero BSP/area
+coverage, and the native run emits no Mancubus AAS warning after both are
+staged.
+
+The selected model set is 341 files: eight meshes, 246 MDV animations and 87
+MD5ANIM.X animations. All decode. Twenty-nine runtime WAVs route through the
+map's 14,150-byte INDEXLIST and 30,800-byte XSB to the original global/memory
+XWB banks; decoded WAV payloads total 10,514,246 bytes.
+
+The segment also establishes a strict boundary for missing-art handling. The
+retail breakable-light convention requests `recycwallight_broken.ase`, but the
+file is absent from Xbox co-op, Xbox solo and stock PC inventories, and the
+stock PC Recycling 2 run reproduces the warning. `guisurfs/hazard1:1` is also
+reproduced by the stock run. The shared retail material
+`textures/base_door/a_deldoorgutter_d02` references three image stages. Its
+exact 64x128 diffuse image is recovered from Xbox D3TFULL key `3D1761C9` as a
+5,584-byte DDS with SHA-256
+`e1a5206cf6a0313c14e7facd90c016852bdc73e5e108d1c8a31420d8d6fc872f`.
+The normal and specular images are absent from both Xbox D3TFULL and stock PC
+packages. Those two are recorded as source absences; no nearest-name texture
+substitution is treated as fidelity.
+
 ## Checkpoint 021 eighth-segment findings
 
 `xc_enpro_2` confirms the EnPro contracts independently: direct CM.X has 163

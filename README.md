@@ -14,9 +14,34 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 021
+## Current checkpoint: 022
 
-**The eighth co-op segment, `xc_enpro_2`, now has direct authored collision,
+**The ninth co-op segment, `xc_recycling2_1`, now has direct authored
+collision, corrected player and Mancubus navigation, complete model/XACT
+recovery and a bounded true-`COOP` spawn closure.**
+
+The decoded 882-entity MAP binds to geometry CRC `1305987032`. Direct CM.X
+exports 105 models; independent PC `dmap` contains all 105 plus 104 models,
+every one explained by `noclipmodel 1`. Corrected AAS48 and AAS Mancubus both
+have complete nonzero BSP/area coverage. All 341 selected model files decode,
+and 29 runtime sounds recover through the segment INDEXLIST/XSB and original
+XWB banks. The 305-file overlay has zero unresolved names. All 156 tests pass.
+
+Under the isolated null-guard diagnostic, true `COOP` spawns 880 entities,
+inhibits exactly two retail pickups gated out on medium/hard, and joins the
+player. All warned sounds and Mancubus path failures are closed. Remaining
+notices are source-authored absences: stock Recycling 2 reproduces the broken
+light-model and GUI-surface notices. The exact 64x128 diffuse gutter image is
+recovered from Xbox D3TFULL; only its referenced normal and specular stages are
+absent from both Xbox D3TFULL and stock PC packages. No replacement art is
+guessed.
+Normal rebuilt-DLL, progression, two-peer and Xbox-reference acceptance remain
+open. Full receipts are in
+[`evidence/checkpoint-022.json`](evidence/checkpoint-022.json).
+
+## Previous checkpoint: 021
+
+**The eighth co-op segment, `xc_enpro_2`, has direct authored collision,
 corrected AAS48, complete model/XACT recovery and a clean bounded true-`COOP`
 spawn closure.**
 
@@ -670,7 +695,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-021.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-022.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
