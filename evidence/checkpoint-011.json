@@ -1,0 +1,260 @@
+{
+  "checkpoint": "011",
+  "date": "2026-10-14",
+  "scope": "first-map native mask, hull and named-collision-model matrix comparing PC-dmap collision with direct Xbox-authored CM.X recovery",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "validation": {
+    "unit_tests": {
+      "python": "3.11",
+      "count": 142,
+      "failures": 0
+    },
+    "windows_game_dll_build": "success",
+    "private_build_identifiers_published": false
+  },
+  "inputs": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "pc_dmap_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "authored_pc_cm_sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931",
+    "trace_count_per_shape_per_profile": 4096,
+    "records_per_run_per_profile": 8192,
+    "seed": 23,
+    "tolerances": {
+      "fraction": 0.000001,
+      "position_and_plane_distance": 0.01,
+      "normal": 0.001
+    }
+  },
+  "diagnostic_contract": {
+    "command": "xboxCoopCollisionDigest [count] [seed] [verbose] [model] [mask] [minx miny minz maxx maxy maxz]",
+    "defaults": {
+      "model": "worldMap",
+      "mask": "0x9 (solid | playerclip)",
+      "box": "(-16,-16,0) to (16,16,64)"
+    },
+    "input_binding": "resolved model name, content mask, hull bounds, model bounds, seed, count and raw IEEE-754 coordinate bits",
+    "failure_rules": [
+      "invalid numeric masks are rejected",
+      "partial or inverted custom hull bounds are rejected",
+      "unresolved model names are rejected rather than falling back to collision model zero",
+      "the comparator rejects missing summaries or different summary input digests"
+    ],
+    "comparison_categories": {
+      "trajectory": "fraction and end position",
+      "contact_geometry": "contact point, normal and plane distance",
+      "metadata": "contents and material",
+      "topology": "contact type and stable feature numbers"
+    },
+    "normalization": [
+      "point-contents returns raw first-brush contents, so trace suppression applies the requested content mask explicitly",
+      "CONTACT_TRMVERTEX modelFeature is a process-layout-dependent polygon pointer and is normalized to zero"
+    ]
+  },
+  "profiles": [
+    {
+      "name": "world-monster",
+      "command": "xboxCoopCollisionDigest 4096 23 1 worldMap 0x111 -16 -16 0 16 16 64",
+      "purpose": "MASK_MONSTERSOLID with the default actor-sized hull",
+      "model_bounds": [[-4032, -3864, -72], [360, -784, 640]],
+      "input_digest": "89e2e9c4",
+      "receipts": {
+        "generated_log": {"bytes": 2079325, "sha256": "d898c3ee102c623ba583b868d5a752b5c799cdc02adc9431d76249a56b0bc174"},
+        "authored_log": {"bytes": 2079517, "sha256": "c5df71ce131307bea249c7798abe8ea844a64d34713ddaa0fab1fa9ea6c28dcd"},
+        "comparison_report": {"bytes": 8912, "sha256": "d6a733f398b4816d8940bf3e6a39dff98e50e0a5c5e4a174e15c4a66506cac05"}
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 15,
+        "skip_mismatches": 7,
+        "hit_mismatches": 0,
+        "traced_pairs": {"point": 4051, "box": 3880},
+        "hit_pairs": {"point": 2097, "box": 2298},
+        "trajectory_mismatches": 22,
+        "contact_geometry_mismatches": 216,
+        "metadata_mismatches": 251,
+        "gameplay_mismatches": 407,
+        "topology_mismatches": 957,
+        "geometry_by_shape": {"point": 0, "box": 216},
+        "metadata_by_shape": {"point": 129, "box": 122}
+      }
+    },
+    {
+      "name": "world-rocket",
+      "command": "xboxCoopCollisionDigest 4096 23 1 worldMap 0x801 -3 -3 -6 3 3 6",
+      "purpose": "MASK_SHOT_RENDERMODEL with the recovered projectile_rocket hull",
+      "model_bounds": [[-4032, -3864, -72], [360, -784, 640]],
+      "input_digest": "f0441b71",
+      "receipts": {
+        "generated_log": {"bytes": 2078567, "sha256": "af52e708978791a51cac38d3eadcd220527a5125e7c512505bdfe6e6b34977b9"},
+        "authored_log": {"bytes": 2078359, "sha256": "11a9f0c1c3b8dd28a0470ce93f6dea2d87221e760134e084898440a56b717b57"},
+        "comparison_report": {"bytes": 8503, "sha256": "3057b57d364ce0e7928a0dcb3ea2d5d68eace45b9510d92a20bb020724d0e78f"}
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 7,
+        "skip_mismatches": 2,
+        "hit_mismatches": 0,
+        "traced_pairs": {"point": 4071, "box": 4036},
+        "hit_pairs": {"point": 1921, "box": 1938},
+        "trajectory_mismatches": 25,
+        "contact_geometry_mismatches": 97,
+        "geometry_mismatches": 98,
+        "metadata_mismatches": 624,
+        "gameplay_mismatches": 672,
+        "topology_mismatches": 390,
+        "geometry_by_shape": {"point": 0, "box": 98},
+        "metadata_by_shape": {"point": 311, "box": 313}
+      }
+    },
+    {
+      "name": "doorclip-player",
+      "command": "xboxCoopCollisionDigest 4096 23 1 doorClip_1 0x9",
+      "purpose": "player collision against a named moving-door clip model",
+      "model_bounds": [[-64, -4, -60], [64, 4, 60]],
+      "input_digest": "7178578d",
+      "receipts": {
+        "generated_log": {"bytes": 1555341, "sha256": "79976f360f8db8515f39ecc9b66fa6ddaab00aa3a8beef75336004749334097f"},
+        "authored_log": {"bytes": 1557266, "sha256": "fb9649b6dd727b6323809fcb1cf5a8720c8d496e0c3705296f857ab7a3240cd5"},
+        "comparison_report": {"bytes": 5821, "sha256": "121e0065e370cb74b6be8c1f2fede18d152a676660cf464157b62e78340b7d3b"}
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 0,
+        "skip_mismatches": 0,
+        "hit_mismatches": 0,
+        "trajectory_mismatches": 0,
+        "contact_geometry_mismatches": 1065,
+        "metadata_mismatches": 0,
+        "gameplay_mismatches": 1065,
+        "topology_mismatches": 1598,
+        "geometry_by_shape": {"point": 0, "box": 1065}
+      }
+    },
+    {
+      "name": "trigger-enablegui",
+      "command": "xboxCoopCollisionDigest 4096 23 1 trigger_coop_enablegui_2 0x1000",
+      "purpose": "trigger contents against an Xbox-only co-op enable-GUI trigger model",
+      "model_bounds": [[-72, -68, -24], [72, 64, 24]],
+      "input_digest": "78374854",
+      "receipts": {
+        "generated_log": {"bytes": 1546836, "sha256": "8d144af9a8134d25b609c79bdcdd61dfc3964e910f1f0294d820b1e7e24cbdd1"},
+        "authored_log": {"bytes": 1546530, "sha256": "7310f165d03c78f8665b73efa36292b6cd2f6b42ab3dd319fcf164ee87f8ed15"},
+        "comparison_report": {"bytes": 5850, "sha256": "eeac09dd6e01163e534255b7b23751a43e237c02ab4a3b56dce8f97f05704251"}
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 0,
+        "skip_mismatches": 0,
+        "hit_mismatches": 0,
+        "trajectory_mismatches": 0,
+        "contact_geometry_mismatches": 767,
+        "metadata_mismatches": 0,
+        "gameplay_mismatches": 767,
+        "topology_mismatches": 767,
+        "geometry_by_shape": {"point": 0, "box": 767}
+      }
+    },
+    {
+      "name": "func-static-polygon",
+      "command": "xboxCoopCollisionDigest 4096 23 1 func_static_52977 0x1",
+      "purpose": "solid collision against a complex polygon-only named static model",
+      "model_bounds": [[-16.88137435913086, -8.06375503540039, -24.25004005432129], [12.56733226776123, 10.09044075012207, 24.83333396911621]],
+      "input_digest": "5cecc1bd",
+      "receipts": {
+        "generated_log": {"bytes": 1788605, "sha256": "6ec930661082d23d4a84c2ad5d0930a6942e85c9e3c08223e1f98af8bc83bae1"},
+        "authored_log": {"bytes": 1789129, "sha256": "36276fbce1e2c2732e4ff9759f954eddeb7e584a53258462df92ce4f649bd4dc"},
+        "comparison_report": {"bytes": 5959, "sha256": "ed68d4ee1214739198b502d079c2202d3db88f4e0e733b8cdcef7e5af868866e"}
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 0,
+        "skip_mismatches": 0,
+        "hit_mismatches": 0,
+        "traced_pairs": {"point": 4096, "box": 2056},
+        "hit_pairs": {"point": 336, "box": 2056},
+        "trajectory_mismatches": 74,
+        "contact_geometry_mismatches": 596,
+        "metadata_mismatches": 0,
+        "gameplay_mismatches": 596,
+        "topology_mismatches": 1104,
+        "geometry_by_shape": {"point": 0, "box": 596}
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_records": 40960,
+    "summary_input_digest_mismatches": 0,
+    "coordinate_input_mismatches": 0,
+    "missing_records": 0,
+    "start_contents_mismatches": 22,
+    "skip_mismatches": 9,
+    "hit_mismatches": 0,
+    "trajectory_mismatches": 121,
+    "contact_geometry_mismatches": 2741,
+    "geometry_mismatches": 2742,
+    "metadata_mismatches": 875,
+    "gameplay_mismatches": 3507,
+    "topology_mismatches": 4816,
+    "point_geometry_mismatches": 0,
+    "box_geometry_mismatches": 2742,
+    "field_tolerance_mismatches": {
+      "fraction": 121,
+      "end_position": 111,
+      "contact_point": 2741,
+      "normal": 76,
+      "plane_distance": 420,
+      "contents": 34,
+      "material": 875
+    },
+    "maximum_absolute_deltas": {
+      "fraction": 0.3981165885925293,
+      "end_position": 264,
+      "contact_point": 3450.0177001953125,
+      "normal_component": 1.9654015898704529,
+      "plane_distance": 5837
+    }
+  },
+  "native_runs": {
+    "process_count": 10,
+    "exit_code_zero_count": 10,
+    "trace_rows_each": 8192,
+    "spawned_entities_each": 940,
+    "inhibited_entities_each": 0,
+    "local_player_spawned_each": true,
+    "error_lines_each": 0,
+    "fatal_lines_each": 0,
+    "licensed_logs_published": false,
+    "restored_pc_generated_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "restored_prior_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "all five generated/authored profile pairs use the same model identity, mask, hull, bounds and raw coordinate inputs",
+    "all 40,960 paired records have the same hit or no-hit outcome",
+    "all point traces agree geometrically within the declared tolerances",
+    "world monster and rocket masks expose both contact geometry and material or contents differences",
+    "named door and co-op trigger traces have identical stopping trajectories and metadata but different swept-box contact manifolds",
+    "the polygon-only named static model has both trajectory and contact-manifold differences",
+    "PC dmap collision is not a fidelity-equivalent replacement for direct Xbox-authored world or named collision data",
+    "the test overlay CM and root DLL were restored to exact pre-test hashes"
+  ],
+  "not_established": [
+    "live mover transforms or door motion",
+    "trigger dispatch side effects",
+    "actor-specific hull axes or dynamic projectile orientation",
+    "original-Xbox runtime trace results from an Xbox executable or hardware reference",
+    "native trace coverage for the remaining 19 co-op top-level CMs",
+    "two-peer progression, death, respawn or transitions",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or whole-campaign gameplay fidelity acceptance"
+  ]
+}
+
