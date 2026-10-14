@@ -14,7 +14,33 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 016
+## Current checkpoint: 017
+
+**The fourth co-op segment, `xc_admin`, now has direct authored collision,
+both corrected AAS families and a clean bounded true-`COOP` asset/skeleton
+closure.**
+
+The decoded 883-entity MAP binds to geometry CRC `25560181`. Its 1,929,264-byte
+direct CM.X export contains 199 models; independent PC `dmap` includes every
+one plus 39 models, all explained by `noclipmodel 1`. Corrected AAS48 and AAS96
+both cross the native loader boundary.
+
+The admin profile recovers 37 Pinky/zjump/combo MDV files, the Xbox chainsaw AF
+and three D3T images. Exact receipt-bearing transforms handle an undeclared inert
+`func_spawner`, an absent callback/map script, an exporter-stale Pinky joint and
+four material stages whose images are absent from both Xbox and PC retail data.
+No surrogate textures or invented entity behavior are used.
+
+The resulting 322-file overlay has zero unresolved resources, classnames or
+strings. All 151 implementation tests pass. Under the isolated instant-hit
+null-guard diagnostic, true `COOP` spawns 883/0, joins the player, and emits no
+missing-resource, invalid-joint, callback, class, path-diagnostic, error or
+fatal line. The one no-AAS warning belongs to a prone retail NPC that explicitly
+clears `use_aas` on both platforms. Final engine acceptance still requires the
+normal source rebuild of the instant-hit guard. Full receipts are in
+[`evidence/checkpoint-017.json`](evidence/checkpoint-017.json).
+
+## Previous checkpoint: 016
 
 **The third co-op segment, `xc_mars_city2_2`, now has direct authored
 collision, corrected navigation and a clean bounded true-`COOP` spawn.**

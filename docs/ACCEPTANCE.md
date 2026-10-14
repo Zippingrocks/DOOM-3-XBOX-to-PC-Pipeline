@@ -1,5 +1,30 @@
 # Recovery order and acceptance
 
+## Checkpoint 017 fourth-segment status
+
+`xc_admin` passes structural export, dependency closure and bounded native
+loader/spawn gates. Its MAP/PROC, corrected AAS48 and AAS96, and direct 199-model
+CM.X export all load. Independent PC `dmap` contains every authored collision
+model; its 39 additional models are exactly MAP entities marked
+`noclipmodel 1`.
+
+The map-specific 43-entry profile closes the Xbox Pinky/zjump/combo model set,
+the recovered chainsaw AF and three D3T images. Evidence-bound transforms make
+the orphan `func_spawner` inert, disable an absent script callback, generate the
+minimum missing PC map-script entry point, remove one exporter-stale Pinky joint
+epair, and disable four material stages whose images are absent from both Xbox
+and PC retail data. The 322-file overlay has zero unresolved resources,
+classnames or strings; all 151 implementation tests pass.
+
+Under the isolated instant-hit null-guard diagnostic, true `COOP` spawns all
+883 entities, inhibits none, joins the player and emits no missing-resource,
+invalid-joint, callback, class, path-diagnostic, error or fatal line. The prone
+wounded marine's one no-AAS warning is intentional retail behavior: both source
+sets explicitly clear `use_aas`. This accepts fourth-segment packaging and the
+loader/spawn boundary only. A reviewed source guard and normal rebuild, dynamic
+combat/progression, transition, two peers and Xbox-reference comparison remain
+open.
+
 ## Checkpoint 016 third-segment status
 
 `xc_mars_city2_2` passes the same structural and bounded loader/spawn gates as

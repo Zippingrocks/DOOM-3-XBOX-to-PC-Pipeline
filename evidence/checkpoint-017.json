@@ -1,0 +1,155 @@
+{
+  "checkpoint": "017",
+  "date": "2026-10-14",
+  "scope": "fourth co-op segment direct collision, dual navigation, Xbox model/AF recovery, dependency closure, and bounded runtime load",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_admin",
+    "geometry_crc": 25560181,
+    "decoded_map": {
+      "bytes": 2107679,
+      "sha256": "62fe382be45687b646afff6dc7c19d980b25947caa0e3e403cac31ba0f5674fb",
+      "entities": 883,
+      "brushes": 2142,
+      "brush_sides": 12792,
+      "patches": 1148,
+      "patch_points": 15020
+    },
+    "decoded_proc": {
+      "bytes": 2181037,
+      "sha256": "cbd669d9f575838009fdee758935b6288191066a18af1f062134bfc85d7dd452"
+    },
+    "corrected_aas48": {
+      "bytes": 824144,
+      "sha256": "ab4194f0e152ea40cccbbfa4392a53783a4b48dbb7ce51cda7a0e3c41df3f41d"
+    },
+    "corrected_aas96": {
+      "bytes": 208113,
+      "sha256": "b2ae58682ec87bd2fa42b22adb0081cf041d1fd73e4732fddbcf754dd2ac8a0c"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 1282663,
+      "sha256": "1c9abcff91706ce701353fb108289c12ae55ff4d56084e02ce568aac317dc9cd"
+    },
+    "authored_export": {
+      "bytes": 1929264,
+      "sha256": "5cfef93c02510b61383dca9f02103719546164caee851ca51a0df5ca7b8597df",
+      "models": 199,
+      "vertices": 10449,
+      "edges": 16170,
+      "polygons": 5959,
+      "brushes": 2054,
+      "nodes": 5507
+    },
+    "pc_dmap": {
+      "cm_bytes": 2759062,
+      "cm_sha256": "c79ffb9a181a5ff4b91ab0b6ab0c333fbd503b5669057458c10bfc93481104df",
+      "proc_bytes": 3061782,
+      "proc_sha256": "06055d7ecc0814f33c438639465d9de8ca65e3860f9a7f63aed6471fe81482a3",
+      "aas48_bytes": 799447,
+      "aas48_sha256": "27b379552cec4f3de0df93e33d2b74c331c125849e73a075e31a7d3ee89e6a33",
+      "models": 238
+    },
+    "model_set_audit": {
+      "shared": 199,
+      "authored_only": 0,
+      "pc_dmap_only": 39,
+      "pc_dmap_only_with_noclipmodel_1": 39,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "runtime_assets": {
+    "decoded_mdv_files": 37,
+    "decoded_mdv_bytes": 1779248,
+    "xbox_chainsaw_af": {
+      "bytes": 5820,
+      "sha256": "9c7927a1ad78bbdc0cc1c5dbbe69f01331f8b32d691c06f57b8e5ea6ecf52150",
+      "finding": "uses Rindex1/Lindex1 arm endpoints compatible with the decoded 43-joint zjump mesh"
+    },
+    "d3t_dds": [
+      {
+        "logical_name": "textures/base_door/leftframe_d",
+        "bytes": 5584,
+        "sha256": "0c21a3ccb1bdaa5dbc77dc148efa374d7b0e29215848ad6c9b8651fe4a7d85e8"
+      },
+      {
+        "logical_name": "guis/assets/hud/icons/keycard",
+        "bytes": 5584,
+        "sha256": "240eaec143f535e6f80c427718adf717cd85c12ab82e03aaa305668fed8da8a1"
+      },
+      {
+        "logical_name": "models/monsters/zsecurity/id_gui",
+        "bytes": 2856,
+        "sha256": "f7532bdff4a059880af1304c82c5db2da95c16cbeb6d0a5eb6d2275def57888f"
+      }
+    ],
+    "proven_unshipped_material_images": [
+      "textures/base_door/leftframe_s",
+      "textures/base_door/leftframe_local",
+      "models/monsters/zsecurity/id_badge_s",
+      "models/monsters/zsecurity/id_badge_local"
+    ]
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_admin_v5",
+    "player_profile_sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "admin_profile_entries": 43,
+    "admin_profile_sha256": "0fb4bdeb0b9cece2477e72b1059324e34bc7cffcd09164929b2a52ba8f073f70",
+    "file_records": 322,
+    "copied_runtime_resources": 279,
+    "generated_runtime_resources": 2,
+    "payload_bytes": 20042389,
+    "manifest_bytes": 185030,
+    "manifest_sha256": "dd04275263441f557cbe320750b8e14f590332b1fe62cbb8e2c49d782a268abf",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 12,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 883,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "invalid_or_unknown_joint_lines": 0,
+    "path_diagnostic_failures": 0,
+    "intentional_empty_use_aas_warnings": 1,
+    "warning_lines": 35,
+    "unique_warning_lines": 17,
+    "warning_scope": "stock duplicate materials, gamma-ramp failure, undefined s_driver, overlapping location volumes, absent deathmatch spawn, and the stock/Xbox prone wounded marine's explicit empty use_aas",
+    "qconsole_bytes": 17654,
+    "qconsole_sha256": "55fb1d21af782a1c556e70e5c64f7a06f8328384c0183a001e3e2cdbaaf75ff1",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {
+    "count": 151,
+    "failures": 0
+  },
+  "established": [
+    "the fourth co-op segment's MAP, PROC, corrected AAS48/AAS96 and direct CM.X export cross the native PC loader boundary",
+    "all 199 authored collision models appear in PC dmap output; all 39 generated-only models are explained by noclipmodel 1",
+    "the retail Xbox chainsaw AF resolves the decoded zjump skeleton while the stale Pinky LoNeck epair has no joint after the retail exporter rename",
+    "the four absent specular/normal images are absent from both retail Xbox D3T and stock PC PK4 data, so only those stale stages are disabled without surrogate textures",
+    "all 883 entities spawn with none inhibited and the local co-op player joins without missing-resource, invalid-joint, callback, class, path-diagnostic, error or fatal lines"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition beyond xc_admin",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 16 co-op segments or the solo campaign"
+  ]
+}

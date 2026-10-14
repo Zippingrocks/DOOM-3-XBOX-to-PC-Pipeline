@@ -1,5 +1,46 @@
 # Format findings and unknowns
 
+## Checkpoint 017 fourth-segment findings
+
+`xc_admin` independently extends the direct-CM contract to a fourth co-op
+segment. The 2,107,679-byte MAP has geometry CRC `25560181`; its 1,282,663-byte
+CM.X expands to a 1,929,264-byte PC CM containing 199 models, 10,449 vertices,
+16,170 edges, 5,959 polygons, 2,054 brushes and 5,507 nodes. PC `dmap` emits 238
+models. All 199 authored names are shared, and every one of the 39 PC-only names
+is a MAP entity carrying `noclipmodel 1`.
+
+This map requires both corrected navigation families: the 824,144-byte AAS48
+hashes to `ab4194f0e152ea40cccbbfa4392a53783a4b48dbb7ce51cda7a0e3c41df3f41d`
+and the 208,113-byte AAS96 hashes to
+`b2ae58682ec87bd2fa42b22adb0081cf041d1fd73e4732fddbcf754dd2ac8a0c`.
+Both load natively. `admin_wounded_marine` deliberately sets `use_aas` to an
+empty string in Xbox and stock PC data; its warning is not evidence of a missing
+navigation payload and assigning one would change a prone scripted NPC.
+
+The admin GFC supplies 37 Pinky/zjump/combo MDV files. The decoded Pinky mesh
+contains `Waist` but not `LoNeck`, exactly matching the exporter directive that
+renames `LoNeck` to `Waist`; the Xbox DEF's residual `look_joint LoNeck` is
+therefore inert and is disabled by an exact transform. The stock PC chainsaw AF
+instead requests `Rfings3/Lfings3`, which do not exist in the decoded zjump
+mesh. The retail Xbox AF is the authoritative fix: it uses `Rindex1/Lindex1`
+and removes every invalid-joint warning without modifying the mesh.
+
+The lone map entity named `func_spawner_1` has no matching declaration in the
+retail Xbox DEF corpus, no `idSpawner`/`idFuncSpawner` registered XBE type and no
+equivalent entity in stock PC admin; only dangling target names remain there.
+Staging it as stock inert `target_null` preserves identity and target wiring
+without inventing behavior. Likewise, `map_admin1::setupCoop` has no body in the
+retail admin script closure, while related co-op scripts retain matching bodies
+only as comments. The call is disabled and the absent map script is represented
+by a minimum empty PC `main` entry point.
+
+The Xbox D3T contains `leftframe_d`, `id_badge` and `id_gui`, but contains no
+`leftframe_s`, `leftframe_local`, `id_badge_s` or `id_badge_local`; stock PC PK4
+data omits the same four images while retaining stale stages. Exact transforms
+on the native Xbox material paths disable only those unshipped stages. The final
+native run has no missing image, model, animation or sound line and no unknown
+joint, callback or class line.
+
 ## Checkpoint 016 third-segment findings
 
 `xc_mars_city2_2` confirms the direct-CM contract on a third co-op segment.

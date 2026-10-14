@@ -12,11 +12,64 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current branch: 147 tests, zero failures. Checkpoint 012
-captured 142 passing tests; six later synthetic tests cover authored-CM overlay
-selection, identity rejection, path-independent material receipts and the exact
-unshipped armor-shard map-icon transform. Fixtures contain no retail game data.
+Expected result on the current implementation branch: 151 tests, zero failures.
+Checkpoint 012 captured 142 passing tests; later synthetic tests cover authored-
+CM overlay selection, identity rejection, path-independent material receipts,
+the exact unshipped armor-shard map-icon transform, `xc_admin` inert orphan and
+script handling, stale Pinky joint removal, and absent material-stage handling.
+Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 017 fourth-segment receipt
+
+For `xc_admin`, the decoded MAP is 2,107,679 bytes with SHA-256
+`62fe382be45687b646afff6dc7c19d980b25947caa0e3e403cac31ba0f5674fb`
+and geometry CRC `25560181`. Select the corrected AAS48 and AAS96 outputs:
+
+- AAS48: 824,144 bytes, SHA-256
+  `ab4194f0e152ea40cccbbfa4392a53783a4b48dbb7ce51cda7a0e3c41df3f41d`;
+- AAS96: 208,113 bytes, SHA-256
+  `b2ae58682ec87bd2fa42b22adb0081cf041d1fd73e4732fddbcf754dd2ac8a0c`.
+
+The 1,282,663-byte CM.X hashes to
+`1c9abcff91706ce701353fb108289c12ae55ff4d56084e02ce568aac317dc9cd`
+and expands to a 1,929,264-byte authored CM with SHA-256
+`5cfef93c02510b61383dca9f02103719546164caee851ca51a0df5ca7b8597df`.
+The model audit must report 199 authored, 238 PC-`dmap`, 199 shared, zero
+authored-only, 39 PC-only, all 39 marked `noclipmodel 1`, and zero unexplained.
+
+Recover and decode the Pinky, zjump and combo MDV members selected by the admin
+GFC. Also extract the shared Xbox `af/monster_zombie_chainsaw.af`; do not use the
+stock PC AF, whose `Rfings3/Lfings3` endpoints are absent from the 43-joint
+decoded zjump mesh. Add `tools/campaign_port/profiles/xc_admin.resources` after
+the shared player profile when building the overlay.
+
+The admin map has two exact source-data defects that must remain receipt-bearing:
+its lone `func_spawner` has no Xbox DEF/XBE type and is staged as the inert
+`target_null`, while `map_admin1::setupCoop` has no retail script body and is
+disabled. Because the retail GFC contains no map script member, generate only an
+empty `void main() {}` PC entry point. The Xbox Pinky exporter renames `LoNeck`
+to `Waist`; disable the stale `look_joint LoNeck` epair rather than inventing a
+joint.
+
+Recover `leftframe_d`, the keycard icon and `id_gui` by logical name from the
+global D3T. The paired `leftframe_s`, `leftframe_local`, `id_badge_s` and
+`id_badge_local` keys are absent from the Xbox D3T and stock PC PK4 corpus.
+Stage the original Xbox `materials/base_door.mtr` and `materials/monsters.mtr`
+at their native paths and disable only those four stale stages; never substitute
+sibling images.
+
+The final overlay has 322 file records, 20,042,389 payload bytes, 185,030
+manifest bytes and manifest SHA-256
+`dd04275263441f557cbe320750b8e14f590332b1fe62cbb8e2c49d782a268abf`.
+It has zero unresolved resources, classnames or strings. Under the isolated
+checkpoint-014 null-guard diagnostic, the bounded true-`COOP` run exits 0,
+spawns 883/0, joins the player, and emits no missing-resource, invalid-joint,
+callback, class, path-diagnostic, `ERROR` or `FATAL` line. The qconsole SHA-256
+is `55fb1d21af782a1c556e70e5c64f7a06f8328384c0183a001e3e2cdbaaf75ff1`.
+The remaining `tim_admin_wounded_marine_1 has no AAS file` line is intentional:
+both Xbox and stock PC `admin_wounded_marine` explicitly set `use_aas` to empty.
+Repeat with the normal rebuilt source DLL before engine acceptance.
 
 ### Checkpoint 016 third-segment receipt
 
