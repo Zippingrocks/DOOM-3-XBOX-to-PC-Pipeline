@@ -1,8 +1,28 @@
 # Format findings and unknowns
 
-## Checkpoint 002 retail findings
+## Checkpoint 004 AAS.X findings
 
-### Checkpoint 003 PROC.X findings
+AAS.X begins with standard `DewmAAS "1.07"` text. Settings, areas and every
+reachability remain textual. The standard geometry/topology arrays are omitted
+from their normal positions and stored in one final `xboxData` binary block,
+delimited by `# ` and ` #`.
+
+The block is a sequence of little-endian uint32 counts and tightly specified
+arrays in this order: planes (`float32[4]`), vertices (`float32[3]`), edges
+(`int32[2]`), edgeIndex (`int32`), faces (`uint16 plane, uint16 flags, int32
+numEdges, int32 firstEdge, int16 areas[2]`), faceIndex (`int32`), nodes
+(`uint16 plane, two padding bytes, int32 children[2]`), portals (five int16
+fields plus one uint16 cached travel-time field), portalIndex (`int32`) and
+clusters (`int32 numAreas, numReachableAreas, numPortals, firstPortal`). The PC
+text exporter restores the official field order where memory order differs.
+
+The official GPL `idAASFileLocal::Load` accepts only the standard top-level
+sections, so leaving `xboxData` in place is not PC-compatible. On the first map,
+all eleven recovered section counts exactly equal independent PC `dmap` output,
+and native Doom 3 successfully loaded the recovered AAS48. This establishes
+parser compatibility, not AI route or co-op gameplay fidelity.
+
+## Checkpoint 003 PROC.X findings
 
 PROC.X retains `mapProcFile003` textual structure while replacing selected
 arrays with `# ... #` binary records. Model-surface vertices are 24 bytes:
@@ -21,6 +41,8 @@ Native PC regeneration independently confirms model identity, visible-surface
 counts, index counts, area/portal graph and BSP node counts. Xbox shadow data is
 more compact than PC regeneration and must remain comparison evidence rather
 than being silently substituted when evaluating shadow fidelity.
+
+## Checkpoint 002 retail findings
 
 The retail XDVDFS volume descriptor is at byte `0x10000`, with 2,048-byte
 sectors. Its root directory sector is 264 and its root table is 4,188 bytes.
