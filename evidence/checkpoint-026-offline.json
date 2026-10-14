@@ -1,0 +1,45 @@
+{
+  "checkpoint": "026-offline",
+  "date": "2026-10-14",
+  "status": "offline preflight complete; no Doom 3 launch performed",
+  "scope": "thirteenth co-op segment structural recovery, dependency closure and direct-sound recovery",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 168764,
+    "gfc_sha256": "2818e83cb9dd7f5da4202b0d3570b68f4f84f89a1100cf49dd40c6ada9b60b2f",
+    "gob_bytes": 9601024,
+    "gob_sha256": "4c81ec46201a2a2a6018e2cbcb732a5294e6319af162edc8b89e6d435062f671"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_hell1_1",
+    "raw_map_x": {"bytes": 1307332, "sha256": "ef115d33b7ddac855ade122af4edcb17153c93925a108dbe53975d110cdac2b6"},
+    "decoded_map": {"bytes": 1765164, "sha256": "847cf3bf21bdcb5c1f5a74664863df2b10df8642f3778b9845b3a935eb6356ff", "geometry_crc": 2355691493, "entities": 866, "brushes": 2308, "brush_sides": 13934, "patches": 302, "patch_points": 3396},
+    "decoded_proc": {"bytes": 3165813, "sha256": "7ad52761f2031be4b6f3102002d8e2c616b382debec9598f943d05927d4e8ac2", "nodes": 6277, "surfaces": 454, "surface_vertices": 34405, "surface_indices": 71034, "shadow_models": 76, "shadow_vertices": 18400, "shadow_indices": 102246},
+    "aas48": {"bytes": 1296621, "sha256": "c6a80109729a6a1816aa60aaf9fb262fabac6e75d365d1bdada838121f330685", "areas": 1335, "reachabilities": 7049, "nodes": 4055, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"bytes": 539632, "sha256": "7955490e4d6273cd1a398abe86ada835dbc26ace9051a3269b9a6614c7eb5dba", "areas": 714, "reachabilities": 1527, "nodes": 2435, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "navigation_corpus_sha256": "7ac84c13a88e561a4737b50edb19e9eccae43f6a5632aa381af3f54ff08433a7",
+    "map_script": {"bytes": 11035, "sha256": "ca44c14e96c1a350b06d39249d39176f8a0f3156c13fcb1bfc6c65259c608b81", "map_callback_references": 11, "callbacks_with_definitions": 11},
+    "transition": {"next_map": "vv/xbox_coop/xc_hell1_2"}
+  },
+  "collision": {
+    "raw_cm_x": {"bytes": 1878658, "sha256": "073303bb580293056cf9713ea4dbdf1d4b58c86d09f22467acb8b1f285b6af3d"},
+    "authored_export": {"bytes": 2883064, "sha256": "251fa1c1790d40709a0e8729f960547b12a282b853c4c941cb65f1d6f8a8c3c7", "models": 192, "vertices": 14089, "edges": 23834, "polygons": 8954, "brushes": 2194, "nodes": 13128},
+    "map_noclipmodel_entities": 51,
+    "pc_dmap_audit": "pending by explicit no-launch rule"
+  },
+  "runtime_assets": {"decoded_files": 308, "decoded_meshes": 8, "decoded_animations": 300, "decoded_bytes": 13711355, "runtime_dependency_files": 54, "resource_profile": {"bytes": 954, "sha256": "39b47db6225db3dde5ce09b53e58e7e1ea95032e2e2e1cd22d5b009fe2f3fed5", "entries": 15}},
+  "direct_sound": {
+    "unique_map_wav_paths": 50,
+    "covered_by_stock_pc_wav_or_ogg": 35,
+    "indexlist": {"bytes": 14150, "sha256": "bf7c01db83f78f6f758b5e14f772a53fc1987e34ed42d40f26d256778fd229bd"},
+    "xsb": {"bytes": 26108, "sha256": "e47687831457dca78b92254ea5d6f978c22abf87fbee4920dcbce86daaf71d0b"},
+    "recovered_wavs": 15,
+    "recovered_wav_bytes": 7479300,
+    "xact_manifest_sha256": "2e5bf645a17fdcd52bcc0280b25b3b734f07e31740eecf96fcdcb5adbe5caef8",
+    "unresolved_after_overlay": 0
+  },
+  "offline_overlay": {"directory": "xbox_coop_port_test_hell1_1_offline_v2", "files": 286, "copied_runtime_resources": 251, "generated_runtime_resources": 1, "compatibility_transform_records": 9, "payload_bytes": 27807648, "manifest": {"bytes": 148586, "sha256": "ca182608e92d3b34ba006e86ed6cd06e86aa5ca8f8c096747c3fc8ec747fcc69"}, "unresolved_classnames": 0, "unresolved_resources": 0, "unresolved_string_ids": 0},
+  "default_medium_spawn_expectation": {"spawned": 866, "inhibited": 0, "basis": "no difficulty inhibition epairs in the decoded MAP"},
+  "tests": {"count": 161, "failures": 0},
+  "not_established": ["independent PC dmap collision-model audit", "native map loading or entity spawn count", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
+}

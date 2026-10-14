@@ -87,6 +87,18 @@ behavior remain deliberately deferred until the campaign-wide offline pass is
 complete. Receipt:
 [`evidence/checkpoint-025-offline.json`](evidence/checkpoint-025-offline.json).
 
+## Checkpoint 026: Hell 1 part 1 offline preflight
+
+`xc_hell1_1` now has source-bound MAP, PROC, AAS48, AAS96 and direct CM
+exports, plus all 308 selected model members decoded. Both navigation graphs
+have complete nonzero BSP/area coverage. All 50 direct MAP sample paths are
+closed: 35 through stock PC data and 15 through the segment's own
+INDEXLIST/XSB/original-XWB routing. The 286-file portable overlay reports zero
+unresolved names and preserves all 11 callback references plus the transition
+to `vv/xbox_coop/xc_hell1_2`. Retail flags predict 866/0 entities on default
+medium. No executable or `dmap` was run. Receipt:
+[`evidence/checkpoint-026-offline.json`](evidence/checkpoint-026-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored

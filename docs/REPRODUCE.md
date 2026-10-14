@@ -22,6 +22,30 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 026 Hell 1 part 1 offline preflight
+
+For `xc_hell1_1`, require decoded MAP SHA-256
+`847cf3bf21bdcb5c1f5a74664863df2b10df8642f3778b9845b3a935eb6356ff`
+at geometry CRC `2355691493`, PROC SHA-256
+`7ad52761f2031be4b6f3102002d8e2c616b382debec9598f943d05927d4e8ac2`,
+AAS48/AAS96 hashes `c6a80109729a6a1816aa60aaf9fb262fabac6e75d365d1bdada838121f330685`
+and `7955490e4d6273cd1a398abe86ada835dbc26ace9051a3269b9a6614c7eb5dba`,
+and authored CM SHA-256
+`251fa1c1790d40709a0e8729f960547b12a282b853c4c941cb65f1d6f8a8c3c7`.
+Decode all 308 selected model members.
+
+Of 50 unique direct MAP WAV paths, recover the 15 absent stock paths through
+the 14,150-byte INDEXLIST (SHA-256
+`bf7c01db83f78f6f758b5e14f772a53fc1987e34ed42d40f26d256778fd229bd`)
+and 26,108-byte XSB (SHA-256
+`e47687831457dca78b92254ea5d6f978c22abf87fbee4920dcbce86daaf71d0b`).
+The recovered WAV corpus totals 7,479,300 bytes. Use the prior source-bound
+Delta 4 model root to supply eight player-machinegun animations omitted from
+this segment archive. The final 286-file overlay manifest is 148,586 bytes,
+hashes to `ca182608e92d3b34ba006e86ed6cd06e86aa5ca8f8c096747c3fc8ec747fcc69`,
+and reports zero unresolved names. Preserve the 11 resolved callbacks and
+transition to `vv/xbox_coop/xc_hell1_2`; expect 866/0 entities on medium.
+
 ### Checkpoint 025 Delta 4 offline preflight
 
 For `xc_delta4`, require the 1,696,138-byte decoded MAP with SHA-256
