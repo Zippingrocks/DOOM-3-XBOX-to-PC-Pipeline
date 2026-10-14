@@ -1,0 +1,52 @@
+{
+  "checkpoint": "025-offline",
+  "date": "2026-10-14",
+  "status": "in progress; no Doom 3 launch performed",
+  "scope": "twelfth co-op segment structural recovery, dual navigation decode and complete model decode",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 147856,
+    "gfc_sha256": "c8ef9fc5186e2360cdf9d74952bb35d38b92d79bd69000400b248256f9979893",
+    "gob_bytes": 6615040,
+    "gob_sha256": "b855d3ebc8b7f424d192fecef237a568c21612bb15a6a0cce33041a918b924b2"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_delta4",
+    "raw_map_x": {"bytes": 1074186, "sha256": "0300467bbf9c431365cf6401b3a766bb6b85105d72e8360142db79effdbd41ce"},
+    "geometry_crc": 1310606134,
+    "decoded_map": {"bytes": 1696138, "sha256": "3b7357236b29a113c72d86b3126581964683d5ff111ab23495571c7fb8fa2e2a", "entities": 394, "brushes": 1079, "brush_sides": 6544, "patches": 1523, "patch_points": 17463},
+    "raw_proc_x": {"bytes": 788314, "sha256": "fe4396fb9958eaa596c93a22caccd0996eaede405a64e39847d96dcc0589a34b"},
+    "decoded_proc": {"bytes": 1639005, "sha256": "fe8b2fae0e92b3047fe0b3df8c84b026014477f670d4f467206d31ebe103d8bd", "nodes": 1635, "surfaces": 482, "surface_vertices": 19590, "surface_indices": 49545, "shadow_models": 44, "shadow_vertices": 5459, "shadow_indices": 30864, "areas": 17, "portals": 15},
+    "corrected_aas48": {"bytes": 226339, "sha256": "fd529e4637b7f01c40392ee0cd3953fe6301d606a512f905a209289439415796", "areas": 260, "reachabilities": 1135, "nodes": 1008, "planes": 586, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "corrected_aas96": {"bytes": 108162, "sha256": "b664b956673dee6119c85551d2eb471dc2245066575aea5b2ff415cd80295eaf", "areas": 149, "reachabilities": 293, "nodes": 656, "planes": 510, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "navigation_corpus_sha256": "1cf4c7dfe04cc0abf04c8f1df504a8e17da514ad842ef4692a6dc75f3929c78a",
+    "map_script": {"bytes": 690, "sha256": "5a09d643775488d9d37afc8c2cc050c0839b034997037f839366dd73b9c864ff", "map_callbacks": ["end_level", "teleport_players", "unhide_teleportfx"], "callbacks_with_definitions": 3},
+    "transition": {"target": "end_it", "next_map": "vv/xbox_coop/xc_hell1_1"}
+  },
+  "collision": {
+    "cm_x": {"bytes": 1295694, "sha256": "17ed38f9a3ed392b9aa28b57ca9070b14510bd09eb4052de1cc26399cca17d2c"},
+    "authored_export": {"bytes": 2194017, "sha256": "09f22305c424730b830fe76fc55a7f960941c77c5b737f010049e8b927621eb5", "models": 92, "vertices": 9736, "edges": 17336, "polygons": 7308, "brushes": 1062, "nodes": 3882},
+    "map_noclipmodel_entities": 8,
+    "pc_dmap_audit": "pending; do not launch Doom 3 while another Steam game is active"
+  },
+  "runtime_assets": {
+    "selected_archive_members": 283,
+    "raw_selected_bytes": 4507854,
+    "raw_extraction_manifest_sha256": "5efc3196333b892a005781a621304084eb6b1443180be3b33d92dfcfb2672978",
+    "decoded_files": 283,
+    "decoded_meshes": 6,
+    "decoded_animations": 277,
+    "decoded_mdv_animations": 184,
+    "decoded_md5anim_x_animations": 93,
+    "decoded_bytes": 12724132
+  },
+  "tests": {"count": 161, "failures": 0},
+  "established": [
+    "MAP, PROC, corrected AAS48, corrected AAS96 and direct authored CM decode structurally with source-bound hashes",
+    "both navigation classes have complete nonzero BSP/area coverage",
+    "all 283 selected model files decode",
+    "all three MAP callbacks have recovered source definitions",
+    "the retail transition points to xc_hell1_1"
+  ],
+  "not_established": ["dependency-closed runtime overlay", "independent PC dmap collision-model audit", "native map loading or entity spawn count", "runtime sound closure", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
+}

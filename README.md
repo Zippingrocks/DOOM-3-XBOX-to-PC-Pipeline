@@ -68,6 +68,18 @@ bounded native loading, XACT sound selection, progression and two-peer work are
 deferred until testing will not interrupt another Steam session. Evidence is in
 [`evidence/checkpoint-024-offline.json`](evidence/checkpoint-024-offline.json).
 
+## In progress: checkpoint 025 structural decode
+
+The retail transition from `xc_delta2b_2` has been followed into `xc_delta4`.
+Its 394-entity MAP, 17-area/15-portal PROC and direct 92-model CM decode. Both
+AAS48 and AAS96 have complete nonzero BSP/area coverage, and all 283 selected
+model files decode. The three MAP callbacks have definitions in the preserved
+retail script; its end-level target names `vv/xbox_coop/xc_hell1_1`.
+
+This is structural evidence only. Runtime dependency, XACT, independent dmap
+and native acceptance remain open, with no game launch performed. Receipt:
+[`evidence/checkpoint-025-offline.json`](evidence/checkpoint-025-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
