@@ -1,5 +1,41 @@
 # Format findings and unknowns
 
+## Checkpoint 008 AAS plane serialization findings
+
+Xbox AAS.X `xboxData` stores each plane as the engine's in-memory
+`idPlane` vector `(a, b, c, d)`, whose signed side test is
+`normal dot point + d`. Standard PC AAS text stores `idPlane::Dist()`,
+which is `-d`; the PC loader reads that value through `SetDist` and restores
+the internal fourth component as its negation. The original exporter copied the
+packed fourth float directly into PC text, thereby reversing every nonzero BSP
+plane distance when the PC engine loaded it.
+
+The old offline route auditor had the complementary error: it treated the PC
+text value as internal `d`. That made its point-to-area results appear correct
+for the incorrectly exported files while the native engine returned area zero
+for every diagnosed start and goal. The exporter now writes the negated packed
+component, and the auditor evaluates textual planes as
+`normal dot point - distance`. Nonzero-distance regression fixtures cover
+both directions of the contract.
+
+All 26 recovered AAS.X products were regenerated with the corrected
+serialization. The campaign-port suite passes 116 tests. On
+`xc_mars_city1_1`, the corrected AAS48 has SHA-256
+`aa4448e1abca303022f6e4efa6c61ced42a0445781a522ec5385488b78821168`;
+a true-COOP native run then loaded all 940 entities and produced zero AI path
+warnings, zero failed point-to-area diagnostics and zero missing runtime
+resources.
+
+Three Xbox DEF files refer to inventory-icon images that are absent from both
+the selected-map GFC and the shared `assets.gfc` inventory:
+`guis/assets/hud/items/chaingun_ammo.tga`,
+`guis/assets/hud/items/rocket_ammo.tga`, and
+`guis/assets/hud/items/pda.tga`. Their Xbox gameplay definitions are retained.
+The overlay generator comments only the matching `inv_icon` line in the exact
+chaingun, rocket-launcher and PDA DEF paths, records each transform and leaves
+unrelated definitions unchanged. The corrected native run has zero
+missing-image warnings.
+
 ## Checkpoint 007 PC-host and HUD-format findings
 
 The Xbox co-op HUD cannot call the stock PC executable's UI manager as though
@@ -94,11 +130,12 @@ The Xbox player MDV has 50 joints versus the stock PC body's 75. It retains
 transforms are identical. Using `loneckcontrol` as the `copy_joint` source for
 the PC head removes the native warning without changing the recovered mesh.
 
-Offline AAS route auditing follows the official Doom 3 `idPlane` convention
-(`normal dot point + d`) and starts at BSP node 1. All five first-map warning
-pairs map to reachable walk areas and have directed walk-only routes. Static
-connectivity does not model doors, runtime obstacles or cluster-cache state, so
-it cannot by itself clear a native `AI_DEST_UNREACHABLE` warning.
+Offline AAS route auditing starts at BSP node 1. Checkpoint 005 incorrectly
+treated the fourth PC text component as the engine's internal `d`; the correct
+text-side test is `normal dot point - distance`. That sign bug canceled the
+original exporter's complementary mistake and made all five warned pairs appear
+to have directed walk-only routes. Checkpoint 008 corrects both tools and
+confirms the result in the native engine.
 
 ## Checkpoint 004 AAS.X findings
 
@@ -108,7 +145,9 @@ from their normal positions and stored in one final `xboxData` binary block,
 delimited by `# ` and ` #`.
 
 The block is a sequence of little-endian uint32 counts and tightly specified
-arrays in this order: planes (`float32[4]`), vertices (`float32[3]`), edges
+arrays in this order: planes (`float32[4]`, with the fourth float storing
+internal `idPlane::d` and therefore negated when exported as PC text
+distance), vertices (`float32[3]`), edges
 (`int32[2]`), edgeIndex (`int32`), faces (`uint16 plane, uint16 flags, int32
 numEdges, int32 firstEdge, int16 areas[2]`), faceIndex (`int32`), nodes
 (`uint16 plane, two padding bytes, int32 children[2]`), portals (five int16
