@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 039
+## Current checkpoint: 040
+
+**Every solo-script `sys.getEntity` call now has a static accounting.** The 41
+overlays contain 225 calls: 44 literal lookups and 181 computed expressions.
+The computed expressions have explicit conservative domains derived from loop
+bounds, function arguments, crane slots, bridge pairs, airlock combinations,
+lift paths and monorail grids. No expression is left unprofiled.
+
+The profiles expand to 1,532 call/name references across 871 unique map/name
+pairs. Every name that existed in the decoded source still exists in the PC
+overlay: there are zero port regressions. Twenty-two literal calls and 408
+unique profiled names are absent from both source and overlay, chiefly shared
+scripts spanning Xbox split segments; they remain reported as source-authored
+residue pending reachability analysis, not declared harmless. All 201 offline
+tests pass, and Doom 3 remains closed. Receipt:
+[`evidence/checkpoint-040-solo-script-entities.json`](evidence/checkpoint-040-solo-script-entities.json).
+
+## Earlier checkpoint: 039
 
 **The solo entity-link gate now covers every static entity-reference spawnarg
 identified in the stock PC game source.** Beyond `target*`, bind and camera

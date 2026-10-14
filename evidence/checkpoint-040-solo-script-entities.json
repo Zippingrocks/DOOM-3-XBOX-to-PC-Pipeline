@@ -1,0 +1,36 @@
+{
+  "checkpoint": "040",
+  "date": "2026-10-14",
+  "claim": "All literal and profiled computed sys.getEntity calls in the 41 Xbox solo overlays have no port-introduced missing entity names.",
+  "inputs": {
+    "checkpoint_039": "evidence/checkpoint-039-solo-runtime-links.json",
+    "official_pc_source_archive_sha256": "77a2d0c5de2d38c488abbe490909dc9091874e74648224861a3f15f7cbcc1039",
+    "dynamic_domain_profile_sha256": "82643edcfc4316441054ed4045b738cd4a1ed9806b7c3625aba7ae8295d71893"
+  },
+  "script_entity_calls": {
+    "maps": 41,
+    "calls": 225,
+    "literal_local_calls": 22,
+    "literal_source_authored_missing_calls": 22,
+    "profiled_dynamic_local_calls": 40,
+    "profiled_dynamic_source_residue_calls": 141,
+    "unprofiled_dynamic_calls": 0,
+    "profile_expected_references": 1532,
+    "profile_missing_references": 753,
+    "profile_unique_map_names": 871,
+    "profile_unique_missing_map_names": 408,
+    "port_introduced_unresolved": 0,
+    "local_audit_json_sha256": "d08553215a984386187b01e1d5e015b5ca922e9b9bbf57889ff93ec2710d9ee3"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 201,
+    "failed": 0
+  },
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "Dynamic domains are conservative supersets derived from script loop bounds, function argument domains and named map families.",
+    "Source-authored missing names remain open until script reachability and native activation prove the corresponding code paths dead or harmless.",
+    "This audit does not execute the Doom 3 script VM."
+  ]
+}

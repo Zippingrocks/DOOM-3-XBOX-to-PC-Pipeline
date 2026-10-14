@@ -1,4 +1,26 @@
-# Reproduce checkpoint 039
+# Reproduce checkpoint 040
+
+## Checkpoint 040: script-computed entity names
+
+Audit all recovered scripts with the source-bound dynamic domain profile:
+
+```powershell
+python tools/campaign_port/solo_script_entity_audit.py `
+  game/campaign_port_work/solo-overlays-strict-v7 `
+  --source-root game/campaign_port_work/solo-structural/maps `
+  --dynamic-profile tools/campaign_port/profiles/solo_script_entity_domains.json `
+  --out game/campaign_port_work/solo-overlays-strict-v7-script-entity-profiled.json
+```
+
+Require 225 calls, zero unprofiled expressions and zero unresolved records.
+The profile must expand to 1,532 references and 871 unique map/name pairs. The
+profile and report SHA-256 values are
+`82643edcfc4316441054ed4045b738cd4a1ed9806b7c3625aba7ae8295d71893`
+and `d08553215a984386187b01e1d5e015b5ca922e9b9bbf57889ff93ec2710d9ee3`.
+Do not remove the 22 source-authored literal or 408 unique computed missing
+names merely to reduce counts. Run all 201 tests. Do not launch Doom 3.
+
+## Reproduce checkpoint 039
 
 ## Checkpoint 039: runtime-consumed static entity references
 

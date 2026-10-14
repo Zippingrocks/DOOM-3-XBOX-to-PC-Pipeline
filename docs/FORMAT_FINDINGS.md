@@ -1,5 +1,23 @@
 # Format findings and unknowns
 
+## Checkpoint 040 script entity-lookup findings
+
+Static MAP epairs are not the complete entity graph. Recovered scripts contain
+225 `sys.getEntity` calls: 44 literal and 181 computed. A balanced call parser
+preserves nested arithmetic and ignores commented calls. Computed expressions
+are evaluated only through explicit profiles sourced from visible loop bounds,
+function argument sets and map-name families; arbitrary script code is not
+executed.
+
+The domain profile covers Alpha Labs EMP/path loops, Alpha Labs 3 flare names,
+Comm Outside airlocks and lift paths, CPU falling geometry, Delta light banks
+and crane slots, MCU bridge/communications arrays, and Monorail beam, door and
+light grids. It expands to 1,532 references and 871 unique map/name pairs. No
+source-present name disappears in the PC overlay. The 408 unique absent names
+are also absent in the decoded source and therefore identify retail split-map
+or conservative-domain residue rather than conversion loss. Reachability is
+still required before any such path can be called dead.
+
 ## Checkpoint 039 runtime-consumed reference findings
 
 Reading the stock PC game source expands the MAP entity-reference vocabulary

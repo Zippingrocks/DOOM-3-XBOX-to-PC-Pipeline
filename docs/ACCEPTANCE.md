@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 040 script entity-lookup status
+
+All 225 solo-script `sys.getEntity` sites are parsed. Forty-four are literal;
+181 computed sites are expanded through a receipt-bearing domain profile. The
+profile covers 1,532 call/name references and 871 unique map/name pairs with
+zero unprofiled expression and zero entity name present in decoded source but
+missing from the overlay.
+
+Twenty-two literal calls and 408 unique computed names are absent from the
+decoded source as well as the overlay. Most arise from scripts shared across
+split segments and conservative supersets of function arguments. They remain
+open `source-authored` evidence until function reachability proves the code path
+inactive or native activation confirms harmless behavior. Do not report this
+checkpoint as script-runtime closure.
+
 ## Checkpoint 039 runtime-consumed entity-reference status
 
 The solo link auditor now follows the stock PC C++ reference keys in addition
