@@ -1,0 +1,62 @@
+{
+  "checkpoint": "051",
+  "date": "2026-10-14",
+  "claim": "No named MAP link or binding present in a decoded Xbox co-op source is lost by the latest 20 overlays.",
+  "inputs": {
+    "checkpoint_050": "evidence/checkpoint-050-coop-overlay-corpus.json",
+    "source_selection": "For each latest manifest, use the MAP compatibility transform input SHA-256, or map_sha256 when no MAP transform exists, and require an exact decoded-workspace match."
+  },
+  "entity_link_audit": {
+    "maps": 20,
+    "entities": 15703,
+    "named_entities": 15682,
+    "links": 4654,
+    "named_entity_links": 3985,
+    "engine_or_empty_links": 2,
+    "source_authored_dangling_links": 667,
+    "source_authored_casefold_duplicates": 1,
+    "port_introduced_unresolved": 0,
+    "local_report_sha256": "e8dc24fb63e6161cbf253129429d3e9a1218f270bef7f43e339a5c8eb1c83224"
+  },
+  "source_authored_dangling_by_map": {
+    "xc_admin": 46,
+    "xc_alphalabs2_2": 3,
+    "xc_caverns1_1": 6,
+    "xc_caverns2": 17,
+    "xc_comm1_1": 255,
+    "xc_delta2b_1": 24,
+    "xc_delta2b_2": 16,
+    "xc_delta4": 16,
+    "xc_delta5_1": 12,
+    "xc_enpro_1": 17,
+    "xc_enpro_2": 1,
+    "xc_hell1_1": 8,
+    "xc_hell1_2": 1,
+    "xc_hellhole_1": 16,
+    "xc_mars_city1_1": 31,
+    "xc_mars_city2_1": 45,
+    "xc_mars_city2_2": 26,
+    "xc_mcu": 88,
+    "xc_recycling2_1": 17,
+    "xc_site3_1": 22
+  },
+  "duplicate_attention": {
+    "map": "xc_site3_1",
+    "casefolded_name": "target_endlevel_1",
+    "spellings": ["target_endlevel_1", "target_endLevel_1"],
+    "count": 2,
+    "classification": "source-authored-casefold-duplicate",
+    "reason": "Both case variants are present in the hash-matched decoded Xbox source and preserved in the overlay."
+  },
+  "implementation_receipts": {
+    "coop_entity_link_audit_py_bytes": 8811,
+    "coop_entity_link_audit_py_sha256": "a43cf724750256bb25c33c21a95a8ec37109401182a68f9b28794448d841b7b4"
+  },
+  "tests": {"command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'", "passed": 225, "failed": 0},
+  "runtime_boundary": {"doom3_or_dmap_launched": false, "installed_gamex86_dll_bytes": 2723328, "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"},
+  "limits": [
+    "Source-authored dangling links remain native-attention records; source equivalence proves preservation, not harmlessness.",
+    "Static name closure does not prove activation order, target semantics, save state or two-peer synchronization.",
+    "The Site 3 case-fold collision must be observed at the terminal transition during native progression."
+  ]
+}

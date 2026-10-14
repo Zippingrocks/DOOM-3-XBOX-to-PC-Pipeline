@@ -14,7 +14,22 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 050
+## Current checkpoint: 051
+
+**No named entity link or binding from the decoded Xbox co-op sources is lost
+in the latest 20 overlays.** A source-hash-bound audit covers 15,703 entities
+and 4,654 link spawnargs. It resolves 3,985 to local named entities, recognizes
+two engine/empty values, and proves all 667 remaining dangling links are
+already present in the exact decoded source MAP. There are zero port-introduced
+unresolved links.
+
+Site 3 contains one source-authored case-fold collision:
+`target_endlevel_1`/`target_endLevel_1`. It is preserved, not silently renamed,
+and remains a focused native terminal-transition observation. All 225 offline
+tests pass. Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-051-coop-entity-links.json`](evidence/checkpoint-051-coop-entity-links.json).
+
+## Earlier checkpoint: 050
 
 **The latest 20 co-op overlays now have a complete one-path/one-receipt corpus
 audit.** All 6,046 manifest payloads (535,777,192 bytes) were rehashed from

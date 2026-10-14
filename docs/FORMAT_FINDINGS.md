@@ -1,5 +1,25 @@
 # Format findings and unknowns
 
+## Checkpoint 051 co-op entity-link findings
+
+Co-op link closure needs the same case-insensitive lookup rules as the engine,
+but source comparison cannot rely on filenames alone. Each overlay manifest
+records the decoded MAP input hash before compatibility transforms. Selecting a
+retained decoded source by that hash prevents a later intermediate or another
+candidate with the same basename from laundering a port regression.
+
+Across 4,654 link-bearing spawnargs, 667 targets are absent from their local
+split map. Every one is identically dangling in the hash-matched Xbox source;
+they are preserved split-map or editor residue, not names lost during export.
+They remain runtime-attention records because source provenance does not prove
+that an engine path never executes them.
+
+The Site 3 source contains both `target_endlevel_1` and
+`target_endLevel_1`. Doom 3 name lookup is case-insensitive, so this is one
+collision even though the text differs. The converter preserves both spellings
+and the audit classifies the collision as source-authored. Choosing or renaming
+one without execution evidence would alter the terminal transition.
+
 ## Checkpoint 050 co-op overlay receipt findings
 
 An overlay manifest is a set, not an event log. A resource may satisfy several

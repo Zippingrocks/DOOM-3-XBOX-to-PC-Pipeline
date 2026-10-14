@@ -1,3 +1,29 @@
+# Reproduce checkpoint 051
+
+## Checkpoint 051: co-op named entity links
+
+Bind each latest overlay to its decoded source MAP using the map transform's
+`input_sha256`; when no MAP transform exists, use manifest `map_sha256`.
+Require an exact match under the retained work tree, then audit case-insensitive
+named entity references:
+
+```powershell
+python tools/campaign_port/coop_entity_link_audit.py ../.. `
+  --source-search-root work `
+  --require-maps 20 `
+  --output work/coop-latest-entity-links-v2.json
+```
+
+Require 20 maps, 15,703 entities, 15,682 unique case-folded names and 4,654
+links. Statuses must be 3,985 local named entities, two engine/empty values and
+667 hash-matched source-authored dangling links, with zero port-introduced
+unresolved record. Preserve and report the two Site 3 spellings
+`target_endlevel_1` and `target_endLevel_1` as one source-authored case-fold
+collision. The report SHA-256 is
+`e8dc24fb63e6161cbf253129429d3e9a1218f270bef7f43e339a5c8eb1c83224`.
+
+Run the full suite; 225 tests must pass. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 050
 
 ## Checkpoint 050: latest co-op overlay receipt closure

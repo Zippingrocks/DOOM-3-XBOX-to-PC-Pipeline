@@ -1,5 +1,18 @@
 # Recovery order and acceptance
 
+## Checkpoint 051 co-op entity-link status
+
+All 4,654 named MAP link and binding spawnargs are accounted for across the
+latest 20 co-op overlays. No reference that exists in a decoded Xbox source is
+lost by conversion, and there are zero port-introduced unresolved links. All
+225 offline tests pass.
+
+The 667 source-authored dangling links remain attention records, not accepted
+runtime behavior. Native progression must exercise target chains around split
+boundaries. Site 3's case-folded `target_endlevel_1` collision specifically
+requires observation at the end-level transition. Static closure cannot decide
+which duplicate `FindEntity` returns or prove two-peer activation order.
+
 ## Checkpoint 050 co-op overlay corpus status
 
 All 6,046 payloads selected by the latest 20 co-op manifests are present,
