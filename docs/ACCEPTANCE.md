@@ -20,6 +20,11 @@ comparison, bounded loading/spawn, runtime sound closure, progression,
 transition, two peers and Xbox-reference comparison remain open. Do not launch
 the game for this checkpoint while it would interrupt another Steam session.
 
+For the later bounded run, default medium must spawn 843/0. The only difficulty
+epair is `not_hard 1` on `item_armor_security_8`, so it must remain present on
+medium. Transition acceptance must drive `func_guisync_1` through
+`target_endlevel_1` to `vv/xbox_coop/xc_delta4`.
+
 ## Checkpoint 023 tenth-segment status
 
 `xc_delta2b_1` passes structural export, corrected AAS48, complete archive-local

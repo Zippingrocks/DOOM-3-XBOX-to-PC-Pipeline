@@ -55,7 +55,9 @@ generated EFX, nine transform records and zero unresolved names. Its
 137,118-byte manifest hashes to
 `7a15c66f28e4c75ec017e24385b5826b3f48a70f8f84770acd1e25e684fd7229`.
 Stop here unless a Doom 3 launch has been explicitly cleared: dmap and native
-loader acceptance are still open.
+loader acceptance are still open. When cleared, require 843/0 on default medium
+and verify the exit GUI reaches `vv/xbox_coop/xc_delta4` through
+`target_endlevel_1`.
 
 ### Checkpoint 023 tenth-segment receipt
 

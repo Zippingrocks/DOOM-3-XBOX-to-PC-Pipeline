@@ -60,6 +60,8 @@ global XWB. Two stale `inner1.wav` epairs are corrected to the `inner_1.wav`
 name carried by both Xbox XSND and stock PC. The 276-file offline candidate
 preserves the retail map script and its single MAP callback, covers all 67
 direct sample paths, and has zero unresolved names. All 161 tests pass.
+Retail flags predict 843/0 entities on default medium; the preserved co-op exit
+GUI targets `vv/xbox_coop/xc_delta4` through one `target_endlevel`.
 
 This is an in-progress receipt, not loader acceptance. Independent PC `dmap`,
 bounded native loading, XACT sound selection, progression and two-peer work are

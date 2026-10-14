@@ -85,6 +85,18 @@
     "unresolved_classnames": 0,
     "unresolved_string_ids": 0
   },
+  "native_expectations": {
+    "medium_coop_spawned_entities": 843,
+    "medium_coop_inhibited_entities": 0,
+    "difficulty_flag_inventory": [
+      "item_armor_security_8 carries not_hard 1 and is not inhibited on the default medium setting"
+    ],
+    "transition_controller": "func_guisync_1",
+    "transition_gui": "guis/transfer/exit_delta2b_2_coop.gui",
+    "transition_target": "target_endlevel_1",
+    "next_map": "vv/xbox_coop/xc_delta4",
+    "status": "offline prediction; native confirmation pending"
+  },
   "tests": {"count": 161, "failures": 0},
   "established": [
     "MAP, PROC, corrected AAS48 and direct authored CM decode structurally with source-bound hashes",
@@ -93,6 +105,7 @@
     "the sole MAP callback has exactly one recovered source definition",
     "the checkpoint-023 ZCT retarget is reusable because the source animation payload is byte-identical",
     "all 67 direct MAP sample paths are covered by stock PC media or four source-bound XACT recoveries after correcting two exact stale inner-elevator paths",
+    "the retail difficulty flags predict an 843/0 default-medium spawn, and the preserved exit GUI targets xc_delta4 through one target_endlevel",
     "the offline candidate has zero unresolved resources, classnames or strings"
   ],
   "not_established": ["independent PC dmap collision-model audit", "native map loading or entity spawn count", "runtime sound closure", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
