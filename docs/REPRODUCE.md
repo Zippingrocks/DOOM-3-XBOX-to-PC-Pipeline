@@ -1,4 +1,48 @@
-# Reproduce checkpoint 042
+# Reproduce checkpoint 043
+
+## Checkpoint 043: preserve retail worldspawn dispatch
+
+Read `idWorldspawn::Spawn` in the official GPL `neo/game/WorldSpawn.cpp`.
+Confirm that it schedules global `main` after compiling the map script and then
+separately schedules every worldspawn `call*` spawnarg. Audit all 41 decoded
+solo MAPs against the selected namespace entrypoint. Require 40 exact retail
+worldspawn dispatches and one no-call fallback, `delta4`.
+
+Rebuild all maps with the current `build_runtime_overlay.py`. For a matching
+worldspawn call, the generated `maps/vv/<segment>.script` must include the
+recovered map sources but must not define global `main`. Its transform receipt
+must say `dispatch: retail-worldspawn-call`. For `delta4`, require
+`dispatch: generated-global-main-fallback` and a single call to
+`map_alphalabs4::main()`. A mismatched or duplicate worldspawn symbol must fail
+closed and publish no overlay.
+
+Compare strict v8 with strict v9. Require 1,746 non-bridge, non-manifest files
+to be byte-identical. The only changed paths are all 41 generated bridge
+scripts and all 41 manifests. The strict-v9 corpus must contain 41 maps, 1,787
+payload records and 780,870,520 bytes, with manifest ledger
+`134b0a271500d33ddf1d4899f89e3f0a9c82e00656ae2f444bcb2700c45ebcad`
+and payload ledger
+`4685bc5ba9db10677c73f6d5f5bec6673806713e9ef1f67195541e735d65b669`.
+
+Run the corpus, semantic, direct-audio, entity-link, script-entity and
+reachability audits. Their local report SHA-256 values, in that order, are:
+
+```text
+3caec1110f2e4f06bff12be979538948e33890492dbfce7b7502bf685485720a
+1bc49f618584a7d6387b408830d0df68abfdea3e2d366cb473a39e3b30d7acec
+0fa2da790dd199d7e66727a2f857ce09e3093ff6beb4776253cafee89247f586
+761f83be009c146c5166a409355b0fb7238ab92a69da8ea75d97716412d5bff7
+a390290988ae752af82d9412773542fb67d0e58f4bf4bc83db91a6d675c0817f
+8190c68b67338a99bb749b04cbc42de9840303488b44725c80fd0f4ce9fee8da
+```
+
+Require zero unresolved records in all six reports. The reachability report
+must contain 1,025 functions, 524 edges, 652 reachable functions, 373
+unreachable functions and 334 attention records. Run
+`python -m unittest discover -s tools/campaign_port/tests -q`; 209 tests must
+pass. Do not launch Doom 3 or `dmap` for this offline checkpoint.
+
+## Reproduce checkpoint 042
 
 ## Checkpoint 042: exact split-map script entrypoints
 

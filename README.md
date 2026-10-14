@@ -14,7 +14,29 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 042
+## Current checkpoint: 043
+
+**The solo PC bridges now preserve the retail worldspawn startup contract
+without running map initialization twice.** Official GPL `idWorldspawn::Spawn`
+first schedules a global `main`, then independently schedules every worldspawn
+`call*` function. Forty Xbox solo maps already carry the exact namespaced
+initializer in their worldspawn. Their strict-v8 bridges duplicated that call;
+strict v9 includes the recovered sources but deliberately emits no global
+dispatcher. `delta4` is the sole map without a worldspawn call and keeps a
+generated global fallback to `map_alphalabs4::main()`.
+
+All 1,746 non-bridge, non-manifest payloads are byte-identical to v8. Strict v9
+retains 1,787 payload records, direct authored collision on all 41 maps, the
+closed 41-stage transition chain, complete direct-audio coverage, and zero
+unresolved structural, resource, string, callback, entity-link or script-
+entity record. Removing the 40 duplicate wrapper functions leaves 1,025 script
+functions, 524 call edges and 652 reachable functions; the same 334 reachable
+source-authored residue uses remain explicit attention items. All 209 offline
+tests pass. Doom 3 and `dmap` were not launched, and `gamex86.dll` remains
+unchanged. Receipt:
+[`evidence/checkpoint-043-solo-worldspawn-dispatch.json`](evidence/checkpoint-043-solo-worldspawn-dispatch.json).
+
+## Earlier checkpoint: 042
 
 **The two Xbox solo second-segment scripts now enter their exact retail
 initializers, and the complete 41-map corpus has been rebuilt and re-audited.**
@@ -954,7 +976,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-042-solo-script-entrypoints.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-043-solo-worldspawn-dispatch.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

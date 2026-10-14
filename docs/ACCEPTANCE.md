@@ -1,5 +1,24 @@
 # Recovery order and acceptance
 
+## Checkpoint 043 worldspawn dispatch status
+
+Every solo overlay now has exactly one static startup dispatch for its retail
+initializer. Forty maps retain their exact worldspawn call and define no
+generated global `main`; `delta4` has no worldspawn call and therefore uses the
+single generated fallback. The builder rejects a mismatched or duplicate
+worldspawn entrypoint instead of publishing an ambiguous overlay.
+
+All 1,746 other payloads are byte-identical to strict v8, and the complete
+strict-v9 offline gate remains closed with zero port-introduced unresolved
+records. The correction removes 40 synthetic wrapper functions and call edges
+from the static graph without changing its 334 source-authored attention
+records. All 209 tests pass.
+
+This is static startup-dispatch acceptance, not proof of runtime timing. The
+first bounded native load of each map must confirm one initializer thread, no
+duplicate startup side effects and no missing script function before focused
+progression and visual testing.
+
 ## Checkpoint 042 split-script entrypoint status
 
 All 41 solo bridges now bind the map segment to its recovered retail namespace

@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 043 PC worldspawn dispatch findings
+
+The stock PC worldspawn has two independent startup paths. After compiling
+`maps/<map>.script`, `idWorldspawn::Spawn` schedules global `main` when it is
+defined. It then iterates every worldspawn spawnarg beginning with `call` and
+schedules those functions as separate threads. A generated global bridge that
+calls the same namespaced function already named by the retail worldspawn does
+not provide compatibility; it runs map initialization twice.
+
+Forty of the 41 decoded solo maps contain one worldspawn call that exactly
+matches the recovered segment initializer, including the two numbered
+`main2` cases. Their PC bridge must include the recovered map-script sources
+without defining global `main`. `delta4` is the only decoded solo map without
+a worldspawn call. Its recovered script still defines the intentionally empty
+`map_alphalabs4::main`, so that one bridge emits a global-main fallback.
+
+The builder now fails closed if a worldspawn call names a different symbol,
+names the selected entrypoint more than once, or the recovered source does not
+define the selected function. Its manifest records `retail-worldspawn-call` or
+`generated-global-main-fallback`, the exact symbol, and every observed
+worldspawn call.
+
 ## Checkpoint 042 split-script entrypoint and VM findings
 
 An Xbox split-stage `_main.script` identifies the shared retail source file,

@@ -1,0 +1,111 @@
+{
+  "checkpoint": "043",
+  "date": "2026-10-14",
+  "claim": "All 41 Xbox solo PC bridges now preserve exactly one static startup dispatch: 40 retail worldspawn calls and one generated fallback for delta4.",
+  "inputs": {
+    "checkpoint_042": "evidence/checkpoint-042-solo-script-entrypoints.json",
+    "previous_corpus": "solo-overlays-strict-v8",
+    "rebuilt_corpus": "solo-overlays-strict-v9"
+  },
+  "pc_runtime_contract": {
+    "source": "official GPL neo/game/WorldSpawn.cpp idWorldspawn::Spawn",
+    "sequence": [
+      "compile maps/<map>.script",
+      "schedule global main when present",
+      "schedule every worldspawn call* function independently"
+    ],
+    "consequence": "A generated global main must not call a namespaced initializer already named by the retail worldspawn."
+  },
+  "dispatch_audit": {
+    "maps": 41,
+    "retail_worldspawn_call": 40,
+    "generated_global_main_fallback": 1,
+    "fallback_map": "delta4",
+    "fallback_symbol": "map_alphalabs4::main",
+    "mismatched_worldspawn_calls": 0,
+    "duplicate_selected_worldspawn_calls": 0
+  },
+  "representative_outputs": {
+    "monorail_2_bridge_sha256": "ee9ba7f3e632afd41dca90b4b65b0eb17e3cef67ee10fd08772c1bb277b8791c",
+    "monorail_2_manifest_sha256": "23d5d06009e02b463f8366ac6ee98af711b2ecd960b575b5ab44004376ad72c9",
+    "delta4_bridge_sha256": "b929d1de2aa5669901cc211d243916d14c3e460de152193e8609a18cfd16e234",
+    "delta4_manifest_sha256": "cbaf34cee23692e1b428dcd7d3662bf0f7ff44b3e8271844b4f0031a8647e851"
+  },
+  "v8_to_v9_delta": {
+    "filesystem_files_each": 1828,
+    "changed_files": 82,
+    "byte_identical_files": 1746,
+    "changed_kinds": [
+      "41 generated PC bridge scripts",
+      "41 overlay manifests"
+    ],
+    "non_bridge_or_manifest_payload_differences": 0
+  },
+  "corpus_audit": {
+    "maps": 41,
+    "payload_files": 1787,
+    "payload_bytes": 780870520,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "134b0a271500d33ddf1d4899f89e3f0a9c82e00656ae2f444bcb2700c45ebcad",
+    "file_ledger_sha256": "4685bc5ba9db10677c73f6d5f5bec6673806713e9ef1f67195541e735d65b669",
+    "local_report_sha256": "3caec1110f2e4f06bff12be979538948e33890492dbfce7b7502bf685485720a"
+  },
+  "semantic_audit": {
+    "calls": 409,
+    "transitions": 41,
+    "closed_campaign_chain": true,
+    "unresolved": 0,
+    "local_report_sha256": "1bc49f618584a7d6387b408830d0df68abfdea3e2d366cb473a39e3b30d7acec"
+  },
+  "audio_audit": {
+    "direct_wav_references": 3891,
+    "stock_pc": 2320,
+    "overlay_recovered": 419,
+    "unresolved": 0,
+    "local_report_sha256": "0fa2da790dd199d7e66727a2f857ce09e3093ff6beb4776253cafee89247f586"
+  },
+  "entity_link_audit": {
+    "entities": 38769,
+    "links": 14700,
+    "duplicate_names": 0,
+    "unresolved": 0,
+    "local_report_sha256": "761f83be009c146c5166a409355b0fb7238ab92a69da8ea75d97716412d5bff7"
+  },
+  "script_entity_audit": {
+    "sys_getentity_calls": 225,
+    "direct_entity_references": 8492,
+    "unresolved": 0,
+    "local_report_sha256": "a390290988ae752af82d9412773542fb67d0e58f4bf4bc83db91a6d675c0817f"
+  },
+  "script_reachability": {
+    "functions": 1025,
+    "edges": 524,
+    "reachable_functions": 652,
+    "unreachable_functions": 373,
+    "attention": 334,
+    "unresolved": 0,
+    "local_report_sha256": "8190c68b67338a99bb749b04cbc42de9840303488b44725c80fd0f4ce9fee8da"
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "39e156d6ec2d9d6337f999d3e135ead8be4b0f410169520aadf1d236c8d69c8e"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 209,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No native timing, load, spawn, progression or playthrough result is claimed.",
+    "Static dispatch proves that the overlay does not deliberately schedule the initializer twice; native logs must still confirm one effective startup sequence.",
+    "The 334 reachable source-authored script residue records remain explicit native-activation items.",
+    "Final solo and co-op fidelity requires matched original-Xbox gameplay and visual evidence."
+  ]
+}
