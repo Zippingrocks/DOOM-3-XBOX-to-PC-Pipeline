@@ -1,3 +1,40 @@
+# Reproduce checkpoint 050
+
+## Checkpoint 050: latest co-op overlay receipt closure
+
+When a raw WAV named by the MAP is also present in an explicit runtime resource
+profile, copy it once through the runtime closure. The later direct-audio scan
+must detect the staged file and emit neither a second copy nor a second
+manifest record. Rebuild `xc_hell1_2` and `xc_hellhole_1`; excluding manifests,
+require zero added, changed or removed payloads relative to checkpoint 049.
+
+Rehash the latest candidate for every co-op map:
+
+```powershell
+python tools/campaign_port/coop_overlay_corpus_audit.py ../.. `
+  --require-maps 20 `
+  --output work/coop-latest-overlay-corpus.json
+```
+
+Require 20 maps, 6,046 unique manifest paths, 535,777,192 payload bytes, 20
+direct-authored CM sources and zero unresolved classname, resource or string
+records. The manifest and payload ledgers must be
+`8431faf7c4899931e6769f471210083d30c462b38ac233929a97977292bfa6ec`
+and `7d063f648981d6aedfa598452582e9f87d606471fef803eacf7946f05351fd24`.
+
+Top-level `config.spec` and `DoomConfig.cfg` are engine-local state, not overlay
+payloads. Record any other untracked file. The current local tree has one:
+`xbox_coop_port_test_v6/maps/vv/xbox_coop/xc_mars_city1_1/textures/objective2.tga`.
+It is not a manifest payload and its nested path cannot satisfy the root
+`textures/objective2` reference; exclude it from packaging and do not silently
+claim or delete it.
+
+Rerun the checkpoint-049 requirement and structural audits. Require the same
+639 requirement statuses and 30 AAS topology totals; the canonical, candidate-
+directory-independent AAS ledger must be
+`e3877076cf1952a8150d6e5d1471615419476484aaf836a09bc16e74dfe98c08`.
+Run the full suite; 223 tests must pass. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 049
 
 ## Checkpoint 049: entityDef-driven co-op AAS closure

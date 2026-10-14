@@ -1,5 +1,25 @@
 # Format findings and unknowns
 
+## Checkpoint 050 co-op overlay receipt findings
+
+An overlay manifest is a set, not an event log. A resource may satisfy several
+dependency discoveries, but its virtual path needs exactly one final receipt.
+The direct-WAV pass previously appended another receipt when the runtime
+resource pass had already copied that WAV. Bytes on disk were correct, yet the
+manifest was noncanonical and a naive byte total double-counted 18 records.
+
+The corrected builder first checks the staged destination. If it exists, the
+direct MAP reference is already satisfied and no copy or receipt is added.
+This preserves provenance from the explicit runtime profile and makes manifest
+cardinality equal the actual payload-file count. Corpus validation now rejects
+duplicate, missing or hash-mismatched manifest records and distinguishes
+engine-local config files from untracked content.
+
+A co-op AAS corpus ledger must also use canonical `<map>/<aas-name>` paths.
+Hashing development candidate directory names makes a content ledger change
+after a manifest-only rebuild. Canonical names and canonical sort order keep
+the navigation corpus identity tied to map content instead of workspace layout.
+
 ## Checkpoint 049 co-op AAS requirement findings
 
 The co-op maps use the same `use_aas` inheritance contract as solo, but the

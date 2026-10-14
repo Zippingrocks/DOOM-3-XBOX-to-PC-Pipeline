@@ -1,0 +1,54 @@
+{
+  "checkpoint": "050",
+  "date": "2026-10-14",
+  "claim": "Every manifest-listed payload in the latest 20-map co-op overlay corpus has one unique, hash-valid receipt and no unresolved dependency.",
+  "inputs": {
+    "checkpoint_049": "evidence/checkpoint-049-coop-aas-requirements.json"
+  },
+  "manifest_receipt_correction": {
+    "cause": "A direct MAP WAV already copied by the runtime resource closure was copied and recorded a second time by the direct-audio pass.",
+    "builder_rule": "If the destination WAV already exists in the staging overlay, the direct-audio pass treats the reference as satisfied and emits no second receipt.",
+    "duplicate_receipts_removed": 18,
+    "payload_files_changed": 0,
+    "payload_bytes_changed": 0,
+    "xc_hell1_2": {"overlay": "xbox_coop_port_test_hell1_2_offline_v5", "payload_files": 287, "manifest_records": 287, "manifest_bytes": 139809, "manifest_sha256": "5413b09f13b6f839b3887ddf5caeb441b047eca883d9b9054f626ff7fc9abd63"},
+    "xc_hellhole_1": {"overlay": "xbox_coop_port_test_hellhole_1_offline_v3", "payload_files": 271, "manifest_records": 271, "manifest_bytes": 133367, "manifest_sha256": "a5cf67c00a71608a92f0de37435e43f04dfa8993b6e175d48dcc21f471465f09"}
+  },
+  "overlay_corpus": {
+    "maps": 20,
+    "payload_files": 6046,
+    "payload_bytes": 535777192,
+    "direct_authored_cm_maps": 20,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "8431faf7c4899931e6769f471210083d30c462b38ac233929a97977292bfa6ec",
+    "payload_ledger_sha256": "7d063f648981d6aedfa598452582e9f87d606471fef803eacf7946f05351fd24",
+    "local_report_sha256": "ce4584f2e749e04195d18c3e30cf483cc0fa32460a2f1ed125f5a72b6756cfb5"
+  },
+  "local_untracked_attention": {
+    "ignored_engine_state_files": ["config.spec", "DoomConfig.cfg"],
+    "count": 1,
+    "path": "xbox_coop_port_test_v6/maps/vv/xbox_coop/xc_mars_city1_1/textures/objective2.tga",
+    "bytes": 262162,
+    "sha256": "485767057e1d1bf4767b812c39ece9517a6d3d895bb68b03c0b695128b8665df",
+    "effect": "Not a manifest payload; its nested VFS path does not satisfy the MAP's root textures/objective2 material reference and it must be excluded from packaging. It was preserved because ownership is unknown."
+  },
+  "navigation_recheck": {
+    "requirements": {"maps": 20, "ai_requirements": 639, "packaged": 638, "explicit_no_aas": 1, "missing": 0, "local_report_sha256": "454f637e18c836aa6b1273e3afec2ff2117e7a4d234b365896408c8f430da67c"},
+    "corpus": {"maps": 20, "files": 30, "bytes": 20770442, "areas": 22348, "reachabilities": 101654, "nodes": 79281, "plane_inverse_pairs": 23731, "canonical_corpus_sha256": "e3877076cf1952a8150d6e5d1471615419476484aaf836a09bc16e74dfe98c08", "local_report_sha256": "935b6bc993c9123c5b8f3f3dab155dbc6a00d138618700efbe943c618b428cd7"}
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "7db7fa1d0c174860a6a5d6112f40c41248d3f31dc59297895a82c69ef9efc54b",
+    "coop_overlay_corpus_audit_py_sha256": "845cf58c13a403397ddce8fd4f715244322969c15f475d70477f1123453863cb",
+    "coop_aas_corpus_audit_py_sha256": "ff7532946f6abae32f1fb67b570cc974e0465d12353d77d8d63c3320de0e9f3c",
+    "coop_aas_requirement_audit_py_sha256": "be027807d8374803e7728318503b3fafa9c0161f2c48c72ae8b47283ecaebfec"
+  },
+  "tests": {"command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'", "passed": 223, "failed": 0},
+  "runtime_boundary": {"doom3_or_dmap_launched": false, "installed_gamex86_dll_bytes": 2723328, "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"},
+  "limits": [
+    "Manifest closure proves file identity and dependency accounting, not native load or gameplay behavior.",
+    "The one preserved untracked local TGA is outside the manifest package and must remain excluded from distribution.",
+    "Final co-op fidelity still requires two-peer progression and matched original-Xbox evidence."
+  ]
+}

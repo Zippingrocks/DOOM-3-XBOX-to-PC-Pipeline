@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 050 co-op overlay corpus status
+
+All 6,046 payloads selected by the latest 20 co-op manifests are present,
+unique and byte/hash exact. Every map has direct-authored collision and zero
+unresolved classname, resource or string record. The two corrected manifests
+describe payload-identical overlays without duplicated direct-audio receipts.
+The co-op navigation gate remains closed after rebuilding, and all 223 offline
+tests pass.
+
+One local nested TGA outside every manifest remains an explicit packaging
+attention item. It is not counted as recovered content and must not enter a
+distribution artifact. This checkpoint accepts the manifest-defined corpus,
+not the mutable development directories as wholesale packages. Native load,
+encounter and two-peer progression acceptance remain outstanding.
+
 ## Checkpoint 049 co-op AAS requirement status
 
 The latest 20 co-op overlays now close the static navigation packaging gate:

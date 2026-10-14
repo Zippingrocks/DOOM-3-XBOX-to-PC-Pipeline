@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 049
+## Current checkpoint: 050
+
+**The latest 20 co-op overlays now have a complete one-path/one-receipt corpus
+audit.** All 6,046 manifest payloads (535,777,192 bytes) were rehashed from
+disk, every manifest path is unique, all 20 maps retain direct authored
+collision, and classname/resource/string closure is empty.
+
+This caught a manifest-only duplication in the two checkpoint-049 rebuilds:
+18 direct WAVs already supplied by runtime profiles were recorded again by the
+direct-audio pass. The builder now treats an existing staged WAV as satisfied;
+the clean rebuilds are payload-identical and only their manifests changed. The
+navigation requirement and 30-file structural audits remain clean. One local,
+untracked nested TGA is explicitly excluded from the manifest/package and was
+not deleted because its ownership is unknown. All 223 offline tests pass. Doom
+3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-050-coop-overlay-corpus.json`](evidence/checkpoint-050-coop-overlay-corpus.json).
+
+## Earlier checkpoint: 049
 
 **Every effective co-op AI navigation requirement is now packaged in the
 latest 20-map overlay set.** The same inheritance-aware audit used for solo
