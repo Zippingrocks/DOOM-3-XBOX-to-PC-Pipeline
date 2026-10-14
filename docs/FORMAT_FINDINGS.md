@@ -1,5 +1,19 @@
 # Format findings and unknowns
 
+## Checkpoint 041 direct script-entity findings
+
+Doom script `$name` literals form a much larger entity-reference graph than
+MAP target epairs or explicit `sys.getEntity` calls. After stripping comments
+and strings while preserving source offsets, the solo corpus contains 8,492
+active direct references across 2,627 unique map/name pairs. Of these, 7,167
+resolve to decoded map entities and 325 are engine-created world/player names.
+
+The other 1,000 are absent from the decoded source map itself and remain absent
+from the overlay. This is strong evidence against conversion loss, but not
+evidence that every reference is unreachable. The next static gate must build a
+function call graph from each generated main and MAP callback before deciding
+which shared-script references can execute in a given split segment.
+
 ## Checkpoint 040 script entity-lookup findings
 
 Static MAP epairs are not the complete entity graph. Recovered scripts contain

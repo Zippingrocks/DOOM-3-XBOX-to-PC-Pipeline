@@ -1,4 +1,16 @@
-# Reproduce checkpoint 040
+# Reproduce checkpoint 041
+
+## Checkpoint 041: direct script entity names
+
+Run the checkpoint-040 command with the current auditor. It additionally scans
+direct `$entityName` references after neutralizing comments and string literals.
+Require 8,492 references, 2,627 unique map/name pairs, 7,167 local entity
+references, 325 engine references, 1,000 source-authored missing references and
+zero unresolved records. The combined report SHA-256 is
+`b62de2eadca76959a9a3966db09e41a8c0fd0f66b1dcbf1ac2411f05505c4da3`.
+Run all 202 tests. Do not launch Doom 3.
+
+## Reproduce checkpoint 040
 
 ## Checkpoint 040: script-computed entity names
 

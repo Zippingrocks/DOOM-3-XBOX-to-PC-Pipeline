@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 040
+## Current checkpoint: 041
+
+**Direct `$entityName` script references are now closed against conversion
+loss across all 41 solo maps.** The parser ignores comments and string literals
+and audits 8,492 active references representing 2,627 unique map/name pairs.
+7,167 point to map entities and 325 to engine-created entities such as the
+world and player.
+
+The remaining 1,000 references are absent from both the decoded source map and
+the PC overlay, predominantly because the recovered retail scripts are shared
+across Xbox split segments. None names an entity present in source but lost in
+the port. They remain reachability work, not assumed no-ops. Combined with the
+225 `sys.getEntity` sites, the script entity report has zero port-introduced
+unresolved records. All 202 offline tests pass; Doom 3 remains closed. Receipt:
+[`evidence/checkpoint-041-solo-direct-script-entities.json`](evidence/checkpoint-041-solo-direct-script-entities.json).
+
+## Earlier checkpoint: 040
 
 **Every solo-script `sys.getEntity` call now has a static accounting.** The 41
 overlays contain 225 calls: 44 literal lookups and 181 computed expressions.

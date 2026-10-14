@@ -1,0 +1,32 @@
+{
+  "checkpoint": "041",
+  "date": "2026-10-14",
+  "claim": "Every direct dollar-prefixed script entity reference in all 41 Xbox solo overlays is retained or identified as source-authored split-script residue.",
+  "inputs": {
+    "checkpoint_040": "evidence/checkpoint-040-solo-script-entities.json"
+  },
+  "direct_script_entities": {
+    "references": 8492,
+    "unique_map_name_pairs": 2627,
+    "named_entity_references": 7167,
+    "engine_entity_references": 325,
+    "source_authored_missing_references": 1000,
+    "port_introduced_unresolved": 0
+  },
+  "combined_script_entity_audit": {
+    "sys_getentity_calls": 225,
+    "direct_entity_references": 8492,
+    "unresolved": 0,
+    "local_audit_json_sha256": "b62de2eadca76959a9a3966db09e41a8c0fd0f66b1dcbf1ac2411f05505c4da3"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 202,
+    "failed": 0
+  },
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "Source-authored missing direct references are not declared harmless until function reachability or native execution excludes them.",
+    "The parser ignores comments and string literals and does not execute the Doom 3 script VM."
+  ]
+}

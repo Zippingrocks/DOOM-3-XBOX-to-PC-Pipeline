@@ -1,5 +1,18 @@
 # Recovery order and acceptance
 
+## Checkpoint 041 direct script-entity status
+
+The entity-aware script gate now includes 8,492 direct `$entityName` references
+in addition to `sys.getEntity`. It resolves 7,167 to map entities and 325 to
+engine entities. All 1,000 missing references are already absent from the
+decoded retail source map; zero source-present entity name is lost by overlay
+conversion. The combined report is clean and all 202 tests pass.
+
+These 1,000 source-authored references must still be filtered through script
+function reachability. Shared split-stage sources can retain inactive functions,
+but that must be proven from entrypoints and calls rather than inferred from an
+absent entity alone.
+
 ## Checkpoint 040 script entity-lookup status
 
 All 225 solo-script `sys.getEntity` sites are parsed. Forty-four are literal;
