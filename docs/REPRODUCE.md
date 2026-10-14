@@ -3,7 +3,7 @@
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `dd62b41dbeca3755c3770d0c2c9b7d72499154d4`
+Checkpoint implementation head: `cf08a48e961467b9ef1a77a96f93b949035892e6`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
@@ -15,7 +15,7 @@ Python 3.11/Windows:
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 136 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 138 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -120,6 +120,20 @@ CM bytes and 3,633 models. The binding manifest digest is
 `3a27835c398b2d5c9bd280a29c397efe47868ea965ae4d9f9900fa2755cf0603`.
 For `xc_mars_city1_1`, `map_geometry_crc.py` must return `2410032894`,
 matching the CRC independently written by native `dmap`.
+
+Explain the first map's authored/generated model-set difference:
+
+```powershell
+python tools/campaign_port/cm_model_set_audit.py `
+  converted/maps/vv/xbox_coop/xc_mars_city1_1.map `
+  extracted/base/xbox_gen/maps/vv/xbox_coop/xc_mars_city1_1.cm.x `
+  dmap/maps/vv/xbox_coop/xc_mars_city1_1.cm `
+  --report cm-model-set.json
+```
+
+Expected: 243 authored models, 277 PC-`dmap` models, all 243 shared,
+34 PC-only models, all 34 mapped to `noclipmodel 1`, and zero unexplained or
+authored-only names.
 
 Repeat over all 20 `xc_` archive pairs. Expected checkpoint-004 coverage is 20
 MAP reports, 20 PROC reports, 20 AAS48 reports and six AAS96 reports. Every PROC
@@ -275,7 +289,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 136-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 138-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
