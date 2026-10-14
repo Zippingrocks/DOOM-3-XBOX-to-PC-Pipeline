@@ -3,7 +3,7 @@
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `30cb3308b6a8bcfbd1a451eb926833584e993b69`
+Checkpoint implementation head: `df466ea0c02da92f664c240cb3929c20716c7099`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
@@ -15,7 +15,7 @@ Python 3.11/Windows:
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 130 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 135 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -102,6 +102,24 @@ For this checkpoint the audit must report 1,200 files, 391 unique payloads,
 zero unreferenced polygons/brushes, zero within-node duplicate references and
 corpus manifest SHA-256
 `a4e1fd30551a26de22310c7c13085b527d9cd5e7fdbdeb35ef11a1791c3779ca`.
+
+Compute and cross-check each converted MAP CRC, then hash all 20 direct CM
+exports without retaining the outputs:
+
+```powershell
+python tools/campaign_port/map_geometry_crc.py converted.map `
+  --report map-crc.json
+python tools/campaign_port/cm_campaign_export_audit.py `
+  game/campaign_port_work/converted/maps/vv/xbox_coop `
+  game/campaign_port_work/extracted-all `
+  --require-count 20 --report game/campaign_port_work/cm-export-corpus.json
+```
+
+Expected totals are 20 files, 43,791,272 CM.X bytes, 71,372,306 generated PC
+CM bytes and 3,633 models. The binding manifest digest is
+`3a27835c398b2d5c9bd280a29c397efe47868ea965ae4d9f9900fa2755cf0603`.
+For `xc_mars_city1_1`, `map_geometry_crc.py` must return `2410032894`,
+matching the CRC independently written by native `dmap`.
 
 Repeat over all 20 `xc_` archive pairs. Expected checkpoint-004 coverage is 20
 MAP reports, 20 PROC reports, 20 AAS48 reports and six AAS96 reports. Every PROC
@@ -257,7 +275,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 130-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 135-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
