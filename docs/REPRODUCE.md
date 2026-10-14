@@ -22,6 +22,26 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 028 Delta 5 part 1 offline preflight
+
+Require MAP SHA-256
+`7cc1a8ba5aedf3e22bebdad9f8584ae3389ef89e4414c70ad2d9df32f0958168`
+at CRC `1946210965`, PROC SHA-256
+`79293c5b1efae29d82535516e5d34e411b9d6a1a92729cd011cbead20b15fb66`,
+AAS48 SHA-256
+`994b51b9043f9da3453cd365e37c1f03223f5cc53fea99dbc925c7ae674ea208`
+and authored CM SHA-256
+`7a6b55c9996361b1fbe7040eb2ad6b6b5732709ad4b53ac394ee59924cd689c1`.
+Decode all 333 models. Recover 12 of 63 direct samples through INDEXLIST SHA
+`6ab704154fd87b04cc26acc25b777fc530ea2970c4776ff71a4f5e4f82c60d2b`
+and XSB SHA `80d7a3157defdf54213d14fa445dc373999c93fd5e2016e39887165e8568c43d`.
+Generate the receipt-bearing empty map script only after proving the retail GFC
+has `_main.script` plus its compiled binary but no `xc_delta5_1.script` member.
+The final manifest hashes to
+`92c5cb19e355d2e024e8ba4680b01133d3e43d2fd53b80f8b6d2f708aeb2c6f6`
+with zero unresolved names. Expect 893/1 on medium and preserve the Site 3
+transition.
+
 ### Checkpoint 027 Hell 1 part 2 offline preflight
 
 Require decoded `xc_hell1_2` MAP SHA-256

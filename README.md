@@ -111,6 +111,17 @@ preserves all three unique callbacks, and transitions to
 `dmap` was run. Receipt:
 [`evidence/checkpoint-027-offline.json`](evidence/checkpoint-027-offline.json).
 
+## Checkpoint 028: Delta 5 part 1 offline preflight
+
+`xc_delta5_1` now has decoded MAP, PROC, AAS48, direct CM and all 333 selected
+model members. Its 63 direct MAP samples are closed after 12 source-bound XACT
+recoveries. Because the retail archive intentionally has no map-script member,
+the builder now emits a receipt-bearing empty PC host main, matching the
+existing Admin/Delta 2B treatment. The 284-file overlay has zero unresolved
+names, predicts 893 spawned / one inhibited on medium, and preserves the
+transition to `vv/xbox_coop/xc_site3_1`. No executable or `dmap` was run.
+Receipt: [`evidence/checkpoint-028-offline.json`](evidence/checkpoint-028-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
