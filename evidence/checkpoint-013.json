@@ -1,0 +1,100 @@
+{
+  "checkpoint": "013",
+  "date": "2026-10-14",
+  "scope": "reproducible authored-CM runtime-overlay selection and first-map PC load",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "implementation": {
+    "option": "build_runtime_overlay.py --authored-cm <decoded-map.cm>",
+    "rules": [
+      "the standard PC-compiled map set remains required as a structural cross-check",
+      "the authored filename must equal the converted map stem plus .cm",
+      "both files must be ASCII PC CM 1.00 text",
+      "the embedded authored and generated map CRCs must match",
+      "only the staged .cm record is replaced",
+      "the manifest records the selected collision source and both byte/hash receipts",
+      "invalid input removes the staging directory and publishes no overlay"
+    ],
+    "material_provenance": "generated material closure comments use materials-relative paths plus full source SHA-256, independent of caller path spelling"
+  },
+  "validation": {
+    "local_unit_tests": {
+      "python": "3.11",
+      "count": 147,
+      "failures": 0
+    },
+    "latest_ci_state": {
+      "result": "pre-job infrastructure failure",
+      "job_count": 2,
+      "jobs_with_steps": 0,
+      "code_failure_established": false
+    },
+    "prior_cpp_validation": "the unchanged live-entity C++ command passed the checkpoint-012 Win32 build and runtime captures"
+  },
+  "first_map_overlay": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "local_profile": "xbox_coop_port_test_v6",
+    "file_records": 374,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "payload_bytes": 34299470,
+    "manifest_bytes": 183787,
+    "build_bytes": 34483257,
+    "manifest_sha256": "97a07d80b1071d79a96bff5e85e729fdefdb8654f1a8f2d369928459ca532315",
+    "collision_source": "direct-authored-cm",
+    "map_crc": 2410032894,
+    "pc_dmap_cm": {
+      "bytes": 4588408,
+      "sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a"
+    },
+    "authored_cm": {
+      "bytes": 3320995,
+      "sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931"
+    },
+    "generated_material_closure": {
+      "bytes": 1218,
+      "sha256": "b2efa3e713313c4937e6189817bea9c2ef5bf606b3ecbf752cf7cb9ee8b5df00"
+    },
+    "comparison_to_generated_cm_profile": {
+      "same_file_path_set": true,
+      "file_path_delta_count": 0,
+      "functional_payload_differences": [
+        "maps/vv/xbox_coop/xc_mars_city1_1.cm"
+      ],
+      "material_declarations_equal": true,
+      "additional_receipt_difference": "stable material provenance comments and manifest"
+    }
+  },
+  "native_smoke": {
+    "command_scope": "true COOP load of vv/xbox_coop/xc_mars_city1_1 through the authored-CM v6 overlay",
+    "process_count": 1,
+    "exit_code": 0,
+    "spawned_entities": 940,
+    "inhibited_entities": 0,
+    "error_or_fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "log_bytes": 16527,
+    "log_sha256": "4f166ed03884b8e87a4b381644b9103260f0e000cdfdb5d5ce87ed61811c1e0e",
+    "licensed_log_published": false,
+    "root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "the fidelity-selected authored CM can be staged without a manual post-build swap",
+    "the authored and PC-generated first-map CMs bind to the same embedded map CRC",
+    "the staged authored CM is byte-exact to the direct CM.X export",
+    "the dependency closure remains 374 paths with zero unresolved resources/classes",
+    "the finalized authored-CM overlay loads the first map in true COOP and spawns all 940 entities",
+    "material receipt hashes no longer depend on absolute versus relative root spelling"
+  ],
+  "not_established": [
+    "whole-map playthrough or two-peer progression",
+    "moving-door behavior over time or trigger dispatch side effects",
+    "original-Xbox runtime comparison",
+    "authored-CM overlay builds and native loads for the remaining 19 co-op map CMs",
+    "all-map dependency closure",
+    "solo campaign closure",
+    "visual or whole-campaign fidelity acceptance"
+  ]
+}
