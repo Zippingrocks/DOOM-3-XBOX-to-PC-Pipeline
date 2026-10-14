@@ -6,7 +6,7 @@ Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
 Use the open campaign-port pull request through an authenticated clone. Preserve
 existing work; use an isolated worktree if the checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 012 ran on Python 3.11/Windows:
+Python 3.10+ and the standard library are sufficient. Checkpoint 013 ran on Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
@@ -354,6 +354,26 @@ direct-authored-cm`, the shared embedded map CRC, and separate PC-`dmap` and
 authored CM hashes. The builder rejects a missing file, wrong filename,
 non-PC-text CM header or CRC mismatch before publishing the overlay. A hidden
 or unrecorded manual edit invalidates the receipt.
+
+Checkpoint 013's finalized first-map receipt is:
+
+- 374 file records, zero unresolved resources and zero unresolved classnames;
+- 34,299,470 payload bytes plus a 183,787-byte manifest;
+- manifest SHA-256
+  `97a07d80b1071d79a96bff5e85e729fdefdb8654f1a8f2d369928459ca532315`;
+- generated CM SHA-256
+  `2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a`;
+- authored CM SHA-256
+  `35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`;
+- shared embedded MAP CRC `2410032894`; and
+- generated material-closure SHA-256
+  `b2efa3e713313c4937e6189817bea9c2ef5bf606b3ecbf752cf7cb9ee8b5df00`.
+
+An identical build using absolute versus relative resource-root spelling must
+produce the same generated material-closure bytes. The native true-`COOP`
+smoke load must spawn 940 entities with none inhibited and produce no error,
+fatal or missing-resource line. Licensed overlay files and the native log stay
+local; publish only their receipts.
 
 Audit a suspect navigation pair without changing the AAS:
 

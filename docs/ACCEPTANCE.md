@@ -1,5 +1,25 @@
 # Recovery order and acceptance
 
+## Checkpoint 013 runtime-overlay status
+
+The first-map runtime overlay now stages the direct Xbox-authored CM through a
+reproducible builder option rather than an undocumented manual swap. Acceptance
+requires the complete PC-generated map set, an exact authored filename, ASCII
+PC CM syntax, and equal embedded MAP CRCs. The manifest identifies
+`direct-authored-cm` and retains byte/hash receipts for both the generated and
+authored inputs. Malformed or mismatched input must leave no output overlay.
+
+`xc_mars_city1_1` passes this gate: its 374-file overlay has no unresolved
+resources or classnames, the authored CM is byte-exact to the direct export,
+and a true-`COOP` native load spawns 940 entities with none inhibited and no
+error, fatal or missing-resource warning. The 147-test local suite also passes.
+
+This is runtime packaging and loader acceptance only. Collision acceptance
+still requires equivalent native coverage for all remaining co-op maps plus
+moving/rotated clips, trigger side effects, actor/projectile hulls and two-peer
+progression. It does not establish a playthrough or original-Xbox behavioral
+equivalence.
+
 
 ## Checkpoint 012 collision status
 

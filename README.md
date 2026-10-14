@@ -14,7 +14,36 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 012
+## Current checkpoint: 013
+
+**The runtime-overlay builder now selects the direct Xbox-authored CM as a
+reproducible, source-bound payload instead of relying on a manual post-build
+swap.**
+
+`build_runtime_overlay.py --authored-cm <decoded-map.cm>` retains the complete
+PC-compiled map set as an independent structural cross-check, validates that
+the authored file has the exact map filename and PC `CM "1.00"` text form,
+and requires its embedded map CRC to equal the generated CM. It replaces only
+the staged CM and records both inputs' sizes and SHA-256 hashes plus the
+selected `direct-authored-cm` source. Invalid headers, filenames, encodings or
+CRCs fail closed and publish no overlay. Generated material-closure receipts
+are also independent of absolute versus relative resource-root spelling.
+
+The finalized `xc_mars_city1_1` authored-CM overlay contains 374 files with
+zero unresolved resources or classnames. Its 183,787-byte manifest hashes to
+`97a07d80b1071d79a96bff5e85e729fdefdb8654f1a8f2d369928459ca532315`.
+The staged 3,320,995-byte CM is byte-exact to the direct CM.X export and shares
+map CRC `2410032894` with the independent PC-`dmap` CM. A true `COOP` native
+smoke load spawned all 940 entities, inhibited none, and emitted no error,
+fatal or missing-resource line. The local Python suite passes all 147 tests.
+
+This accepts the reproducible overlay-selection mechanism and first-map loader
+boundary, not a whole-map playthrough, two-peer progression, mover/trigger
+behavior, original-Xbox runtime equivalence, or any of the remaining 19 co-op
+CMs. Full machine-readable receipts are in
+[`evidence/checkpoint-013.json`](evidence/checkpoint-013.json).
+
+## Previous checkpoint: 012
 
 **Live spawned-entity collision now proves that PC-`dmap` output is not a
 fidelity-equivalent substitute for direct Xbox-authored CM.X.**

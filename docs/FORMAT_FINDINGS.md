@@ -1,5 +1,31 @@
 # Format findings and unknowns
 
+## Checkpoint 013 authored-CM overlay findings
+
+The runtime-overlay builder can now select a direct CM.X export with
+`--authored-cm`. The ordinary PC-compiled map set remains mandatory so the
+authored payload cannot bypass the independent geometry build. Before staging,
+the builder requires the authored basename to match the converted map stem,
+parses both files as ASCII PC `CM "1.00"` text, and compares their embedded
+map CRCs. It removes the generated staged CM only after those checks and records
+both collision receipts in the manifest. Any failure removes the staging tree
+and publishes no partial overlay.
+
+For `xc_mars_city1_1`, the generated CM is 4,588,408 bytes with SHA-256
+`2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a`;
+the authored CM is 3,320,995 bytes with SHA-256
+`35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`.
+Both declare map CRC `2410032894`. The finalized overlay has the same 374-path
+file set as the generated-CM baseline; its only intended functional payload
+change is the CM. Material declaration bodies are unchanged, and provenance
+comments now use material-relative paths plus source hashes so caller path
+spelling cannot perturb the receipt.
+
+The resulting overlay enters the native true-`COOP` loader and spawns all 940
+entities with zero inhibited entities, errors, fatals or missing-resource
+warnings. This establishes faithful CM selection and loader compatibility, not
+moving collision, trigger dispatch, two-peer behavior or gameplay equivalence.
+
 
 ## Checkpoint 012 live-entity collision findings
 
