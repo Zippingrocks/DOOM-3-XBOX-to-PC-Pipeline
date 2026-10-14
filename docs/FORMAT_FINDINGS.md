@@ -1,5 +1,55 @@
 # Format findings and unknowns
 
+## Checkpoint 007 PC-host and HUD-format findings
+
+The Xbox co-op HUD cannot call the stock PC executable's UI manager as though
+the Xbox `idUserInterfaceManager` vtable were present. An exact-symbol
+first-chance crash dump placed the invalid call in `idPlayer::DrawHUD`; the
+target value was `0x3d3d3d3d`. The Xbox branch's `DrawText` virtual slot does
+not exist at the same PC ABI position. The source-port solution sets
+`xboxCoopStatusText` and `xboxCoopStatusVisible` on the existing player HUD
+and lets the normal PC `Redraw` path render an injected status window. This is
+a host-compatibility shim, not recovered map content.
+
+The retail HUD uses four Xbox-only GUI script commands. For the PC host the
+overlay generator applies these path-scoped translations:
+
+| Xbox command | PC HUD state change |
+| --- | --- |
+| `HidePDAIcon` | hide `NewPDAVis`, `NEWPDAIcon` and `NEWPDA` |
+| `ShowPDAIcon` | show `NEWPDAIcon` |
+| `HideVidIcon` | hide `NewVidVis`, `NEWVidIcon` and `NEWVid` |
+| `ShowVidIcon` | show `NEWVidIcon` |
+
+The authenticated disc's `global.d3tfull` extent starts at byte
+`2825555968`, is `178959016` bytes long, has magic `0xd574dcd2` and table
+tag `0x83ac5c28`. Six selected missing HUD images establish three record-type
+cases. `0x83f0` is DXT1, while `0x83f2` and `0x83f3` are DXT5. The
+`0x83f3` conclusion is supported by valid decoded alpha/color output for
+`TipBorder` and all three Xbox-Live icons, plus their retail material usage;
+it is not a filename-only guess.
+
+| Logical image | Type | DDS SHA-256 |
+| --- | --- | --- |
+| `guis/assets/health/hspike1` | `0x83f2` / DXT5 | `774c9836351afa1a83ad86fe3f1739c62ad5896a1509ac5f0098c78473d1517f` |
+| `guis/assets/hud/TipBorder` | `0x83f3` / DXT5 | `a043d44ee341a95c002c92c617bcab5d43582a9beb53526087970fd6c6d8aa31` |
+| `guis/assets/hud/Vote` | `0x83f0` / DXT1 | `7778109ee07668cb6fb26bc8f95cffa7ffd983a7009c75521e8ccc859b00f450` |
+| `guis/live/assets/FriendInviteReceived` | `0x83f3` / DXT5 | `83f993881ce1735971dd5bd2951ff92679badca54c0e042685bd10f9e9bdc17d` |
+| `guis/live/assets/FriendOnline` | `0x83f3` / DXT5 | `c51c85219f9477f8fccf7c4cbb2ba1346108d96af6b29773845c01e6871cb81e` |
+| `guis/live/assets/GameInviteReceived` | `0x83f3` / DXT5 | `7c3d503a292b5326e45b474a46807c655e5ff4aecd3ef06c17722a21cce61de6` |
+
+Xbox material declarations may contain a standalone `dxt5` storage hint that
+the stock PC material parser does not recognize. The generated material closure
+removes only that token from the five selected declarations. The referenced DDS
+files still carry a DXT5 FourCC, so texture compression is not changed.
+
+The final true-`COOP` native run has no missing-image, unknown-GUI-command or
+unknown-material-token warning. Its five remaining AI warnings all have static
+directed routes in the recovered AAS48: areas 849→793 (11 areas), 793→718
+(14), 575→571 (6), 571→499 (10), and 55→4 (4). The discrepancy is therefore
+between static graph connectivity and runtime nearest-area/bounds/obstacle
+state; it is not evidence that those five reachability chains are absent.
+
 ## Checkpoint 005 runtime-format findings
 
 Xbox MDV (`IDMD`) stores both meshes and animations. Mesh decoding uses the
