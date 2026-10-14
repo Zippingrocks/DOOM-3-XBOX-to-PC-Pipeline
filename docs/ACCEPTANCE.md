@@ -1,5 +1,28 @@
 # Recovery order and acceptance
 
+## Checkpoint 020 seventh-segment status
+
+`xc_enpro_1` passes structural export, complete archive-local model closure,
+map-specific XACT audio recovery and the bounded native loader/spawn gate. Its
+MAP/PROC, corrected AAS48 and direct 182-model CM.X export all load. Independent
+PC `dmap` contains every authored collision model; its 26 additional models are
+exactly MAP entities marked `noclipmodel 1`. The archive contains no AAS96.
+
+All 315 selected model files decode. Sixteen runtime sounds recover through
+the source-bound EnPro INDEXLIST/XSB/XWB chain. Exact transforms disable one
+callback whose body is commented out, disable one demonstrably unshipped sound
+shader, correct one retail particle extension typo, and retain the inherited
+player/HUD/icon compatibility set. The 292-file overlay has zero unresolved
+resources, classnames or strings, and all 156 implementation tests pass.
+
+Under the isolated instant-hit null-guard diagnostic, true `COOP` spawns all
+709 entities, inhibits none, joins the player and emits no map-specific
+warning, missing-resource, invalid-joint, callback, class, path-diagnostic,
+error or fatal line. This accepts seventh-segment packaging and the bounded
+loader/spawn boundary only. A reviewed source guard and normal rebuild, dynamic
+combat, progression, transition, two peers and Xbox-reference comparison remain
+open.
+
 ## Checkpoint 019 sixth-segment status
 
 `xc_alphalabs2_2` passes structural export, complete archive-local model closure

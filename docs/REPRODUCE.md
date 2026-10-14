@@ -1,4 +1,4 @@
-# Reproduce checkpoint 019
+# Reproduce checkpoint 020
 
 ## Source and boundary
 
@@ -12,7 +12,7 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current implementation branch: 154 tests, zero failures.
+Expected result on the current implementation branch: 156 tests, zero failures.
 Checkpoint 012 captured 142 passing tests; later synthetic tests cover authored-
 CM overlay selection, identity rejection, path-independent material receipts,
 the exact unshipped armor-shard map-icon transform, `xc_admin` inert orphan and
@@ -21,6 +21,72 @@ path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
 duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 020 seventh-segment receipt
+
+For `xc_enpro_1`, verify the source GFC is 155,432 bytes with SHA-256
+`f5cf4150bf14f1092585a96e2b32cb26b5dd08c35eabe30f447cd186d6cde79a`
+and its GOB is 8,126,464 bytes with SHA-256
+`cf0ccf80778d2c437c3ea6dca4b31d15ca8f9e2707959f603defc75a55f3b98c`.
+The decoded 3,626,728-byte MAP hashes to
+`eaeaab2c082e4685b091802849f8ac1e6d91555c5c2847fa60c831d9cbc7cb0d`,
+has geometry CRC `2226283201`, and contains 709 entities, 3,128 brushes,
+18,917 brush sides, 1,724 patches and 33,456 patch points. The decoded PROC is
+5,647,175 bytes with SHA-256
+`1052809d82b998488b33b27a095148dc96afab828c78eb2c71984173568cb8f6`.
+Select the corrected 1,020,377-byte AAS48 with SHA-256
+`5bb7de9bd5ff8e7a4e415129d381fa60cd9b1998a92c6fde47ca20654c35f8b5`;
+it audits to 1,112 areas, 5,319 reachabilities, 3,834 nodes and no unreachable
+or unreferenced nonzero records. The archive has no AAS96.
+
+Export the 3,240,749-byte CM.X directly. It must hash to
+`a7e323b99295911eeb0afe4e05adb4e329150a07893ecd72b42ab603dbfed011`
+and produce a 5,495,477-byte ASCII PC CM with SHA-256
+`b79ce3b9f88d8dffdb7e8103a598a7f701738d1b32e9e9dd30e582de81f96735`.
+The authored result contains 182 models, 24,495 vertices, 42,569 edges, 17,196
+polygons, 3,029 brushes and 12,040 nodes. Independent PC `dmap` emits 208
+models: 182 shared, zero authored-only and 26 PC-only, all 26 carrying
+`noclipmodel 1`.
+
+Extract every `.mdvmesh`, `.mdvanim` and `.md5anim.x` member selected from the
+map GFC and retain one decoder report per file. Decode the complete 315-file set
+to 10 meshes and 305 animations (231 MDV plus 74 MD5ANIM.X), totaling
+13,851,502 bytes. The 48-joint skeleton hashes to
+`f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09`,
+byte-identical to three earlier independent segment copies.
+
+Recover the 16 runtime sounds through `xact_audio.py`. Use the 14,150-byte
+`xc_enpro_1.indexlist` with SHA-256
+`f1d22742b1c6c6dd79c8687c07a695b4a6aa27830b5c30ce7c868b1d44479bc9`,
+the 27,324-byte `xc_enpro_1.xsb` with SHA-256
+`5036bbc485f8bb3c31d26ab3c92eacedcd7ef4e53364804f4f8dc0dc97574a32`,
+and the inventoried global/memory XWB extents. The 16 ordinary PCM WAVs total
+5,535,714 bytes; the 8,186-byte manifest hashes to
+`318406c6f11f51a4fd897323ceabb0acfe912d6aeb698e429356f41c649d9d04`.
+Do not substitute `monster_demon_maggot_sight2`: it is absent from both the
+global XSND header and recovered archive inventories, so disable only that DEF
+epair.
+
+Three additional exact witnesses are required. Disable the one MAP call to
+`setupCoop`, because the only retail body is inside a block comment. Correct
+`grenadeExplosion.ips` to `grenadeExplosion.prt` exactly once in `func.def`;
+other Xbox declarations and stock PC `func.def` agree on the shipped `.prt`.
+Select the exact previously recovered `dds/lights/nofalloff.dds` beneath the
+existing stock PC material. Keep all inherited HUD/player/icon transforms.
+
+The finalized direct-CM overlay must have 292 file records, 253 copied
+resources, one generated empty EFX, 32,092,469 payload bytes, ten transform
+records and zero unresolved resources, classnames or strings. Its 150,921-byte
+manifest hashes to
+`82c6d323c48bd2dc30bd91a0bbd845fad81eb04bb528f8e051fd653df045e038`.
+Under the isolated checkpoint-014 null-guard diagnostic, preserve the original
+instant-hit declarations and start true `COOP`. The bounded run exits 0,
+spawns 709/0 and joins the player with no map-specific warning, missing
+resource, invalid joint, callback/class/path failure, error or fatal. The
+71,530-byte console log hashes to
+`92bb90ea0c74623166f4e8b00ec7f4a24c88c95fc9090d448ddcb5c66de8d182`.
+Restore the root DLL and verify SHA-256
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
 
 ### Checkpoint 019 sixth-segment receipt
 

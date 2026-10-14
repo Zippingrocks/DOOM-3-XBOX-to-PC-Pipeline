@@ -1,0 +1,172 @@
+{
+  "checkpoint": "020",
+  "date": "2026-10-14",
+  "scope": "seventh co-op segment direct collision, corrected navigation, complete map-local model decode, XACT audio closure, compatibility receipts, and bounded runtime load",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 155432,
+    "gfc_sha256": "f5cf4150bf14f1092585a96e2b32cb26b5dd08c35eabe30f447cd186d6cde79a",
+    "gob_bytes": 8126464,
+    "gob_sha256": "cf0ccf80778d2c437c3ea6dca4b31d15ca8f9e2707959f603defc75a55f3b98c"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_enpro_1",
+    "geometry_crc": 2226283201,
+    "decoded_map": {
+      "bytes": 3626728,
+      "sha256": "eaeaab2c082e4685b091802849f8ac1e6d91555c5c2847fa60c831d9cbc7cb0d",
+      "entities": 709,
+      "brushes": 3128,
+      "brush_sides": 18917,
+      "patches": 1724,
+      "patch_points": 33456
+    },
+    "decoded_proc": {
+      "bytes": 5647175,
+      "sha256": "1052809d82b998488b33b27a095148dc96afab828c78eb2c71984173568cb8f6"
+    },
+    "corrected_aas48": {
+      "bytes": 1020377,
+      "sha256": "5bb7de9bd5ff8e7a4e415129d381fa60cd9b1998a92c6fde47ca20654c35f8b5",
+      "areas": 1112,
+      "reachabilities": 5319,
+      "nodes": 3834,
+      "unreachable_nonzero_nodes": 0,
+      "unreferenced_nonzero_areas": 0
+    },
+    "aas96": {
+      "status": "not present in the source archive"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 3240749,
+      "sha256": "a7e323b99295911eeb0afe4e05adb4e329150a07893ecd72b42ab603dbfed011"
+    },
+    "authored_export": {
+      "bytes": 5495477,
+      "sha256": "b79ce3b9f88d8dffdb7e8103a598a7f701738d1b32e9e9dd30e582de81f96735",
+      "models": 182,
+      "vertices": 24495,
+      "edges": 42569,
+      "polygons": 17196,
+      "brushes": 3029,
+      "nodes": 12040
+    },
+    "pc_dmap": {
+      "cm_bytes": 6420649,
+      "cm_sha256": "3dbd7fcf12dcd832dfde8f55aecc467056a6afe69543e0d0e1d6ac3cf33db0d0",
+      "proc_bytes": 8260349,
+      "proc_sha256": "4c62b7b9897902cad74b6da6706d239bf8cb97beb62492e603c7647ac39280c1",
+      "aas48_bytes": 988475,
+      "aas48_sha256": "058e0de76b8b45d7aedcd43a05ebf3d1ba3e2cea37054d5998dd487a6fc6f121",
+      "models": 208
+    },
+    "model_set_audit": {
+      "shared": 182,
+      "authored_only": 0,
+      "pc_dmap_only": 26,
+      "pc_dmap_only_with_noclipmodel_1": 26,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "runtime_assets": {
+    "selected_archive_members": 315,
+    "raw_selected_bytes": 4825359,
+    "decoded_files": 315,
+    "decoded_meshes": 10,
+    "decoded_animations": 305,
+    "decoded_mdv_animations": 231,
+    "decoded_md5anim_x_animations": 74,
+    "decoded_bytes": 13851502,
+    "decoded_skeleton_sha256": "f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09",
+    "skeleton_cross_archive_result": "byte-identical to the independently recovered xc_mars_city1_1, xc_mcu, and xc_alphalabs2_2 skeletons",
+    "decoded_mesh_joint_counts": {
+      "h3_head": 37,
+      "mpplayer": 50,
+      "spplayer": 50,
+      "skeleton": 48,
+      "player_head": 44,
+      "imp": 41,
+      "lostsoul": 6,
+      "maggot3": 49,
+      "tshirt_zombie": 48,
+      "viewplasmagun": 50
+    }
+  },
+  "xact_audio": {
+    "indexlist_bytes": 14150,
+    "indexlist_sha256": "f1d22742b1c6c6dd79c8687c07a695b4a6aa27830b5c30ce7c868b1d44479bc9",
+    "xsb_bytes": 27324,
+    "xsb_sha256": "5036bbc485f8bb3c31d26ab3c92eacedcd7ef4e53364804f4f8dc0dc97574a32",
+    "recovered_wav_files": 16,
+    "encoded_bytes": 1532772,
+    "decoded_wav_bytes": 5535714,
+    "manifest_bytes": 8186,
+    "manifest_sha256": "318406c6f11f51a4fd897323ceabb0acfe912d6aeb698e429356f41c649d9d04",
+    "unshipped_shader": "monster_demon_maggot_sight2 is absent from global.xsndshd and recovered Xbox archive inventories; its single DEF epair is disabled rather than substituted"
+  },
+  "compatibility_findings": [
+    "the sole setupCoop call has no compiled retail body because the only body is inside a block comment; the call epair is disabled without altering the trigger or its other targets",
+    "retail Xbox func_explodable spells grenadeExplosion.ips while other Xbox declarations and stock PC func.def use the shipped grenadeExplosion.prt; the extension is corrected exactly once",
+    "seven armor-shard icon epairs and the three inherited weapon inventory icons name files absent from the recovered Xbox archives and are disabled with receipts",
+    "the exact previously recovered lights/nofalloff DDS is selected under the stock PC material declaration"
+  ],
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_enpro_1_v3",
+    "player_profile_sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "file_records": 292,
+    "copied_runtime_resources": 253,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 32092469,
+    "manifest_bytes": 150921,
+    "manifest_sha256": "82c6d323c48bd2dc30bd91a0bbd845fad81eb04bb528f8e051fd653df045e038",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 10,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 709,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "invalid_or_unknown_joint_lines": 0,
+    "callback_or_class_failures": 0,
+    "path_diagnostic_failures": 0,
+    "map_specific_warning_lines": 0,
+    "unique_map_run_warning_lines": 1,
+    "map_run_warning_occurrences": 2,
+    "baseline_warning_scope": "stock guis/mpmain.gui references the undefined s_driver cvar",
+    "qconsole_bytes": 71530,
+    "qconsole_sha256": "92bb90ea0c74623166f4e8b00ec7f4a24c88c95fc9090d448ddcb5c66de8d182",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {
+    "count": 156,
+    "failures": 0
+  },
+  "established": [
+    "the seventh co-op segment's MAP, PROC, corrected AAS48 and direct CM.X export cross the native PC loader boundary",
+    "all 182 authored collision models appear in PC dmap output; all 26 generated-only models are explained by noclipmodel 1",
+    "all 315 selected map-local MDV and MD5ANIM.X members decode with complete per-file receipts",
+    "16 runtime sounds recover through the map-specific Xbox INDEXLIST/XSB and global/memory XWB banks with per-file PCM receipts",
+    "709 entities spawn, none are inhibited, and the local co-op player joins without any map-specific warning, missing-resource, invalid-joint, callback, class, path-diagnostic, error or fatal line"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition beyond xc_enpro_1",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 13 co-op segments or the solo campaign"
+  ]
+}

@@ -1,5 +1,36 @@
 # Format findings and unknowns
 
+## Checkpoint 020 seventh-segment findings
+
+`xc_enpro_1` extends the direct-CM contract to a seventh co-op segment. Its
+3,626,728-byte MAP has geometry CRC `2226283201`; the 3,240,749-byte CM.X
+expands to a 5,495,477-byte PC CM containing 182 models, 24,495 vertices,
+42,569 edges, 17,196 polygons, 3,029 brushes and 12,040 nodes. Independent PC
+`dmap` emits 208 models. All 182 authored names are shared, and every one of
+the 26 PC-only names belongs to a MAP entity carrying `noclipmodel 1`.
+
+The corrected AAS48 has 1,112 areas, 5,319 reachabilities, 3,834 nodes and no
+unreachable or unreferenced nonzero records. The archive has no AAS96. All 315
+selected map-local model files decode: ten meshes, 231 MDV animations and 74
+MD5ANIM.X animations. The shared 48-joint skeleton is now byte-identical across
+four independently recovered segment archives.
+
+EnPro demonstrates why a clean model/GUI closure is insufficient for campaign
+fidelity. Sixteen referenced sounds must be routed through four independent
+Xbox layers: the global XSND name table, `xc_enpro_1.indexlist`, the segment
+XSB cue table and the global/memory XWB wave banks. Their decoded PCM payloads
+total 5,535,714 bytes. The additional `monster_demon_maggot_sight2` name is not
+in the Xbox XSND or archive inventories, so the exact optional DEF epair is
+disabled rather than mapped to a guessed vocalization.
+
+The retail MAP calls `setupCoop`, but its only source body is block-commented;
+disabling that one stale epair preserves the trigger and its other targets.
+Retail `func_explodable` also spells a particle extension `.ips`; other Xbox
+declarations and stock PC use the shipped `.prt`, giving an independent exact
+correction witness. With these receipts, the recovered XACT audio and the exact
+`lights/nofalloff` DDS, native true `COOP` spawns 709/0 with no map-specific
+warning or missing resource.
+
 ## Checkpoint 019 sixth-segment findings
 
 `xc_alphalabs2_2` extends the direct-CM contract to a sixth co-op segment. Its
