@@ -1,0 +1,67 @@
+{
+  "checkpoint": "006",
+  "date": "2026-10-14",
+  "scope": "first co-op map source-DLL runtime gate",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "implementation": {
+    "repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+    "branch": "campaign-port-xdvdfs-mapx",
+    "head": "9ebe3701c7e1ab28ee4483477ee071a2fe8cca1a",
+    "workflow_run_id": 38525058861,
+    "workflow_run_url": "https://github.com/Zippingrocks/doom3-gpl-xbox-reconstruction/actions/runs/38525058861",
+    "jobs": {
+      "python-tools": "success",
+      "game-dll": "success"
+    },
+    "unit_tests": {
+      "python": "3.11",
+      "count": 103,
+      "failures": 0
+    }
+  },
+  "artifact": {
+    "name": "campaign-port-gamex86",
+    "artifact_id": 11875870227,
+    "zip_sha256": "3650517235dd1fb787c8bbde903a3314aa1aa546ca0e3e6fc9d1add861948ac8",
+    "dll_bytes": 2721280,
+    "dll_sha256": "5c5fb61a0163d70db57dcfc1c098bdfe6a4a093f2e5f280e2ec711c5a1b58e9a"
+  },
+  "runtime_input": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "overlay_manifest_sha256": "9f9db1880ccd17f57d324553050a7d252b83dde81d45f998be67e5bcd6bc5acf",
+    "map_sha256": "4ed7f6ab6ae6d11146a9905ab6b26ba2e50cfe03e65bcba83a9428d687ecf5fc",
+    "aas48_sha256": "ea86a1e188a0423493ed25ff1d4cf6698c6f0fa90f8b5aef426cd279e0a63544",
+    "script_sha256": "b045e643583305e24565a27dfc1b80c857d412b019e247f2f32b5adc60876d14",
+    "player_def_sha256": "87bbcadaf3698bf27c3c1e88c0a1ab05b200a66046a50d6a68cc72035b383a51"
+  },
+  "native_result": {
+    "process_exit_code": 0,
+    "load_seconds": 2.598,
+    "spawned_entities": 940,
+    "inhibited_entities": 0,
+    "could_not_spawn_warnings": 0,
+    "restored_callback_observed": true,
+    "unique_ai_path_failures": 5,
+    "qconsole_bytes": 17817,
+    "qconsole_sha256": "ac49e24d12f6c574c0423cb10436bdc4380a6f332c394fdf39d9bfab659d8dcb"
+  },
+  "established": [
+    "the private branch compiles as a complete Win32 game DLL",
+    "all first-map Xbox-only spawn classes register and instantiate",
+    "the networked Turkey Puncher entity survives native map initialization",
+    "the first recovered map reaches a bounded clean shutdown with no spawnclass failures",
+    "all five remaining path pairs have static directed walk routes in recovered AAS"
+  ],
+  "not_established": [
+    "dynamic cause of the five AI path failures",
+    "two-peer synchronization, checkpoint progression, death/respawn or transitions",
+    "direct CM.X decoding or Xbox-equivalent collision",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or gameplay fidelity acceptance"
+  ]
+}
+
