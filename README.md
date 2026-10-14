@@ -14,7 +14,48 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 009
+## Current checkpoint: 010
+
+**PC `dmap` collision is now proven to be a cross-check, not a fidelity
+substitute for the direct Xbox-authored CM.**
+
+A hidden map-port diagnostic fed the same seeded coordinates into the PC
+collision engine twice: once with the independently generated CM and once with
+the direct CM.X export. Each run emitted 8,192 lossless records: 4,096 point
+queries and 4,096 player-sized box queries. World bounds and the complete input
+digest match exactly, every record pairs, both files execute the same traces,
+and hit/no-hit outcomes match.
+
+The contact results do not. At strict but practical tolerances (0.01 map units
+for positions/plane distance, 0.001 for normals, and 1e-6 for fractions), 650
+records differ. All 4,073 executed point traces agree geometrically, but 265
+player-box contacts differ in geometry. Across both shapes, 501 contacts select
+different material or contents metadata; 385 of those are metadata-only
+differences. Fifty-four movement fractions/endpoints differ beyond tolerance,
+with a maximum endpoint delta of 416 units. This is direct evidence that
+regenerating collision can change player motion, clip behavior, impact
+materials and contents classification even when the map loads and broad hit
+counts agree.
+
+Both bounded true-`COOP` runs spawn all 940 entities, join the local player
+and exit 0 with no error or fatal. The generated CM and prior verified DLL were
+then restored byte-for-byte. The paired log SHA-256 values are
+`729193a3d9614f1041bfa9300398ad25484f497d7f736e860fe195348a5d8e3d`
+and
+`e66776c4cb2c8e9962e6431ade61afa7969994e2bb568947ef1d6110d1856712`;
+the comparison report SHA-256 is
+`8a2d6b9028717a189097555e759772686760cc52456a817550f189e46749d577`.
+The recovery suite now has 141 passing tests and the complete Win32 game DLL
+builds.
+
+This establishes that the direct authored CM is required for fidelity. It does
+not yet establish an Xbox-runtime trace oracle, entity/mover/trigger collision,
+remaining-map native trace closure, two-peer progression or whole-campaign
+fidelity.
+
+See [checkpoint 010](evidence/checkpoint-010.json).
+
+## Previous checkpoint: 009
 
 **The first co-op segment now loads the original Xbox-authored collision model
 on PC, and the complete extracted CM.X corpus is structurally decoded.**
@@ -316,7 +357,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-009.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-010.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
