@@ -33,6 +33,23 @@ offline gate hashed 5,878 records and passed 20/20 overlays. This proves the
 portable inputs are internally intact; it does not replace native loading,
 progression, two-peer, or visual acceptance.
 
+### Xbox single-player structural gate
+
+Select the 41 root-level retail single-player GFC/GOB pairs, excluding `xc_*`,
+`d3dm*`, `assets*`, and `pda_vv`. For every pair, require exactly one MAP.X,
+one PROC.X, one CM.X and at least one AAS.X below
+`base/xbox_gen/maps/vv/`. Decode MAP and compute its geometry CRC with
+`map_geometry_crc.py` before decoding CM with that exact CRC. Decode every AAS
+class rather than assuming only `aas48` exists, and retain both the namespaced
+main script and map script when present.
+
+Rehash every core extraction-manifest record and every decoder output against
+its report. Require zero missing files, zero hash mismatches, and exact equality
+between every CM report's `map_crc` and its MAP geometry report. The 2026-10-14
+pass covered 41 maps, 296 core records and 178 decoded outputs (594,563,894
+bytes), with all three failure counts at zero. This is a structural gate only;
+it precedes model, resource, XACT, script and runtime closure.
+
 ### Checkpoint 029 Site 3 part 1 offline preflight
 
 Require MAP SHA `7957749b59ae1148ffd7b85c603cb0d634d23af71f3010427112981aed8a8471`

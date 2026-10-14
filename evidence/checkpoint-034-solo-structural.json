@@ -1,0 +1,48 @@
+{
+  "checkpoint": "034-solo-structural",
+  "date": "2026-10-14",
+  "status": "all retail Xbox single-player map archives structurally decoded; dependency, model and audio closure remains; no Doom 3 launch performed",
+  "source": {
+    "iso_bytes": 3029598208,
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "archive_pairs": 41,
+    "archive_files": 82,
+    "archive_bytes": 445404264,
+    "extraction_manifest_sha256": "ef634d3507d04d0b202c01baf4b9362ea389687ea562760093b6bf9c2cce48b4"
+  },
+  "maps": [
+    "admin", "alphalabs1_1", "alphalabs1_2", "alphalabs2_1", "alphalabs2_2", "alphalabs3",
+    "caverns1_1", "caverns1_2", "caverns2", "comm1_1", "comm1_2", "commoutside_1",
+    "commoutside_2", "cpu_1", "cpu_2", "delta1_1", "delta1_2", "delta2a_2", "delta2b_2",
+    "delta3_1", "delta3_2", "delta4", "delta5_1", "enpro_1", "enpro_2", "hell1_1", "hell1_2",
+    "hell1_3", "hellhole_1", "hellhole_2", "mars_city1_1", "mars_city2_1", "mars_city2_2",
+    "mcu_1", "mcu_2", "monorail_1", "monorail_2", "recycling1_1", "recycling2_1",
+    "recycling2_2", "site3_1"
+  ],
+  "structural_closure": {
+    "maps": 41,
+    "entities": 38769,
+    "aas_files": 55,
+    "cm_models": 10307,
+    "core_records_hashed": 296,
+    "decoded_records_hashed": 178,
+    "decoded_bytes": 594563894,
+    "missing_files": 0,
+    "hash_mismatches": 0,
+    "map_cm_crc_mismatches": 0
+  },
+  "ledger_sha256": {
+    "inventory_reports": "750cc80d3c8c6c89164e6a07c4f2632b99c0542eccdef7026112e2dc987e16fc",
+    "core_extraction_manifests": "31b7fc4d035da12e1be3ff4b4575b7392b770d49e4b5292795755e1a3b4cd4ca",
+    "decoded_files": "c19dba8f30af42bf55272dad1b5dfd71a4c364070bd35ea516a21ad3029261cd",
+    "decode_reports": "ae959cf67a6b8355eda033e720e646ba2d4e1029747f0091fe984617edaa2ff5"
+  },
+  "remaining_offline_work": [
+    "decode complete model corpora",
+    "dependency and resource closure",
+    "recover Xbox-only XACT audio",
+    "audit scripts, callbacks, difficulty gates and inter-map routing",
+    "build and rehash portable overlays"
+  ],
+  "deferred_by_user_request": ["Doom 3 launch", "dmap", "native spawn", "visual playthrough"]
+}

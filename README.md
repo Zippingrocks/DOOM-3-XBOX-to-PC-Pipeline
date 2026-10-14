@@ -148,6 +148,21 @@ changed files, no unresolved names, and direct-authored CM selected everywhere.
 No executable or `dmap` was run. Final offline receipt:
 [`evidence/checkpoint-030-033-structural.json`](evidence/checkpoint-030-033-structural.json).
 
+## Checkpoint 034: complete Xbox solo structural corpus
+
+The retail disc contains 41 single-player GFC/GOB pairs, including the Xbox
+split stages. All 82 archives are now extracted from the identified retail ISO,
+and all 41 maps have decoded MAP, PROC, every shipped AAS class, direct authored
+CM, and retained source scripts. Each CM export is bound to the exact GPL
+geometry CRC computed from its own decoded MAP.
+
+The offline integrity pass rehashed 296 extracted core records and 178 decoded
+outputs (594,563,894 bytes): no file was missing, no hash differed, and no
+MAP/CM CRC differed. This closes structural decoding, not resource fidelity;
+model, dependency, XACT, script and final overlay closure remain. No executable
+or `dmap` was run. Receipt:
+[`evidence/checkpoint-034-solo-structural.json`](evidence/checkpoint-034-solo-structural.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
