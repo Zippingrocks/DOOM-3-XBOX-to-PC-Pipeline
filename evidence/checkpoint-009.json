@@ -1,0 +1,150 @@
+{
+  "checkpoint": "009",
+  "date": "2026-10-14",
+  "scope": "direct CM.X collision recovery, complete-corpus structural audit, all-co-op-map export audit, and first-map native loader gate",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "validation": {
+    "unit_tests": {
+      "python": "3.11",
+      "count": 138,
+      "failures": 0
+    },
+    "windows_game_dll_build": "success",
+    "private_build_identifiers_published": false
+  },
+  "cm_x_contract": {
+    "byte_order": "little-endian",
+    "pc_format": "CM 1.00 text",
+    "map_crc_source": "exact paired converted MAP geometry CRC; absent from CM.X",
+    "plane_conversion": "Xbox packed idPlane stores internal d; PC CM text stores idPlane::Dist(), so export negates d",
+    "sections": [
+      "model header/name/bounds/contents/convex",
+      "vertices",
+      "16-byte edges",
+      "shared planes",
+      "brush records and packed plane-index memory",
+      "polygon records and packed signed edge-index memory",
+      "preorder BSP nodes with polygon and brush references"
+    ],
+    "pc_reconstruction": [
+      "edge normals",
+      "node primitive-reference packing"
+    ]
+  },
+  "corpus_audit": {
+    "report_sha256": "838535f1924ffa89f15bfbfb8397b705fe1178cc74ac01e88a46e6bbc974762f",
+    "manifest_sha256": "a4e1fd30551a26de22310c7c13085b527d9cd5e7fdbdeb35ef11a1791c3779ca",
+    "files": 1200,
+    "unique_payloads": 391,
+    "input_bytes": 66076100,
+    "models": 4813,
+    "vertices": 428453,
+    "edges": 792130,
+    "internal_edges": 263631,
+    "planes": 294185,
+    "brushes": 50693,
+    "brush_plane_indices": 306221,
+    "polygons": 356793,
+    "polygon_edge_indices": 1329317,
+    "nodes": 381933,
+    "node_brush_references": 195540,
+    "node_polygon_references": 844471,
+    "unreferenced_brushes": 0,
+    "unreferenced_polygons": 0,
+    "within_node_duplicate_references": 0,
+    "structural_failures": 0,
+    "empty_brush_materials": 258,
+    "empty_polygon_materials": 0
+  },
+  "co_op_export_audit": {
+    "report_sha256": "af213e9f7825973f5e02920c00d65a2df2bc97a876dcdf7d088295546340609",
+    "manifest_sha256": "3a27835c398b2d5c9bd280a29c397efe47868ea965ae4d9f9900fa2755cf0603",
+    "maps": 20,
+    "map_bytes": 60475954,
+    "cm_x_bytes": 43791272,
+    "deterministic_pc_cm_bytes": 71372306,
+    "map_entities": 15703,
+    "models": 3633,
+    "vertices": 329260,
+    "edges": 562201,
+    "internal_edges": 185113,
+    "planes": 172110,
+    "brushes": 50435,
+    "polygons": 224733,
+    "nodes": 182879,
+    "retained_licensed_outputs": 0
+  },
+  "first_map": {
+    "name": "vv/xbox_coop/xc_mars_city1_1",
+    "map_geometry_crc": 2410032894,
+    "cm_x_bytes": 2003187,
+    "cm_x_sha256": "bbfe12d231e229279757fe6b48fe13490cd0cc4dc6f7db44bd30f82c19b034a5",
+    "pc_cm_bytes": 3320995,
+    "pc_cm_sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931",
+    "decode_report_sha256": "031eb62d5aee1cb9bfe1edc8cf9666954eb47382590d5f49017a28c65504e4e3",
+    "models": 243,
+    "vertices": 15146,
+    "edges": 25468,
+    "internal_edges": 8327,
+    "planes": 8435,
+    "brushes": 2784,
+    "polygons": 10005,
+    "nodes": 7167,
+    "xbox_node_polygon_references": 22341,
+    "node_brush_references": 9237
+  },
+  "first_map_model_set_audit": {
+    "report_sha256": "45cf2b16e579e439ec5172ea533998780818b97be39fa1d2b038a8015078bf13",
+    "authored_models": 243,
+    "pc_dmap_models": 277,
+    "shared_models": 243,
+    "authored_only_models": 0,
+    "pc_only_models": 34,
+    "pc_only_with_noclipmodel_1": 34,
+    "unexplained_models": 0
+  },
+  "native_result": {
+    "source": "direct Xbox-authored collision temporarily substituted for the PC-generated CM",
+    "process_exit_code": 0,
+    "collision_load_ms": 29,
+    "loaded_models": 243,
+    "loaded_vertices": 15146,
+    "loaded_edges": 25468,
+    "loaded_polygons": 10005,
+    "loaded_brushes": 2784,
+    "loaded_nodes": 7167,
+    "reconstructed_node_polygon_references": 21999,
+    "reconstructed_node_brush_references": 9237,
+    "spawned_entities": 940,
+    "inhibited_entities": 0,
+    "local_player_join_observed": true,
+    "could_not_spawn_warnings": 0,
+    "ai_path_warnings": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "qconsole_bytes": 16937,
+    "qconsole_sha256": "c56451c2e4bff8cbfc6185504baa9a98a08d71c8a16ea4bdeafe2eed09dd6d08",
+    "restored_pc_generated_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a"
+  },
+  "established": [
+    "the recovery suite has 138 passing Python tests and the complete Win32 game DLL builds",
+    "all 1,200 extracted CM.X members parse with complete byte consumption and zero structural-reference failures",
+    "all 20 top-level co-op CM.X products export deterministically in memory using CRCs computed from their paired converted MAPs",
+    "the first map's 243 Xbox-authored collision models are all present in the independently generated PC CM",
+    "all 34 PC-generated-only model names are MAP entities intentionally marked noclipmodel 1",
+    "the first direct authored CM passes the native PC collision loader, starts the true COOP map, spawns 940 entities, joins the local player and exits cleanly",
+    "the PC-generated collision file was restored byte-for-byte after the bounded native test"
+  ],
+  "not_established": [
+    "matched authored-CM versus PC-dmap native collision trace equivalence",
+    "native loading and runtime collision acceptance for the remaining 19 co-op top-level CMs",
+    "a second distinct peer or two-peer synchronization",
+    "full first-segment encounter, checkpoint, death/respawn or transition behavior",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or gameplay fidelity acceptance"
+  ]
+}
