@@ -122,6 +122,16 @@ names, predicts 893 spawned / one inhibited on medium, and preserves the
 transition to `vv/xbox_coop/xc_site3_1`. No executable or `dmap` was run.
 Receipt: [`evidence/checkpoint-028-offline.json`](evidence/checkpoint-028-offline.json).
 
+## Checkpoint 029: Site 3 part 1 offline preflight
+
+`xc_site3_1` now has source-bound MAP, PROC, AAS48/AAS96, direct CM, all 345
+selected models and a dependency-closed 288-file overlay. Thirteen of 65 direct
+MAP samples were recovered through the segment XACT routing; nothing remains
+unresolved. Medium predicts 839/0. The MAP retains both a co-op Caverns 1 and a
+solo Caverns 1 end-level value, so the activated route remains an explicit
+gameplay-test item. No executable or `dmap` was run. Receipt:
+[`evidence/checkpoint-029-offline.json`](evidence/checkpoint-029-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored

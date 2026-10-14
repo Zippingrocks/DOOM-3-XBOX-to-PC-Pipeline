@@ -1,0 +1,24 @@
+{
+  "checkpoint": "029-offline",
+  "date": "2026-10-14",
+  "status": "offline preflight complete; no Doom 3 launch performed",
+  "scope": "sixteenth co-op segment structural recovery, dependency closure and direct-sound recovery",
+  "source_identity": {"iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e", "gfc_bytes": 174052, "gfc_sha256": "d288dfb5b4b04f55cb5b5b86bcca33b84ba8fa3cf9365c87b930d988f77fd9bb", "gob_bytes": 9211904, "gob_sha256": "9a8e4a53dbb705a6af2de7360a083d31dbe896188b47c4a8b290375aee97167a"},
+  "map": {
+    "name": "vv/xbox_coop/xc_site3_1",
+    "raw_map_x": {"bytes": 2709081, "sha256": "23d2ceffbc784be4cfef1d83c41808e492e158883d57a4fc0b1ae4c00e2afa0b"},
+    "decoded_map": {"bytes": 4006904, "sha256": "7957749b59ae1148ffd7b85c603cb0d634d23af71f3010427112981aed8a8471", "geometry_crc": 2465825243, "entities": 839, "brushes": 3628, "brush_sides": 21844, "patches": 1723, "patch_points": 31685},
+    "decoded_proc": {"bytes": 5186758, "sha256": "354dae29d332bbbd0122fb8c1410125588f2ab9a70d083960db7998ae57ca8da", "nodes": 6987, "surfaces": 1684, "surface_vertices": 61520, "surface_indices": 150189},
+    "aas48": {"bytes": 1601221, "sha256": "8780818474f02829dcc806ce6af1925c45a4e25fe1f64255579c57e569c5efcb", "areas": 1644, "reachabilities": 8850, "nodes": 5100, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"bytes": 391348, "sha256": "77bd276b549ff80fb5f2648e30b039939d27d44837c48918165ee57fec18722c", "areas": 490, "reachabilities": 1102, "nodes": 1581, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "navigation_corpus_sha256": "e1095b628337af68c6e1fda1dafe83fab985135c6ab34eca4cf487e10fb83c5d",
+    "next_map_values": ["vv/xbox_coop/xc_caverns1_1", "vv/caverns1_1"]
+  },
+  "collision": {"raw_cm_x": {"bytes": 2579883, "sha256": "7dc65f4c1ba3eacdcddc7fbf7b0e3531151f78190de60fd2bd6ff426619258a7"}, "authored_export": {"bytes": 4159870, "sha256": "b39d942e1dcc955c9a4f0bf0cf95a4b2020db86ee167365ccfe989a372ebc7b0", "models": 209, "vertices": 19101, "edges": 32080, "polygons": 12556, "brushes": 3520, "nodes": 12145}, "pc_dmap_audit": "pending by explicit no-launch rule"},
+  "runtime_assets": {"decoded_files": 345, "decoded_bytes": 15601978, "runtime_dependency_files": 72, "resource_profile": {"bytes": 610, "sha256": "317134a9a9bd8ce4e884e586d68a1ab6fd980837837d3a443fea8327377b42c4", "entries": 13}},
+  "direct_sound": {"unique_map_wav_paths": 65, "covered_by_stock_pc_wav_or_ogg": 52, "indexlist": {"bytes": 14150, "sha256": "b1add0ab28caf966fbaf8734fe6a39798d1653de12453e7495a2864cdeee6aee"}, "xsb": {"bytes": 31316, "sha256": "3af0d29d5fcf8ac6a5b7c345524302841922e875f5ddc6b03224063ad44172f0"}, "recovered_wavs": 13, "recovered_wav_bytes": 7042542, "xact_manifest_sha256": "6f438eccdaad290421424d5d172449fdcc2c51309f56ac63fe92e3bfa94a02e2", "unresolved_after_overlay": 0},
+  "offline_overlay": {"directory": "xbox_coop_port_test_site3_1_offline_v2", "files": 288, "copied_runtime_resources": 249, "generated_runtime_resources": 1, "compatibility_transform_records": 9, "payload_bytes": 33138364, "manifest": {"bytes": 152641, "sha256": "425362631e431c73cb6b613a4653217d24ddbd21241eb27974ce11dd19d33ac0"}, "unresolved_classnames": 0, "unresolved_resources": 0, "unresolved_string_ids": 0},
+  "default_medium_spawn_expectation": {"spawned": 839, "inhibited": 0, "basis": "no difficulty inhibition epairs in the decoded MAP"},
+  "tests": {"count": 162, "failures": 0},
+  "not_established": ["which of the two retained end-level targets is activated in full progression", "independent PC dmap collision-model audit", "native map loading or entity spawn count", "dynamic combat and whole-map progression", "two-peer behavior", "original-Xbox runtime equivalence"]
+}

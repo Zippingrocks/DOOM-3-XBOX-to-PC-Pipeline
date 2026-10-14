@@ -22,6 +22,20 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 029 Site 3 part 1 offline preflight
+
+Require MAP SHA `7957749b59ae1148ffd7b85c603cb0d634d23af71f3010427112981aed8a8471`
+at CRC `2465825243`, PROC SHA
+`354dae29d332bbbd0122fb8c1410125588f2ab9a70d083960db7998ae57ca8da`,
+AAS48/AAS96 hashes `8780818474f02829dcc806ce6af1925c45a4e25fe1f64255579c57e569c5efcb`
+and `77bd276b549ff80fb5f2648e30b039939d27d44837c48918165ee57fec18722c`,
+and authored CM SHA
+`b39d942e1dcc955c9a4f0bf0cf95a4b2020db86ee167365ccfe989a372ebc7b0`.
+Decode all 345 models and recover 13 of 65 direct samples. The final manifest
+hash is `425362631e431c73cb6b613a4653217d24ddbd21241eb27974ce11dd19d33ac0`.
+Preserve both end-level values for runtime route auditing; do not guess which
+one fires from static proximity alone.
+
 ### Checkpoint 028 Delta 5 part 1 offline preflight
 
 Require MAP SHA-256
