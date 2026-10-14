@@ -1,3 +1,52 @@
+# Reproduce checkpoint 048
+
+## Checkpoint 048: entityDef-driven solo AAS closure
+
+Extract the five special navigation files from the authenticated shared
+`assets.gfc`/`assets.gob` pair. Match these exact members:
+
+```text
+base/xbox_gen/maps/vv/cpu_2.aas_sabaoth.x
+base/xbox_gen/maps/vv/hell1_2.aas_mancubus.x
+base/xbox_gen/maps/vv/hell1_3.aas_guardian.x
+base/xbox_gen/maps/vv/hellhole_1.aas_cyberdemon.x
+base/xbox_gen/maps/vv/recycling2_2.aas_mancubus.x
+```
+
+Decode each with `decode_aas_x.py` into its segment's decoded `maps/vv`
+directory, preserving the class suffix. Rebuild all 41 overlays as strict v10.
+Compare strict v9 and v10 after excluding manifests: require zero changed,
+zero removed, and exactly the five files above as additions.
+
+Audit packaged requirements and every AAS class:
+
+```powershell
+python tools/campaign_port/solo_aas_requirement_audit.py `
+  work/solo-overlays-strict-v10 `
+  --require-maps 41 `
+  --stock-def-root work/shared-assets-extracted/base/def `
+  --output work/solo-overlays-strict-v10-aas-requirements.json
+
+python tools/campaign_port/aas_corpus_audit.py `
+  work/solo-overlays-strict-v10 `
+  --glob "**/*.aas*" `
+  --require-count 60 `
+  --report work/solo-overlays-strict-v10-aas-audit.json
+```
+
+Require 1,479 AI requirements: 1,471 `packaged`, eight `explicit-no-aas`, and
+zero missing. Require 60 AAS files: 41 AAS48, 14 AAS96, two AAS Mancubus, and
+one each for Guardian, Sabaoth and Cyberdemon. Totals must be 45,328,253 bytes,
+47,352 areas, 230,620 reachabilities, 163,804 nodes and 51,727 inverse plane
+pairs, with zero uncovered nonzero node or area.
+
+Run the structural, semantic, audio, entity-link, script-entity,
+language-aware script-reachability, frame-command and GUI-command audits on
+strict v10. Require zero unresolved records and the established attention
+counts. Run `python -m unittest discover -s tools/campaign_port/tests -q` from
+the campaign-port-dev root; 218 tests must pass. Do not launch Doom 3 or
+`dmap` for this checkpoint.
+
 # Reproduce checkpoint 047
 
 ## Checkpoint 047: complete solo AAS corpus

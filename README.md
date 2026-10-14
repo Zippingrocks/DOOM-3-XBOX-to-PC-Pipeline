@@ -14,7 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 047
+## Current checkpoint: 048
+
+**Every solo AI navigation class required by the final entityDefs is now
+present and structurally valid.** An inheritance-aware audit covers 1,479
+direct MAP AI instances plus literal script and entityDef references. It finds
+1,471 requirements backed by the exact packaged AAS class, eight deliberate
+empty `use_aas` values, and zero missing requirements.
+
+This exposed five authored files omitted by the former AAS48/AAS96-only core
+selection. The files were recovered from the source-bound shared Xbox archive,
+decoded with the established plane-distance correction, and added to strict
+v10: Sabaoth in CPU 2, Mancubus in Hell 1 part 2 and Recycling 2 part 2,
+Guardian in Hell 1 part 3, and Cyberdemon in Hellhole 1. The final corpus has
+60 structurally valid files, 47,352 areas and 230,620 reachabilities. All other
+payloads are byte-identical to strict v9, all offline gates remain closed, and
+218 tests pass. Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-048-solo-aas-requirements.json`](evidence/checkpoint-048-solo-aas-requirements.json).
+
+## Earlier checkpoint: 047
 
 **The complete solo navigation corpus now passes the standard-PC structural
 and coverage audit.** Strict v9 contains every shipped navigation class: 41

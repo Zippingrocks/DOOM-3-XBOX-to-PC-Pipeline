@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 048 entityDef-driven AAS findings
+
+File-family enumeration is insufficient for navigation closure. The effective
+`use_aas` spawnarg must be resolved through entityDef inheritance for every
+actual AI root, including direct MAP classnames, entityDef-valued MAP
+spawnargs and literal script spawns. An empty override is a distinct deliberate
+state; a nonempty value requires `maps/vv/<map>.<use_aas>`.
+
+That cross-check found 17 direct instances across five maps requesting four
+special classes absent from strict v9. The absence was a pipeline-selection
+defect, not missing retail content: the shared Xbox archive contains exact
+`aas_sabaoth.x`, `aas_mancubus.x`, `aas_guardian.x` and
+`aas_cyberdemon.x` members. Special AAS data is therefore shared-map content,
+whereas the ordinary AAS48/AAS96 members live in each map archive.
+
+The five corrected exports add 1,495 areas, 3,631 reachabilities and 5,802
+nodes. Each has complete nonzero BSP-node and area coverage. Renaming AAS48 is
+invalid because the settings and actor bounds differ; copying stock PC files
+is also invalid because their map CRCs and unsplit geometry differ. Strict v10
+uses only the authored Xbox payloads with their own class suffix and converted
+plane representation.
+
 ## Checkpoint 047 solo AAS corpus findings
 
 The strict solo overlays carry 55 decoded navigation files: one AAS48 for each

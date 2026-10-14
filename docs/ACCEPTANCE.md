@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 048 solo AAS requirement status
+
+The solo navigation packaging gate is now closed against effective entityDef
+requirements. All 1,471 nonempty AI requirements have a matching authored AAS
+file; eight explicit empty values remain intentional. All 60 packaged AAS files
+pass structure, inverse-plane and complete nonzero BSP/area coverage checks.
+The strict-v10 overlay corpus has 1,792 payloads, zero unresolved dependency or
+semantic record, and all 218 offline tests pass.
+
+This supersedes checkpoint 047's file-presence count, which was structurally
+correct for the 55 files it selected but incomplete relative to the AI
+definitions. It still does not accept encounter routing: native loads must
+confirm the actor bounds match each AAS settings block and exercise the five
+large-actor encounters through doors, obstacles and combat movement.
+
 ## Checkpoint 047 solo AAS corpus status
 
 All 55 packaged solo AAS files pass standard-text, plane-pair and complete

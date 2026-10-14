@@ -1,0 +1,70 @@
+{
+  "checkpoint": "048",
+  "date": "2026-10-14",
+  "claim": "Every effective solo AI use_aas requirement is backed by its exact authored Xbox navigation class in strict v10.",
+  "inputs": {
+    "checkpoint_047": "evidence/checkpoint-047-solo-aas-corpus.json",
+    "shared_aas_extraction_manifest_sha256": "bbe2262da179229f370010f4d9c4c237c75f92fe493fab1fd84e6cc6cf8a4654"
+  },
+  "recovered_special_aas": [
+    {"map": "cpu_2", "class": "aas_sabaoth", "input_bytes": 24657, "input_sha256": "08348330ddb0bbb5d6560eb7b8806cb6bbfc7f7e5dca8d30bd2406f5f21a94b7", "output_bytes": 39672, "output_sha256": "75c7183dec7e83cf262e5f4c0e5d5a7f774bacd39d763603f9805928ed56900c", "areas": 40, "nodes": 251},
+    {"map": "hell1_2", "class": "aas_mancubus", "input_bytes": 398185, "input_sha256": "4fc3a3134a1f4d9149a4a0e395fef923a3692350d588dce9f509b3cc190506bf", "output_bytes": 711229, "output_sha256": "f8de3d1f0fd41b0baf0611f110161a25e438f253af89a34f4bdd6de5f2b9fbea", "areas": 936, "nodes": 2746},
+    {"map": "hell1_3", "class": "aas_guardian", "input_bytes": 49767, "input_sha256": "614b8506531a8b7aec4178112b4dab5cae14ebc6406a50ebb67f7514290d5151", "output_bytes": 80258, "output_sha256": "b6b816163ea22a86c4646558c3e4cf557a10a6409a1720bf0b9786604bc561d5", "areas": 97, "nodes": 408},
+    {"map": "hellhole_1", "class": "aas_cyberdemon", "input_bytes": 180592, "input_sha256": "fc9adef0f7b828b017d5700934c58768b1e0a5a2620ab12473e7d1c59fc7df2b", "output_bytes": 296687, "output_sha256": "e98ed908fd6572d15809b7f914fd4ef2d11bd5a56af3da797837d8ebbce2a1b9", "areas": 314, "nodes": 1933},
+    {"map": "recycling2_2", "class": "aas_mancubus", "input_bytes": 55894, "input_sha256": "7dd65f8757a4cc30333b339a56248c6155bf7fc34ed6683762989ee04e9da9cd", "output_bytes": 90641, "output_sha256": "a7d71f9173d418131f4ce64d1815e4e59eca3d0cf6510853f6e3c0a11b4a6e1b", "areas": 108, "nodes": 464}
+  ],
+  "requirement_audit": {
+    "maps": 41,
+    "ai_requirements": 1479,
+    "packaged": 1471,
+    "explicit_no_aas": 8,
+    "missing": 0,
+    "local_report_sha256": "f0c381ebca877ece76fef297d70b9fd8035f57008c5ebbe52ace584221fb3386"
+  },
+  "aas_corpus": {
+    "files": 60,
+    "extension_counts": {".aas48": 41, ".aas96": 14, ".aas_cyberdemon": 1, ".aas_guardian": 1, ".aas_mancubus": 2, ".aas_sabaoth": 1},
+    "bytes": 45328253,
+    "areas": 47352,
+    "reachabilities": 230620,
+    "nodes": 163804,
+    "plane_inverse_pairs": 51727,
+    "corpus_sha256": "b1b788049814c99802b2da4320b4ff61eeeac810c3aff5977542d9d4e2d187ca",
+    "local_report_sha256": "36c0bf36547f011017bc889177eb1752850bc0b681992b955b06b86ebf0a8043"
+  },
+  "strict_v10": {
+    "maps": 41,
+    "payload_files": 1792,
+    "payload_bytes": 782089007,
+    "manifest_ledger_sha256": "b26868710750908272f7ed0fa30a44a690d091992db8f43ead92f55447331c92",
+    "payload_ledger_sha256": "8ebfb746fa7fc86e0665b22b3feeb587f81a57f0673568641f18e88f70399d71",
+    "v9_nonmanifest_changed": 0,
+    "v9_nonmanifest_removed": 0,
+    "v9_nonmanifest_added": 5,
+    "unresolved_dependencies": 0,
+    "unresolved_semantic_audits": 0
+  },
+  "audit_report_sha256": {
+    "corpus": "9135686dc2792ec6933e42a8aa41f53763d83be0cf1da60ac7d9d7169f5a92eb",
+    "semantic": "e9911573685948ec49fd1f63bb5815080cbccd84483d4d1dcd5831c1ef49fb56",
+    "audio": "f82ef9e0ebee2b964e08a34326b144d98d64ebc60bad445f62a845c128b9a82e",
+    "entity_links": "85b0745ad74118a05a89cf741940707a97afd23bbf9b7b83936cf97b4a6d6eb1",
+    "script_entities": "a6fa47bff23ab506ef1517d3ba3415c54a1d4a847a2a6103f300c55f8235e551",
+    "script_reachability": "8fdc85a78908299523b262e776f7ff11f0fb13e4cdf1b3737589fbc3d05ec14d",
+    "frame_commands": "c35316b0b3a9862be26890d8f59f21713d3d083ab93f1b91298f705194aedc81",
+    "gui_commands": "f7b6e2cd26bea21129268440a04129c3f1d2872989b22b5d602fd819e65a755a"
+  },
+  "implementation_receipts": {
+    "decode_aas_x_py_sha256": "99aaebe7327084c4fa79ab3bf7ac32017afb6cba0b0c755f08f1ecdfbe56b4e1",
+    "aas_corpus_audit_py_sha256": "fcf50bc004e681919595a25e9cdbe0f11db79b04c9a20e915913da48ce3b69bc",
+    "solo_aas_requirement_audit_py_sha256": "841f8ebb71def1be8a18a28a4374128948ce35d739d113ed9cc6321aeadbd1d5",
+    "build_runtime_overlay_py_sha256": "39e156d6ec2d9d6337f999d3e135ead8be4b0f410169520aadf1d236c8d69c8e"
+  },
+  "tests": {"command": "python -m unittest discover -s tools/campaign_port/tests -q", "passed": 218, "failed": 0},
+  "runtime_boundary": {"doom3_or_dmap_launched": false, "installed_gamex86_dll_bytes": 2723328, "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"},
+  "limits": [
+    "No native actor route, load, spawn, encounter or playthrough result is claimed.",
+    "Static class closure does not model dynamic obstacles, door state, travel flags or routing caches.",
+    "Final solo and co-op fidelity still requires native progression and matched original-Xbox evidence."
+  ]
+}
