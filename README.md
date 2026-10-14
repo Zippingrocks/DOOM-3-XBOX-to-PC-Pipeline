@@ -14,7 +14,45 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 008
+## Current checkpoint: 009
+
+**The first co-op segment now loads the original Xbox-authored collision model
+on PC, and the complete extracted CM.X corpus is structurally decoded.**
+
+Private implementation head `30cb3308b6a8bcfbd1a451eb926833584e993b69`
+adds a strict CM.X decoder, deterministic corpus auditor, regression fixtures
+and handoff documentation. The Python suite now has 130 passing tests. The
+decoder expands model headers, vertices, edges, shared planes, brushes,
+polygons and preorder BSP nodes to standard PC CM 1.00 text; it converts
+internal Xbox plane `d` to PC `idPlane::Dist() == -d`.
+
+All 1,200 extracted CM.X members parse with complete byte consumption,
+representing 391 unique payloads. The audit covers 4,813 models, 428,453
+vertices, 792,130 edges, 294,185 planes, 50,693 brushes, 356,793 polygons and
+381,933 nodes. Every polygon and brush is referenced by the Xbox BSP and no
+node contains a duplicate primitive reference. The corpus receipt SHA-256 is
+`838535f1924ffa89f15bfbfb8397b705fe1178cc74ac01e88a46e6bbc974762f`.
+
+The first map's 2,003,187-byte CM.X expands to a 3,320,995-byte PC CM with
+SHA-256
+`35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`.
+A bounded native run loads it directly in 29 ms as 243 models, 15,146 vertices,
+25,468 edges, 10,005 polygons, 2,784 brushes and 7,167 BSP nodes. The map then
+spawns all 940 entities, joins the local player and exits 0. The native log
+SHA-256 is
+`c56451c2e4bff8cbfc6185504baa9a98a08d71c8a16ea4bdeafe2eed09dd6d08`.
+The prior PC-generated collision file was restored and verified byte-for-byte
+after the test.
+
+This is direct authored-collision loader acceptance, not collision fidelity
+acceptance. The PC loader reconstructs all 9,237 Xbox brush-node references but
+21,999 polygon-node references versus 22,341 stored by Xbox. Matched trace
+sampling, native loading for the remaining maps, two-peer progression, all-map
+runtime closure and Xbox visual/gameplay comparison remain open.
+
+See [checkpoint 009](evidence/checkpoint-009.json).
+
+## Previous checkpoint: 008
 
 **The first co-op segment now has working recovered Xbox navigation on PC, with
 the former five NPC route failures eliminated at the format boundary.**
@@ -268,7 +306,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-008.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-009.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
