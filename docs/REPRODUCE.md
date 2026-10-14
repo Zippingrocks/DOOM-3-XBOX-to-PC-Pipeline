@@ -1,21 +1,18 @@
-# Reproduce checkpoint 010
+# Reproduce checkpoint 011
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint 010 is implemented on private branch
-`campaign-port-xdvdfs-mapx`; its exact implementation head and build artifact
-are retained in that repository's pull request. Use an authenticated clone. Preserve existing work; use an isolated worktree if the
-checkout is dirty.
+Use the open campaign-port pull request through an authenticated clone. Preserve
+existing work; use an isolated worktree if the checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 010 ran on
-Python 3.11/Windows:
+Python 3.10+ and the standard library are sufficient. Checkpoint 011 ran on Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 141 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 142 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -174,51 +171,71 @@ conversion failure. Do not distribute extracted or converted map products.
 
 Build the map-port game DLL containing the hidden
 `xboxCoopCollisionDigest` command. Preserve the installed DLL and generated CM
-by exact hash. Start the true-`COOP` map with the generated CM, then issue:
+by exact hash. The command syntax is:
 
 ```text
-xboxCoopCollisionDigest 4096 0 1
+xboxCoopCollisionDigest [count] [seed] [verbose] [model] [mask] [minx miny minz maxx maxy maxz]
 ```
 
-Save `qconsole.log`, replace only the CM with the direct CM.X export carrying
-the same MAP CRC, and repeat the identical command. Restore both original files
-afterward and verify their pre-test hashes.
+`model` defaults to `worldMap`; `mask` defaults to `0x9`
+(`SOLID|PLAYERCLIP`); the box defaults to
+`(-16,-16,0)-(16,16,64)`. Supply either all six hull floats or none. Invalid
+masks, inverted/partial hulls and unresolved model names must print `SKIP`
+rather than run. Verbose mode emits 8,192 lossless rows for count 4096.
 
-Verbose mode emits 8,192 `XBOX_COOP_CM_TRACE` rows per run using raw IEEE-754
-bits. Compare them without publishing either licensed log:
+Start the true-`COOP` first map with the generated CM and run each profile,
+saving a separate `qconsole.log`:
+
+```text
+xboxCoopCollisionDigest 4096 23 1 worldMap 0x111 -16 -16 0 16 16 64
+xboxCoopCollisionDigest 4096 23 1 worldMap 0x801 -3 -3 -6 3 3 6
+xboxCoopCollisionDigest 4096 23 1 doorClip_1 0x9
+xboxCoopCollisionDigest 4096 23 1 trigger_coop_enablegui_2 0x1000
+xboxCoopCollisionDigest 4096 23 1 func_static_52977 0x1
+```
+
+Replace only the CM with the direct CM.X export carrying the same MAP CRC and
+repeat the identical commands. Restore both original files afterward and verify
+their pre-test hashes. Compare each generated/authored pair without publishing
+the licensed logs:
 
 ```powershell
 python tools/campaign_port/compare_cm_trace_logs.py `
-  game/campaign_port_work/traces/pc-dmap-qconsole.log `
-  game/campaign_port_work/traces/authored-cm-qconsole.log `
+  game/campaign_port_work/traces/generated-profile.log `
+  game/campaign_port_work/traces/authored-profile.log `
   --allow-differences `
-  --report game/campaign_port_work/traces/cm-trace-comparison.json
+  --report game/campaign_port_work/traces/profile-comparison.json
 ```
 
-Omit `--allow-differences` when using the tool as a strict equivalence gate.
-For the recorded first-map pair, require 8,192 rows on each side, identical
-world bounds and input digest `8386c90c`, zero missing/input/skip/hit
-mismatches, 4,073 paired point traces and 3,929 paired player-box traces.
-The expected non-equivalence result is 265 player-box geometry mismatches, zero
-point geometry mismatches, 501 material/contents mismatches and 650 total
-records outside the gameplay tolerances. The comparison report SHA-256 is
-`8a2d6b9028717a189097555e759772686760cc52456a817550f189e46749d577`.
+Omit `--allow-differences` for a strict equivalence gate. The comparator must
+reject missing summaries, different summary input digests, different coordinate
+bits or missing records. The input digest binds resolved model name, mask, hull,
+model bounds, count, seed and raw coordinates. It separates stopping trajectory
+(fraction/end position), contact geometry (point/normal/plane distance),
+material/contents and stable topology.
+
+For checkpoint 011, require 8,192 rows per run, 40,960 paired rows total, zero
+summary/coordinate input mismatch, zero missing records and zero hit mismatch.
+Expected non-equivalence totals are 121 trajectory, 2,741 contact-geometry, 875
+metadata and 3,507 gameplay mismatches. Every point geometry agrees; all 2,742
+geometry mismatches are swept-box records. Per-profile comparison report hashes
+are recorded in `evidence/checkpoint-011.json`.
 
 The command masks raw point-contents results before suppressing a trace because
 the engine's point fast path ignores the requested contents mask. It also
 normalizes `CONTACT_TRMVERTEX`'s pointer-cast polygon feature to zero so ASLR
-cannot appear as topology. Do not weaken tolerances or discard material/content
-differences to manufacture equivalence.
+cannot appear as topology. Do not weaken tolerances, discard contact points or
+ignore material/content differences to manufacture equivalence.
 
 ## Claim limits
 
 Corpus-wide decoding proves format coverage for this exact retail image, not
 completion percentage. Native `dmap` is independent geometry validation, but
 its CM and shadow products are not original-Xbox equivalence. One successful
-map load proves parser/runtime entry only. Direct CM.X now passes the first-map
-loader boundary, but matched collision traces, all-map CM loading, dependency
-binding, co-op spawns/respawns, transitions, two-peer progression and comparison
-against Xbox visual/gameplay evidence remain required.
+map load proves parser/runtime entry only. Direct CM.X now passes the first-map loader boundary and a static PC-engine
+trace matrix. Remaining-map and live transformed collision, all-map CM loading,
+dependency binding, co-op spawns/respawns, transitions, two-peer progression and
+comparison against Xbox visual/gameplay evidence remain required.
 
 ## Runtime asset conversion and overlay
 
