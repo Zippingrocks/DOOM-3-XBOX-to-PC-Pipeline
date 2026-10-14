@@ -1,6 +1,40 @@
 # Format findings and unknowns
 
 
+## Checkpoint 011 named-model and gameplay-mask findings
+
+`xboxCoopCollisionDigest` now accepts an explicit loaded collision-model name,
+numeric contents mask and optional six-float trace hull. It resolves the model
+before tracing and rejects a missing name rather than inheriting handle zero.
+The input digest binds model name, mask, hull, model bounds, count, seed and raw
+coordinate bits. This is necessary because coordinate equality alone cannot
+prove that two logs exercised the same gameplay semantics.
+
+Five first-map profiles each produced 8,192 generated/authored record pairs,
+for 40,960 total. Every summary input digest and coordinate stream matches,
+there are no missing records and no hit/no-hit mismatch. Point geometry agrees
+throughout. World `MASK_MONSTERSOLID` with the default actor hull exposes 22
+box-trajectory, 216 box-contact and 251 metadata mismatches. World
+`MASK_SHOT_RENDERMODEL` with the recovered `projectile_rocket` hull exposes
+25 trajectory, 97 contact and 624 metadata mismatches.
+
+The named models sharpen the interpretation. `doorClip_1` with the player mask
+and `trigger_coop_enablegui_2` with trigger contents have identical start
+classification, execution sets, hits, stopping fractions/endpoints, normals,
+contents and materials. Their swept-box contact points/planes still differ in
+1,065 and 767 rows. Thus `dmap` preserved broad blocking for those simple
+brushes but rebuilt a different contact manifold. Polygon-only
+`func_static_52977` differs more materially: 74 stopping trajectories and 596
+contact manifolds differ. All named point traces remain geometrically exact.
+
+Across the matrix, the non-equivalence totals are 121 trajectory, 2,741 contact
+geometry, 875 material/contents and 3,507 gameplay mismatches. These are not an
+Xbox-runtime comparison: both inputs run through the PC collision engine.
+They isolate the payload difference and show why the direct authored CM is the
+only fidelity candidate. Live transforms, mover motion, trigger dispatch,
+projectile orientation and actor-specific axes remain separate runtime gates.
+
+
 ## Checkpoint 010 native collision-trace findings
 
 The first direct CM.X export and the independent PC-`dmap` CM were loaded by
