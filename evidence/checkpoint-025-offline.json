@@ -1,8 +1,8 @@
 {
   "checkpoint": "025-offline",
   "date": "2026-10-14",
-  "status": "in progress; no Doom 3 launch performed",
-  "scope": "twelfth co-op segment structural recovery, dual navigation decode and complete model decode",
+  "status": "offline preflight complete; no Doom 3 launch performed",
+  "scope": "twelfth co-op segment structural recovery, dependency closure, direct-sound recovery and portable overlay",
   "source_identity": {
     "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
     "gfc_bytes": 147856,
@@ -38,15 +38,42 @@
     "decoded_animations": 277,
     "decoded_mdv_animations": 184,
     "decoded_md5anim_x_animations": 93,
-    "decoded_bytes": 12724132
+    "decoded_bytes": 12724132,
+    "runtime_dependency_files": 68,
+    "resource_profile": {"bytes": 296, "sha256": "8ed1de69570c59e2f25e5541d0aa704d7cc15ee000ed50863d146f4c66f5f728", "entries": 1}
   },
+  "direct_sound": {
+    "unique_map_wav_paths": 35,
+    "covered_by_stock_pc_wav_or_ogg": 34,
+    "indexlist": {"bytes": 14150, "sha256": "cc20fd7ca77f96067c580dcf3c4790a5875d30e892318d8e71ae1bf99f545fd1"},
+    "xsb": {"bytes": 21856, "sha256": "7c98b3bffc99562c0bc234d64e9aa7a3da7d821817a1bf97347ce32a892fb990"},
+    "recovered": [{"path": "sound/foley2/pipes/airgen_04.wav", "bytes": 250684, "sha256": "6c7f1d4d300c0163057c53bce45a2c24b3789bb7f4530e4b49d50612265aa3f7", "wave_bank": "global", "wave_index": 1415}],
+    "xact_manifest": {"bytes": 900, "sha256": "1bf9a26292652790579f77a13255349233c12489721930f27a6028fc0e96b8d8"},
+    "unresolved_after_overlay": 0
+  },
+  "offline_overlay": {
+    "directory": "xbox_coop_port_test_delta4_offline_v2",
+    "files": 273,
+    "copied_runtime_resources": 237,
+    "generated_runtime_resources": 1,
+    "compatibility_transform_records": 8,
+    "payload_bytes": 16769512,
+    "manifest": {"bytes": 142124, "sha256": "4fe5dfe545dbf9a9c6e7994880dbba13aef3dacb053eaed2cce0418f83e0afca"},
+    "map_sha256": "3b7357236b29a113c72d86b3126581964683d5ff111ab23495571c7fb8fa2e2a",
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0
+  },
+  "default_medium_spawn_expectation": {"spawned": 394, "inhibited": 0, "basis": "no difficulty inhibition epairs in the decoded MAP"},
   "tests": {"count": 161, "failures": 0},
   "established": [
     "MAP, PROC, corrected AAS48, corrected AAS96 and direct authored CM decode structurally with source-bound hashes",
     "both navigation classes have complete nonzero BSP/area coverage",
     "all 283 selected model files decode",
     "all three MAP callbacks have recovered source definitions",
+    "all 35 direct MAP sample paths are covered by stock PC data or source-bound XACT recovery",
+    "the dependency-closed portable overlay has zero unresolved class, resource or string names",
     "the retail transition points to xc_hell1_1"
   ],
-  "not_established": ["dependency-closed runtime overlay", "independent PC dmap collision-model audit", "native map loading or entity spawn count", "runtime sound closure", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
+  "not_established": ["independent PC dmap collision-model audit", "native map loading or entity spawn count", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
 }

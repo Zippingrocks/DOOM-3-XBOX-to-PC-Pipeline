@@ -22,6 +22,39 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 025 Delta 4 offline preflight
+
+For `xc_delta4`, require the 1,696,138-byte decoded MAP with SHA-256
+`3b7357236b29a113c72d86b3126581964683d5ff111ab23495571c7fb8fa2e2a`,
+the 1,639,005-byte PROC with SHA-256
+`fe8b2fae0e92b3047fe0b3df8c84b026014477f670d4f467206d31ebe103d8bd`,
+and direct authored CM SHA-256
+`09f22305c424730b830fe76fc55a7f960941c77c5b737f010049e8b927621eb5`.
+Select both corrected navigation files: AAS48 SHA-256
+`fd529e4637b7f01c40392ee0cd3953fe6301d606a512f905a209289439415796`
+and AAS96 SHA-256
+`b664b956673dee6119c85551d2eb471dc2245066575aea5b2ff415cd80295eaf`.
+
+Decode all 283 selected model members. Audit the MAP's 35 unique direct WAV
+paths against stock WAV/OGG members. Recover the sole absent path,
+`sound/foley2/pipes/airgen_04.wav`, through the 14,150-byte Delta 4 INDEXLIST
+(SHA-256 `cc20fd7ca77f96067c580dcf3c4790a5875d30e892318d8e71ae1bf99f545fd1`)
+and the 21,856-byte XSB (SHA-256
+`7c98b3bffc99562c0bc234d64e9aa7a3da7d821817a1bf97347ce32a892fb990`).
+The recovered 250,684-byte PCM WAV must hash to
+`6c7f1d4d300c0163057c53bce45a2c24b3789bb7f4530e4b49d50612265aa3f7`.
+
+Build with `xc_delta4.resources`, the decoded model root, the map's 68-file
+runtime dependency root and the shared roots used by checkpoint 024. The final
+overlay has 273 files, 237 copied resources, one generated EFX and eight
+transform records. Its 142,124-byte manifest hashes to
+`4fe5dfe545dbf9a9c6e7994880dbba13aef3dacb053eaed2cce0418f83e0afca`
+and reports zero unresolved names. No difficulty epairs are present, so the
+default-medium expectation is 394 spawned and zero inhibited. Preserve the
+transition to `vv/xbox_coop/xc_hell1_1`. Do not launch Doom 3 or run `dmap`
+until the campaign-wide offline pass is complete and executable testing is
+explicitly cleared.
+
 ### Checkpoint 024 offline preflight
 
 For `xc_delta2b_2`, verify GFC/GOB SHA-256 values
