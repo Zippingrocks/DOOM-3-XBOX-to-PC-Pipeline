@@ -1,5 +1,26 @@
 # Recovery order and acceptance
 
+## Checkpoint 036 solo offline status
+
+All 41 identified Xbox single-player segments pass the structural, model and
+strict overlay packaging gates. Their 1,368 manifest-listed files rehash, every
+map selects direct authored collision, every recovered segmented script has a
+PC global-main bridge, and the unresolved classname/resource/string totals are
+zero. The final exceptional class mappings are exact and receipt-bearing; no
+unknown class is hidden by a global fallback.
+
+This makes the solo corpus ready for the next validation tier, not fidelity
+accepted. Before a visual playthrough, finish the offline campaign-transition,
+callback-definition and direct-audio routing audits, then perform one bounded
+native load per segment without overwriting the user's active Steam session.
+After loader warnings are reconciled, validate starts/exits and save-state
+handoffs, then run the focused visual/gameplay pass. Co-op still additionally
+requires two-peer spawn, death/rejoin and synchronized progression checks.
+
+Do not treat the stock-PC-identical silent Mars City shutter orphan, the inert
+Xbox particle remnants or absence of a loader warning as evidence of rendered
+or behavioral fidelity. Those claims require native and reference observation.
+
 ## Checkpoint 024 offline preflight
 
 `xc_delta2b_2` passes the offline structural and dependency-closure gates. MAP,

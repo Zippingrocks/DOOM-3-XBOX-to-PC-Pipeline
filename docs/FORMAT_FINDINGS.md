@@ -1,5 +1,45 @@
 # Format findings and unknowns
 
+## Checkpoint 036 solo overlay findings
+
+The same deterministic overlay builder used for co-op can package the 41 Xbox
+solo segments without borrowing stock PC map geometry. Each segment supplies
+decoded `maps/vv/<segment>.map`, `.proc`, every shipped `.aas*`, direct authored
+`.cm`, its decoded MDV/MD5 corpus and its recovered portable source files. The
+solo namespace keeps generated materials, declarations and strings separate
+from the co-op runtime namespace.
+
+Xbox split-stage scripts are not directly loadable by the PC map loader. Each
+retail `<segment>_main.script` includes one or more map source files, while the
+actual `main` lives in exactly one namespace. A generated global
+`maps/vv/<segment>.script` includes the same recovered sources and calls that
+namespaced main. This contract succeeds for all 41 segments, including the
+multi-include `alphalabs2_2` case; it does not synthesize gameplay logic.
+
+Five classname families required evidence-scoped handling:
+
+- Admin's `func_spawner_1` is the same unregistered retail orphan already
+  established in co-op and remains a named inert target.
+- Seven `particle` entities have no Xbox entityDef/XBE class, no
+  `particle_model` key in the XBE and no referenced `.particle` members in the
+  map/shared archives. They are exporter remnants, not guessed PC emitters.
+- `alphalabs2_1` and `delta5_1` each contain one brush `func_moveable`. The
+  stock PC Alpha Labs 2 map contains the same-origin brush entity as
+  `moveable_base`, whose declaration selects `idMoveable`; both Xbox entities
+  retain their authored render and collision models under that PC class.
+- The silent `sound_lightsout_shutter` entity is spawnarg-equivalent to the
+  unregistered, unreferenced orphan shipped in stock PC `mars_city2.map`; it
+  remains named and inert rather than inventing a shader.
+- `mars_city1_1` contains one editor label serialized as a classname. Its
+  exact classname/name/origin-only entity remains inert while the adjacent
+  real `info_location` remains unchanged.
+
+The strict corpus audit rehashed all 1,368 payload receipts and all 41
+manifests. No payload was missing or changed, all collision sources are
+`direct-authored-cm`, and unresolved classname/resource/string totals are zero.
+This proves deterministic packaging and declared dependency closure, not
+native loader, timing, audio playback, transition or visual fidelity.
+
 ## Checkpoint 024 offline findings
 
 `xc_delta2b_2` decodes to a 3,974,751-byte MAP with geometry CRC `3474151774`,

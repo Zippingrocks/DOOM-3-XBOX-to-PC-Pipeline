@@ -1,0 +1,48 @@
+{
+  "checkpoint": "036",
+  "date": "2026-10-14",
+  "claim": "All 41 retail Xbox single-player segments have strict dependency-closed PC overlay candidates with direct authored collision.",
+  "inputs": {
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "structural_receipt": "evidence/checkpoint-034-solo-structural.json",
+    "model_receipt": "evidence/checkpoint-035-solo-models.json"
+  },
+  "corpus_audit": {
+    "maps": 41,
+    "files": 1368,
+    "bytes": 609521747,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "b245c39835c7c50a1003f45cec924a6ee244db9a933f45a392e03a43d906bfa7",
+    "file_ledger_sha256": "ac3b51ec34123b92a5cc4997b50189b7f6b107e3613df390b5579a372eeff508",
+    "local_audit_json_sha256": "6735231a5c30b07f3fe639ba1779af2d18ee628e736d3ffd664c862f653cd584"
+  },
+  "exception_transforms": {
+    "admin_orphan_func_spawner_to_inert": 1,
+    "stock_pc_orphan_shutter_to_inert": 1,
+    "xbox_brush_func_moveable_to_pc_moveable_base": 2,
+    "xbox_orphan_particle_to_inert": 7,
+    "editor_label_classname_to_inert": 1,
+    "pc_solo_script_bridges": 41
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 173,
+    "failed": 0
+  },
+  "map_names": [
+    "admin", "alphalabs1_1", "alphalabs1_2", "alphalabs2_1", "alphalabs2_2", "alphalabs3",
+    "caverns1_1", "caverns1_2", "caverns2", "comm1_1", "comm1_2", "commoutside_1", "commoutside_2",
+    "cpu_1", "cpu_2", "delta1_1", "delta1_2", "delta2a_2", "delta2b_2", "delta3_1", "delta3_2",
+    "delta4", "delta5_1", "enpro_1", "enpro_2", "hell1_1", "hell1_2", "hell1_3", "hellhole_1",
+    "hellhole_2", "mars_city1_1", "mars_city2_1", "mars_city2_2", "mcu_1", "mcu_2", "monorail_1",
+    "monorail_2", "recycling1_1", "recycling2_1", "recycling2_2", "site3_1"
+  ],
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "Strict overlay closure does not prove native loading, audio playback, script timing, campaign transitions, visual fidelity or gameplay fidelity.",
+    "Retail-derived overlays and decoded assets remain local and are not committed."
+  ]
+}

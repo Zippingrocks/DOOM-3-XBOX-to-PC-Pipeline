@@ -1,5 +1,44 @@
 # Reproduce checkpoint 023
 
+## Checkpoint 036: strict solo overlay corpus
+
+Begin with the checkpoint-034 decoded structural tree and checkpoint-035 model
+tree. For each of the 41 segment names, call `build_runtime_overlay.py` with:
+
+- `--map` and `--converted-dir` pointing at that segment's decoded
+  `maps/vv` directory;
+- retail roots for its decoded models and recovered portable resources,
+  followed by the shared player, NPC, HUD, material and shared-asset roots;
+- the shared retail DEF directory, stock PC `base`, both recovered English
+  language files, and `--def-preference info.def`;
+- `--authored-cm` pointing at the direct decoded `<segment>.cm`; and
+- a new, empty output directory. Do not use `--allow-unresolved`.
+
+The builder is fail-closed and never overwrites an output. Require every
+`xbox-solo-overlay-manifest.json` to identify
+`doom3-xbox-solo-runtime-overlay`, the expected `maps/vv/<segment>.map`,
+`collision_source: direct-authored-cm`, and three empty unresolved arrays.
+
+Then rehash the complete corpus:
+
+```powershell
+python tools/campaign_port/overlay_corpus_audit.py `
+  game/campaign_port_work/solo-overlays-strict `
+  --expected-root game/campaign_port_work/solo-structural/maps `
+  --out game/campaign_port_work/solo-overlays-strict-audit.json
+```
+
+The 2026-10-14 receipt requires 41 maps, 1,368 payload records and 609,521,747
+payload bytes; 41 direct-authored collision selections; zero unresolved
+classnames, resources and strings; manifest ledger
+`b245c39835c7c50a1003f45cec924a6ee244db9a933f45a392e03a43d906bfa7`;
+and file ledger
+`ac3b51ec34123b92a5cc4997b50189b7f6b107e3613df390b5579a372eeff508`.
+The local audit JSON hashes to
+`6735231a5c30b07f3fe639ba1779af2d18ee628e736d3ffd664c862f653cd584`.
+Run the complete Python suite from the tool repository root; checkpoint 036 is
+173 passing tests. Do not launch Doom 3 as part of this offline recipe.
+
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.

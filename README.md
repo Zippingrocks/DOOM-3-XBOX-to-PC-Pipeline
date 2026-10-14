@@ -14,7 +14,36 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 023
+## Current checkpoint: 036
+
+**All 41 retail Xbox single-player segments now have strict, dependency-closed
+PC overlay candidates.** This follows the complete structural and model-corpus
+passes in checkpoints 034 and 035; it does not substitute stock PC maps.
+
+Every candidate uses its decoded Xbox MAP/PROC/AAS set and direct authored CM.
+The strict corpus audit reopened and rehashed 1,368 manifest-listed payloads
+(609,521,747 bytes). All 41 manifests report zero unresolved classnames,
+resources and string IDs. The manifest ledger is
+`b245c39835c7c50a1003f45cec924a6ee244db9a933f45a392e03a43d906bfa7`;
+the payload ledger is
+`ac3b51ec34123b92a5cc4997b50189b7f6b107e3613df390b5579a372eeff508`.
+
+Exact, receipt-bearing compatibility edits resolve the final Xbox/exporter
+artifacts: one Admin `func_spawner`, seven `particle` remnants, two brush
+`func_moveable` entities, the stock-PC-identical silent Mars City 2 shutter
+orphan and one Mars City 1 editor label. The two brush entities use the stock
+PC `moveable_base`/`idMoveable` declaration; the demonstrably unregistered
+orphan entities remain named but inert. Every split stage also receives a
+global PC map-script main that calls its recovered namespaced source main.
+
+The complete offline tool suite is 173 tests. No Doom 3 executable or `dmap`
+was run. This closes the solo packaging/dependency gate, not gameplay fidelity:
+campaign transitions, dynamic script behavior, direct-audio routing beyond the
+builder's dependency scope, native loading and the visual playthrough remain
+separate gates. Receipt:
+[`evidence/checkpoint-036-solo-overlays.json`](evidence/checkpoint-036-solo-overlays.json).
+
+## Earlier checkpoint: 023
 
 **The tenth co-op segment, `xc_delta2b_1`, now has direct authored collision,
 corrected AAS48, complete archive-local model recovery and a portable PC overlay
