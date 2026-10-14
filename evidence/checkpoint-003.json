@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "checkpoint": "003",
+  "request_date_local": "2026-10-13",
+  "timezone": "America/Denver",
+  "map": "xc_mars_city1_1",
+  "proc_x": {
+    "bytes": 2045462,
+    "sha256": "63f120c6534142b56a8992eb0e069ef6e9acc162dfb7eb937dc464f482ac7d3c",
+    "decoded_output_bytes": 4003850,
+    "decoded_output_sha256": "f47d4b0a884643dec2b51a7311d2a56914fac23858952ad4e5fda835b3464e88",
+    "models": 356,
+    "surfaces": 1912,
+    "surface_vertices": 42128,
+    "surface_indices": 99651,
+    "shadow_models": 149,
+    "shadow_vertices": 22705,
+    "shadow_indices": 130392,
+    "areas": 80,
+    "portals": 80,
+    "nodes": 4872
+  },
+  "pc_dmap": {
+    "completed": true,
+    "map_leaked": false,
+    "proc_bytes": 6074419,
+    "cm_bytes": 4588408,
+    "aas48_bytes": 819352,
+    "models": 356,
+    "surfaces": 1915,
+    "surface_vertices": 42128,
+    "surface_indices": 99651,
+    "shadow_models": 149,
+    "shadow_vertices": 84038,
+    "areas": 80,
+    "portals": 80,
+    "nodes": 4872
+  },
+  "paired_surface_deltas_max": {
+    "position": 0.0004119873046875,
+    "uv": 0.00006103515625,
+    "normal": 0.0009778141975402832
+  },
+  "validation": {
+    "tests_run": 59,
+    "tests_failed": 0,
+    "decoded_proc_structurally_valid": true,
+    "generated_proc_structurally_valid": true,
+    "runtime_map_load_tested": false,
+    "two_peer_campaign_tested": false
+  },
+  "claim_limits": [
+    "Successful dmap compilation is not gameplay or co-op acceptance.",
+    "Three Xbox surfaces are split into six PC surfaces with matching materials and aggregate counts.",
+    "PC-regenerated shadow vertices differ in representation from compact Xbox shadow data.",
+    "Assets, entity definitions, scripts, transitions and network behavior remain open."
+  ]
+}
+
