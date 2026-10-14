@@ -14,7 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 056
+## Current checkpoint: 057
+
+**All script-named sound shaders in the 41-map solo overlay corpus now resolve
+against a shipped declaration.** A new active-source audit found four
+map/event records, representing six calls and only two shader names:
+`mset3_movement` and `mset3_stop` in the MCU split scripts. The authenticated
+Xbox `global.xsndshd` ships only the first two machinery sets, and the stock-PC
+MC Underground script assigns its identical third howitzer to `mset2`.
+
+The builder now makes that exact, fail-closed `mset3` to `mset2` correction in
+`map_mcu_1.script` and `map_mcu_2.script`, with input/output hashes and counts
+in each manifest. No audio asset or declaration was invented. The rebuilt
+strict-v11 audit view contains 1,792 payloads, closes 746 active script sound
+references, all 409 callbacks, 14,700 entity links, 2,739 direct WAV pairs,
+1,479 AI requirements and all 60 AAS files with zero unresolved port record.
+All 241 offline tests pass. Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-057-solo-script-sound-closure.json`](evidence/checkpoint-057-solo-script-sound-closure.json).
+
+## Earlier checkpoint: 056
 
 **All 60 functional co-op MAP callback records are now accounted for across
 the two Xbox script-loading paths.** A co-op `script.bin` is the compiled image

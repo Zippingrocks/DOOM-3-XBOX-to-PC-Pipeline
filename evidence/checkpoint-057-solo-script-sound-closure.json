@@ -1,0 +1,91 @@
+{
+  "checkpoint": "057",
+  "date": "2026-10-14",
+  "claim": "All active literal sound-shader references in the 41 original-Xbox solo map overlays resolve after an exact source-proven MCU machinery-set correction; the complete strict-v11 offline gate remains closed.",
+  "inputs": {
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "xbox_global_xsndshd_sha256": "994c5f859a41558f2c8c28371c73770d6cf56301020ab09f8431b006b828f7ba",
+    "stock_pc_map_mc_underground_script_sha256": "041e79c59ab1a1c6ab9126a902d2a11c2061daefdf025c1c2451ef4b167a6d62",
+    "strict_v10_script_sound_report_sha256": "9601e1f931d7fd4b3ba6da5a2eff98b52272dc26efc76f7a454dafda37b690b9"
+  },
+  "strict_v10_finding": {
+    "maps": 41,
+    "script_files": 126,
+    "active_sound_references": 746,
+    "unique_map_event_shader_pairs": 362,
+    "missing_records": 4,
+    "missing_shader_names": ["mset3_movement", "mset3_stop"],
+    "literal_replacements_required": 6,
+    "evidence": [
+      "Authenticated Xbox global.xsndshd declares mset1 and mset2 movement/stop shaders but no mset3 shader.",
+      "Stock-PC map_mc_underground.script assigns howitzer_3 movement and stop to mset2 and caches only sets one and two."
+    ]
+  },
+  "transforms": {
+    "script/map_mcu_1.script": {
+      "replacements": 2,
+      "input_sha256": "c59a167088237eb4ba1662d34d6dfec0bffe899fa92583997e34476d6a3db961",
+      "output_sha256": "630242b921037b42411992f51155995686105fe2b164cc044b0e05c316d4083f",
+      "manifest_sha256": "2b5c8379dfa2501e2b3bd2d188288933d06446ff66cdcb800326d11a16864907"
+    },
+    "script/map_mcu_2.script": {
+      "replacements": 4,
+      "input_sha256": "27ba776d0766d114c84ac7140ace9ee326b68f28125eada0ea89e38d59a5808b",
+      "output_sha256": "2cc841223e692482b651b000706a90126a0a2b977f1392b3fabbc8674bfdd75e",
+      "manifest_sha256": "4bbdd9c81e0ab1d07ee8fbf40c0c88e5d86b39f2a6a7c5f14e40935f73ca3b38"
+    },
+    "kind": "correct-unshipped-script-sound-shaders",
+    "invented_assets_or_declarations": 0
+  },
+  "strict_v11": {
+    "maps": 41,
+    "payload_files": 1792,
+    "payload_bytes": 782089007,
+    "payload_ledger_sha256": "629cc7d748eeb6b57a7e3958ef8b1e294cc88b9f30bb1d8a8ea3c08c43eecf0c",
+    "script_sound_references": 746,
+    "unique_script_sound_records": 358,
+    "missing_script_sound_records": 0,
+    "semantic_callbacks": 409,
+    "entity_links": 14700,
+    "unique_direct_wavs": 2739,
+    "ai_requirements": 1479,
+    "packaged_ai_requirements": 1471,
+    "explicit_no_aas_requirements": 8,
+    "missing_ai_requirements": 0,
+    "aas_files": 60,
+    "aas_bytes": 45328253,
+    "unresolved_port_records": 0,
+    "reports": {
+      "script_sound_sha256": "66bf1af9e83b05890570e85bf17e34ec237e5dae8444e17c87124314f44bb97a",
+      "overlay_sha256": "18240f622af61cd1bc73dc508b8551eb7ee001806acc7552d230eb8af53648bf",
+      "semantic_sha256": "1c28c1f5564ec5a45b150c9b10a362b1e7acffa6445f3503769d7c979b6422ac",
+      "audio_sha256": "8c22db41d75cc350515c9a5613dbdef4ea3bd99ab30d84260682ffc53d222a2b",
+      "entity_links_sha256": "b8b343eb681ec4c99c770272f59fe49e542888b93fac940d782be237818c3569",
+      "script_entity_sha256": "c826bec04f3b9f7a6b276c41b6ac9a224c94873517928e067779238fe1a753cf",
+      "script_reachability_sha256": "24684e30f5bbc3417c0dad4f9e4b73ba0155141a24e34e573441039b9653bb97",
+      "frame_commands_sha256": "23cd0a90c947a13ea5ec786622a9e5730b0f5939a758c3852dd8fb7b2d5573c5",
+      "gui_commands_sha256": "fd11368e5ecd7b8099ade7c89894f85ec120b9905e842313e87dc129e35219cf",
+      "aas_requirements_sha256": "4f091465f962c93eec75143919ee91aecb6ff965a24de6dcffd6958dded2171c",
+      "aas_corpus_sha256": "36c0bf36547f011017bc889177eb1752850bc0b681992b955b06b86ebf0a8043"
+    }
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "c0dafdf6f21cc9ba1fa47f78263cc18b9a8757267728d1a462eee0fb91dc3f97",
+    "solo_script_sound_audit_py_sha256": "3f6475c85297012748bedfa927b7ad71cefe17d863428b7a04403064fc79d066",
+    "aas_corpus_audit_py_sha256": "8ec22bc1ced2bcd9992d882c42800ace0042b4b7a1f4f3065102721054ab8e3d"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 241,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "The strict-v11 audit view reuses 39 immutable strict-v10 map directories through local filesystem links; release packaging must copy ordinary payload files.",
+    "Offline closure does not replace later native map-load, save/load, encounter, transition or two-peer gameplay acceptance."
+  ]
+}

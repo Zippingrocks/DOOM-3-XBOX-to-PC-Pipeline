@@ -1,3 +1,60 @@
+# Reproduce checkpoint 057
+
+## Checkpoint 057: solo script-sound declaration closure
+
+Audit active script calls rather than raw strings, using the stock-PC sound
+shader declaration set extracted from the installed PK4s:
+
+```powershell
+python tools/campaign_port/solo_script_sound_audit.py `
+  work/solo-overlays-strict-v10 `
+  --stock-dir ../../base `
+  --require-maps 41 --allow-missing `
+  --output work/solo-overlays-strict-v10-script-sounds-v1.json
+```
+
+The strict-v10 result must contain 126 scripts, 746 active sound references,
+362 unique map/event/shader records and exactly four missing records. They are
+`mset3_movement` and `mset3_stop` once each in `map_mcu_1.script` and twice
+each in `map_mcu_2.script`. Verify that authenticated Xbox
+`base/sound/global.xsndshd` contains `mset1` and `mset2` machinery shaders but
+no `mset3`, and that stock-PC `script/map_mc_underground.script` uses `mset2`
+for the identical `howitzer_3` movement and stop calls.
+
+Rebuild MCU 1 and MCU 2 from the accepted structural, model, portable-resource,
+shared-asset and recovered-XACT roots with the normal strict builder command.
+Do not edit generated overlays. Require the manifest transform
+`correct-unshipped-script-sound-shaders`, with two replacements for MCU 1 and
+four for MCU 2, and exact input/output hashes. Reuse the other 39 strict-v10
+maps byte-for-byte in the local strict-v11 audit view; packaging must copy or
+dereference their payloads rather than preserve local junction metadata.
+
+```powershell
+python tools/campaign_port/solo_script_sound_audit.py `
+  work/solo-overlays-strict-v11 `
+  --stock-dir ../../base `
+  --require-maps 41 `
+  --output work/solo-overlays-strict-v11-script-sounds.json
+
+python tools/campaign_port/solo_aas_requirement_audit.py `
+  work/solo-overlays-strict-v11 --require-maps 41 `
+  --stock-def-root work/shared-assets-extracted/base/def `
+  --output work/solo-overlays-strict-v11-aas-requirements.json
+
+python tools/campaign_port/aas_corpus_audit.py `
+  work/solo-overlays-strict-v11 --glob "**/*.aas*" `
+  --require-count 60 `
+  --report work/solo-overlays-strict-v11-aas-audit.json
+```
+
+Rerun the full overlay, semantic, direct-audio, entity-link, script-entity,
+script-reachability, frame-command and GUI-command gates. Require 41 maps,
+1,792 files, 782,089,007 bytes, 409 callbacks, 14,700 links, 2,739 unique
+direct WAV pairs, 1,479 navigation requirements, 60 AAS files and zero
+unresolved record. The script-sound result has 358 unique records and zero
+missing declaration. Run the full suite and require 241 passing tests. Do not
+launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 056
 
 ## Checkpoint 056: co-op callback bytecode/source boundary

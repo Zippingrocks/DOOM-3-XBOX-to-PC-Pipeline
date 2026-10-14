@@ -1,5 +1,28 @@
 # Format findings and unknowns
 
+## Checkpoint 057 solo script-sound findings
+
+Script sound dependencies are a separate closure boundary from map speaker
+spawnargs and direct WAV fields. Scanning only declarations or MAP entities
+does not prove that literal names passed to `cacheSoundShader` and
+`startSoundShader` exist. The new audit strips comments, follows all overlay
+scripts and checks active literal calls against the installed stock-PC sound
+shader set.
+
+The only gap in 41 maps was the Xbox MCU split's `mset3_movement` and
+`mset3_stop`. This is not evidence of a missing bank: the authenticated Xbox
+global sound metadata contains the first two machinery sets and no third set.
+The unsplit stock-PC source is a stronger semantic witness: its identical
+`howitzer_3` code uses the second set for both movement and stop, while caching
+only sets one and two. The port therefore corrects six literal occurrences to
+`mset2`; it does not synthesize shaders, samples or declarations.
+
+The AAS corpus auditor also learned to retain logical overlay paths when maps
+are exposed through a local junction/symlink audit view. Resolving every match
+first incorrectly moved inherited paths outside the requested root. This was a
+reporting-path bug only; hashes and parsed AAS bytes are unchanged. Release
+packaging must contain ordinary files, not the audit view's link metadata.
+
 ## Checkpoint 056 co-op callback compilation-boundary findings
 
 Co-op `.script.bin` cannot be treated like the solo per-map compiled program.
