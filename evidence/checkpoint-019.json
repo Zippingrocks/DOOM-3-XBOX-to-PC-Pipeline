@@ -1,0 +1,162 @@
+{
+  "checkpoint": "019",
+  "date": "2026-10-14",
+  "scope": "sixth co-op segment direct collision, corrected navigation, complete map-local model decode, dependency closure, and bounded runtime load",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 145648,
+    "gfc_sha256": "8765c5a9627d6ac542a7add9b1185a30593cae7176f65a0e616f73cdd6444760",
+    "gob_bytes": 8239104,
+    "gob_sha256": "e936c315145995f1f6c97ba04e4001318ca525582f951cd794442b75a5fe6f0f"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_alphalabs2_2",
+    "geometry_crc": 3745531086,
+    "decoded_map": {
+      "bytes": 3787497,
+      "sha256": "ca9f74dc12b45f009cf47992d43c2b49eedd367539e7ae568d4120309eba6e79",
+      "entities": 766,
+      "brushes": 2782,
+      "brush_sides": 16618,
+      "patches": 2071,
+      "patch_points": 45495
+    },
+    "decoded_proc": {
+      "bytes": 8114149,
+      "sha256": "d2cf4f09e16f153d691ec44819f8dfad346ea6553409f5cb752ec0755f9ef5c7"
+    },
+    "corrected_aas48": {
+      "bytes": 672630,
+      "sha256": "f56dd1520d36f818bb780fdb05286b0f1053dbb42996eebac7e0f8c389d148f9",
+      "areas": 731,
+      "reachabilities": 3319,
+      "nodes": 2760,
+      "unreachable_nonzero_nodes": 0,
+      "unreferenced_nonzero_areas": 0
+    },
+    "aas96": {
+      "status": "not present in the source archive"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 3298539,
+      "sha256": "ead3f036f050b67650ca9175743a2f649b4f9faed05389e9aa7852e3ec8d8180"
+    },
+    "authored_export": {
+      "bytes": 5784631,
+      "sha256": "18b6fd6fbd746d5aae3dbf1559e67d7e4cb1f43915515848615ec17e220dfeba",
+      "models": 147,
+      "vertices": 24551,
+      "edges": 43280,
+      "polygons": 18742,
+      "brushes": 2719,
+      "nodes": 9801
+    },
+    "pc_dmap": {
+      "cm_bytes": 12217948,
+      "cm_sha256": "40cabe8c9789bbac7cebf9ad7c61d13179acdd3533e51c7dd7ed1ea8d862ce40",
+      "proc_bytes": 11140286,
+      "proc_sha256": "92ae0412848cb6b9a83f6ee7e3b6e0f83655e91a5be0a676104845307f6bfde6",
+      "aas48_bytes": 650096,
+      "aas48_sha256": "3eb85b87ff078eed40cef1cda289db27641049b88bd00aff9006c7fb5497dbd2",
+      "models": 261
+    },
+    "model_set_audit": {
+      "shared": 147,
+      "authored_only": 0,
+      "pc_dmap_only": 114,
+      "pc_dmap_only_with_noclipmodel_1": 114,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "runtime_assets": {
+    "selected_archive_members": 299,
+    "raw_selected_bytes": 4544559,
+    "decoded_files": 299,
+    "decoded_meshes": 8,
+    "decoded_animations": 291,
+    "decoded_mdv_animations": 217,
+    "decoded_md5anim_x_animations": 74,
+    "decoded_bytes": 13095353,
+    "decoded_skeleton_sha256": "f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09",
+    "skeleton_cross_archive_result": "byte-identical to the independently recovered xc_mars_city1_1 and xc_mcu skeletons",
+    "decoded_mesh_joint_counts": {
+      "mpplayer": 50,
+      "spplayer": 50,
+      "z4_head": 37,
+      "skeleton": 48,
+      "player_head": 44,
+      "imp": 41,
+      "trite": 48,
+      "tshirt_zombie": 48
+    }
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_alphalabs2_2_v1",
+    "player_profile_sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "file_records": 274,
+    "copied_runtime_resources": 237,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 29082749,
+    "manifest_bytes": 133929,
+    "manifest_sha256": "a0cb08707e5ac5e500c8d34cf3cb8a8d4817a9d63a0628056555724e6e10dba6",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 8,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 764,
+    "inhibited_entities": 2,
+    "intentional_inhibited_entities": [
+      {
+        "name": "ammo_clip_large_27",
+        "reason": "retail MAP sets not_medium 1 and not_hard 1 for this player-two pickup"
+      },
+      {
+        "name": "item_armor_security_8",
+        "reason": "retail MAP sets not_medium 1 and not_hard 1 for this player-two pickup"
+      }
+    ],
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "invalid_or_unknown_joint_lines": 0,
+    "callback_or_class_failures": 0,
+    "path_diagnostic_failures": 0,
+    "map_specific_warning_lines": 0,
+    "unique_map_run_warning_lines": 1,
+    "map_run_warning_occurrences": 2,
+    "baseline_warning_scope": "stock guis/mpmain.gui references the undefined s_driver cvar",
+    "qconsole_bytes": 72923,
+    "qconsole_sha256": "4093fa656dd67a8c817d51f0e4dab6436f097cab6241df28f4627ccfcee43540",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {
+    "count": 154,
+    "failures": 0
+  },
+  "established": [
+    "the sixth co-op segment's MAP, PROC, corrected AAS48 and direct CM.X export cross the native PC loader boundary",
+    "all 147 authored collision models appear in PC dmap output; all 114 generated-only models are explained by noclipmodel 1",
+    "all 299 selected map-local MDV and MD5ANIM.X members decode with complete per-file receipts",
+    "the recovered 48-joint skeleton is byte-identical across three independently archived segments",
+    "764 entities spawn, the two inhibited medium-difficulty player-two pickups exactly match retail not_medium/not_hard flags, and the local co-op player joins without any map-specific warning, missing-resource, invalid-joint, callback, class, path-diagnostic, error or fatal line"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition beyond xc_alphalabs2_2",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 14 co-op segments or the solo campaign"
+  ]
+}

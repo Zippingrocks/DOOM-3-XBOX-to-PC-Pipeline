@@ -1,5 +1,28 @@
 # Recovery order and acceptance
 
+## Checkpoint 019 sixth-segment status
+
+`xc_alphalabs2_2` passes structural export, complete archive-local model closure
+and the bounded native loader/spawn gate. Its MAP/PROC, corrected AAS48 and
+direct 147-model CM.X export all load. Independent PC `dmap` contains every
+authored collision model; its 114 additional models are exactly MAP entities
+marked `noclipmodel 1`. The source archive does not contain AAS96.
+
+All 299 selected model files decode: eight meshes and 291 animations. The
+48-joint skeleton is byte-identical across three independently recovered co-op
+segments. The 274-file overlay has zero unresolved resources, classnames or
+string IDs, requires no new map-specific transform, and all 154 implementation
+tests pass.
+
+Under the isolated instant-hit null-guard diagnostic, true `COOP` spawns 764
+entities and intentionally inhibits two player-two pickups whose retail flags
+exclude medium and hard. The player joins and the log contains no map-specific
+warning, missing-resource, invalid-joint, callback, class, path-diagnostic,
+error or fatal line. This accepts sixth-segment packaging and the bounded
+loader/spawn boundary only. A reviewed source guard and normal rebuild, dynamic
+combat, progression, transition, two peers and Xbox-reference comparison remain
+open.
+
 ## Checkpoint 018 fifth-segment status
 
 `xc_mcu` passes structural export, complete archive-local MDV closure and the

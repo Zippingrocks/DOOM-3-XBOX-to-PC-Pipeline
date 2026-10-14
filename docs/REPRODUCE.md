@@ -1,4 +1,4 @@
-# Reproduce checkpoint 018
+# Reproduce checkpoint 019
 
 ## Source and boundary
 
@@ -21,6 +21,67 @@ path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
 duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 019 sixth-segment receipt
+
+For `xc_alphalabs2_2`, verify the source GFC is 145,648 bytes with SHA-256
+`8765c5a9627d6ac542a7add9b1185a30593cae7176f65a0e616f73cdd6444760`
+and its GOB is 8,239,104 bytes with SHA-256
+`e936c315145995f1f6c97ba04e4001318ca525582f951cd794442b75a5fe6f0f`.
+The decoded 3,787,497-byte MAP hashes to
+`ca9f74dc12b45f009cf47992d43c2b49eedd367539e7ae568d4120309eba6e79`,
+has geometry CRC `3745531086`, and contains 766 entities, 2,782 brushes,
+16,618 brush sides, 2,071 patches and 45,495 patch points. The decoded PROC is
+8,114,149 bytes with SHA-256
+`d2cf4f09e16f153d691ec44819f8dfad346ea6553409f5cb752ec0755f9ef5c7`.
+Select the corrected 672,630-byte AAS48 with SHA-256
+`f56dd1520d36f818bb780fdb05286b0f1053dbb42996eebac7e0f8c389d148f9`;
+it audits to 731 areas, 3,319 reachabilities, 2,760 nodes and no unreachable or
+unreferenced nonzero records. The source archive has no AAS96.
+
+Export the 3,298,539-byte CM.X directly. It must hash to
+`ead3f036f050b67650ca9175743a2f649b4f9faed05389e9aa7852e3ec8d8180`
+and produce a 5,784,631-byte ASCII PC CM with SHA-256
+`18b6fd6fbd746d5aae3dbf1559e67d7e4cb1f43915515848615ec17e220dfeba`.
+The authored result contains 147 models, 24,551 vertices, 43,280 edges, 18,742
+polygons, 2,719 brushes and 9,801 nodes. Independently run PC `dmap`; its CM
+must contain 261 models. Audit names against the MAP: 147 shared, zero
+authored-only and 114 PC-only, with all 114 carrying `noclipmodel 1` and zero
+unexplained names.
+
+Extract every `.mdvmesh`, `.mdvanim` and `.md5anim.x` member selected from the
+map GFC, retaining path identity and one decoder report per file. Decode the
+complete set to eight meshes and 291 animations (217 MDV and 74 MD5ANIM.X),
+299 files and 13,095,353 output bytes. The decoded skeleton must hash to
+`f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09`,
+byte-identical to the independently recovered `xc_mars_city1_1` and `xc_mcu`
+copies. Expected mesh joint counts are 50/50 for the two players, 37 for the
+z4 head, 48 for skeleton, 44 for player head, 41 for imp, 48 for trite and 48
+for the T-shirt zombie.
+
+Build the overlay with the direct authored CM, corrected AAS48, complete
+decoded map-local model root, shared player roots/profile, stock zombie AF,
+seven explicit HUD resources, five shared HUD/Live materials, `map_alphalabs2`
+and co-op DEF preferences, and an empty EFX. No Alpha-Labs-specific transform
+is required. The only eight transform records must be the existing empty EFX,
+stock zombie AF endpoint alias, HUD command/status fixes, DXT5 material hints,
+player neck-control alias and three proven-unshipped inventory icons.
+
+The result must have 274 file records, 237 copied resources, one generated
+resource, 29,082,749 payload bytes and zero unresolved resources, classnames or
+string IDs. Its 133,929-byte manifest hashes to
+`a0cb08707e5ac5e500c8d34cf3cb8a8d4817a9d63a0628056555724e6e10dba6`.
+Under the isolated checkpoint-014 null-guard diagnostic, preserve the original
+instant-hit declarations and start true `COOP`. The bounded run exits 0, spawns
+764 entities, inhibits exactly `ammo_clip_large_27` and
+`item_armor_security_8`, and joins the player. Both inhibited entities are
+retail player-two pickups with `not_medium 1` and `not_hard 1`; do not remove
+those flags. Require zero map-specific warnings, missing resources, invalid
+joints, callback/class/path failures, errors or fatals. The 72,923-byte console
+log hashes to
+`4093fa656dd67a8c817d51f0e4dab6436f097cab6241df28f4627ccfcee43540`.
+Restore the root DLL and verify SHA-256
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
 
 ### Checkpoint 018 fifth-segment receipt
 

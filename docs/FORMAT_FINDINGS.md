@@ -1,5 +1,36 @@
 # Format findings and unknowns
 
+## Checkpoint 019 sixth-segment findings
+
+`xc_alphalabs2_2` extends the direct-CM contract to a sixth co-op segment. Its
+3,787,497-byte MAP has geometry CRC `3745531086`; the 3,298,539-byte CM.X
+expands to a 5,784,631-byte PC CM containing 147 models, 24,551 vertices,
+43,280 edges, 18,742 polygons, 2,719 brushes and 9,801 nodes. Independent PC
+`dmap` emits 261 models. All 147 authored names are shared, and every one of
+the 114 PC-only names belongs to a MAP entity carrying `noclipmodel 1`.
+
+The corrected AAS48 hashes to
+`f56dd1520d36f818bb780fdb05286b0f1053dbb42996eebac7e0f8c389d148f9`
+and has no unreachable or unreferenced nonzero records. There is no AAS96 in
+the map archive. Together with decoded PROC and direct authored CM it reaches
+native true `COOP` without a path failure.
+
+The map-local selected model set is 299 files: eight meshes, 217 MDV animations
+and 74 MD5ANIM.X animations. Every file decodes with a receipt. The 48-joint
+skeleton is byte-identical to copies recovered independently from
+`xc_mars_city1_1` and `xc_mcu`, strengthening the shared-skeleton identity
+contract across three archive boundaries. This map needs no new compatibility
+transform; inherited transforms close the runtime dependency graph exactly.
+
+Native loading spawns 764 entities and inhibits two. These are not lost
+entities: `ammo_clip_large_27` and `item_armor_security_8` are player-two
+pickups whose retail MAP declarations set both `not_medium 1` and `not_hard 1`.
+The default medium run therefore proves the retail difficulty gate is being
+honored. Mutating those epairs merely to obtain a 766/0 count would reduce
+fidelity. With the retail flags intact, the bounded run has no map-specific
+warning, missing resource, invalid joint, callback, class, navigation, error or
+fatal line.
+
 ## Checkpoint 018 fifth-segment findings
 
 `xc_mcu` extends the direct-CM contract to a fifth co-op segment. Its
