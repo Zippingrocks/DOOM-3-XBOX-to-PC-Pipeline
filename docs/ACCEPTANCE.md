@@ -1,5 +1,21 @@
 # Recovery order and acceptance
 
+## Checkpoint 037 solo offline status
+
+All 41 Xbox solo segments pass structural/model closure plus the new semantic
+and direct-audio gates. The campaign is one 41-map chain from `mars_city1_1` to
+`hellhole_2`; all 409 active callbacks are explained; and all 3,891 active
+direct-WAV references resolve through stock PC media or 419 receipt-bearing
+Xbox XACT recoveries. No unresolved classname, resource, string, callback,
+transition or direct-audio record remains. All 190 synthetic/authentic offline
+tests pass.
+
+The next tier is deliberately native: bounded load/spawn validation for each
+segment, start/exit and save-state handoffs, then the focused visual/gameplay
+run. Co-op separately retains two-peer synchronization, death/rejoin and
+progression acceptance. Static closure must not be reported as proof of script
+timing, audible correctness, encounters, rendering or playability.
+
 ## Checkpoint 036 solo offline status
 
 All 41 identified Xbox single-player segments pass the structural, model and

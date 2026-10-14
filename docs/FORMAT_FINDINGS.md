@@ -1,5 +1,46 @@
 # Format findings and unknowns
 
+## Checkpoint 037 solo semantic and audio findings
+
+The segmented solo campaign forms one closed directed chain across all 41
+decoded maps. It begins at `mars_city1_1`, terminates at `hellhole_2`, has no
+external destination and visits every segment exactly once. One retained stock
+`game/delta2b` destination in the second Delta 2A exit was a real PC-port leak;
+both exits now converge on the only decoded Xbox successor, `vv/delta2b_2`.
+
+Callback lookup must be entity-aware. `target_callobjectfunction` values name
+script-object methods rather than global map functions, and localized callback
+`#str_02680` resolves to `map_comm1::airlock_door1_open`. After those semantics,
+403 calls resolve to namespaced functions and two to object methods. The MCU
+inner-elevator door had one unqualified `elevatorDoorsHide` call even though the
+function lives in `map_mc_underground`; the same MAP already provided a fully
+qualified witness. Four unresolved callbacks are retained stock-PC-identical
+warning/no-op remnants. Two Alpha Labs 2 relays instead belong to absent
+texture-separator logic from the unsplit authoring map; neither functions nor
+targets exist in the recovered segment, so their exact epairs are made inert.
+
+Direct audio is not closed by declaration scanning. The final MAP corpus has
+3,891 active direct-WAV references representing 2,739 unique map/path pairs.
+Stock PC packages satisfy 2,320 pairs through WAV or transparent OGG fallback.
+The remaining 419 route through each map's 14,150-byte INDEXLIST and XSB into
+the bounded retail global XWB; decoding produces 171,347,256 bytes of PCM WAV
+data across 39 maps. Every decoded WAV is copied into its consuming overlay and
+rehashes against both the XACT and overlay receipts.
+
+Twelve `inner1.wav` door-open values have a unique `inner_1` correction: the
+Xbox XSND and PC packages contain only that spelling and the same entities
+already use it for `snd_close`. Fifteen other speaker values have no XSND entry,
+no shared or map GFC member and no PC WAV/OGG. They are retained as explicit
+silent remnants, not fuzzy-matched to similarly named audio.
+
+The final 41-map overlay corpus has 1,787 payload records and 780,869,086 bytes.
+Its manifest ledger is
+`a99b35fe5bfbf85c5a617be76f38082e752748f7489b5a7d3c9562d7df44cdf3`
+and its payload ledger is
+`d6756e9cf3a40cb4c934ab2efbe3a33538f6f492ed942934f7583bbc335bc22b`.
+These checks prove static routing and packaged audio coverage, not that every
+event fires at the right time or sounds correct in native play.
+
 ## Checkpoint 036 solo overlay findings
 
 The same deterministic overlay builder used for co-op can package the 41 Xbox

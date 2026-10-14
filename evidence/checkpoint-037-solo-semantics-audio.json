@@ -1,0 +1,69 @@
+{
+  "checkpoint": "037",
+  "date": "2026-10-14",
+  "claim": "All 41 Xbox solo overlays close static campaign routing, callback and direct-audio gates.",
+  "inputs": {
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "global_xsndshd_sha256": "994c5f859a41558f2c8c28371c73770d6cf56301020ab09f8431b006b828f7ba",
+    "checkpoint_036": "evidence/checkpoint-036-solo-overlays.json"
+  },
+  "overlay_corpus": {
+    "maps": 41,
+    "files": 1787,
+    "bytes": 780869086,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "a99b35fe5bfbf85c5a617be76f38082e752748f7489b5a7d3c9562d7df44cdf3",
+    "file_ledger_sha256": "d6756e9cf3a40cb4c934ab2efbe3a33538f6f492ed942934f7583bbc335bc22b",
+    "local_audit_json_sha256": "d9ba1dcdb6097dd0489ceebf3e3897a76e71bdf848fe5038e1aa68c97acc425d"
+  },
+  "semantics": {
+    "calls": 409,
+    "namespaced_functions": 403,
+    "object_methods": 2,
+    "retail_shipped_noops": 4,
+    "transitions": 41,
+    "start": "mars_city1_1",
+    "terminal": "hellhole_2",
+    "walk_maps": 41,
+    "closed_single_chain": true,
+    "unresolved": 0,
+    "local_audit_json_sha256": "95fb2f4023834fd843d882e6b81c0d96894b59ad3707f0c16f71ce654fee4982"
+  },
+  "direct_audio": {
+    "active_references": 3891,
+    "unique_map_paths": 2739,
+    "stock_pc_pairs": 2320,
+    "overlay_recovered_pairs": 419,
+    "recovered_maps": 39,
+    "recovered_wav_files": 419,
+    "recovered_wav_bytes": 171347256,
+    "unresolved": 0,
+    "xact_corpus_receipt_sha256": "0f1cd3113da64d491c14827653d4f8b6e04b1045a3e70e6860cc927754d73082",
+    "local_audit_json_sha256": "274c3e9fdb5509faefd8faca08a168bf118a0a7b6b79e395c569f140415572a0"
+  },
+  "compatibility_edits": {
+    "qualified_mcu_callback": 1,
+    "retargeted_delta2a_transition": 1,
+    "disabled_absent_alphalabs2_callbacks": 2,
+    "corrected_inner_elevator_samples": 12,
+    "disabled_unshipped_direct_samples": 15
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 190,
+    "failed": 0
+  },
+  "host_integrity": {
+    "root_gamex86_dll_bytes": 2723328,
+    "root_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "Static callback and transition closure does not prove runtime timing or progression.",
+    "Packaged WAV coverage does not prove audible correctness.",
+    "Retail-derived overlays and decoded audio remain local and are not committed."
+  ]
+}

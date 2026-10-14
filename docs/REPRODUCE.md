@@ -1,4 +1,50 @@
-# Reproduce checkpoint 023
+# Reproduce checkpoint 037
+
+## Checkpoint 037: solo semantics and direct audio
+
+Start from checkpoint 036's 41 decoded solo trees. Extract every
+`./base/sound/*.indexlist` member from the source-bound `assets.gfc`/`assets.gob`
+pair and every `base/soundbanks/*.xsb` member from the authenticated retail ISO.
+Use the ISO inventory's bounded global XWB extent; never infer an unbounded bank
+from the whole disc.
+
+Run the entity-aware campaign audit against the strict overlays, the extracted
+stock PC script corpus and both recovered English catalogs:
+
+```powershell
+python tools/campaign_port/solo_semantic_audit.py `
+  game/campaign_port_work/solo-overlays-strict-v6 `
+  --stock-script-root game/campaign_port_work/pc-stock-scripts `
+  --language game/campaign_port_work/shared-assets/base/strings/english.lang `
+  --language game/campaign_port_work/shared-assets/base/strings/english_vv.lang `
+  --out game/campaign_port_work/solo-overlays-strict-v6-semantic-audit.json
+```
+
+Require one start (`mars_city1_1`), one terminal (`hellhole_2`), a 41-map walk,
+409 explained calls and zero unresolved records. Audit direct samples against
+stock PC media and the Xbox XSND/INDEXLIST/XSB chain. Recover only records
+classified `xact-recoverable`, then add that map's new recovery directory as a
+retail root when rebuilding its overlay. The builder copies and receipts every
+non-stock direct WAV; it fails closed if one is missing.
+
+Re-run `overlay_corpus_audit.py`, `solo_semantic_audit.py` and
+`solo_audio_audit.py` on the rebuilt corpus. Checkpoint 037 requires:
+
+- 41 maps, 1,787 payload files and 780,869,086 payload bytes;
+- manifest ledger `a99b35fe5bfbf85c5a617be76f38082e752748f7489b5a7d3c9562d7df44cdf3`;
+- payload ledger `d6756e9cf3a40cb4c934ab2efbe3a33538f6f492ed942934f7583bbc335bc22b`;
+- 409 explained callbacks and a closed 41-map chain;
+- 2,320 stock-PC direct-audio pairs and 419 overlay-recovered pairs; and
+- zero unresolved class/resource/string, callback, transition or audio record.
+
+The local corpus, semantic and audio audit JSON files hash to
+`d9ba1dcdb6097dd0489ceebf3e3897a76e71bdf848fe5038e1aa68c97acc425d`,
+`95fb2f4023834fd843d882e6b81c0d96894b59ad3707f0c16f71ce654fee4982`
+and `274c3e9fdb5509faefd8faca08a168bf118a0a7b6b79e395c569f140415572a0`.
+The XACT corpus receipt hashes to
+`0f1cd3113da64d491c14827653d4f8b6e04b1045a3e70e6860cc927754d73082`.
+Run `python -m unittest discover -s tools/campaign_port/tests -q`; 190 tests
+must pass. Do not launch Doom 3 for this offline checkpoint.
 
 ## Checkpoint 036: strict solo overlay corpus
 
