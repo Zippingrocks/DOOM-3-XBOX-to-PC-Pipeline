@@ -132,6 +132,15 @@ solo Caverns 1 end-level value, so the activated route remains an explicit
 gameplay-test item. No executable or `dmap` was run. Receipt:
 [`evidence/checkpoint-029-offline.json`](evidence/checkpoint-029-offline.json).
 
+## Checkpoints 030-033: remaining-map structural pass
+
+The four remaining untouched co-op archives—`xc_caverns1_1`, `xc_caverns2`,
+`xc_hellhole_1`, and `xc_comm1_1`—now all have decoded MAP, PROC, every shipped
+AAS class, direct authored CM, and their complete model corpora (1,606 model
+files total). Dependency/XACT closure is the remaining offline stage before
+gameplay loading. No executable or `dmap` was run. Interim receipt:
+[`evidence/checkpoint-030-033-structural.json`](evidence/checkpoint-030-033-structural.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
