@@ -14,7 +14,27 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 002
+## Current checkpoint: 003
+
+**The first genuine co-op map now compiles through the native PC toolchain.**
+
+`xc_mars_city1_1.proc.x` was decoded into structurally valid PC
+`mapProcFile003` text, including NV2A 11:11:10 packed normals, 16-bit indices,
+quantized shadow vertices and padded BSP nodes. All 59 synthetic and structural
+tests pass on Windows/Python 3.11. Native Doom 3 `dmap` then compiled the decoded
+MAP without a leak and generated PC PROC, CM and AAS48 files.
+
+Independent comparison between decoded Xbox PROC.X and PC regeneration found
+the same 356 model names, 42,128 surface vertices, 99,651 indices, 80 areas,
+80 portals and 4,872 BSP nodes. Three Xbox surfaces were split into six PC
+surfaces while retaining material and aggregate geometry. Maximum paired-value
+deltas were 0.000412 units for position, 0.000061 for UV and 0.000978 for
+normal components, consistent with source float/normal packing. Runtime assets,
+script loading, co-op progression and visual/gameplay acceptance remain open.
+
+See [checkpoint 003](evidence/checkpoint-003.json).
+
+## Previous checkpoint: 002
 
 **The authenticated retail disc is now inventoried and the first genuine co-op
 MAP.X has been deterministically decoded to PC MAP text. This is a source-bound
