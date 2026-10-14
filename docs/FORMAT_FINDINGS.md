@@ -1,6 +1,38 @@
 # Format findings and unknowns
 
 
+## Checkpoint 012 live-entity collision findings
+
+`xboxCoopCollisionDigest` now accepts `@entity` targets. The command resolves
+a spawned entity's live clip model and queries it with its runtime origin and
+axis. Its input digest binds the requested and resolved identities, mask, hull,
+origin, full axis, local and absolute bounds, clip contents and link/enable
+state, count, seed and raw coordinate bits. Numeric handles remain visible for
+diagnosis but are excluded from the digest because equivalent models occupy
+different handle slots in the two CM files.
+
+Three generated/authored pairs produced 24,576 records with matching input
+digests and coordinates. `doorClip_1` resolves at
+`-2560 -1708 212`; `trigger_coop_enablegui_2` at
+`-320 -3016 40`; and `func_static_53167` at `64 -1440 218`. All are
+linked and enabled under both CMs, and all paired records agree on hit/no-hit.
+
+The equality stops there. The door has 1,067 swept-box contact differences and
+the co-op trigger has 800, despite exact point traces and stopping trajectories.
+The live static has 1,500 contact differences, 11 point start-contents/skip
+differences, one trajectory difference and 97 material-selection differences.
+Those material pairs are generated `gotsilvercol1` versus authored
+`stesilverswatch`; both names are present in the recovered MAP, so the result
+reflects different collision/contact selection rather than a missing material
+translation.
+
+Across the three profiles there are 3,393 gameplay and 3,623 stable-topology
+mismatches. This confirms the checkpoint-011 named-model result at actual
+spawned placements: PC `dmap` preserves broad blocking for these samples but
+does not preserve the Xbox-authored contact representation. Direct CM.X export
+is therefore the fidelity path. It remains an inference relative to Xbox
+hardware until an original-Xbox runtime oracle is available.
+
 ## Checkpoint 011 named-model and gameplay-mask findings
 
 `xboxCoopCollisionDigest` now accepts an explicit loaded collision-model name,
