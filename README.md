@@ -19,9 +19,9 @@ campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 **The first co-op segment now loads the original Xbox-authored collision model
 on PC, and the complete extracted CM.X corpus is structurally decoded.**
 
-Private implementation head `df466ea0c02da92f664c240cb3929c20716c7099`
+Private implementation head `dd62b41dbeca3755c3770d0c2c9b7d72499154d4`
 adds a strict CM.X decoder, deterministic corpus auditor, regression fixtures
-and handoff documentation. The Python suite now has 135 passing tests. The
+and handoff documentation. The Python suite now has 136 passing tests. The
 decoder expands model headers, vertices, edges, shared planes, brushes,
 polygons and preorder BSP nodes to standard PC CM 1.00 text; it converts
 internal Xbox plane `d` to PC `idPlane::Dist() == -d`.
