@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 049 co-op AAS requirement findings
+
+The co-op maps use the same `use_aas` inheritance contract as solo, but the
+required navigation is not limited to the ordinary `.aas48`/`.aas96` pair.
+Resolving the final entityDefs across direct MAP entities, entityDef-valued
+spawnargs and literal script spawns found eight boss/large-actor instances in
+two maps whose exact authored classes were absent from their overlays.
+
+Those classes were present in the authenticated shared Xbox archive:
+`xc_hell1_2.aas_guardian.x`, `xc_hell1_2.aas_mancubus.x`, and
+`xc_hellhole_1.aas_cyberdemon.x`. The preexisting
+`xc_recycling2_1.aas_mancubus` was already correct. The recovered files add
+989 areas, 2,862 reachabilities and 4,481 nodes; every nonzero node and area is
+covered by its BSP. Overlay rebuilds changed no prior payload, demonstrating
+that the correction is navigation-only rather than a dependency-closure drift.
+
+Latest-overlay selection matters because development leaves older immutable
+candidate directories in place. The co-op corpus auditor groups manifests by
+virtual map name, selects the newest candidate, and audits only AAS files whose
+basename matches that map. This prevents stale candidates or solo files from
+inflating the result.
+
 ## Checkpoint 048 entityDef-driven AAS findings
 
 File-family enumeration is insufficient for navigation closure. The effective

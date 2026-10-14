@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 048
+## Current checkpoint: 049
+
+**Every effective co-op AI navigation requirement is now packaged in the
+latest 20-map overlay set.** The same inheritance-aware audit used for solo
+covers 639 direct MAP, entityDef-valued and literal-script AI requirements:
+638 have their requested AAS class, one deliberately disables AAS, and none
+are missing.
+
+The audit exposed three shared-archive files omitted by the earlier co-op
+builds: Guardian and Mancubus navigation for `xc_hell1_2`, and Cyberdemon
+navigation for `xc_hellhole_1`. Rebuilt overlays preserve every prior payload
+byte-for-byte and add only those files. Across the latest overlays, all 30 AAS
+files parse with complete nonzero BSP/area coverage: 20 AAS48, six AAS96, two
+Mancubus, one Guardian and one Cyberdemon. All 220 offline tests pass. Doom 3
+and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-049-coop-aas-requirements.json`](evidence/checkpoint-049-coop-aas-requirements.json).
+
+## Earlier checkpoint: 048
 
 **Every solo AI navigation class required by the final entityDefs is now
 present and structurally valid.** An inheritance-aware audit covers 1,479

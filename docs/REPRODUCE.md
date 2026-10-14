@@ -1,3 +1,44 @@
+# Reproduce checkpoint 049
+
+## Checkpoint 049: entityDef-driven co-op AAS closure
+
+Extract these exact shared-archive members and decode them into the existing
+segment workspaces while preserving their class suffix:
+
+```text
+base/xbox_gen/maps/vv/xbox_coop/xc_hell1_2.aas_guardian.x
+base/xbox_gen/maps/vv/xbox_coop/xc_hell1_2.aas_mancubus.x
+base/xbox_gen/maps/vv/xbox_coop/xc_hellhole_1.aas_cyberdemon.x
+```
+
+Rebuild `xc_hell1_2` and `xc_hellhole_1` with the same runtime class, resource,
+material and `#str_07595` roots as their accepted offline overlays. Excluding
+the manifest, require zero changed or removed payloads. The former must add
+only Guardian and Mancubus AAS; the latter must add only Cyberdemon AAS.
+
+Audit the latest overlay selected for each co-op map:
+
+```powershell
+python tools/campaign_port/coop_aas_requirement_audit.py ../.. `
+  --require-maps 20 `
+  --stock-def-root work/shared-assets-extracted/base/def `
+  --output work/coop-latest-aas-requirements-v2.json
+
+python tools/campaign_port/coop_aas_corpus_audit.py ../.. `
+  --require-maps 20 `
+  --require-count 30 `
+  --output work/coop-latest-aas-corpus.json
+```
+
+Require 639 AI requirements: 638 `packaged`, one `explicit-no-aas`, and zero
+missing. Require 30 navigation files: 20 AAS48, six AAS96, two Mancubus, one
+Guardian and one Cyberdemon. Totals must be 20,770,442 bytes, 22,348 areas,
+101,654 reachabilities, 79,281 nodes and 23,731 inverse plane pairs. Every file
+must have zero unreachable nonzero nodes and zero unreferenced nonzero areas.
+
+Run `python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'`;
+220 tests must pass. Do not launch Doom 3 or `dmap` for this checkpoint.
+
 # Reproduce checkpoint 048
 
 ## Checkpoint 048: entityDef-driven solo AAS closure

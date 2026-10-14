@@ -1,0 +1,51 @@
+{
+  "checkpoint": "049",
+  "date": "2026-10-14",
+  "claim": "Every effective AI use_aas requirement in the latest 20 co-op overlays is backed by its exact authored Xbox navigation class.",
+  "inputs": {
+    "checkpoint_048": "evidence/checkpoint-048-solo-aas-requirements.json",
+    "shared_aas_extraction_manifest_sha256": "5ce01782b96fc54d9f8a8afb089a313ac5b94c361ef3321f97f55ae49c272ebd"
+  },
+  "recovered_special_aas": [
+    {"map": "xc_hell1_2", "class": "aas_guardian", "input_bytes": 107496, "input_sha256": "628e8f4d2fd581ab69f6bbb25a08f6ab7b1386bd11731f60edd54825df43a0de", "output_bytes": 170124, "output_sha256": "a96b74cb5baed27dccf32167d22b85fd49f51035d97dc9ad897c9912cea69354", "areas": 206, "reachabilities": 756, "nodes": 611, "plane_inverse_pairs": 339},
+    {"map": "xc_hell1_2", "class": "aas_mancubus", "input_bytes": 251186, "input_sha256": "b8617a416cbc85476a0cf6b7c2b0548ac845e15b4f4759b00e0514973d727de7", "output_bytes": 437243, "output_sha256": "764ef77feb6de5fa9a58eed09af9c62113157b570a5ac43d1a0db6b557c49757", "areas": 534, "reachabilities": 1146, "nodes": 2082, "plane_inverse_pairs": 1113},
+    {"map": "xc_hellhole_1", "class": "aas_cyberdemon", "input_bytes": 153704, "input_sha256": "04ea850db56904bece0d0386f71665259463e1538780a4fc7ac41a217762a7b4", "output_bytes": 247565, "output_sha256": "0178c732857e68a1fccf2e49649d2db10510675a2e129156b749a7d91227645f", "areas": 249, "reachabilities": 960, "nodes": 1788, "plane_inverse_pairs": 340}
+  ],
+  "preservation": [
+    {"map": "xc_hell1_2", "from_overlay": "xbox_coop_port_test_hell1_2_offline_v2", "to_overlay": "xbox_coop_port_test_hell1_2_offline_v4", "old_payload_files": 285, "new_payload_files": 287, "old_payload_bytes": 29986484, "new_payload_bytes": 30593851, "changed": 0, "removed": 0, "added": ["xc_hell1_2.aas_guardian", "xc_hell1_2.aas_mancubus"], "manifest_sha256": "04f950d051993810b6d6561f4318aea50febb03e3b6b2cfc4261840720576cc2"},
+    {"map": "xc_hellhole_1", "from_overlay": "xbox_coop_port_test_hellhole_1_offline_v1", "to_overlay": "xbox_coop_port_test_hellhole_1_offline_v2", "old_payload_files": 270, "new_payload_files": 271, "old_payload_bytes": 21885948, "new_payload_bytes": 22133513, "changed": 0, "removed": 0, "added": ["xc_hellhole_1.aas_cyberdemon"], "manifest_sha256": "4727abf262dbee8ca86446b3044ef1b0fee0343d5b7225b8d96c665f98ceb906"}
+  ],
+  "requirement_audit": {
+    "maps": 20,
+    "ai_requirements": 639,
+    "packaged": 638,
+    "explicit_no_aas": 1,
+    "missing": 0,
+    "local_report_sha256": "fc8b5109c267a589e9d34403b23599f3eee6adf8f7a38946f13235311d3e4673"
+  },
+  "aas_corpus": {
+    "maps": 20,
+    "files": 30,
+    "extension_counts": {".aas48": 20, ".aas96": 6, ".aas_cyberdemon": 1, ".aas_guardian": 1, ".aas_mancubus": 2},
+    "bytes": 20770442,
+    "areas": 22348,
+    "reachabilities": 101654,
+    "nodes": 79281,
+    "plane_inverse_pairs": 23731,
+    "corpus_sha256": "05d41c7a57609a41a41b482b315c5862cef2d010ea1a06200aae0b336826dda1",
+    "local_report_sha256": "dd220f63d6309061d481db0778669fef1bffcf4be777f40502cbae783a673561"
+  },
+  "implementation_receipts": {
+    "aas_corpus_audit_py_sha256": "fcf50bc004e681919595a25e9cdbe0f11db79b04c9a20e915913da48ce3b69bc",
+    "solo_aas_requirement_audit_py_sha256": "62695cc78b9d32f0c6e42dbd697594553bf4e437d5cf171374d5f842f5085193",
+    "coop_aas_requirement_audit_py_sha256": "be027807d8374803e7728318503b3fafa9c0161f2c48c72ae8b47283ecaebfec",
+    "coop_aas_corpus_audit_py_sha256": "d50ebd40d49bcbe2859b53a54d82a0bf317cbccbc312d915ec890fdaae24c5e1"
+  },
+  "tests": {"command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'", "passed": 220, "failed": 0},
+  "runtime_boundary": {"doom3_or_dmap_launched": false, "installed_gamex86_dll_bytes": 2723328, "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"},
+  "limits": [
+    "No native actor route, load, spawn, encounter or playthrough result is claimed.",
+    "Static class closure does not model dynamic obstacles, door state, travel flags or routing caches.",
+    "Final co-op fidelity still requires two-peer progression and matched original-Xbox evidence."
+  ]
+}

@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 049 co-op AAS requirement status
+
+The latest 20 co-op overlays now close the static navigation packaging gate:
+all 638 nonempty AI requirements have the exact requested authored AAS class,
+and the sole empty `use_aas` is explicit. All 30 selected navigation files pass
+standard-text structure, inverse-plane and complete nonzero BSP/area coverage
+checks. The two rebuilt overlays retain every earlier payload byte-for-byte.
+All 220 offline tests pass.
+
+This accepts authored navigation presence and decoded structure, not encounter
+behavior. Native testing must still load all maps, exercise Guardian, Mancubus
+and Cyberdemon movement, and complete two-peer spawn, death/rejoin and
+progression flows. No loader or gameplay result is claimed here because Doom 3
+was deliberately not launched while it could interrupt the user's session.
+
 ## Checkpoint 048 solo AAS requirement status
 
 The solo navigation packaging gate is now closed against effective entityDef
