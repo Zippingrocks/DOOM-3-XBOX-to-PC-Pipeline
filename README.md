@@ -14,7 +14,32 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 003
+## Current checkpoint: 004
+
+**The complete co-op geometry/navigation corpus now decodes, and the first map
+loads through the native PC runtime with its recovered Xbox AAS.**
+
+All 20 co-op MAP.X and all 20 PROC.X members decode without failure. Every
+decoded PROC passes the independent structural inspector. Corpus totals include
+313,418 brush sides, 32,066 patches, 930,756 visible vertices, 2,391,825 visible
+indices, 5,647 models, 1,159 areas, 1,183 inter-area portals and 97,387 BSP
+nodes. These totals are coverage evidence, not a fidelity percentage.
+
+All 26 AAS.X files also decode. The files retain ordinary textual settings,
+areas and reachabilities while packing planes, vertices, edges, faces, nodes,
+portals and clusters in a final `xboxData` block. Expanding those little-endian
+arrays produced standard PC AAS text. On `xc_mars_city1_1`, all eleven section
+counts exactly match independent PC `dmap` regeneration. Native Doom 3 accepted
+the recovered AAS48, loaded the map in 3.034 seconds and spawned 940 entities.
+
+The smoke load exposed the next concrete blockers: ten missing co-op classname
+families, four map-script functions, nine GUIs, six language strings and three
+sounds. Collision still comes from PC `dmap`; direct CM.X decoding remains open.
+Two-peer progression and visual/gameplay fidelity have not been accepted.
+
+See [checkpoint 004](evidence/checkpoint-004.json).
+
+## Previous checkpoint: 003
 
 **The first genuine co-op map now compiles through the native PC toolchain.**
 
