@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 055
+## Current checkpoint: 056
+
+**All 60 functional co-op MAP callback records are now accounted for across
+the two Xbox script-loading paths.** A co-op `script.bin` is the compiled image
+of its sibling `*_main.script` compilation unit and its explicit includes; it
+is not necessarily a complete compiled map script. Six callback records are
+present in those startup programs. The other 54 are in the already audited
+map-load source that worldspawn compiles for the loaded map. Three exact retail
+warning/no-op records remain excluded.
+
+All 20 compilation-unit sources were matched to their binaries. Across
+4,591,834 bytes, 217,103 statements, 5,239 function records and 589 compiled
+calls, there are zero bad statement bases, duplicate callback definitions,
+missing compilation units or contradictory resolutions. This closes the
+apparent gap without inventing bytecode or falsely rejecting valid map-load
+functions. All 238 offline tests pass; Doom 3 and `dmap` were not launched.
+Receipt:
+[`evidence/checkpoint-056-coop-callback-bytecode-boundary.json`](evidence/checkpoint-056-coop-callback-bytecode-boundary.json).
+
+## Earlier checkpoint: 055
 
 **All 20 co-op map scripts now have source-bound entity lookup and entrypoint
 reachability audits, and one concrete PC-host progression hazard is fixed.** In

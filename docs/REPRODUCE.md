@@ -1,3 +1,30 @@
+# Reproduce checkpoint 056
+
+## Checkpoint 056: co-op callback bytecode/source boundary
+
+Cross-check the checkpoint-055 semantic callback report against all 20 exact
+co-op `.script.bin` members and their sibling `*_main.script` compilation-unit
+sources:
+
+```powershell
+python tools/campaign_port/coop_script_bytecode_callbacks.py `
+  work/decoded-inputs-all `
+  --semantic-report work/coop-scriptguard-semantics-v2.json `
+  --require-maps 20 `
+  --output work/coop-script-callback-bytecode-v2.json
+```
+
+Require 4,591,834 compiled bytes, 217,103 statements, 5,239 functions, 589
+`OP_CALL` instructions and statement base 4,100 in all 20 programs. Of the 63
+semantic callback records, exclude the three documented retail no-ops. Require
+60 functional records: six resolved in startup bytecode and 54 classified as
+map-load source callbacks. There must be zero missing compilation-unit source,
+duplicate compiled callback, unexpected semantic resolution or failure. The
+report SHA-256 is
+`8c0176a332daba448d2005b6c3a51ef8abfbfcc25a84077b6488c64a7673c50c`.
+Run the full suite and require 238 passing tests. Do not launch Doom 3 or
+`dmap`.
+
 # Reproduce checkpoint 055
 
 ## Checkpoint 055: co-op script-entity reachability and Mars City 2 guard

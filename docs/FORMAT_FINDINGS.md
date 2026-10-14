@@ -1,5 +1,26 @@
 # Format findings and unknowns
 
+## Checkpoint 056 co-op callback compilation-boundary findings
+
+Co-op `.script.bin` cannot be treated like the solo per-map compiled program.
+Its source metadata names a sibling `*_main.script`, and the recovered main
+source shows the exact include closure. Map-specific functions appear in the
+binary only when that main unit explicitly includes their source. The engine's
+separate worldspawn map-script load supplies the remaining MAP callbacks.
+
+The positive cases prove the distinction. `xc_admin_main.script` includes
+`script/map_admin.script`, and `map_admin1::kill_wounded_marine` is compiled.
+`xc_mcu_main.script` includes `script/map_mcu_1.script`, and its two
+`close_secdoor` callback records resolve to the compiled function. Conversely,
+`xc_mars_city2_1_main.script` includes AI, player and co-op support but not its
+sibling map script; its three functional MAP callbacks therefore correctly
+remain outside startup bytecode and are provided by the audited map-load source.
+
+Across the corpus, six of 60 functional callback records are startup-compiled
+and 54 are map-load source records. Absence from startup bytecode is not itself
+a missing function. A valid audit must first bind each binary to its compilation
+unit and then preserve the semantic source audit for the second load path.
+
 ## Checkpoint 055 co-op script reachability findings
 
 Direct script references need control-flow classification, not a blanket rule.

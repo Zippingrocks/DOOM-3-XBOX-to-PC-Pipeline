@@ -1,0 +1,64 @@
+{
+  "checkpoint": "056",
+  "date": "2026-10-14",
+  "claim": "Every functional co-op MAP callback is accounted for across the shipped startup bytecode and the source scripts compiled when worldspawn loads a map; startup script.bin is not incorrectly treated as a complete co-op map program.",
+  "inputs": {
+    "checkpoint_055": "evidence/checkpoint-055-coop-script-reachability.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "semantic_report_sha256": "774ae6b6adbe60bd6755218c061b9e4fb12dc6fc503e0e24aee8ada689cf8030",
+    "local_report_sha256": "8c0176a332daba448d2005b6c3a51ef8abfbfcc25a84077b6488c64a7673c50c"
+  },
+  "compiled_corpus": {
+    "maps": 20,
+    "bytes": 4591834,
+    "statements": 217103,
+    "function_records": 5239,
+    "op_calls": 589,
+    "statement_index_base": 4100,
+    "bad_statement_bases": 0,
+    "compilation_unit_failures": 0
+  },
+  "callback_boundary": {
+    "semantic_callback_records": 63,
+    "functional_callback_records": 60,
+    "unique_map_callback_symbols": 52,
+    "startup_bytecode_callback_records": 6,
+    "map_load_source_callback_records": 54,
+    "retail_shipped_noop_records_excluded": 3,
+    "duplicate_compiled_functions": 0,
+    "failures": 0,
+    "startup_bytecode_witnesses": {
+      "xc_admin": ["map_admin1::kill_wounded_marine"],
+      "xc_hell1_1": ["Coop::resurrect_player"],
+      "xc_hell1_2": ["Coop::resurrect_player"],
+      "xc_mcu": ["map_mc_underground::close_secdoor", "map_mc_underground::close_secdoor"],
+      "xc_site3_1": ["map_site3::move_transport"]
+    }
+  },
+  "format_boundary": {
+    "rule": "Each co-op script.bin is the compiled program for its sibling *_main.script compilation unit and its includes, not necessarily for maps/vv/xbox_coop/<map>.script.",
+    "positive_examples": [
+      "xc_admin_main.script includes script/map_admin.script and the corresponding callback is compiled.",
+      "xc_mcu_main.script includes script/map_mcu_1.script and both close_secdoor callback records resolve to compiled bytecode.",
+      "xc_mars_city2_1_main.script includes AI/player/coop scripts but not the sibling map script, so its three functional MAP callbacks are source-compiled at map load."
+    ]
+  },
+  "implementation_receipts": {
+    "coop_script_bytecode_callbacks_py_sha256": "6dfe0a6af8a1c13af3551184c55d9bbaf950eda9c178a935d034d66b2297f7cb",
+    "test_coop_script_bytecode_callbacks_py_sha256": "be36c18e7a2aed97e8435233720a4ae5e9224477cecb0aca351e17fd200111dc"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 238,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "Presence in startup bytecode proves only the six listed records; the other 54 rely on the independently audited shipped map-load source.",
+    "This boundary audit does not replace trigger-order, save/load or two-peer gameplay acceptance."
+  ]
+}
