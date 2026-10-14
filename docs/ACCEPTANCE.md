@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 045 animation frame-command status
+
+All 539 commands inside manifest-selected model declarations are statically
+accounted for. Every global or namespaced frame call resolves, all 172 defined
+object-method names resolve, and no trigger entity that exists in a decoded
+Xbox source map is lost from its overlay. This closes the frame-command port-
+regression gate with zero unresolved records and 213 passing tests.
+
+Thirteen source/retail attention records remain: twelve split-map trigger
+names absent from both source and output, plus the retail Vagary
+`sonic_attack` object method absent from both PC and Xbox scripts. Native runs
+must observe any animation that owns those commands, especially the Alpha Labs
+3 Vagary range attack. This checkpoint does not assert that a warning or late-
+bound object-call failure is behaviorally harmless.
+
 ## Checkpoint 044 reachable script-domain status
 
 The 41-map solo corpus now has no reachable computed lookup or nonterminal

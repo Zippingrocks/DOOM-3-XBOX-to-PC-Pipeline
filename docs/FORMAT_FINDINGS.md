@@ -1,5 +1,30 @@
 # Format findings and unknowns
 
+## Checkpoint 045 animation frame-command findings
+
+Frame-command auditing must follow selected declarations, not copied DEF
+files. Dependency closure copies a whole DEF when one declaration is needed;
+unselected model blocks can contain legacy commands such as Caverns 2's
+undefined `hk_fireball`. The decl manager does not parse that model merely
+because its file is present. The overlay manifest's selected `model` records
+are therefore the fail-closed execution scope.
+
+Within a selected model, `call` is resolved immediately through
+`gameLocal.program.FindFunction`, `object_call` is resolved against the
+animated entity's script object when the frame executes, and `trigger` uses
+case-insensitive `gameLocal.FindEntity`. Across the solo corpus, all 331
+selected global/namespaced calls and 172 defined object-method names resolve;
+23 trigger commands resolve to local entities. Twelve selected trigger
+commands name entities absent from both the decoded Xbox source map and its PC
+overlay, so they are preserved split-map residue rather than conversion loss.
+
+The selected stock `monster_boss_vagary` model contains `object_call
+sonic_attack`, but that method is absent from both the complete stock PC script
+corpus and the decoded Xbox Vagary script. Because `object_call` is late-bound,
+this is a runtime attention item rather than a declaration-load failure. The
+retail declaration remains byte-preserved; inventing a method would change the
+Vagary's attack without an Xbox implementation witness.
+
 ## Checkpoint 044 reachable script-domain findings
 
 A conservative computed-name profile is not the same as a reachable call

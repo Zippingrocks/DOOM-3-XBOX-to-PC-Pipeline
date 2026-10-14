@@ -1,0 +1,75 @@
+{
+  "checkpoint": "045",
+  "date": "2026-10-14",
+  "claim": "All animation frame commands in manifest-selected model declarations are accounted for across all 41 solo overlays with zero port-introduced unresolved targets.",
+  "inputs": {
+    "checkpoint_044": "evidence/checkpoint-044-solo-reachable-script-domains.json",
+    "corpus": "solo-overlays-strict-v9",
+    "decoded_source": "solo-structural/maps",
+    "stock_script_corpus": "pc-stock-scripts/script"
+  },
+  "pc_runtime_contract": {
+    "source": "official GPL neo/game/anim/Anim_Blend.cpp and neo/game/Game_local.cpp",
+    "call": "resolved through gameLocal.program.FindFunction while the selected model declaration is parsed",
+    "object_call": "resolved against the animated entity script object when the frame executes",
+    "trigger": "resolved through case-insensitive gameLocal.FindEntity when the frame executes",
+    "scope": "only model declarations listed in each overlay manifest are audited; copied but unselected declarations are not parsed merely because their DEF file is present"
+  },
+  "frame_command_audit": {
+    "maps": 41,
+    "commands": 539,
+    "status_counts": {
+      "global-function": 330,
+      "named-entity": 23,
+      "namespaced-function": 1,
+      "object-method-name": 172,
+      "retail-shipped-missing-object-method": 1,
+      "source-authored-dangling": 12
+    },
+    "attention": 13,
+    "unresolved": 0,
+    "local_report_sha256": "91327d90b187c3ce1dff4d68b840897da2ad35c55f262a6c9dcb337774806dbf"
+  },
+  "source_authored_trigger_attention": {
+    "maps": {
+      "caverns2": 1,
+      "cpu_1": 7,
+      "hellhole_1": 1,
+      "mcu_1": 3
+    },
+    "records": 12,
+    "classification": "each target is absent from both the decoded Xbox source MAP and PC overlay; no source-present name was lost"
+  },
+  "retail_vagary_attention": {
+    "map": "alphalabs3",
+    "model": "monster_boss_vagary",
+    "def_path": "def/monster_boss_vagary.def",
+    "line": 181,
+    "frame": 25,
+    "command": "object_call",
+    "target": "sonic_attack",
+    "def_sha256": "c6d06817bc602ff622e4e7c35e1ca1ed4e4c7f62b343c1b30db9facb8afd3476",
+    "stock_pc_script_sha256": "04726cad585822a669f63e21c155b6ba5ccc3d11295be67ea7dcf6fff4e78d57",
+    "decoded_xbox_script_sha256": "e0005fa1df1f119a4f0ef058a8641d4d5664c08cdb555fbd5bf98a452662053f",
+    "finding": "neither script defines sonic_attack; preserve the retail command and require native observation rather than inventing boss behavior"
+  },
+  "implementation_receipts": {
+    "solo_frame_command_audit_py_sha256": "d38c5119c9a9395afb6798cd805f80d9b587755a62dd639397fff4e467c2aca1"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 213,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No native animation execution, load, spawn, progression or playthrough result is claimed.",
+    "The twelve source-authored dangling triggers require observation when their owning animations execute.",
+    "The Alpha Labs 3 Vagary range attack requires focused native observation for the late-bound missing object method.",
+    "Final solo and co-op fidelity requires matched original-Xbox gameplay and visual evidence."
+  ]
+}

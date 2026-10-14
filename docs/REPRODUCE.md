@@ -1,3 +1,32 @@
+# Reproduce checkpoint 045
+
+## Checkpoint 045: selected animation frame commands
+
+Run the frame-command auditor with the strict-v9 overlays, decoded Xbox source
+MAPs and complete stock PC script corpus:
+
+```powershell
+python tools/campaign_port/solo_frame_command_audit.py `
+  work/solo-overlays-strict-v9 `
+  --source-root work/solo-structural/maps `
+  --stock-script-root work/pc-stock-scripts/script `
+  --out work/solo-overlays-strict-v9-frame-commands.json
+```
+
+Require 41 maps and 539 commands. Status counts must be 330 global functions,
+one namespaced function, 172 object-method names, 23 named entities, twelve
+source-authored dangling triggers and one retail-shipped missing object method.
+There must be 13 attention records and zero unresolved records. The auditor
+must scope commands to manifest-selected model declarations; it must not count
+unselected blocks merely because their DEF file was copied.
+
+The report and auditor SHA-256 values are
+`91327d90b187c3ce1dff4d68b840897da2ad35c55f262a6c9dcb337774806dbf`
+and
+`d38c5119c9a9395afb6798cd805f80d9b587755a62dd639397fff4e467c2aca1`.
+Run `python -m unittest discover -s tools/campaign_port/tests -q`; 213 tests
+must pass. Do not launch Doom 3 or `dmap` for this offline checkpoint.
+
 # Reproduce checkpoint 044
 
 ## Checkpoint 044: reachable script entity domains

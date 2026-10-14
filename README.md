@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 044
+## Current checkpoint: 045
+
+**Every manifest-selected animation frame command is now accounted for across
+all 41 solo overlays.** The engine-scoped audit covers 539 commands: 330 global
+script calls, one namespaced call, 172 object-method calls and 36 entity
+triggers. All callable symbols that the port is expected to supply resolve,
+and every source-present trigger entity survives the conversion.
+
+Twelve triggers were already absent from their decoded Xbox split-map source
+and remain explicit native-attention records. One selected retail Vagary
+animation names `sonic_attack`, a method absent from both the stock PC and
+decoded Xbox Vagary scripts; the retail declaration is preserved rather than
+inventing boss behavior. There are zero port-introduced unresolved records and
+all 213 offline tests pass. Doom 3 and `dmap` were not launched, and
+`gamex86.dll` remains unchanged. Receipt:
+[`evidence/checkpoint-045-solo-frame-commands.json`](evidence/checkpoint-045-solo-frame-commands.json).
+
+## Earlier checkpoint: 044
 
 **Reachable computed entity names and the last apparent nonterminal script-
 exit cases are now resolved offline across all 41 solo maps.** Function-scoped
