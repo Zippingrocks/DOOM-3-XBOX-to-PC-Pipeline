@@ -1,5 +1,33 @@
 # Recovery order and acceptance
 
+
+## Checkpoint 009 collision status
+
+Direct Xbox collision is now structurally decoded across the complete extracted
+co-op corpus and loader-checked on the first segment. That advances collision
+from PC-regenerated fallback to authored-data loader acceptance for
+`xc_mars_city1_1`; it does not yet advance that map to collision-fidelity
+acceptance.
+
+A map's collision gate requires all of the following:
+
+- the CM.X input and exported CM are bound to exact hashes and the converted
+  MAP geometry CRC;
+- all models, vertices, edges, planes, brushes, polygons and BSP nodes parse
+  with complete byte consumption and valid cross-references;
+- every polygon and brush is reachable from the authored BSP;
+- the native PC loader accepts the direct CM without regeneration or fallback;
+- representative world, clip, trigger, mover, projectile and actor traces are
+  compared against an Xbox reference or another source-bound oracle;
+- multiplayer host/client contact and trigger outcomes agree for the co-op
+  slice.
+
+The first map satisfies the first four bullets. Native trace equivalence,
+two-peer contacts and all-map loading remain open. The 342-reference difference
+between stored Xbox and PC-reconstructed polygon-node lists is explicitly
+tracked; it may be acceleration-only, but must not be silently declared
+irrelevant before trace testing.
+
 ## Checkpoint 008 acceptance state
 
 The first co-op segment now passes the bounded single-host navigation,
