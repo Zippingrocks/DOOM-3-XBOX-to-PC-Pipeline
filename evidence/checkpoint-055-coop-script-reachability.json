@@ -1,0 +1,71 @@
+{
+  "checkpoint": "055",
+  "date": "2026-10-14",
+  "claim": "All 20 co-op overlays have source-bound script-entity reachability classification, and the one newly proven PC-host progression hazard is narrowly guarded without altering the decoded Xbox MAP.",
+  "inputs": {
+    "checkpoint_054": "evidence/checkpoint-054-solo-script-bytecode.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "dynamic_profile_sha256": "e7028997dc9ba8e69b224d0d771620670e31f85ee93b76591124b768edb8c231"
+  },
+  "mars_city2_progression_guard": {
+    "map": "xc_mars_city2_1",
+    "function": "connect_sarge_speaker",
+    "missing_entities": ["speaker_281", "speaker_282"],
+    "guarded_calls": 2,
+    "preserved_terminal_action": "sys.trigger($trigger_relay_111)",
+    "relay_targets": ["trigger_once_47", "trigger_once_69"],
+    "reason": "The PC interpreter terminates a script thread when a required entity event argument is null; both speakers are absent from the exact split Xbox MAP, so either call could prevent the later progression relay.",
+    "script_output_sha256": "06469533691ddd3eb025a0f0385dd0b714edc08b496649f59e2cdfa9da6951f7"
+  },
+  "script_entity_closure": {
+    "maps": 20,
+    "functions": 216,
+    "reachable_functions": 99,
+    "direct_entity_references": 1776,
+    "dynamic_calls": 66,
+    "profile_expected_references": 66,
+    "profile_missing_references": 10,
+    "port_regressions": 0,
+    "attention": 65,
+    "attention_breakdown": {
+      "xc_enpro_2_source_thread_exit_on_null_argument": 60,
+      "xc_enpro_2_source_null_value_use": 3,
+      "hell_reachable_unprofiled_source_residue": 2
+    },
+    "local_entity_report_sha256": "20fdf776ffb9bb37518338c7f2b6162029748a63b5b80d295ec36b5195ccb078",
+    "local_reachability_report_sha256": "688db57e0b1ed6d22662769182d883fb8003214f3f9292720a17614ac562182f"
+  },
+  "remaining_source_attention": {
+    "xc_enpro_2": "machineclaw1_move is a retained MAP callback, but its controlled entities were intentionally renamed with vv_ prefixes and its setup block is marked vv remove; the callback first reaches a missing required waitFor argument and cannot affect the separately targeted maggot spawn.",
+    "xc_hell1_1_and_xc_hell1_2": "The reachable shared resurrection helper forms RESURRECT_POINT+i names; the split maps do not provide the corresponding point in all cases. No compiled initCoop call exists, but an external C++ name lookup remains unproven because the reconstruction source repository is inaccessible with current credentials."
+  },
+  "offline_regression_gates": {
+    "overlay": {"maps": 20, "payload_files": 6080, "payload_bytes": 545522584, "untracked_files": 0, "unresolved": 0, "local_report_sha256": "1c14f9965d59a5aa60cebbb7b5a6f58db582782ba23a37df244091ef594819b8"},
+    "entity_links": {"entities": 15703, "links": 4654, "port_introduced_unresolved": 0, "local_report_sha256": "5ac2e0b07cb7d37642bfbe9a7c3d43bd906ad48054bb48ba5338b75adc79aa29"},
+    "semantics": {"calls": 63, "transitions": 21, "unresolved": 0, "local_report_sha256": "774ae6b6adbe60bd6755218c061b9e4fb12dc6fc503e0e24aee8ada689cf8030"},
+    "navigation_requirements": {"ai_requirements": 639, "packaged": 638, "explicit_no_aas": 1, "missing": 0, "local_report_sha256": "3b307d3a597fc8f12227428a00f8e06d44bef24b2303988dee8a381bfd352f6a"},
+    "navigation_corpus": {"files": 30, "bytes": 20770442, "areas": 22348, "reachabilities": 101654, "nodes": 79281, "canonical_corpus_sha256": "e3877076cf1952a8150d6e5d1471615419476484aaf836a09bc16e74dfe98c08", "local_report_sha256": "d1d244e7664d3f09e15602d1c215e168ad96f9be5be4818933e905d3f9776ef6"}
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "b6c721a8cde42cb366537165b77aeaed7523fb3aa94af706e056c75bc789fe46",
+    "coop_script_entity_audit_py_sha256": "c212eeb850bf0998737253963b3859bc45552c338c57f3912c7fcd5706250382",
+    "coop_script_reachability_audit_py_sha256": "fd71f1381568b6cb9703eeda7f07f19de6c2f1af058db0bac221c7237c3ae4bb",
+    "test_build_runtime_overlay_py_sha256": "c4734179a7c80b7d2119a423c1272daefdda7dd5947ab1f265356d7a04c01eee",
+    "rebuild_receipt_sha256": "27964bc4ea1bafb8b12f632f259522f730fde6d4ae7279cdc54dff73e0bc1654"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 236,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "Static reachability proves which script residue can be entered from MAP callbacks, but not every runtime trigger order or two-peer synchronization path.",
+    "The EnPro 2 vv_-disabled machinery remains source-authored runtime attention and was not reactivated or renamed without gameplay evidence.",
+    "The Hell resurrection-point ambiguity remains pending external C++ call-site evidence or the later deliberate two-peer gameplay pass."
+  ]
+}

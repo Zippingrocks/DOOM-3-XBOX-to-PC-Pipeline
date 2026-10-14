@@ -1,3 +1,41 @@
+# Reproduce checkpoint 055
+
+## Checkpoint 055: co-op script-entity reachability and Mars City 2 guard
+
+Profile only the two source-proven dynamic domains: Alpha Labs 2 loops 1..10,
+and MCU speakers 1..11/lights 1..12. Audit every direct `$entity` reference and
+`sys.getEntity` call against the hash-bound decoded MAP, then compute function
+reachability from `main` and MAP callback roots:
+
+```powershell
+python tools/campaign_port/coop_script_entity_audit.py ../.. `
+  --source-search-root work `
+  --dynamic-profile tools/campaign_port/profiles/coop_script_entity_domains.json `
+  --require-maps 20 --allow-unresolved `
+  --output work/coop-script-entities-v4.json
+
+python tools/campaign_port/coop_script_reachability_audit.py ../.. `
+  --source-search-root work `
+  --dynamic-profile tools/campaign_port/profiles/coop_script_entity_domains.json `
+  --require-maps 20 --output work/coop-script-reachability-v3.json
+```
+
+Require 216 functions, 99 reachable functions and zero port regression. The 65
+attention records must be exactly 60 required-null-argument and three null-value
+uses in `xc_enpro_2`, plus one reachable `RESURRECT_POINT+i` residue in each of
+`xc_hell1_1` and `xc_hell1_2`.
+
+For `maps/vv/xbox_coop/xc_mars_city2_1.script`, guard exactly the two
+`sys.trigger` calls for absent `speaker_281` and `speaker_282`. Preserve
+`trigger_relay_111`; its two targets are part of the decoded MAP. The transform
+must accept and preserve CRLF source, reject partial/duplicate witnesses, and
+record input/output hashes in the overlay manifest. Rebuild all 20 maps with
+suffix `scriptguard_v2`, then rerun the checkpoint-052 corpus, entity-link and
+semantic gates and the checkpoint-049 AAS gates. Require 6,080 payloads,
+4,654 links, 63 callbacks, 21 transitions, 639 AI requirements, 30 AAS files
+and zero unresolved port record. Run the full suite and require 236 passing
+tests. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 054
 
 ## Checkpoint 054: all solo compiled-script callbacks

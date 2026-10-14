@@ -14,7 +14,27 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 054
+## Current checkpoint: 055
+
+**All 20 co-op map scripts now have source-bound entity lookup and entrypoint
+reachability audits, and one concrete PC-host progression hazard is fixed.** In
+`xc_mars_city2_1`, `connect_sarge_speaker` called two speaker entities absent
+from the split Xbox MAP before triggering `trigger_relay_111`. A required null
+entity argument terminates the PC script thread, so the overlay now guards only
+those two missing audio calls and preserves the wait, monitor actions and later
+progression relay.
+
+The rebuilt corpus still closes all 6,080 payloads, 4,654 named links, 63 MAP
+callbacks, 21 transitions, 639 AI requirements and 30 navigation files with
+zero port regression. Reachability covers 216 functions, 99 of them reachable,
+and classifies all remaining script-entity residue. The 65 attention records
+are source-authored: 63 belong to EnPro 2 machinery deliberately disabled with
+`vv_` names, and two are shared Hell resurrection-point lookups whose external
+C++ entry path remains unproven. All 236 offline tests pass; Doom 3 and `dmap`
+were not launched. Receipt:
+[`evidence/checkpoint-055-coop-script-reachability.json`](evidence/checkpoint-055-coop-script-reachability.json).
+
+## Earlier checkpoint: 054
 
 **The compiled-script audit now covers every one of the 41 original-Xbox solo
 maps, and every functional MAP callback has a shipped bytecode definition.**

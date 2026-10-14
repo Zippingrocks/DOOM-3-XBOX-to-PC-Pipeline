@@ -1,5 +1,37 @@
 # Format findings and unknowns
 
+## Checkpoint 055 co-op script reachability findings
+
+Direct script references need control-flow classification, not a blanket rule.
+A missing entity used as a receiver can be a deliberate inert visual remnant,
+while a missing required entity argument to a system event terminates the PC
+script thread. The latter becomes a progression defect when later statements
+carry gameplay actions.
+
+`xc_mars_city2_1` demonstrates that distinction. Its split Xbox MAP omits
+`speaker_281` and `speaker_282`, but `connect_sarge_speaker` still triggers both
+before `trigger_relay_111`. The official interpreter rejects a null required
+entity argument and marks the thread dying. Guarding only those two absent audio
+triggers preserves the authored delay and monitor behavior and makes the final
+relay reachable; adding stock-PC speaker entities would instead invent content
+for the split map.
+
+EnPro 2 is the opposite case. The MAP retains the `machineclaw1_move` callback,
+but the controlled machinery was renamed with `vv_` prefixes and the script's
+setup block is explicitly marked `vv remove`. Its thread reaches a missing
+`waitFor` argument and ends, while the same trigger independently targets the
+combat maggot. Those 63 records are source-authored disabled visual machinery,
+not names lost by conversion, so the port does not reactivate them without a
+runtime witness.
+
+The shared resurrection helper remains a bounded unknown. It constructs
+`RESURRECT_POINT+i` in both Hell splits, but the compiled scripts contain no
+call to `Coop::initCoop`. An external C++ name-based invocation has not been
+excluded because the reconstruction repository is unavailable with current
+credentials. The maps are therefore preserved pending source access or the
+later deliberate two-peer test rather than receiving invented resurrection
+points.
+
 ## Checkpoint 054 solo compiled-callback findings
 
 The recovered function-record grammar also handles unqualified function names;
