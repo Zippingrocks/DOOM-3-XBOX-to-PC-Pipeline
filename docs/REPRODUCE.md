@@ -12,8 +12,10 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 012 ran on Pyth
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 142 tests, zero failures. Fixtures contain
-no retail game data. Tests establish decoder contracts, not campaign fidelity.
+Expected result on the current branch: 144 tests, zero failures. Checkpoint 012
+captured 142 passing tests; two later synthetic tests cover authored-CM overlay
+selection and CRC mismatch rejection. Fixtures contain no retail game data.
+Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
 as `game/campaign_port_inputs` and `game/campaign_port_work`. Never add an ISO,
@@ -342,11 +344,16 @@ python tools/campaign_port/build_runtime_overlay.py `
   --runtime-material guis/live/assets/FriendOnline `
   --runtime-material guis/live/assets/GameInviteReceived `
   --generate-empty-efx `
+  --authored-cm game/campaign_port_work/authored-cm/maps/vv/xbox_coop/xc_mars_city1_1.cm `
   --out game/campaign_port_work/overlay-xc_mars_city1_1
 ```
 
 The manifest must list every callback/skeleton compatibility edit with input
-and output hashes. A hidden or unrecorded manual edit invalidates the receipt.
+and output hashes. It must also report `collision_source:
+direct-authored-cm`, the shared embedded map CRC, and separate PC-`dmap` and
+authored CM hashes. The builder rejects a missing file, wrong filename,
+non-PC-text CM header or CRC mismatch before publishing the overlay. A hidden
+or unrecorded manual edit invalidates the receipt.
 
 Audit a suspect navigation pair without changing the AAS:
 
