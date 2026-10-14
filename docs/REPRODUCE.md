@@ -1,3 +1,32 @@
+# Reproduce checkpoint 047
+
+## Checkpoint 047: complete solo AAS corpus
+
+Audit every packaged navigation file in strict v9:
+
+```powershell
+python tools/campaign_port/aas_corpus_audit.py `
+  work/solo-overlays-strict-v9 `
+  --glob "*.aas*" `
+  --require-count 55 `
+  --report work/solo-overlays-strict-v9-aas-audit.json
+```
+
+Require 55 files: 41 `.aas48` and 14 `.aas96`. Totals must be 44,109,766
+bytes, 45,857 areas, 226,989 reachabilities, 158,002 nodes and 49,217 inverse
+plane pairs. Every file must report zero unreachable nonzero nodes and zero
+unreferenced nonzero areas. The content corpus ledger, report and auditor
+SHA-256 values are:
+
+```text
+db57a26fd0228cfad527db122e7e3c43e4df3d090b29ebb4d42b48725c47d18d
+8401b49cd8d03eded2b534208564b44fcefa484c73ec7bb3f3c3e29031b10dbc
+3ad963e687585933f676a58d8f1c74e29f1d81f525f0616d306c0867ac15ebc0
+```
+
+Run the full 215-test offline suite. Do not launch Doom 3 or `dmap` for this
+checkpoint.
+
 # Reproduce checkpoint 046
 
 ## Checkpoint 046: in-world GUI command targets

@@ -14,7 +14,22 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 046
+## Current checkpoint: 047
+
+**The complete solo navigation corpus now passes the standard-PC structural
+and coverage audit.** Strict v9 contains every shipped navigation class: 41
+AAS48 files and 14 AAS96 files. All 55 parse with valid paired planes and
+complete nonzero BSP/area coverage, totaling 44,109,766 bytes, 45,857 areas,
+226,989 reachabilities and 158,002 nodes. No file has an unreachable nonzero
+node or an unreferenced nonzero area.
+
+This closes the corpus-wide decoded-AAS structure gate; actor bounds, dynamic
+obstacles and encounter routes still require native progression. All 215
+offline tests remain green. Doom 3 and `dmap` were not launched, and
+`gamex86.dll` remains unchanged. Receipt:
+[`evidence/checkpoint-047-solo-aas-corpus.json`](evidence/checkpoint-047-solo-aas-corpus.json).
+
+## Earlier checkpoint: 046
 
 **Every gameplay command emitted by every in-world GUI instance is now
 accounted for across all 41 solo overlays.** The audit binds 1,700 MAP GUI

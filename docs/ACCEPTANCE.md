@@ -1,5 +1,17 @@
 # Recovery order and acceptance
 
+## Checkpoint 047 solo AAS corpus status
+
+All 55 packaged solo AAS files pass standard-text, plane-pair and complete
+nonzero BSP/area coverage checks. Every segment has AAS48, all 14 source-shipped
+AAS96 classes are present, and no file contains an unreachable nonzero node or
+unreferenced nonzero area. The 215-test offline suite remains green.
+
+This accepts decoded navigation structure, not encounter navigation. Native
+progression must still observe actual AI origins, actor bounds, travel flags,
+doors, dynamic obstacles and routing-cache state before any map is called
+navigation-perfect.
+
 ## Checkpoint 046 in-world GUI command status
 
 All 1,107 relevant commands emitted by 1,700 in-world GUI instances are

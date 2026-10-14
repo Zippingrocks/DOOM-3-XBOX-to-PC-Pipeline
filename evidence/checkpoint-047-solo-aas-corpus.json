@@ -1,0 +1,43 @@
+{
+  "checkpoint": "047",
+  "date": "2026-10-14",
+  "claim": "Every packaged Xbox solo navigation file passes standard PC AAS structure, plane-pair and complete nonzero BSP/area coverage checks.",
+  "inputs": {
+    "checkpoint_046": "evidence/checkpoint-046-solo-gui-commands.json",
+    "corpus": "solo-overlays-strict-v9"
+  },
+  "aas_corpus": {
+    "files": 55,
+    "extension_counts": {
+      ".aas48": 41,
+      ".aas96": 14
+    },
+    "bytes": 44109766,
+    "areas": 45857,
+    "reachabilities": 226989,
+    "nodes": 158002,
+    "plane_inverse_pairs": 49217,
+    "files_with_unreachable_nonzero_nodes": 0,
+    "files_with_unreferenced_nonzero_areas": 0,
+    "corpus_sha256": "db57a26fd0228cfad527db122e7e3c43e4df3d090b29ebb4d42b48725c47d18d",
+    "local_report_sha256": "8401b49cd8d03eded2b534208564b44fcefa484c73ec7bb3f3c3e29031b10dbc"
+  },
+  "implementation_receipts": {
+    "aas_corpus_audit_py_sha256": "3ad963e687585933f676a58d8f1c74e29f1d81f525f0616d306c0867ac15ebc0"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 215,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No native actor route, load, spawn, progression or playthrough result is claimed.",
+    "The audit does not model actor bounds, travel flags, dynamic obstacles, doors or routing caches.",
+    "Encounter navigation and final solo/co-op fidelity require native progression and matched original-Xbox evidence."
+  ]
+}

@@ -1,5 +1,21 @@
 # Format findings and unknowns
 
+## Checkpoint 047 solo AAS corpus findings
+
+The strict solo overlays carry 55 decoded navigation files: one AAS48 for each
+of 41 segments and the 14 AAS96 classes shipped by the corresponding Xbox
+archives. Corpus validation must parse the final packaged files rather than
+trust the extraction manifest alone. It verifies standard `DewmAAS 1.07`
+structure, inverse plane pairing, BSP reachability from node one and use of
+every nonzero area as a BSP leaf.
+
+All files pass. Together they contain 45,857 areas, 226,989 directed
+reachabilities, 158,002 nodes and 49,217 plane inverse pairs. Every file has
+zero unreachable nonzero nodes and zero unreferenced nonzero areas. This proves
+the corrected plane-distance export and structural graph coverage survived
+final packaging; it does not prove a particular actor origin/bounds maps to the
+intended area or that doors and obstacles enable a route at runtime.
+
 ## Checkpoint 046 in-world GUI command findings
 
 GUI files cannot be audited without their MAP instance. A GUI `runScript
