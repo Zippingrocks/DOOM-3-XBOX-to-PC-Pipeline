@@ -1,5 +1,24 @@
 # Recovery order and acceptance
 
+## Checkpoint 005 acceptance state
+
+The first co-op segment has crossed the dependency-resolution and stock-loader
+boundary: decoded geometry/AAS, selected models/animations, HUD images, sounds,
+language data and script callbacks load together. The exact skeleton alias is
+natively confirmed. This is still below source-runtime acceptance because the
+retail PC DLL cannot instantiate the reconstructed Xbox-only classes.
+
+The next acceptance gate is a Windows build of the implementation PR followed
+by the same bounded load. It must prove registration and behavior of GUI sync,
+door sync, spawn-level, enable-GUI and Turkey Puncher entities and then revisit
+the five dynamic AI path failures. Only after that gate should two-peer spawn,
+death/rejoin, synchronized progression and segment transition testing begin.
+
+Static AAS routes exist for every warned pair, so regeneration or hand-editing
+reachabilities is not currently justified. Dynamic obstacle/door state must be
+measured first. Collision remains PC `dmap` output; direct CM.X recovery remains
+a separate fidelity obligation.
+
 ## Deliverable, not a substitute
 
 The target is the original-Xbox campaign content on the PC source host, with
@@ -89,3 +108,4 @@ Checkpoint 001 completes none of these retail per-map acceptance rows. It adds
 recovery instruments and reproducibility documentation, with 46 synthetic
 checks and no retail campaign files. The next substantive milestone is a
 source-bound decode of an actual co-op map, not another menu milestone.
+

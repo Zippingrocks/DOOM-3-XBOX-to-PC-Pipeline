@@ -1,9 +1,9 @@
-# Reproduce checkpoint 004
+# Reproduce checkpoint 005
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `9f96745ea553fdf918d1630c45d7399abe8f0033`
+Checkpoint implementation head: `bb2b336a036782ab861df9d20dc337fe438323d0`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
@@ -15,7 +15,7 @@ Python 3.11/Windows:
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 64 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 103 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -115,4 +115,65 @@ its CM and shadow products are not original-Xbox equivalence. One successful
 map load proves parser/runtime entry only. Direct CM.X recovery, dependency
 binding, all-map loading, co-op spawns/respawns, transitions, two-peer progression
 and comparison against Xbox visual/gameplay evidence remain required.
+
+## Runtime asset conversion and overlay
+
+Use the first map's audited dependency ledger to select inputs; do not bulk-copy
+the disc. The decoders refuse malformed records and existing outputs:
+
+```powershell
+python tools/campaign_port/decode_mdv.py source.mdv --kind mesh `
+  --out output.md5mesh --report output.mdvmesh.json
+python tools/campaign_port/decode_mdv.py source.mdv --kind anim `
+  --out output.md5anim --report output.mdvanim.json
+python tools/campaign_port/decode_md5anim_x.py source.md5anim.x `
+  --out output.md5anim --report output.md5anim-x.json
+python tools/campaign_port/retarget_md5anim.py source.md5anim `
+  --target-mesh target.md5mesh --out retargeted.md5anim `
+  --report retarget.json
+```
+
+`d3tfull.py` takes the D3TFULL file or its containing ISO plus selected logical
+image names. `xact_audio.py` takes the matching XSND header, INDEXLIST, XSB and
+named XWB banks plus selected logical sound names. Both write a new directory
+and a manifest. Consult `--help` because bank names and ISO extent parameters
+come from the source-bound inventory, not fixed public paths.
+
+Build the local overlay after conversion:
+
+```powershell
+python tools/campaign_port/build_runtime_overlay.py `
+  --map game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city1_1.map `
+  --converted-dir game/campaign_port_work/converted/maps/vv/xbox_coop `
+  --retail-root game/campaign_port_work/extracted `
+  --def-root game/campaign_port_work/shared-assets/base/def `
+  --stock-dir base `
+  --language game/campaign_port_work/shared-assets/base/strings/english.lang `
+  --out game/campaign_port_work/overlay-xc_mars_city1_1
+```
+
+The manifest must list every callback/skeleton compatibility edit with input
+and output hashes. A hidden or unrecorded manual edit invalidates the receipt.
+
+Audit a suspect navigation pair without changing the AAS:
+
+```powershell
+python tools/campaign_port/aas_route_audit.py converted.aas48 `
+  --start=-3392,-3265,184 --goal=-3592,-2952,208 --travel-flags 2
+```
+
+Checkpoint 005 finds walk-only routes for all five warned first-map NPC/path
+pairs. This is static graph evidence only; dynamic door and obstacle behavior
+must be retested with the reconstructed source DLL.
+
+For clean-room executable work, `xbe.py info`, `xrefs`, `refs`, `calls`,
+`dwords` and `disasm` operate read-only. Code-inspection commands require the
+optional Capstone package. Publish behavioral findings and addresses, never the
+retail executable or copied disassembly.
+
+The final native stock-DLL harness loads 940 entities in 2.825 seconds. It has
+no missing selected DDS/WAV, EFX, AF-joint, script callback or copy-joint
+warning. Five Xbox-only classname families cannot spawn because the stock DLL
+lacks the new source classes; do not interpret that harness as source-runtime
+acceptance.
 

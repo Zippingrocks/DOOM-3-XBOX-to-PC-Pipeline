@@ -14,7 +14,48 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 004
+## Current checkpoint: 005
+
+**The first co-op map now has a reproducible runtime-asset overlay and reaches
+a clean, fully loaded native PC state apart from source-DLL-only behavior.**
+
+The recovery toolset now includes Xbox MDV mesh/animation decoding, packed
+MD5ANIM.X decoding, world-space skeleton retargeting, D3TFULL DXT texture
+extraction, XACT/Xbox-IMA sound recovery, a fail-closed dependency overlay
+builder, a read-only XBE analysis helper and an offline AAS route auditor. The
+synthetic suite contains 103 passing tests on Python 3.11/Windows.
+
+For `xc_mars_city1_1`, 21 MDV meshes, 234 MDV animations and 55 MD5ANIM.X
+animations decode. Eight selected D3TFULL records produce valid DXT DDS files,
+and eight selected XACT cues resolve through XSND/INDEXLIST/XSB/XWB to PCM WAV.
+Whole Xbox DEF files shadow stock VFS paths only where declarations materially
+differ. Every generated overlay records input/output hashes and exact
+PC-compatibility transforms.
+
+Two host differences are now explicit and reproducible. The co-op map retains
+one unqualified callback plus one qualified call but omits the callback body;
+the overlay restores the exact matching Xbox solo function and qualifies both
+references. Xbox MDV pruning removes the identity-only body joint
+`neckcontrol`; its retained parent `loneckcontrol` has the same bind transform,
+so the PC head copy uses that exact alias. Native validation confirms the
+callback runs and the prior copy-joint warning is gone.
+
+The map again loads 940 entities with no missing recovered HUD DDS, selected
+WAV, EFX, AF-joint, script-compile, callback or copy-joint warning. The private
+source branch reconstructs the five first-map Xbox-only spawnclass families,
+including the networked two-score Turkey Puncher contract recovered from the
+retail XBE. The stock retail DLL cannot instantiate those new classes; a source
+build is therefore the next required runtime boundary.
+
+Five NPC path warnings remain in the stock-DLL harness. Offline BSP/route
+auditing maps every involved origin and goal to reachable AAS areas and finds
+walk-only paths of 4 to 13 areas. This rules out lost reachability records but
+does not model the dynamic door/obstacle state, including the missing Xbox
+door-sync class. No warning is silently suppressed or declared fixed.
+
+See [checkpoint 005](evidence/checkpoint-005.json).
+
+## Previous checkpoint: 004
 
 **The complete co-op geometry/navigation corpus now decodes, and the first map
 loads through the native PC runtime with its recovered Xbox AAS.**
@@ -114,8 +155,8 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-001.json): source hashes, validation
-  scope and explicit incomplete obligations.
+- [Checkpoint receipt](evidence/checkpoint-005.json): current source hashes,
+  validation scope and explicit incomplete obligations.
 
 ## Working rule
 

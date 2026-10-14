@@ -1,5 +1,55 @@
 # Format findings and unknowns
 
+## Checkpoint 005 runtime-format findings
+
+Xbox MDV (`IDMD`) stores both meshes and animations. Mesh decoding uses the
+serialized joint hierarchy and inverse bind transforms to reconstruct MD5
+weights; influences are normalized only after rejecting bad joint/range data.
+Animation decoding restores local transforms without inventing joints. On the
+first-map dependency closure, 21 meshes and 234 animations decode. Xbox
+MD5ANIM.X is a separate packed-track representation; 55 first-map files decode
+after validating component spans, overlap and complete payload consumption.
+Where the Xbox skeleton prunes an identity-only intermediate, retargeting
+composes source world transforms onto the target parent hierarchy.
+
+D3TFULL records use a keyed table and store Xbox DXT payloads without a PC DDS
+container. The extractor resolves logical names, validates record extents and
+emits DDS headers for established DXT1, DXT3 and DXT5 formats. Eight images
+selected by the first-map HUD dependency ledger were decoded; this is not a
+claim that every D3TFULL format code is known.
+
+Xbox campaign audio resolution is a chain, not a filename lookup: XSND shader
+metadata selects an INDEXLIST entry, which selects XSB cue/sound metadata and
+then an XWB bank/wave entry. The established codec for the first-map selections
+is Xbox IMA ADPCM. Eight required cues were decoded to PCM WAV with channel,
+rate, encoded-byte and output-frame accounting. Duplicate PCM hashes are
+retained when different logical sounds deliberately point to equivalent data.
+
+Retail XBE inspection is read-only and maps file offsets through XBE virtual
+sections. It supports ASCII references, direct address references, calls,
+dwords and bounded x86 disassembly. Clean-room analysis of `idTurkeyPuncher`
+established two 32-bit scores, network snapshots, a server activation event and
+client GUI triggers. This behavioral contract was reconstructed in GPL source;
+no executable bytes or disassembly are distributed.
+
+The standard PC script compiler exposes a host mismatch in the first co-op
+segment: one relay calls `test_trigger_relay`, another calls
+`map_marscity1::test_trigger_relay`, and the segmented co-op script omits the
+body. The matching Xbox solo script supplies the exact namespaced callback.
+The runtime overlay restores that body and qualifies the unqualified reference,
+recording both edits and their hashes.
+
+The Xbox player MDV has 50 joints versus the stock PC body's 75. It retains
+`loneckcontrol` but omits identity child `neckcontrol`; the two stock bind-world
+transforms are identical. Using `loneckcontrol` as the `copy_joint` source for
+the PC head removes the native warning without changing the recovered mesh.
+
+Offline AAS route auditing follows the official Doom 3 `idPlane` convention
+(`normal dot point + d`) and starts at BSP node 1. All five first-map warning
+pairs map to reachable walk areas and have directed walk-only routes. Static
+connectivity does not model doors, runtime obstacles or cluster-cache state, so
+it cannot by itself clear a native `AI_DEST_UNREACHABLE` warning.
+
 ## Checkpoint 004 AAS.X findings
 
 AAS.X begins with standard `DewmAAS "1.07"` text. Settings, areas and every
