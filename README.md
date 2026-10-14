@@ -14,7 +14,28 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 051
+## Current checkpoint: 052
+
+**All 20 co-op maps now rebuild through one source-bound toolchain with closed
+script-callback, transition, entity-link, direct-audio and navigation gates.**
+The final overlays contain 6,080 uniquely receipted payloads and zero unresolved
+classname, resource or string. The callback audit resolves 51 global and nine
+namespaced calls; the remaining three are byte-matched retail-PC admin no-ops.
+The 20-map chain is closed from `xc_mars_city1_1` through `xc_hellhole_1`, whose
+external destination is the stock solo finale `vv/hellhole_2`.
+
+The rebuild restored 22 exact PCM files from the authenticated Xbox XACT banks,
+including three co-op-only radio lines. Only `sound/evolvers/airhymn_03.wav`,
+which is absent from all recovered Xbox and PC inventories, is made inert. All
+20 map scripts explicitly include the recovered shared `script/coop.script`.
+Site 3's case-insensitive duplicate entity name was a real PC load blocker:
+the referenced co-op exit keeps its retail name while the unreferenced solo
+residue receives a path-scoped name. Entity closure now has zero duplicates and
+zero port-introduced unresolved links. All 231 offline tests pass; Doom 3 and
+`dmap` were not launched. Receipt:
+[`evidence/checkpoint-052-coop-semantics-audio.json`](evidence/checkpoint-052-coop-semantics-audio.json).
+
+## Earlier checkpoint: 051
 
 **No named entity link or binding from the decoded Xbox co-op sources is lost
 in the latest 20 overlays.** A source-hash-bound audit covers 15,703 entities
@@ -24,9 +45,9 @@ already present in the exact decoded source MAP. There are zero port-introduced
 unresolved links.
 
 Site 3 contains one source-authored case-fold collision:
-`target_endlevel_1`/`target_endLevel_1`. It is preserved, not silently renamed,
-and remains a focused native terminal-transition observation. All 225 offline
-tests pass. Doom 3 and `dmap` were not launched. Receipt:
+`target_endlevel_1`/`target_endLevel_1`. Checkpoint 052 proves this is fatal on
+the PC host and applies the narrow, receipted correction. All 225 offline tests
+passed at this checkpoint. Doom 3 and `dmap` were not launched. Receipt:
 [`evidence/checkpoint-051-coop-entity-links.json`](evidence/checkpoint-051-coop-entity-links.json).
 
 ## Earlier checkpoint: 050
@@ -1112,7 +1133,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-043-solo-worldspawn-dispatch.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-052-coop-semantics-audio.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

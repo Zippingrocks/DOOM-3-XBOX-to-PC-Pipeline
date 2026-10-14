@@ -1,3 +1,50 @@
+# Reproduce checkpoint 052
+
+## Checkpoint 052: unified co-op callbacks, audio and campaign chain
+
+First recover every raw WAV named directly by the co-op MAPs through the
+matching XSND/INDEXLIST/XSB/XWB chain. The new recoveries are two files for
+`xc_alphalabs2_2`, 11 for `xc_delta2b_1`, three for `xc_mars_city2_1`, one for
+`xc_mars_city2_2` and five for `xc_mcu`. Use `xact_audio.py` with the exact
+authenticated retail-image extents; never substitute a PC sample. The five
+XACT manifests must hash to the values in checkpoint-052 evidence.
+
+Add `script/coop.script` to the shared player resource profile and prepend an
+include to every co-op map script exactly once. Apply only the path-scoped MAP
+callback corrections recorded in the receipt. In Site 3, preserve the
+referenced `target_endlevel_1` and rename only the unreferenced case-fold
+duplicate to `target_endLevel_1_solo_orphan`. A rebuilt manifest must carry
+`source_map_sha256` from the original decoded MAP; it must not treat a prior
+transformed overlay as new source provenance.
+
+Rebuild the latest candidate for all 20 maps, then run the full offline gates:
+
+```powershell
+python tools/campaign_port/rebuild_latest_coop_overlays.py ../.. `
+  --work-root work --suffix callback_v1 --require-maps 20 `
+  --receipt work/coop-callback-rebuild-v1.json
+
+python tools/campaign_port/coop_overlay_corpus_audit.py ../.. `
+  --require-maps 20 --output work/coop-callback-overlay-corpus-v1.json
+
+python tools/campaign_port/coop_entity_link_audit.py ../.. `
+  --source-search-root work --require-maps 20 `
+  --output work/coop-callback-entity-links-v1.json
+
+python tools/campaign_port/coop_semantic_audit.py ../.. `
+  --stock-script-root work/pc-stock-scripts `
+  --language work/shared-assets-extracted/base/strings/english.lang `
+  --language work/shared-assets-extracted/base/strings/english_vv.lang `
+  --require-maps 20 --output work/coop-callback-semantics-v1.json
+```
+
+Require 6,080 payloads totaling 545,522,466 bytes, no untracked or unresolved
+payload, 63 callback records (51 global, nine namespaced and three exact retail
+no-ops), 21 transition records, a single closed 20-map chain and zero entity
+name duplicates. Rerun the checkpoint-049 AAS gates and require the unchanged
+639 requirements and 30-file canonical corpus. Run the full suite; 231 tests
+must pass. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 051
 
 ## Checkpoint 051: co-op named entity links

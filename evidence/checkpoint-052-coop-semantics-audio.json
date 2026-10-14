@@ -1,0 +1,99 @@
+{
+  "checkpoint": "052",
+  "date": "2026-10-14",
+  "claim": "The complete 20-map co-op overlay set is rebuilt through one source-bound toolchain with closed callback, transition, entity-link, audio and navigation audits.",
+  "inputs": {
+    "checkpoint_051": "evidence/checkpoint-051-coop-entity-links.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "pc_load_blocker_correction": {
+    "map": "xc_site3_1",
+    "source_names": ["target_endlevel_1", "target_endLevel_1"],
+    "rule": "Doom 3 registers entity names through a case-insensitive hash and treats an existing name as a fatal duplicate.",
+    "correction": "Preserve the referenced co-op target_endlevel_1 and rename only the unreferenced solo residue to target_endLevel_1_solo_orphan.",
+    "remaining_duplicate_names": 0
+  },
+  "callback_corrections": {
+    "shared_coop_script_packaged_maps": 20,
+    "disabled_absent_setupcoop_calls": ["xc_caverns2", "xc_site3_1"],
+    "qualified_calls": {
+      "xc_hellhole_1": ["toggle_endgame_god"],
+      "xc_mcu": ["close_secdoor", "close_secdoor"]
+    },
+    "semantic_calls": 63,
+    "global_functions": 51,
+    "namespaced_functions": 9,
+    "retail_shipped_noops": 3,
+    "unresolved": 0
+  },
+  "campaign_transitions": {
+    "records": 21,
+    "internal_chain_maps": 20,
+    "start": "xc_mars_city1_1",
+    "terminal": "xc_hellhole_1",
+    "terminal_destination": "vv/hellhole_2",
+    "source_orphan": "xc_site3_1 target_endLevel_1_solo_orphan -> vv/caverns1_1",
+    "closed_single_chain": true,
+    "unresolved": 0
+  },
+  "direct_audio_recovery": {
+    "new_xact_pcm_files": 22,
+    "map_groups": {"xc_alphalabs2_2": 2, "xc_delta2b_1": 11, "xc_mars_city2_1": 3, "xc_mars_city2_2": 1, "xc_mcu": 5},
+    "coop_specific_examples": ["sound/vo/alpha/coop_sar11.wav", "sound/vo/marscity2/co_op_sar09.wav", "sound/vo/marscity2/co_op_sar10.wav"],
+    "disabled_unshipped_reference": "sound/evolvers/airhymn_03.wav",
+    "xact_manifest_sha256": [
+      "da11681d957d465ec727a9aa93422b0fb690b6e8ecb3a3d55d095d33660e2fd9",
+      "19cc9cb45d553f7c6d011faab59c4891f09181f8ece193d73832e3da9504242b",
+      "a8f18673a347c21f39a5e3bd93a519d0fb77a7c1972253b3375ff573710a9121",
+      "0798053a6f7b0f44bcfa8d44e4ab334a26aa681ee26d1718283218a7d48b60ce",
+      "9d74344762677fb84fb9654f0b95299e99310f5e14f35e655ba65c3cfbfb86bd"
+    ]
+  },
+  "overlay_corpus": {
+    "maps": 20,
+    "payload_files": 6080,
+    "payload_bytes": 545522466,
+    "direct_authored_cm_maps": 20,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "untracked_files": 0,
+    "manifest_ledger_sha256": "48184019e2df041a82d1db564aacf588110e46641b8139d68773d2208c2ca52a",
+    "payload_ledger_sha256": "3590aa39576b87c3f652241345a05a88249f6c2de9f9761b3f2aa68bc3ae44c1",
+    "local_report_sha256": "1f4bdfff4574c2b41cf758385384b3fc3e8fab6bdda7f99a77c3e6528f77d0ea"
+  },
+  "entity_links": {
+    "entities": 15703,
+    "named_entities": 15683,
+    "links": 4654,
+    "named_entity_links": 3985,
+    "engine_or_empty_links": 2,
+    "source_authored_dangling_links": 667,
+    "duplicate_names": 0,
+    "port_introduced_unresolved": 0,
+    "local_report_sha256": "b3b4500fab02c419f813a169c2e507a473c3dd792737fa9627ded01d8af17949"
+  },
+  "navigation_recheck": {
+    "requirements": {"maps": 20, "ai_requirements": 639, "packaged": 638, "explicit_no_aas": 1, "missing": 0, "local_report_sha256": "f3d834ce8e2346fa8e5bc9d6ccb8b653006b34f33d05d0d06e121cd7b139847a"},
+    "corpus": {"maps": 20, "files": 30, "bytes": 20770442, "areas": 22348, "reachabilities": 101654, "nodes": 79281, "plane_inverse_pairs": 23731, "canonical_corpus_sha256": "e3877076cf1952a8150d6e5d1471615419476484aaf836a09bc16e74dfe98c08", "local_report_sha256": "e9ff12f9f23e9f233649f86da30214ef457c985f0795d7b21dd95c77d2a455b9"}
+  },
+  "provenance": {
+    "rule": "Every rebuilt manifest carries source_map_sha256 inherited from the exact decoded Xbox MAP rather than rebasing provenance on an earlier transformed overlay.",
+    "semantic_report_sha256": "774ae6b6adbe60bd6755218c061b9e4fb12dc6fc503e0e24aee8ada689cf8030",
+    "rebuild_receipt_sha256": "fd4c49738c85361e3d0833684d79fda8ea1b1b8036bcf77f6ff24fe080d070aa"
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "aabb3e65b13e0dc4180ae8adeff5892683f76f429f5d47d4aa8cfa7b0e38a1e8",
+    "rebuild_latest_coop_overlays_py_sha256": "5290e71ad56d18246ce26d947275890b927dcc3a1abce7f43e5cee316e9b4ebb",
+    "coop_semantic_audit_py_sha256": "491d1e830370d6b3d1eb57a8069615e754706c1c32418a237628eaffb9df1d19",
+    "coop_entity_link_audit_py_sha256": "cb11bc967edc316360ee269aee161b353eba1f09b65cbffef9ef794c63b8fc40",
+    "xbox_coop_player_resources_sha256": "2578cd94dc59b34bbc2f8ebf93578e132223be0695b625672c10338af908bae4"
+  },
+  "tests": {"command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'", "passed": 231, "failed": 0},
+  "runtime_boundary": {"doom3_or_dmap_launched": false, "installed_gamex86_dll_bytes": 2723328, "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"},
+  "limits": [
+    "Static callback and transition closure does not prove trigger order, save/load state or two-peer synchronization.",
+    "The three admin callbacks are retained retail-PC warning/no-op residues, not invented functions.",
+    "Final acceptance still requires deliberate native load and two-peer gameplay progression after the remaining offline audits are exhausted."
+  ]
+}
