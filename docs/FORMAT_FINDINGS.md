@@ -1,5 +1,25 @@
 # Format findings and unknowns
 
+## Checkpoint 024 offline findings
+
+`xc_delta2b_2` decodes to a 3,974,751-byte MAP with geometry CRC `3474151774`,
+a 5,612,977-byte PROC and a 5,645,593-byte direct PC CM. The authored collision
+set has 229 models, 25,808 vertices, 45,113 edges, 18,935 polygons, 3,462
+brushes and 8,629 nodes. The MAP has 47 named `func_static` entities carrying
+`noclipmodel 1`, none present in authored CM. They predict the independently
+compiled additions but do not substitute for a later dmap audit.
+
+Corrected AAS48 has 849 areas, 3,558 reachabilities and 2,759 nodes with full
+nonzero coverage. The decoded PROC has 91 areas and 101 portals. The archive's
+343-file model set contains 11 meshes, 242 MDV animations and 90 MD5ANIM.X
+animations; every file decodes.
+
+The map independently confirms the checkpoint-023 ZCT compatibility contract.
+Its `head_butt.mdvanim` has the same raw SHA-256, while three commando entities
+select the DEF that references it. The 63-joint retarget is therefore a direct
+reuse of identical source bytes. The retail map script is present, and the only
+MAP `call` value has one definition. No empty-script transform is applied.
+
 ## Checkpoint 023 tenth-segment findings
 
 `xc_delta2b_1` extends the direct-CM contract to a tenth co-op segment. Its

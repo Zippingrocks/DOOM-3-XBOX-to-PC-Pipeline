@@ -44,6 +44,26 @@ progression, transition, two-peer and Xbox-reference acceptance remain open.
 Full receipts are in
 [`evidence/checkpoint-023.json`](evidence/checkpoint-023.json).
 
+## In progress: checkpoint 024 offline preflight
+
+`xc_delta2b_2` is structurally decoded without launching Doom 3. Its 843-entity
+MAP has geometry CRC `3474151774`; direct CM.X exports 229 models; corrected
+AAS48 has 849 areas, 3,558 reachabilities and complete nonzero BSP/area
+coverage. The decoded PROC contains 91 areas and 101 portals. All 343 selected
+model files decode.
+
+Three commando entities select the same Xbox-only 50-joint `head_butt`
+animation found in checkpoint 023. Its raw payload is byte-identical, so the
+same hash-bound 63-joint PC retarget is reused. The 272-file offline candidate
+preserves the retail map script and its single MAP callback, copies three
+co-op GUIs, and has zero unresolved resources, classnames or strings. All 160
+tests pass.
+
+This is an in-progress receipt, not loader acceptance. Independent PC `dmap`,
+bounded native loading, XACT sound selection, progression and two-peer work are
+deferred until testing will not interrupt another Steam session. Evidence is in
+[`evidence/checkpoint-024-offline.json`](evidence/checkpoint-024-offline.json).
+
 ## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored

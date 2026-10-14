@@ -22,6 +22,31 @@ duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 024 offline preflight
+
+For `xc_delta2b_2`, verify GFC/GOB SHA-256 values
+`acdf1c91bd3576ed6c13e17f289b5be3f1f39849167d5debf3794f41b9970434`
+and `97b7f715a5b61b96bae9620e28f9715dffbbfa099854c71a6807f62686fc9221`.
+Decode MAP, PROC, AAS48 and CM.X with the checkpoint-023 tools. Supply MAP CRC
+`3474151774` to `decode_cm_x.py`. Require output hashes
+`8855cf483adc48905176408fc4983bbdc75e5a2152c6b498a7664dd3939e0b76`,
+`6112ed27ede585a7a2fd111cd7ca3cb1ffe6ac58658f05b46b66b173b25ec959`,
+`f2824b57f2ac775fde482bf81a1691f4e48ad4b50f39c7cad8fa7471bae6bfe7`
+and `eb4b5d4d8ce1ec47369fd217610a6cdfecb338584f2beaf971c23d5b5925ebcd`
+respectively.
+
+Extract and decode all 343 `.mdvmesh`, `.mdvanim` and `.md5anim.x` members.
+They must produce 15,638,869 bytes. Add the one-entry
+`xc_delta2b_2.resources` profile and place the checkpoint-023 retarget root
+before the decoded model root. Build with the same shared player, HUD,
+material, language and DEF roots as checkpoint 023, but preserve the retail
+`maps/vv/xbox_coop/xc_delta2b_2.script`. The resulting offline overlay has 272
+file records, 237 copied resources, one generated EFX, nine transform records
+and zero unresolved names. Its 135,224-byte manifest hashes to
+`40d145b3726394475315b47a0fc26d1d0a58fdb1fd7633522c0583cc8fc4c5ce`.
+Stop here unless a Doom 3 launch has been explicitly cleared: dmap and native
+loader acceptance are still open.
+
 ### Checkpoint 023 tenth-segment receipt
 
 For `xc_delta2b_1`, verify GFC/GOB SHA-256 values

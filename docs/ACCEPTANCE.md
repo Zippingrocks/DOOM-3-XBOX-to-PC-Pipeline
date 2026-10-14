@@ -1,5 +1,21 @@
 # Recovery order and acceptance
 
+## Checkpoint 024 offline preflight
+
+`xc_delta2b_2` passes the offline structural and dependency-closure gates. MAP,
+PROC, corrected AAS48 and direct 229-model CM.X decode; AAS coverage is
+complete; all 343 selected model files decode; and the sole MAP callback,
+`falling_floor_secret`, has exactly one recovered definition in the retail map
+script. Three MAP commando entities require the Xbox-only `head_butt` animation.
+The source payload is byte-identical to checkpoint 023, so its validated
+50-to-63-joint retarget is reused rather than regenerated from an assumption.
+
+The 272-file candidate has zero unresolved names and all 160 tests pass. This
+does not yet pass the independent-dmap or native gates. PC collision-model
+comparison, bounded loading/spawn, runtime sound closure, progression,
+transition, two peers and Xbox-reference comparison remain open. Do not launch
+the game for this checkpoint while it would interrupt another Steam session.
+
 ## Checkpoint 023 tenth-segment status
 
 `xc_delta2b_1` passes structural export, corrected AAS48, complete archive-local

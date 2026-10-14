@@ -1,0 +1,88 @@
+{
+  "checkpoint": "024-offline",
+  "date": "2026-10-14",
+  "status": "in progress; no Doom 3 launch performed",
+  "scope": "eleventh co-op segment offline structural recovery, complete model decode and dependency-closed candidate overlay",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 176112,
+    "gfc_sha256": "acdf1c91bd3576ed6c13e17f289b5be3f1f39849167d5debf3794f41b9970434",
+    "gob_bytes": 9115648,
+    "gob_sha256": "97b7f715a5b61b96bae9620e28f9715dffbbfa099854c71a6807f62686fc9221"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_delta2b_2",
+    "raw_map_x": {"bytes": 2805640, "sha256": "ef2e40d9c02108abad86f5beb0612567593895b048a64866f5264132785af424"},
+    "geometry_crc": 3474151774,
+    "decoded_map": {"bytes": 3974751, "sha256": "8855cf483adc48905176408fc4983bbdc75e5a2152c6b498a7664dd3939e0b76", "entities": 843, "brushes": 3585, "brush_sides": 21525, "patches": 2270, "patch_points": 38410},
+    "raw_proc_x": {"bytes": 2830929, "sha256": "3a9311f955d9c295e82238d3e5ab7704b2448531e34cd71b783a3591578a51b2"},
+    "decoded_proc": {"bytes": 5612977, "sha256": "6112ed27ede585a7a2fd111cd7ca3cb1ffe6ac58658f05b46b66b173b25ec959", "nodes": 5494, "surfaces": 1855, "surface_vertices": 63102, "surface_indices": 164556, "shadow_models": 125, "shadow_vertices": 29641, "shadow_indices": 172800, "areas": 91, "portals": 101},
+    "raw_aas48_x": {"bytes": 427408, "sha256": "41ed9d0a8ef508e11e8b1d631a77584ce50fb73836f30b85fe1017a822827f33"},
+    "corrected_aas48": {"bytes": 680686, "sha256": "f2824b57f2ac775fde482bf81a1691f4e48ad4b50f39c7cad8fa7471bae6bfe7", "areas": 849, "reachabilities": 3558, "nodes": 2759, "planes": 1372, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"status": "not present in the selected archive"},
+    "map_script": {"bytes": 28169, "sha256": "e89f10e94b80a5397a70a8014eb920134e280f3445bece2bdffb8aa93757eb4c", "map_callback": "falling_floor_secret", "callback_definitions": 1}
+  },
+  "collision": {
+    "cm_x": {"bytes": 3391830, "sha256": "48d6921d45ba2e758346528182226f50ddc3cd152f7de994c93729d64203aad6"},
+    "authored_export": {"bytes": 5645593, "sha256": "eb4b5d4d8ce1ec47369fd217610a6cdfecb338584f2beaf971c23d5b5925ebcd", "models": 229, "vertices": 25808, "edges": 45113, "polygons": 18935, "brushes": 3462, "nodes": 8629},
+    "map_noclipmodel_inventory": {"entities": 47, "all_are_func_static": true, "already_in_authored_cm": 0, "predicted_pc_dmap_only_models": 47},
+    "pc_dmap_audit": "pending; do not launch Doom 3 while another Steam game is active"
+  },
+  "runtime_assets": {
+    "selected_archive_members": 343,
+    "raw_selected_bytes": 5488619,
+    "raw_extraction_manifest_sha256": "ba769206bf63c418df25ee8420fe813a0d13d4cb1fea59dab22c9758efd09a8e",
+    "decoded_files": 343,
+    "decoded_meshes": 11,
+    "decoded_animations": 332,
+    "decoded_mdv_animations": 242,
+    "decoded_md5anim_x_animations": 90,
+    "decoded_bytes": 15638869,
+    "decoded_corpus_sha256": "a6e859536cdd5e50aa4f2f75babbedc37b72be5631b5034888abd25f3ad7a600"
+  },
+  "zct_animation_reuse": {
+    "reason": "three monster_zombie_commando entities select a DEF that references models/md5/monsters/zct/head_butt.md5anim",
+    "archive_payload_identity": "the raw head_butt.mdvanim is byte-identical to checkpoint 023",
+    "raw_sha256": "bbc6f53929213337807166a61cada4a82bc506310fe9c58fc322ccf7cc964d68",
+    "retargeted_bytes": 109143,
+    "retargeted_sha256": "2c111bb859bc8816eaf22b66eaaa488d905ffcd8d594c2ddf8c2ec10c35a805b",
+    "source_joints": 50,
+    "target_joints": 63,
+    "profile_sha256": "3946420335b54b613226a350069556c9f23394063eacb1c5db7872cf701f8119"
+  },
+  "xact_metadata": {
+    "indexlist_bytes": 14150,
+    "indexlist_sha256": "b2a8c43577c4c4a9a717c8637c95c9054b7624644eebe2fd4a6d0bee4e7557c3",
+    "xsb_bytes": 28724,
+    "xsb_sha256": "259c5e7658555a584b5eee41f0a304193fe85096e839598da27b39bab91123db",
+    "runtime_sound_selection": "pending bounded loader evidence and progression inventory"
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_delta2b_2_offline_v2",
+    "file_records": 272,
+    "copied_runtime_resources": 237,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 26739026,
+    "manifest_bytes": 135224,
+    "manifest_sha256": "40d145b3726394475315b47a0fc26d1d0a58fdb1fd7633522c0583cc8fc4c5ce",
+    "transformed_map_bytes": 3975012,
+    "transformed_map_sha256": "1f2dad27e3d1656fd890b443ca4494143d5e99b2cf7334fd98efc3691cbf653e",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 9,
+    "copied_map_specific_guis": 3,
+    "retail_map_script_preserved": true,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "tests": {"count": 160, "failures": 0},
+  "established": [
+    "MAP, PROC, corrected AAS48 and direct authored CM decode structurally with source-bound hashes",
+    "the AAS BSP has complete nonzero node and area coverage",
+    "all 343 selected model files decode",
+    "the sole MAP callback has exactly one recovered source definition",
+    "the checkpoint-023 ZCT retarget is reusable because the source animation payload is byte-identical",
+    "the offline candidate has zero unresolved resources, classnames or strings"
+  ],
+  "not_established": ["independent PC dmap collision-model audit", "native map loading or entity spawn count", "runtime sound closure", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]
+}
