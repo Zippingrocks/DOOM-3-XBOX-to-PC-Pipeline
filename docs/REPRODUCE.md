@@ -1,3 +1,35 @@
+# Reproduce checkpoint 046
+
+## Checkpoint 046: in-world GUI command targets
+
+Audit each MAP `gui*` instance against overlay files, the installed PK4 view,
+the stock/map script corpus and the English language table:
+
+```powershell
+python tools/campaign_port/solo_gui_command_audit.py `
+  work/solo-overlays-strict-v9 `
+  --source-root work/solo-structural/maps `
+  --stock-script-root work/pc-stock-scripts/script `
+  --stock-base ..\..\base `
+  --stock-language work/shared-assets-extracted/base/strings/english.lang `
+  --out work/solo-overlays-strict-v9-gui-commands.json
+```
+
+Require 41 maps, 1,700 GUI instances and 1,107 relevant commands. Status
+counts must be 893 `implicit-entity-targets`, 63 `named-entity`, 128
+`namespaced-function`, 20 `empty-gui-script-parm` and three
+`source-authored-dangling`. Require three attention and zero unresolved
+records. The report, auditor and language-table SHA-256 values are:
+
+```text
+e114b4224cdbebe9881b74f56db9fb2a0eff8cb66ce5887a396fe53ba0283b7c
+d79a68c9fa5e27af43469b1f7ec95311604635714938e40e918221e91232a012
+738dd6f4f8707bd72a7b954d73d9cb6e5bbbd4ddf7da4e84688e71f2bc8ab635
+```
+
+Run `python -m unittest discover -s tools/campaign_port/tests -q`; 215 tests
+must pass. Do not launch Doom 3 or `dmap` for this offline checkpoint.
+
 # Reproduce checkpoint 045
 
 ## Checkpoint 045: selected animation frame commands

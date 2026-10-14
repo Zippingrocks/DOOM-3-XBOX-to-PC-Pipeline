@@ -14,7 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 045
+## Current checkpoint: 046
+
+**Every gameplay command emitted by every in-world GUI instance is now
+accounted for across all 41 solo overlays.** The audit binds 1,700 MAP GUI
+instances to their overlay or installed-package GUI source and checks 1,107
+relevant commands. All 128 localized/dynamic script callbacks resolve, all 63
+explicit entity operations resolve locally, and 893 implicit activations feed
+the owning entity's already-audited target graph. Twenty unset dynamic script
+parameters emit no function token and are explicit no-ops.
+
+Three explicit GUI activations name entities already absent from their decoded
+Xbox split-map sources: `com_walk1` in CPU and `trigger_cranemaint` in both MCU
+segments. They remain visible native-attention records. There are zero missing
+GUIs, unresolved language IDs, functions, or port-lost entity targets. All 215
+offline tests pass. Doom 3 and `dmap` were not launched, and `gamex86.dll`
+remains unchanged. Receipt:
+[`evidence/checkpoint-046-solo-gui-commands.json`](evidence/checkpoint-046-solo-gui-commands.json).
+
+## Earlier checkpoint: 045
 
 **Every manifest-selected animation frame command is now accounted for across
 all 41 solo overlays.** The engine-scoped audit covers 539 commands: 330 global

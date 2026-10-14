@@ -1,0 +1,86 @@
+{
+  "checkpoint": "046",
+  "date": "2026-10-14",
+  "claim": "All gameplay commands emitted by all in-world GUI instances are accounted for across the 41 solo overlays with zero port-introduced unresolved targets.",
+  "inputs": {
+    "checkpoint_045": "evidence/checkpoint-045-solo-frame-commands.json",
+    "corpus": "solo-overlays-strict-v9",
+    "decoded_source": "solo-structural/maps",
+    "stock_script_corpus": "pc-stock-scripts/script",
+    "installed_package_root": "base",
+    "language_table_sha256": "738dd6f4f8707bd72a7b954d73d9cb6e5bbbd4ddf7da4e84688e71f2bc8ab635"
+  },
+  "pc_runtime_contract": {
+    "source": "official GPL neo/ui/GuiScript.cpp and neo/game/Entity.cpp idEntity::HandleGuiCommands",
+    "bare_activate": "activates the owning entity's MAP targets",
+    "named_activate_and_setkeyval": "resolve an entity through case-insensitive gameLocal.FindEntity",
+    "runscript": "resolves a nonempty function token through gameLocal.program.FindFunction",
+    "gui_parm": "GUI runScript appends the instance gui_parm value; #str values are localized before the game command is handled; an unset value emits no callable token"
+  },
+  "gui_command_audit": {
+    "maps": 41,
+    "gui_instances": 1700,
+    "commands": 1107,
+    "command_origins": {
+      "set-cmd": 959,
+      "gui-parm-script": 148
+    },
+    "gui_command_sources": {
+      "stock_pak000_pk4": 930,
+      "overlay": 165,
+      "installed_xbox_mappack_pk4": 12
+    },
+    "status_counts": {
+      "empty-gui-script-parm": 20,
+      "implicit-entity-targets": 893,
+      "named-entity": 63,
+      "namespaced-function": 128,
+      "source-authored-dangling": 3
+    },
+    "attention": 3,
+    "unresolved": 0,
+    "local_report_sha256": "e114b4224cdbebe9881b74f56db9fb2a0eff8cb66ce5887a396fe53ba0283b7c"
+  },
+  "source_authored_attention": [
+    {
+      "map": "cpu_1",
+      "gui": "guis/cameras/camselect.gui",
+      "entity": "func_static_1335",
+      "command": "activate",
+      "target": "com_walk1"
+    },
+    {
+      "map": "mcu_1",
+      "gui": "guis/mc_underground/security.gui",
+      "entity": "secpanel1",
+      "command": "activate",
+      "target": "trigger_cranemaint"
+    },
+    {
+      "map": "mcu_2",
+      "gui": "guis/mc_underground/security.gui",
+      "entity": "secpanel1",
+      "command": "activate",
+      "target": "trigger_cranemaint"
+    }
+  ],
+  "implementation_receipts": {
+    "solo_gui_command_audit_py_sha256": "d79a68c9fa5e27af43469b1f7ec95311604635714938e40e918221e91232a012"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 215,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No native GUI interaction, load, progression or playthrough result is claimed.",
+    "The three source-authored dangling named activations require focused native observation.",
+    "The 893 implicit activations have statically closed MAP targets, but GUI state and timing require native interaction.",
+    "Final solo and co-op fidelity requires matched original-Xbox gameplay and visual evidence."
+  ]
+}

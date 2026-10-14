@@ -1,5 +1,18 @@
 # Recovery order and acceptance
 
+## Checkpoint 046 in-world GUI command status
+
+All 1,107 relevant commands emitted by 1,700 in-world GUI instances are
+statically accounted for. There are zero missing GUI files, unresolved
+localized script values, missing functions or source-present entity names lost
+by conversion. All 215 tests pass.
+
+The three explicit source-authored dangling activations remain focused native
+observations: CPU's `com_walk1` camera-selection action and MCU's
+`trigger_cranemaint` security action in both segments. Native interaction must
+also confirm that the 893 bare activations drive the expected target chains;
+static link closure does not prove GUI state, timing or player progression.
+
 ## Checkpoint 045 animation frame-command status
 
 All 539 commands inside manifest-selected model declarations are statically

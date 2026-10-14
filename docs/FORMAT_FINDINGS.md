@@ -1,5 +1,29 @@
 # Format findings and unknowns
 
+## Checkpoint 046 in-world GUI command findings
+
+GUI files cannot be audited without their MAP instance. A GUI `runScript
+"gui::gui_parmN"` appends the instance's `gui_parmN` value to the returned
+command stream; it does not name a fixed script function in the GUI file.
+Those values may also be `#str_` identifiers and must pass through the loaded
+language table before `gameLocal.program.FindFunction`. An unset parameter
+leaves no following token, so `HandleGuiCommands` performs no call and
+continues; treating it as a missing function is a false error.
+
+The returned game commands have three entity/script paths. Bare `activate`
+calls `entityGui->ActivateTargets`, so its references are the already-audited
+MAP target graph. Named `activate` and `setkeyval` use case-insensitive
+`FindEntity`. Returned `runScript` is a hard function lookup and errors when a
+nonempty symbol is missing. The audit binds every overlay MAP entity's `gui*`
+spawnarg to overlay files first and then the exact installed PK4 view.
+
+Across 1,700 GUI instances, 128 nonempty localized/dynamic runScript values
+resolve, 63 named entity operations resolve, and 893 bare activations use the
+owner's targets. Twenty parameter reads are empty no-ops. Three named
+activations are absent from both source and overlay: CPU `com_walk1` and MCU
+`trigger_cranemaint` in each split segment. They are retained source-authored
+attention records rather than retargeted guesses.
+
 ## Checkpoint 045 animation frame-command findings
 
 Frame-command auditing must follow selected declarations, not copied DEF
