@@ -1,21 +1,21 @@
-# Reproduce checkpoint 009
+# Reproduce checkpoint 010
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `cf08a48e961467b9ef1a77a96f93b949035892e6`
-on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
-repository is private. Preserve existing work; use an isolated worktree if the
+Checkpoint 010 is implemented on private branch
+`campaign-port-xdvdfs-mapx`; its exact implementation head and build artifact
+are retained in that repository's pull request. Use an authenticated clone. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 009 ran on
+Python 3.10+ and the standard library are sufficient. Checkpoint 010 ran on
 Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 138 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 141 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -170,6 +170,46 @@ complete in 29 ms on the recorded machine, followed by 940 spawned entities and
 a clean shutdown. Any CM bad-token, CRC, model, index or truncation error is a
 conversion failure. Do not distribute extracted or converted map products.
 
+## Deterministic native collision comparison
+
+Build the map-port game DLL containing the hidden
+`xboxCoopCollisionDigest` command. Preserve the installed DLL and generated CM
+by exact hash. Start the true-`COOP` map with the generated CM, then issue:
+
+```text
+xboxCoopCollisionDigest 4096 0 1
+```
+
+Save `qconsole.log`, replace only the CM with the direct CM.X export carrying
+the same MAP CRC, and repeat the identical command. Restore both original files
+afterward and verify their pre-test hashes.
+
+Verbose mode emits 8,192 `XBOX_COOP_CM_TRACE` rows per run using raw IEEE-754
+bits. Compare them without publishing either licensed log:
+
+```powershell
+python tools/campaign_port/compare_cm_trace_logs.py `
+  game/campaign_port_work/traces/pc-dmap-qconsole.log `
+  game/campaign_port_work/traces/authored-cm-qconsole.log `
+  --allow-differences `
+  --report game/campaign_port_work/traces/cm-trace-comparison.json
+```
+
+Omit `--allow-differences` when using the tool as a strict equivalence gate.
+For the recorded first-map pair, require 8,192 rows on each side, identical
+world bounds and input digest `8386c90c`, zero missing/input/skip/hit
+mismatches, 4,073 paired point traces and 3,929 paired player-box traces.
+The expected non-equivalence result is 265 player-box geometry mismatches, zero
+point geometry mismatches, 501 material/contents mismatches and 650 total
+records outside the gameplay tolerances. The comparison report SHA-256 is
+`8a2d6b9028717a189097555e759772686760cc52456a817550f189e46749d577`.
+
+The command masks raw point-contents results before suppressing a trace because
+the engine's point fast path ignores the requested contents mask. It also
+normalizes `CONTACT_TRMVERTEX`'s pointer-cast polygon feature to zero so ASLR
+cannot appear as topology. Do not weaken tolerances or discard material/content
+differences to manufacture equivalence.
+
 ## Claim limits
 
 Corpus-wide decoding proves format coverage for this exact retail image, not
@@ -289,7 +329,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 138-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 141-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
