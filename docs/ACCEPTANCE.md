@@ -1,6 +1,35 @@
 # Recovery order and acceptance
 
 
+## Checkpoint 011 collision status
+
+The first-map static collision gate now covers world player, monster and rocket
+semantics plus representative named door, trigger and polygon-only static
+models. The oracle binds model identity, mask, hull, bounds and coordinates;
+all 40,960 paired records have matching input context and hit outcomes.
+
+This advances acceptance in three ways:
+
+- direct CM.X is confirmed as the required world payload under player,
+  monster-solid and shot masks;
+- named CM identity, bounds and broad blocking are measured rather than inferred
+  from matching model names;
+- trajectory, contact manifold, material/contents and stable topology are
+  reported separately, so contact-only divergence cannot be hidden by equal hit
+  counts.
+
+It does not accept PC-`dmap` collision. The five profiles contain 3,507
+gameplay mismatches: 121 stopping trajectories, 2,741 contact geometries and
+875 metadata results. Door and trigger trajectories happen to match, but their
+contact manifolds do not; the complex named static differs in both. Direct
+authored CM remains the runtime candidate.
+
+The next collision gates are live mover transforms and trigger dispatch,
+actor-specific monster hulls and rotated projectile hulls, then identical native
+coverage for the remaining 19 co-op map CMs. An original-Xbox runtime oracle
+and two-peer contact/trigger outcomes remain required for fidelity acceptance.
+
+
 ## Checkpoint 010 collision status
 
 The first map now passes a deterministic authored-versus-generated world-trace
