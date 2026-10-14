@@ -31,6 +31,16 @@ and no bytes remain unconsumed. The corpus receipt SHA-256 is
 its path-and-payload manifest digest is
 `a4e1fd30551a26de22310c7c13085b527d9cd5e7fdbdeb35ef11a1791c3779ca`.
 
+A separate export audit computes each paired converted MAP's geometry CRC using
+the GPL `idMapFile::SetGeometryCRC` contract, expands the matching map CM.X
+in memory and records the resulting PC CM hash without retaining licensed
+outputs. All 20 co-op map CMs export: 43,791,272 CM.X bytes become 71,372,306
+PC CM bytes across 3,633 models, 329,260 vertices, 562,201 edges, 50,435
+brushes, 224,733 polygons and 182,879 nodes. The MAP/CM.X/output manifest digest
+is `3a27835c398b2d5c9bd280a29c397efe47868ea965ae4d9f9900fa2755cf0603`;
+the JSON receipt SHA-256 is
+`af213e9f7825973f5e02920c00d65a2df2bc97a876dcfdf7d088295546340609`.
+
 The first co-op segment's 2,003,187-byte CM.X has SHA-256
 `bbfe12d231e229279757fe6b48fe13490cd0cc4dc6f7db44bd30f82c19b034a5`.
 With the converted MAP geometry CRC `2410032894`, it expands to a
