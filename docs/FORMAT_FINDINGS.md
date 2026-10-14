@@ -1,5 +1,15 @@
 # Format findings and unknowns
 
+## Checkpoint 021 eighth-segment findings
+
+`xc_enpro_2` confirms the EnPro contracts independently: direct CM.X has 163
+models and PC `dmap` adds only six MAP-authored `noclipmodel 1` models; corrected
+AAS48 has 929 areas, 5,167 reachabilities, 2,885 nodes and complete nonzero
+coverage. Its 321-file model set decodes fully. Eleven runtime WAVs route
+through the distinct `xc_enpro_2` INDEXLIST/XSB into the shared XWB banks. The
+same stale `setupCoop` pattern appears here with its only source body commented,
+providing a second exact witness for the path-scoped callback transform.
+
 ## Checkpoint 020 seventh-segment findings
 
 `xc_enpro_1` extends the direct-CM contract to a seventh co-op segment. Its

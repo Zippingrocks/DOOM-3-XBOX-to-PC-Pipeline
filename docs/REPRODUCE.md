@@ -1,4 +1,4 @@
-# Reproduce checkpoint 020
+# Reproduce checkpoint 021
 
 ## Source and boundary
 
@@ -21,6 +21,24 @@ path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
 duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 021 eighth-segment receipt
+
+For `xc_enpro_2`, verify GFC/GOB SHA-256 values
+`514b41e35b597c95edfd8e613f41ef6c246d9d5bcc747786c800c3a2154a06f0`
+and `4473d2764b4ba6b70598469d092f6609a772675e4be224daebf32ce9670fac6c`.
+The decoded MAP is 2,319,237 bytes, hashes to
+`d25ffc46afeefc1f349878ff6614675e7ad93e6c09d17cf5ba3030b833de9dc5`
+and has CRC `2033356009`. Direct CM is 3,483,436 bytes with SHA-256
+`bf1f3526c62e499a3f8048b33a88bbc41cb09ce0426f37ae0de782359fda43f6`.
+Require a 163/169 model audit with six explained `noclipmodel 1` additions.
+Decode all 321 selected model files. Recover the 11 warned sounds using
+`xc_enpro_2.indexlist`/`xc_enpro_2.xsb`; decoded WAVs total 3,347,594 bytes.
+The finalized 148,305-byte overlay manifest hashes to
+`bd39b87b300753567b876243cfe94aa93ebe81db4dd9c7e1c869dfed2efc3e10`.
+The bounded true-`COOP` run must spawn 579/0 and its 71,566-byte console log
+must hash to
+`8dbd8e09891c029c591f934d709c60e7922e52c055496a627d7f5322a5bca446`.
 
 ### Checkpoint 020 seventh-segment receipt
 

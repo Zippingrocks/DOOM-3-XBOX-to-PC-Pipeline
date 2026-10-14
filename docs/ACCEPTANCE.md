@@ -1,5 +1,16 @@
 # Recovery order and acceptance
 
+## Checkpoint 021 eighth-segment status
+
+`xc_enpro_2` passes structural export, complete model/XACT dependency closure
+and the bounded native loader/spawn gate. MAP/PROC, corrected AAS48 and all 163
+direct collision models load; PC `dmap` adds only six `noclipmodel 1` models.
+All 321 selected model files and 11 source-bound XACT sounds recover. The
+285-file overlay has zero unresolved names and all 156 tests pass. True `COOP`
+spawns 579/0 and joins the player without a map-specific warning or missing
+resource. Normal rebuilt-DLL, combat, progression, transition, two-peer and
+Xbox-reference acceptance remain open.
+
 ## Checkpoint 020 seventh-segment status
 
 `xc_enpro_1` passes structural export, complete archive-local model closure,

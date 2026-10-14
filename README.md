@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 020
+## Current checkpoint: 021
+
+**The eighth co-op segment, `xc_enpro_2`, now has direct authored collision,
+corrected AAS48, complete model/XACT recovery and a clean bounded true-`COOP`
+spawn closure.**
+
+The decoded 579-entity MAP binds to geometry CRC `2033356009`. Direct CM.X
+exports 163 models; independent PC `dmap` contains all 163 plus six models,
+all explained by `noclipmodel 1`. All 321 selected model files decode, and 11
+runtime sounds recover through the segment INDEXLIST/XSB and original XWB
+banks. The 285-file overlay has zero unresolved names. All 156 tests pass.
+
+Under the isolated null-guard diagnostic, true `COOP` spawns 579/0 and joins
+the player with no map-specific warning, missing resource, callback, class,
+path, error or fatal line. Normal rebuilt-DLL acceptance remains open. Full
+receipts are in [`evidence/checkpoint-021.json`](evidence/checkpoint-021.json).
+
+## Previous checkpoint: 020
 
 **The seventh co-op segment, `xc_enpro_1`, now has direct authored collision,
 corrected AAS48, complete model and XACT-audio recovery, and a clean bounded
@@ -653,7 +670,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-020.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-021.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

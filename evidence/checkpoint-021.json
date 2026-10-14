@@ -1,0 +1,83 @@
+{
+  "checkpoint": "021",
+  "date": "2026-10-14",
+  "scope": "eighth co-op segment direct collision, corrected navigation, complete model and XACT audio closure, and bounded runtime load",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 157276,
+    "gfc_sha256": "514b41e35b597c95edfd8e613f41ef6c246d9d5bcc747786c800c3a2154a06f0",
+    "gob_bytes": 7483392,
+    "gob_sha256": "4473d2764b4ba6b70598469d092f6609a772675e4be224daebf32ce9670fac6c"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_enpro_2",
+    "geometry_crc": 2033356009,
+    "decoded_map": {"bytes": 2319237, "sha256": "d25ffc46afeefc1f349878ff6614675e7ad93e6c09d17cf5ba3030b833de9dc5", "entities": 579, "brushes": 1941, "brush_sides": 11688, "patches": 1252, "patch_points": 22926},
+    "decoded_proc": {"bytes": 3260555, "sha256": "1c2ea5f50e4e72fff4139492bdbbd346b07e9f0eddfdbd4088cffa95e650cd5f"},
+    "corrected_aas48": {"bytes": 861452, "sha256": "27fd5b19f706ea78d56d7f7f143719cd4bc10911900cba887997bb1d7ed7c7da", "areas": 929, "reachabilities": 5167, "nodes": 2885, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"status": "not present in the source archive"}
+  },
+  "collision": {
+    "cm_x": {"bytes": 2104247, "sha256": "23e0d197b6fd2cc992bb66681d3318c16e24466f768534e3393d114897a7fc7c"},
+    "authored_export": {"bytes": 3483436, "sha256": "bf1f3526c62e499a3f8048b33a88bbc41cb09ce0426f37ae0de782359fda43f6", "models": 163, "vertices": 16294, "edges": 28129, "polygons": 11606, "brushes": 1888, "nodes": 6395},
+    "pc_dmap": {"cm_bytes": 3953564, "cm_sha256": "60afdbea5acede15af16a074625848af2e110df1b47ec11080c8abf6098e4a24", "proc_bytes": 4715316, "proc_sha256": "977cc7c7bdc8d563aea2565578ef1def2dc6cf48c5fe046bec28acfd9446d2f7", "aas48_bytes": 832653, "aas48_sha256": "68e041f15aab47f9e301cf1d2c49fa2c2df9bef57c3774e6bdcda8ad73c62b19", "models": 169},
+    "model_set_audit": {"shared": 163, "authored_only": 0, "pc_dmap_only": 6, "pc_dmap_only_with_noclipmodel_1": 6, "unexplained_pc_dmap_only": 0}
+  },
+  "runtime_assets": {
+    "selected_archive_members": 321,
+    "raw_selected_bytes": 5049517,
+    "decoded_files": 321,
+    "decoded_meshes": 7,
+    "decoded_animations": 314,
+    "decoded_mdv_animations": 241,
+    "decoded_md5anim_x_animations": 73,
+    "decoded_bytes": 14592904
+  },
+  "xact_audio": {
+    "indexlist_bytes": 14150,
+    "indexlist_sha256": "3b04ff092cc471c1995fc0b1c5c7df9a137b28dfa813b6ef3a72612df90ee54d",
+    "xsb_bytes": 22860,
+    "xsb_sha256": "efff33f87ed81347774f7c750e2b938317195608c276279fe153974a3216bd19",
+    "recovered_wav_files": 11,
+    "encoded_bytes": 926892,
+    "decoded_wav_bytes": 3347594,
+    "manifest_bytes": 5779,
+    "manifest_sha256": "d5bbaf46d0aec7bec59375e8cd5315b8ad7b9c42d84fe720f70742778b9dec7c"
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_enpro_2_v2",
+    "file_records": 285,
+    "copied_runtime_resources": 248,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 24025115,
+    "manifest_bytes": 148305,
+    "manifest_sha256": "bd39b87b300753567b876243cfe94aa93ebe81db4dd9c7e1c869dfed2efc3e10",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 10,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "process_exit_code": 0,
+    "spawned_entities": 579,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "map_specific_warning_lines": 0,
+    "missing_resource_lines": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "qconsole_bytes": 71566,
+    "qconsole_sha256": "8dbd8e09891c029c591f934d709c60e7922e52c055496a627d7f5322a5bca446",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {"count": 156, "failures": 0},
+  "established": [
+    "the eighth co-op segment's decoded MAP, PROC, corrected AAS48 and direct CM.X load natively",
+    "all 163 authored collision models appear in PC dmap and all six generated-only models are explained by noclipmodel 1",
+    "all 321 selected model files decode and 11 runtime sounds recover through the map-specific Xbox XACT chain",
+    "579 entities spawn, none are inhibited, and the local co-op player joins with no map-specific warning or missing resource"
+  ],
+  "not_established": ["a normally rebuilt source DLL", "dynamic combat and whole-map progression", "two-peer behavior", "original-Xbox runtime equivalence", "the remaining 12 co-op segments or the solo campaign"]
+}
