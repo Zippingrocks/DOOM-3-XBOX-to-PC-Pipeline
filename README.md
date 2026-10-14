@@ -14,7 +14,48 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 010
+## Current checkpoint: 011
+
+**The native collision oracle now covers explicit gameplay masks, exact hulls
+and named collision models. Direct authored CM.X remains required even where
+broad blocking outcomes agree.**
+
+The hidden diagnostic now accepts a collision-model name, numeric contents mask
+and six optional hull-bound floats. It rejects unresolved model names instead
+of silently falling back to world model zero. The run input digest binds the
+resolved model identity, mask, hull, model bounds, seed, count and every raw
+coordinate bit. The comparator fails closed on missing summaries or different
+input digests and separates stopping trajectory from contact-manifold geometry.
+
+Five generated-versus-authored profiles were run at 4,096 point and 4,096 box
+samples each: world monster-solid with an actor hull, world shot collision with
+the recovered rocket hull, named `doorClip_1` player clipping, named
+`trigger_coop_enablegui_2` trigger contents, and solid collision against
+polygon-only `func_static_52977`. All 40,960 records pair with identical input
+digests, coordinates and hit/no-hit outcomes. Point geometry matches throughout.
+
+The authored data is still observably different. Across the matrix there are
+121 stopping-trajectory mismatches, 2,741 contact-geometry mismatches, 875
+material/contents mismatches and 3,507 total gameplay mismatches. The two world
+profiles contribute 47 trajectory, 313 contact and 875 metadata mismatches.
+The named door and trigger have exact stopping trajectories and metadata but
+different swept-box contact manifolds in 1,065 and 767 rows. The polygon-only
+static model differs in 74 trajectories and 596 contact manifolds.
+
+All ten true-`COOP` runs spawn 940 entities, create the local player, emit
+8,192 trace rows and exit 0 without an error or fatal. The test CM and DLL were
+restored to their exact prior hashes. The suite has 142 passing tests and the
+complete Win32 game DLL builds. Licensed trace logs stay local; their hashes and
+the comparison receipts are recorded in the evidence file.
+
+This closes static first-map world-mask and representative named-model
+measurement, not live door motion, trigger dispatch, actor/projectile
+orientation, an original-Xbox runtime oracle, the remaining 19 co-op maps,
+two-peer progression or whole-campaign fidelity.
+
+See [checkpoint 011](evidence/checkpoint-011.json).
+
+## Previous checkpoint: 010
 
 **PC `dmap` collision is now proven to be a cross-check, not a fidelity
 substitute for the direct Xbox-authored CM.**
