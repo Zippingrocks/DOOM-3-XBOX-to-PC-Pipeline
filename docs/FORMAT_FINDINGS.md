@@ -27,6 +27,13 @@ Xbox declarations and fix the source integration: `idAI::Spawn` must tolerate
 the intentional null result, keep `projectileRadius` zero for that path, and
 still derive velocity/gravity/speed from the entity definition.
 
+An independent control-flow diagnostic patched only the eight bytes after the
+`CreateProjectile` call: test the returned pointer, skip the physics/bounds
+probe on null, otherwise use the returned entity directly. With all original
+Xbox `net_instanthit 1` values intact, it also spawned 1,110/0 and exited 0.
+The base DLL SHA-256 was restored exactly after the run. This validates the
+source change's control flow but is not a distributable or accepted binary.
+
 The 50-file second-map closure is not accepted merely because its manifest has
 zero unresolved names. The native run reports a missing ladder animation,
 seven HUD item images, a defaulted `model_sp_marine`, and a player `Hips` joint

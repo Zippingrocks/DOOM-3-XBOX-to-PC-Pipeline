@@ -113,6 +113,21 @@
         "guis/assets/hud/items/plasma_ammo",
         "model_sp_marine"
       ]
+    },
+    "null_guard_binary_diagnostic": {
+      "purpose": "validate the proposed AI.cpp source control flow without changing the Xbox declarations",
+      "base_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34",
+      "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+      "patch": "after idAI::CreateProjectile, branch around the physics/bounds probe when the returned pointer is null",
+      "original_instant_hit_values_preserved": true,
+      "exit_code": 0,
+      "spawned_entities": 1110,
+      "inhibited_entities": 0,
+      "local_player_joined": true,
+      "log_bytes": 18839,
+      "log_sha256": "658924ea0e0cbf2d18e9a73789635c344592ecfd95e51a8448b163553f7a7a40",
+      "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34",
+      "acceptance": "control-flow proof only; an actual source change, normal rebuild, and repeat run are still required"
     }
   },
   "required_source_fix": {
@@ -120,14 +135,15 @@
     "file": "vendor/doom3-gpl/neo/game/ai/AI.cpp",
     "scope": "idAI::Spawn projectile-dimension probe",
     "rule": "preserve net_instanthit behavior; if CreateProjectile returns NULL, leave projectileRadius at zero and still derive velocity, gravity, and speed from projectileDef",
-    "status": "diagnosed and runtime-proven with a temporary data diagnostic; source change and rebuilt-DLL verification remain required"
+    "status": "diagnosed and runtime-proven with both a temporary data diagnostic and an isolated binary control-flow guard; source change and normal rebuilt-DLL verification remain required"
   },
   "established": [
     "the second co-op segment's direct CM.X export is structurally valid PC CM text and matches the independently computed map CRC",
     "every authored collision model is present in PC dmap output; all 93 generated-only models map to MAP entities marked noclipmodel 1",
     "the authored CM, decoded PROC and decoded AAS48 cross the native PC loader boundary",
     "the entity-spawn crash is caused by the reconstructed AI instant-hit integration, not the recovered map or collision payload",
-    "suppressing all selected instant-hit flags permits all 1110 map entities to spawn with none inhibited"
+    "suppressing all selected instant-hit flags permits all 1110 map entities to spawn with none inhibited",
+    "an isolated null-guard binary diagnostic preserves original instant-hit declarations and also permits all 1110 entities to spawn with none inhibited"
   ],
   "not_established": [
     "an accepted source fix or rebuilt-DLL pass with original net_instanthit values",

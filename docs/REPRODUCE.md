@@ -90,6 +90,18 @@ dimension probe when `CreateProjectile` intentionally returns null, preserve a
 zero projectile radius for that case, and continue deriving velocity, gravity
 and speed from `projectileDef`.
 
+For checkpoint 014, an isolated eight-byte control-flow diagnostic applied that
+branch directly after the `CreateProjectile` call while leaving every original
+Xbox definition unchanged. Its DLL SHA-256 was
+`426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71`;
+the run produced 1,110 spawned, 0 inhibited, local-player join and exit 0. The
+log SHA-256 was
+`658924ea0e0cbf2d18e9a73789635c344592ecfd95e51a8448b163553f7a7a40`.
+The root DLL was then restored to
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
+Do not reproduce or distribute the binary patch as a release artifact; apply
+the equivalent source guard, build normally, and rerun this gate.
+
 Keep licensed inputs and generated outputs below ignored local directories such
 as `game/campaign_port_inputs` and `game/campaign_port_work`. Never add an ISO,
 GFC/GOB archive, extracted asset or converted map to either repository.

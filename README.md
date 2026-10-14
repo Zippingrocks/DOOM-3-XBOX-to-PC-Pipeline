@@ -34,7 +34,11 @@ Changing only that projectile flag in a temporary local diagnostic advances
 to `monster_zsec_shotgun_2` and the identical fault; suppressing all selected
 instant-hit flags lets all 1,110 entities spawn with zero inhibited and exit 0.
 That data edit is diagnostic only and is not an accepted conversion. The
-required fix is a narrow source guard that preserves instant-hit combat.
+required fix is a narrow source guard that preserves instant-hit combat. An
+isolated binary control-flow diagnostic implementing only that guard, with the
+original Xbox flags restored, independently produced the same 1,110/0 result
+and exit 0. The original DLL was restored and hash-verified afterward; a normal
+source rebuild is still required for acceptance.
 
 The second-map overlay is still provisional: the clean diagnostic run exposes
 missing co-op-player resources and a player skeleton error that must be added

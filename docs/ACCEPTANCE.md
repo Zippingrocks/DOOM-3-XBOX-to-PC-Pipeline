@@ -15,6 +15,10 @@ that projectile's physics. A temporary flag-only diagnostic proves the boundary
 by spawning all 1,110 entities with zero inhibited, but changing Xbox
 `net_instanthit` semantics is not a fidelity fix. Acceptance requires a rebuilt
 DLL with the narrow null guard and the original declarations unchanged.
+An isolated binary control-flow diagnostic has now exercised exactly that guard
+with the original declarations and also produced 1,110/0 plus exit 0. This is
+strong fault-boundary evidence, not a replacement for a reviewed source change
+and normal build receipt.
 
 The current 50-file closure is also incomplete despite reporting no unresolved
 map-root dependency. Native loading identifies inherited player dependencies:
