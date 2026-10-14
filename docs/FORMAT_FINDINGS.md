@@ -2,6 +2,26 @@
 
 ## Checkpoint 002 retail findings
 
+### Checkpoint 003 PROC.X findings
+
+PROC.X retains `mapProcFile003` textual structure while replacing selected
+arrays with `# ... #` binary records. Model-surface vertices are 24 bytes:
+five little-endian float32 values (XYZ and ST) followed by one NV2A
+`D3DVSDT_NORMPACKED3` word. The normal word stores signed X/Y/Z in 11/11/10
+bits, normalized by 1023/1023/511 with the unused negative extrema clamped to
+-1. Surface indices are little-endian uint16.
+
+BSP nodes are 28 bytes: plane float32[4], child int32[2], then a zero int32
+padding word. Shadow blocks begin with float32 minimum/maximum bounds, followed
+by 8-byte vertices (`uint16 x,y,z,w`) and uint16 indices. XYZ reconstructs as
+`minimum + q * (maximum-minimum) / 65535`; observed `w` values are 0 or 1 and
+the PC textual shadow representation omits them.
+
+Native PC regeneration independently confirms model identity, visible-surface
+counts, index counts, area/portal graph and BSP node counts. Xbox shadow data is
+more compact than PC regeneration and must remain comparison evidence rather
+than being silently substituted when evaluating shadow fidelity.
+
 The retail XDVDFS volume descriptor is at byte `0x10000`, with 2,048-byte
 sectors. Its root directory sector is 264 and its root table is 4,188 bytes.
 Directory child links are little-endian 16-bit offsets in four-byte units;
