@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 038 PC entity-name and link findings
+
+PC entity lookup is case-insensitive. `idGameLocal::AddEntityToHash` rejects an
+existing name, while `FindEntity` compares candidate names with `idStr::Icmp`;
+`GetTargets` resolves target values through that lookup. See the official
+[id Software Doom 3 source](https://github.com/id-Software/DOOM-3/blob/master/neo/game/Game_local.cpp#L3046-L3152).
+
+The Xbox solo corpus contained three case-only pairs. Alpha Labs 2 had two
+lowercase/camel-case `info_vacuumseparator` marker pairs with no authored name
+references. The lowercase exact-origin entities now use `_split` suffixes.
+Delta 2A had two differently cased `target_endlevel_1` exits, each with its own
+trigger; the second entity and its unique trigger target now use `_secondary`.
+No entity is removed and both transitions still select `vv/delta2b_2`.
+
+The campaign has 14,605 explicit `target*`, `bind`, `entityname`, `killtarget`
+or `cameratarget` values. 13,000 resolve to a named entity and 16 are engine or
+empty sentinels. The other 1,589 are identically dangling in the decoded retail
+source when matched by entity, origin, key and value. This distinguishes
+source-authored split-map residue from conversion regressions without inventing
+targets. Native activation remains the authority on whether any retained
+source residue affects gameplay.
+
 ## Checkpoint 037 solo semantic and audio findings
 
 The segmented solo campaign forms one closed directed chain across all 41

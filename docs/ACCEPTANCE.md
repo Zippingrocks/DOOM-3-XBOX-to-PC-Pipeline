@@ -1,5 +1,19 @@
 # Recovery order and acceptance
 
+## Checkpoint 038 solo entity-link status
+
+All 41 solo overlays pass a case-insensitive entity-name and explicit link
+audit. Across 38,769 entities and 14,605 audited links there are zero duplicate
+PC entity names and zero port-introduced unresolved links. The builder
+deterministically disambiguates two Alpha Labs 2 vacuum-marker pairs and the
+second Delta 2A exit route, preserving every entity and both exit behaviors.
+
+The remaining 1,589 dangling links match the decoded Xbox source maps by source
+entity, origin, key and target. They remain visible as `source-authored-dangling`
+records and are not accepted as runtime-proven no-ops. Native load/spawn and
+activation tests remain required to determine which are harmless split-map
+remnants. The 195-test offline suite passes; the game was not launched.
+
 ## Checkpoint 037 solo offline status
 
 All 41 Xbox solo segments pass structural/model closure plus the new semantic

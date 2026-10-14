@@ -1,0 +1,60 @@
+{
+  "checkpoint": "038",
+  "date": "2026-10-14",
+  "claim": "All 41 Xbox solo overlays have PC-safe entity names and no port-introduced unresolved entity links.",
+  "inputs": {
+    "checkpoint_037": "evidence/checkpoint-037-solo-semantics-audio.json",
+    "engine_source": "https://github.com/id-Software/DOOM-3/blob/master/neo/game/Game_local.cpp#L3046-L3152"
+  },
+  "overlay_corpus": {
+    "maps": 41,
+    "files": 1787,
+    "bytes": 780869118,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "d13ad69fcba8028c7b894d588ef023e9b3e7ca86ac2a807c27dcb8c1e906e658",
+    "file_ledger_sha256": "91158d62dcd37ae0704c90397f6fb878244a51d8eb103aa18c045ddf5c0ce105",
+    "local_audit_json_sha256": "787f4567da16d996e7e584ec6cd1badfdb6b414e8ae0d4ff6296fef90fbe940b"
+  },
+  "entity_links": {
+    "entities": 38769,
+    "named_entities": 38728,
+    "links": 14605,
+    "named_entity_links": 13000,
+    "engine_or_empty_links": 16,
+    "source_authored_dangling_links": 1589,
+    "case_insensitive_duplicate_names": 0,
+    "port_introduced_unresolved_links": 0,
+    "local_audit_json_sha256": "c3d91ee9e8f1007a6b292f793b86972437cc0ba938a9fd4f151e7aef1478aa4e"
+  },
+  "compatibility_edits": {
+    "alphalabs2_separator_entities_renamed": 2,
+    "delta2a_exit_entity_and_target_renamed": 2
+  },
+  "retained_gates": {
+    "callbacks": 409,
+    "transitions": 41,
+    "semantic_unresolved": 0,
+    "semantic_audit_json_sha256": "dfd25517392c763e038669ffd77a79f852f1f75675d756d824316ced6a377a32",
+    "direct_wav_references": 3891,
+    "audio_unresolved": 0,
+    "audio_audit_json_sha256": "38f577161953ec638e74dd3e3554132c0bb321ea60e2350d684af865915b538e"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 195,
+    "failed": 0
+  },
+  "host_integrity": {
+    "root_gamex86_dll_bytes": 2723328,
+    "root_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No Doom 3 executable or dmap was run for this checkpoint.",
+    "Source-authored dangling links are preserved evidence from split retail maps, not proof that their absent targets are unnecessary at runtime.",
+    "Static entity-link closure does not prove spawn ordering, activation timing, gameplay or visual fidelity.",
+    "Retail-derived overlays remain local and are not committed."
+  ]
+}

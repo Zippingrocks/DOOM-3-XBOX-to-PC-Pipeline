@@ -14,35 +14,28 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 037
+## Current checkpoint: 038
 
-**All 41 retail Xbox single-player overlays now close the offline campaign,
-callback and direct-audio gates.** The campaign is one internal chain from
-`mars_city1_1` through all 41 segments to `hellhole_2`. Both Delta 2A exits
-now select the Xbox `vv/delta2b_2` successor, and the MCU elevator callback is
-qualified to its recovered namespace.
+**All 41 retail Xbox single-player overlays now also close the PC entity-name
+and explicit entity-link gates.** The audit parses 38,769 entities and 14,605
+`target*`, bind and related links. It reports zero case-insensitive duplicate
+names and zero port-introduced unresolved links.
 
-The entity-aware script audit checks 409 active MAP callbacks: 403 resolve to
-namespaced functions, two to object methods and four are documented no-op
-remnants also shipped by the stock PC maps. Two Alpha Labs 2 relays whose
-functions and target separators are absent from the Xbox segment are explicitly
-retained as inert instead of producing missing-function warnings.
+Official PC source uses `idStr::Icmp` for `FindEntity` and rejects a second
+case-insensitive name during `AddEntityToHash`. That exposed three Xbox name
+pairs unsafe on PC. Two unreferenced Alpha Labs 2 vacuum markers now have exact,
+origin-witnessed suffixes. Delta 2A keeps both independent exits while its
+second exit and matching trigger target receive one distinct name. These edits
+are path-scoped, fail-closed and manifest-recorded.
 
-Of 3,891 active direct-WAV references, 2,320 unique map/path combinations use
-stock PC WAV/OGG media and 419 are decoded from the retail Xbox XACT bank with
-per-file hashes. Fifteen exact speaker epairs point to samples absent from every
-recovered Xbox sound table/archive and the PC packages; they are documented as
-the same silent authoring remnants. Twelve elevator `inner1` epairs are corrected
-to the `inner_1` spelling proven by Xbox XSND, PC media and their paired close
-sounds.
-
-The final corpus rehashes 1,787 payload records totaling 780,869,086 bytes. All
-41 use direct authored collision and report zero unresolved classes, resources,
-strings, callbacks, transitions or direct sounds. The complete offline suite is
-190 tests. Doom 3 and `dmap` were not launched, and root `gamex86.dll` remains
-unchanged. Native loading, runtime timing, gameplay and visual fidelity remain
-the next gates. Receipt:
-[`evidence/checkpoint-037-solo-semantics-audio.json`](evidence/checkpoint-037-solo-semantics-audio.json).
+The audit separately fingerprints 1,589 dangling links as byte-authored in the
+decoded retail split-map sources. They are preserved and reported rather than
+guessed at or counted as port regressions. All checkpoint-037 structural,
+semantic, transition and audio gates remain closed. The rebuilt corpus has
+1,787 payload records totaling 780,869,118 bytes, and the complete offline
+suite is 195 tests. Doom 3 and `dmap` were not launched, and root `gamex86.dll`
+remains unchanged. Receipt:
+[`evidence/checkpoint-038-solo-entity-links.json`](evidence/checkpoint-038-solo-entity-links.json).
 
 ## Earlier checkpoint: 023
 

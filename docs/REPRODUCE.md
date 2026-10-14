@@ -1,4 +1,34 @@
-# Reproduce checkpoint 037
+# Reproduce checkpoint 038
+
+## Checkpoint 038: solo PC entity names and links
+
+Rebuild all 41 overlays from checkpoint 037 inputs with the current
+`build_runtime_overlay.py`. Do not patch generated MAPs manually. Then compare
+explicit links to the decoded retail source maps:
+
+```powershell
+python tools/campaign_port/solo_entity_link_audit.py `
+  game/campaign_port_work/solo-overlays-strict-v7 `
+  --source-root game/campaign_port_work/solo-structural/maps `
+  --out game/campaign_port_work/solo-overlays-strict-v7-entity-links.json
+```
+
+Require 41 maps, 38,769 entities, 14,605 links, zero case-insensitive duplicate
+names and zero unresolved records. The 1,589 `source-authored-dangling` records
+must match decoded retail source by entity, origin, key and target; never erase
+or retarget them merely to make the count zero. Re-run the corpus, semantic and
+audio audits and require their unresolved counts to remain zero.
+
+The entity-link, corpus, semantic and audio audit JSON SHA-256 values are
+`c3d91ee9e8f1007a6b292f793b86972437cc0ba938a9fd4f151e7aef1478aa4e`,
+`787f4567da16d996e7e584ec6cd1badfdb6b414e8ae0d4ff6296fef90fbe940b`,
+`dfd25517392c763e038669ffd77a79f852f1f75675d756d824316ced6a377a32`
+and `38f577161953ec638e74dd3e3554132c0bb321ea60e2350d684af865915b538e`.
+The manifest and payload ledgers are
+`d13ad69fcba8028c7b894d588ef023e9b3e7ca86ac2a807c27dcb8c1e906e658`
+and `91158d62dcd37ae0704c90397f6fb878244a51d8eb103aa18c045ddf5c0ce105`.
+Run the full suite; 195 tests must pass. Do not launch Doom 3 for this offline
+checkpoint.
 
 ## Checkpoint 037: solo semantics and direct audio
 
