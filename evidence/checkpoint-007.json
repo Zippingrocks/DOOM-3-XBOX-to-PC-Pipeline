@@ -1,0 +1,126 @@
+{
+  "checkpoint": "007",
+  "date": "2026-10-14",
+  "scope": "first co-op map true-COOP listen-server and HUD/material closure gate",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "implementation": {
+    "repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+    "branch": "campaign-port-xdvdfs-mapx",
+    "head": "7f35412a6cf8c238ca4ca6b91e6df3fce75ce6af",
+    "workflow_run_id": 38529018042,
+    "workflow_run_url": "https://github.com/Zippingrocks/doom3-gpl-xbox-reconstruction/actions/runs/38529018042",
+    "jobs": {
+      "python-tools": "success",
+      "game-dll": "success"
+    },
+    "unit_tests": {
+      "python": "3.11",
+      "count": 111,
+      "failures": 0
+    }
+  },
+  "head_build_artifact": {
+    "name": "campaign-port-gamex86",
+    "artifact_id": 11876952956,
+    "zip_sha256": "7702e1513aea86c38c2881b1d379b197c9ff8a17091f71e40ad2e8200b4ef1e2",
+    "dll_bytes": 2721280,
+    "dll_sha256": "18708280b9ec7d25b5241224e13223d73f6bdec6dc9a3933fb597399dce8ffd5",
+    "pdb_bytes": 17551360,
+    "pdb_sha256": "2410427294cac36af7b048bea1d36f665639acec901f78d3d2f3ea8b498ebf9a",
+    "map_bytes": 2211241,
+    "map_sha256": "fb60a0c7d854f46d02df4b20714fc0b135e1a9f0c892f47a2402cfcf96c65038",
+    "runtime_tested": false
+  },
+  "runtime_tested_artifact": {
+    "source_commit": "243dbafe867d9c89ab48cb56e17bdc05c69ab704",
+    "workflow_run_id": 38527277656,
+    "artifact_id": 11876766170,
+    "zip_sha256": "76e80fe9a5bbb9b3f4cf5661a0916a46f87b279ebe0ce73f03d5d87131606ed8",
+    "dll_bytes": 2721280,
+    "dll_sha256": "815c4a2238bb49dc52e5090913d6d216d898d0fe5d007fe9246424ae3bc6c011",
+    "pdb_sha256": "4d8d339805d08d932066f926f25130e5afa28ca48eeae309934cd4dcd20329db",
+    "map_sha256": "6726e3d4a2123e7eae97e52eca74987761980c75e51dee38d35f2eeac70a352f",
+    "runtime_tested": true,
+    "note": "Later commits through the implementation head change tools, tests and documentation; the latest head build is recorded separately and was not substituted into this native receipt."
+  },
+  "runtime_input": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "overlay_manifest_sha256": "697d3eebe12483626e57b9b2e8167f1c878937d05a8b6ae3fb8d8ad502777185",
+    "map_sha256": "4ed7f6ab6ae6d11146a9905ab6b26ba2e50cfe03e65bcba83a9428d687ecf5fc",
+    "aas48_sha256": "ea86a1e188a0423493ed25ff1d4cf6698c6f0fa90f8b5aef426cd279e0a63544",
+    "script_sha256": "80bcd004ccf412069ecf1031c88735aa614be4830c16797ceb5ea75cdbba48dd",
+    "player_def_sha256": "d415964ac5916caa232169d7189bbbf52580c58f1dea6474c166220dd1fd0db9",
+    "hud_gui_sha256": "79f148ca748e862b74033aa08d625e36a2dfc96b2777bf8d0475bf03bdc69412",
+    "generated_material_sha256": "5fd3200b8430f6f59f406adea7fe02e0903e434481abfbafe6e6acd082f3f059"
+  },
+  "native_result": {
+    "process_exit_code": 0,
+    "spawned_entities": 940,
+    "inhibited_entities": 0,
+    "local_player_join_observed": true,
+    "join_line": "Server: Player joined the game.",
+    "could_not_spawn_warnings": 0,
+    "missing_image_warnings": 0,
+    "unknown_gui_script_commands": 0,
+    "unknown_material_tokens": 0,
+    "ai_path_warnings": 5,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "total_warning_lines": 31,
+    "qconsole_bytes": 17698,
+    "qconsole_sha256": "618a4760af9645928c5a090195e5da08e4b36ccc5481f975f2154878f3776675"
+  },
+  "static_aas_route_evidence": [
+    {
+      "authored_leg": "tim_char_marine_helmet_1 to path_corner_12",
+      "start_area": 849,
+      "goal_area": 793,
+      "route_area_count": 11
+    },
+    {
+      "authored_leg": "path_corner_12 to path_corner_13",
+      "start_area": 793,
+      "goal_area": 718,
+      "route_area_count": 14
+    },
+    {
+      "authored_leg": "marscity_suit_young2_1 to path_corner_56james10",
+      "start_area": 575,
+      "goal_area": 571,
+      "route_area_count": 6
+    },
+    {
+      "authored_leg": "path_corner_56james10 to path_corner_57james10",
+      "start_area": 571,
+      "goal_area": 499,
+      "route_area_count": 10
+    },
+    {
+      "authored_leg": "fsecshotgun to path_corner_64",
+      "start_area": 55,
+      "goal_area": 4,
+      "route_area_count": 4
+    }
+  ],
+  "established": [
+    "the checkpoint head passes 111 Python tests and a complete Win32 game-DLL build",
+    "the exact runtime-tested DLL starts the recovered map as a true COOP listen server",
+    "the local networked player joins and all 940 entities instantiate",
+    "the Xbox-only UI-manager DrawText ABI call is replaced by a PC-safe HUD-state path",
+    "four Xbox-only HUD icon commands are translated to stock PC visibility assignments",
+    "six selected HUD images and five selected material declarations close without image or parser warnings",
+    "all five remaining warned authored path legs have static directed walk routes"
+  ],
+  "not_established": [
+    "a second distinct peer or two-peer synchronization",
+    "dynamic cause of the five AI path warnings",
+    "checkpoint progression, death/respawn or segment transitions",
+    "direct CM.X decoding or Xbox-equivalent collision",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or gameplay fidelity acceptance"
+  ]
+}
