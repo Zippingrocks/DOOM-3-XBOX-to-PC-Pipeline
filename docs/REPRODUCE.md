@@ -1,4 +1,4 @@
-# Reproduce checkpoint 014
+# Reproduce checkpoint 018
 
 ## Source and boundary
 
@@ -12,13 +12,157 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current implementation branch: 151 tests, zero failures.
+Expected result on the current implementation branch: 154 tests, zero failures.
 Checkpoint 012 captured 142 passing tests; later synthetic tests cover authored-
 CM overlay selection, identity rejection, path-independent material receipts,
 the exact unshipped armor-shard map-icon transform, `xc_admin` inert orphan and
-script handling, stale Pinky joint removal, and absent material-stage handling.
+script handling, stale Pinky joint removal, absent material-stage handling,
+path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
+duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 018 fifth-segment receipt
+
+For `xc_mcu`, the decoded MAP is 3,223,941 bytes with SHA-256
+`bda959ab77d6465eecc4d38d4b33ce5d61d4d7cf7fb05136df32b52dcbd5b144`
+and geometry CRC `2327495450`. The decoded PROC is 3,904,441 bytes with
+SHA-256 `14fb9a9d2123e9f432c8949ebe5f6a875462d52c6fe4b1e8584d1d72cd4bb574`.
+Select the corrected 466,213-byte AAS48 with SHA-256
+`4b1bf8e5d89af1a013beb97de01868eaccc4ef07a20f1baa1c63f1732b37c0eb`;
+the map archive has no AAS96 member.
+
+The 2,175,464-byte CM.X hashes to
+`4a7131ba4caa365927de48f8d81fff2bbe77627cb0f6221288fec6133b0d71c7`
+and expands to a 3,537,686-byte authored CM with SHA-256
+`98551ea432d106f5d1f60393b7856337b6d8282ddd464fa5fc516b553efc9aff`.
+The model audit must report 212 authored, 228 PC-`dmap`, 212 shared, zero
+authored-only, 16 PC-only, all 16 marked `noclipmodel 1`, and zero unexplained.
+
+Extract every map-local MDV member rather than stopping at the first reported
+dependency:
+
+```powershell
+python tools/campaign_port/gfc.py extract `
+  game/campaign_port_inputs/xc_mcu.gfc `
+  --gob game/campaign_port_inputs/xc_mcu.gob `
+  --include "*.mdvmesh" --include "*.mdvanim" `
+  --out game/campaign_port_work/xc_mcu-all-mdv
+```
+
+Decode each `.mdvmesh` to the same relative `.md5mesh` path and each
+`.mdvanim` to `.md5anim` with `decode_mdv.py`, retaining one `--report` receipt
+per member. The complete input/output set is exactly 410 files: 19 meshes and
+391 animations. The decoded outputs total 21,766,572 bytes. The 48-joint
+decoded skeleton hashes to
+`f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09`,
+byte-identical to the independently recovered first-segment copy.
+
+The pruned Xbox meshes omit AF terminal joints while retaining a predecessor in
+the same finger chain. Add the unmodified stock PC AF files as retail roots and
+let the overlay builder apply its exact path-scoped aliases: `Rfings3/Lfings3`
+to `Rfings2/Lfings2` in `monster_zombie_base.af`, and to
+`Rfings1/Lfings1` in both security AFs. Each source endpoint must occur exactly
+twice or the build must fail; do not make a general joint-name rewrite.
+
+Recover the observed light image directly from D3TFULL:
+
+```powershell
+python tools/campaign_port/d3tfull.py retail.iso lights/spot08 `
+  --offset 2825555968 --size 178959016 `
+  --output game/campaign_port_work/d3t-mcu-lights --json
+```
+
+Expected key is `06EFB410`; the 64×64, five-mip, format-`000083F0` DDS is
+2,856 bytes with SHA-256
+`6f07805e4367a6fa7fd3d430852e60358a69908a9d1a18b3b318e1ffb14326ea`.
+Stock PC already declares `lights/spot08`. Copy the exact Xbox DDS but do not
+select a second material body: doing so creates a redundant declaration. Do not
+use a surrogate image or material.
+
+Two Xbox-authored defects require exact receipts. In
+`guis/mc_underground/security_coop.gui`, replace exactly two references to the
+undeclared `ContentClipLocker2::rect` with the declared
+`ContentClipLocker::rect`. In the MAP, make only `info_location_11` at
+`792 -848 88` inert; it overlaps `info_location_9` at `784 -848 88` in the
+same portal area and both name `#str_02859`. The second transform changes only
+the classname to `target_null`, so the geometry CRC remains unchanged. Both
+transforms must fail closed if their complete witnesses do not match.
+
+Build with the shared 229-entry player profile followed by the 414-entry
+`xc_mcu.resources` profile, the complete decoded MDV root, the stock-AF root,
+the light DDS root, the map and inherited dependency roots, direct authored CM,
+and these explicit roots:
+
+```powershell
+python tools/campaign_port/build_runtime_overlay.py `
+  --map game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mcu.map `
+  --converted-dir game/campaign_port_work/converted/maps/vv/xbox_coop `
+  --authored-cm game/campaign_port_work/authored-cm/maps/vv/xbox_coop/xc_mcu.cm `
+  --retail-root game/campaign_port_work/decoded-all-mdv/base `
+  --retail-root game/campaign_port_work/stock-af-root `
+  --retail-root game/campaign_port_work/d3t-mcu-lights `
+  --retail-root game/campaign_port_work/runtime-deps-all/xc_mcu/base `
+  --retail-root game/campaign_port_work/runtime-deps-xc_mars_city1_1/base `
+  --retail-root game/campaign_port_work/decoded-mdv-xc_mars_city1_1-v2/base `
+  --retail-root game/campaign_port_work/decoded-xanim-xc_mars_city1_1-v4 `
+  --retail-root game/campaign_port_work/player-runtime-assets/base `
+  --retail-root game/campaign_port_work/npc-runtime-assets/base `
+  --retail-root game/campaign_port_work/d3t-hud `
+  --retail-root game/campaign_port_work/d3t-hud-missing-v3-dxt5 `
+  --retail-root game/campaign_port_work/d3t-lights-nofalloff `
+  --retail-root game/campaign_port_work/xact-first-map `
+  --retail-root game/campaign_port_work/assets-materials/base `
+  --retail-root game/campaign_port_work/shared-assets-extracted/base `
+  --runtime-resource-list tools/campaign_port/profiles/xbox_coop_player.resources `
+  --runtime-resource-list tools/campaign_port/profiles/xc_mcu.resources `
+  --runtime-resource dds/guis/assets/health/hspike1.dds `
+  --runtime-resource dds/guis/assets/hud/TipBorder.dds `
+  --runtime-resource dds/guis/assets/hud/Vote.dds `
+  --runtime-resource dds/guis/live/assets/FriendInviteReceived.dds `
+  --runtime-resource dds/guis/live/assets/FriendOnline.dds `
+  --runtime-resource dds/guis/live/assets/GameInviteReceived.dds `
+  --runtime-resource guis/hud.gui `
+  --def-preference map_underground_xbox_coop.def `
+  --def-preference coop_defs_engineering.def `
+  --runtime-classname player_doommarine1_coop `
+  --runtime-classname player_doommarine2_coop `
+  --runtime-string '#str_07595' `
+  --runtime-material gui/radiospike `
+  --runtime-material guis/assets/hud/TipBorder `
+  --runtime-material guis/live/assets/FriendInviteReceived `
+  --runtime-material guis/live/assets/FriendOnline `
+  --runtime-material guis/live/assets/GameInviteReceived `
+  --generate-empty-efx `
+  --stock-dir base --language english `
+  --out game/campaign_port_work/overlay-xc_mcu
+```
+
+The finalized overlay must have 540 file records, 497 copied resources, one
+generated empty EFX, 35,404,668
+payload bytes, zero unresolved resources/classnames/string IDs and 246,171
+manifest bytes with SHA-256
+`0bf20c433a5c1ff5cd40c546d3df23f1d2d91b705834876ec76bbf2adda72f2f`.
+
+Under the isolated checkpoint-014 null-guard diagnostic, this bounded run exits
+0, spawns 811/0 and joins the local player:
+
+```powershell
+.\Doom3.exe +set fs_game xbox_coop_port_test_mcu_v5 `
+  +set developer 1 +set logFile 2 +set r_fullscreen 0 +set s_noSound 1 `
+  +set si_gameType Coop +set net_LANServer 1 `
+  +map vv/xbox_coop/xc_mcu +wait 500 +quit
+```
+
+The qconsole is 71,005 bytes with SHA-256
+`2c571e01998c38a020639a3ac3eb3a169972ec47f1662199e1b0063d65091969`.
+It contains no map-specific warning, missing resource, invalid joint, callback,
+class, path-diagnostic, error or fatal line. The sole unique map-run warning is
+the stock PC `mpmain.gui` reference to undefined cvar `s_driver`. Restore and
+verify root `gamex86.dll` SHA-256
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`
+afterward. Repeat with the normally rebuilt source guard before engine
+acceptance; the diagnostic binary is not distributable.
 
 ### Checkpoint 017 fourth-segment receipt
 

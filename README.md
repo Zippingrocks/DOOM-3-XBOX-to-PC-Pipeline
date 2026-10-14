@@ -14,7 +14,36 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 017
+## Current checkpoint: 018
+
+**The fifth co-op segment, `xc_mcu`, now has direct authored collision,
+corrected AAS48, its complete 410-file Xbox MDV set and a clean bounded
+true-`COOP` spawn closure.**
+
+The decoded 811-entity MAP binds to geometry CRC `2327495450`. Its 3,537,686-
+byte direct CM.X export contains 212 models; independent PC `dmap` contains all
+212 plus 16 models, every one explained by `noclipmodel 1`. The corrected
+466,213-byte AAS48 crosses the native loader boundary; this archive contains no
+AAS96 payload.
+
+All 19 meshes and 391 animations in the map GFC decode. Their pruned skeletons
+require three exact, path-scoped stock-AF endpoint aliases. Two stale references
+in the Xbox security GUI are redirected to the window it actually declares,
+and one redundant same-area location entity is made inert while preserving its
+effective sibling. `lights/spot08` is recovered by logical name from the retail
+D3TFULL rather than substituted.
+
+The resulting 540-file overlay has zero unresolved resources, classnames or
+strings, and all 154 implementation tests pass. Under the isolated instant-hit
+null-guard diagnostic, true `COOP` spawns 811/0, joins the player, and emits no
+map-specific warning, missing-resource, invalid-joint, callback, class,
+path-diagnostic, error or fatal line. The sole unique map-run warning is the
+stock PC `mpmain.gui` reference to undefined cvar `s_driver`. Final engine
+acceptance still requires the normal source rebuild of the instant-hit guard.
+Full receipts are in
+[`evidence/checkpoint-018.json`](evidence/checkpoint-018.json).
+
+## Previous checkpoint: 017
 
 **The fourth co-op segment, `xc_admin`, now has direct authored collision,
 both corrected AAS families and a clean bounded true-`COOP` asset/skeleton
@@ -566,7 +595,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-010.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-018.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

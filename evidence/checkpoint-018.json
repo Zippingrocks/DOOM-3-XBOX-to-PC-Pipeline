@@ -1,0 +1,197 @@
+{
+  "checkpoint": "018",
+  "date": "2026-10-14",
+  "scope": "fifth co-op segment direct collision, corrected navigation, complete Xbox MDV set, AF/GUI/light closure, and bounded runtime load",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_mcu",
+    "geometry_crc": 2327495450,
+    "decoded_map": {
+      "bytes": 3223941,
+      "sha256": "bda959ab77d6465eecc4d38d4b33ce5d61d4d7cf7fb05136df32b52dcbd5b144",
+      "entities": 811,
+      "brushes": 2371,
+      "brush_sides": 14327,
+      "patches": 1952,
+      "patch_points": 30330
+    },
+    "decoded_proc": {
+      "bytes": 3904441,
+      "sha256": "14fb9a9d2123e9f432c8949ebe5f6a875462d52c6fe4b1e8584d1d72cd4bb574"
+    },
+    "corrected_aas48": {
+      "bytes": 466213,
+      "sha256": "4b1bf8e5d89af1a013beb97de01868eaccc4ef07a20f1baa1c63f1732b37c0eb"
+    },
+    "aas96": {
+      "status": "not present in the source archive"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 2175464,
+      "sha256": "4a7131ba4caa365927de48f8d81fff2bbe77627cb0f6221288fec6133b0d71c7"
+    },
+    "authored_export": {
+      "bytes": 3537686,
+      "sha256": "98551ea432d106f5d1f60393b7856337b6d8282ddd464fa5fc516b553efc9aff",
+      "models": 212,
+      "vertices": 16053,
+      "edges": 28045,
+      "polygons": 11270,
+      "brushes": 2322,
+      "nodes": 8604
+    },
+    "pc_dmap": {
+      "cm_bytes": 5006508,
+      "cm_sha256": "8d52bec6d39e472a06a38c3658a8407ee709ba699cc3161cf5af2a0e3a402d0d",
+      "proc_bytes": 5846233,
+      "proc_sha256": "39690e5fb54842e6e54e3db7df3c39637b400f07c5f9d905d65ff08507ad2fee",
+      "aas48_bytes": 450235,
+      "aas48_sha256": "805f57f440ac4171b32ec8354e9f185415ad5c05145c053e454c1513b3979775",
+      "models": 228
+    },
+    "model_set_audit": {
+      "shared": 212,
+      "authored_only": 0,
+      "pc_dmap_only": 16,
+      "pc_dmap_only_with_noclipmodel_1": 16,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "runtime_assets": {
+    "archive_mdv_members": 410,
+    "decoded_mdv_files": 410,
+    "decoded_meshes": 19,
+    "decoded_animations": 391,
+    "decoded_mdv_bytes": 21766572,
+    "labcoat_mesh_joints": 48,
+    "skeleton_mesh_joints": 48,
+    "skeleton_sha256": "f7a0d02251409120e16bd545a88912121369d198c50e6f2ad8acae2a1e400c09",
+    "skeleton_cross_archive_result": "byte-identical to the independently recovered xc_mars_city1_1 skeleton",
+    "security_mesh_joints": {
+      "pistol": 44,
+      "shotgun": 42
+    },
+    "stock_af_endpoint_aliases": [
+      {
+        "path": "af/monster_zombie_base.af",
+        "from": ["Rfings3", "Lfings3"],
+        "to": ["Rfings2", "Lfings2"],
+        "output_sha256": "c004a381146c10992f17f4a0793d11e9b145ea17e462c609cd01abc1e437a5e5"
+      },
+      {
+        "path": "af/monster_zombie_security_pistol.af",
+        "from": ["Rfings3", "Lfings3"],
+        "to": ["Rfings1", "Lfings1"],
+        "output_sha256": "6a5a0bd263a094401d9e091d7ef43fc44d823be36fe8ee71d8e8aab5a79b3b08"
+      },
+      {
+        "path": "af/monster_zombie_security_shotgun.af",
+        "from": ["Rfings3", "Lfings3"],
+        "to": ["Rfings1", "Lfings1"],
+        "output_sha256": "9fd39055ff4673b7a427b89e8b67fff1a2293bf799c89319f8246d6613735faf"
+      }
+    ],
+    "d3t_dds": {
+      "logical_name": "lights/spot08",
+      "archive_key": "06EFB410",
+      "width": 64,
+      "height": 64,
+      "format": "000083F0",
+      "mip_count": 5,
+      "bytes": 2856,
+      "sha256": "6f07805e4367a6fa7fd3d430852e60358a69908a9d1a18b3b318e1ffb14326ea"
+    },
+    "light_material_resolution": "use the existing stock PC lights/spot08 declaration with the exact Xbox DDS; staging the Xbox body as well creates a redundant declaration"
+  },
+  "compatibility_transforms": {
+    "af_endpoint_aliases": {
+      "name": "alias-pruned-af-endpoints",
+      "files": 3,
+      "replacements_per_file": 2,
+      "contract": "each source endpoint must occur exactly twice in its path-scoped stock AF; any other count fails closed"
+    },
+    "security_gui_reference": {
+      "name": "correct-retail-gui-window-reference",
+      "path": "guis/mc_underground/security_coop.gui",
+      "from": "ContentClipLocker2::rect",
+      "to": "ContentClipLocker::rect",
+      "replacements": 2,
+      "output_sha256": "17871e2ba505651a2055a278fc08fdbf0bb869d6709685b34d2a9adf81dde054"
+    },
+    "duplicate_location": {
+      "name": "inert-duplicate-location-entity",
+      "entity_name": "info_location_11",
+      "from_classname": "info_location",
+      "to_classname": "target_null",
+      "origin": "792 -848 88",
+      "location_string": "#str_02859",
+      "effective_sibling": "info_location_9",
+      "effective_sibling_origin": "784 -848 88",
+      "geometry_crc_preserved": true
+    }
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_mcu_v5",
+    "player_profile_sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "mcu_profile_entries": 414,
+    "mcu_profile_sha256": "9b3a729ae99c6bade1b60e512df559edc7bfae3feb02eb5c707666082e29d2c8",
+    "file_records": 540,
+    "copied_runtime_resources": 497,
+    "generated_runtime_resources": 1,
+    "payload_bytes": 35404668,
+    "manifest_bytes": 246171,
+    "manifest_sha256": "0bf20c433a5c1ff5cd40c546d3df23f1d2d91b705834876ec76bbf2adda72f2f",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 12,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 811,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "invalid_or_unknown_joint_lines": 0,
+    "callback_or_class_failures": 0,
+    "path_diagnostic_failures": 0,
+    "map_specific_warning_lines": 0,
+    "unique_map_run_warning_lines": 1,
+    "map_run_warning_occurrences": 2,
+    "baseline_warning_scope": "stock guis/mpmain.gui references the undefined s_driver cvar",
+    "qconsole_bytes": 71005,
+    "qconsole_sha256": "2c571e01998c38a020639a3ac3eb3a169972ec47f1662199e1b0063d65091969",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {
+    "count": 154,
+    "failures": 0
+  },
+  "established": [
+    "the fifth co-op segment's MAP, PROC, corrected AAS48 and direct CM.X export cross the native PC loader boundary",
+    "all 212 authored collision models appear in PC dmap output; all 16 generated-only models are explained by noclipmodel 1",
+    "all 410 MDV members in the map archive decode, and exact AF endpoint aliases align three stock ragdolls to their pruned Xbox skeletons",
+    "the security GUI's two undeclared window references and one redundant overlapping location entity are corrected by exact path/entity-scoped transforms",
+    "lights/spot08 is recovered exactly from D3TFULL and resolved through the existing stock PC material rather than duplicated or replaced by a surrogate",
+    "all 811 entities spawn with none inhibited and the local co-op player joins without any map-specific warning, missing-resource, invalid-joint, callback, class, path-diagnostic, error or fatal line"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition beyond xc_mcu",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 15 co-op segments or the solo campaign"
+  ]
+}

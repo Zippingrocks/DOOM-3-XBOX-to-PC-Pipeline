@@ -1,5 +1,48 @@
 # Format findings and unknowns
 
+## Checkpoint 018 fifth-segment findings
+
+`xc_mcu` extends the direct-CM contract to a fifth co-op segment. Its
+3,223,941-byte MAP has geometry CRC `2327495450`; the 2,175,464-byte CM.X
+expands to a 3,537,686-byte PC CM containing 212 models, 16,053 vertices,
+28,045 edges, 11,270 polygons, 2,322 brushes and 8,604 nodes. Independent PC
+`dmap` emits 228 models. All 212 authored names are shared, and every one of
+the 16 PC-only names belongs to a MAP entity carrying `noclipmodel 1`.
+
+The corrected AAS48 hashes to
+`4b1bf8e5d89af1a013beb97de01868eaccc4ef07a20f1baa1c63f1732b37c0eb`.
+There is no AAS96 member in this map archive. Together with decoded PROC and
+direct authored CM, AAS48 reaches native true `COOP` with 811 entities spawned,
+zero inhibited and no path failure.
+
+Dependency-driven extraction alone can understate the authoritative Xbox
+skeleton set. The MCU GFC contains 410 MDV members—19 meshes and 391
+animations—and every one decodes. The 48-joint skeleton is byte-identical to an
+independent first-segment recovery. The Xbox pruner removes identity-only
+terminal finger joints from the 48-joint labcoat, 44-joint pistol-zsec and
+42-joint shotgun-zsec meshes while retaining predecessors in the same chains.
+The corresponding stock PC AF endpoints therefore require exact, path-scoped
+aliases. Each expected endpoint occurs twice; any different count is a source
+identity failure, not permission for a broad text replacement.
+
+The security co-op GUI declares `ContentClipLocker` but two early transitions
+refer to nonexistent `ContentClipLocker2`; later duplicated transitions already
+target the declared window. Redirecting exactly those two references fixes the
+retail defect without inventing a window. The MAP likewise places two identical
+`#str_02859` location entities eight units apart in one portal area. Keeping
+`info_location_9` and making only `info_location_11` inert removes PC's overlap
+warning while preserving the location and all geometry.
+
+`lights/spot08` is stored in global D3TFULL under key `06EFB410`. It decodes as
+a 64×64, five-mip DDS with SHA-256
+`6f07805e4367a6fa7fd3d430852e60358a69908a9d1a18b3b318e1ffb14326ea`.
+Stock PC already declares the same image path, so the final closure keeps that
+declaration and copies only the exact Xbox DDS. Staging the Xbox material body
+as well creates a redundant-declaration warning and is rejected. With the
+complete MDV set, three AF aliases, the exact GUI and location corrections and
+this image, the native map slice has no map-specific missing-resource,
+invalid-joint, callback, class, navigation, error or fatal line.
+
 ## Checkpoint 017 fourth-segment findings
 
 `xc_admin` independently extends the direct-CM contract to a fourth co-op

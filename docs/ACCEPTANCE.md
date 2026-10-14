@@ -1,5 +1,28 @@
 # Recovery order and acceptance
 
+## Checkpoint 018 fifth-segment status
+
+`xc_mcu` passes structural export, complete archive-local MDV closure and the
+bounded native loader/spawn gate. Its MAP/PROC, corrected AAS48 and direct
+212-model CM.X export all load. Independent PC `dmap` contains every authored
+collision model; its 16 additional models are exactly MAP entities marked
+`noclipmodel 1`. The source archive does not contain AAS96.
+
+All 410 MDV members decode. Three exact stock-AF endpoint aliases account for
+terminal joints pruned from the corresponding Xbox meshes; an exact two-token
+GUI correction targets the only declared locker window; one duplicate same-area
+location entity becomes inert; and the exact `lights/spot08` DDS is recovered
+from D3TFULL beneath the existing stock PC declaration. The 540-file overlay
+has zero unresolved resources, classnames or string IDs, and all 154
+implementation tests pass.
+
+Under the isolated instant-hit null-guard diagnostic, true `COOP` spawns all
+811 entities, inhibits none, joins the player and emits no map-specific warning,
+missing-resource, invalid-joint, callback, class, path-diagnostic, error or
+fatal line. This accepts fifth-segment packaging and the bounded loader/spawn
+boundary only. A reviewed source guard and normal rebuild, dynamic combat and
+progression, transition, two peers and Xbox-reference comparison remain open.
+
 ## Checkpoint 017 fourth-segment status
 
 `xc_admin` passes structural export, dependency closure and bounded native
