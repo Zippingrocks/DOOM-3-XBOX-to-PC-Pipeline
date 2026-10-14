@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "checkpoint": "004",
+  "request_date_local": "2026-10-13",
+  "timezone": "America/Denver",
+  "implementation_commit": "9f96745ea553fdf918d1630c45d7399abe8f0033",
+  "tests": { "run": 64, "failed": 0, "python": "3.11", "platform": "Windows" },
+  "coop_corpus": {
+    "archive_pairs": 20,
+    "map_x_decoded": 20,
+    "proc_x_decoded": 20,
+    "proc_structurally_valid": 20,
+    "aas_x_decoded": 26,
+    "aas48": 20,
+    "aas96": 6,
+    "map_totals": {
+      "brush_sides": 313418,
+      "patchDef2": 11185,
+      "patchDef3": 20881
+    },
+    "proc_totals": {
+      "models": 5647,
+      "surfaces": 25749,
+      "surface_vertices": 930756,
+      "surface_indices": 2391825,
+      "shadow_models": 2024,
+      "shadow_vertices": 366623,
+      "shadow_indices": 2105442,
+      "areas": 1159,
+      "portals": 1183,
+      "nodes": 97387
+    },
+    "aas_totals": {
+      "planes": 42750,
+      "vertices": 39601,
+      "edges": 53235,
+      "faces": 123827,
+      "areas": 21233,
+      "nodes": 74279,
+      "portals": 1488,
+      "clusters": 1045
+    }
+  },
+  "reference_aas48": {
+    "map": "xc_mars_city1_1",
+    "input_bytes": 543728,
+    "input_sha256": "d9bfaf52d2b8fb260cb767a19bd6aafd4ed413c88b157b12c32affce5d276d20",
+    "output_bytes": 845853,
+    "output_sha256": "ea86a1e188a0423493ed25ff1d4cf6698c6f0fa90f8b5aef426cd279e0a63544",
+    "xbox_extension_bytes": 236384,
+    "section_counts_match_pc_dmap": true
+  },
+  "native_map_load": {
+    "completed": true,
+    "recovered_aas48_accepted": true,
+    "load_milliseconds": 3034,
+    "entities_spawned": 940,
+    "entities_inhibited": 0,
+    "missing_unique_classnames": 10,
+    "missing_script_functions": 4,
+    "missing_guis": 9,
+    "missing_language_strings": 6,
+    "missing_sounds": 3
+  },
+  "claim_limits": [
+    "Corpus decode counts are not a campaign completion percentage.",
+    "Collision is PC-dmap regenerated; direct CM.X decoding remains open.",
+    "One map load is not visual, gameplay, progression or two-peer acceptance.",
+    "Runtime dependencies identified by the loader remain unresolved."
+  ]
+}
+
