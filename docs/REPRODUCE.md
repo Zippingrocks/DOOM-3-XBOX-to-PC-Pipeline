@@ -1,4 +1,4 @@
-# Reproduce checkpoint 011
+# Reproduce checkpoint 012
 
 ## Source and boundary
 
@@ -6,7 +6,7 @@ Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
 Use the open campaign-port pull request through an authenticated clone. Preserve
 existing work; use an isolated worktree if the checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 011 ran on Python 3.11/Windows:
+Python 3.10+ and the standard library are sufficient. Checkpoint 012 ran on Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
@@ -226,6 +226,35 @@ the engine's point fast path ignores the requested contents mask. It also
 normalizes `CONTACT_TRMVERTEX`'s pointer-cast polygon feature to zero so ASLR
 cannot appear as topology. Do not weaken tolerances, discard contact points or
 ignore material/content differences to manufacture equivalence.
+
+## Live spawned-entity collision comparison
+
+Checkpoint 012 adds an entity-target form to the diagnostic command. A leading
+`@` resolves the current map entity and uses the live clip model's origin,
+axis and absolute bounds:
+
+```text
+xboxCoopCollisionDigest 4096 31 1 @doorClip_1 0x9
+xboxCoopCollisionDigest 4096 31 1 @trigger_coop_enablegui_2 0x1000
+xboxCoopCollisionDigest 4096 31 1 @func_static_53167 0x1
+```
+
+Run each command once with the PC-`dmap` CM and once with the direct CM.X
+export, in a freshly loaded `vv/xbox_coop/xc_mars_city1_1` COOP process. Keep
+the DLL and CM swaps isolated and hash both before and after. Compare each pair:
+
+```powershell
+python tools/campaign_port/compare_cm_trace_logs.py generated-door.log authored-door.log --report door.json --allow-differences
+python tools/campaign_port/compare_cm_trace_logs.py generated-trigger.log authored-trigger.log --report trigger.json --allow-differences
+python tools/campaign_port/compare_cm_trace_logs.py generated-static.log authored-static.log --report static.json --allow-differences
+```
+
+Expected checkpoint-012 totals are 24,576 shared records, zero coordinate/input
+or hit mismatches, 11 start-contents and skip mismatches, one trajectory
+mismatch, 3,367 contact-geometry mismatches, 97 metadata mismatches and 3,393
+gameplay mismatches. Each runtime load spawns 940 entities with none inhibited.
+The exact commands, bounds, digests, counts and SHA-256 receipts are in
+`evidence/checkpoint-012.json`.
 
 ## Claim limits
 
