@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 057
+## Current checkpoint: 058
+
+**The 20-map co-op corpus now has complete active script-sound closure.** The
+new co-op audit found only `mset3_movement` and `mset3_stop`, one call each in
+`xc_mcu.script`. As in the solo split, the authenticated Xbox sound metadata
+ships no third machinery set and the stock-PC third howitzer uses `mset2`.
+The fail-closed builder now corrects those exact two literals and records the
+input/output hashes in the MCU manifest.
+
+Repeated rebuilds also exposed four disabled `setupCoop` epairs whose comment
+prefix was not byte-idempotent. The builder now collapses only those exact,
+already-disabled lines to one stable guard. The final soundguard-v3 corpus was
+rebuilt directly from the accepted scriptguard-v2 inputs so its manifests
+record both corrections. It closes 6,080 payloads, 4,654 links, 63 callbacks,
+21 transitions, 639 AI requirements, 30 AAS files and 226 active script sound
+calls with zero port regression. All 243 offline tests pass; Doom 3 and `dmap`
+were not launched. Receipt:
+[`evidence/checkpoint-058-coop-script-sound-closure.json`](evidence/checkpoint-058-coop-script-sound-closure.json).
+
+## Earlier checkpoint: 057
 
 **All script-named sound shaders in the 41-map solo overlay corpus now resolve
 against a shipped declaration.** A new active-source audit found four

@@ -1,5 +1,28 @@
 # Format findings and unknowns
 
+## Checkpoint 058 co-op script-sound and rebuild findings
+
+Co-op overlay selection needs the same script-literal sound boundary as solo.
+Across all active calls, only the MCU split named the nonexistent third
+machinery set. The declaration and source witnesses are independent: the Xbox
+sound metadata proves `mset3` did not ship, while the unsplit PC script proves
+the matching third-howitzer behavior is `mset2`. Correcting those two literals
+is therefore recovery of shipped intent, not substitution by convenience.
+
+Generated overlays are valid resource roots, but they are not always suitable
+provenance roots. An idempotent correction is no longer visible as a fresh
+transform when a corrected overlay is fed to the builder again. The corpus
+rebuilder now accepts an explicit input suffix so a final candidate can be
+derived from the named accepted checkpoint and carry fresh input/output
+receipts for every new correction.
+
+The same rebuild exposed a byte-idempotence bug in four stale callback guards.
+A substring count also matched an already-commented call and prepended another
+`//` on each generation. The transform now matches one complete epair line,
+distinguishes active from disabled form, and normalizes any legacy repeated
+prefix to one comment. The callback remains disabled; only unstable generated
+markup changes. A second pass is byte-identical.
+
 ## Checkpoint 057 solo script-sound findings
 
 Script sound dependencies are a separate closure boundary from map speaker

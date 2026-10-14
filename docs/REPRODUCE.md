@@ -1,3 +1,49 @@
+# Reproduce checkpoint 058
+
+## Checkpoint 058: co-op script-sound closure and stable rebuilds
+
+Select the latest accepted 20 co-op overlays and audit active literal sound
+calls against the installed stock-PC declarations:
+
+```powershell
+python tools/campaign_port/coop_script_sound_audit.py ../.. `
+  --stock-dir ../../base --require-maps 20 --allow-missing `
+  --output work/coop-scriptguard-script-sounds-v1.json
+```
+
+Require 40 scripts, 226 active calls, 92 unique map/event/shader records and
+exactly two missing records: one `mset3_movement` and one `mset3_stop` in
+`maps/vv/xbox_coop/xc_mcu.script`. Use the same authenticated Xbox XSND and
+stock-PC `map_mc_underground.script` witnesses as checkpoint 057. Do not create
+a third shader set.
+
+Rebuild directly from checkpoint-055's accepted inputs, not from an
+intermediate generated overlay:
+
+```powershell
+python tools/campaign_port/rebuild_latest_coop_overlays.py ../.. `
+  --work-root work --input-suffix scriptguard_v2 `
+  --suffix soundguard_v3 --require-maps 20 `
+  --receipt work/coop-soundguard-rebuild-v3.json
+```
+
+The MCU manifest must contain
+`correct-unshipped-script-sound-shaders`, count two, with source names
+`mset3_movement`/`mset3_stop` and destination names
+`mset2_movement`/`mset2_stop`. The Admin, Caverns 1, Caverns 2 and Site 3
+manifests must each contain one `normalize-disabled-map-callback` receipt for
+their exact stale `setupCoop` epair. A second compatibility-transform pass over
+those single-comment lines must make no change.
+
+Rerun the co-op overlay, entity-link, semantic, AAS-requirement, AAS-corpus,
+script-entity, reachability and script-sound gates. Require 20 maps, 6,080
+payloads, 545,522,554 bytes, payload ledger
+`e90511d67bd1eb6ee001e21a9bef001ed833b27e523cc495561bf24c67504cad`,
+4,654 links, 63 callback records, 21 transitions, 639 navigation requirements,
+30 AAS files, 226 sound calls, zero missing sound declaration and zero port
+regression. Run the complete suite and require 243 passing tests. Do not launch
+Doom 3 or `dmap`.
+
 # Reproduce checkpoint 057
 
 ## Checkpoint 057: solo script-sound declaration closure

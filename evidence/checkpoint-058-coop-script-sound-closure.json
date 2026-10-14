@@ -1,0 +1,106 @@
+{
+  "checkpoint": "058",
+  "date": "2026-10-14",
+  "claim": "All active literal sound-shader references in the 20 original-Xbox co-op overlays resolve, and exact stale callback guards are byte-idempotent with complete final-manifest provenance.",
+  "inputs": {
+    "checkpoint_055": "evidence/checkpoint-055-coop-script-reachability.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "xbox_global_xsndshd_sha256": "994c5f859a41558f2c8c28371c73770d6cf56301020ab09f8431b006b828f7ba",
+    "stock_pc_map_mc_underground_script_sha256": "041e79c59ab1a1c6ab9126a902d2a11c2061daefdf025c1c2451ef4b167a6d62",
+    "initial_script_sound_report_sha256": "a41d8b436bd54b046b2042a97c6dbb5372c2663b71f61af60bdfc950ca050da9",
+    "explicit_rebuild_source_suffix": "scriptguard_v2"
+  },
+  "initial_finding": {
+    "maps": 20,
+    "script_files": 40,
+    "active_sound_references": 226,
+    "unique_map_event_shader_pairs": 92,
+    "missing_records": 2,
+    "missing_shader_names": ["mset3_movement", "mset3_stop"],
+    "map": "xc_mcu",
+    "path": "maps/vv/xbox_coop/xc_mcu.script"
+  },
+  "sound_transform": {
+    "kind": "correct-unshipped-script-sound-shaders",
+    "replacements": 2,
+    "input_sha256": "96d19f561905bf83ab68be2032c775d7bff8cb54000e4edf2154fb01e1aa4ac8",
+    "output_sha256": "f61834a37958d9c3b8f1eccf7d4c026e0b99bd3c512ef67527bd8ccd40b423b8",
+    "final_mcu_manifest_sha256": "6fcf366d54091228788abfc6db80d28fc42f8137b0c76f218da77bb73c892a69",
+    "invented_assets_or_declarations": 0
+  },
+  "stable_callback_guards": [
+    {
+      "map": "xc_admin",
+      "symbol": "map_admin1::setupCoop",
+      "output_sha256": "586e4468e32c6704a8fb3d2cee71880dacb64fd40a02e7cd408638156f0dc356"
+    },
+    {
+      "map": "xc_caverns1_1",
+      "symbol": "map_caverns1_1::setupCoop",
+      "output_sha256": "d4e83a53bba29a7126d7a27667a83d40610ab96e3be59dc1d48eaf2596cde5d5"
+    },
+    {
+      "map": "xc_caverns2",
+      "symbol": "map_caves2::setupCoop",
+      "output_sha256": "3c07226c76d3abc22321457945646804633fb03ef9d15d60820ad572f381955a"
+    },
+    {
+      "map": "xc_site3_1",
+      "symbol": "map_site3::setupCoop",
+      "output_sha256": "b3abe52a137af702412f86ec66eee659612ea8f84e818c025829b0c27289392c"
+    }
+  ],
+  "final_corpus": {
+    "suffix": "soundguard_v3",
+    "maps": 20,
+    "payload_files": 6080,
+    "payload_bytes": 545522554,
+    "payload_ledger_sha256": "e90511d67bd1eb6ee001e21a9bef001ed833b27e523cc495561bf24c67504cad",
+    "manifest_ledger_sha256": "0b412c1f2f42a52d71a02b10f2f98877017a6a3a241f9ae3d791bcb51d777528",
+    "entity_links": 4654,
+    "semantic_callbacks": 63,
+    "transitions": 21,
+    "ai_requirements": 639,
+    "packaged_ai_requirements": 638,
+    "explicit_no_aas_requirements": 1,
+    "aas_files": 30,
+    "aas_bytes": 20770442,
+    "active_script_sound_references": 226,
+    "unique_script_sound_records": 90,
+    "missing_script_sound_records": 0,
+    "reachable_script_functions": 99,
+    "script_attention_records": 65,
+    "port_regressions": 0,
+    "unresolved_payload_records": 0,
+    "reports": {
+      "overlay_sha256": "74eeafd69fece1ac4747b225577a745c67dda95802b49e02a5734bb930561e53",
+      "script_sound_sha256": "72600611b7c60cd52375d6a00c78e4f7db3e489d5b01f3cb202e5a8f27f6922c",
+      "entity_links_sha256": "3d913517bfcaf0e983204bb93ced8c1860cc1057c5fcd2beb1efe0a8fcbfe619",
+      "semantic_sha256": "774ae6b6adbe60bd6755218c061b9e4fb12dc6fc503e0e24aee8ada689cf8030",
+      "aas_requirements_sha256": "d2c72333e1b44494983637e5c80d2e8151c3af9c3918e32d2cb8f03871504984",
+      "aas_corpus_sha256": "21a9da9b8593655dd34caf7593500b290b866746f39f40516ce8b313a459fcdd",
+      "script_entity_sha256": "20fdf776ffb9bb37518338c7f2b6162029748a63b5b80d295ec36b5195ccb078",
+      "script_reachability_sha256": "688db57e0b1ed6d22662769182d883fb8003214f3f9292720a17614ac562182f",
+      "rebuild_receipt_sha256": "9648af97d1de672409723c2d4ec567d94ebf819dadfed08c1803af01b10bba07"
+    }
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "b0e33284bc83676b285fa1cf3827621d112ac3b6f93457baaece3052202b0d18",
+    "coop_script_sound_audit_py_sha256": "d71095500cadbad0054042c31a4e622e1432cf7e3636e93baa7ff81905a26fb0",
+    "rebuild_latest_coop_overlays_py_sha256": "95edafd2bd80f59ef72a4a3f7c314854d1c4d2971643a3fe7e1d02492cfb20ca"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 243,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "The 60 unresolved raw script-entity records are the already-classified dynamic/source residue; the reachability report has zero port regression.",
+    "Offline closure does not replace native map-load, save/load, encounter, transition or two-peer gameplay acceptance."
+  ]
+}
