@@ -14,7 +14,49 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 007
+## Current checkpoint: 008
+
+**The first co-op segment now has working recovered Xbox navigation on PC, with
+the former five NPC route failures eliminated at the format boundary.**
+
+Private implementation head `0181311c92681e09d05adfcd104d9ed9e10117f7`
+contains the corrected AAS converter, matching route auditor, exact inventory-
+icon compatibility transforms, 116 passing Python tests and updated handoff
+documentation. The DLL used for the native receipt was built from source commit
+`a60a42a07152fc77ca47f2b2de920aff85372636` by Actions run `38531204632`.
+Artifact `11877622996` has ZIP SHA-256
+`70d1c1b7af5655c881940eebeebd019e26014ffc23cd68a2038b41de9387aec2`;
+its 2,723,328-byte DLL has SHA-256
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`.
+
+The root cause was a serialization-contract mismatch. Xbox `xboxData` stores
+the in-memory `idPlane` tuple `(normal, d)`, but standard PC AAS text stores
+`(normal, idPlane::Dist())`, and `Dist() == -d`. Emitting raw `d` caused the
+PC loader's `SetDist()` to flip every BSP plane. The offline route auditor had
+the same sign mistake, masking the defect. Both implementations now have
+nonzero-distance regression tests, and all 26 co-op AAS.X members were
+regenerated with the corrected conversion.
+
+The clean first-map overlay has 374 hashed payload records, 336 copied runtime
+resources, one generated empty EFX, zero unresolved resources/classes and
+manifest SHA-256
+`f2b9787ef8ec8823022de2bf6f502d08c3ec74c2a7dc6787b5f2975f7a24889e`.
+Three Xbox weapon `inv_icon` references name textures absent from both the map
+and shared retail GFC inventories; exact path-scoped transforms disable only
+those lookups while retaining the Xbox gameplay declarations.
+
+A bounded true-`COOP` native run spawns 940 entities with zero inhibited,
+observes the local player joining, and exits 0. It has zero missing images,
+models, animations or sounds; zero `Could not spawn`; zero unknown GUI/material
+tokens; zero path-corner failures or AAS diagnostic failures; and zero errors
+or fatals. The log SHA-256 is
+`f3c849a836ca6964a60ffeb6358cc4268c1423ddff8ff4a64bbf831edae3b8da`.
+Two-peer progression, direct CM.X recovery, all-map runtime closure and matched
+Xbox visual/gameplay fidelity remain open.
+
+See [checkpoint 008](evidence/checkpoint-008.json).
+
+## Previous checkpoint: 007
 
 **The first co-op segment now runs as a true PC `COOP` listen server with a
 joined player and a complete first-map HUD/material closure.**
@@ -226,7 +268,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-007.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-008.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
