@@ -1,5 +1,31 @@
 # Format findings and unknowns
 
+## Checkpoint 042 split-script entrypoint and VM findings
+
+An Xbox split-stage `_main.script` identifies the shared retail source file,
+but it does not prove that the segment should call that namespace's `main()`.
+The recovered `alphalabs1_2` and `monorail_2` sources each define a distinct
+`main2()` for their second half. A PC host bridge must therefore bind the exact
+map path to `map_alphalabs1::main2()` or `map_monorail::main2()`; calling the
+first-half `main()` compiles cleanly while initializing the wrong stage. No
+other recovered solo source defines a numbered entrypoint used by its segment.
+
+Doom script preprocessing also applies object-like macros before resolving a
+`$entityName` global. For example, `$TRAIN_ANCHOR` in Monorail resolves through
+`#define TRAIN_ANCHOR monorail_anchor`. Static entity auditing must expand that
+macro instead of reporting the uppercase token as a missing map entity. With
+this correction, 7,193 direct references resolve locally and 974 are retained
+as source-authored missing references; no source-present name is lost.
+
+The official GPL VM distinguishes a null receiver from a null required entity
+argument. An event call on a missing object/entity receiver is safely skipped
+or returns the event's zero value. Supplying a missing entity to a required
+event argument can instead terminate the current script thread. The
+reachability report therefore classifies 334 reachable source-authored residue
+records by their stock-runtime effect and keeps them as attention items. It
+does not turn source-authored retail residue into a port regression, nor does
+it declare every reachable use harmless without native activation.
+
 ## Checkpoint 041 direct script-entity findings
 
 Doom script `$name` literals form a much larger entity-reference graph than

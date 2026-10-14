@@ -14,7 +14,30 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 041
+## Current checkpoint: 042
+
+**The two Xbox solo second-segment scripts now enter their exact retail
+initializers, and the complete 41-map corpus has been rebuilt and re-audited.**
+The PC bridge for `alphalabs1_2` now calls
+`map_alphalabs1::main2()` and the bridge for `monorail_2` calls
+`map_monorail::main2()`. Both functions are present in the recovered retail
+scripts. The former bridge generator called `main()` for every segment, which
+silently initialized the first half of these two split stages.
+
+Only those two generated bridge scripts and their two manifests changed from
+strict v7; the other 1,824 files are byte-identical. Strict v8 contains 1,787
+payload records totaling 780,869,120 bytes, selects direct authored collision
+for all 41 maps, and has zero unresolved structural, resource, string,
+transition, callback, direct-audio, entity-link or script-entity record. A
+reachability pass starts from each corrected bridge and all MAP callbacks: 691
+of 1,065 functions are reachable, 374 are unreachable, and 334 reachable
+source-authored residue references remain explicit attention items rather than
+being mislabeled as conversion defects. All 208 offline tests pass. Doom 3 and
+`dmap` were not launched, and the installed `gamex86.dll` is unchanged.
+Receipt:
+[`evidence/checkpoint-042-solo-script-entrypoints.json`](evidence/checkpoint-042-solo-script-entrypoints.json).
+
+## Earlier checkpoint: 041
 
 **Direct `$entityName` script references are now closed against conversion
 loss across all 41 solo maps.** The parser ignores comments and string literals
@@ -931,7 +954,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-023.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-042-solo-script-entrypoints.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

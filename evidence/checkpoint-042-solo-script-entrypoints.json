@@ -1,0 +1,116 @@
+{
+  "checkpoint": "042",
+  "date": "2026-10-14",
+  "claim": "All 41 Xbox solo overlays now bridge to the exact recovered retail segment initializer; the two second-half maps use main2 and the rebuilt corpus passes every offline gate.",
+  "inputs": {
+    "checkpoint_041": "evidence/checkpoint-041-solo-direct-script-entities.json",
+    "previous_corpus": "solo-overlays-strict-v7",
+    "rebuilt_corpus": "solo-overlays-strict-v8"
+  },
+  "entrypoint_corrections": [
+    {
+      "map": "maps/vv/alphalabs1_2.map",
+      "old_call": "map_alphalabs1::main()",
+      "new_call": "map_alphalabs1::main2()",
+      "retail_definition": "script/map_alphalabs1.script: void main2 ()",
+      "bridge_sha256": "6416d0c1379dcff81e37100424ec2a247bc5c2e7e4a72d6b2cf29d3b37f75e26",
+      "manifest_sha256": "11f3b134b17c51e6466547ac4db3aecd62ab33c9566adb7353027a24ab2a9867"
+    },
+    {
+      "map": "maps/vv/monorail_2.map",
+      "old_call": "map_monorail::main()",
+      "new_call": "map_monorail::main2()",
+      "retail_definition": "script/map_monorail.script: void main2()",
+      "bridge_sha256": "1d335185720d69761f42931b796e364e577bb81b653afd9b4947583a2418402f",
+      "manifest_sha256": "5c32f1394621d1cab6dea5e01e84a6fc60ecbc4482ae9271f4242b34e4bcd641"
+    }
+  ],
+  "v7_to_v8_delta": {
+    "filesystem_files_each": 1828,
+    "changed_files": 4,
+    "byte_identical_files": 1824,
+    "changed_kinds": [
+      "two generated PC bridge scripts",
+      "two overlay manifests"
+    ]
+  },
+  "corpus_audit": {
+    "maps": 41,
+    "payload_files": 1787,
+    "payload_bytes": 780869120,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "manifest_ledger_sha256": "e1758426df1188d9a9ee170bf72ca92e68304a10575da729d19a6aca3ed7fc6a",
+    "file_ledger_sha256": "39b679d89c549a2fa96475edc7adbbcaa1694ea593c831b9f155bf28bb18040f",
+    "local_report_sha256": "3f7e8fa5cb342010890fd059d9a1881dcd0e0fe2cb56c4315a42738b912ed83d"
+  },
+  "semantic_audit": {
+    "calls": 409,
+    "transitions": 41,
+    "closed_campaign_chain": true,
+    "unresolved": 0,
+    "local_report_sha256": "38f700d31085c9f80eb0eeeee5bec97f4f6b2362b134a2daa3a1018f8d485677"
+  },
+  "audio_audit": {
+    "direct_wav_references": 3891,
+    "stock_pc": 2320,
+    "overlay_recovered": 419,
+    "unresolved": 0,
+    "local_report_sha256": "eaad020d6283d95d77864bb61f8f6488ea5d7bc607131019fdab772473259b0a"
+  },
+  "entity_link_audit": {
+    "entities": 38769,
+    "named_entities": 38728,
+    "links": 14700,
+    "case_insensitive_duplicate_names": 0,
+    "port_introduced_unresolved": 0,
+    "local_report_sha256": "d49234518ee7c544530171ac0540a1b94354b5097beb34fd9ff4e071a6b3e1f6"
+  },
+  "script_entity_audit": {
+    "sys_getentity_calls": 225,
+    "direct_entity_references": 8492,
+    "direct_named_entity_references": 7193,
+    "direct_engine_entity_references": 325,
+    "direct_source_authored_missing_references": 974,
+    "profile_expected_references": 1532,
+    "profile_unique_map_names": 871,
+    "unresolved": 0,
+    "macro_expansion_example": "$TRAIN_ANCHOR -> $monorail_anchor",
+    "local_report_sha256": "5702326d8b77c5769dfc9378c2056f8205ecff9435f4e6bc1c098ba97a50fe63"
+  },
+  "script_reachability": {
+    "functions": 1065,
+    "edges": 564,
+    "reachable_functions": 691,
+    "unreachable_functions": 374,
+    "reachable_source_residue": 334,
+    "unreachable_source_residue": 803,
+    "attention": 334,
+    "unresolved": 0,
+    "local_report_sha256": "39c9688169c06c55e5debcfa457449487bcb39ae5b4951eb989e170a4e729872"
+  },
+  "implementation_receipts": {
+    "build_runtime_overlay_py_sha256": "a360727b84ccae93e1d081b9995e883e6559628578ca6dfc3ad67909d095fb70",
+    "solo_script_entity_audit_py_sha256": "3ad0c1c1fb5ed5b059d87a0c1f613fb9adc2b8dc42cdf6a8e67cd78424633010",
+    "solo_script_reachability_py_sha256": "f3852affeb16ffc960ad0a32217214f903f253866e4df0a06a9c2c83982f4f0e",
+    "dynamic_domain_profile_sha256": "82643edcfc4316441054ed4045b738cd4a1ed9806b7c3625aba7ae8295d71893"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 208,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "No native map load, spawn, progression, save-state handoff or playthrough is claimed by this checkpoint.",
+    "The reachability graph is a conservative static model and does not execute the Doom script VM.",
+    "Reachable source-authored residue is classified by stock GPL VM behavior but remains an explicit native-activation item.",
+    "Final solo and co-op fidelity still requires PC execution and matched original-Xbox gameplay and visual evidence."
+  ]
+}

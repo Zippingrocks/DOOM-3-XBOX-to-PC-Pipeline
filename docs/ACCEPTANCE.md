@@ -1,5 +1,27 @@
 # Recovery order and acceptance
 
+## Checkpoint 042 split-script entrypoint status
+
+All 41 solo bridges now bind the map segment to its recovered retail namespace
+entrypoint. The two exceptional second halves are explicit:
+`alphalabs1_2` calls `map_alphalabs1::main2()` and `monorail_2` calls
+`map_monorail::main2()`. A successful compile or a global `main()` symbol is
+not sufficient acceptance for segmented scripts; the bridge manifest and
+semantic call graph must identify the exact entrypoint selected for that map.
+
+Strict v8 passes the complete offline structural, resource, audio, transition,
+callback, entity-link and script-entity gates with zero port-introduced
+unresolved records. Its corrected call graph reaches 691 of 1,065 functions.
+The 334 reachable source-authored residue uses are classified by stock VM
+behavior and remain visible as attention records. They are not conversion
+loss, but native activation is still required to decide whether any source
+thread exit or retained no-op affects play.
+
+This closes the known offline entrypoint defect, not solo runtime acceptance.
+Each segment still needs a bounded native load/spawn, start/exit and persistent
+state handoff, followed by the focused visual/gameplay pass. Do not launch the
+game while it would interrupt the user's active Steam session.
+
 ## Checkpoint 041 direct script-entity status
 
 The entity-aware script gate now includes 8,492 direct `$entityName` references

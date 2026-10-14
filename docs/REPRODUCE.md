@@ -1,4 +1,56 @@
-# Reproduce checkpoint 041
+# Reproduce checkpoint 042
+
+## Checkpoint 042: exact split-map script entrypoints
+
+Rebuild all 41 checkpoint-041 overlays with the current
+`build_runtime_overlay.py`. The builder's exact path map must select `main2`
+for only these two sources:
+
+```text
+maps/vv/alphalabs1_2.map -> map_alphalabs1::main2()
+maps/vv/monorail_2.map   -> map_monorail::main2()
+```
+
+Require each recovered source to define the selected function before the
+builder publishes an output. The generated bridge SHA-256 values are
+`6416d0c1379dcff81e37100424ec2a247bc5c2e7e4a72d6b2cf29d3b37f75e26`
+and
+`1d335185720d69761f42931b796e364e577bb81b653afd9b4947583a2418402f`.
+Their manifest SHA-256 values are
+`11f3b134b17c51e6466547ac4db3aecd62ab33c9566adb7353027a24ab2a9867`
+and
+`5c32f1394621d1cab6dea5e01e84a6fc60ecbc4482ae9271f4242b34e4bcd641`.
+Compare strict v7 and v8 and require exactly these two scripts plus their two
+manifests to differ; the other 1,824 files must be byte-identical.
+
+Run the corpus, semantic, direct-audio, entity-link, script-entity and script-
+reachability auditors over `solo-overlays-strict-v8`. Require 41 maps, 1,787
+payload files, 780,869,120 bytes, 409 explained callbacks, a closed 41-map
+transition chain, 3,891 direct WAV references, 14,700 static entity links,
+8,492 direct script entity references, 225 `sys.getEntity` sites and zero
+unresolved records in every report. The manifest and payload ledgers are
+`e1758426df1188d9a9ee170bf72ca92e68304a10575da729d19a6aca3ed7fc6a`
+and
+`39b679d89c549a2fa96475edc7adbbcaa1694ea593c831b9f155bf28bb18040f`.
+
+The six local audit report SHA-256 values, in the order above, are:
+
+```text
+3f7e8fa5cb342010890fd059d9a1881dcd0e0fe2cb56c4315a42738b912ed83d
+38f700d31085c9f80eb0eeeee5bec97f4f6b2362b134a2daa3a1018f8d485677
+eaad020d6283d95d77864bb61f8f6488ea5d7bc607131019fdab772473259b0a
+d49234518ee7c544530171ac0540a1b94354b5097beb34fd9ff4e071a6b3e1f6
+5702326d8b77c5769dfc9378c2056f8205ecff9435f4e6bc1c098ba97a50fe63
+39c9688169c06c55e5debcfa457449487bcb39ae5b4951eb989e170a4e729872
+```
+
+The reachability report must contain 1,065 functions, 564 edges, 691 reachable
+functions, 374 unreachable functions, 334 attention records and zero
+unresolved records. Run
+`python -m unittest discover -s tools/campaign_port/tests -q`; 208 tests must
+pass. Do not launch Doom 3 or `dmap` for this offline checkpoint.
+
+## Reproduce checkpoint 041
 
 ## Checkpoint 041: direct script entity names
 
