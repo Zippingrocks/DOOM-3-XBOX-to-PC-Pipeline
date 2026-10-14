@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "checkpoint": "001",
+  "request_date_local": "2026-10-13",
+  "timezone": "America/Denver",
+  "implementation_repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+  "baseline_commit": "833379c9920403fdfcc9f460042ca1b7ff205808",
+  "implementation_commit": "51d0a78bb19b6b4716726a6afc089ea57fe5741c",
+  "change_scope": {
+    "added_files": 4,
+    "modified_existing_files": 0,
+    "deleted_files": 0,
+    "engine_runtime_modified": false,
+    "accepted_tags_modified": false
+  },
+  "files": [
+    {
+      "path": "tools/campaign_port/doom3_campaign_port.py",
+      "bytes": 32881,
+      "sha256": "16a3f3e8337169d8eaf59c805f621837cb146be0a9f64329d05692a1c764c470",
+      "git_blob_sha": "e6ee80076baa5ffb3f800633562abaf45955002c"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_port.py",
+      "bytes": 16245,
+      "sha256": "5cc002a5336946faeb94f7bda280edd6af5bc1126ce3eee63a375a11dafcf68a",
+      "git_blob_sha": "a53485d2a6f6239a72af1939d5271265a2ae8f07"
+    },
+    {
+      "path": "tools/campaign_port/README.md",
+      "bytes": 7830,
+      "sha256": "871ace291b994d7d561c5e367b221842dca140231afb9241ce064c06d07040fc",
+      "git_blob_sha": "01c89be5f751c039e409173c15ed76a6c145c13a"
+    },
+    {
+      "path": "docs/CAMPAIGN_MAP_PORTING.md",
+      "bytes": 4366,
+      "sha256": "ff3c14692af49ba13a8e576fefd2a805b1c18c6c3723aff71fd510a2b3b589bb",
+      "git_blob_sha": "af39c26ec66aa1c9df3d1a0ec64633435d85605d"
+    }
+  ],
+  "validation": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -v",
+    "python": "3.13.5",
+    "platform": "Linux",
+    "synthetic_tests_run": 46,
+    "synthetic_tests_failed": 0,
+    "native_windows_tested": false,
+    "python_3_10_tested": false,
+    "retail_archives_tested": 0,
+    "retail_maps_decoded": 0,
+    "retail_maps_converted": 0,
+    "pc_engine_load_tested": false,
+    "two_peer_campaign_tested": false
+  },
+  "status": {
+    "retail_corpus_count": null,
+    "retail_corpus_available": false,
+    "matched_mp_pair_available": false,
+    "xbox_payload_format_established": false,
+    "xbox_to_pc_exporter_implemented": false,
+    "near_final_campaign_test_ready": false,
+    "completion_percent": null
+  },
+  "next_required_inputs": [
+    "Complete original-Xbox campaign archive pairs or extracted corpus with provenance",
+    "Matched original-Xbox MP map and its converted PC reference, including known edits",
+    "Campaign registry and shared dependencies",
+    "Retail executable when field-reader analysis requires it"
+  ],
+  "claim_limits": [
+    "GFC format is inherited source-contract evidence, not new retail validation.",
+    "PC PROC parsing is a destination/reference reader, not an Xbox map decoder.",
+    "MAP primitive bodies are retained as opaque spans, not decoded.",
+    "Reference-byte matches are candidates, not established Xbox fields.",
+    "No existing engine, frontend, accepted profile or historical tag changed."
+  ]
+}

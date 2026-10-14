@@ -1,0 +1,23 @@
+# This repository holds research, not licensed game content.
+game/
+inputs/
+extracted/
+generated/
+*.gfc
+*.gob
+*.iso
+*.xiso
+*.xbe
+*.pk4
+*.map
+*.proc
+*.cm
+*.aas*
+*.d3t
+*.dds
+*.tga
+*.pdb
+*.exe
+*.dll
+__pycache__/
+*.pyc
