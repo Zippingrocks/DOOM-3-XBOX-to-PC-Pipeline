@@ -1,6 +1,40 @@
 # Format findings and unknowns
 
 
+## Checkpoint 010 native collision-trace findings
+
+The first direct CM.X export and the independent PC-`dmap` CM were loaded by
+the same PC collision engine and queried with the same deterministic stream.
+Each run produced 4,096 point and 4,096 player-box records. Both report world
+bounds `(-4032,-3864,-72)-(360,-784,640)`, input digest `8386c90c`,
+8,192 paired rows, identical executed/skip sets and identical hit/no-hit
+outcomes. This controls the comparison for the host algorithm and isolates the
+collision-data difference.
+
+Point-ray geometry is identical within the declared tolerances across all 4,073
+executed pairs. Player-sized swept boxes are not: 265 of 3,929 pairs differ in
+contact geometry, including 54 movement fractions/endpoints, 39 normals and 114
+plane distances outside tolerance. The maximum endpoint delta is 416 map units.
+Across both shapes, 501 contacts choose different material or contents metadata;
+385 of those retain matching geometry. Ten contents values differ.
+
+The diagnostic hashes fractions, endpoints, contact points/planes, contents and
+materials as gameplay results. It hashes stable edge/vertex feature identifiers
+separately as topology. Doom 3's `CONTACT_TRMVERTEX` path stores a polygon
+pointer cast to `int`; that value changes with process address layout and is
+therefore normalized to zero rather than mislabeled as topology. The point
+contents fast path also returns a raw first-brush contents value without applying
+its requested mask; the diagnostic applies `SOLID|PLAYERCLIP` explicitly
+before deciding whether a translation start is safe.
+
+The result is not evidence that PC `dmap` is wrong for the PC map. It is
+evidence that regeneration is not behaviorally identical to the Xbox-authored
+collision data and therefore cannot serve as the fidelity payload. Direct CM.X
+recovery is required. An original-Xbox runtime oracle, entity models, movers,
+triggers, projectile/monster masks and remaining-map traces are still open.
+
+
+
 ## Checkpoint 009 CM.X collision findings
 
 Xbox CM.X is a compact little-endian serialization of runtime collision data.
