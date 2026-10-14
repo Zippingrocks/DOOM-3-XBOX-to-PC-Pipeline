@@ -46,6 +46,14 @@ The first co-op segment's 2,003,187-byte CM.X has SHA-256
 With the converted MAP geometry CRC `2410032894`, it expands to a
 3,320,995-byte standard CM with SHA-256
 `35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`.
+An independent PC `dmap` CM contains 277 model names. All 243 authored CM.X
+names are present in that set; the 34 PC-only names map exactly to 34 recovered
+MAP `func_static` entities marked `"noclipmodel" "1"`. There are no
+authored-only or unexplained names. This explains the model-count difference as
+intentional non-collision metadata rather than missing authored CM records; the
+model-set receipt SHA-256 is
+`45cf2b16e579e439ec5172ea533998780818b97be39fa1d2b038a8015078bf13`.
+
 The PC engine loaded that file directly in 29 ms as 243 models, 15,146 vertices,
 25,468 edges, 10,005 polygons, 2,784 brushes and 7,167 nodes, then spawned all
 940 map entities and exited normally. The log SHA-256 is
