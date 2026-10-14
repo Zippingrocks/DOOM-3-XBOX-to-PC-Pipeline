@@ -1,3 +1,40 @@
+# Reproduce checkpoint 059
+
+## Checkpoint 059: co-op resurrection topology
+
+Extend the compiled-script statement audit to retain `OP_CALL` (96),
+`OP_THREAD` (97) and `OP_OBJTHREAD` (98). Global call/thread targets use operand
+A; object-thread operand B is a virtual-function immediate and must remain
+explicitly unresolved unless that def grammar is decoded.
+
+```powershell
+python tools/campaign_port/xbox_script_bytecode_audit.py `
+  work/decoded-inputs-all --require-maps 20 `
+  --output work/coop-script-bytecode-resurrection-v2.json
+
+python tools/campaign_port/coop_resurrection_audit.py ../.. `
+  --bytecode-report work/coop-script-bytecode-resurrection-v2.json `
+  --xbe work/xbe/default.xbe --overlay-suffix soundguard_v3 `
+  --require-maps 20 `
+  --output work/coop-resurrection-topology-v4.json
+```
+
+Require 217,103 statements, 589 calls, 51 threads and 32 explicitly unresolved
+object threads. Direct call/thread targets for `Coop::initCoop`,
+`Coop::resurrect_player`, `player::player1Death` and
+`player::player2Death` must all be zero. The active source scan must find zero
+player-death method calls and zero maps with a reachable `Coop::initCoop`.
+
+Require zero numbered resurrection points across all 20 final maps. The only
+callback entities must be Hell 1-1's orphan `trigger_relay_114` and Hell 1-2's
+`trigger_relay_118`, whose sole incoming path is hidden `resurrect_gui_0` with
+no reveal path. The retail XBE must match SHA-256
+`a4b677f948aaabb145446946a02841568914e921eab5d6e195d944d7a23c1fb1`
+and contain zero exact ASCII hits for the six reported helper/state terms.
+
+Run the full suite and require 246 passing tests. Do not launch Doom 3 or
+`dmap`; death/rejoin remains a later two-peer gameplay test.
+
 # Reproduce checkpoint 058
 
 ## Checkpoint 058: co-op script-sound closure and stable rebuilds

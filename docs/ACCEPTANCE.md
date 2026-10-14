@@ -1,5 +1,23 @@
 # Recovery order and acceptance
 
+## Checkpoint 059 co-op resurrection status
+
+All 20 final co-op overlays now have a focused offline resurrection topology
+audit. It proves zero numbered resurrection points, zero reachable initializer,
+zero active player-death source calls and zero direct startup-bytecode
+call/thread entry into the shared helpers. The only two callback entities are
+source-authored dormant Hell residue: one orphan relay and one relay behind a
+hidden GUI with no reveal path. No map edit is justified by this evidence, and
+all 246 offline tests pass.
+
+This removes the two resurrection lookups from the port-regression question; it
+does not accept death or respawn gameplay. The 32 object-thread statements are
+not yet method-symbol resolved, exact XBE-string absence cannot exclude every
+indirect native route, and static data cannot demonstrate spectator timing,
+two-peer rejoin or spawn placement. Those are retained as focused native test
+obligations. Doom 3 and `dmap` were not launched while they could interrupt the
+user's game.
+
 ## Checkpoint 051 co-op entity-link status
 
 All 4,654 named MAP link and binding spawnargs are accounted for across the

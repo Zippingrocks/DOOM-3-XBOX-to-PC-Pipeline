@@ -1,0 +1,82 @@
+{
+  "checkpoint": "059",
+  "date": "2026-10-14",
+  "claim": "The 20 original-Xbox co-op maps contain no proven active MAP or direct startup-script route into the shared resurrection initializer or player-death helpers; the only two resurrection callback entities are authenticated dormant Hell-map residue.",
+  "inputs": {
+    "checkpoint_058": "evidence/checkpoint-058-coop-script-sound-closure.json",
+    "overlay_suffix": "soundguard_v3",
+    "retail_xbe_bytes": 5586944,
+    "retail_xbe_sha256": "a4b677f948aaabb145446946a02841568914e921eab5d6e195d944d7a23c1fb1"
+  },
+  "startup_bytecode": {
+    "maps": 20,
+    "statements": 217103,
+    "op_calls": 589,
+    "op_threads": 51,
+    "op_objthreads": 32,
+    "coop_init_direct_call_or_thread_invocations": 0,
+    "coop_resurrect_direct_call_or_thread_invocations": 0,
+    "player1_death_direct_call_or_thread_invocations": 0,
+    "player2_death_direct_call_or_thread_invocations": 0,
+    "report_sha256": "198f020bf295f168c90faa165d01e9918eb392754c9b360e9177b8936409d04e"
+  },
+  "source_and_map_topology": {
+    "maps": 20,
+    "maps_with_reachable_init_source": 0,
+    "maps_with_reachable_resurrect_source": 2,
+    "maps_with_reachable_player_death_source": 0,
+    "player1_death_source_calls": 0,
+    "player2_death_source_calls": 0,
+    "resurrect_points": 0,
+    "resurrect_guis": 1,
+    "resurrect_pads": 1,
+    "resurrect_callback_entities": 2,
+    "xbe_exact_ascii_term_hits": 0,
+    "report_sha256": "20707fbb50c80d52f31d830b0741c9a77f65e28080062081e0002ac14f515d50"
+  },
+  "authenticated_residue": [
+    {
+      "map": "xc_hell1_1",
+      "entity": "trigger_relay_114",
+      "callback": "Coop::resurrect_player",
+      "classification": "orphan-no-incoming-path",
+      "incoming_entity_links": 0,
+      "active_script_direct_references": 0,
+      "resurrect_points": 0
+    },
+    {
+      "map": "xc_hell1_2",
+      "entity": "trigger_relay_118",
+      "callback": "Coop::resurrect_player",
+      "classification": "hidden-gui-without-reveal-path",
+      "incoming_entity": "resurrect_gui_0",
+      "incoming_entity_hidden": true,
+      "resurrect_pad_hidden": true,
+      "resurrect_points": 0
+    }
+  ],
+  "decision": {
+    "map_edits": 0,
+    "invented_resurrection_points": 0,
+    "reason": "The dormant records are present in the hash-bound decoded Xbox sources. Reactivating them or inventing a destination would change retail behavior without an Xbox runtime witness."
+  },
+  "implementation_receipts": {
+    "xbox_script_bytecode_audit_py_sha256": "542f1447fd1aae7de6911a925042ffb6675081dd2cb7980bed2a49c61f129e7e",
+    "coop_resurrection_audit_py_sha256": "8ab9042cce0c5f4936f8e7d3c1c05819789e4c36d37de3e3bc62539e2fb2c365"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 246,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "The 32 OP_OBJTHREAD statements use virtual-function operands and are counted but not symbol-resolved by this decoder; active recovered source contains no player1Death or player2Death call expression.",
+    "Absence of an exact XBE string does not prove that machine code cannot enter behavior indirectly without a script-name lookup.",
+    "Static topology does not accept two-peer death, spectator, rejoin or respawn behavior; those remain deliberate gameplay-test obligations."
+  ]
+}

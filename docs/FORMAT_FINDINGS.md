@@ -1,5 +1,34 @@
 # Format findings and unknowns
 
+## Checkpoint 059 co-op resurrection findings
+
+The official GPL opcode order continues from `OP_CALL` 96 to `OP_THREAD` 97
+and `OP_OBJTHREAD` 98. A global thread stores its function operand in statement
+A, so the recovered function-varDef mapping used for calls also resolves that
+case. An object thread instead stores an object in A and a virtual-function
+immediate in B. Counting those statements is exact; resolving their method
+symbol requires an additional serialized-varDef grammar and is not guessed.
+
+Across the 20 startup programs, the added decoder finds 51 global thread
+statements and 32 object threads. None of the global call/thread operands names
+the resurrection initializer, resurrection callback or either player-death
+method. The active recovered source contains no player-death method call
+expression, and no MAP/script root reaches `Coop::initCoop`.
+
+The earlier two Hell attention records are not missing conversion content.
+Hell 1-1's `trigger_relay_114` has no incoming entity link or active script
+reference. Hell 1-2's `trigger_relay_118` is targeted only by hidden
+`resurrect_gui_0`; the matching pad is hidden, the initializer/reveal function
+is unreachable, and no numbered resurrection point exists. The raw decoded
+sources contain the same records. Enabling them or creating a point would
+invent behavior, so they remain byte-preserved dormant residue.
+
+The retail XBE has no exact ASCII instance of the six helper/state terms. That
+is supporting negative evidence, not proof that arbitrary indirect machine
+code cannot enter the functions. The 32 virtual object threads also remain
+symbolically unresolved. Two-peer death, spectator, rejoin and respawn testing
+therefore remains required even though the static MAP/startup path is closed.
+
 ## Checkpoint 058 co-op script-sound and rebuild findings
 
 Co-op overlay selection needs the same script-literal sound boundary as solo.

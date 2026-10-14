@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 058
+## Current checkpoint: 059
+
+**The apparent shared resurrection path is now classified across all 20 co-op
+maps without inventing missing gameplay.** The bytecode decoder now covers
+`OP_THREAD` as well as `OP_CALL`: 51 thread statements exist, but none directly
+enters `Coop::initCoop`, `Coop::resurrect_player`, `player1Death` or
+`player2Death`. Active recovered source likewise contains no player-death call
+expression, no map has a reachable resurrection initializer, and the retail XBE
+contains none of the six exact helper/state names searched.
+
+Only the two Hell splits retain resurrection callbacks. Hell 1-1's relay has no
+incoming MAP link or script reference. Hell 1-2's relay is reachable only from
+a hidden GUI; its pad is also hidden, no reveal path exists, and neither map
+contains a `resurrect_point_0`. These records are present in the hash-bound Xbox
+sources, so the port preserves them as dormant retail residue instead of
+synthesizing a destination or silently enabling a broken path. All 246 offline
+tests pass; Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-059-coop-resurrection-topology.json`](evidence/checkpoint-059-coop-resurrection-topology.json).
+
+## Earlier checkpoint: 058
 
 **The 20-map co-op corpus now has complete active script-sound closure.** The
 new co-op audit found only `mset3_movement` and `mset3_stop`, one call each in
