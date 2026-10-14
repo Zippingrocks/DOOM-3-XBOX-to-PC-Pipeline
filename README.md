@@ -14,7 +14,37 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 022
+## Current checkpoint: 023
+
+**The tenth co-op segment, `xc_delta2b_1`, now has direct authored collision,
+corrected AAS48, complete archive-local model recovery and a portable PC overlay
+candidate.**
+
+The decoded 912-entity MAP binds to geometry CRC `4216080146`. Direct CM.X
+exports 238 models; independent PC `dmap` contains all 238 plus 57 models,
+every one explained by `noclipmodel 1`. Corrected AAS48 has 698 areas, 3,361
+reachabilities, 2,532 nodes and complete nonzero BSP/area coverage. All 437
+selected model files decode.
+
+The one Xbox-only ZCT animation cannot be copied directly onto the stock
+63-joint PC mesh: its source skeleton has 50 joints. A deterministic retarget
+preserves every shared joint's world-space motion, restores 13 PC-only bind
+joints, and produces a 63-joint `head_butt.md5anim`. The last loader-confirmed
+overlay spawns 912/0 and joins player 0 with no missing resource, invalid-joint,
+AF/IK, error or fatal line.
+
+Two location warnings in that run are now explained by one stale retail entity
+origin. Xbox geometry moved the applicable portal from `y=-608` to `y=-557`,
+51 units away, while the engine searches only a 16-unit box. The exact
+fail-closed transform moves only `info_locationseparator_19` to the decoded and
+independently dmap-confirmed Xbox portal. The resulting portable 278-file
+candidate has zero unresolved names and all 160 tests pass. It has deliberately
+not been launched while another Steam game is active; one bounded validation,
+progression, transition, two-peer and Xbox-reference acceptance remain open.
+Full receipts are in
+[`evidence/checkpoint-023.json`](evidence/checkpoint-023.json).
+
+## Previous checkpoint: 022
 
 **The ninth co-op segment, `xc_recycling2_1`, now has direct authored
 collision, corrected player and Mancubus navigation, complete model/XACT
@@ -695,7 +725,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-022.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-023.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule

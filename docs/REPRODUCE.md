@@ -1,4 +1,4 @@
-# Reproduce checkpoint 022
+# Reproduce checkpoint 023
 
 ## Source and boundary
 
@@ -12,7 +12,7 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current implementation branch: 156 tests, zero failures.
+Expected result on the current implementation branch: 160 tests, zero failures.
 Checkpoint 012 captured 142 passing tests; later synthetic tests cover authored-
 CM overlay selection, identity rejection, path-independent material receipts,
 the exact unshipped armor-shard map-icon transform, `xc_admin` inert orphan and
@@ -21,6 +21,93 @@ path-scoped AF endpoint aliases, the MCU security-GUI correction and the exact
 duplicate-location witness.
 Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 023 tenth-segment receipt
+
+For `xc_delta2b_1`, verify GFC/GOB SHA-256 values
+`2a81c50cad444d761a879b4af6107cfe251e3f75a39ecf31b4a19c2596df36ff`
+and `7535a96fc95f5cd8df29c520291806d252773071300a22a897d0431e1e5087d9`.
+The decoded MAP is 3,291,335 bytes, hashes to
+`3060f42d9d5c6391321f6ce0c1ae6ab668e98fb02edddc6c4203b23b22f86621`
+and has CRC `4216080146`. Direct CM is 2,677,242 bytes with SHA-256
+`77d9173411637bc2a8de0bb4482246c426129a48fbb641fef2e96be4c4d9bce5`.
+Require a 238/295 model audit: 238 shared, zero authored-only and all 57
+PC-only models explained by `noclipmodel 1`.
+
+Select the corrected 606,188-byte AAS48 with SHA-256
+`00fa76e76e79830f9d1dbe9c029d6eb3a16b5ee649ccde4559dd1cb3b4c76bac`.
+It must report 698 areas, 3,361 reachabilities, 2,532 nodes, zero unreachable
+nonzero nodes and zero unreferenced nonzero areas. Decode all 437 selected model
+files: 15 meshes and 422 animations, totaling 19,736,154 bytes.
+
+Retarget the 50-joint Xbox ZCT `head_butt.md5anim` against the stock 63-joint
+ZCT mesh with `retarget_md5anim.py --allow-target-expansion`. The 109,143-byte
+result must hash to
+`2c111bb859bc8816eaf22b66eaaa488d905ffcd8d594c2ddf8c2ec10c35a805b`,
+contain 22 frames at 20 fps, 63 joints and 378 animated components, and restore
+the 13 target-only joints listed in `head_butt-retarget.json`.
+
+Build the portable overlay from the reconstruction checkout's ignored `work/`
+tree. Root order is significant because the retargeted animation must shadow
+the decoded 50-joint copy:
+
+```powershell
+python tools/campaign_port/build_runtime_overlay.py `
+  --map work/checkpoint-023-delta2b-1/overlay-input/maps/vv/xbox_coop/xc_delta2b_1.map `
+  --converted-dir work/checkpoint-023-delta2b-1/overlay-input/maps/vv/xbox_coop `
+  --authored-cm work/checkpoint-023-delta2b-1/overlay-input/maps/vv/xbox_coop/xc_delta2b_1.cm `
+  --retail-root work/checkpoint-023-delta2b-1/retargeted-pc-zct/base `
+  --retail-root work/checkpoint-023-delta2b-1/runtime-models/base `
+  --retail-root work/runtime-deps-all/xc_delta2b_1/base `
+  --retail-root work/xact-first-map `
+  --retail-root work/player-runtime-assets/base `
+  --retail-root work/npc-runtime-assets/base `
+  --retail-root work/decoded-mdv-xc_mars_city1_1-v2/base `
+  --retail-root work/d3t-hud-missing-v3-dxt5 `
+  --retail-root work/d3t-hud `
+  --retail-root work/assets-materials/base `
+  --retail-root work/shared-assets-extracted/base `
+  --def-root work/shared-assets-extracted/base/def `
+  --stock-dir ../../base `
+  --language work/shared-assets-extracted/base/strings/english.lang `
+  --language work/shared-assets-extracted/base/strings/english_vv.lang `
+  --def-preference info.def `
+  --runtime-classname player_doommarine1_coop `
+  --runtime-classname player_doommarine2_coop `
+  --runtime-resource-list tools/campaign_port/profiles/xbox_coop_player.resources `
+  --runtime-resource-list tools/campaign_port/profiles/xc_delta2b_1.resources `
+  --runtime-resource guis/hud.gui `
+  --runtime-resource dds/guis/assets/health/hspike1.dds `
+  --runtime-resource dds/guis/assets/hud/TipBorder.dds `
+  --runtime-resource dds/guis/assets/hud/Vote.dds `
+  --runtime-resource dds/guis/live/assets/FriendInviteReceived.dds `
+  --runtime-resource dds/guis/live/assets/FriendOnline.dds `
+  --runtime-resource dds/guis/live/assets/GameInviteReceived.dds `
+  --runtime-material gui/radiospike `
+  --runtime-material guis/assets/hud/TipBorder `
+  --runtime-material guis/live/assets/FriendInviteReceived `
+  --runtime-material guis/live/assets/FriendOnline `
+  --runtime-material guis/live/assets/GameInviteReceived `
+  --runtime-string '#str_07595' `
+  --generate-empty-efx `
+  --out ../../xbox_coop_port_test_delta2b_1_v9
+```
+
+The output must contain 278 file records, 237 copied resources, two generated
+resources, ten transform records and no unresolved resource, classname or
+string. Payload bytes total 21,533,147. The 141,486-byte portable manifest
+hashes to
+`af9e27cd3e71e5af3a730064f5b2955d9e59f39505b0a2294b264633ffe6cce6`;
+the transformed MAP hashes to
+`70baa31c9bc93d3c379842d17d3c5963db95e060fcfd3b627a1150b865d1c290`.
+
+The last bounded true-`COOP` run used the pre-relocation overlay. It exited 0,
+spawned 912/0 and joined player 0 with no missing resource, joint, AF/IK, error
+or fatal line. Its 73,047-byte console log hashes to
+`d8b37dbb04f788933fd4213652cde79db6b01ac49c90ef07ae3417c8e633c467`.
+Do not call the relocation loader-confirmed yet. Validate the portable candidate
+once when it will not interrupt another Steam session; expected closure is the
+absence of both the separator-contact and overlapping-location warnings.
 
 ### Checkpoint 022 ninth-segment receipt
 

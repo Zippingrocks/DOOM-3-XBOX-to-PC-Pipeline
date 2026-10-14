@@ -1,5 +1,39 @@
 # Format findings and unknowns
 
+## Checkpoint 023 tenth-segment findings
+
+`xc_delta2b_1` extends the direct-CM contract to a tenth co-op segment. Its
+3,291,335-byte decoded MAP has geometry CRC `4216080146`; the 1,726,149-byte
+CM.X expands to a 2,677,242-byte PC CM containing 238 models, 12,857 vertices,
+20,711 edges, 7,914 polygons, 3,068 brushes and 7,390 nodes. Independent PC
+`dmap` emits 295 models. All 238 authored names are shared, and each of the 57
+PC-only names belongs to a MAP entity carrying `noclipmodel 1`.
+
+Corrected AAS48 has 698 areas, 3,361 reachabilities and 2,532 nodes, with no
+unreachable nonzero node or unreferenced nonzero area. The archive has no AAS96
+or second navigation class. The decoded PROC has 4,679 BSP nodes, 1,965
+surfaces, 49,404 vertices and 133,152 indices; its 70 areas and 74 portals match
+the independently PC-dmapped portal geometry exactly.
+
+The selected model set is 437 files: 15 MDV meshes and 422 animations. This
+segment exposes a PC-skeleton compatibility case rather than a corrupt Xbox
+asset. Xbox `head_butt.mdvanim` and its ZCT mesh have 50 joints; the stock PC
+ZCT mesh has 63. Direct copying therefore fails the PC joint-count invariant,
+while replacing the complete PC ZCT set with the Xbox set breaks the stock AF
+at `Lindex3`. The expansion retarget keeps Xbox world-space animation on every
+shared joint, fills the 13 PC-only joints from the target bind pose, and
+accounts for the inserted `joint12` parent before emitting a 63-joint,
+378-component animation.
+
+The remaining location issue was geometric, not a binary PROC defect. Stock PC
+Delta 2B places portal 37 on `y=-608`, covering `x=1568..1824`; Xbox co-op
+places portal 31 on `y=-557`, covering `x=1600..1792`. The MAP retained the
+stock separator origin `1694 -608 84`. `idLocationSeparatorEntity::Spawn`
+searches an origin expanded by only 16 units, so the 51-unit offset cannot find
+the Xbox portal. Independent PC `dmap` preserves the Xbox portal and reproduces
+the warning. The exact transform to `1694 -557 84` is therefore tied to two
+independent geometry witnesses and fails closed on any entity/origin mismatch.
+
 ## Checkpoint 022 ninth-segment findings
 
 `xc_recycling2_1` extends the direct-CM contract to a ninth co-op segment. Its

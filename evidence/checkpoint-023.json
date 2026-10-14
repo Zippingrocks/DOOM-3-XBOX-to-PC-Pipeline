@@ -1,0 +1,122 @@
+{
+  "checkpoint": "023",
+  "date": "2026-10-14",
+  "scope": "tenth co-op segment direct collision, corrected navigation, complete model closure, ZCT skeleton retarget and offline location-separator correction",
+  "source_identity": {
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "gfc_bytes": 198004,
+    "gfc_sha256": "2a81c50cad444d761a879b4af6107cfe251e3f75a39ecf31b4a19c2596df36ff",
+    "gob_bytes": 9318400,
+    "gob_sha256": "7535a96fc95f5cd8df29c520291806d252773071300a22a897d0431e1e5087d9"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_delta2b_1",
+    "raw_map_x": {"bytes": 2313105, "sha256": "2dbb6e626502db03aafc497653d74f580a01eb2ee7a3f858337b58b890e13618"},
+    "geometry_crc": 4216080146,
+    "decoded_map": {"bytes": 3291335, "sha256": "3060f42d9d5c6391321f6ce0c1ae6ab668e98fb02edddc6c4203b23b22f86621", "entities": 912, "brushes": 3162, "brush_sides": 18937, "patches": 1633, "patch_points": 25497},
+    "raw_proc_x": {"bytes": 2126702, "sha256": "ede004a0f37fd2ed237edc55d2e489591ccff3985ed0c328652a2e93eae3b304"},
+    "decoded_proc": {"bytes": 4052923, "sha256": "50178d33bec5c087aab1db9f2d05e267c4c528179ff6b60a52284103089d5dee", "nodes": 4679, "surfaces": 1965, "surface_vertices": 49404, "surface_indices": 133152, "shadow_models": 163, "shadow_vertices": 14523, "shadow_indices": 79284, "areas": 70, "portals": 74},
+    "raw_aas48_x": {"bytes": 395755, "sha256": "98894df8926f02702225d32bf3fc21c87ef66f47ae4a3383a3b58e0fbb5dc5d4"},
+    "corrected_aas48": {"bytes": 606188, "sha256": "00fa76e76e79830f9d1dbe9c029d6eb3a16b5ee649ccde4559dd1cb3b4c76bac", "areas": 698, "reachabilities": 3361, "nodes": 2532, "planes": 1390, "unreachable_nonzero_nodes": 0, "unreferenced_nonzero_areas": 0},
+    "aas96": {"status": "not present in the source archive"},
+    "other_navigation": {"status": "not present in the source archive"}
+  },
+  "collision": {
+    "cm_x": {"bytes": 1726149, "sha256": "989a4cb59b4bf67b6b742a0a4129e05c60f68a9128d19a14df43a66b779c2acf"},
+    "authored_export": {"bytes": 2677242, "sha256": "77d9173411637bc2a8de0bb4482246c426129a48fbb641fef2e96be4c4d9bce5", "models": 238, "vertices": 12857, "edges": 20711, "polygons": 7914, "brushes": 3068, "nodes": 7390},
+    "pc_dmap": {"cm_bytes": 5716270, "cm_sha256": "69ffcaf2f93cdc3afcfbc58338be7b93d29b3778af0eb12051abe69ec6fe0772", "proc_bytes": 5443588, "proc_sha256": "a6663157b04a2e374809fb7e7e6e034e41f20b700977be1fdf88e8d5872e517d", "aas48_bytes": 586173, "aas48_sha256": "e225d40a7de0f5a2ca783a41c4310e8444187497e4601106fbe6edbd80a0ac64", "models": 295, "areas": 70, "portals": 74},
+    "model_set_audit": {"shared": 238, "authored_only": 0, "pc_dmap_only": 57, "pc_dmap_only_with_noclipmodel_1": 57, "unexplained_pc_dmap_only": 0}
+  },
+  "runtime_assets": {
+    "selected_archive_members": 437,
+    "raw_selected_bytes": 6805284,
+    "decoded_files": 437,
+    "decoded_meshes": 15,
+    "decoded_animations": 422,
+    "decoded_bytes": 19736154
+  },
+  "zct_animation_retarget": {
+    "source_raw_bytes": 10783,
+    "source_raw_sha256": "bbc6f53929213337807166a61cada4a82bc506310fe9c58fc322ccf7cc964d68",
+    "source_decoded_bytes": 31914,
+    "source_decoded_sha256": "741fdb779ef9bdf4c61ab19a32f47834a3511f675199c2f0a1d2e0e93c44c7b6",
+    "source_joints": 50,
+    "target_stock_mesh_bytes": 266165,
+    "target_stock_mesh_sha256": "255f8711fa3dba837460674c8f7f09760af0a038404e5147c3d7f564fe757f1e",
+    "target_joints": 63,
+    "output_bytes": 109143,
+    "output_sha256": "2c111bb859bc8816eaf22b66eaaa488d905ffcd8d594c2ddf8c2ec10c35a805b",
+    "frames": 22,
+    "frame_rate": 20,
+    "animated_components": 378,
+    "restored_target_only_joints": ["Lcarp", "Lindex1", "Lindex2", "Lindex3", "Lcarp2", "Lfings1", "Lfings2", "Lfings3", "Lthumb0", "Lthumb1", "Lthumb2", "Lthumb3", "joint12"],
+    "method": "preserve source world-space motion for shared joints; use target bind-local transforms for target-only joints; account for inserted joint12 parent before preserving joint13 world motion"
+  },
+  "xact_metadata": {
+    "indexlist_bytes": 14150,
+    "indexlist_sha256": "85180e4ba612152e771d0725793c951b7eb2231c8e59336406656c8d0089da8d",
+    "xsb_bytes": 30828,
+    "xsb_sha256": "383e026386bb3c15314519f5f5b6b62113b764ed20d3481659a16fb7168030bc",
+    "bounded_startup_missing_sound_lines": 0,
+    "dynamic_progression_audio_closure": "not established"
+  },
+  "location_separator_diagnosis": {
+    "entity": "info_locationseparator_19",
+    "source_origin": "1694 -608 84",
+    "destination_origin": "1694 -557 84",
+    "engine_search_half_extent": 16,
+    "source_to_xbox_portal_distance": 51,
+    "stock_pc_portal": {"number": 37, "plane": "y=-608", "x_range": "1568..1824", "z_range": "0..160"},
+    "xbox_portal": {"number": 31, "plane": "y=-557", "x_range": "1600..1792", "z_range": "0..160"},
+    "independent_witness": "decoded Xbox PROC and PC dmap of the Xbox MAP have identical 70-area/74-portal geometry; the PC-dmapped diagnostic reproduces both warnings",
+    "transform_kind": "relocate-stale-location-separator-to-xbox-portal",
+    "expected_effect": "separator contacts portal 31 and prevents the downstream Supply Lift Access/Supply Lift floor1 overlap",
+    "native_validation": "pending; no game launch while the user has another Steam session active"
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_delta2b_1_v9",
+    "file_records": 278,
+    "copied_runtime_resources": 237,
+    "generated_runtime_resources": 2,
+    "payload_bytes": 21533147,
+    "manifest_bytes": 141486,
+    "manifest_sha256": "af9e27cd3e71e5af3a730064f5b2955d9e59f39505b0a2294b264633ffe6cce6",
+    "transformed_map_sha256": "70baa31c9bc93d3c379842d17d3c5963db95e060fcfd3b627a1150b865d1c290",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 10,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "unresolved_string_ids": 0,
+    "payload_difference_from_absolute_path_candidate": 0
+  },
+  "native_bounded_run": {
+    "candidate": "v6, before the exact location-separator relocation",
+    "process_exit_code": 0,
+    "spawned_entities": 912,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "missing_model_animation_sound_image_lines": 0,
+    "invalid_joint_lines": 0,
+    "af_ik_warning_lines": 0,
+    "map_specific_warnings": ["LocationSeparator info_locationseparator_19 did not contact an inter-area portal", "Supply Lift Access floor1 overlaps Supply Lift floor1"],
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "qconsole_bytes": 73047,
+    "qconsole_sha256": "d8b37dbb04f788933fd4213652cde79db6b01ac49c90ef07ae3417c8e633c467",
+    "stock_delta2b_baseline_qconsole_bytes": 55924,
+    "stock_delta2b_baseline_qconsole_sha256": "99c7472ee67a8a4cd653ea175b60ecfd0d12bd97df566691e4d44f179985c3e5",
+    "pc_dmap_proc_diagnostic_qconsole_bytes": 74902,
+    "pc_dmap_proc_diagnostic_qconsole_sha256": "0b5906bde971d0c68ae77c1d99ab845146a9b23ade899b622331b59bcfd0eb1b",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "tests": {"count": 160, "failures": 0},
+  "established": [
+    "the tenth co-op segment's decoded MAP, PROC, corrected AAS48 and direct CM.X load natively",
+    "all 238 authored collision models appear in PC dmap and all 57 generated-only models are explained by noclipmodel 1",
+    "all 437 selected model files decode and the 50-to-63-joint ZCT animation retarget loads against the stock PC mesh without joint or AF/IK warnings",
+    "the pre-relocation overlay spawns 912/0 and joins player 0 with no missing resource, error or fatal line",
+    "the two remaining pre-relocation warnings share one source-proven stale separator origin rather than a PROC decoder defect",
+    "the portable candidate is payload-identical to the absolute-path candidate and has zero unresolved names"
+  ],
+  "not_established": ["native closure of the final location-separator relocation", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence", "complete dynamic XACT audio closure", "the remaining 10 co-op segments or the solo campaign"]
+}

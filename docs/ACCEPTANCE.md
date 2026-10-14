@@ -1,5 +1,38 @@
 # Recovery order and acceptance
 
+## Checkpoint 023 tenth-segment status
+
+`xc_delta2b_1` passes structural export, corrected AAS48, complete archive-local
+model conversion, declaration/resource closure and the bounded loader/spawn
+gate. Its decoded MAP/PROC, direct 238-model CM.X and corrected AAS48 load.
+Independent PC `dmap` contains every authored collision model; its 57 additions
+are exactly MAP entities marked `noclipmodel 1`. Decoded and PC-dmapped PROC
+files independently agree on 70 areas, 74 portals and identical portal
+geometry.
+
+All 437 selected model files decode: 15 meshes and 422 animations. The retail
+`head_butt` animation uses a 50-joint Xbox ZCT skeleton while the stock PC ZCT
+mesh uses 63. The expansion retarget preserves source world-space poses for
+shared joints and supplies target bind-local transforms for 13 target-only
+joints. The resulting 63-joint animation loads against the stock PC mesh
+without invalid-joint, AF or IK warnings.
+
+The last bounded true-`COOP` run predates the location correction. It exits 0,
+spawns 912/0, joins player 0 and has no missing model, animation, sound or image
+line. Its two map-specific warnings are one causal chain: the retained
+`info_locationseparator_19` origin is 51 units from the Xbox portal, outside the
+engine's 16-unit search bounds, so the separator does not block location
+spreading and two floor-1 locations overlap. A PC-dmapped Xbox PROC reproduces
+the same warnings, excluding the PROC decoder as their cause.
+
+The portable candidate moves only that exact separator from `1694 -608 84` to
+`1694 -557 84`, the decoded and independently compiled portal plane. It has 278
+file records, zero unresolved names and byte-identical payloads to the prior
+absolute-path build. All 160 tests pass. Native validation of this final
+candidate is intentionally deferred while another Steam game is active. A
+bounded confirmation, dynamic combat/progression, transition, two peers and
+Xbox-reference comparison remain open.
+
 ## Checkpoint 022 ninth-segment status
 
 `xc_recycling2_1` passes structural export, two-class navigation, complete
