@@ -48,25 +48,35 @@
     "retargeted_sha256": "2c111bb859bc8816eaf22b66eaaa488d905ffcd8d594c2ddf8c2ec10c35a805b",
     "source_joints": 50,
     "target_joints": 63,
-    "profile_sha256": "3946420335b54b613226a350069556c9f23394063eacb1c5db7872cf701f8119"
+    "profile_sha256": "8d2a534049fee86ccb6123200c938ee5d575adaa83a2b12a0bc1c5e23fa4eadf"
   },
   "xact_metadata": {
     "indexlist_bytes": 14150,
     "indexlist_sha256": "b2a8c43577c4c4a9a717c8637c95c9054b7624644eebe2fd4a6d0bee4e7557c3",
     "xsb_bytes": 28724,
     "xsb_sha256": "259c5e7658555a584b5eee41f0a304193fe85096e839598da27b39bab91123db",
-    "runtime_sound_selection": "pending bounded loader evidence and progression inventory"
+    "direct_map_samples": 67,
+    "direct_map_samples_covered": 67,
+    "stock_pc_samples": 63,
+    "recovered_wav_files": 4,
+    "recovered_wav_bytes": 1420036,
+    "recovery_manifest_bytes": 2341,
+    "recovery_manifest_sha256": "36897a1784c90f4cb17bd2ce3b2ae9cd61556a9ab7e5e5a65f13ba4ce262af5f",
+    "corrected_stale_paths": 2,
+    "stale_path_source": "sound/ed/doors/_elevator_silver_twopaned/inner1.wav",
+    "stale_path_destination": "sound/ed/doors/_elevator_silver_twopaned/inner_1.wav",
+    "dynamic_runtime_sound_selection": "pending bounded loader evidence and progression inventory"
   },
   "overlay": {
-    "local_profile": "xbox_coop_port_test_delta2b_2_offline_v2",
-    "file_records": 272,
-    "copied_runtime_resources": 237,
+    "local_profile": "xbox_coop_port_test_delta2b_2_offline_v3",
+    "file_records": 276,
+    "copied_runtime_resources": 241,
     "generated_runtime_resources": 1,
-    "payload_bytes": 26739026,
-    "manifest_bytes": 135224,
-    "manifest_sha256": "40d145b3726394475315b47a0fc26d1d0a58fdb1fd7633522c0583cc8fc4c5ce",
-    "transformed_map_bytes": 3975012,
-    "transformed_map_sha256": "1f2dad27e3d1656fd890b443ca4494143d5e99b2cf7334fd98efc3691cbf653e",
+    "payload_bytes": 28159064,
+    "manifest_bytes": 137118,
+    "manifest_sha256": "7a15c66f28e4c75ec017e24385b5826b3f48a70f8f84770acd1e25e684fd7229",
+    "transformed_map_bytes": 3975014,
+    "transformed_map_sha256": "2a0a011a8ab0b40fb8abeb27ca53ce95e87249aa053d626930b7f31b7acbb11a",
     "collision_source": "direct-authored-cm",
     "compatibility_transform_records": 9,
     "copied_map_specific_guis": 3,
@@ -75,13 +85,14 @@
     "unresolved_classnames": 0,
     "unresolved_string_ids": 0
   },
-  "tests": {"count": 160, "failures": 0},
+  "tests": {"count": 161, "failures": 0},
   "established": [
     "MAP, PROC, corrected AAS48 and direct authored CM decode structurally with source-bound hashes",
     "the AAS BSP has complete nonzero node and area coverage",
     "all 343 selected model files decode",
     "the sole MAP callback has exactly one recovered source definition",
     "the checkpoint-023 ZCT retarget is reusable because the source animation payload is byte-identical",
+    "all 67 direct MAP sample paths are covered by stock PC media or four source-bound XACT recoveries after correcting two exact stale inner-elevator paths",
     "the offline candidate has zero unresolved resources, classnames or strings"
   ],
   "not_established": ["independent PC dmap collision-model audit", "native map loading or entity spawn count", "runtime sound closure", "dynamic combat and whole-map progression", "transition behavior", "two-peer behavior", "original-Xbox runtime equivalence"]

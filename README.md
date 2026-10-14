@@ -54,10 +54,12 @@ model files decode.
 
 Three commando entities select the same Xbox-only 50-joint `head_butt`
 animation found in checkpoint 023. Its raw payload is byte-identical, so the
-same hash-bound 63-joint PC retarget is reused. The 272-file offline candidate
-preserves the retail map script and its single MAP callback, copies three
-co-op GUIs, and has zero unresolved resources, classnames or strings. All 160
-tests pass.
+same hash-bound 63-joint PC retarget is reused. Four direct MAP samples absent
+from stock PC packages recover through the segment INDEXLIST/XSB and original
+global XWB. Two stale `inner1.wav` epairs are corrected to the `inner_1.wav`
+name carried by both Xbox XSND and stock PC. The 276-file offline candidate
+preserves the retail map script and its single MAP callback, covers all 67
+direct sample paths, and has zero unresolved names. All 161 tests pass.
 
 This is an in-progress receipt, not loader acceptance. Independent PC `dmap`,
 bounded native loading, XACT sound selection, progression and two-peer work are

@@ -10,7 +10,11 @@ script. Three MAP commando entities require the Xbox-only `head_butt` animation.
 The source payload is byte-identical to checkpoint 023, so its validated
 50-to-63-joint retarget is reused rather than regenerated from an assumption.
 
-The 272-file candidate has zero unresolved names and all 160 tests pass. This
+All 67 direct MAP sample paths are accounted for: 63 resolve to stock PC media,
+and four recover through the source-bound Xbox XACT chain. Two retail
+`inner1.wav` epairs are exact stale spellings; Xbox XSND, stock PC and the same
+entities' close sounds all use `inner_1.wav`. The 276-file candidate has zero
+unresolved names and all 161 tests pass. This
 does not yet pass the independent-dmap or native gates. PC collision-model
 comparison, bounded loading/spawn, runtime sound closure, progression,
 transition, two peers and Xbox-reference comparison remain open. Do not launch

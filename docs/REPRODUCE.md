@@ -12,7 +12,7 @@ Python 3.10+ and the standard library are sufficient. Checkpoint 014 used Python
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result on the current implementation branch: 160 tests, zero failures.
+Expected result on the current implementation branch: 161 tests, zero failures.
 Checkpoint 012 captured 142 passing tests; later synthetic tests cover authored-
 CM overlay selection, identity rejection, path-independent material receipts,
 the exact unshipped armor-shard map-icon transform, `xc_admin` inert orphan and
@@ -36,14 +36,24 @@ and `eb4b5d4d8ce1ec47369fd217610a6cdfecb338584f2beaf971c23d5b5925ebcd`
 respectively.
 
 Extract and decode all 343 `.mdvmesh`, `.mdvanim` and `.md5anim.x` members.
-They must produce 15,638,869 bytes. Add the one-entry
+They must produce 15,638,869 bytes. Add the five-entry
 `xc_delta2b_2.resources` profile and place the checkpoint-023 retarget root
 before the decoded model root. Build with the same shared player, HUD,
 material, language and DEF roots as checkpoint 023, but preserve the retail
-`maps/vv/xbox_coop/xc_delta2b_2.script`. The resulting offline overlay has 272
-file records, 237 copied resources, one generated EFX, nine transform records
-and zero unresolved names. Its 135,224-byte manifest hashes to
-`40d145b3726394475315b47a0fc26d1d0a58fdb1fd7633522c0583cc8fc4c5ce`.
+`maps/vv/xbox_coop/xc_delta2b_2.script`.
+
+Audit all direct MAP `.wav` values against stock `.wav` and `.ogg` members.
+Recover the four absent XSND names through the 14,150-byte INDEXLIST (SHA-256
+`b2a8c43577c4c4a9a717c8637c95c9054b7624644eebe2fd4a6d0bee4e7557c3`)
+and 28,724-byte XSB (SHA-256
+`259c5e7658555a584b5eee41f0a304193fe85096e839598da27b39bab91123db`).
+The four WAVs total 1,420,036 bytes. Correct exactly two `inner1.wav` MAP
+epairs to the `inner_1.wav` spelling proven by both Xbox XSND and stock PC.
+
+The resulting offline overlay has 276 file records, 241 copied resources, one
+generated EFX, nine transform records and zero unresolved names. Its
+137,118-byte manifest hashes to
+`7a15c66f28e4c75ec017e24385b5826b3f48a70f8f84770acd1e25e684fd7229`.
 Stop here unless a Doom 3 launch has been explicitly cleared: dmap and native
 loader acceptance are still open.
 

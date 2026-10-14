@@ -20,6 +20,15 @@ select the DEF that references it. The 63-joint retarget is therefore a direct
 reuse of identical source bytes. The retail map script is present, and the only
 MAP `call` value has one definition. No empty-script transform is applied.
 
+Direct sample closure can also be established before native loading. Of 68
+unique direct `.wav` paths in the retail MAP, 63 have stock PC `.wav`/`.ogg`
+media. Four of the remaining paths route through the map's 14,150-byte
+INDEXLIST and 28,724-byte XSB into the global XWB, yielding 1,420,036 bytes of
+PCM WAV data. The last spelling, `inner1.wav`, is absent from both Xbox XSND
+and stock PC while `inner_1` exists in both; it occurs in exactly two
+`snd_open` epairs whose same entities already use `inner_1` for `snd_close`.
+The exact paired transform leaves 67 unique post-transform paths, all covered.
+
 ## Checkpoint 023 tenth-segment findings
 
 `xc_delta2b_1` extends the direct-CM contract to a tenth co-op segment. Its
