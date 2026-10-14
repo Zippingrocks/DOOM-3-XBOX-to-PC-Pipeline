@@ -1,3 +1,33 @@
+# Reproduce checkpoint 054
+
+## Checkpoint 054: all solo compiled-script callbacks
+
+Cross-check the accepted 41-map semantic report against the exact compiled
+script member retained for each solo archive:
+
+```powershell
+python tools/campaign_port/solo_script_bytecode_audit.py `
+  work/solo-structural/maps `
+  --semantic-report work/solo-overlays-strict-v10-semantic-audit.json `
+  --require-maps 41 `
+  --output work/solo-script-bytecode-v1.json
+```
+
+Require 10,245,406 input bytes, 487,257 statements, 11,940 function records,
+11,938 namespaced function records and 1,654 `OP_CALL` statements. All 41 maps
+must infer statement base 4,100. Require 405 callback records: 403 exact
+namespaced functions and two object methods resolved to compiled function-name
+suffixes. There must be zero missing compiled callback and zero failure.
+
+Rerun the 20-map co-op bytecode audit after the generic function-name extension;
+its zero `initCoop` calls, zero compiled `setupCoop` functions and positive
+intra-Coop call witnesses must remain unchanged. The solo and co-op report
+SHA-256 values are
+`3445bc0dc24510548da9a9d80221fe6453a434ec7405c4d17b9f7160afcedb7d`
+and `aa9ce25b6f629a51c4c1363c2e71b4a7f8839a038494e4a23685af9995405a87`.
+Run the full suite and require 235 passing tests. Do not launch Doom 3 or
+`dmap`.
+
 # Reproduce checkpoint 053
 
 ## Checkpoint 053: Xbox compiled-script function/call audit

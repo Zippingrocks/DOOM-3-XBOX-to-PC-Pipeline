@@ -1,5 +1,21 @@
 # Format findings and unknowns
 
+## Checkpoint 054 solo compiled-callback findings
+
+The recovered function-record grammar also handles unqualified function names;
+this matters for establishing the common statement-array base even when the
+last compiled function is global. With that extension, all 41 solo binaries
+infer base 4,100 and decode without a structural exception.
+
+Source-text symbol closure alone can accidentally accept a function left only
+inside comments or otherwise omitted from the shipped program. Cross-referencing
+the 41-map semantic report against each binary's recovered function table closes
+that gap: all 403 namespaced MAP callback records have an exact compiled name.
+The two `target_callobjectfunction` records resolve by method suffix to compiled
+`char_sentry::flashlight_on` and `char_sentry::flashlight_off`. No functional
+callback is text-only. Four already documented retail-PC warning/no-op records
+remain exceptions by provenance, not missing-port regressions.
+
 ## Checkpoint 053 compiled-script findings
 
 The Xbox `.script.bin` payload is a serialized Doom script program, not native

@@ -1,0 +1,62 @@
+{
+  "checkpoint": "054",
+  "date": "2026-10-14",
+  "claim": "Every MAP callback in all 41 original-Xbox solo maps that resolves to script code is present in that map's shipped compiled script program.",
+  "inputs": {
+    "checkpoint_053": "evidence/checkpoint-053-xbox-script-bytecode.json",
+    "retail_iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e",
+    "compiled_script_files": 41,
+    "compiled_script_bytes": 10245406,
+    "semantic_report_sha256": "e9911573685948ec49fd1f63bb5815080cbccd84483d4d1dcd5831c1ef49fb56",
+    "local_report_sha256": "3445bc0dc24510548da9a9d80221fe6453a434ec7405c4d17b9f7160afcedb7d"
+  },
+  "solo_compiled_corpus": {
+    "maps": 41,
+    "statement_index_base": 4100,
+    "maps_with_statement_index_base": 41,
+    "statements": 487257,
+    "function_records": 11940,
+    "namespaced_function_records": 11938,
+    "op_calls": 1654,
+    "failures": 0
+  },
+  "map_callback_crosscheck": {
+    "compiled_callback_records": 405,
+    "namespaced_callback_records": 403,
+    "object_method_callback_records": 2,
+    "unique_map_callback_symbols": 366,
+    "missing_compiled_callbacks": 0,
+    "object_method_witnesses": ["char_sentry::flashlight_on", "char_sentry::flashlight_off"],
+    "retail_shipped_noop_records_excluded": 4,
+    "retail_shipped_noop_symbols": ["trigger_broken_wall_1", "map_delta4::d4_fadesounds"]
+  },
+  "coop_regression_recheck": {
+    "maps": 20,
+    "statements": 217103,
+    "op_calls": 589,
+    "coop_init_op_calls": 0,
+    "setup_coop_function_definitions": 0,
+    "failures": 0,
+    "local_report_sha256": "aa9ce25b6f629a51c4c1363c2e71b4a7f8839a038494e4a23685af9995405a87"
+  },
+  "implementation_receipts": {
+    "xbox_script_bytecode_audit_py_sha256": "6a46bbd11a1fafda26fbacf421e8d5e7e54e9eff05b7abbaba0db2633279a082",
+    "solo_script_bytecode_audit_py_sha256": "905abe953060b38cf3a5075508260920037b8fee91e718bb795af4cb31f88c47",
+    "test_solo_script_bytecode_audit_py_sha256": "b56176c30d8b598fded906f4dc1604b9a79db142b24b2dcb6a26ae8649d5e807"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 235,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "Compiled callback presence proves the named function exists in the shipped script program, not that every trigger reaches it during gameplay.",
+    "The four byte-matched retail-PC warning/no-op callbacks remain intentionally outside compiled-function closure.",
+    "Save/load behavior, cinematic timing, combat progression and visual/two-peer acceptance still require the later deliberate runtime pass."
+  ]
+}

@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 053
+## Current checkpoint: 054
+
+**The compiled-script audit now covers every one of the 41 original-Xbox solo
+maps, and every functional MAP callback has a shipped bytecode definition.**
+The solo corpus contains 487,257 statements, 11,940 function records and 1,654
+compiled calls. All 41 binaries independently resolve to the same 4,100 base
+statement index.
+
+The prior source-level semantic gate contains 403 namespaced callback records
+and two object-method records. All 405 resolve in the corresponding compiled
+program; the object witnesses are `char_sentry::flashlight_on` and
+`char_sentry::flashlight_off`. The four documented retail-PC warning/no-op
+records remain deliberately excluded rather than being given invented code.
+The co-op bytecode audit was rerun unchanged and remains clean. All 235 offline
+tests pass; Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-054-solo-script-bytecode.json`](evidence/checkpoint-054-solo-script-bytecode.json).
+
+## Earlier checkpoint: 053
 
 **All 20 original-Xbox co-op `script.bin` files now have a structural
 function/call audit, resolving the apparent `Coop::initCoop` contradiction.**
@@ -1152,7 +1169,7 @@ archive inventory followed by a matched MP pair and one real co-op map.
   unknown Xbox payload fields, and how to use MP reference evidence.
 - [Acceptance and recovery order](docs/ACCEPTANCE.md): per-map obligations,
   pre-playtest readiness and final solo/co-op acceptance.
-- [Checkpoint receipt](evidence/checkpoint-053-xbox-script-bytecode.json): current source hashes,
+- [Checkpoint receipt](evidence/checkpoint-054-solo-script-bytecode.json): current source hashes,
   validation scope and explicit incomplete obligations.
 
 ## Working rule
