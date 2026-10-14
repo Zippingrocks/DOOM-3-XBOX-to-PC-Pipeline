@@ -1,0 +1,127 @@
+{
+  "checkpoint": "016",
+  "date": "2026-10-14",
+  "scope": "third co-op segment direct collision export, corrected navigation, and bounded runtime closure",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_mars_city2_2",
+    "geometry_crc": 2356338129,
+    "decoded_map": {
+      "bytes": 1746525,
+      "sha256": "79925bedfb80892a39185ce024619b304e099dd6bc93d3373d9c8e7abb6678dd",
+      "entities": 516,
+      "brushes": 1619,
+      "brush_sides": 9712,
+      "patches": 845,
+      "patch_points": 15933
+    },
+    "decoded_proc": {
+      "bytes": 1872839,
+      "sha256": "bc70cba6e528b471936bc3d5472dcdccc8c60a2dfb6e362037337493ef65b7c0"
+    },
+    "corrected_aas48": {
+      "bytes": 349583,
+      "sha256": "bf118f9643843b369c6de0c371356aa4150b1509c6c5c2baf951c7ec4bba8657"
+    }
+  },
+  "collision": {
+    "cm_x": {
+      "bytes": 966528,
+      "sha256": "18cf4070d31ec7b014f31f76122a745a12a893c4e99f5c50eee36b723c538395"
+    },
+    "authored_export": {
+      "bytes": 1526425,
+      "sha256": "28f66afd7f18544c18cfd59aa8bb3b34190f596660a33b44bcc6bcd98b0deed7",
+      "models": 129,
+      "vertices": 7205,
+      "edges": 11941,
+      "polygons": 4663,
+      "brushes": 1563,
+      "nodes": 3987
+    },
+    "pc_dmap": {
+      "cm_bytes": 2683235,
+      "cm_sha256": "d51e32593d7b7e48192ae109f1fc11a9fc9d43392db1f8c6367ff93a0c8d2992",
+      "proc_bytes": 2642956,
+      "proc_sha256": "7d74de45e61d29f0676a3c80f24f4e8900587312ced00ddea0403087006355f5",
+      "aas48_bytes": 336898,
+      "aas48_sha256": "7e3a2c3a06bf4fdb65a0ff9adeb1f474c7bb0101e61f7b27932062b8408392eb",
+      "models": 171
+    },
+    "model_set_audit": {
+      "shared": 129,
+      "authored_only": 0,
+      "pc_dmap_only": 42,
+      "pc_dmap_only_with_noclipmodel_1": 42,
+      "unexplained_pc_dmap_only": 0
+    }
+  },
+  "recovered_texture": {
+    "logical_name": "lights/nofalloff",
+    "archive": "base/xbox_gen/global.d3tfull",
+    "archive_offset": 2825555968,
+    "archive_size": 178959016,
+    "archive_key": "9704C74E",
+    "dimensions": [
+      16,
+      16
+    ],
+    "format": "000083F0",
+    "mip_count": 3,
+    "dds_bytes": 296,
+    "dds_sha256": "1d632a0e7b695186ed6462ff026215fe4bf217c6a57370a5bb9c9dfdd775e11b",
+    "integration": "copy DDS only; stock PC materials/lights.mtr already declares lights/nofalloff"
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_city2_2_v3",
+    "player_profile_sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "file_records": 276,
+    "copied_runtime_resources": 237,
+    "payload_bytes": 16290916,
+    "manifest_bytes": 133402,
+    "manifest_sha256": "53e8f9022d5b399de4a14709cde49497aafaac7143d3865da8928e56f83d567b",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 7,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 516,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "player_skeleton_errors": 0,
+    "ai_path_warnings": 0,
+    "warning_lines": 28,
+    "unique_warning_lines": 13,
+    "warning_scope": "stock duplicate materials, gamma-ramp failure, undefined s_driver, and absent deathmatch spawn",
+    "qconsole_bytes": 16477,
+    "qconsole_sha256": "6d2e4b88e260b07b09a8e51e780701a5565b5a81a71aa0e32d97759e8f1d144e",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "the third co-op segment's direct CM.X export is structurally valid PC CM text and is bound to the independently computed MAP CRC",
+    "every authored collision model appears in PC dmap output; every generated-only model is explained by noclipmodel 1",
+    "the corrected AAS48, decoded PROC and authored CM cross the native PC loader boundary",
+    "the Xbox global D3TFULL contains the map's missing lights/nofalloff image and copying that DDS beneath the stock PC material closes the dependency",
+    "all 516 entities spawn with none inhibited and the local co-op player joins without missing-resource, skeleton, path, error or fatal lines"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition beyond xc_mars_city2_2",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 17 co-op segments or the solo campaign"
+  ]
+}
+

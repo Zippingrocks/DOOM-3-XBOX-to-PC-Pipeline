@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 016 third-segment findings
+
+`xc_mars_city2_2` confirms the direct-CM contract on a third co-op segment.
+The 1,746,525-byte MAP has geometry CRC `2356338129`; the 966,528-byte CM.X
+expands to a 1,526,425-byte PC CM containing 129 models, 7,205 vertices,
+11,941 edges, 4,663 polygons, 1,563 brushes and 3,987 nodes. Independent PC
+`dmap` emits 171 models. All 129 authored names are shared, and all 42 PC-only
+names belong to MAP entities marked `noclipmodel 1`.
+
+The corrected AAS48 hashes to
+`bf118f9643843b369c6de0c371356aa4150b1509c6c5c2baf951c7ec4bba8657`.
+Together with decoded PROC and direct authored CM, it reaches native true
+`COOP` with 516 entities spawned, zero inhibited and no path failure.
+
+The only new runtime asset was `lights/nofalloff`. It is not a loose GFC file;
+the Xbox global D3TFULL resolves the logical-name key `9704C74E` to a 16×16,
+three-mip DDS. Its payload SHA-256 is
+`1d632a0e7b695186ed6462ff026215fe4bf217c6a57370a5bb9c9dfdd775e11b`.
+Because stock PC `materials/lights.mtr` already contains the material body, the
+correct integration copies only `dds/lights/nofalloff.dds`. Emitting an Xbox
+material body as well causes a duplicate-declaration warning and is rejected.
+
 ## Checkpoint 015 second-map closure findings
 
 Checkpoint 014 selected the 691,857-byte AAS48 with SHA-256

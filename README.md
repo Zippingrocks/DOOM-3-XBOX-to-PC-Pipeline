@@ -14,7 +14,34 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 015
+## Current checkpoint: 016
+
+**The third co-op segment, `xc_mars_city2_2`, now has direct authored
+collision, corrected navigation and a clean bounded true-`COOP` spawn.**
+
+The decoded MAP contains 516 entities and binds to geometry CRC `2356338129`.
+Its 1,526,425-byte direct CM.X export contains 129 models. Independent PC
+`dmap` output contains all 129 plus 42 models, and every additional model maps
+exactly to a `noclipmodel 1` entity; there are no unexplained or authored-only
+names. The overlay uses the corrected AAS48 with SHA-256
+`bf118f9643843b369c6de0c371356aa4150b1509c6c5c2baf951c7ec4bba8657`.
+
+The first bounded run exposed only `lights/nofalloff`. The named texture was
+recovered from Xbox `global.d3tfull` as a 296-byte DDS with SHA-256
+`1d632a0e7b695186ed6462ff026215fe4bf217c6a57370a5bb9c9dfdd775e11b`.
+The stock PC material already declares it, so the finalized closure copies the
+DDS only and does not create a duplicate material declaration.
+
+The resulting 276-file direct-authored-CM overlay has zero unresolved names.
+The bounded run spawns all 516 entities, inhibits none, joins the player, and
+emits no missing-resource, skeleton, AI-path, error or fatal line. Its manifest
+SHA-256 is
+`53e8f9022d5b399de4a14709cde49497aafaac7143d3865da8928e56f83d567b`.
+As in checkpoint 015, final engine acceptance still requires the normal source
+rebuild of the instant-hit guard. Full receipts are in
+[`evidence/checkpoint-016.json`](evidence/checkpoint-016.json).
+
+## Previous checkpoint: 015
 
 **The second co-op segment now has a complete bounded loader/spawn closure:
 all 1,110 entities spawn, none are inhibited, the co-op player joins, and the

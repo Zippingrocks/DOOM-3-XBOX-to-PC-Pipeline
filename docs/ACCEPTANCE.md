@@ -1,5 +1,24 @@
 # Recovery order and acceptance
 
+## Checkpoint 016 third-segment status
+
+`xc_mars_city2_2` passes the same structural and bounded loader/spawn gates as
+the preceding segment. Direct CM.X is bound to the MAP CRC, every authored
+model is present in independent PC `dmap`, and all 42 PC-only models are
+explained by `noclipmodel 1`. Corrected AAS48 is used.
+
+The shared player profile closes inherited player dependencies. The sole new
+map dependency, `lights/nofalloff`, is recovered by logical name from the Xbox
+global D3TFULL and placed beneath the already-existing stock PC material. The
+276-file overlay has zero unresolved resources or classnames. A bounded true
+`COOP` run produces 516/0, joins the player, and has no missing-resource,
+skeleton, path, error or fatal line.
+
+This accepts third-segment packaging and the loader/spawn boundary only. It
+still uses the isolated null-guard diagnostic; a reviewed source change and
+normal DLL rebuild remain mandatory. Dynamic combat, scripted progression,
+segment transition, two peers and original-Xbox comparison remain open.
+
 ## Checkpoint 015 second-map closure status
 
 The second-map packaging and bounded loader/spawn gates now pass. The accepted

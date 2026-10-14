@@ -18,6 +18,47 @@ selection, identity rejection, path-independent material receipts and the exact
 unshipped armor-shard map-icon transform. Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
 
+### Checkpoint 016 third-segment receipt
+
+For `xc_mars_city2_2`, compute the MAP CRC and export direct collision exactly
+as described below. Expected MAP CRC is `2356338129`; expected authored CM is
+1,526,425 bytes with SHA-256
+`28f66afd7f18544c18cfd59aa8bb3b34190f596660a33b44bcc6bcd98b0deed7`.
+The model-set audit must report 129 authored, 171 PC-`dmap`, 129 shared, zero
+authored-only, 42 PC-only, all 42 marked `noclipmodel 1`, and zero unexplained.
+
+Use the corrected AAS48, not the original pre-plane-fix corpus output:
+
+```powershell
+Get-FileHash game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_2.aas48 -Algorithm SHA256
+```
+
+Expected SHA-256 is
+`bf118f9643843b369c6de0c371356aa4150b1509c6c5c2baf951c7ec4bba8657`.
+Recover the only additional observed texture directly from D3TFULL:
+
+```powershell
+python tools/campaign_port/d3tfull.py retail.iso lights/nofalloff `
+  --offset 2825555968 --size 178959016 `
+  --output game/campaign_port_work/d3t-lights-nofalloff --json
+```
+
+Expected archive key is `9704C74E`; the 296-byte output
+`dds/lights/nofalloff.dds` hashes to
+`1d632a0e7b695186ed6462ff026215fe4bf217c6a57370a5bb9c9dfdd775e11b`.
+Add that DDS as a runtime resource and its output directory as a retail root.
+Do **not** add `lights/nofalloff` as a runtime material: stock PC
+`materials/lights.mtr` already declares it.
+
+The final overlay has 276 file records, 16,290,916 payload bytes, 133,402
+manifest bytes and manifest SHA-256
+`53e8f9022d5b399de4a14709cde49497aafaac7143d3865da8928e56f83d567b`.
+Under the checkpoint-014 control-flow diagnostic, the bounded true-`COOP` run
+must exit 0, spawn 516/0, join the player, and emit no missing-resource,
+skeleton, path, `ERROR` or `FATAL` line. The qconsole SHA-256 is
+`6d2e4b88e260b07b09a8e51e780701a5565b5a81a71aa0e32d97759e8f1d144e`.
+Repeat with the normal rebuilt source DLL before engine acceptance.
+
 ### Checkpoint 015 corrected second-map closure
 
 Do not use the checkpoint-014 AAS48 hash
