@@ -1,21 +1,21 @@
-# Reproduce checkpoint 006
+# Reproduce checkpoint 007
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `9ebe3701c7e1ab28ee4483477ee071a2fe8cca1a`
+Checkpoint implementation head: `7f35412a6cf8c238ca4ca6b91e6df3fce75ce6af`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 004 ran on
+Python 3.10+ and the standard library are sufficient. Checkpoint 007 ran on
 Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 103 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 111 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -134,10 +134,31 @@ python tools/campaign_port/retarget_md5anim.py source.md5anim `
 ```
 
 `d3tfull.py` takes the D3TFULL file or its containing ISO plus selected logical
-image names. `xact_audio.py` takes the matching XSND header, INDEXLIST, XSB and
-named XWB banks plus selected logical sound names. Both write a new directory
-and a manifest. Consult `--help` because bank names and ISO extent parameters
-come from the source-bound inventory, not fixed public paths.
+image names. For the checkpoint disc identity, recover the six additional HUD
+images directly from the inventoried extent without copying the whole archive:
+
+```powershell
+python tools/campaign_port/d3tfull.py `
+  game/campaign_port_inputs/xbox/doom3.iso `
+  --offset 2825555968 --size 178959016 `
+  --output game/campaign_port_work/d3t-hud-missing `
+  guis/assets/health/hspike1 `
+  guis/assets/hud/TipBorder guis/assets/hud/Vote `
+  guis/live/assets/FriendInviteReceived `
+  guis/live/assets/FriendOnline `
+  guis/live/assets/GameInviteReceived
+
+python tools/campaign_port/doom3_campaign_port.py extract `
+  game/campaign_port_work/retail-archives/assets.gfc `
+  --gob game/campaign_port_work/retail-archives/assets.gob `
+  --out game/campaign_port_work/assets-materials `
+  --include '*materials/*.mtr'
+```
+
+`xact_audio.py` takes the matching XSND header, INDEXLIST, XSB and named XWB
+banks plus selected logical sound names. These converters write a new directory
+and manifest. Consult `--help` because bank names and other source extents come
+from the source-bound inventory, not invented public paths.
 
 Build the local overlay after conversion:
 
@@ -145,10 +166,30 @@ Build the local overlay after conversion:
 python tools/campaign_port/build_runtime_overlay.py `
   --map game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city1_1.map `
   --converted-dir game/campaign_port_work/converted/maps/vv/xbox_coop `
-  --retail-root game/campaign_port_work/extracted `
+  --retail-root game/campaign_port_work/extracted-first-map/base `
+  --retail-root game/campaign_port_work/decoded-runtime `
+  --retail-root game/campaign_port_work/d3t-hud-missing `
+  --retail-root game/campaign_port_work/assets-materials/base `
   --def-root game/campaign_port_work/shared-assets/base/def `
   --stock-dir base `
   --language game/campaign_port_work/shared-assets/base/strings/english.lang `
+  --language game/campaign_port_work/shared-assets/base/strings/english_vv.lang `
+  --def-preference info.def `
+  --runtime-classname player_doommarine1_coop `
+  --runtime-classname player_doommarine2_coop `
+  --runtime-resource guis/hud.gui `
+  --runtime-resource dds/guis/assets/health/hspike1.dds `
+  --runtime-resource dds/guis/assets/hud/TipBorder.dds `
+  --runtime-resource dds/guis/assets/hud/Vote.dds `
+  --runtime-resource dds/guis/live/assets/FriendInviteReceived.dds `
+  --runtime-resource dds/guis/live/assets/FriendOnline.dds `
+  --runtime-resource dds/guis/live/assets/GameInviteReceived.dds `
+  --runtime-string '#str_07595' `
+  --runtime-material gui/radiospike `
+  --runtime-material guis/assets/hud/TipBorder `
+  --runtime-material guis/live/assets/FriendInviteReceived `
+  --runtime-material guis/live/assets/FriendOnline `
+  --runtime-material guis/live/assets/GameInviteReceived `
   --out game/campaign_port_work/overlay-xc_mars_city1_1
 ```
 
@@ -180,7 +221,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 103-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 111-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
@@ -188,11 +229,13 @@ msbuild vendor/doom3-gpl/neo/game.vcxproj /m /t:Build `
   /p:Configuration=Release /p:Platform=Win32 /v:minimal
 ```
 
-Checkpoint-006 run `38525058861` completed both jobs successfully. Verify the
-downloaded artifact ZIP against SHA-256
-`3650517235dd1fb787c8bbde903a3314aa1aa546ca0e3e6fc9d1add861948ac8`
-and its `gamex86.dll` against SHA-256
-`5c5fb61a0163d70db57dcfc1c098bdfe6a4a093f2e5f280e2ec711c5a1b58e9a`.
+The exact DLL used for the checkpoint-007 native run came from source commit
+`243dbafe867d9c89ab48cb56e17bdc05c69ab704`, Actions run `38527277656`,
+artifact `11876766170`. Verify the artifact ZIP SHA-256 as
+`76e80fe9a5bbb9b3f4cf5661a0916a46f87b279ebe0ce73f03d5d87131606ed8`
+and `gamex86.dll` as
+`815c4a2238bb49dc52e5090913d6d216d898d0fe5d007fe9246424ae3bc6c011`.
+The matching PDB and linker map hashes are recorded in the checkpoint receipt.
 
 Doom 3's non-pure loader prefers a DLL in a PK4 over a loose DLL in the mod
 directory and will overwrite the latter in `fs_savepath`. For a local
@@ -200,14 +243,22 @@ development run, place the verified test DLL beside `Doom3.exe`; that explicit
 path is checked first. Preserve any pre-existing file and remove the test DLL
 afterward. Never distribute the DLL together with retail-derived overlay data.
 
+Use the generated overlay as a local mod and start an actual COOP listen server,
+rather than using the single-player `map` command:
+
 ```powershell
 .\Doom3.exe +set fs_game xbox_coop_port_test_v3 `
-  +set com_skipIntroVideo 1 +set r_fullscreen 0 +set logFile 2 `
-  +map vv/xbox_coop/xc_mars_city1_1 +wait 600 +quit
+  +set com_allowConsole 1 +set logFile 2 +set r_fullscreen 0 +set r_mode 3 `
+  +set s_noSound 1 +set si_pure 0 +set si_gameType COOP `
+  +set si_map vv/xbox_coop/xc_mars_city1_1 `
+  +spawnServer +wait 600 +quit
 ```
 
-Expected checkpoint-006 result: exit code 0, 940 entities spawned, zero
-inhibited, zero `Could not spawn` warnings, and the restored callback output.
-The five unique AI path warnings remain actionable; do not treat them as AAS
-record loss because the offline route audit finds all five directed walk paths.
-
+Expected checkpoint-007 result: process exit 0; 940 entities spawned; zero
+inhibited; `Server: Player joined the game.`; no missing spawnclass/image,
+unknown GUI command, unknown material token, `ERROR` or `FATAL` line. Verify
+`qconsole.log` SHA-256 as
+`618a4760af9645928c5a090195e5da08e4b36ccc5481f975f2154878f3776675`.
+The five unique AI path warnings remain actionable. Static routes only prove
+graph connectivity; diagnose runtime area selection, bounds, obstacles and
+script timing before editing the recovered AAS.
