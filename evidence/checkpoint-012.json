@@ -1,0 +1,328 @@
+{
+  "checkpoint": "012",
+  "date": "2026-10-14",
+  "scope": "first-map live entity collision placements comparing PC-dmap collision with direct Xbox-authored CM.X recovery",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "validation": {
+    "unit_tests": {
+      "python": "3.11",
+      "count": 142,
+      "failures": 0
+    },
+    "windows_game_dll_build": "success",
+    "private_build_identifiers_published": false
+  },
+  "inputs": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "pc_dmap_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "authored_pc_cm_sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931",
+    "trace_count_per_shape_per_profile": 4096,
+    "records_per_run_per_profile": 8192,
+    "seed": 31,
+    "tolerances": {
+      "fraction": 0.000001,
+      "position_and_plane_distance": 0.01,
+      "normal": 0.001
+    }
+  },
+  "diagnostic_contract": {
+    "command": "xboxCoopCollisionDigest [count] [seed] [verbose] [model|@entity] [mask] [minx miny minz maxx maxy maxz]",
+    "entity_target": "a leading @ resolves the spawned entity's live clip model and queries that collision model at its runtime origin and axis",
+    "input_binding": "requested target, resolved model name, content mask, live origin and 3x3 axis, clip contents/link/enabled state, hull bounds, local model bounds, absolute sample bounds, seed, count and raw IEEE-754 coordinate bits",
+    "handle_policy": "numeric collision handles are reported but excluded from the input digest because model ordering differs between generated and authored CMs",
+    "failure_rules": [
+      "missing entities or entities without clip models are rejected",
+      "invalid entity bounds are rejected",
+      "invalid numeric masks, partial or inverted hulls and unresolved named models are rejected",
+      "the comparator rejects missing summaries or different summary input digests"
+    ],
+    "comparison_categories": {
+      "trajectory": "fraction and end position",
+      "contact_geometry": "contact point, normal and plane distance",
+      "metadata": "contents and material",
+      "topology": "contact type and stable feature numbers"
+    }
+  },
+  "profiles": [
+    {
+      "name": "live-doorclip-player",
+      "command": "xboxCoopCollisionDigest 4096 31 1 @doorClip_1 0x9",
+      "purpose": "player-solid collision against the spawned moving-door clip placement",
+      "runtime": {
+        "origin": [
+          -2560,
+          -1708,
+          212
+        ],
+        "absolute_bounds": [
+          [
+            -2625,
+            -1713,
+            151
+          ],
+          [
+            -2495,
+            -1703,
+            273
+          ]
+        ],
+        "linked": true,
+        "enabled": true,
+        "clip_contents": "0x00000000"
+      },
+      "input_digest": "f0edbe42",
+      "receipts": {
+        "generated_log": {
+          "bytes": 1627810,
+          "sha256": "9f0a68adb94a4465ce94b2d0c71eb6ba27171042bd525838f2a074453b006991"
+        },
+        "authored_log": {
+          "bytes": 1628615,
+          "sha256": "57d47c7a65d3c715ae80f3a4a416196e16a4a17b964cebc7f500aeaa1b505837"
+        },
+        "comparison_report": {
+          "bytes": 6086,
+          "sha256": "14ecf3175bf31e9d3e6a24e63ef7e77e24ccb1aaa86a79b3f7b8b573891349db"
+        }
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 0,
+        "skip_mismatches": 0,
+        "hit_mismatches": 0,
+        "traced_pairs": {
+          "point": 2507,
+          "box": 2058
+        },
+        "hit_pairs": {
+          "point": 2420,
+          "box": 2058
+        },
+        "trajectory_mismatches": 0,
+        "contact_geometry_mismatches": 1067,
+        "metadata_mismatches": 0,
+        "gameplay_mismatches": 1067,
+        "topology_mismatches": 1291,
+        "geometry_by_shape": {
+          "point": 0,
+          "box": 1067
+        }
+      }
+    },
+    {
+      "name": "live-trigger-enablegui",
+      "command": "xboxCoopCollisionDigest 4096 31 1 @trigger_coop_enablegui_2 0x1000",
+      "purpose": "trigger contents against the spawned Xbox-only co-op enable-GUI trigger placement",
+      "runtime": {
+        "origin": [
+          -320,
+          -3016,
+          40
+        ],
+        "absolute_bounds": [
+          [
+            -393,
+            -3085,
+            15
+          ],
+          [
+            -247,
+            -2951,
+            65
+          ]
+        ],
+        "linked": true,
+        "enabled": true,
+        "clip_contents": "0x00001000"
+      },
+      "input_digest": "8cafa602",
+      "receipts": {
+        "generated_log": {
+          "bytes": 1572970,
+          "sha256": "3d451b4ab26d97068a2db93bdeee09e19d6bf50fdcf0917248cc97da186d8ae6"
+        },
+        "authored_log": {
+          "bytes": 1572717,
+          "sha256": "a34c4f55d3ab19004b469069e53d7db460d1ac1b391339d98660528684071748"
+        },
+        "comparison_report": {
+          "bytes": 6114,
+          "sha256": "d3d043f453745322c478e7edf311d3d572bca8b4db7bbf8f644ddef3b7c962b8"
+        }
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 0,
+        "skip_mismatches": 0,
+        "hit_mismatches": 0,
+        "traced_pairs": {
+          "point": 2186,
+          "box": 2076
+        },
+        "hit_pairs": {
+          "point": 2184,
+          "box": 2075
+        },
+        "trajectory_mismatches": 0,
+        "contact_geometry_mismatches": 800,
+        "metadata_mismatches": 0,
+        "gameplay_mismatches": 800,
+        "topology_mismatches": 802,
+        "geometry_by_shape": {
+          "point": 0,
+          "box": 800
+        }
+      }
+    },
+    {
+      "name": "live-func-static",
+      "command": "xboxCoopCollisionDigest 4096 31 1 @func_static_53167 0x1",
+      "purpose": "solid collision against a spawned complex brush static with mixed trim materials",
+      "runtime": {
+        "origin": [
+          64,
+          -1440,
+          218
+        ],
+        "absolute_bounds": [
+          [
+            -3.00656,
+            -1442,
+            192.993
+          ],
+          [
+            131.007,
+            -1439,
+            243.007
+          ]
+        ],
+        "linked": true,
+        "enabled": true,
+        "clip_contents": "0x00000001"
+      },
+      "input_digest": "8829a748",
+      "receipts": {
+        "generated_log": {
+          "bytes": 1842543,
+          "sha256": "5fd728934ae6dc28bcecbcf9aaee643f6fc098ba425549d20744899d6d2a56d2"
+        },
+        "authored_log": {
+          "bytes": 1840873,
+          "sha256": "551dd25e59bc0a0eabf3d9d786755d2308a268b879b0b7c3c3a3a42b9bcaa445"
+        },
+        "comparison_report": {
+          "bytes": 6360,
+          "sha256": "64358fa6105cf3bb784c71682b0e743201261d7fa454fdc8e44dab4fb97e5b05"
+        }
+      },
+      "result": {
+        "shared_records": 8192,
+        "input_mismatches": 0,
+        "start_contents_mismatches": 11,
+        "skip_mismatches": 11,
+        "hit_mismatches": 0,
+        "traced_pairs": {
+          "point": 4023,
+          "box": 2077
+        },
+        "hit_pairs": {
+          "point": 1641,
+          "box": 2076
+        },
+        "trajectory_mismatches": 1,
+        "contact_geometry_mismatches": 1500,
+        "metadata_mismatches": 97,
+        "metadata_only_mismatches": 26,
+        "material_pair": {
+          "generated": "textures/base_trim/gotsilvercol1",
+          "authored": "textures/base_trim/stesilverswatch",
+          "count": 97
+        },
+        "gameplay_mismatches": 1526,
+        "topology_mismatches": 1530,
+        "geometry_by_shape": {
+          "point": 0,
+          "box": 1500
+        },
+        "metadata_by_shape": {
+          "point": 0,
+          "box": 97
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "paired_records": 24576,
+    "summary_input_digest_mismatches": 0,
+    "coordinate_input_mismatches": 0,
+    "missing_records": 0,
+    "start_contents_mismatches": 11,
+    "skip_mismatches": 11,
+    "hit_mismatches": 0,
+    "trajectory_mismatches": 1,
+    "contact_geometry_mismatches": 3367,
+    "geometry_mismatches": 3367,
+    "metadata_mismatches": 97,
+    "gameplay_mismatches": 3393,
+    "topology_mismatches": 3623,
+    "point_geometry_mismatches": 0,
+    "box_geometry_mismatches": 3367,
+    "field_tolerance_mismatches": {
+      "fraction": 1,
+      "end_position": 0,
+      "contact_point": 3367,
+      "normal": 0,
+      "plane_distance": 731,
+      "contents": 0,
+      "material": 97
+    },
+    "maximum_absolute_deltas": {
+      "fraction": 0.0000133514404296875,
+      "end_position": 0.00408935546875,
+      "contact_point": 129.5416717529297,
+      "normal_component": 0.00031838813447393477,
+      "plane_distance": 129.00698852539062
+    }
+  },
+  "native_runs": {
+    "full_process_count": 6,
+    "full_exit_code_zero_count": 6,
+    "trace_rows_each": 8192,
+    "spawned_entities_each": 940,
+    "inhibited_entities_each": 0,
+    "local_player_spawned_each": true,
+    "error_lines_each": 0,
+    "fatal_lines_each": 0,
+    "smoke_process_count": 1,
+    "smoke_targets": 3,
+    "licensed_logs_published": false,
+    "restored_pc_generated_cm_sha256": "2a62ec67934e572fc0f1fed3fec572f712f103e2252eb889724f781c51daff3a",
+    "restored_prior_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "all three targets resolve to spawned, linked and enabled clip models at the same recovered origins and absolute bounds under both CMs",
+    "all three generated/authored pairs have identical summary input digests and raw trace coordinates",
+    "all 24,576 paired records have the same hit or no-hit outcome",
+    "the door clip and co-op GUI trigger have exact point results and stopping trajectories but different swept-box contact manifolds",
+    "the live brush static adds 11 point start-contents disagreements, one swept-box trajectory disagreement and 97 material-selection disagreements",
+    "the recovered MAP contains both compared trim materials; the material mismatch therefore reflects different contact selection, not a missing material name",
+    "PC dmap collision is not a fidelity-equivalent replacement for direct Xbox-authored live entity collision data",
+    "direct CM.X export is the fidelity-preserving collision source for the PC runtime overlay",
+    "the test overlay CM and root DLL were restored to exact pre-test hashes"
+  ],
+  "not_established": [
+    "door motion across time or rotating/non-identity live clip axes",
+    "trigger dispatch side effects",
+    "original-Xbox runtime trace results from an Xbox executable or hardware reference",
+    "native live-entity trace coverage for the remaining 19 co-op top-level CMs",
+    "two-peer progression, death, respawn or transitions",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or whole-campaign gameplay fidelity acceptance"
+  ]
+}
