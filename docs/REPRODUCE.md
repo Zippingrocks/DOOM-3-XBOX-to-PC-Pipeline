@@ -1,21 +1,21 @@
-# Reproduce checkpoint 007
+# Reproduce checkpoint 008
 
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `7f35412a6cf8c238ca4ca6b91e6df3fce75ce6af`
+Checkpoint implementation head: `0181311c92681e09d05adfcd104d9ed9e10117f7`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
 
-Python 3.10+ and the standard library are sufficient. Checkpoint 007 ran on
+Python 3.10+ and the standard library are sufficient. Checkpoint 008 ran on
 Python 3.11/Windows:
 
 ```powershell
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 111 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 116 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -75,6 +75,12 @@ python tools/campaign_port/decode_aas_x.py source.aas48.x converted.aas48 `
 python tools/campaign_port/doom3_campaign_port.py inspect converted.proc `
   --require-decoded --report proc-inspection.json
 ```
+
+The packed plane row stores the internal engine equation
+`normal dot point + d = 0`, but standard PC AAS text stores
+`idPlane::Dist() == -d`. The decoder must negate the packed fourth float.
+A direct copy can still parse while sending native point-to-area lookup into
+the wrong BSP leaves, so keep the nonzero-distance tests enabled.
 
 Repeat over all 20 `xc_` archive pairs. Expected checkpoint-004 coverage is 20
 MAP reports, 20 PROC reports, 20 AAS48 reports and six AAS96 reports. Every PROC
@@ -177,6 +183,7 @@ python tools/campaign_port/build_runtime_overlay.py `
   --def-preference info.def `
   --runtime-classname player_doommarine1_coop `
   --runtime-classname player_doommarine2_coop `
+  --runtime-resource-list tools/campaign_port/profiles/xc_mars_city1_1.resources `
   --runtime-resource guis/hud.gui `
   --runtime-resource dds/guis/assets/health/hspike1.dds `
   --runtime-resource dds/guis/assets/hud/TipBorder.dds `
@@ -190,6 +197,7 @@ python tools/campaign_port/build_runtime_overlay.py `
   --runtime-material guis/live/assets/FriendInviteReceived `
   --runtime-material guis/live/assets/FriendOnline `
   --runtime-material guis/live/assets/GameInviteReceived `
+  --generate-empty-efx `
   --out game/campaign_port_work/overlay-xc_mars_city1_1
 ```
 
@@ -203,9 +211,11 @@ python tools/campaign_port/aas_route_audit.py converted.aas48 `
   --start=-3392,-3265,184 --goal=-3592,-2952,208 --travel-flags 2
 ```
 
-Checkpoint 005 finds walk-only routes for all five warned first-map NPC/path
-pairs. This is static graph evidence only; dynamic door and obstacle behavior
-must be retested with the reconstructed source DLL.
+The auditor reads PC text planes as `normal dot point - distance`. Checkpoint
+008 corrected both that convention and the exporter's opposite sign error.
+On the corrected first-map AAS, the native engine resolves the diagnosed points
+and emits zero AI path warnings. Static graph output still does not replace
+native bounds, obstacle and gameplay validation.
 
 For clean-room executable work, `xbe.py info`, `xrefs`, `refs`, `calls`,
 `dwords` and `disasm` operate read-only. Code-inspection commands require the
@@ -221,7 +231,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 111-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 116-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
@@ -229,13 +239,30 @@ msbuild vendor/doom3-gpl/neo/game.vcxproj /m /t:Build `
   /p:Configuration=Release /p:Platform=Win32 /v:minimal
 ```
 
-The exact DLL used for the checkpoint-007 native run came from source commit
-`243dbafe867d9c89ab48cb56e17bdc05c69ab704`, Actions run `38527277656`,
-artifact `11876766170`. Verify the artifact ZIP SHA-256 as
-`76e80fe9a5bbb9b3f4cf5661a0916a46f87b279ebe0ce73f03d5d87131606ed8`
+Checkpoint-008 head commit `0181311c92681e09d05adfcd104d9ed9e10117f7`
+passed both jobs in Actions run `38532475190`; its 116-test Python job and
+complete Win32 DLL build succeeded. Artifact `11878578712` has ZIP SHA-256
+`f6a237f9a43767f072145157e25e74550e2e27713a5fb96a55fbab33916bd76d`.
+Its members are: `gamex86.dll`, 2,723,328 bytes, SHA-256
+`5295d1ba626e319d1ee94d5d3b6483e6d4fe700716230fee8a8b33585b5341b8`;
+`Game.pdb`, 17,551,360 bytes, SHA-256
+`6abf58f6673ea64fe978f82cfd58a4fb04b3ee60e0ffac53b1dcb1af365204bc`;
+and `gamex86.map`, 2,211,963 bytes, SHA-256
+`4b24b9db4187bc542f568660db45bee5e81ed00d274350b3ee18f40f99422f9a`.
+This head artifact is CI evidence and was not substituted into the native run.
+
+The exact diagnostic DLL used for the checkpoint-008 native run came from
+source commit `a60a42a07152fc77ca47f2b2de920aff85372636`, Actions run
+`38531204632`, artifact `11877622996`. Verify the artifact ZIP SHA-256 as
+`70d1c1b7af5655c881940eebeebd019e26014ffc23cd68a2038b41de9387aec2`
 and `gamex86.dll` as
-`815c4a2238bb49dc52e5090913d6d216d898d0fe5d007fe9246424ae3bc6c011`.
-The matching PDB and linker map hashes are recorded in the checkpoint receipt.
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`
+(2,723,328 bytes). Its PDB SHA-256 is
+`499b49f822ab98700cf0f41bd5f7e752d4185355eabc5f7e03c0963478c37cb0`
+and linker-map SHA-256 is
+`bb6a6ddd3b99c6bab5db3dd4593bf6e383eb923d20d8ffdd28fe550cae56aef7`.
+Later commits through the checkpoint head change Python tools, tests and
+documentation; they do not change the runtime diagnostic code.
 
 Doom 3's non-pure loader prefers a DLL in a PK4 over a loose DLL in the mod
 directory and will overwrite the latter in `fs_savepath`. For a local
@@ -247,18 +274,22 @@ Use the generated overlay as a local mod and start an actual COOP listen server,
 rather than using the single-player `map` command:
 
 ```powershell
-.\Doom3.exe +set fs_game xbox_coop_port_test_v3 `
+.\Doom3.exe +set fs_game xbox_coop_port_test_v5 `
   +set com_allowConsole 1 +set logFile 2 +set r_fullscreen 0 +set r_mode 3 `
   +set s_noSound 1 +set si_pure 0 +set si_gameType COOP `
   +set si_map vv/xbox_coop/xc_mars_city1_1 `
-  +spawnServer +wait 600 +quit
+  +set g_xboxCoopPathDiagnostics 1 +spawnServer +wait 600 +quit
 ```
 
-Expected checkpoint-007 result: process exit 0; 940 entities spawned; zero
-inhibited; `Server: Player joined the game.`; no missing spawnclass/image,
-unknown GUI command, unknown material token, `ERROR` or `FATAL` line. Verify
-`qconsole.log` SHA-256 as
-`618a4760af9645928c5a090195e5da08e4b36ccc5481f975f2154878f3776675`.
-The five unique AI path warnings remain actionable. Static routes only prove
-graph connectivity; diagnose runtime area selection, bounds, obstacles and
-script timing before editing the recovered AAS.
+Expected checkpoint-008 result: process exit 0; 940 entities spawned; zero
+inhibited; `Server: Player joined the game.`; zero missing images, models,
+animations or sounds; zero spawnclass, GUI-command or material-token failures;
+zero AI path warnings; zero path-diagnostic failures; and zero `ERROR` or
+`FATAL` lines. The remaining 26 warning lines are stock/global noise
+(duplicate pre-existing materials, undefined `s_driver`, and no deathmatch
+spawn). Verify `qconsole.log` SHA-256 as
+`f3c849a836ca6964a60ffeb6358cc4268c1423ddff8ff4a64bbf831edae3b8da`,
+the corrected first-map AAS48 as
+`aa4448e1abca303022f6e4efa6c61ced42a0445781a522ec5385488b78821168`,
+and the overlay manifest as
+`f2b9787ef8ec8823022de2bf6f502d08c3ec74c2a7dc6787b5f2975f7a24889e`.
