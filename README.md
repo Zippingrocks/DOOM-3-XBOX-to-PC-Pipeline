@@ -14,7 +14,34 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 011
+## Current checkpoint: 012
+
+**Live spawned-entity collision now proves that PC-`dmap` output is not a
+fidelity-equivalent substitute for direct Xbox-authored CM.X.**
+
+The hidden collision oracle can now target `@entity`. It resolves the spawned
+entity's clip model, origin, axis, absolute bounds, contents and linked/enabled
+state, then queries the collision manager at that real runtime placement. The
+input digest binds all of that context while intentionally excluding numeric
+collision handles, whose ordering differs between generated and authored CMs.
+
+Three first-map live entities were compared with 4,096 point and 4,096
+player-hull samples per CM: `doorClip_1`,
+`trigger_coop_enablegui_2` and `func_static_53167`. All targets were linked
+and enabled at the recovered MAP origins. All 24,576 record pairs used identical
+inputs and agreed on hit/no-hit outcomes. Nevertheless, they contain 3,393
+gameplay mismatches: 3,367 contact-manifold differences, one stopping-trajectory
+difference and 97 material-selection differences. The live static also has 11
+point start-contents disagreements. Door and trigger point results and stopping
+trajectories are exact, but their swept player-hull contact manifolds are not.
+
+This promotes direct decoded CM.X from a candidate to the required
+fidelity-preserving collision payload for the PC overlay. It does not yet prove
+door motion over time, trigger side effects, rotated clip axes, original-Xbox
+runtime behavior, two-peer behavior or the remaining 19 co-op map CMs. Full
+machine-readable receipts are in [`evidence/checkpoint-012.json`](evidence/checkpoint-012.json).
+
+## Previous checkpoint: 011
 
 **The native collision oracle now covers explicit gameplay masks, exact hulls
 and named collision models. Direct authored CM.X remains required even where
