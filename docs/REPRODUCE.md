@@ -3,7 +3,7 @@
 ## Source and boundary
 
 Implementation repository: `Zippingrocks/doom3-gpl-xbox-reconstruction`.
-Checkpoint implementation head: `df466ea0c02da92f664c240cb3929c20716c7099`
+Checkpoint implementation head: `dd62b41dbeca3755c3770d0c2c9b7d72499154d4`
 on branch `campaign-port-xdvdfs-mapx`. Use an authenticated clone because the
 repository is private. Preserve existing work; use an isolated worktree if the
 checkout is dirty.
@@ -15,7 +15,7 @@ Python 3.11/Windows:
 python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
-Expected result at this checkpoint: 135 tests, zero failures. Fixtures contain
+Expected result at this checkpoint: 136 tests, zero failures. Fixtures contain
 no retail game data. Tests establish decoder contracts, not campaign fidelity.
 
 Keep licensed inputs and generated outputs below ignored local directories such
@@ -275,7 +275,7 @@ acceptance.
 ## Source-DLL validation
 
 The implementation branch contains
-`.github/workflows/campaign-port-validation.yml`. It runs the 135-test Python
+`.github/workflows/campaign-port-validation.yml`. It runs the 136-test Python
 suite and builds the complete Win32 game DLL:
 
 ```powershell
