@@ -1,0 +1,122 @@
+{
+  "checkpoint": "008",
+  "date": "2026-10-14",
+  "scope": "first co-op map corrected-AAS native navigation and dependency-closure gate",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "implementation": {
+    "repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+    "branch": "campaign-port-xdvdfs-mapx",
+    "head": "0181311c92681e09d05adfcd104d9ed9e10117f7",
+    "workflow_run_id": 38532475190,
+    "workflow_run_url": "https://github.com/Zippingrocks/doom3-gpl-xbox-reconstruction/actions/runs/38532475190",
+    "jobs": {
+      "python-tools": "success",
+      "game-dll": "success"
+    },
+    "unit_tests": {
+      "python": "3.11",
+      "count": 116,
+      "failures": 0
+    }
+  },
+  "head_build_artifact": {
+    "name": "campaign-port-gamex86",
+    "artifact_id": 11878578712,
+    "zip_sha256": "f6a237f9a43767f072145157e25e74550e2e27713a5fb96a55fbab33916bd76d",
+    "dll_bytes": 2723328,
+    "dll_sha256": "5295d1ba626e319d1ee94d5d3b6483e6d4fe700716230fee8a8b33585b5341b8",
+    "pdb_bytes": 17551360,
+    "pdb_sha256": "6abf58f6673ea64fe978f82cfd58a4fb04b3ee60e0ffac53b1dcb1af365204bc",
+    "map_bytes": 2211963,
+    "map_sha256": "4b24b9db4187bc542f568660db45bee5e81ed00d274350b3ee18f40f99422f9a",
+    "runtime_tested": false
+  },
+  "runtime_tested_artifact": {
+    "source_commit": "a60a42a07152fc77ca47f2b2de920aff85372636",
+    "workflow_run_id": 38531204632,
+    "artifact_id": 11877622996,
+    "zip_sha256": "70d1c1b7af5655c881940eebeebd019e26014ffc23cd68a2038b41de9387aec2",
+    "dll_bytes": 2723328,
+    "dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34",
+    "pdb_sha256": "499b49f822ab98700cf0f41bd5f7e752d4185355eabc5f7e03c0963478c37cb0",
+    "map_sha256": "bb6a6ddd3b99c6bab5db3dd4593bf6e383eb923d20d8ffdd28fe550cae56aef7",
+    "runtime_tested": true,
+    "note": "Later commits through the implementation head change Python conversion, audit tests and documentation; the head build is recorded separately and was not substituted into this native receipt."
+  },
+  "runtime_input": {
+    "map": "vv/xbox_coop/xc_mars_city1_1",
+    "overlay_manifest_sha256": "f2b9787ef8ec8823022de2bf6f502d08c3ec74c2a7dc6787b5f2975f7a24889e",
+    "manifest_payload_records": 374,
+    "copied_runtime_resources": 336,
+    "generated_efx_files": 1,
+    "compatibility_transform_records": 9,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0,
+    "map_sha256": "4ed7f6ab6ae6d11146a9905ab6b26ba2e50cfe03e65bcba83a9428d687ecf5fc",
+    "aas48_sha256": "aa4448e1abca303022f6e4efa6c61ced42a0445781a522ec5385488b78821168",
+    "script_sha256": "80bcd004ccf412069ecf1031c88735aa614be4830c16797ceb5ea75cdbba48dd",
+    "player_def_sha256": "d415964ac5916caa232169d7189bbbf52580c58f1dea6474c166220dd1fd0db9",
+    "hud_gui_sha256": "79f148ca748e862b74033aa08d625e36a2dfc96b2777bf8d0475bf03bdc69412",
+    "runtime_resource_ledger_entries": 329,
+    "runtime_resource_ledger_sha256": "509eebdcc47a6cae423df3b92b81a075147dafee50c9227335af4b9cfa94f880"
+  },
+  "aas_corpus": {
+    "corrected_outputs": 26,
+    "aas48_outputs": 20,
+    "aas96_outputs": 6,
+    "total_output_bytes": 19806119,
+    "decode_reports": 26,
+    "first_map_aas48_sha256": "aa4448e1abca303022f6e4efa6c61ced42a0445781a522ec5385488b78821168"
+  },
+  "root_cause": {
+    "xbox_packed_plane": "in-memory idPlane (a,b,c,d), evaluated as normal dot point + d",
+    "pc_text_plane": "idPlane::Dist(), equal to -d and loaded through SetDist",
+    "original_export_error": "copied packed internal d directly into the PC text distance field",
+    "original_auditor_error": "evaluated the PC text value as internal d, masking the exporter error offline",
+    "correction": "negate packed d on export and evaluate standard text as normal dot point - distance",
+    "regression_coverage": "nonzero plane-distance fixtures in decoder and route-auditor tests"
+  },
+  "native_result": {
+    "process_exit_code": 0,
+    "spawned_entities": 940,
+    "inhibited_entities": 0,
+    "local_player_join_observed": true,
+    "join_line": "Server: Player joined the game.",
+    "could_not_spawn_warnings": 0,
+    "missing_image_warnings": 0,
+    "missing_model_warnings": 0,
+    "missing_animation_warnings": 0,
+    "missing_sound_warnings": 0,
+    "unknown_gui_script_commands": 0,
+    "unknown_material_tokens": 0,
+    "ai_path_warnings": 0,
+    "failed_path_diagnostics": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "total_warning_lines": 26,
+    "warning_scope": "stock/global duplicate-material, undefined s_driver and no-deathmatch-spawn noise",
+    "qconsole_bytes": 16938,
+    "qconsole_sha256": "f3c849a836ca6964a60ffeb6358cc4268c1423ddff8ff4a64bbf831edae3b8da"
+  },
+  "established": [
+    "the checkpoint head passes 116 Python tests and a complete Win32 game-DLL build",
+    "all 26 recovered AAS.X files were regenerated with the corrected PC plane-distance convention",
+    "the exact runtime-tested DLL and corrected first-map AAS start a true COOP listen server",
+    "the local networked player joins and all 940 entities instantiate",
+    "the five checkpoint-007 navigation failures disappear with corrected AAS plane serialization",
+    "the bounded first-map run has zero missing image, model, animation or sound warnings",
+    "three unshipped Xbox inventory-icon references are handled by exact path-scoped, manifest-recorded compatibility transforms"
+  ],
+  "not_established": [
+    "a second distinct peer or two-peer synchronization",
+    "full first-segment encounter, checkpoint, death/respawn or transition behavior",
+    "native runtime navigation acceptance for the remaining 25 AAS products",
+    "direct CM.X decoding or Xbox-equivalent collision",
+    "all-map runtime dependency closure",
+    "solo campaign closure",
+    "visual or gameplay fidelity acceptance"
+  ]
+}
