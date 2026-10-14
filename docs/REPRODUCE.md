@@ -13,9 +13,61 @@ python -m unittest discover -s tools/campaign_port/tests -v
 ```
 
 Expected result on the current branch: 147 tests, zero failures. Checkpoint 012
-captured 142 passing tests; five later synthetic tests cover authored-CM overlay
-selection, identity rejection and path-independent material receipts. Fixtures contain no retail game data.
+captured 142 passing tests; six later synthetic tests cover authored-CM overlay
+selection, identity rejection, path-independent material receipts and the exact
+unshipped armor-shard map-icon transform. Fixtures contain no retail game data.
 Tests establish decoder contracts, not campaign fidelity.
+
+### Checkpoint 015 corrected second-map closure
+
+Do not use the checkpoint-014 AAS48 hash
+`9778ae62f8d9e937afa7d89bc1e4a856dcf6ceac2e97daf8f926ae93dfa908a9`.
+It is an obsolete pre-plane-distance-fix output. Select the regenerated file:
+
+```powershell
+Get-FileHash game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_1.aas48 -Algorithm SHA256
+python tools/campaign_port/aas_route_audit.py `
+  game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_1.aas48 `
+  --start=-956,-1456,128.25 --goal=-808,-1472,128 `
+  --travel-flags 0x400002
+```
+
+Expected SHA-256 is
+`6e9f0b2cbd8981c3117cb20e029d390c4aa792fd449aad64ae3d241f0f70338e`;
+expected route is areas `41,39,38,37,35,34`.
+
+Build the city2 overlay with the same roots and explicit HUD/material arguments
+used below, but add the shared profile:
+
+```powershell
+python tools/campaign_port/build_runtime_overlay.py `
+  --map game/campaign_port_work/converted/maps/vv/xbox_coop/xc_mars_city2_1.map `
+  --converted-dir game/campaign_port_work/converted/maps/vv/xbox_coop `
+  --runtime-classname player_doommarine1_coop `
+  --runtime-classname player_doommarine2_coop `
+  --runtime-resource-list tools/campaign_port/profiles/xbox_coop_player.resources `
+  --authored-cm game/campaign_port_work/authored-cm/maps/vv/xbox_coop/xc_mars_city2_1.cm `
+  --out game/campaign_port_work/overlay-xc_mars_city2_1
+```
+
+The profile has 229 entries and SHA-256
+`054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7`.
+The builder must record 15 exact
+`disable-unshipped-map-inventory-icon` edits for the unshipped armor-shard
+image. Verify the absence against all campaign/MP GFC inventories and both
+shared-assets inventories before applying that transform to another source
+set.
+
+The resulting manifest has 279 file records, 21,649,981 payload bytes,
+137,760 manifest bytes and SHA-256
+`dd71366abf46be7cc3caa1139cfd50e99938dde726509fe8e3083f01ec24c465`.
+With the original Xbox declarations and the isolated checkpoint-014 null-guard
+control-flow diagnostic, the bounded true-`COOP` run must produce exit 0,
+1,110 spawned, zero inhibited, a joined player, and no missing-resource,
+skeleton, path, `ERROR` or `FATAL` line. Its qconsole SHA-256 is
+`3274fabe44fb0a6a78ed5062cf3d4b93420dd6219329007b768afc64a13ed943`.
+Repeat this run with the normally rebuilt source DLL before accepting engine
+integration; the diagnostic binary is not distributable.
 
 ### Checkpoint 014 second-map receipt
 

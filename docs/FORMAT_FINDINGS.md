@@ -1,5 +1,36 @@
 # Format findings and unknowns
 
+## Checkpoint 015 second-map closure findings
+
+Checkpoint 014 selected the 691,857-byte AAS48 with SHA-256
+`9778ae62f8d9e937afa7d89bc1e4a856dcf6ceac2e97daf8f926ae93dfa908a9`.
+That file predates the established packed-plane distance correction. At the
+only native path failure observed after player creation, both the zsec origin
+`(-956,-1456,128.25)` and `path_corner_28` at `(-808,-1472,128)` resolve to
+area zero. It is rejected, not an alternate acceptable navigation payload.
+
+The corrected export has SHA-256
+`6e9f0b2cbd8981c3117cb20e029d390c4aa792fd449aad64ae3d241f0f70338e`.
+The route auditor resolves the same endpoints to areas 41 and 34 and finds the
+six-area route `41→39→38→37→35→34` under travel flags `0x400002`. Native Doom 3
+then emits neither the path warning nor a failed `XBOX_COOP_PATH_DIAG` line.
+
+The inherited player closure is now separated from map-specific assets. The
+229-entry `xbox_coop_player.resources` profile contains shared player AF, HUD
+DDS, body/head meshes, player animations, weapon view/world animations and two
+player weapon loops. It deliberately excludes the first map's NPC, dialogue,
+ambient and cinematic data. This removes every checkpoint-014 player model,
+animation, AF, HUD and `Hips`-joint failure.
+
+`guis/assets/hud/items/armor_shard.tga` is absent from all recovered campaign
+and multiplayer GFC inventories and both shared-assets inventories. The stock
+PC `item_armor_shard` likewise omits that icon. The overlay transform therefore
+comments only the exact `inv_icon` epair on 15 affected city2 entities and
+records input/output MAP hashes; classname, model and pickup behavior remain
+unchanged. With corrected AAS, this closure and the checkpoint-014 control-flow
+guard, the native run spawns 1,110/0, joins the player, and reports zero
+missing-resource, skeleton, path, error or fatal lines.
+
 ## Checkpoint 014 second-map and instant-hit findings
 
 `xc_mars_city2_1` independently reproduces the direct-CM export contract. Its

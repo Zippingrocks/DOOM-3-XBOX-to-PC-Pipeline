@@ -1,0 +1,128 @@
+{
+  "checkpoint": "015",
+  "date": "2026-10-14",
+  "scope": "second co-op map corrected navigation and shared player runtime closure",
+  "source_identity": {
+    "disc": "Doom 3 USA/Asia Limited Collector's Edition",
+    "iso_sha256": "444460aab24b6df9e4cf7bd9bc442f2c95d675f44d1022f0242818813eb7d20e"
+  },
+  "map": {
+    "name": "vv/xbox_coop/xc_mars_city2_1",
+    "geometry_crc": 3219770337,
+    "decoded_map_sha256": "a194564447251774131297325e1892f156890e8c5ccc0d90ea410459367c1f16",
+    "direct_cm_sha256": "dfbebaf505573f89050d3f0b4c2f3ded68ec17de79074d7a9f944a7d2b75999f",
+    "decoded_proc_sha256": "b0232a57f52f4e517230e90511bb2c9a17795c3eb149e2d37cbddfc1a473345c"
+  },
+  "navigation": {
+    "rejected_pre_plane_fix_aas48": {
+      "bytes": 691857,
+      "sha256": "9778ae62f8d9e937afa7d89bc1e4a856dcf6ceac2e97daf8f926ae93dfa908a9",
+      "native_diagnostic": {
+        "actor": "monster_zsec_machinegun_15",
+        "goal": "path_corner_28",
+        "start": [
+          -956,
+          -1456,
+          128.25
+        ],
+        "goal_point": [
+          -808,
+          -1472,
+          128
+        ],
+        "start_area": 0,
+        "goal_area": 0,
+        "route_found": false
+      },
+      "disposition": "rejected; this was an obsolete pre-plane-distance-fix corpus output mistakenly staged in checkpoint 014"
+    },
+    "corrected_aas48": {
+      "bytes": 691857,
+      "sha256": "6e9f0b2cbd8981c3117cb20e029d390c4aa792fd449aad64ae3d241f0f70338e",
+      "offline_route_audit": {
+        "start_area": 41,
+        "goal_area": 34,
+        "travel_flags": 4194306,
+        "route_found": true,
+        "route_area_count": 6,
+        "route": [
+          41,
+          39,
+          38,
+          37,
+          35,
+          34
+        ]
+      },
+      "native_result": "zero AI path warnings and zero XBOX_COOP_PATH_DIAG failures in the bounded run"
+    }
+  },
+  "player_runtime_profile": {
+    "path": "tools/campaign_port/profiles/xbox_coop_player.resources",
+    "bytes": 13217,
+    "entries": 229,
+    "sha256": "054ada1a04e2bcc6abd6aaae63a40ef8589e3af08a878c098cbd2ed6baa6ddd7",
+    "scope": "shared player AF, HUD DDS, body/head meshes, player animations, view/world weapon animations, and player weapon loops",
+    "exclusions": "map-specific NPC meshes/animations, dialogue, ambience, and cinematics",
+    "regression_suite": {
+      "tests": 148,
+      "result": "pass"
+    }
+  },
+  "absent_armor_shard_icon": {
+    "resource": "guis/assets/hud/items/armor_shard.tga",
+    "evidence": "absent from all recovered campaign/MP GFC inventories and both shared-assets inventories; stock PC item definition omits the icon",
+    "map_epairs_disabled": 15,
+    "transform_kind": "disable-unshipped-map-inventory-icon",
+    "original_map_sha256": "a194564447251774131297325e1892f156890e8c5ccc0d90ea410459367c1f16",
+    "staged_map_sha256": "ae44f5ec94584999015a87a6f21c41f7eacc93b6b9638bd2b7753c8729e29c92",
+    "gameplay_effect": "none; only the unresolved inventory-image epair is commented, while classname, model, amount and pickup behavior remain unchanged"
+  },
+  "overlay": {
+    "local_profile": "xbox_coop_port_test_city2_v5",
+    "file_records": 279,
+    "copied_runtime_resources": 236,
+    "payload_bytes": 21649981,
+    "manifest_bytes": 137760,
+    "manifest_sha256": "dd71366abf46be7cc3caa1139cfd50e99938dde726509fe8e3083f01ec24c465",
+    "collision_source": "direct-authored-cm",
+    "compatibility_transform_records": 8,
+    "unresolved_resources": 0,
+    "unresolved_classnames": 0
+  },
+  "native_bounded_run": {
+    "dll_status": "isolated checkpoint-014 null-guard control-flow diagnostic; normal source rebuild still required",
+    "diagnostic_dll_sha256": "426af4d3ba58514d4a898f665dbf82eb856d8f08229966e4f6a9c2f0cb24ff71",
+    "original_instant_hit_values_preserved": true,
+    "process_exit_code": 0,
+    "spawned_entities": 1110,
+    "inhibited_entities": 0,
+    "local_player_joined": true,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_resource_lines": 0,
+    "player_skeleton_errors": 0,
+    "ai_path_warnings": 0,
+    "warning_lines": 32,
+    "unique_warning_lines": 15,
+    "warning_scope": "stock duplicate materials, gamma-ramp failure, undefined s_driver, two overlapping location labels, and absent deathmatch spawn",
+    "qconsole_bytes": 17513,
+    "qconsole_sha256": "3274fabe44fb0a6a78ed5062cf3d4b93420dd6219329007b768afc64a13ed943",
+    "post_run_root_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "established": [
+    "the corrected plane-distance AAS48 replaces the obsolete checkpoint-014 copy and resolves the diagnosed zsec route both offline and in the native engine",
+    "the reusable player resource profile removes every missing model, animation, AF and HUD dependency observed in checkpoint 014 without importing first-map NPC or cinematic assets",
+    "all 1110 entities spawn with none inhibited and the local co-op player joins without skeleton, missing-resource, path, error or fatal lines",
+    "the absent armor-shard icon is a source-archive omission handled by an exact, manifest-recorded presentation-only compatibility transform"
+  ],
+  "not_established": [
+    "a reviewed AI.cpp source guard and normally rebuilt game DLL",
+    "dynamic instant-hit combat under the rebuilt source DLL",
+    "whole-map progression or transition to xc_mars_city2_2",
+    "two-peer co-op behavior",
+    "original-Xbox runtime equivalence",
+    "the remaining 18 co-op segments or the solo campaign"
+  ]
+}
+

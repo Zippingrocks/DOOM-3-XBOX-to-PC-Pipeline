@@ -1,5 +1,27 @@
 # Recovery order and acceptance
 
+## Checkpoint 015 second-map closure status
+
+The second-map packaging and bounded loader/spawn gates now pass. The accepted
+navigation payload is the corrected plane-distance AAS48, not the obsolete
+checkpoint-014 copy. The diagnosed zsec route resolves offline through areas
+`41→39→38→37→35→34`, and the corresponding native warning disappears.
+
+The shared player profile closes all inherited model, animation, AF, skeleton
+and HUD dependencies without pulling in first-map NPC or cinematic data. The
+only nonexistent requested image is the armor-shard inventory icon; archive
+inventories prove it was not shipped, and an exact receipt-bearing transform
+removes only that presentation epair. The final local overlay has 279 file
+records, zero unresolved resources/classnames, and passes all 148 tests.
+
+Under the isolated null-guard control-flow diagnostic with original
+`net_instanthit` declarations, true `COOP` spawns all 1,110 entities, inhibits
+none, joins the player, and emits zero missing-resource, skeleton, AI-path,
+error or fatal lines. This accepts the resource and navigation closure, not the
+game DLL: the next hard gate remains a reviewed `AI.cpp` null guard, normal
+rebuild, and repetition of the same result. Combat, whole-segment progression,
+transition and two-peer behavior remain unaccepted.
+
 ## Checkpoint 014 second-map status
 
 The second co-op segment has passed structural export and the native compiled-

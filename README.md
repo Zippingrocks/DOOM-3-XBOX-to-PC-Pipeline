@@ -14,7 +14,35 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 014
+## Current checkpoint: 015
+
+**The second co-op segment now has a complete bounded loader/spawn closure:
+all 1,110 entities spawn, none are inhibited, the co-op player joins, and the
+run has no missing-resource, skeleton, AI-path, error or fatal line.**
+
+Checkpoint 014 accidentally staged an obsolete pre-plane-fix AAS48. At the
+diagnosed zsec route it returned area zero for both endpoints. The corrected
+691,857-byte export hashes to
+`6e9f0b2cbd8981c3117cb20e029d390c4aa792fd449aad64ae3d241f0f70338e`
+and resolves areas `41→39→38→37→35→34`; the native path warning disappears.
+
+A reusable 229-entry co-op-player resource profile now supplies only shared
+AF, HUD, player-model, animation, weapon-animation and loop dependencies. It
+excludes the first map's NPC, dialogue, ambient and cinematic payload. The one
+remaining requested image, `armor_shard.tga`, does not exist in any recovered
+campaign/MP or shared Xbox GFC. An exact manifest-recorded transform comments
+only those 15 map `inv_icon` epairs, matching the stock PC item's deliberate
+omission while preserving pickup gameplay.
+
+The resulting direct-authored-CM overlay has 279 file records, zero unresolved
+resources or classnames, and a 137,760-byte manifest with SHA-256
+`dd71366abf46be7cc3caa1139cfd50e99938dde726509fe8e3083f01ec24c465`.
+The 148-test local suite passes. This bounded run still uses the isolated
+instant-hit null-guard diagnostic, so final acceptance requires the equivalent
+reviewed `AI.cpp` change and a normal DLL rebuild. Full receipts are in
+[`evidence/checkpoint-015.json`](evidence/checkpoint-015.json).
+
+## Previous checkpoint: 014
 
 **The second co-op segment now crosses the MAP/PROC/CM/AAS loader boundary,
 and its first native spawn blocker is isolated to a specific reconstructed
