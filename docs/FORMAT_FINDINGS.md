@@ -1,5 +1,54 @@
 # Format findings and unknowns
 
+
+## Checkpoint 009 CM.X collision findings
+
+Xbox CM.X is a compact little-endian serialization of runtime collision data.
+The file begins with a model count. Each model carries its name, bounds,
+contents, convex flag, vertices, 16-byte edges, a shared plane table, brushes,
+polygons and a preorder BSP. Brush sides and polygons reference the shared
+plane table. BSP nodes carry their original polygon/brush reference lists.
+Internal edge normals, primitive numbers, aggregate allocation counters and
+node references are runtime metadata; standard PC CM 1.00 text does not encode
+all of them and reconstructs its caches from collision geometry plus BSP planes.
+
+As with AAS.X, each packed plane stores internal `idPlane.d`. PC CM text stores
+`idPlane::Dist() == -d`, so both polygon and brush plane distances must be
+negated on export. Edge records accept two observed flag states (ordinary and
+internal) and two observed reserved-field states (world/static and convex trace
+models). The decoder rejects unknown flags, bad indices, unsafe names, malformed
+node preorder, duplicate model names, non-finite values, truncation and trailing
+bytes. Empty brush materials are legitimate in 258 extracted records because PC
+CM brushes export numeric contents; no polygon material is empty.
+
+A deterministic corpus audit parsed all 1,200 extracted CM.X members, representing
+391 unique SHA-256 payloads and 66,076,100 stored bytes. Across all members it
+validated 4,813 models, 428,453 vertices, 792,130 edges, 294,185 planes, 50,693
+brushes, 356,793 polygons and 381,933 BSP nodes. Every collision primitive is
+reachable from at least one Xbox BSP node, no node repeats a primitive reference,
+and no bytes remain unconsumed. The corpus receipt SHA-256 is
+`838535f1924ffa89f15bfbfb8397b705fe1178cc74ac01e88a46e6bbc974762f`;
+its path-and-payload manifest digest is
+`a4e1fd30551a26de22310c7c13085b527d9cd5e7fdbdeb35ef11a1791c3779ca`.
+
+The first co-op segment's 2,003,187-byte CM.X has SHA-256
+`bbfe12d231e229279757fe6b48fe13490cd0cc4dc6f7db44bd30f82c19b034a5`.
+With the converted MAP geometry CRC `2410032894`, it expands to a
+3,320,995-byte standard CM with SHA-256
+`35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931`.
+The PC engine loaded that file directly in 29 ms as 243 models, 15,146 vertices,
+25,468 edges, 10,005 polygons, 2,784 brushes and 7,167 nodes, then spawned all
+940 map entities and exited normally. The log SHA-256 is
+`c56451c2e4bff8cbfc6185504baa9a98a08d71c8a16ea4bdeafe2eed09dd6d08`.
+
+The PC loader reconstructed all 9,237 Xbox brush-node references. It constructed
+21,999 polygon-node references versus 22,341 references stored in the packed
+Xbox BSP. Reference-list placement is an acceleration structure rather than
+collision geometry, but the difference prevents a claim of proven trace
+equivalence. Matched trace sampling, movers/triggers, actor contacts and native
+loading for the remaining maps are required before collision fidelity can be
+accepted.
+
 ## Checkpoint 008 AAS plane serialization findings
 
 Xbox AAS.X `xboxData` stores each plane as the engine's in-memory
