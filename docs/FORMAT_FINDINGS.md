@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 063 portable-package findings
+
+An audit view is not automatically a safe test artifact. Thirty-nine of the
+41 final solo map directories are NTFS junctions to earlier accepted overlays;
+copying or archiving that tree with a junction-aware tool can preserve host
+paths, omit content or unexpectedly traverse outside the intended root. The
+package step therefore treats each overlay manifest as the sole allowlist and
+never enumerates payloads for inclusion.
+
+For every listed file, the packager verifies the source size and SHA-256,
+copies it into a temporary ordinary directory, then verifies the destination
+size and SHA-256. It copies the exact manifest bytes, excludes untracked files,
+refuses an existing destination and renames the completed stage into place.
+The resulting corpus contains no reparse points. Its independent corpus audit
+has the same per-map records and campaign-wide ledgers as the accepted
+junction-backed view.
+
+This solves portability and accidental-inclusion risk only. The package is
+local retail-derived test material and must not be committed or redistributed.
+Matching hashes do not establish native loading, rendering, collision,
+visibility, progression, save/load or gameplay fidelity.
+
 ## Checkpoint 062 campaign-matrix findings
 
 Aggregate totals can hide a missing map. The final matrix therefore compares

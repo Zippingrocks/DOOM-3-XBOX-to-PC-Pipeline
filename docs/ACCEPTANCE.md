@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 063 portable solo-package status
+
+The 41-map solo corpus is now available locally as 1,792 ordinary manifest-only
+payload files rather than a junction-backed development view. All source and
+copied bytes were hash-checked, the independent final audit reproduces both
+accepted corpus ledgers, the recursive reparse-point count is zero, and all 256
+offline tests pass.
+
+This accepts package identity and portability, not native runtime behavior.
+The 782,089,007-byte output is retail-derived local test data and is deliberately
+excluded from Git and distribution. Engine loading, collision/contact traces,
+portal visibility, encounter timing, save/load and matched Xbox visual/gameplay
+comparison remain required. Doom 3 and `dmap` were not launched while they
+could interrupt the user's game.
+
 ## Checkpoint 062 complete static-matrix status
 
 Every recovered segment appears in every applicable final offline report: 41

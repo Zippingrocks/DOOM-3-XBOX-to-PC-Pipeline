@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 062
+## Current checkpoint: 063
+
+**The complete 41-map Xbox single-player test corpus is now materialized as a
+portable ordinary-file package.** The accepted final audit view contains 39
+NTFS junctions, which are useful for deduplicated development but unsafe as a
+release/test handoff. The new fail-closed packager copies only the 1,792
+manifest-listed payloads, verifies every source and destination byte/hash, and
+copies each signed manifest into a new tree without junctions or symlinks.
+
+The 782,089,007-byte package has zero reparse points and re-audits to the exact
+accepted file ledger `629cc7d...43eecf0c` and manifest ledger
+`ee6959f0...0997178`. Untracked development files cannot enter it. All 256
+offline tests pass; Doom 3 and `dmap` were not launched. The local package is
+retail-derived test data and is not committed or redistributable. Receipt:
+[`evidence/checkpoint-063-solo-portable-package.json`](evidence/checkpoint-063-solo-portable-package.json).
+
+## Earlier checkpoint: 062
 
 **All 61 recovered campaign segments now have a fail-closed final-audit coverage
 matrix.** It cross-checks each final report's map set rather than trusting

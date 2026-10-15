@@ -1,0 +1,57 @@
+{
+  "checkpoint": "063",
+  "date": "2026-10-14",
+  "claim": "The complete accepted 41-map Xbox solo overlay corpus has been materialized as a manifest-only ordinary-file test package with identical campaign ledgers and zero reparse points.",
+  "input": {
+    "root": "work/solo-overlays-strict-v11",
+    "maps": 41,
+    "junction_map_directories": 39,
+    "ordinary_map_directories": 2,
+    "missing_junction_targets": 0
+  },
+  "package": {
+    "root": "work/solo-overlays-packaged-v1",
+    "maps": 41,
+    "payload_files": 1792,
+    "payload_bytes": 782089007,
+    "manifest_bytes": 1586596,
+    "reparse_points": 0,
+    "receipt_sha256": "5cafcda7044d056767d0278f4ec6eff18eb26f56b66b94223e401eed7e56f31d"
+  },
+  "independent_audit": {
+    "report": "work/solo-overlays-packaged-v1-audit.json",
+    "report_sha256": "e6d60236a65f1361e78c11baaa9d3b02815a6491a82bcbccfe08006c822a0b88",
+    "maps": 41,
+    "payload_files": 1792,
+    "payload_bytes": 782089007,
+    "file_ledger_sha256": "629cc7d748eeb6b57a7e3958ef8b1e294cc88b9f30bb1d8a8ea3c08c43eecf0c",
+    "manifest_ledger_sha256": "ee6959f0b4d58bd9cabaca8ebcd03c3f8806bdb608494eb51112d19ba0997178",
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "matches_accepted_root": true
+  },
+  "implementation_receipts": {
+    "package_solo_overlays_py_sha256": "d4de588ca83399d03d8a5c3ac7812e408acc7a3771227c590475bbae798c4d3d"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 256,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "distribution_boundary": {
+    "retail_derived_package_committed": false,
+    "retail_derived_package_redistributable": false,
+    "documentation_and_hash_receipts_only": true
+  },
+  "limits": [
+    "The materialized package contains local retail-derived data and must remain outside Git and public distribution.",
+    "Manifest-only packaging excludes accidental development files but does not prove native runtime selection or behavior.",
+    "Native loading, collision, visibility, lighting, gameplay, networking, save/load and visual-fidelity acceptance remain outstanding."
+  ]
+}

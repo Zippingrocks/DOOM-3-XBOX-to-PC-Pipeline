@@ -1,3 +1,33 @@
+# Reproduce checkpoint 063
+
+## Checkpoint 063: portable solo test package
+
+The accepted `work/solo-overlays-strict-v11` audit view may use NTFS junctions
+to older immutable overlay directories. Materialize a clean package from its
+manifests instead of copying that development tree wholesale:
+
+```powershell
+python -m tools.campaign_port.package_solo_overlays `
+  work/solo-overlays-strict-v11 work/solo-overlays-packaged-v1 `
+  --require-maps 41 `
+  --receipt work/solo-overlays-packaged-v1-receipt.json
+
+python -m tools.campaign_port.overlay_corpus_audit `
+  work/solo-overlays-packaged-v1 `
+  --expected-root work/solo-overlays-strict-v11 `
+  --out work/solo-overlays-packaged-v1-audit.json
+```
+
+Require 41 maps, 1,792 payload files, 782,089,007 payload bytes and zero
+junctions, symlinks or other reparse points. The resulting file ledger must be
+`629cc7d748eeb6b57a7e3958ef8b1e294cc88b9f30bb1d8a8ea3c08c43eecf0c`
+and the manifest ledger must be
+`ee6959f0b4d58bd9cabaca8ebcd03c3f8806bdb608494eb51112d19ba0997178`.
+The output path must not already exist; the tool stages to a temporary sibling
+and publishes only after all copy receipts close. Run the complete suite and
+require 256 passing tests. Do not commit or distribute the retail-derived
+package. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 062
 
 ## Checkpoint 062: complete static coverage matrix
