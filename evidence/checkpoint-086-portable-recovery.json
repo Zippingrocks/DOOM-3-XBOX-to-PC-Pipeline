@@ -33,8 +33,17 @@
     "fresh_source_clone_tests_passed": 553,
     "fresh_source_clone_plan_byte_identical": true,
     "fresh_source_clone_provenance_byte_identical": true,
+    "fresh_pipeline_clone_commit": "fce095e00e730d76b13b39c3250df7a7a5721b76",
+    "both_fresh_github_clones_verified_together": true,
+    "fresh_clones_source_tests_passed": 553,
+    "fresh_clones_pipeline_tests_passed": 6,
     "github_ci_configured": true,
-    "github_ci_result_observed_at_recording": false
+    "github_ci_result_observed_at_recording": true,
+    "github_ci_run_id": 38784945848,
+    "github_ci_first_result": "All four jobs failed at reconstruction source checkout before tests: repository not readable by pipeline default token.",
+    "github_ci_source_tests_passed": false,
+    "github_ci_read_token_configured_here": false,
+    "source_repository_visibility_changed": false
   },
   "structural_runner": {
     "default": "read-only-preflight",
@@ -78,7 +87,7 @@
     "game_inputs_opened_for_new_verification_and_tracing": 0,
     "game_steam_dmap_xemu_or_crash_helper_launches": 0,
     "private_raw_logs_dumps_or_captures_uploaded": 0,
-    "fresh_clone_contents": "Public reconstruction source only; no installed game or old ports."
+    "fresh_clone_contents": "Non-game reconstruction source and pipeline metadata only, cloned with existing authorized GitHub access; no installed game or old ports."
   },
   "not_completed": [
     "Shared-resource/initial-overlay composition directly from licensed originals without predecessors.",

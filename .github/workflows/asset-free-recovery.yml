@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: ${{ matrix.python }}
+      - name: Verify pipeline safety tests
+        run: python -E -s -B -m unittest discover -s tests -p "test_*.py" -q
       - name: Read exact source commit from metadata lock
         id: lock
         shell: python
@@ -37,15 +39,33 @@ jobs:
           assert re.fullmatch('[0-9a-f]{40}', commit)
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
               output.write('commit=' + commit + '\n')
+      - name: Check reconstruction repository read access
+        shell: python
+        env:
+          RECOVERY_READ_TOKEN: ${{ secrets.RECOVERY_SOURCE_READ_TOKEN || github.token }}
+        run: |
+          import os, sys, urllib.request, urllib.error
+          request = urllib.request.Request(
+              'https://api.github.com/repos/Zippingrocks/doom3-gpl-xbox-reconstruction',
+              headers={'Accept': 'application/vnd.github+json',
+                       'Authorization': 'Bearer ' + os.environ['RECOVERY_READ_TOKEN']})
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  assert response.status == 200
+          except urllib.error.HTTPError as error:
+              print('::error::Source repository is not readable by this workflow (HTTP ' + str(error.code) + '). '
+                    'Configure RECOVERY_SOURCE_READ_TOKEN with read-only Contents access to the reconstruction repository. '
+                    'Local verification still works with an authorized source checkout. Do not publish credentials or weaken identity checks.')
+              sys.exit(1)
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: Zippingrocks/doom3-gpl-xbox-reconstruction
           ref: ${{ steps.lock.outputs.commit }}
           path: reconstruction
           persist-credentials: false
-      - name: Verify pipeline safety tests
-        run: python -E -s -B -m unittest discover -s tests -p "test_*.py" -q
+          token: ${{ secrets.RECOVERY_SOURCE_READ_TOKEN || github.token }}
       - name: Verify pinned source, metadata-only recipe, and synthetic tests
         run: python -E -s -B tools/verify_recovery_checkout.py --source reconstruction --tests
-      # Intentionally no game data, installed-game paths, secrets, artifacts,
-      # conversions, native builds, runtime loads or uploads in this workflow.
+      # Optional source-read credential is used only for private source checkout,
+      # never persisted or printed. No game data, conversions, native builds,
+      # runtime loads or artifact uploads are part of this workflow.

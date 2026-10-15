@@ -8,6 +8,9 @@ The runner's `completed-with-witness-gaps` status is not historical equivalence
 or a final map acceptance. No retail conversion, gameplay, dmap or xemu test
 is run in this checkpoint. GitHub CI results must be checked independently;
 the presence of a workflow is not evidence that its jobs passed.
+The first four cloud jobs failed before tests because the reconstruction
+repository was inaccessible to the pipeline token. Only the fresh authorized
+local-clone result is accepted; no Windows/Linux cloud matrix pass is claimed.
 
 See [portable recovery](CHECKPOINT_086_PORTABLE_RECOVERY.md). A complete direct
 original-input composition and fresh-build payload comparison remain required.

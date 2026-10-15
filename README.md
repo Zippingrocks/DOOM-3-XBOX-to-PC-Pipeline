@@ -21,6 +21,9 @@ The pipeline now pins every recovery tool/profile and supplies one asset-free
 checkout verifier, Windows/Linux CI, and an opt-in raw structural runner in
 the source repository. The runner defaults to read-only preflight, accepts no
 old ports, and checks available output witnesses. No game data is uploaded.
+Fresh GitHub clones pass 553 source and 6 pipeline tests locally. Cloud CI
+currently needs an owner-configured read token for the private reconstruction
+repository; its initial checkout failure is documented, not reported as a pass.
 
 This strengthens the 61-map recovery path; it does not yet complete the shared
 resource/initial-overlay composition or prove final payload equivalence on a

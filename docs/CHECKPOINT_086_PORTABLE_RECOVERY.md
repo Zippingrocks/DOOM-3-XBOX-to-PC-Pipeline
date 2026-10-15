@@ -12,6 +12,10 @@ from GitHub passed the same 183-file identity check, both byte-identical
 regenerations and all 553 tests. This is a fresh **toolkit** check, not a
 fresh licensed-input game rebuild. Exact evidence is recorded in the
 [checkpoint summary](../evidence/checkpoint-086-portable-recovery.json).
+After the pipeline was pushed, a fresh clone of pipeline commit
+`fce095e00e730d76b13b39c3250df7a7a5721b76` also passed the verifier against
+that fresh source clone, plus all 553 source and 6 pipeline tests. Neither
+verification used the original working copies or any installed game inputs.
 
 ## One verification entry point in this pipeline repository
 
@@ -21,6 +25,11 @@ the reconstruction repository's older `main` branch. The source commit is a
 new continuation of `master`; checkpoint 085 remains an immutable baseline.
 
 In a fresh directory on the next machine, using Git and Python 3.10 or newer:
+
+Sign in to GitHub with an account authorized to read the reconstruction
+repository first. It was not available to an unauthenticated request during
+this checkpoint; the successful local clones used the existing signed-in
+credential manager. The public pipeline does not grant private-source access.
 
 ```powershell
 git clone https://github.com/Zippingrocks/DOOM-3-XBOX-to-PC-Pipeline.git pipeline
@@ -46,9 +55,21 @@ This command needs **zero licensed game inputs and zero old ports**. It:
 The GitHub workflow performs the same checks on Windows and Linux with Python
 3.11 and 3.12. Both third-party actions are pinned to exact official commits;
 workflow permissions are read-only, credentials are not persisted, and it does
-not upload build outputs. A configured workflow is not itself a passing run;
-consult its actual result for each pushed commit. This does not add an engine
-build matrix or license any game data for use on CI.
+not upload build outputs. **The first cloud run failed at source checkout**, not
+in the verifier/tests: the pipeline's default token could not read the source
+repository. See [the recorded run](https://github.com/Zippingrocks/DOOM-3-XBOX-to-PC-Pipeline/actions/runs/38784945848).
+No cloud matrix pass is claimed.
+
+To enable that check, a repository owner must configure the pipeline Actions
+secret `RECOVERY_SOURCE_READ_TOKEN` with read-only Contents access to the
+reconstruction repository. Do not paste the credential in chat, documentation
+or code. The workflow supports this optional token, but none was created or
+copied from the local credential manager. Repository visibility was not changed
+and private source was not republished to work around the access boundary.
+Pipeline-only synthetic tests run before the access gate; an unreadable source
+still fails explicitly rather than skipping the required proof and going green.
+Fork pull requests without that secret may therefore remain access-blocked.
+This does not add an engine build matrix or license any game data for use on CI.
 
 Do not run `tools/refresh_recovery_lock.py` to silence a mismatch. That
 maintainer-only command exists to record a deliberately reviewed, committed
