@@ -1,5 +1,30 @@
 # Recovery order and acceptance
 
+## Checkpoint 076 Xbox co-op gameplay-class acceptance
+
+The GPL PC game DLL now registers and implements the six Xbox-only co-op
+classes observed in the complete route: `idGuiSyncEntity`, `idGuiSyncDoor`,
+`idTarget_IncreaseSpawnLevel`, `idTrigger_Coop_EnableGui`,
+`idTrigger_Teleport`, and `idTurkeyPuncher`. Initial paired player spawns and
+safe-spawn fallback use the recovered co-op spawn level. GUI state and Turkey
+Puncher scores participate in snapshot replication; the shared-GUI trigger
+requires every active client; teleport selection rejects occupied destinations.
+
+The reconstructed source builds as a 32-bit Dedicated Release DLL at local
+source commit `d1ae7b2`. Its SHA-256 is
+`cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68`.
+On the unchanged accepted v21 co-op tree, all 20 segments spawned and survived
+at least 60 seconds with zero error/fatal lines, zero premature exits, and no
+abort. Minimum observed idle was 60.051 seconds and maximum load was 5.523
+seconds. Direct scanning of every new log finds zero `Could not spawn` line and
+zero missing-class line for the six types. All 319 offline tests pass.
+
+This accepts compilation, registration, map spawn and one-minute single-host
+survival of the recovered class implementation. It does not yet accept two
+simultaneous peers, trigger activation, death/respawn/rejoin, level transitions,
+save/load round trips, rendering, audio, encounter scripting, or matched Xbox
+gameplay and visual fidelity.
+
 ## Checkpoint 075 complete co-op native-loader acceptance
 
 The complete original-Xbox co-op route now passes the native loader-soak gate.

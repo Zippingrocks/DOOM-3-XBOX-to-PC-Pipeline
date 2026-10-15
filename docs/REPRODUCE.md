@@ -1,3 +1,46 @@
+# Reproduce checkpoint 076
+
+## Checkpoint 076: reconstruct and soak Xbox co-op gameplay classes
+
+Start from the id Software GPL archive whose ZIP hashes to
+`77a2d0c5de2d38c488abbe490909dc9091874e74648224861a3f15f7cbcc1039`.
+The local reconstructed source commit is `d1ae7b2`, based on archive commit
+`a873320`. Build `neo/game.vcxproj` as Win32 `Dedicated Release` with the v145
+toolset and `PreBuildEventUseInBuild=false`. The resulting `gamex86.dll` must
+be 2,430,464 bytes and hash to
+`cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68`.
+
+Run the unchanged accepted v21 co-op plan against the minimized direct GPL
+dedicated host:
+
+```powershell
+& .\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan work\campaign-native-coop-plan-v21.json `
+  -DoomExe 'work\upstream-doom3-gpl-src\DOOM-3-master\build\Win32\Dedicated Release\DOOM3.exe' `
+  -StateRoot work\coop-xbox-classes-soak-v2 `
+  -Output work\gpl-coop-xbox-classes-soak-v2.json `
+  -GameRoot '..\..' `
+  -ExpectedGameDllSha256 cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68 `
+  -Launcher Direct -MapCommand spawnServer `
+  -StartIndex 42 -EndIndex 61 -IdleSeconds 60
+```
+
+Require 20 recorded and 20 passed maps, zero failure or premature exit,
+`aborted=false`, minimum idle at least 60 seconds, and no error or fatal line.
+The accepted report hashes to
+`42145f2ce56d6302bdd373b85dbadea4b4bc7b14d4efc5c46d1676d2c3a8f49c`.
+Scan all 20 `qconsole.log` files and require zero `Could not spawn` line and
+zero class-not-found line for `idGuiSyncEntity`, `idGuiSyncDoor`,
+`idTarget_IncreaseSpawnLevel`, `idTrigger_Coop_EnableGui`,
+`idTrigger_Teleport`, or `idTurkeyPuncher`. Finally run:
+
+```powershell
+python -m unittest discover -s tools/campaign_port/tests -q
+```
+
+Require all 319 tests to pass. This gate does not replace two-peer functional
+progression or visual gameplay testing.
+
 # Reproduce checkpoint 075
 
 ## Checkpoint 075: complete 20-map co-op native soak

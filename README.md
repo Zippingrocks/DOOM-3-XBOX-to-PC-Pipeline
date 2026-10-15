@@ -14,7 +14,27 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 075
+## Current checkpoint: 076
+
+**The six Xbox-only co-op gameplay classes that were missing from the GPL PC
+DLL are reconstructed, source-built and clean across the complete 20-map
+route.** The source implementation restores paired spawn-level progression,
+networked static-GUI and door-GUI state, the all-active-player GUI trigger,
+collision-safe repeatable teleport selection, and per-player Turkey Puncher
+score replication. The exact source delta is committed locally as `d1ae7b2`
+on a pristine GPL archive baseline.
+
+The rebuilt 32-bit Dedicated Release `gamex86.dll` hashes to
+`cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68`.
+With that DLL, all 20 co-op segments loaded in minimized direct-host runs,
+reached entity spawn, idled at least 60 seconds, and exited with zero errors,
+fatals or premature exits. A second audit over every log finds zero `Could not
+spawn` line and zero missing-class line for the six reconstructed types. All
+319 offline tests still pass. This closes source registration and loader
+survival, not two-peer progression or visual/gameplay fidelity. See
+[`evidence/checkpoint-076-coop-gameplay-classes.json`](evidence/checkpoint-076-coop-gameplay-classes.json).
+
+## Earlier checkpoint: 075
 
 **The complete original-Xbox co-op route now clears the native loader-soak
 gate: 20/20 map segments each loaded and remained alive for at least 60

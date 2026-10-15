@@ -1,0 +1,70 @@
+{
+  "checkpoint": "076",
+  "date": "2026-10-15",
+  "claim": "The six Xbox-only co-op gameplay classes missing from the GPL PC DLL are reconstructed and registered; all 20 original-Xbox co-op campaign segments load on the unchanged accepted v21 tree, remain alive for at least 60 seconds, and produce no missing-class, spawn, error, or fatal line.",
+  "source": {
+    "repository": "https://github.com/Zippingrocks/doom3-gpl-xbox-reconstruction.git",
+    "local_path": "work/upstream-doom3-gpl-src/DOOM-3-master",
+    "baseline_archive_sha256": "77a2d0c5de2d38c488abbe490909dc9091874e74648224861a3f15f7cbcc1039",
+    "baseline_commit": "a873320",
+    "reconstruction_commit": "d1ae7b2",
+    "working_tree_clean": true,
+    "changed_files": 26,
+    "insertions": 698,
+    "deletions": 18
+  },
+  "reconstructed_behavior": [
+    "paired initial co-op spawn selection and safe-spawn fallback by recovered spawn_level",
+    "idTarget_IncreaseSpawnLevel strict next-authored-level progression",
+    "idGuiSyncEntity one-bit GUI parm11 snapshot replication",
+    "idGuiSyncDoor three-bit GUI state plus shader time-offset replication",
+    "idTrigger_Coop_EnableGui all-active-client contact gating",
+    "idTrigger_Teleport repeatable free-destination selection with delay and cooldown",
+    "idTurkeyPuncher per-player score commands and snapshot replication"
+  ],
+  "build": {
+    "project": "neo/game.vcxproj",
+    "configuration": "Dedicated Release",
+    "platform": "Win32",
+    "platform_toolset": "v145",
+    "prebuild_event_enabled": false,
+    "exit_code": 0,
+    "game_dll_bytes": 2430464,
+    "game_dll_sha256": "cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68",
+    "previous_game_dll_sha256": "96b4cd946f460bc99434544565d84ce6882fcd7768149acdffacd0dda8a3b7f9",
+    "previous_game_dll_backup": "work/checkpoint-076-gamex86-before-xbox-classes.dll"
+  },
+  "native_soak": {
+    "report": "work/gpl-coop-xbox-classes-soak-v2.json",
+    "report_sha256": "42145f2ce56d6302bdd373b85dbadea4b4bc7b14d4efc5c46d1676d2c3a8f49c",
+    "plan_sha256": "8df2575ade4bf3a5ee1ad45922e76b643295d47ff1f47363abbcc8fe31bcd454",
+    "route_rows": "42-61",
+    "maps_recorded": 20,
+    "maps_passed": 20,
+    "maps_failed": 0,
+    "minimum_idle_seconds_observed": 60.051,
+    "maximum_load_seconds": 5.523,
+    "premature_exits": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "aborted": false,
+    "window_mode": "minimized",
+    "launcher": "direct"
+  },
+  "log_audit": {
+    "logs_scanned": 20,
+    "could_not_spawn_lines": 0,
+    "reconstructed_class_not_found_lines": 0
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 319,
+    "failed": 0
+  },
+  "limits": [
+    "This proves source compilation, registration, map spawn and one-minute single-host survival, not activation of every recovered behavior.",
+    "Two simultaneous peers, spawn-level advancement, death/respawn/rejoin, teleport occupancy, shared-GUI contact, Turkey Puncher scoring, transitions and save/load still require functional gameplay tests.",
+    "Remaining skeleton, resource, rendering, audio, encounter and visual-fidelity warnings are outside this checkpoint.",
+    "The source and evidence commits are local because the configured GitHub remotes are not authenticated in this environment."
+  ]
+}
