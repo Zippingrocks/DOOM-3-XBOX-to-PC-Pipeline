@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 074 co-op loader-closure status
+
+The current v21 tree closes all three observed co-op loader failure families.
+MCU, Delta 2B part 2 and Hellhole each spawned, survived a ten-second focus
+idle and recorded zero errors or fatals on the same host/DLL pair. Hellhole's
+ending resources now form one 50-joint family and the four missing camera paths
+are reconstructed from the exact Xbox export ranges of the shared retail take.
+
+Static integrity is also clean: 20 direct-authored CMs, zero unresolved
+class/resource/string, and a 1,015-file isolated tree with no missing companion,
+duplicate declaration/material, untracked file or reparse point. All 319 tests
+pass. Acceptance still requires the fresh 20-map, 60-second sweep and closure
+of warned Xbox-only co-op spawnclasses; visual, progression and two-peer gates
+remain open.
+
 ## Checkpoint 073 co-op loader-blocker status
 
 Two independently reproduced co-op crash families now have source-bound fixes

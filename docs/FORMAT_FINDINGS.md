@@ -1,5 +1,20 @@
 # Format findings and unknowns
 
+## Checkpoint 074 split-cinematic reconstruction findings
+
+The Xbox Hellhole DEF preserves exact Maya export ranges even though its four
+camera files are absent as standalone recovered members. Those ranges map back
+to the same retail PC take: Xbox B/C/D exactly equal PC F/H/I, while Xbox A is
+frames 237-275 from PC D followed by PC E's 276-340. Camera samples can be
+joined directly. The analogous player A segments use different sparse
+component masks, so each pose must first be expanded to all six MD5 components
+per joint before concatenation; copying component arrays would corrupt poses.
+
+The recovered cinematic Cyberdemon animations are 50-joint Xbox data and must
+not use the stock PC cinematic mesh. Mesh, bind pose and all four tracks now
+live under one private Xbox prefix. The frame counts then align exactly across
+camera, Cyberdemon and player: 104, 32, 120 and 252.
+
 ## Checkpoint 073 inherited-model and replay findings
 
 Replacing an inherited model mesh is not sufficient on the PC host. Doom 3's

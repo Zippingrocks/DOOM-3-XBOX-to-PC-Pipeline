@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 073
+## Current checkpoint: 074
+
+**Every co-op map that exposed a native loader failure now passes on one current
+audited tree.** MCU, Delta 2B part 2 and Hellhole each spawned on the minimized
+direct GPL-dedicated host, idled at least ten seconds and exited with zero
+error/fatal lines. Hellhole now keeps its Imp and 50-joint cinematic Cyberdemon
+families private and coherent. Its missing four-part ending camera is recovered
+from the Xbox DEF's exact export ranges over the same stock retail Maya take;
+camera, Cyberdemon and player segments align at 104/32/120/252 frames.
+
+The v19b corpus contains 6,122 payload files, all 20 direct-authored CMs and
+zero unresolved dependency or untracked file. The isolated v21 tree has 1,015
+files and no missing companion, duplicate declaration/material or reparse
+point. All 319 offline tests pass. This closes the observed loader blockers,
+not the route: one fresh 20-map run with at least 60 seconds idle per map is
+now underway, after which warned Xbox-only spawnclasses remain a source-level
+gameplay gate. See
+[`evidence/checkpoint-074-coop-loader-closure.json`](evidence/checkpoint-074-coop-loader-closure.json).
+
+## Earlier checkpoint: 073
 
 **The two confirmed co-op crash families are now source-bound fixes with clean
 focused native loads; the final observed loader blocker is patched and queued

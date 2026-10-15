@@ -1,3 +1,23 @@
+# Reproduce checkpoint 074
+
+## Checkpoint 074: close all observed co-op loader blockers
+
+Rebuild all 20 overlays with the source-bound Hellhole cinematic resources.
+Use the Xbox DEF's four export ranges to reconstruct its missing camera tracks;
+dense-expand the two sparse player-animation source segments before joining
+Xbox player A; and place the recovered 50-joint Cyberdemon mesh, bind pose and
+four animations beneath the private Xbox cinematic prefix. Require 319 passing
+offline tests, 20 direct-authored CMs and zero unresolved dependency.
+
+Package and audit one co-op-only tree. The accepted v21 candidate has 1,015
+files totaling 329,142,454 bytes and ledger
+`9e7c77eed89798b07648293b84aa9393f9b04027dfc0f082c65973287c8cd92d`.
+Require zero missing compiled companion, duplicate declaration/material,
+untracked file or reparse point. Focus rows 43, 53 and 61 with the minimized
+direct GPL-dedicated host and require at least ten seconds observed idle plus
+zero error/fatal line. Finally run route rows 42-61 on the same tree with
+`IdleSeconds 60`; focused receipts do not substitute for the complete sweep.
+
 # Reproduce checkpoint 073
 
 ## Checkpoint 073: co-op skeleton loader blockers
