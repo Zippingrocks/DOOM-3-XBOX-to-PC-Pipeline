@@ -1,0 +1,1147 @@
+{
+  "schema": "doom3-recovery-toolchain-lock-v1",
+  "source_repository": "https://github.com/Zippingrocks/doom3-gpl-xbox-reconstruction",
+  "source_commit": "87ed2b6e8a6c6509957d508686bd1ecb9cde8666",
+  "source_lineage": "master-not-main",
+  "metadata_lock": "evidence/checkpoint-085-recovery-lock.json",
+  "structural_plan": "evidence/checkpoint-085-raw-structural-plan.json",
+  "provenance_trace": "evidence/checkpoint-086-provenance-trace.json",
+  "pipeline_artifacts": [
+    {
+      "path": "evidence/checkpoint-085-recovery-lock.json",
+      "bytes": 42290976,
+      "sha256": "b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74"
+    },
+    {
+      "path": "evidence/checkpoint-085-recovery-selectors.json",
+      "bytes": 6605,
+      "sha256": "5331244e7a661a192f3022955411be7f981173bb372ae6c2e19b40ea1ee18c7b"
+    },
+    {
+      "path": "evidence/checkpoint-085-raw-structural-plan.json",
+      "bytes": 2918721,
+      "sha256": "7088b7934f2461aabddf0ca4dc3389918669cc9a3039c8d2587dc13f86625aad"
+    },
+    {
+      "path": "evidence/checkpoint-085-asset-free-recovery.json",
+      "bytes": 4986,
+      "sha256": "10dd1da66346612eff295e7e89437abf33702d09efea4eefaa47baa26897afed"
+    },
+    {
+      "path": "evidence/checkpoint-086-provenance-trace.json",
+      "bytes": 42451198,
+      "sha256": "aed63ea07b4e54d9c24e349dc4d51b450688a759aa454bb6f2337298ebb747a1"
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/campaign_port/aas_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 6990,
+      "sha256": "8ec22bc1ced2bcd9992d882c42800ace0042b4b7a1f4f3065102721054ab8e3d"
+    },
+    {
+      "path": "tools/campaign_port/aas_route_audit.py",
+      "mode": "lf",
+      "bytes": 10530,
+      "sha256": "93baa5b3a03a5941081f58ab50a5403344a787e670250973e223916b34897b3e"
+    },
+    {
+      "path": "tools/campaign_port/build_campaign_test_tree.py",
+      "mode": "lf",
+      "bytes": 17935,
+      "sha256": "e8270a4998573a80148de14a811076aa0b3385843316522e0ac598e093e075fa"
+    },
+    {
+      "path": "tools/campaign_port/build_runtime_overlay.py",
+      "mode": "lf",
+      "bytes": 246122,
+      "sha256": "94d07f8cb518cbe29ed51ff91f9d405be6ffd33b257af016c6110f369448c2f6"
+    },
+    {
+      "path": "tools/campaign_port/campaign_companion_crc_audit.py",
+      "mode": "lf",
+      "bytes": 3531,
+      "sha256": "f522591f60c74fb3a87f53e7af201468024e715e777cb616b377003722bac23b"
+    },
+    {
+      "path": "tools/campaign_port/campaign_manifest_paths.py",
+      "mode": "lf",
+      "bytes": 1250,
+      "sha256": "ea8aba8dab800433ae7d9c1a1bc9ab1347ba7d440ceb19d8973af50d121b4689"
+    },
+    {
+      "path": "tools/campaign_port/campaign_native_test_plan.py",
+      "mode": "lf",
+      "bytes": 8737,
+      "sha256": "a11b64757b5ef436bf42db720dabdb81197a87a5a87602e02dd5c71a95eeec59"
+    },
+    {
+      "path": "tools/campaign_port/campaign_package_merge_audit.py",
+      "mode": "lf",
+      "bytes": 16997,
+      "sha256": "4adecb1c23536c4a777c664aee43e0808c79364aa4121e43ccddbb6d47c12f94"
+    },
+    {
+      "path": "tools/campaign_port/campaign_static_matrix.py",
+      "mode": "lf",
+      "bytes": 8400,
+      "sha256": "ffc9e1da8a700822419d76b8076b230bc8f1ea509d2bd22cda1d30589eb9d7e5"
+    },
+    {
+      "path": "tools/campaign_port/campaign_test_tree_audit.py",
+      "mode": "lf",
+      "bytes": 12858,
+      "sha256": "da8e5dc242f8f798b24564b367bcd6ab949bbdb69cc6b1bb256c5737b867e80f"
+    },
+    {
+      "path": "tools/campaign_port/campaign_warning_audit.py",
+      "mode": "lf",
+      "bytes": 10003,
+      "sha256": "d342e9b98bc20654fbd15f042460d860c52266d864e2dd7c08e544c16760e984"
+    },
+    {
+      "path": "tools/campaign_port/cm_campaign_export_audit.py",
+      "mode": "lf",
+      "bytes": 4997,
+      "sha256": "7dcc04996ab8036d17d1d36a672cdcff4370824d174aba6f778d51fc4271b251"
+    },
+    {
+      "path": "tools/campaign_port/cm_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 6584,
+      "sha256": "21dcfb5f99fa04256243a544a445b0c64b052ef6e2295a4da947fec75f50f6ff"
+    },
+    {
+      "path": "tools/campaign_port/cm_model_set_audit.py",
+      "mode": "lf",
+      "bytes": 4307,
+      "sha256": "819b139ab72c12f4deee18ec60c550c61be61107968394ff47c16e25ab9cfcd3"
+    },
+    {
+      "path": "tools/campaign_port/compare_cm_trace_logs.py",
+      "mode": "lf",
+      "bytes": 20257,
+      "sha256": "a6643fc402b189c998adbafb9dbd0695d1b84f175d2c9407bff47939dd6d94b4"
+    },
+    {
+      "path": "tools/campaign_port/coop_aas_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 3602,
+      "sha256": "ff7532946f6abae32f1fb67b570cc974e0465d12353d77d8d63c3320de0e9f3c"
+    },
+    {
+      "path": "tools/campaign_port/coop_aas_requirement_audit.py",
+      "mode": "lf",
+      "bytes": 3718,
+      "sha256": "be027807d8374803e7728318503b3fafa9c0161f2c48c72ae8b47283ecaebfec"
+    },
+    {
+      "path": "tools/campaign_port/coop_entity_link_audit.py",
+      "mode": "lf",
+      "bytes": 8904,
+      "sha256": "cb11bc967edc316360ee269aee161b353eba1f09b65cbffef9ef794c63b8fc40"
+    },
+    {
+      "path": "tools/campaign_port/coop_host_source_audit.py",
+      "mode": "lf",
+      "bytes": 8597,
+      "sha256": "a484341fcb0b08afd858271f2b08d50b8503ab676edd839bd6b47c471eceea5e"
+    },
+    {
+      "path": "tools/campaign_port/coop_overlay_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 6689,
+      "sha256": "845cf58c13a403397ddce8fd4f715244322969c15f475d70477f1123453863cb"
+    },
+    {
+      "path": "tools/campaign_port/coop_resurrection_audit.py",
+      "mode": "lf",
+      "bytes": 14638,
+      "sha256": "8ab9042cce0c5f4936f8e7d3c1c05819789e4c36d37de3e3bc62539e2fb2c365"
+    },
+    {
+      "path": "tools/campaign_port/coop_script_bytecode_callbacks.py",
+      "mode": "lf",
+      "bytes": 8337,
+      "sha256": "6dfe0a6af8a1c13af3551184c55d9bbaf950eda9c178a935d034d66b2297f7cb"
+    },
+    {
+      "path": "tools/campaign_port/coop_script_entity_audit.py",
+      "mode": "lf",
+      "bytes": 9320,
+      "sha256": "c212eeb850bf0998737253963b3859bc45552c338c57f3912c7fcd5706250382"
+    },
+    {
+      "path": "tools/campaign_port/coop_script_reachability_audit.py",
+      "mode": "lf",
+      "bytes": 9177,
+      "sha256": "fd71f1381568b6cb9703eeda7f07f19de6c2f1af058db0bac221c7237c3ae4bb"
+    },
+    {
+      "path": "tools/campaign_port/coop_script_sound_audit.py",
+      "mode": "lf",
+      "bytes": 2494,
+      "sha256": "d71095500cadbad0054042c31a4e622e1432cf7e3636e93baa7ff81905a26fb0"
+    },
+    {
+      "path": "tools/campaign_port/coop_semantic_audit.py",
+      "mode": "lf",
+      "bytes": 9328,
+      "sha256": "491d1e830370d6b3d1eb57a8069615e754706c1c32418a237628eaffb9df1d19"
+    },
+    {
+      "path": "tools/campaign_port/coop_spawn_topology_audit.py",
+      "mode": "lf",
+      "bytes": 13074,
+      "sha256": "42b799c4c649107db0c93ae782729b70de93bfbd9a5c6a9b7a3cc39cfb52d71d"
+    },
+    {
+      "path": "tools/campaign_port/d3tfull.py",
+      "mode": "lf",
+      "bytes": 12740,
+      "sha256": "bd6144782c9214708c61b5c7e6b1e65f99e07ead62c76c7d5ca42bd4eb7dfe90"
+    },
+    {
+      "path": "tools/campaign_port/decode_aas_x.py",
+      "mode": "lf",
+      "bytes": 10427,
+      "sha256": "99aaebe7327084c4fa79ab3bf7ac32017afb6cba0b0c755f08f1ecdfbe56b4e1"
+    },
+    {
+      "path": "tools/campaign_port/decode_cm_x.py",
+      "mode": "lf",
+      "bytes": 15774,
+      "sha256": "a9d3ef9da339e40954fff21adf1e51714b095eec2554dfdb885b7ea65a3043ce"
+    },
+    {
+      "path": "tools/campaign_port/decode_map_x.py",
+      "mode": "lf",
+      "bytes": 5339,
+      "sha256": "65831aeec0135af17f483fe8011a793e422bd4b7207e838b13499c9e0d652f5e"
+    },
+    {
+      "path": "tools/campaign_port/decode_md5anim_x.py",
+      "mode": "lf",
+      "bytes": 8367,
+      "sha256": "8e1e3087326c8282b753272d54679d44aa2289ec92cf8fc9853de2e20d00119a"
+    },
+    {
+      "path": "tools/campaign_port/decode_mdv.py",
+      "mode": "lf",
+      "bytes": 13405,
+      "sha256": "aa9479bc5d5549b567d24c289b2de79aac5db7cf58da1d85050eedb95c90550e"
+    },
+    {
+      "path": "tools/campaign_port/decode_model_corpus.py",
+      "mode": "lf",
+      "bytes": 5774,
+      "sha256": "2f7c6bb2e751b2a9d519848ae377600e95493e2b2efb8363ad8507413627ff27"
+    },
+    {
+      "path": "tools/campaign_port/decode_proc_x.py",
+      "mode": "lf",
+      "bytes": 7856,
+      "sha256": "9ed64e18c0cf414d029e4bed0d074f659eadc501c135a469d8014662ef2fcdee"
+    },
+    {
+      "path": "tools/campaign_port/decode_static_model_x.py",
+      "mode": "lf",
+      "bytes": 16703,
+      "sha256": "df474f8e6231cabe73f57dea0328b0d1840e28516704c8f3e3b2d371a127d776"
+    },
+    {
+      "path": "tools/campaign_port/doom3_campaign_port.py",
+      "mode": "lf",
+      "bytes": 33041,
+      "sha256": "3ad06481d624a563631d3291ae37df36e6fda2e96a281c18def46f8a214c0bab"
+    },
+    {
+      "path": "tools/campaign_port/enpro_compatibility.py",
+      "mode": "lf",
+      "bytes": 8895,
+      "sha256": "1eb10e08eae4caff2f3017ac6ff5626f4c8821c034ca5a371dbbea31a70abd21"
+    },
+    {
+      "path": "tools/campaign_port/gfc.py",
+      "mode": "lf",
+      "bytes": 8667,
+      "sha256": "d80fa0af9948b7a077cd51450f5f04c92cc76ed1ef91e5c870edb2067042be64"
+    },
+    {
+      "path": "tools/campaign_port/gui_include_closure.py",
+      "mode": "lf",
+      "bytes": 1885,
+      "sha256": "95d631274ecf7a3015fac40fc3654008cc2105304d2228534b69f5c619fe26a6"
+    },
+    {
+      "path": "tools/campaign_port/hazmat_compatibility.py",
+      "mode": "lf",
+      "bytes": 8484,
+      "sha256": "166850686676b2e943a536b8f32d4d4b3cd83efc759e6147b08a11b243cecf33"
+    },
+    {
+      "path": "tools/campaign_port/lantern_gib_compatibility.py",
+      "mode": "lf",
+      "bytes": 4405,
+      "sha256": "358757718f38aa206820e6e1c78f6637bd52c0b1b9222680827035aae58e40cc"
+    },
+    {
+      "path": "tools/campaign_port/map_geometry_crc.py",
+      "mode": "lf",
+      "bytes": 9547,
+      "sha256": "02fff6156e59d6b197dce1f6b19370ddf768b9ae79ae41a43ab4fe5d2fd0a678"
+    },
+    {
+      "path": "tools/campaign_port/md5_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 4033,
+      "sha256": "818abfc87e90df5b5b3919147ee20e6b5c5284be222f0990acc71c80d4282c36"
+    },
+    {
+      "path": "tools/campaign_port/md5_family_audit.py",
+      "mode": "lf",
+      "bytes": 17579,
+      "sha256": "c4af9b5879da93b9784caebf5f5297130711b6d73086190c6315b949770de42e"
+    },
+    {
+      "path": "tools/campaign_port/overlay_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 6182,
+      "sha256": "5396b8717698e22e469ba5c1ef241b0c9ec89ac994bd817c6a6908d0778b0f79"
+    },
+    {
+      "path": "tools/campaign_port/package_coop_overlays.py",
+      "mode": "lf",
+      "bytes": 6967,
+      "sha256": "12b75e06adf135684072230942fd76c50a367894884bf7c17d97c38cb4ce10ee"
+    },
+    {
+      "path": "tools/campaign_port/package_solo_overlays.py",
+      "mode": "lf",
+      "bytes": 5916,
+      "sha256": "c3563618d1d691fb65f17b97c867cdcbffd7de7ddd790bd568e1292a426847b4"
+    },
+    {
+      "path": "tools/campaign_port/particle_extension_compatibility.py",
+      "mode": "lf",
+      "bytes": 2994,
+      "sha256": "fd71ac26de69c40dad947ecfd953ac0221722156cc34369b7a048a8a18d996f1"
+    },
+    {
+      "path": "tools/campaign_port/plan_raw_structural_recipes.py",
+      "mode": "lf",
+      "bytes": 17127,
+      "sha256": "c8b8f1136cdc06ccb0d217186e8be1e95c0bf5dd723c85f0e63cab2a9a89f128"
+    },
+    {
+      "path": "tools/campaign_port/profiles/.gitattributes",
+      "mode": "lf",
+      "bytes": 154,
+      "sha256": "bace6e079b13261b4561685584c8e1e460332e6b85f0702b45366c18b2cd5964"
+    },
+    {
+      "path": "tools/campaign_port/profiles/coop_script_entity_domains.json",
+      "mode": "bytes",
+      "bytes": 753,
+      "sha256": "e7028997dc9ba8e69b224d0d771620670e31f85ee93b76591124b768edb8c231"
+    },
+    {
+      "path": "tools/campaign_port/profiles/solo_script_entity_domains.json",
+      "mode": "bytes",
+      "bytes": 11710,
+      "sha256": "28a6489bed4dd405bfa73b1fba35b02fc6420bbe918ad6716d99a36784cbd1b1"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_coop_player.resources",
+      "mode": "bytes",
+      "bytes": 13236,
+      "sha256": "2578cd94dc59b34bbc2f8ebf93578e132223be0695b625672c10338af908bae4"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_admin_pinky_cinematic.resources",
+      "mode": "bytes",
+      "bytes": 276,
+      "sha256": "145b19847c7aa6022ea41a5113431f001993cf2758a912b7a6e794dc4f1466a3"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_alphalabs2_lantern.resources",
+      "mode": "bytes",
+      "bytes": 1068,
+      "sha256": "6ee107d1145e5608604eadf5f1422a80484133e2e7e277a4b753a11dfe4f6699"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_cpu1_campbell.resources",
+      "mode": "bytes",
+      "bytes": 1238,
+      "sha256": "60b7084f1c3d741bc29cf57da337383fddcde4bff25317b94a62903a65129c43"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_cyberdemon.resources",
+      "mode": "bytes",
+      "bytes": 390,
+      "sha256": "ce7d5c729cf9f6c910a39550ff19eeb0878ae1fdc82d0e40a2b89d2b47f83690"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_delta1_scipull.resources",
+      "mode": "bytes",
+      "bytes": 354,
+      "sha256": "48593ffcf39821be0cd03b0b81aa4ab267249a330f3520528baf9c0822b892f5"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_delta4_hazmat.resources",
+      "mode": "bytes",
+      "bytes": 1533,
+      "sha256": "f5d0d6ec0580c5321764a69c0e2772828158d87e3d1cb2b899cedd3706960ebe"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_pinky.resources",
+      "mode": "bytes",
+      "bytes": 1200,
+      "sha256": "2c741628591ce1e03b5a8bac2c8216463d42f5f96281bad085a5140be1c4dc97"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_recycling1_revintro.resources",
+      "mode": "bytes",
+      "bytes": 383,
+      "sha256": "9bd5961253d5fd153ae8a5837d6d860d32189492d7152ef26ecff6da35c8ec62"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_vagary.resources",
+      "mode": "bytes",
+      "bytes": 1073,
+      "sha256": "b1b8f42fed556a0b26b754f63c866f172d2e092d690c1b0ecf8bbfc121315f14"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_zct.resources",
+      "mode": "bytes",
+      "bytes": 1132,
+      "sha256": "f8b068e4721b5cb7c903265ecd1d106034b0f26a2e0445830b765bab5aa90f21"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xbox_solo_zjump.resources",
+      "mode": "bytes",
+      "bytes": 833,
+      "sha256": "08c25e516677ca01919bd5721e783a6ee5eea300e59a93ba3bbfcce64729adfb"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_admin.resources",
+      "mode": "bytes",
+      "bytes": 1967,
+      "sha256": "0fb4bdeb0b9cece2477e72b1059324e34bc7cffcd09164929b2a52ba8f073f70"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_caverns1_1.resources",
+      "mode": "bytes",
+      "bytes": 377,
+      "sha256": "db7579bfed4a098535943138283a891f9725757948a810fb69802f9e28de8129"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_caverns2.resources",
+      "mode": "bytes",
+      "bytes": 250,
+      "sha256": "10cdeb2bbd43af9706172765589b14e725e14200b01b74e314d87e6982806697"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_comm1_1.resources",
+      "mode": "bytes",
+      "bytes": 303,
+      "sha256": "7a8c2c93f4ae1343131fb568f79a5e67ad0f1003a42aeb913b58dcca30470eb0"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_delta2b_1.resources",
+      "mode": "bytes",
+      "bytes": 166,
+      "sha256": "ec32b29b58146b15784c47096b677b95c1836a025ec62025b37bacd7578f4883"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_delta2b_2.resources",
+      "mode": "bytes",
+      "bytes": 1599,
+      "sha256": "d8755a8783dd4fd3dc8dd09c00262042ab24757a19c669f26603a14699c8b0cd"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_delta4.resources",
+      "mode": "bytes",
+      "bytes": 296,
+      "sha256": "8ed1de69570c59e2f25e5541d0aa704d7cc15ee000ed50863d146f4c66f5f728"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_delta5_1.resources",
+      "mode": "bytes",
+      "bytes": 621,
+      "sha256": "db52b75d45d2ceca43c31f49bcfe3b10be2917cc1a99b0871a87b8f143459f0a"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_hell1_1.resources",
+      "mode": "bytes",
+      "bytes": 954,
+      "sha256": "39b47db6225db3dde5ce09b53e58e7e1ea95032e2e2e1cd22d5b009fe2f3fed5"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_hell1_2.resources",
+      "mode": "bytes",
+      "bytes": 1940,
+      "sha256": "32b44422a201ea62aa06eec11371cdb36b667055f1434ffa055f7a102ecc252c"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_hellhole_1.resources",
+      "mode": "bytes",
+      "bytes": 1673,
+      "sha256": "e57b2511069dac361155791d51c0c2ce5dfe34a9e15dfddf1be8d63f332fc767"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_mars_city1_1.resources",
+      "mode": "bytes",
+      "bytes": 18454,
+      "sha256": "5d8dc3afdd418086c2fe05ee59a84abf97da7e7006b9a80c71e3244258e55d50"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_mcu.resources",
+      "mode": "bytes",
+      "bytes": 25098,
+      "sha256": "1180cc2e209a353372fc05bb1547a981f10867e7b236df64130825a4479be53a"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_recycling2_1.resources",
+      "mode": "bytes",
+      "bytes": 1273,
+      "sha256": "03ae1107753736c3018a49d3e4c5372fdb416f7e21351dde96a9f6b237acf7b0"
+    },
+    {
+      "path": "tools/campaign_port/profiles/xc_site3_1.resources",
+      "mode": "bytes",
+      "bytes": 725,
+      "sha256": "121213b5cdf5980a6b880059ea7a7f27689871879a8851ead25fad3f1880e879"
+    },
+    {
+      "path": "tools/campaign_port/ragdoll_compatibility.py",
+      "mode": "lf",
+      "bytes": 3508,
+      "sha256": "d9fc37f148f5426acafe1f87ea88f469a49f01119ba1ca4ebb7bba1fab0719cf"
+    },
+    {
+      "path": "tools/campaign_port/rebuild_latest_coop_overlays.py",
+      "mode": "lf",
+      "bytes": 11839,
+      "sha256": "f19f830919d1d4e70503139f602f722b6ec07884a15047917821aba8dcdde71d"
+    },
+    {
+      "path": "tools/campaign_port/rebuild_latest_solo_overlays.py",
+      "mode": "lf",
+      "bytes": 24163,
+      "sha256": "beb1bbe07ec40b0891ca3beeaee511cac7dca4aa1586a322d82abcd17e3f3093"
+    },
+    {
+      "path": "tools/campaign_port/recover_solo_audio_corpus.py",
+      "mode": "lf",
+      "bytes": 5744,
+      "sha256": "a131f4d695f115e99558739c953fa69c179d91d10da581d40fccff40730afe40"
+    },
+    {
+      "path": "tools/campaign_port/recovery_metadata.py",
+      "mode": "lf",
+      "bytes": 16884,
+      "sha256": "1e430686e3b160aa4234ef261360f348ea45fab79bc51621c07903c3fe273493"
+    },
+    {
+      "path": "tools/campaign_port/recovery_toolchain.py",
+      "mode": "lf",
+      "bytes": 2975,
+      "sha256": "5e02132b7aaf808a0715d8749a9532b5b69f7913089779afb8000447484c8919"
+    },
+    {
+      "path": "tools/campaign_port/retarget_md5anim.py",
+      "mode": "lf",
+      "bytes": 16720,
+      "sha256": "9bbad508887a272bbafdd3f1b280776dce7e3978cab17e5e4e4539f1b9d16f29"
+    },
+    {
+      "path": "tools/campaign_port/retarget_md5mesh.py",
+      "mode": "lf",
+      "bytes": 13672,
+      "sha256": "22e055051e0c3cbd085fb1468d76c29e4940d818d56472aead2a44a19161b75d"
+    },
+    {
+      "path": "tools/campaign_port/run_native_campaign_soak.ps1",
+      "mode": "lf",
+      "bytes": 22241,
+      "sha256": "a92b0955afb7670012df14b28f1c3f26e81e4551ab1efd5d4bac90bf0d542dbc"
+    },
+    {
+      "path": "tools/campaign_port/run_raw_structural_recipes.py",
+      "mode": "lf",
+      "bytes": 20439,
+      "sha256": "1e7e656931f678bcabd6ca516052fa6c639c67b6e57193408fe9d2e91fba2c10"
+    },
+    {
+      "path": "tools/campaign_port/solo_aas_requirement_audit.py",
+      "mode": "lf",
+      "bytes": 11891,
+      "sha256": "62695cc78b9d32f0c6e42dbd697594553bf4e437d5cf171374d5f842f5085193"
+    },
+    {
+      "path": "tools/campaign_port/solo_audio_audit.py",
+      "mode": "lf",
+      "bytes": 14389,
+      "sha256": "6ec99226c0869c7553c2d1cc6eb1f71491816e054871cd5d0e1072c00b4e3064"
+    },
+    {
+      "path": "tools/campaign_port/solo_callback_compatibility.py",
+      "mode": "lf",
+      "bytes": 1848,
+      "sha256": "6903f6037fe06b2606bbac4a1e30d34961796561ee1772a9bd633c5858c6ae6b"
+    },
+    {
+      "path": "tools/campaign_port/solo_entity_link_audit.py",
+      "mode": "lf",
+      "bytes": 7643,
+      "sha256": "5456310d21f36bd8ba8e0eba81d049171d55870e3219b99d6b7577b668d3790b"
+    },
+    {
+      "path": "tools/campaign_port/solo_frame_command_audit.py",
+      "mode": "lf",
+      "bytes": 10767,
+      "sha256": "d38c5119c9a9395afb6798cd805f80d9b587755a62dd639397fff4e467c2aca1"
+    },
+    {
+      "path": "tools/campaign_port/solo_gui_command_audit.py",
+      "mode": "lf",
+      "bytes": 13560,
+      "sha256": "d79a68c9fa5e27af43469b1f7ec95311604635714938e40e918221e91232a012"
+    },
+    {
+      "path": "tools/campaign_port/solo_script_bytecode_audit.py",
+      "mode": "lf",
+      "bytes": 6888,
+      "sha256": "905abe953060b38cf3a5075508260920037b8fee91e718bb795af4cb31f88c47"
+    },
+    {
+      "path": "tools/campaign_port/solo_script_entity_audit.py",
+      "mode": "lf",
+      "bytes": 16733,
+      "sha256": "b8bd2d41ed584f9766f6334b3ee9562fe2e66357a2836c98d68294bcd5bba468"
+    },
+    {
+      "path": "tools/campaign_port/solo_script_reachability.py",
+      "mode": "lf",
+      "bytes": 22574,
+      "sha256": "f1345b6d4a6de503089282aaca1ac6d6a58042d2fe67b969ce9416806ec6273f"
+    },
+    {
+      "path": "tools/campaign_port/solo_script_sound_audit.py",
+      "mode": "lf",
+      "bytes": 8484,
+      "sha256": "5b67fcf4ce5356d702a4b88b1972a8efd60f921b871092c9b95077255117c3c2"
+    },
+    {
+      "path": "tools/campaign_port/solo_semantic_audit.py",
+      "mode": "lf",
+      "bytes": 14473,
+      "sha256": "597a3e961d7b49e9f7e5bc3cae7c9a604ef527b940c82af861812b42933a1395"
+    },
+    {
+      "path": "tools/campaign_port/solo_spawn_topology_audit.py",
+      "mode": "lf",
+      "bytes": 10112,
+      "sha256": "f8d739e4ea3858931e606d66eeff16c9ae410278b36f1e8875ca0e24cea0e834"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_aas_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 3665,
+      "sha256": "6c4dec4dbc54b55f119a5483e97520f766a4d77b4ca347c8d5ce5c21c51aa4e4"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_aas_route_audit.py",
+      "mode": "lf",
+      "bytes": 1583,
+      "sha256": "709d190e4341c69432297fccc107b1b7f1af5f0637fdd5335a8fdfbfa0727330"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_build_campaign_test_tree.py",
+      "mode": "lf",
+      "bytes": 7882,
+      "sha256": "8a62f2fd72599a855235468e86d8b871e740970d92a3c423653f06e0821855ce"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_build_runtime_overlay.py",
+      "mode": "lf",
+      "bytes": 137181,
+      "sha256": "5a6bac6cb71aa9aff74bf7d98bd471b1b7fc8d5f5b1843c645f0d9fd5e438491"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_companion_crc_audit.py",
+      "mode": "lf",
+      "bytes": 1319,
+      "sha256": "1198c89bc70fd2464a43a3e86e7db307215f98622ee6158191461194eb225da8"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_gui_precache.py",
+      "mode": "lf",
+      "bytes": 2290,
+      "sha256": "85de5187d604129dc1af1d72bccef9fd7b7017224e7c39a7b1a54eeeaeae1da7"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_manifest_paths.py",
+      "mode": "lf",
+      "bytes": 1112,
+      "sha256": "2d9f5e9dba8417669f644153afb41c140d2b5db379edc67c1319d260bd035f08"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_native_test_plan.py",
+      "mode": "lf",
+      "bytes": 755,
+      "sha256": "0205eb4527f230b0020f2bafa672edbc54a411a26b83ca7abbca8fe59af63229"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_package_merge_audit.py",
+      "mode": "lf",
+      "bytes": 12555,
+      "sha256": "563c38cb8b3820fd24cdfb91deee89c16bf9d080384d17409b99c4870946e868"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_port.py",
+      "mode": "lf",
+      "bytes": 16280,
+      "sha256": "bfb69783fbfa54ff661c9aba45f2c7700525d7852af4d0b7874454e7cbaed212"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_static_matrix.py",
+      "mode": "lf",
+      "bytes": 782,
+      "sha256": "411de886cc34aa88a6cf39d84afecef137a4a5992d0a6068d6746440bd37c19a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_test_tree_audit.py",
+      "mode": "lf",
+      "bytes": 10005,
+      "sha256": "dfe737e70a44c24021da14e66361af95a81fc3d60357f4cb3b375d87b0726c71"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_campaign_warning_audit.py",
+      "mode": "lf",
+      "bytes": 3026,
+      "sha256": "ca8dd3946c0ae659c574568b7da01a4cd0fed01bd162997f633c901f06abde16"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_cm_campaign_export_audit.py",
+      "mode": "lf",
+      "bytes": 1556,
+      "sha256": "7cc8ea2e467311c4cbb6725dc842d35d011aca37591402ddd439d65a5890df09"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_cm_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 2304,
+      "sha256": "a74271ac73206fe61a89cf40d8be16a706c0fe9022c35a465791627508d7c245"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_cm_model_set_audit.py",
+      "mode": "lf",
+      "bytes": 1257,
+      "sha256": "dc55b109e9179b5f91837c6dc76c285a41a3565a1a4ff88d72f09c973235447a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_compare_cm_trace_logs.py",
+      "mode": "lf",
+      "bytes": 5082,
+      "sha256": "b2fc6ceccf16be785b8976932c902c78ec9a7e3de364e3bc02a3412500f4874b"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_aas_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 2210,
+      "sha256": "ab944d3fc540cb3c874c96050f6c3d252d94fd6c67ec7437339d49dbbd1ef443"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_entity_link_audit.py",
+      "mode": "lf",
+      "bytes": 2095,
+      "sha256": "8f95e821db42cb2e65da866d0b293f94ac42efa4b0c504e27833b1a869914b25"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_gui_state_contract.py",
+      "mode": "lf",
+      "bytes": 5806,
+      "sha256": "001309266772b4f3cbaaacef002158f7ed3fbfc31ee0457ff0b679ac4b554050"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_host_source_audit.py",
+      "mode": "lf",
+      "bytes": 6647,
+      "sha256": "c115d913120c1ff681406f544b995cd804bf0c3e32183b39f723ed84f398294e"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_overlay_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 1964,
+      "sha256": "d9e61a9483da32e97dc319d01f0e3dbb89fc8d6258ee51a1534ac5390738ed95"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_resurrection_audit.py",
+      "mode": "lf",
+      "bytes": 1187,
+      "sha256": "a7170338000e6ba21f1afe9eb4dfceb1e1e9e81afbb7290229e7818a4d3dfbd5"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_script_bytecode_callbacks.py",
+      "mode": "lf",
+      "bytes": 2445,
+      "sha256": "be36c18e7a2aed97e8435233720a4ae5e9224477cecb0aca351e17fd200111dc"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_script_sound_audit.py",
+      "mode": "lf",
+      "bytes": 1505,
+      "sha256": "432db524808398aa8f8bb22790dcb8c0f9660042bd2a3f3caa7faeb6baa1ef0b"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_semantic_audit.py",
+      "mode": "lf",
+      "bytes": 2324,
+      "sha256": "8cfd22443f9db256774223437ca70cb03688715f616cd396b42a9c88429c4aeb"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_coop_spawn_topology_audit.py",
+      "mode": "lf",
+      "bytes": 2598,
+      "sha256": "4a0d6e603924e85253f0247838fe5461c566daf39979bf4db40b96958ba88ab0"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_d3tfull.py",
+      "mode": "lf",
+      "bytes": 2521,
+      "sha256": "a9f9af946205749ef7a318497a25f19afa662891e6fc6ed79e777026a3a771ae"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_declaration_closure_typed.py",
+      "mode": "lf",
+      "bytes": 2853,
+      "sha256": "104b7fe3671de22a11f71375e820ee5071b2430e09f5fb4dc1e6c7eb1e94c8b3"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_aas_x.py",
+      "mode": "lf",
+      "bytes": 2855,
+      "sha256": "b3867057632fd2369cdf390ca4534ef6403775b1547d575ecf80b91797f920cf"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_cm_x.py",
+      "mode": "lf",
+      "bytes": 4931,
+      "sha256": "9fe1f021900ddb9832848321b7889edeb3c9dc55d085b0f437334b020bc65474"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_map_x.py",
+      "mode": "lf",
+      "bytes": 1456,
+      "sha256": "2c39e1e091ee9dc0daf33711e95834f7b773e9f281c6e8d93b4888e2be89ce70"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_md5anim_x.py",
+      "mode": "lf",
+      "bytes": 2797,
+      "sha256": "5086733749aa0df97d29a58500b36fbacd97702b7b4112d24937a48e2f19762d"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_mdv.py",
+      "mode": "lf",
+      "bytes": 2747,
+      "sha256": "8ea635605ee6db23bcc66d29b9a00b5db143ce1d5cd05a2c813dbb88d202d37a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_model_corpus.py",
+      "mode": "lf",
+      "bytes": 1005,
+      "sha256": "15e7993012da7eecb0eed893a7b3dc4a109e34e9687d404a9314dc64e8d6ca90"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_proc_x.py",
+      "mode": "lf",
+      "bytes": 2002,
+      "sha256": "8c25969d2f89347ebe8e47eb74e878457bd2633650693f46a364be40010cb71a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_decode_static_model_x.py",
+      "mode": "lf",
+      "bytes": 4617,
+      "sha256": "15a2988cfabf0d8f9a592d296d2be2932c83a6b7d21c5a27d631622ddcefa96b"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_enpro_compatibility.py",
+      "mode": "lf",
+      "bytes": 8527,
+      "sha256": "22f74213ce5426f36569bb16007486ce5c7f3885ddb0c68a22ce57cf41ceb575"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_gui_include_closure.py",
+      "mode": "lf",
+      "bytes": 2586,
+      "sha256": "c8a3db6678434294cd598e370814def0f3fc69a4b72c5703a36fee3bdcbb73ea"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_hazmat_compatibility.py",
+      "mode": "lf",
+      "bytes": 5278,
+      "sha256": "082daba0aa3d74fa494dec73d6e855adffcbf5a7da28303208b22cfd283f6ac7"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_lantern_gib_compatibility.py",
+      "mode": "lf",
+      "bytes": 4706,
+      "sha256": "29ee9e6550daba750cc0515b2cc998ab69cd23a4a7243729f0ee81c062ed02ba"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_map_geometry_crc.py",
+      "mode": "lf",
+      "bytes": 2044,
+      "sha256": "63ca73500cc65a32046d5294e39bd001670ba8e21d9fa72996a50862ae254d45"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_md5_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 2371,
+      "sha256": "df76e7c06d0e0f98e39881940d5f4da0622fe4841afc49347c8183ed85a194c0"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_md5_family_audit.py",
+      "mode": "lf",
+      "bytes": 8653,
+      "sha256": "a080099faf0f256657f7f1b0f99b5c4a4fc5d9a26f0110292f8a8ee259013f7a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_native_campaign_soak_integrity.py",
+      "mode": "lf",
+      "bytes": 6457,
+      "sha256": "509aa00c21df257a005d7be121229ba74243847f0be919e334fa2bbe881e229d"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_overlay_corpus_audit.py",
+      "mode": "lf",
+      "bytes": 1938,
+      "sha256": "0ad8e1bee7ea55dc1cc93d0e0404e0103884f2c37f23576a8b6eb54d5e6dbdd4"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_package_coop_overlays.py",
+      "mode": "lf",
+      "bytes": 2741,
+      "sha256": "1ef2e35c74dc1a972652e4ef21d9cc5a1f0e020b2464a5de7028b8c4142e8d96"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_package_solo_overlays.py",
+      "mode": "lf",
+      "bytes": 2966,
+      "sha256": "5f6df74f8131a5d04080390b643271c8ab127e566839802fa51eedfe3dc637fc"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_particle_extension_compatibility.py",
+      "mode": "lf",
+      "bytes": 2428,
+      "sha256": "0e34624ad55a10e67f8c31e405d86f910be12d8f27c1c1a1dba239c37aacc889"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_plan_raw_structural_recipes.py",
+      "mode": "lf",
+      "bytes": 10016,
+      "sha256": "bfd3f264c038010d7c539d29aaba6db6434c0b45aea6fd742c208ff798c99305"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_ragdoll_compatibility.py",
+      "mode": "lf",
+      "bytes": 3153,
+      "sha256": "cfb93064f101f34afe539fc39f4857b97582536e3afc3ad04b94da1ed67d9bd3"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_rebuild_latest_coop_overlays.py",
+      "mode": "lf",
+      "bytes": 5116,
+      "sha256": "ee8bde4e0093f07a075ec095dc44d4a37873f3da1cfcd49b1c3d9a088c879aff"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_rebuild_latest_solo_overlays.py",
+      "mode": "lf",
+      "bytes": 10747,
+      "sha256": "b775bee9d41620e480e74a24b4b3eb64c142cef22b3d0d2a161bb5f2af57961b"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_recover_solo_audio_corpus.py",
+      "mode": "lf",
+      "bytes": 1447,
+      "sha256": "995fb23e1c8af66535f7e79795bf3c17122d639c0e543db3b8a6432e9edffbc7"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_recovery_metadata.py",
+      "mode": "lf",
+      "bytes": 7035,
+      "sha256": "9e9e0fde63020fb7ac4888089f680873618e06a224c4af2e90825060ad5971f6"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_retarget_md5anim.py",
+      "mode": "lf",
+      "bytes": 2738,
+      "sha256": "a85e042a8f46d7b0ad39b8e13b49b51165d1867e25d2590cfa200735d1de33a4"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_retarget_md5mesh.py",
+      "mode": "lf",
+      "bytes": 6465,
+      "sha256": "340f0fa1d57cce150cb6ce83e75f02e3a9b1083ed7e8fed7035e31e26627e8b0"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_run_raw_structural_recipes.py",
+      "mode": "lf",
+      "bytes": 10037,
+      "sha256": "c017276c2820e78b5cb23da109f4411a5701aba9e9c30a1afc0d6eae71d56de2"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_run_raw_structural_review.py",
+      "mode": "lf",
+      "bytes": 14977,
+      "sha256": "b4e8c568665a59c5a751f5759486424e1d399672b857e541bc06512b285aff19"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_aas_requirement_audit.py",
+      "mode": "lf",
+      "bytes": 2123,
+      "sha256": "25021c911017e7b37cc7101a38172bacbb1205f51e5cb8e5b10508328223502a"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_audio_audit.py",
+      "mode": "lf",
+      "bytes": 1734,
+      "sha256": "5e911d5d7cebf84d03b9ec7b59dc4a79e223cd9580c506f879de1e9444a03f86"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_callback_compatibility.py",
+      "mode": "lf",
+      "bytes": 1861,
+      "sha256": "b4bc2bf582c909bffc3e13c395b9970cb1095b6dc724c1df5636a7e98f5ee3b8"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_entity_link_audit.py",
+      "mode": "lf",
+      "bytes": 3080,
+      "sha256": "dfebed74a4103b69c5fecedf1869938194227a8ce5d4bd5823b3af99b41a6939"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_frame_command_audit.py",
+      "mode": "lf",
+      "bytes": 4051,
+      "sha256": "dc5960939568b860d4654c923583696ec057ba81dab9b008a89fdf549ddc01f1"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_gui_command_audit.py",
+      "mode": "lf",
+      "bytes": 3309,
+      "sha256": "45e034796732c5c06558c1f32d11c548dd58060191b34dfe4ca2f3dd282e46e4"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_script_bytecode_audit.py",
+      "mode": "lf",
+      "bytes": 2549,
+      "sha256": "b56176c30d8b598fded906f4dc1604b9a79db142b24b2dcb6a26ae8649d5e807"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_script_entity_audit.py",
+      "mode": "lf",
+      "bytes": 6043,
+      "sha256": "ca5637892ad6e90be3b0aed95c552489eb83435c7a50d9667ba27c90aa477557"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_script_reachability.py",
+      "mode": "lf",
+      "bytes": 2182,
+      "sha256": "6d457916766dc78511a4dce7da0d7a654959630587677fc4405fa074888d39ba"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_script_sound_audit.py",
+      "mode": "lf",
+      "bytes": 783,
+      "sha256": "5f8e033599b1e7b762d452b5e2d2c83fd0e90bb776ccaa9ce45bb4f76f3dda71"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_semantic_audit.py",
+      "mode": "lf",
+      "bytes": 3573,
+      "sha256": "e399105aad4125cd55ded4f9abf04a57e259edd650747d061e1154ab2e620355"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_solo_spawn_topology_audit.py",
+      "mode": "lf",
+      "bytes": 712,
+      "sha256": "6324140e4b000f0cc215ddfdb4239d702f8ab37ba5631ac0b39aed8cb7c4ad08"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_trace_recovery_provenance.py",
+      "mode": "lf",
+      "bytes": 10926,
+      "sha256": "711e55f5a1b46ff3242105c551cc2cbe0c3a0f0b5cdc627d8c98dc6deea37fe7"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_xact_audio.py",
+      "mode": "lf",
+      "bytes": 1533,
+      "sha256": "fc422c88bb6c7972c0e4e6f85f9f6d5702e42a05d17ca65b74357cd2f6bc8863"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_xbe.py",
+      "mode": "lf",
+      "bytes": 1732,
+      "sha256": "ebb7fc57f99f102bc126241e00fc108c5ae46a63d2b94eb7c5fdc976018b937f"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_xbox_script_bytecode_audit.py",
+      "mode": "lf",
+      "bytes": 2255,
+      "sha256": "0ccb174efff373ab9a2383acd105f763be7fbe86b579a26f2581d7eb40020e8d"
+    },
+    {
+      "path": "tools/campaign_port/tests/test_xdvdfs.py",
+      "mode": "lf",
+      "bytes": 2724,
+      "sha256": "b22bcc59e7a2222a91168d14fa4b89873d0586e17d5cd8dd5112facac1301749"
+    },
+    {
+      "path": "tools/campaign_port/trace_recovery_provenance.py",
+      "mode": "lf",
+      "bytes": 17159,
+      "sha256": "1101b232187efae6ab6ddbec16fe37c08321961faa85f4892c4706bd7158b0ea"
+    },
+    {
+      "path": "tools/campaign_port/xact_audio.py",
+      "mode": "lf",
+      "bytes": 21112,
+      "sha256": "76b5bf94b1383e4ba4596e88ad7716cd5a743f5421aa56496dd7c34277e1ed07"
+    },
+    {
+      "path": "tools/campaign_port/xbe.py",
+      "mode": "lf",
+      "bytes": 10122,
+      "sha256": "6fe292d4c15078c17dee970bb0dbee01b6f717cbfdaa81306e69c74f4dc5fe85"
+    },
+    {
+      "path": "tools/campaign_port/xbox_script_bytecode_audit.py",
+      "mode": "lf",
+      "bytes": 13647,
+      "sha256": "542f1447fd1aae7de6911a925042ffb6675081dd2cb7980bed2a49c61f129e7e"
+    },
+    {
+      "path": "tools/campaign_port/xdvdfs.py",
+      "mode": "lf",
+      "bytes": 9123,
+      "sha256": "3ce4d014384cdd17ab1c78ff0364ea82645fc3dd256f29ea4b2c6580a811e8ea"
+    }
+  ],
+  "runtime_contract": {
+    "python_minimum": "3.10",
+    "python_dependencies": "standard-library-only",
+    "native_engine_required": false,
+    "licensed_assets_required_for_verification": false
+  },
+  "limits": [
+    "Does not include engine build toolchains or retail inputs.",
+    "Does not prove full final-overlay composition.",
+    "Python/PowerShell line endings normalized; profiles remain byte-exact."
+  ]
+}

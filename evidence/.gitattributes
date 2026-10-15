@@ -1,3 +1,4 @@
 # Metadata-lock and recipe-plan byte hashes must survive Windows checkouts.
 checkpoint-085-*.json text eol=lf
 checkpoint-086-*.json text eol=lf
+checkpoint-087-*.json text eol=lf

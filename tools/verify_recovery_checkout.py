@@ -65,8 +65,8 @@ def bound_artifact(lock: dict, name: str) -> Path:
     return path
 
 
-def verify(source: Path, tests: bool = False, git: str = "git") -> dict:
-    lock_data = safe_path(PIPELINE, LOCK).read_bytes()
+def verify(source: Path, tests: bool = False, git: str = "git", lock_name: str = LOCK) -> dict:
+    lock_data = safe_path(PIPELINE, lock_name).read_bytes()
     lock = json.loads(lock_data)
     if lock.get("schema") != "doom3-recovery-toolchain-lock-v1" or not re.fullmatch(r"[0-9a-f]{40}", lock.get("source_commit", "")):
         raise ValueError("unsupported source/toolchain lock")
@@ -105,6 +105,7 @@ def verify(source: Path, tests: bool = False, git: str = "git") -> dict:
             run([*python, "-m", "unittest", "discover", "-s",
                  "tools/campaign_port/tests", "-p", "test_*.py", "-q"], source)
     return {"status": "asset-free-verification-passed", "source_commit": commit,
+            "toolchain_lock": lock_name, "toolchain_lock_sha256": hashlib.sha256(lock_data).hexdigest(),
             "source_files_verified": len(lock["files"]),
             "pipeline_artifacts_verified": len(lock["pipeline_artifacts"]),
             "plan_byte_identical": True, "provenance_byte_identical": True,
@@ -118,9 +119,10 @@ def main() -> int:
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--tests", action="store_true")
     parser.add_argument("--git", default="git")
+    parser.add_argument("--lock", default=LOCK, help="pipeline-relative versioned toolchain lock")
     args = parser.parse_args()
     try:
-        result = verify(Path(os.path.abspath(args.source)), args.tests, args.git)
+        result = verify(Path(os.path.abspath(args.source)), args.tests, args.git, args.lock)
         print(json.dumps(result, indent=2))
         return 0
     except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
