@@ -1,0 +1,87 @@
+{
+  "checkpoint": "078",
+  "date": "2026-10-15",
+  "claim": "Eleven exact Xbox compiled static render models are decoded to PC ASE; all eight affected isolated solo/co-op focus loads pass without targeted missing-model or ASE bitmap-path warnings.",
+  "host": {
+    "source_commit": "d1ae7b2",
+    "game_dll_sha256": "cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68",
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "launcher": "direct",
+    "window_mode": "minimized",
+    "map_command": "spawnServer"
+  },
+  "decoder": {
+    "surface_header": "u32 identifier, u32 material_length, material bytes, 6f bounds, 2 one-byte flags, u32 index_count",
+    "indexes": "little-endian u16",
+    "vertex_header": "u32 vertex_count",
+    "vertex": "5f + 4I (XYZ, ST, packed normal, two packed tangents, four color bytes)",
+    "opaque_renderer_spans": "bounded and SHA-256 recorded",
+    "pc_ase_conventions": [
+      "inverse B/C emission for the stock reader",
+      "1 - T emission for the stock reader",
+      "retail-style absolute BITMAP path containing a base component",
+      "RGB vertex color preserved; fourth idDrawVert color byte is not representable in stock ASE"
+    ]
+  },
+  "recovered_unique_models": 11,
+  "co_op": {
+    "overlay_suffix": "mergeguard_v20m",
+    "corpus_audit": "work/coop-mergeguard-v20m-audit.json",
+    "corpus_audit_sha256": "7034ec1718c4eff1e5c0e6e465da577aece7a77f48ccedc6502ff7392befab28",
+    "maps": 20,
+    "payload_files": 6212,
+    "payload_ledger_sha256": "066d9bc59e13f24c053756e6dbab5205db08da8ef19d3b0c6908881e764aad26",
+    "unresolved_resources": 0,
+    "untracked_files": 0,
+    "tree": "work/campaign-coop-test-tree-v30",
+    "tree_audit_sha256": "24715aa853c3a00879059d82fb900278f27f651337cf1712ff893eeb2f59424b",
+    "tree_files": 1047,
+    "tree_ledger_sha256": "90ed45301bf2f7e3ce6942a2e94c1cb93bfdb9467e940fb54aba503393977fdd"
+  },
+  "solo": {
+    "input_baseline": "solo-overlays-nativefix-v26",
+    "replay": "solo-overlays-nativefix-v30",
+    "tree": "work/campaign-solo-test-tree-v30",
+    "tree_audit_sha256": "68709f0e584f84711059ad612a2ac0057a58da3b2d1a9df740ed6471f186d488",
+    "maps": 41,
+    "tree_files": 848,
+    "tree_ledger_sha256": "469c2e25069ab48c4400e27620996a350a748654ff4e55548a1368a58fcedabf",
+    "preserved_acceptance_boundary": "accepted solo DEF closure is replayed in static-only compatibility scope; the only complete DEF content change is items.def"
+  },
+  "focused_native": {
+    "solo_report": "work/gpl-solo-static-focus-v30.json",
+    "solo_report_sha256": "e73da0c5f8fbeca16408effeefbcc68f59db2639df4e4663d27dd6ea6886ef41",
+    "solo_plan_sha256": "8a7316845a141c980f25d5dad0398768ab148b5389f6343aec719f3f9cf33ef4",
+    "solo_rows": [16, 36, 37, 40],
+    "coop_report": "work/gpl-coop-static-focus-v30.json",
+    "coop_report_sha256": "7a8ba22800dffa25831a732c1c6623501309ec555ef2040b005b87f89f9a51c6",
+    "coop_plan_sha256": "3c8afaa7bb30ce57e0b7e6d75ed6d6ee8390ae9e31c8f1ceb545998a8cb8b747",
+    "coop_rows": [50, 58, 59, 61],
+    "maps_recorded": 8,
+    "maps_passed": 8,
+    "failed_maps": 0,
+    "minimum_idle_seconds_observed": 10.006,
+    "maximum_load_seconds": 7.089,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "targeted_missing_model_lines": 0,
+    "ase_bitmap_path_warning_lines": 0
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p test_*.py -q",
+    "passed": 330,
+    "failed": 0
+  },
+  "supersedes": "checkpoint 077's eight-absent-render-path claim, which was limited to the earlier selective extraction",
+  "rejected_trials": [
+    "A unified solo/co-op runtime tree is static-merge evidence only: co-op NPC declaration overrides can contaminate solo native loads.",
+    "Solo replay from the evolving shared co-op DEF catalog was rejected; accepted solo declarations must be replayed from their immutable prior closure."
+  ],
+  "remaining_gates": [
+    "fresh one-minute-per-map v30 native sweeps",
+    "the stock/source-absent recycwallight_broken render path",
+    "warning call-site attribution outside the recovered static models",
+    "two-peer progression, death/rejoin and synchronization",
+    "matched Xbox/PC visual, encounter, audio, timing and save/load validation"
+  ]
+}

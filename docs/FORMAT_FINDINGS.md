@@ -1658,3 +1658,31 @@ Retain unexplained spans. Separately label recovered editable source geometry,
 recovered compiled geometry and newly reconstructed geometry; they are not
 interchangeable forms of evidence.
 
+## 5. Compiled static render models (`.lwo.x` / `.ase.x`)
+
+Checkpoint 078 establishes the renderer-static-model payload independently of
+the collision `.cm.x` payload. A full GFC inventory—not a selective extraction—
+contains the exact compiled render members for eleven previously warned paths.
+The decoded file begins with a little-endian surface count. Each surface stores
+a 32-bit surface identifier, a length-prefixed material name, six float bounds,
+two one-byte flags, a 32-bit index count with 16-bit indices, and a 32-bit vertex
+count followed by 36-byte draw vertices. Each vertex is `5f + 4I`: XYZ, ST,
+packed NV2A normal, two packed tangents and four color bytes.
+
+Surface identifiers are not reliably sequential. The strict decoder therefore
+finds the next header only when all count, flag, finite-float, material-path and
+index-range constraints validate. Bytes between primary surface arrays are
+renderer-derived data: they are bounded and SHA-256 recorded, not guessed into
+the PC export. The PC ASE writer compensates for Doom 3's ASE reader by swapping
+the emitted B/C winding, writing `1 - T`, and using retail-style synthetic
+absolute bitmap paths containing a `base` component. The material name remains
+authoritative. RGB vertex color is retained; stock ASE cannot represent the
+fourth `idDrawVert` color byte, which remains an explicit fidelity boundary.
+
+The stock `recycwallight.ase.x` control preserves the stock PC material set and
+2/14/2 triangle split. Xbox vertex splitting differs (4/26/4 versus 4/10/4), as
+expected after renderer preprocessing. Native focused logs show the decoded
+models loading and contain no targeted missing-model or ASE bitmap-path warning.
+This is structural/native-load evidence, not yet a matched Xbox screenshot or
+vertex-alpha acceptance test.
+

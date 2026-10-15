@@ -14,26 +14,32 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 077
+## Current checkpoint: 078
 
-**The current co-op payload has completed a fresh 20/20 one-minute native
-soak, and the remaining observed actor-joint warnings have source-bound
-repairs.** The v26 tree contains all 20 original-Xbox co-op segments and 1,040
-files with no unresolved dependency, duplicate declaration/material, missing
-compiled companion, untracked file or reparse point. Every route row loaded on
-the minimized direct GPL host, idled at least 60.054 seconds, and recorded zero
-error/fatal lines, premature exits or aborts.
+**Eleven exact Xbox compiled static models are now decoded to PC ASE, and all
+eight affected solo/co-op focus loads are clean.** Full GFC inventory corrected
+checkpoint 077's selective-extraction conclusion: the archives do contain the
+renderer-compiled `.lwo.x`/`.ase.x` payloads for the keycard, co-op Caverns,
+Site 3 and Hellhole props plus four additional solo-only Site 3/Hellhole props.
+A strict decoder preserves surfaces, materials, indexed geometry, UVs, normals
+and RGB vertex colors while hash-binding renderer-derived opaque spans.
 
-That run also records zero actor model/animation mismatch, missing actor
-animation, unknown actor joint, no-model-on-actor or `Could not spawn` line.
-The v27 successor then maps the pruned Xbox Commando ragdoll endpoint and four
-pruned Guardian focus/look/smoke references to retained bind-pose joints; all
-six affected route rows pass focused native loads and those warnings are gone.
-All 322 offline tests pass. This is not final visual or two-peer gameplay
-acceptance: eight missing static-render paths, the Comm1 GUI-distance warning,
-empty-key warnings, progression, save/load and matched Xbox fidelity remain
-open. See
-[`evidence/checkpoint-077-coop-skeleton-resource-closure.json`](evidence/checkpoint-077-coop-skeleton-resource-closure.json).
+The isolated v30 trees contain 41 solo and 20 co-op maps with zero unresolved
+dependency, missing compiled companion, duplicate declaration/material,
+untracked file or reparse point. Comm1, Site 3, Caverns 1 and Hellhole pass in
+both corpora on the minimized direct GPL host: 8/8 spawned, idled at least ten
+seconds and produced zero error/fatal lines. Targeted missing-model and ASE
+bitmap-path warnings are zero. All 330 offline tests pass. The previously clean
+v26 41/41 solo and 20/20 co-op minute soaks remain the broad baseline; fresh
+v30 one-minute sweeps are the next gate before visual/two-peer acceptance. See
+[`evidence/checkpoint-078-static-model-decoder.json`](evidence/checkpoint-078-static-model-decoder.json).
+
+## Earlier checkpoint: 077
+
+Checkpoint 077 completed the fresh 20/20 co-op one-minute native soak and
+closed the remaining observed Commando and Guardian joint warnings. Its claim
+that eight render paths were absent is superseded by checkpoint 078: that claim
+described the earlier selective extraction, not the full GFC inventory.
 
 ## Earlier checkpoint: 076
 
