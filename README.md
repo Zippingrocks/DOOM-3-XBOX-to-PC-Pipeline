@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 065
+## Current checkpoint: 066
+
+**The accepted 61-map tree now has a fail-closed native test itinerary and a
+noncontaminating local `fs_game` handoff.** The solo transition graph is one
+41-map route from `mars_city1_1` to a linked `endOfGame` in `hellhole_2`; the
+co-op graph is one 20-map route from `xc_mars_city1_1` to a linked `endOfGame`
+in `xc_hellhole_1`. Two apparent co-op exits to solo paths have zero incoming
+links and remain preserved dormant residue rather than test-route edges.
+
+Local `xbox_campaign_test_v2` points to the immutable accepted tree, while a
+separate `fs_savepath` receives DoomConfig/log state. Rehashing after staging
+still yields ledger `7e524166...fe60979`. All 274 offline tests pass; no Doom
+process was launched. Offline work is now at the native loader boundary. See
+[`docs/NATIVE_TEST_PLAN.md`](docs/NATIVE_TEST_PLAN.md) and receipt
+[`evidence/checkpoint-066-native-test-handoff.json`](evidence/checkpoint-066-native-test-handoff.json).
+
+## Earlier checkpoint: 065
 
 **All 61 recovered campaign segments now coexist in one deduplicated local test
 tree.** A cross-package audit found 1,572 unique virtual paths and proved all

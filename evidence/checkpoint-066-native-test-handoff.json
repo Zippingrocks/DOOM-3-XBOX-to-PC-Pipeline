@@ -1,0 +1,57 @@
+{
+  "checkpoint": "066",
+  "date": "2026-10-14",
+  "claim": "The accepted unified campaign tree has complete source-bound solo and co-op native test routes, linked terminal endings, classified dormant external exits, an isolated runtime-state path and a local fs_game handoff without launching Doom.",
+  "plan": {
+    "report": "work/campaign-native-test-plan-v1.json",
+    "report_sha256": "3ef2818df5ff772faf0f35e386384016c391eb86be755ffa12acbe4701b2cf4c",
+    "solo_maps": 41,
+    "solo_start": "mars_city1_1",
+    "solo_terminal": "hellhole_2",
+    "solo_terminal_entity": "target_endlevel_2",
+    "solo_terminal_incoming_links": 1,
+    "coop_maps": 20,
+    "coop_start": "xc_mars_city1_1",
+    "coop_terminal": "xc_hellhole_1",
+    "coop_terminal_entity": "target_endlevel_3",
+    "coop_terminal_incoming_links": 1,
+    "cycles": 0,
+    "omitted_maps": 0,
+    "ignored_external_coop_transitions": 2,
+    "ignored_external_incoming_links": 0
+  },
+  "local_handoff": {
+    "fs_game": "xbox_campaign_test_v2",
+    "link_type": "Junction",
+    "target": "work/campaign-test-tree-v2",
+    "isolated_save_root": "work/campaign-test-runtime-state",
+    "post_stage_tree_ledger_sha256": "7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979",
+    "post_stage_untracked_files": 0,
+    "post_stage_tree_reparse_points": 0
+  },
+  "implementation_receipts": {
+    "campaign_native_test_plan_py_sha256": "a11b64757b5ef436bf42db720dabdb81197a87a5a87602e02dd5c71a95eeec59"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 274,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_processes_started": 0,
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "next_required_gate": [
+    "Bounded hidden/windowed loader and qconsole receipt for every one of the 61 maps.",
+    "Solo transition and save/load playthrough.",
+    "Two-peer co-op spawn, progression, death/rejoin and synchronization playthrough.",
+    "Matched original-Xbox visual, audio, encounter and timing comparison."
+  ],
+  "limits": [
+    "The native itinerary and fs_game alias do not prove that Doom loads or plays any map.",
+    "The junction is a local convenience only; the accepted artifact remains the ordinary-file tree behind it.",
+    "Native execution was intentionally deferred to avoid interrupting the user's active game."
+  ]
+}

@@ -1,5 +1,25 @@
 # Format findings and unknowns
 
+## Checkpoint 066 native-itinerary findings
+
+Transition inventory alone overstates the playable graph. The co-op Site 3 map
+retains a renamed solo `caverns1_1` exit, and `xc_hellhole_1` retains a
+`hellhole_2` next-map target. Both have zero incoming MAP links. The actual
+co-op terminal is the separately linked `target_endlevel_3` with `endOfGame 1`.
+Similarly, solo `hellhole_2` ends through its linked `target_endlevel_2`.
+
+Tracing only authenticated internal edges produces complete acyclic routes:
+41 solo maps and 20 co-op maps, each exactly once. The plan records an explicit
+map command for every segment rather than assuming that a successful first
+load proves the rest. It also separates loader-only, route/progression,
+two-peer and matched visual/audio phases so a failure has a precise boundary.
+
+An `fs_game` alias alone is not an immutable test handoff because Doom writes
+`DoomConfig.cfg` and `qconsole.log` beneath its save path. The plan therefore
+uses a separate `fs_savepath`. The root alias may be a local junction for
+convenience; the accepted tree behind it remains an ordinary-file artifact and
+rehashes to its checkpoint-065 ledger. No native execution is claimed here.
+
 ## Checkpoint 065 unified-tree findings
 
 Per-map closure does not imply whole-campaign merge safety. The 7,872 manifest

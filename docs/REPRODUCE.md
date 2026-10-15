@@ -1,3 +1,34 @@
+# Reproduce checkpoint 066
+
+## Checkpoint 066: native test itinerary and isolated runtime state
+
+Generate the route and launch-argument plan from the final semantic reports and
+accepted unified tree:
+
+```powershell
+python -m tools.campaign_port.campaign_native_test_plan `
+  work/campaign-test-tree-v2 `
+  --solo-semantics work/solo-overlays-strict-v11-semantic-audit.json `
+  --coop-semantics work/coop-soundguard-final-semantics.json `
+  --fs-game xbox_campaign_test_v2 `
+  --save-root work/campaign-test-runtime-state `
+  --output work/campaign-native-test-plan-v1.json
+```
+
+Require a 41-map solo route and 20-map co-op route with no omission or cycle.
+Require one linked `endOfGame` entity at each terminal. Require both excluded
+co-op-to-solo transitions to have zero incoming MAP links. Stage a local
+`xbox_campaign_test_v2` junction whose exact target is
+`work/campaign-test-tree-v2`; keep `work/campaign-test-runtime-state` separate
+so runtime config/log writes cannot enter the accepted tree.
+
+Re-run the complete unified-tree audit after staging and require ledger
+`7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979`.
+Run the full suite and require 274 passing tests. This checkpoint must not start
+Doom 3. Continue with the bounded hidden loader procedure in
+`docs/NATIVE_TEST_PLAN.md` only when native testing will no longer interrupt
+the user.
+
 # Reproduce checkpoint 065
 
 ## Checkpoint 065: unified 61-map campaign test tree

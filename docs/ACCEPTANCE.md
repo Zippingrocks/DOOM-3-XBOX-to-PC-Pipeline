@@ -1,5 +1,21 @@
 # Recovery order and acceptance
 
+## Checkpoint 066 native-test handoff status
+
+The remaining work has crossed the offline/native boundary. Both complete
+campaign routes are explicit and source-bound, terminal `endOfGame` links are
+identified, dormant external exits are excluded with zero-incoming evidence,
+all 61 direct map commands are recorded, and the accepted tree is staged behind
+an `fs_game` alias with isolated runtime state. The tree still rehashes exactly
+and all 274 offline tests pass.
+
+This accepts only the test handoff. Next is a bounded hidden/windowed loader run
+for every map, followed by solo progression/save-load, two-peer co-op
+progression/death/rejoin, and matched Xbox visual/audio/timing comparison.
+Those steps necessarily execute Doom and were deliberately not started while
+they could interrupt the user. See `docs/NATIVE_TEST_PLAN.md` before running
+them.
+
 ## Checkpoint 065 unified campaign-tree status
 
 One local test tree now contains all 41 solo and 20 co-op map segments without
