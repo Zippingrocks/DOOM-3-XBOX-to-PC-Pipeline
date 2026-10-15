@@ -1,0 +1,65 @@
+{
+  "checkpoint": "075",
+  "date": "2026-10-15",
+  "claim": "All 20 original-Xbox co-op campaign segments load on one current audited v21 tree, reach an entity-spawn marker, remain alive for at least 60 seconds and record zero error or fatal lines.",
+  "native_soak": {
+    "report": "work/gpl-coop-soak-v21.json",
+    "report_sha256": "e49a71aa8bcdaebae66b6da23cb498293d9938b77cc7f1e602786f8f55dec752",
+    "plan_sha256": "8df2575ade4bf3a5ee1ad45922e76b643295d47ff1f47363abbcc8fe31bcd454",
+    "route_rows": "42-61",
+    "maps_recorded": 20,
+    "maps_passed": 20,
+    "maps_failed": 0,
+    "minimum_idle_seconds_observed": 60.054,
+    "maximum_load_seconds": 5.074,
+    "premature_exits": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "aborted": false
+  },
+  "coop_overlay_corpus": {
+    "path_suffix": "mergeguard_v19b",
+    "maps": 20,
+    "payload_files": 6122,
+    "payload_bytes": 548733492,
+    "direct_authored_cm_maps": 20,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "untracked_files": 0,
+    "payload_ledger_sha256": "93239169aef52ee7147f981baba627cfea3ad2e66939c7d586d2a990a574e55b",
+    "manifest_ledger_sha256": "eb0ed3fed240364e001859059cb033ee12bec3852c4bba77cb2d0911d20bda93"
+  },
+  "coop_test_tree": {
+    "path": "work/campaign-coop-test-tree-v21",
+    "maps": 20,
+    "files": 1015,
+    "bytes": 329142454,
+    "ledger_sha256": "9e7c77eed89798b07648293b84aa9393f9b04027dfc0f082c65973287c8cd92d",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "host": {
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "game_dll_sha256": "96b4cd946f460bc99434544565d84ce6882fcd7768149acdffacd0dda8a3b7f9",
+    "game_dll_bytes": 2417664,
+    "launcher": "direct-minimized",
+    "map_command": "spawnServer",
+    "fs_game": "xbox_campaign_coop_v21"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 319,
+    "failed": 0
+  },
+  "limits": [
+    "The runner's zero error/fatal result is a loader-survival gate, not proof that warning-only Xbox gameplay classes behave correctly.",
+    "The logs still report unregistered Xbox co-op spawnclasses, including GUI/door synchronization, spawn-level progression, shared-GUI triggers, teleport selection and Turkey Puncher behavior; these require source-level closure.",
+    "Skeleton/resource warnings still require source-bound correction before the first meaningful gameplay playthrough.",
+    "Two-peer progression, death/respawn, transitions, rendering, sound, save/load and matched original-Xbox fidelity remain unaccepted.",
+    "Retail-derived maps and logs remain local and are not included in this public evidence repository."
+  ]
+}

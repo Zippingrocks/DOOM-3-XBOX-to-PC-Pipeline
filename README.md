@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 074
+## Current checkpoint: 075
+
+**The complete original-Xbox co-op route now clears the native loader-soak
+gate: 20/20 map segments each loaded and remained alive for at least 60
+seconds.** One current v21 tree and one host/DLL pair ran route rows 42-61
+without a premature exit, abort, error line or fatal line. Minimum observed
+idle was 60.054 seconds and maximum load time was 5.074 seconds.
+
+The accepted static input remains the 20-map v19b corpus and isolated v21 tree:
+all 20 CMs are direct-authored, dependency audits are closed, and the tree has
+no missing compiled companion, duplicate declaration/material, untracked file
+or reparse point. All 319 offline tests pass. This is loader survival, not final
+gameplay acceptance: warning-only Xbox co-op classes and remaining skeleton and
+resource mismatches are now the active source-level gate before a meaningful
+two-peer playthrough. See
+[`evidence/checkpoint-075-coop-native-soak.json`](evidence/checkpoint-075-coop-native-soak.json).
+
+## Earlier checkpoint: 074
 
 **Every co-op map that exposed a native loader failure now passes on one current
 audited tree.** MCU, Delta 2B part 2 and Hellhole each spawned on the minimized

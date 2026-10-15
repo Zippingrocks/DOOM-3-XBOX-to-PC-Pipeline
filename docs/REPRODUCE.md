@@ -1,3 +1,36 @@
+# Reproduce checkpoint 075
+
+## Checkpoint 075: complete 20-map co-op native soak
+
+Use the checkpoint-074 v21 tree and exact direct GPL-dedicated host/DLL pair.
+Run co-op route rows 42-61 with the window minimized and require a full
+60-second observed idle after each map's entity-spawn marker:
+
+```powershell
+& .\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan work\campaign-native-coop-plan-v21.json `
+  -DoomExe 'work\upstream-doom3-gpl-src\DOOM-3-master\build\Win32\Dedicated Release\DOOM3.exe' `
+  -StateRoot work\coop-soak-v21 `
+  -Output work\gpl-coop-soak-v21.json `
+  -GameRoot '..\..' `
+  -ExpectedGameDllSha256 96b4cd946f460bc99434544565d84ce6882fcd7768149acdffacd0dda8a3b7f9 `
+  -Launcher Direct -MapCommand spawnServer `
+  -StartIndex 42 -EndIndex 61 -IdleSeconds 60
+```
+
+Require 20 recorded and 20 passed maps, zero failures or premature exits,
+`aborted=false`, minimum observed idle at least 60 seconds, and zero error or
+fatal line in every run. The accepted report SHA-256 is
+`e49a71aa8bcdaebae66b6da23cb498293d9938b77cc7f1e602786f8f55dec752`;
+its plan SHA-256 is
+`8df2575ade4bf3a5ee1ad45922e76b643295d47ff1f47363abbcc8fe31bcd454`.
+The accepted minimum idle is 60.054 seconds and maximum load is 5.074 seconds.
+
+Do not treat warning-only lines as accepted merely because the bounded runner
+does not classify them as fatal. Inventory missing spawnclasses, skeleton
+mismatches and resources from all 20 local logs and close their source-bound
+behavior before two-peer progression testing.
+
 # Reproduce checkpoint 074
 
 ## Checkpoint 074: close all observed co-op loader blockers

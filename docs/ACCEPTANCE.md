@@ -1,5 +1,25 @@
 # Recovery order and acceptance
 
+## Checkpoint 075 complete co-op native-loader acceptance
+
+The complete original-Xbox co-op route now passes the native loader-soak gate.
+All 20 segments loaded from one current v21 tree, reached an entity-spawn
+marker, remained alive for at least 60 seconds and produced zero error/fatal
+lines and zero premature exits. The minimum observed idle was 60.054 seconds;
+the maximum map load was 5.074 seconds.
+
+The static corpus remains independently closed at the loader boundary: 20
+direct-authored CMs, zero unresolved dependency, and a 1,015-file isolated tree
+with no missing compiled companion, duplicate declaration/material, untracked
+file or reparse point. All 319 offline tests pass.
+
+This accepts co-op map parsing, spawning and one-minute process survival only.
+Warnings do not fail the soak runner, and the logs still expose Xbox-only co-op
+spawnclasses plus skeleton/resource mismatches that can break actual gameplay.
+Source-level behavior, two simultaneous peers, spawn/respawn progression,
+segment transitions, visual/audio fidelity, save/load and matched Xbox behavior
+remain open.
+
 ## Checkpoint 074 co-op loader-closure status
 
 The current v21 tree closes all three observed co-op loader failure families.
