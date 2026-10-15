@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 064 portable co-op-package status
+
+The final 20-map co-op corpus is now materialized locally as 6,080 ordinary,
+manifest-only payload files. The exact accepted generation is selected by
+suffix, all copies are hash-checked, no untracked file or reparse point enters
+the artifact, and its independent audit reproduces both accepted corpus
+ledgers. All 259 offline tests pass.
+
+This accepts package identity and portability, not engine or two-peer runtime
+behavior. The 545,522,554-byte output is retail-derived local test data and is
+deliberately excluded from Git and distribution. Native loading, collision,
+visibility, encounter progression, death/respawn, networking, save/load and
+visual comparison remain required. Doom 3 and `dmap` were not launched while
+they could interrupt the user's game.
+
 ## Checkpoint 063 portable solo-package status
 
 The 41-map solo corpus is now available locally as 1,792 ordinary manifest-only

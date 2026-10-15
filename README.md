@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 063
+## Current checkpoint: 064
+
+**The 20-map Xbox co-op campaign now has an exact manifest-only portable test
+package.** The packager selects the named final `soundguard_v3` generation
+instead of relying on mutable-directory timestamps, verifies every source and
+copied payload, copies each manifest byte-for-byte, and publishes only after
+the full staged corpus closes.
+
+The package contains 6,080 payloads totaling 545,522,554 bytes, with zero
+untracked files and zero reparse points. Its independent audit reproduces the
+accepted payload ledger `e90511d6...7504cad` and manifest ledger
+`0b412c1f...d777528` exactly. All 259 offline tests pass; Doom 3 and `dmap` were
+not launched. The package remains local retail-derived test data and is not
+committed or redistributable. Receipt:
+[`evidence/checkpoint-064-coop-portable-package.json`](evidence/checkpoint-064-coop-portable-package.json).
+
+## Earlier checkpoint: 063
 
 **The complete 41-map Xbox single-player test corpus is now materialized as a
 portable ordinary-file package.** The accepted final audit view contains 39

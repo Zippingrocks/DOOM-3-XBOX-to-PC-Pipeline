@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 064 co-op portable-package findings
+
+The final co-op generation exists as 20 separate development overlays beside
+many older generations. A recursive "latest manifest" heuristic is useful for
+auditing work in progress but is not a reproducible packaging selector: copied
+manifests or unrelated later work can change modification-time ordering. The
+co-op packager therefore requires the exact accepted suffix and searches only
+matching direct children of the named source root.
+
+Each manifest is validated as a co-op runtime overlay with a unique Xbox co-op
+map identity. Its entries are the only payload allowlist. The packager checks
+source and destination size/SHA-256, preserves the manifest bytes, excludes
+everything unlisted, stages to a temporary sibling, refuses an existing
+destination and publishes atomically after all 20 maps close. The independent
+audit then requires no untracked file and reproduces both accepted ledgers.
+
+This establishes deterministic package identity, not native two-peer behavior.
+The package is local retail-derived data and must remain outside Git and public
+distribution. Loader selection, host/client synchronization, progression,
+respawn, save/load and matched Xbox visual/gameplay fidelity remain native test
+obligations.
+
 ## Checkpoint 063 portable-package findings
 
 An audit view is not automatically a safe test artifact. Thirty-nine of the

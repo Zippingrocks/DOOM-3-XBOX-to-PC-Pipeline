@@ -1,0 +1,59 @@
+{
+  "checkpoint": "064",
+  "date": "2026-10-14",
+  "claim": "The accepted 20-map Xbox co-op soundguard_v3 corpus has been materialized as an exact manifest-only ordinary-file test package with identical campaign ledgers, zero untracked files and zero reparse points.",
+  "input": {
+    "root": "Doom 3 installation root",
+    "required_suffix": "soundguard_v3",
+    "maps": 20,
+    "accepted_report": "work/coop-soundguard-overlay-corpus-v3.json",
+    "accepted_report_sha256": "74eeafd69fece1ac4747b225577a745c67dda95802b49e02a5734bb930561e53"
+  },
+  "package": {
+    "root": "work/coop-overlays-packaged-v1",
+    "maps": 20,
+    "payload_files": 6080,
+    "payload_bytes": 545522554,
+    "manifest_bytes": 3317421,
+    "untracked_files": 0,
+    "reparse_points": 0,
+    "receipt_sha256": "91d13619a152f032eb8d7cf0bc5870354cd60ed3e7be1705004347ffe8ddeb58"
+  },
+  "independent_audit": {
+    "report": "work/coop-overlays-packaged-v1-audit.json",
+    "report_sha256": "42bee022c69ecd22461025df5a96b6c2ea834504866559be4af0818671284832",
+    "maps": 20,
+    "payload_files": 6080,
+    "payload_bytes": 545522554,
+    "payload_ledger_sha256": "e90511d67bd1eb6ee001e21a9bef001ed833b27e523cc495561bf24c67504cad",
+    "manifest_ledger_sha256": "0b412c1f2f42a52d71a02b10f2f98877017a6a3a241f9ae3d791bcb51d777528",
+    "untracked_files": 0,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "matches_accepted_root": true
+  },
+  "implementation_receipts": {
+    "package_coop_overlays_py_sha256": "91e1e1f7f972728cc4bd78035b9d313b5478c4dd4adac22563824507588b4b7b"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 259,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "distribution_boundary": {
+    "retail_derived_package_committed": false,
+    "retail_derived_package_redistributable": false,
+    "documentation_and_hash_receipts_only": true
+  },
+  "limits": [
+    "The materialized package contains local retail-derived data and must remain outside Git and public distribution.",
+    "Exact manifest packaging does not prove engine selection, loading or native two-peer behavior.",
+    "Collision, visibility, progression, death/respawn, networking, save/load and visual-fidelity acceptance remain outstanding."
+  ]
+}

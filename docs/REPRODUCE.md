@@ -1,3 +1,32 @@
+# Reproduce checkpoint 064
+
+## Checkpoint 064: portable co-op test package
+
+Materialize only the final named overlay generation. Do not infer it from
+modification times and do not copy the mutable development directories
+wholesale:
+
+```powershell
+python -m tools.campaign_port.package_coop_overlays ../.. `
+  work/coop-overlays-packaged-v1 --suffix soundguard_v3 `
+  --require-maps 20 `
+  --receipt work/coop-overlays-packaged-v1-receipt.json
+
+python -m tools.campaign_port.coop_overlay_corpus_audit `
+  work/coop-overlays-packaged-v1 --require-maps 20 `
+  --require-no-untracked `
+  --output work/coop-overlays-packaged-v1-audit.json
+```
+
+Require 20 maps, 6,080 payload files, 545,522,554 payload bytes, zero untracked
+files and zero junctions, symlinks or other reparse points. The payload ledger
+must be `e90511d67bd1eb6ee001e21a9bef001ed833b27e523cc495561bf24c67504cad`
+and the manifest ledger must be
+`0b412c1f2f42a52d71a02b10f2f98877017a6a3a241f9ae3d791bcb51d777528`.
+The destination must not exist before packaging. Run the full suite and require
+259 passing tests. Do not commit or distribute the retail-derived package. Do
+not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 063
 
 ## Checkpoint 063: portable solo test package
