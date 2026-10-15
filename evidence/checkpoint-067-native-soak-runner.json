@@ -15,7 +15,7 @@
   },
   "runner": {
     "local_path": "tools/campaign_port/run_native_campaign_soak.ps1",
-    "sha256": "c05eb6d5ce558688b19cc1463ee4fc42da8f79874ec2b6057d5627e8d2fb7f80",
+    "sha256": "435fbddc68fb762f15ebc9c764a03562f4a4b5527bd59b76bfc722a84e36de83",
     "report_schema": "doom3-xbox-campaign-native-soak-v2",
     "launcher_modes": [
       "direct",
@@ -27,7 +27,8 @@
       "Steam mode refuses to launch while another executable below steamapps/common is active unless explicitly overridden.",
       "Distinguishes launcher_failure, bootstrap_failure, load_failure, load_timeout, runtime_crash, runtime_log_failure and passed.",
       "Aborts the batch after launcher_failure or bootstrap_failure.",
-      "Supports StartIndex, EndIndex and identity-checked Resume.",
+      "Supports StartIndex, EndIndex and identity-checked Resume only for failure-free, non-aborted reports.",
+      "Actively minimizes the Doom window after the Steam-launched process creates it.",
       "Writes the report atomically after every attempted map and hashes the plan, executable and qconsole log."
     ]
   },
@@ -42,6 +43,7 @@
     "classification": "bootstrap_failure",
     "aborted": true,
     "later_maps_attempted": false,
+    "failed_report_resume_rejected": true,
     "doom3_started": false
   },
   "rejected_v1_attempt": {

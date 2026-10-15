@@ -27,7 +27,9 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-por
 For each of the 61 rows require `classification=passed`, a non-null spawn
 marker, `alive_for_full_idle=true`, at least 60 observed idle seconds, zero
 fatal lines and a non-null qconsole hash. Use `-Resume` only when the runner
-accepts the existing report's plan, executable and `fs_game` identity.
+accepts the existing report's plan, executable and `fs_game` identity and the
+report contains no failure or aborted batch. Require `window_minimized=true`
+for a normal Steam-launched run.
 
 The 2026-10-14 v1 report is negative launcher evidence only: all 31 recorded
 invocations exited 4, all have zero log bytes, and none loaded or completed an

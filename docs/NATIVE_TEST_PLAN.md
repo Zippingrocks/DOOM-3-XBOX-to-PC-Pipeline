@@ -42,9 +42,12 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-por
 ```
 
 Use `-StartIndex` and `-EndIndex` for a bounded slice. Use `-Resume` only with
-an existing v2 report whose plan and executable hashes still match; already
-recorded sequence numbers are skipped. Co-op entries automatically set
-`si_gameType Coop` and `net_LANServer 1`.
+an existing failure-free, non-aborted v2 report whose plan and executable
+hashes still match; already recorded sequence numbers are skipped. A report
+containing any failed row must be preserved and replaced rather than resumed,
+so the failed sequence cannot be silently bypassed. Co-op entries automatically
+set `si_gameType Coop` and `net_LANServer 1`. The runner actively minimizes the
+Doom window after Steam creates it.
 
 Preserve one `qconsole.log` receipt per map and the incremental JSON report.
 Fail on missing declaration/resource, invalid joint, script error, fatal error,
