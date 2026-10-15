@@ -1,5 +1,29 @@
 # Format findings and unknowns
 
+## Checkpoint 082 source-bound actor-family findings
+
+An animation's existence is not enough to make it compatible. The decoded
+Xbox Sentry and maintenance-zombie clips both use 50 joints, but the stock PC
+meshes published at their public paths use 55 and 90. Adding only the missing
+clip makes the declaration parse farther and then fail on joint count. The
+portable unit is the whole selected skeleton family: mesh, every active
+animation and every map-specific derived animation must move together beneath
+a private runtime prefix.
+
+Accepted-overlay replay is a separate transform path. It intentionally runs a
+narrow idempotent scope so older host rewrites are not applied twice. A new
+private-family transform that exists only in the full scope can copy all of its
+assets while leaving replayed DEF text unchanged. Tests must therefore cover
+both fresh and replay scopes and assert the output declaration, not merely the
+resource manifest.
+
+Derived declarations can extend the family. Communications adds
+`wall_release_dummy` and `wall_release_idle` to the base Sentry model. The
+first corrected family removed the original warnings but exposed a new
+joint-count failure at that derived declaration. Dependency closure must trace
+all inherited and added animations across map DEFs; a base modelDef alone is
+not the complete runtime type.
+
 ## Checkpoint 074 split-cinematic reconstruction findings
 
 The Xbox Hellhole DEF preserves exact Maya export ranges even though its four

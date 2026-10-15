@@ -1,0 +1,106 @@
+{
+  "checkpoint": "082",
+  "date": "2026-10-15",
+  "claim": "Complete source-bound 50-joint Xbox Sentry and maintenance-zombie families load on the GPL PC host without their prior missing-animation, defaulted-model or joint-count cascades.",
+  "source": {
+    "repository_commit": "d74f961",
+    "offline_tests": 336,
+    "offline_tests_passed": 336,
+    "game_dll_sha256": "cd85078bf3f5ce8cd4937baae48e70049a8056db59c95033bf76ee122d9ca774",
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb"
+  },
+  "families": {
+    "sentry": {
+      "runtime_prefix": "models/md5/monsters/sentry_xbox",
+      "resources": 21,
+      "xbox_joints": 50,
+      "stock_pc_joints": 55,
+      "canonical_missing_animation_sha256": "8926553e9366168228c6123d4a8e5843741f51cafe3a9ad437b7b5fce8951906",
+      "maps": ["mars_city1_1", "mars_city2_2", "enpro_1", "comm1_2", "hellhole_2"]
+    },
+    "comm1_sentry_extension": {
+      "resources": 2,
+      "wall_release_dummy_sha256": "2e20f4b84594227b2eeadf7c1d70f513d75abfd9af65d72487f0e09aba7bb912",
+      "wall_release_idle_sha256": "d1429531c8f1d2c4e257277a8e55cef5b25010acb8ca08adc8665f15d8c042ff"
+    },
+    "maintenance_zombie": {
+      "runtime_prefix": "models/md5/monsters/zombies/zmaint_xbox",
+      "resources": 23,
+      "xbox_joints": 50,
+      "stock_pc_joints": 90,
+      "canonical_missing_animation_sha256": "2295307cd0c3283b8d272e69f7842c75959e2a24f6948972f7e322de16cfaf08",
+      "maps": ["alphalabs2_1", "alphalabs3", "delta1_1", "monorail_2"]
+    }
+  },
+  "corpus": {
+    "overlay": "work/solo-overlays-nativefix-v36",
+    "overlay_audit": "work/solo-overlays-nativefix-v36-audit.json",
+    "overlay_audit_sha256": "688ff788714f6333d3b4a35b1bbecb1c8ee888bc14a8e5b7970f7dbea73cefcf",
+    "maps": 41,
+    "files": 2554,
+    "bytes": 849893536,
+    "file_ledger_sha256": "6739159e44a290310ec0c3ecfa046ac654dd7969012677b2fe12e66d2915e847",
+    "manifest_ledger_sha256": "d7668fc9af54cd6ba3d863137727033b583aef224a443bd62a9d072e0a0e0028",
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0
+  },
+  "tree": {
+    "path": "work/campaign-solo-test-tree-v36",
+    "audit": "work/campaign-solo-test-tree-v36-audit.json",
+    "audit_sha256": "c337180e3f62c166cc4b324d5e6aac388682e958d2836d06a38aa53caf6bd2ea",
+    "maps": 41,
+    "files": 910,
+    "bytes": 744464216,
+    "ledger_sha256": "456a95f9110dc7ee599c6a6759fa12007216298081825d09ff69cf3a1e7eb1f6",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "full_regression": {
+    "plan": "work/campaign-native-solo-plan-v36.json",
+    "plan_sha256": "74848a63675f2a2b741ba671af05b1d5fbca151d0cf64574643309e71b8a740f",
+    "report": "work/gpl-solo-private-actors-v38-full.json",
+    "report_sha256": "e2a974ca1c485757bc45ff84d885647fe0c8274956a2973320753908792126a0",
+    "maps": 41,
+    "passed": 41,
+    "failed": 0,
+    "aborted": false,
+    "minimum_idle_seconds_observed": 10.062,
+    "maximum_load_seconds": 6.104,
+    "target_missing_animation_lines": 0,
+    "target_defaulted_model_lines": 0,
+    "target_missing_model_lines": 0,
+    "could_not_spawn_lines": 0,
+    "error_lines": 0,
+    "fatal_lines": 0
+  },
+  "counterexamples": [
+    {
+      "candidate": "v33",
+      "result": "Copying only the missing public-path animations paired 50-joint Xbox clips with the stock 55/90-joint PC meshes and failed immediately."
+    },
+    {
+      "candidate": "v34",
+      "result": "Private assets were copied, but accepted-overlay replay returned from static-only scope before rewriting DEF paths; original warning cascades remained."
+    },
+    {
+      "candidate": "v35",
+      "result": "The base families were coherent, but Comm 1's derived wall_release_idle clip stayed public and caused a Sentry joint-count load failure."
+    }
+  ],
+  "harness": {
+    "launcher": "direct",
+    "window_mode": "minimized",
+    "sound": "disabled",
+    "map_command": "spawnServer",
+    "steam_invoked": false
+  },
+  "remaining_boundary": [
+    "The full logs still expose an unrelated Delta 4 Hazmat af_pose joint mismatch and CPU 2 Sabaoth defaulted-model/look-joint warnings; these are the next source-bound warning families.",
+    "Loader survival does not establish visual, animation-event, progression, save/load or matched original-Xbox fidelity."
+  ]
+}

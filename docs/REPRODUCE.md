@@ -189,6 +189,53 @@ then run rows 42-61 with `IdleSeconds 60`. A successful focused result is not a
 substitute for that one current complete sweep. Preserve and investigate any
 missing-spawnclass warnings even when the runner records no error/fatal line.
 
+# Reproduce checkpoint 082
+
+Replay from the accepted v32 solo overlays. Keep the complete 50-joint Sentry
+family under `models/md5/monsters/sentry_xbox` and the complete 50-joint
+maintenance-zombie family under
+`models/md5/monsters/zombies/zmaint_xbox`. For Comm 1 part 2, also recover and
+route `wall_release_dummy` and `wall_release_idle` from that map's decoded Xbox
+model corpus. The replay-mode DEF transform must run before the `static-only`
+early return.
+
+```powershell
+python tools/campaign_port/rebuild_latest_solo_overlays.py `
+  work/solo-overlays-nativefix-v32 `
+  work/solo-overlays-nativefix-v36 `
+  --work-root work --stock-dir '..\..\base' --require-maps 41 `
+  --receipt work/solo-overlays-nativefix-v36-rebuild.json
+
+python tools/campaign_port/overlay_corpus_audit.py `
+  work/solo-overlays-nativefix-v36 `
+  --expected-root work/solo-overlays-nativefix-v32 `
+  --out work/solo-overlays-nativefix-v36-audit.json
+
+python tools/campaign_port/package_solo_overlays.py `
+  work/solo-overlays-nativefix-v36 work/solo-pkg-v36 `
+  --require-maps 41 --receipt work/solo-pkg-v36-receipt.json
+
+python tools/campaign_port/build_campaign_test_tree.py `
+  work/solo-pkg-v36 work/solo-pkg-v36 `
+  work/campaign-solo-test-tree-v36 --corpus solo `
+  --receipt work/campaign-solo-test-tree-v36-receipt.json
+
+python tools/campaign_port/campaign_test_tree_audit.py `
+  work/campaign-solo-test-tree-v36 `
+  --receipt work/campaign-solo-test-tree-v36-receipt.json `
+  --output work/campaign-solo-test-tree-v36-audit.json `
+  --require-solo 41 --require-coop 0
+
+python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'
+```
+
+Require 41 maps, 910 tree files, 744,464,216 bytes, ledger
+`456a95f9110dc7ee599c6a6759fa12007216298081825d09ff69cf3a1e7eb1f6`,
+and zero missing companion, duplicate declaration/material, untracked file or
+reparse point. All 336 tests must pass. Stage the tree as
+`xbox_campaign_solo_v36`; use the direct GPL host, minimized windows and
+`spawnServer`. Never invoke Steam for automated validation.
+
 # Reproduce checkpoint 072
 
 ## Checkpoint 072: complete 41-map solo native soak

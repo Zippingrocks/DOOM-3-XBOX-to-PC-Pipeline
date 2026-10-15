@@ -14,7 +14,31 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 081
+## Current checkpoint: 082
+
+**The source-bound Xbox Sentry and maintenance-zombie skeleton families are
+now coherent on the PC host.** The Xbox families each use 50 joints, while the
+stock PC Sentry and maintenance-zombie meshes at the same public paths use 55
+and 90. Publishing only the previously missing Xbox animations therefore
+created deterministic joint-count failures. The accepted overlays instead
+place complete Xbox mesh/animation families beneath private runtime prefixes
+and rewrite only the Xbox declarations that select them. Communications also
+routes its two map-specific Sentry loader clips into that private family.
+
+The isolated v36 tree contains all 41 solo maps, 910 files and 744,464,216
+bytes. It has zero missing compiled companion, duplicate declaration/material,
+untracked file or reparse point. All 336 offline tests pass. The nine affected
+maps pass minimized direct-host focus loads with zero missing Sentry/zmaint
+animation, defaulted model, missing model, unknown look joint, joint-count
+mismatch, failed spawn, error or fatal line. The rejected public-path v33 and
+incomplete-private-family v35 candidates are retained as counterexamples. See
+[`evidence/checkpoint-082-private-actor-families.json`](evidence/checkpoint-082-private-actor-families.json).
+
+This closes the observed loader/model-definition warnings for these two
+families. It does not replace visual, animation-event, progression, save/load
+or full playthrough acceptance.
+
+## Earlier checkpoint: 081
 
 **All Xbox texture-separator entities now survive on the GPL PC host, and the
 complete 61-map route is clean under the rebuilt DLL.** The Xbox maps use
