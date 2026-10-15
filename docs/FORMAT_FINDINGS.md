@@ -1711,3 +1711,28 @@ empty ASE object. A complete immutable v32 rebuild omitted only those empty
 objects, and all six affected maps then loaded with zero error/fatal or
 missing-model line.
 
+## 6. Xbox texture-streaming separator entities
+
+The Xbox definition describes `info_textureseparator` as a portal-touching
+entity whose activation blocks or unblocks texture streaming through that
+portal for the local co-op client; its `type` spawnarg selects close or open.
+This is a renderer-memory policy entity, not map geometry, visibility, collision
+or progression state. The GPL PC renderer has no matching portal texture-stream
+control API to call.
+
+Deleting the entity during conversion is still incorrect because it discards
+names and target-graph topology and produces a failed-spawn warning. The host
+translation instead registers `idTextureSeparatorEntity` as an `idEntity`,
+binds `EV_Activate`, and consumes the event as an explicit no-op. This retains
+spawn identity and activation relationships while allowing the PC renderer to
+use its native texture residency policy. The no-op must not be described as an
+emulation of Xbox streaming behavior.
+
+The first Dedicated Release probe was deliberately rejected: `+map` is not the
+accepted dedicated-host command and logged `Unknown command 'map'` without an
+entity-spawn marker. Repeating with `+spawnServer` loaded the map. Full minimized
+direct-host sweeps then passed 41/41 solo and 20/20 co-op segments with zero
+error/fatal line. Auditing every accepted log found no
+`info_textureseparator`, `idTextureSeparatorEntity` or `Could not spawn` line,
+where the preceding v30 solo logs contained 276 separator spawn failures.
+

@@ -14,7 +14,33 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 080
+## Current checkpoint: 081
+
+**All Xbox texture-separator entities now survive on the GPL PC host, and the
+complete 61-map route is clean under the rebuilt DLL.** The Xbox maps use
+`info_textureseparator` to open or close client-local texture-streaming flow
+through a portal. The GPL PC renderer has no corresponding portal-streaming
+API, so the source reconstruction registers the exact Xbox spawnclass,
+preserves every entity/name/target relationship, and consumes activation as an
+intentional no-op. It does not delete the entities or invent renderer state.
+
+The new Dedicated Release `gamex86.dll` hashes to
+`cd85078bf3f5ce8cd4937baae48e70049a8056db59c95033bf76ee122d9ca774`.
+On the minimized direct host, all 41 v32 solo segments and all 20 v30 co-op
+segments spawned and idled for at least ten seconds: 61 passed, zero failed,
+zero error/fatal line and zero abort. A separate full-log audit finds zero
+`info_textureseparator`, `idTextureSeparatorEntity` or `Could not spawn` line;
+the prior v30 solo baseline contained 276 failed separator spawns. The invalid
+Dedicated Release `map` invocation is retained as counterevidence; accepted
+automation uses `spawnServer`. See
+[`evidence/checkpoint-081-texture-separator-host.json`](evidence/checkpoint-081-texture-separator-host.json).
+
+This closes the observed separator spawn/runtime gap, not matched-Xbox texture
+residency behavior: PC loads textures through its native renderer rather than
+emulating the removed Xbox streaming boundary. Visual, progression, save/load
+and two-peer acceptance remain open.
+
+## Earlier checkpoint: 080
 
 **Sixteen more exact Xbox static models close every source-present solo
 missing-render warning.** Full per-map GFC inventories recovered the Alpha Labs

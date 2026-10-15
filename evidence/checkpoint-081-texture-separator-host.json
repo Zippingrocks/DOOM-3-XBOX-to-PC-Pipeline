@@ -1,0 +1,85 @@
+{
+  "checkpoint": "081",
+  "date": "2026-10-15",
+  "claim": "The GPL PC host preserves Xbox info_textureseparator entities as explicit activation no-ops, and all 61 solo/co-op map segments pass a minimized direct-host regression with no failed spawn, error or fatal line.",
+  "semantics": {
+    "xbox_contract": "Touch a vis portal and block or unblock texture streaming through it for the local co-op client; the type spawnarg selects close or open.",
+    "pc_translation": "Register idTextureSeparatorEntity, preserve entity names and target topology, bind EV_Activate, and consume activation as an intentional no-op because the GPL PC renderer exposes no equivalent portal texture-streaming API.",
+    "not_claimed": "The no-op does not emulate Xbox texture residency or establish matched-Xbox visual parity."
+  },
+  "source": {
+    "repository_commit": "c14c0fc",
+    "files": [
+      "neo/game/Misc.h",
+      "neo/game/Misc.cpp"
+    ],
+    "game_dll_bytes": 2430464,
+    "game_dll_sha256": "cd85078bf3f5ce8cd4937baae48e70049a8056db59c95033bf76ee122d9ca774",
+    "previous_game_dll_sha256": "cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68",
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "configuration": "Dedicated Release Win32, PlatformToolset v145, pre-build event disabled"
+  },
+  "prior_baseline": {
+    "solo_report": "work/gpl-solo-full-soak-v30.json",
+    "solo_report_sha256": "1af349c289d21f0ca27df47d86117858ea9727a0a5e2aeab7684ae468944ac83",
+    "solo_separator_failed_spawns": 276,
+    "coop_report": "work/gpl-coop-full-soak-v30.json",
+    "coop_report_sha256": "80c31df65334acc7996dcd61d1056b3e3a32987c251ca8e557eb17e2777fadcd",
+    "coop_separator_failed_spawns": 0
+  },
+  "solo_regression": {
+    "plan": "work/campaign-native-solo-plan-v32.json",
+    "plan_sha256": "a1fbfdbdb2ec7b5ba1d74d086922a3ddb9a62f8914dc96fa7a823e8707cc6909",
+    "fs_game": "xbox_campaign_solo_v32",
+    "report": "work/gpl-solo-textureseparator-v33-full.json",
+    "report_sha256": "ab9dbafccbaf88603415db7f47991afb9db387a454ceb710987c8dd636b9a619",
+    "route_rows": [1, 41],
+    "maps": 41,
+    "passed": 41,
+    "failed": 0,
+    "aborted": false,
+    "minimum_idle_seconds_observed": 10.057,
+    "maximum_load_seconds": 6.127,
+    "separator_mentions": 0,
+    "could_not_spawn_lines": 0,
+    "error_lines": 0,
+    "fatal_lines": 0
+  },
+  "coop_regression": {
+    "plan": "work/campaign-native-coop-plan-v30.json",
+    "plan_sha256": "3c8afaa7bb30ce57e0b7e6d75ed6d6ee8390ae9e31c8f1ceb545998a8cb8b747",
+    "fs_game": "xbox_campaign_coop_v30",
+    "report": "work/gpl-coop-textureseparator-v31-full.json",
+    "report_sha256": "1290a43f611c64182dc4bdc997d77470ffd2464bf20d1432d709ee37aa2ef79f",
+    "route_rows": [42, 61],
+    "maps": 20,
+    "passed": 20,
+    "failed": 0,
+    "aborted": false,
+    "minimum_idle_seconds_observed": 10.073,
+    "maximum_load_seconds": 6.583,
+    "separator_mentions": 0,
+    "could_not_spawn_lines": 0,
+    "error_lines": 0,
+    "fatal_lines": 0
+  },
+  "harness": {
+    "launcher": "direct",
+    "window_mode": "minimized",
+    "sound": "disabled",
+    "map_command": "spawnServer",
+    "idle_seconds_requested": 10,
+    "steam_invoked": false
+  },
+  "counterexample": {
+    "state": "work/gpl-solo-textureseparator-v33-state/01-solo-mars_city1_1/base/qconsole.log",
+    "invalid_command": "map",
+    "result": "Unknown command 'map'; no entity-spawn marker; run interrupted before timeout.",
+    "resolution": "Use spawnServer for the Dedicated Release host."
+  },
+  "remaining_boundary": [
+    "The PC renderer does not reproduce Xbox client-local portal texture-streaming residency policy.",
+    "Ten-second loader survival does not replace the accepted v30 one-minute stability baseline or establish visual, progression, save/load or two-peer fidelity.",
+    "Remaining warning families require source-bound investigation before a final visual playthrough."
+  ]
+}
