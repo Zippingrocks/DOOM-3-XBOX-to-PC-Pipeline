@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 062 campaign-matrix findings
+
+Aggregate totals can hide a missing map. The final matrix therefore compares
+the complete case-insensitive map set in every applicable report against the
+overlay baseline, rejects duplicates, and fails on each report's own unresolved,
+missing, failure or port-regression boundary. It also binds every input report
+by length and SHA-256.
+
+The matrix contains 492 solo and 200 co-op per-map cells. Solo gates cover the
+overlay, semantics/transitions, direct audio, entity links, script entities and
+reachability, frame and GUI commands, AAS requirements, script sounds, compiled
+callbacks and player topology. Co-op gates cover the corresponding overlay,
+semantics/transitions, links, scripts/reachability, AAS, sounds, two-path
+callback bytecode, resurrection and paired spawn topology.
+
+One boundary must stay explicit: the co-op raw script-entity audit reports 60
+unprofiled records. Those are not silently discarded; its matrix coverage is
+paired with the source-bound reachability report, which classifies them and has
+zero port regression. Similarly, attention lists remain evidence even when a
+gate is green. A matrix cell proves audit coverage, not engine execution or
+fidelity.
+
 ## Checkpoint 061 solo player-topology findings
 
 The final solo overlays preserve exactly one `info_player_start` in every Xbox

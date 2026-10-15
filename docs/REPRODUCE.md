@@ -1,3 +1,26 @@
+# Reproduce checkpoint 062
+
+## Checkpoint 062: complete static coverage matrix
+
+Place the named final reports from checkpoints 052 through 061 in `work`, then
+build the matrix:
+
+```powershell
+python tools/campaign_port/campaign_static_matrix.py work `
+  --output work/campaign-static-matrix-v1.json
+```
+
+The tool must reject a missing report, duplicate map row, different map set,
+nonzero applicable failure record or wrong global AAS count. Require 41 solo
+maps across 12 gates, 20 co-op maps across ten gates, 24 source reports, 692
+passing cells, zero failed cells, 60 solo AAS files and 30 co-op AAS files.
+
+The co-op raw script-entity report intentionally retains 60 unprofiled records;
+its matrix cell is valid only in combination with the separate final
+reachability report, whose port-regression count is zero. Attention records are
+not failures and must remain in their hashed source reports. Run the full suite
+and require 253 passing tests. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 061
 
 ## Checkpoint 061: solo player-start and teleport topology

@@ -1,0 +1,74 @@
+{
+  "checkpoint": "062",
+  "date": "2026-10-14",
+  "claim": "Every one of the 61 recovered Xbox campaign segments is present in every applicable final offline audit, with 692 passing per-map gate cells and no silent coverage gap.",
+  "inputs": {
+    "checkpoint_060": "evidence/checkpoint-060-coop-spawn-topology.json",
+    "checkpoint_061": "evidence/checkpoint-061-solo-spawn-topology.json",
+    "source_reports": 24,
+    "solo_aas_files": 60,
+    "coop_aas_files": 30
+  },
+  "matrix": {
+    "maps": 61,
+    "solo_maps": 41,
+    "coop_maps": 20,
+    "solo_gates_per_map": 12,
+    "coop_gates_per_map": 10,
+    "solo_gate_cells": 492,
+    "coop_gate_cells": 200,
+    "passed_gate_cells": 692,
+    "failed_gate_cells": 0,
+    "report_sha256": "dc2b787b8765a4bff59973241b29239180b5fa6ec08db000666ede7d885d79d9"
+  },
+  "solo_gates": [
+    "overlay",
+    "semantic",
+    "audio",
+    "entity_links",
+    "script_entities",
+    "script_reachability",
+    "frame_commands",
+    "gui_commands",
+    "aas_requirements",
+    "script_sounds",
+    "script_bytecode",
+    "spawn_topology"
+  ],
+  "coop_gates": [
+    "overlay",
+    "semantic",
+    "entity_links",
+    "script_entities",
+    "script_reachability",
+    "aas_requirements",
+    "script_sounds",
+    "callback_bytecode",
+    "resurrection_topology",
+    "spawn_topology"
+  ],
+  "interpretation": {
+    "green_cell": "The named final report contains the map and has no applicable failure record.",
+    "attention_records_preserved": true,
+    "coop_raw_script_entity_boundary": "The raw report's 60 unprofiled records are accepted only through the separate reachability report, which records zero port regression.",
+    "native_acceptance_claimed": false
+  },
+  "implementation_receipts": {
+    "campaign_static_matrix_py_sha256": "ffc9e1da8a700822419d76b8076b230bc8f1ea509d2bd22cda1d30589eb9d7e5"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 253,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "The matrix detects report/map coverage gaps; it does not independently reimplement each underlying audit.",
+    "A green offline cell is not native loader, gameplay, networking, collision-trace, visibility, lighting, timing, save/load or visual-fidelity acceptance.",
+    "Attention and source-residue records remain in the hashed source reports and require the focused native observations already documented."
+  ]
+}

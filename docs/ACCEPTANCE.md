@@ -1,5 +1,19 @@
 # Recovery order and acceptance
 
+## Checkpoint 062 complete static-matrix status
+
+Every recovered segment appears in every applicable final offline report: 41
+solo maps across 12 gates and 20 co-op maps across ten. All 692 cells pass, all
+24 source reports are hash-receipted, and both global AAS corpora have their
+required file counts. All 253 offline tests pass.
+
+This closes silent static-coverage gaps, not the native acceptance boundary.
+Source-authored attention records remain open observations. Engine loads,
+collision/contact traces, portals and visibility, encounter timing, save/load,
+two-peer synchronization and matched Xbox visual/gameplay comparison still
+require execution. Doom 3 and `dmap` were not launched while they could
+interrupt the user's game.
+
 ## Checkpoint 061 solo player-topology status
 
 All 41 Xbox solo overlays now pass a manifest/source-bound player-entity gate.

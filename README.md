@@ -14,7 +14,22 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 061
+## Current checkpoint: 062
+
+**All 61 recovered campaign segments now have a fail-closed final-audit coverage
+matrix.** It cross-checks each final report's map set rather than trusting
+aggregate counts: 41 solo maps pass 12 applicable gates each, and 20 co-op maps
+pass ten each. The result is 692 green per-map cells backed by 24 hashed reports
+and the complete 60-file solo/30-file co-op AAS corpora, with no missing row or
+failure record.
+
+Green means static coverage only. Existing source-residue/attention records
+remain explicit, and native loading, collision traces, visibility, timing,
+networking, save/load and visual parity remain outside this claim. All 253
+offline tests pass; Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-062-campaign-static-matrix.json`](evidence/checkpoint-062-campaign-static-matrix.json).
+
+## Earlier checkpoint: 061
 
 **The 41-map Xbox single-player corpus now has source-bound player-start and
 teleport topology.** Every segment contains exactly one `info_player_start`,
