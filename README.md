@@ -14,7 +14,26 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 067
+## Current checkpoint: 068
+
+**The campaign now has a source-built GPL dedicated diagnostic host and
+corpus-isolated native-test trees.** A first hidden load of Xbox
+`vv/mars_city1_1` spawned 1,054 entities, idled 60.067 seconds and produced no
+ERROR or fatal line without launching through Steam or taking foreground focus.
+
+Native loading then exposed two real packaging defects. The unified merge had
+removed Xbox-only principal script includes along with scripts already compiled
+by stock PC `doom_main`; the corrected rule removes only the exact stock include
+set. Admin also proved that one absent `glassbreak_idle.md5anim` member causes
+Doom to reject the complete Pinky modelDef, hiding the valid shipped
+`glassbreak` cinematic. The compatibility transform removes only that unshipped
+idle member. A fresh 41-map solo tree independently audits 714 files with zero
+missing companions or duplicate declarations; the separate 20-map co-op tree
+audits 973 files. All 281 offline tests pass. The complete native sweeps remain
+in progress and no all-map or gameplay-fidelity claim is made. See
+[`evidence/checkpoint-068-headless-native-host.json`](evidence/checkpoint-068-headless-native-host.json).
+
+## Earlier checkpoint: 067
 
 **The 61-map native soak now has a fail-closed, resumable runner, and the first
 attempt has been correctly separated from map evidence.** Thirty-one direct

@@ -1,0 +1,102 @@
+{
+  "checkpoint": "068",
+  "date": "2026-10-14",
+  "claim": "A source-built GPL dedicated host can load the recovered campaign without Steam or foreground focus, and corpus-specific solo/co-op trees prevent incompatible Xbox and PC skeleton families from shadowing one another.",
+  "diagnostic_host": {
+    "kind": "locally built upstream DOOM-3 GPL dedicated executable",
+    "bytes": 12012032,
+    "sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "map_command": "spawnServer",
+    "purpose": "headless loader/crash/idle diagnostics while the retail Steam executable is unavailable",
+    "limits": [
+      "The local GPL source tree contains uncommitted compiler-modernization changes and is not the campaign implementation repository.",
+      "A dedicated server exercises multiplayer game semantics and cannot establish single-player presentation or gameplay fidelity.",
+      "This host does not replace the eventual retail visual playthrough or two-peer co-op acceptance run."
+    ]
+  },
+  "campaign_game_dll": {
+    "bytes": 2723328,
+    "sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "first_native_smoke": {
+    "map": "vv/mars_city1_1",
+    "classification": "passed",
+    "entities_spawned": 1054,
+    "entities_inhibited": 1,
+    "load_seconds": 5.533,
+    "idle_seconds_required": 60,
+    "idle_seconds_observed": 60.067,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "qconsole_sha256": "75d44af94d9ba09b5803c244912f391dcf7d4406760433f03260d7b5e34cf27e"
+  },
+  "corpus_isolation": {
+    "reason": "The co-op Xbox actor family uses 48-joint meshes/animations while stock PC solo actors use 62-joint assets at overlapping virtual paths; one unified fs_game can shadow a valid family with the incompatible one.",
+    "solo": {
+      "maps": 41,
+      "files": 714,
+      "bytes": 711574453,
+      "ledger_sha256": "156dbfb70e51ae4e760c4065f55fa0730518b5a1c8e802da60df21a8cf63768f",
+      "missing_compiled_companions": 0,
+      "duplicate_definitions": 0,
+      "duplicate_materials": 0,
+      "untracked_files": 0,
+      "reparse_points": 0,
+      "receipt_sha256": "db7caa609dfff6f080ba2cb269fc4d68672158b6ff67227db3913d338959af5f",
+      "audit_sha256": "d8490a416e2b8135db11392bcf956bcf8b91e6ec7022af2a4eed3025484b476e"
+    },
+    "coop": {
+      "maps": 20,
+      "files": 973,
+      "bytes": 325864512,
+      "ledger_sha256": "489eded471a3a3395bc43be69bd05e314cc22cf87b0b682d35e7234fa4018f27",
+      "missing_compiled_companions": 0,
+      "duplicate_definitions": 0,
+      "duplicate_materials": 0,
+      "untracked_files": 0,
+      "reparse_points": 0
+    }
+  },
+  "native_findings": [
+    {
+      "kind": "solo-bridge-scope",
+      "finding": "Removing every map-script include from a generated bridge is invalid. Only the exact stock-PC map scripts compiled by doom_main may be removed; Xbox segment-specific principal scripts must remain included so namespaced worldspawn calls resolve.",
+      "observed_failures": [
+        "vv/mars_city2_1",
+        "vv/mars_city2_2",
+        "vv/alphalabs2_2"
+      ],
+      "resolution": "The overlay generator now emits a principal include only when stock doom_main does not already compile that exact virtual path, and the test-tree merger removes only an enumerated stock-PC include."
+    },
+    {
+      "kind": "pinky-modeldef-atomicity",
+      "finding": "The Xbox Pinky definition names glassbreak_idle.md5anim, which is absent from the stock PC PK4s. Doom rejects the complete modelDef when that member cannot load, also hiding the shipped glassbreak.md5anim required by Admin.",
+      "observed_failure": "vv/admin spawned and remained alive but ended the idle with Can't find anim 'glassbreak'",
+      "resolution": "Remove only the unshipped glassbreak_idle model animation declaration; preserve the shipped glassbreak cinematic declaration and all frame commands."
+    }
+  ],
+  "implementation_hashes": {
+    "build_runtime_overlay.py": "e5d0e6509c54bb5e4698defaef175fe7b9b96618e079d5cf89ba27bdaaf39614",
+    "build_campaign_test_tree.py": "db694e400f47c544193f71b22f6543c67cb6ba9fbe269ab33dfab7ce0b47fb6f",
+    "campaign_test_tree_audit.py": "5edf1d10fa5a3915ec20380066ba325c06da0933d60e548846f73ff3f8ee96a1",
+    "run_native_campaign_soak.ps1": "852c13a2218c78a0d2bd56bf55827eea653fa1f4824637b01ea23a3d5eb5674d"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 281,
+    "failed": 0
+  },
+  "active_safety": {
+    "other_steam_game_detected": "cnc3game.dat",
+    "retail_doom_launched": false,
+    "dedicated_host_window": "hidden/minimized",
+    "user_process_terminated": false
+  },
+  "acceptance_state": {
+    "all_maps_native_passed": false,
+    "solo_playthrough_complete": false,
+    "two_peer_coop_complete": false,
+    "visual_fidelity_complete": false,
+    "next_gate": "Complete the 41-map solo and 20-map co-op 60-second headless sweeps, repair every logged defect, then repeat clean before foreground gameplay testing."
+  }
+}
