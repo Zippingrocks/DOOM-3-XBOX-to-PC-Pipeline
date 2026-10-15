@@ -18,20 +18,45 @@ after a test batch.
 
 ## Phase 1: bounded background loader pass
 
-Do this only when starting Doom will not interrupt another active game. Use a
-hidden, windowed, silent process for loader triage; do not use fullscreen:
+Do this only when starting Doom will not interrupt another active game. The
+retail executable is Steam-wrapped: a direct launch can exit with code 4 before
+filesystem initialization, and Steam will not launch it while another Steam
+game is active. That is a launcher/bootstrap failure, not a map failure.
+
+Use the fail-closed harness from the campaign recovery workspace. It refuses to
+start when another executable under `steamapps/common` is active, starts Doom
+through Steam, requests windowed/silent operation, waits for the native
+`entities spawned` marker, observes a full 60-second idle, hashes the log and
+then closes the process. It aborts the batch on launcher/bootstrap failure so
+one environmental failure cannot be reported as 61 broken maps:
 
 ```powershell
-$testArgs = '+set fs_game xbox_campaign_test_v2 +set fs_savepath "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-port-dev\work\campaign-test-runtime-state" +set developer 1 +set logFile 2 +set r_fullscreen 0 +set s_noSound 1 +map vv/mars_city1_1 +wait 500 +quit'
-Start-Process -FilePath .\Doom3.exe -ArgumentList $testArgs -WindowStyle Hidden -Wait
+cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-port-dev"
+.\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan .\work\campaign-native-test-plan-v1.json `
+  -DoomExe ..\..\Doom3.exe `
+  -StateRoot .\work\native-soak-v2 `
+  -Output .\work\native-soak-v2.json `
+  -Launcher Steam `
+  -IdleSeconds 60
 ```
 
-Repeat with every `map_commands` entry in
-`work/campaign-native-test-plan-v1.json`. For co-op maps also set
-`si_gameType Coop` and `net_LANServer 1`. Preserve one qconsole receipt per map;
-fail on missing declaration/resource, invalid joint, script error, fatal error,
-wrong MAP/PROC/CM selection or abnormal exit. Do not advance to visual testing
-until all 61 loader receipts close.
+Use `-StartIndex` and `-EndIndex` for a bounded slice. Use `-Resume` only with
+an existing v2 report whose plan and executable hashes still match; already
+recorded sequence numbers are skipped. Co-op entries automatically set
+`si_gameType Coop` and `net_LANServer 1`.
+
+Preserve one `qconsole.log` receipt per map and the incremental JSON report.
+Fail on missing declaration/resource, invalid joint, script error, fatal error,
+wrong MAP/PROC/CM selection or abnormal exit. A `bootstrap_failure` or
+`launcher_failure` means no map verdict was obtained. Do not advance to visual
+testing until all 61 loader receipts close.
+
+The interrupted v1 attempt from 2026-10-14 is retained locally at
+`work/native-soak-v1.json`. Its first 31 invocations all exited with code 4,
+created no qconsole log and reached no spawn marker while another Steam game
+was active. Those rows are rejected bootstrap diagnostics, not campaign-map
+failures and not resumable as v2 evidence.
 
 ## Phase 2: solo route
 

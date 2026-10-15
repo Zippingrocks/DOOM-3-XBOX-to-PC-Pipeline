@@ -1,5 +1,26 @@
 # Recovery order and acceptance
 
+## Checkpoint 067 native-soak runner status
+
+The runtime gate now distinguishes the environment from the content. The
+initial 31 direct invocations never initialized Doom's filesystem: every one
+exited with code 4, emitted no qconsole bytes and reached no entity-spawn
+marker. A Steam attempt did not create Doom while another Steam game was
+active. Therefore none of those rows is admissible evidence that a campaign
+map loaded, crashed or failed.
+
+The v2 runner fails closed on that boundary, refuses to disturb another Steam
+game, supports bounded and resumable batches, hashes its executable, plan and
+logs, and requires both a native spawn marker and a complete 60-second idle.
+Its non-game smoke test aborts after the first bootstrap failure without
+attempting later maps. The 61-map tree remains unchanged and all 274 offline
+tests pass.
+
+This accepts the test instrument and classification boundary only. It accepts
+zero native map loads. The next admissible gate is 61 `passed` v2 rows after
+Steam is free, followed by solo progression/save-load, real two-peer co-op and
+matched original-Xbox fidelity work.
+
 ## Checkpoint 066 native-test handoff status
 
 The remaining work has crossed the offline/native boundary. Both complete
@@ -9,7 +30,7 @@ all 61 direct map commands are recorded, and the accepted tree is staged behind
 an `fs_game` alias with isolated runtime state. The tree still rehashes exactly
 and all 274 offline tests pass.
 
-This accepts only the test handoff. Next is a bounded hidden/windowed loader run
+This accepts only the test handoff. Next is a bounded minimized/windowed loader run
 for every map, followed by solo progression/save-load, two-peer co-op
 progression/death/rejoin, and matched Xbox visual/audio/timing comparison.
 Those steps necessarily execute Doom and were deliberately not started while

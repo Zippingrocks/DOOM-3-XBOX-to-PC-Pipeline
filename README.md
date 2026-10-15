@@ -14,7 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 066
+## Current checkpoint: 067
+
+**The 61-map native soak now has a fail-closed, resumable runner, and the first
+attempt has been correctly separated from map evidence.** Thirty-one direct
+retail-executable invocations exited with Steam-wrapper code 4 before creating
+a log or reaching a spawn marker. A Steam launch also produced no Doom process
+while another Steam game was active. No campaign map received a native verdict.
+
+The replacement runner detects an active Steam game before launch, uses Steam
+for the retail executable, records executable/plan/log hashes, requires a real
+spawn marker plus the full 60-second idle, supports bounded/resumed batches and
+aborts immediately on launcher/bootstrap failure. Its non-game smoke test proves
+that one bootstrap failure attempts no later map. The accepted 61-map tree
+still rehashes to `7e524166...fe60979`, and all 274 offline tests pass. Native
+map loading remains pending until Steam is free; no user process was terminated.
+See [`docs/NATIVE_TEST_PLAN.md`](docs/NATIVE_TEST_PLAN.md) and
+[`evidence/checkpoint-067-native-soak-runner.json`](evidence/checkpoint-067-native-soak-runner.json).
+
+## Earlier checkpoint: 066
 
 **The accepted 61-map tree now has a fail-closed native test itinerary and a
 noncontaminating local `fs_game` handoff.** The solo transition graph is one

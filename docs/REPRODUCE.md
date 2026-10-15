@@ -1,3 +1,45 @@
+# Reproduce checkpoint 067
+
+## Checkpoint 067: fail-closed native soak runner
+
+The local runner is
+`tools/campaign_port/run_native_campaign_soak.ps1` in the campaign recovery
+workspace. Parse it with PowerShell's AST parser, then smoke-test its failure
+boundary with a non-game executable and a one-map range. Require schema
+`doom3-xbox-campaign-native-soak-v2`, one `bootstrap_failure`, `aborted=true`,
+exit 2 and exactly one recorded run; it must not advance to map 2.
+
+Before a real batch, require no `Doom3` process and no other executable whose
+path is below Steam's `steamapps/common`. Do not override this interlock merely
+to make the batch start. With Steam free, run:
+
+```powershell
+cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-port-dev"
+.\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan .\work\campaign-native-test-plan-v1.json `
+  -DoomExe ..\..\Doom3.exe `
+  -StateRoot .\work\native-soak-v2 `
+  -Output .\work\native-soak-v2.json `
+  -Launcher Steam `
+  -IdleSeconds 60
+```
+
+For each of the 61 rows require `classification=passed`, a non-null spawn
+marker, `alive_for_full_idle=true`, at least 60 observed idle seconds, zero
+fatal lines and a non-null qconsole hash. Use `-Resume` only when the runner
+accepts the existing report's plan, executable and `fs_game` identity.
+
+The 2026-10-14 v1 report is negative launcher evidence only: all 31 recorded
+invocations exited 4, all have zero log bytes, and none loaded or completed an
+idle. Its hash is
+`aa24548d90597749f9caf5be543b34c712572086cb842ebfcac81403c131bf6e`.
+Do not count those rows as map failures or as completed v2 tests.
+
+Re-run the unified-tree audit and require 61 maps, 1,572 files, zero untracked
+files/reparse points and ledger
+`7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979`.
+Run the full suite and require 274 passing tests.
+
 # Reproduce checkpoint 066
 
 ## Checkpoint 066: native test itinerary and isolated runtime state
@@ -25,7 +67,7 @@ so runtime config/log writes cannot enter the accepted tree.
 Re-run the complete unified-tree audit after staging and require ledger
 `7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979`.
 Run the full suite and require 274 passing tests. This checkpoint must not start
-Doom 3. Continue with the bounded hidden loader procedure in
+Doom 3. Continue with the bounded minimized/windowed loader procedure in
 `docs/NATIVE_TEST_PLAN.md` only when native testing will no longer interrupt
 the user.
 

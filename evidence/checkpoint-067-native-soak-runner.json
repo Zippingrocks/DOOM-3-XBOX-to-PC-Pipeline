@@ -1,0 +1,90 @@
+{
+  "checkpoint": "067",
+  "date": "2026-10-14",
+  "claim": "The native campaign soak has a fail-closed resumable runner, and the rejected first attempt is classified as a Steam/bootstrap failure rather than 31 campaign-map failures.",
+  "accepted_tree": {
+    "root": "work/campaign-test-tree-v2",
+    "maps": 61,
+    "solo_maps": 41,
+    "coop_maps": 20,
+    "files": 1572,
+    "bytes": 1009071410,
+    "untracked_files": 0,
+    "reparse_points": 0,
+    "ledger_sha256": "7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979"
+  },
+  "runner": {
+    "local_path": "tools/campaign_port/run_native_campaign_soak.ps1",
+    "sha256": "c05eb6d5ce558688b19cc1463ee4fc42da8f79874ec2b6057d5627e8d2fb7f80",
+    "report_schema": "doom3-xbox-campaign-native-soak-v2",
+    "launcher_modes": [
+      "direct",
+      "steam"
+    ],
+    "required_idle_seconds": 60,
+    "properties": [
+      "Refuses to run when Doom3 is already active.",
+      "Steam mode refuses to launch while another executable below steamapps/common is active unless explicitly overridden.",
+      "Distinguishes launcher_failure, bootstrap_failure, load_failure, load_timeout, runtime_crash, runtime_log_failure and passed.",
+      "Aborts the batch after launcher_failure or bootstrap_failure.",
+      "Supports StartIndex, EndIndex and identity-checked Resume.",
+      "Writes the report atomically after every attempted map and hashes the plan, executable and qconsole log."
+    ]
+  },
+  "runner_smoke_test": {
+    "executable": "%SystemRoot%/System32/where.exe",
+    "range": [
+      1,
+      1
+    ],
+    "process_exit": 2,
+    "completed_maps": 1,
+    "classification": "bootstrap_failure",
+    "aborted": true,
+    "later_maps_attempted": false,
+    "doom3_started": false
+  },
+  "rejected_v1_attempt": {
+    "report": "work/native-soak-v1.json",
+    "report_sha256": "aa24548d90597749f9caf5be543b34c712572086cb842ebfcac81403c131bf6e",
+    "schema": "doom3-xbox-campaign-native-soak-v1",
+    "invocations": 31,
+    "exit_code_4": 31,
+    "qconsole_total_bytes": 0,
+    "spawn_markers": 0,
+    "loaded_maps": 0,
+    "full_idles": 0,
+    "accepted_map_verdicts": 0,
+    "classification": "rejected-bootstrap-diagnostic"
+  },
+  "retail_executable": {
+    "path": "Doom3.exe",
+    "bytes": 5840896,
+    "sha256": "02df2b274cbf6434ef58d021689343b06f2a272182d8015580b341a1aecbeace"
+  },
+  "live_preflight": {
+    "active_steam_game": "cnc3game.dat",
+    "doom3_processes_before": 0,
+    "doom3_processes_after": 0,
+    "result": "refused-before-launch",
+    "user_process_terminated": false
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 274,
+    "failed": 0
+  },
+  "native_acceptance": {
+    "maps_loaded": 0,
+    "maps_idled_60_seconds": 0,
+    "map_crashes_observed": 0,
+    "map_failures_observed": 0,
+    "blocked_by": "Another Steam game was active; no user process was stopped or interrupted.",
+    "next_gate": "Run the v2 Steam batch when Steam is free and require 61 passed, log-hashed rows."
+  },
+  "limits": [
+    "A runner smoke test does not establish that Doom can start through Steam.",
+    "The rejected v1 rows contain no map verdict because the engine never initialized far enough to create qconsole.log.",
+    "Static closure and a clean 60-second idle do not replace solo progression, two-peer co-op or matched original-Xbox fidelity testing."
+  ]
+}
