@@ -1,0 +1,105 @@
+{
+  "checkpoint": "080",
+  "date": "2026-10-15",
+  "claim": "Sixteen additional unique Xbox compiled static models close every source-present solo missing-render warning and all six affected maps pass focused native loads in the audited v32 solo tree.",
+  "decoder": {
+    "new_archive_instances": 17,
+    "new_unique_payloads": 16,
+    "total_unique_recovered_static_models": 27,
+    "new_surface_count": 80,
+    "new_empty_surface_slots": 8,
+    "new_vertex_count": 30840,
+    "new_triangle_count": 28005,
+    "offline_tests_passed": 332,
+    "edge_cases": [
+      "Printable exporter labels are accepted only as material #<digits> in addition to textures/ and models/ paths.",
+      "A zero-vertex surface is accepted only with zero indexes and the canonical +1e30 minimum / -1e30 maximum empty-bounds sentinel.",
+      "Empty Xbox material slots remain in the ASE material table and decode report but produce no PC ASE GEOMOBJECT because the stock reader rejects empty objects."
+    ]
+  },
+  "payloads": [
+    {"member": "alphalabs1_1:xbox_gen/models/mapobjects/hell/maggotroom/worm_cutbttm.lwo.x", "sha256": "a395b337b79804906df4674ed01d536ad8ae80832c3df161eab6b98e665cebce"},
+    {"member": "alphalabs1_1:xbox_gen/models/mapobjects/hell/maggotroom/worm_cuttop.lwo.x", "sha256": "9a58156af833e71b01a23f0bd9180f36cfcafe4a030d47772c2e56c8ae6bc9d0"},
+    {"member": "commoutside_1:xbox_gen/models/outdoors/commoutside/commoutside2_xbox.lwo.x", "sha256": "5a5ae914e854ebeae8856d6b2da3fec47544a0aaea1f96cc04213f295648e12c"},
+    {"member": "commoutside_2:xbox_gen/models/outdoors/commoutside/commoutside_xbox.lwo.x", "sha256": "500a5f117b45b958cdcd09ee54f505fe0bf3626db0d50a31c6b5ba2d51e74586"},
+    {"member": "monorail_1+monorail_2:xbox_gen/models/outdoors/tram/test_noglass.lwo.x", "sha256": "ee7a8ded203aeb28cb2b1ff9bab244adfe08fd424e164986086c4e6e049c90ae"},
+    {"member": "monorail_2:xbox_gen/models/mapobjects/tables/bunkbed/pillow.lwo.x", "sha256": "40d258b26d06d5707d538d37017b3a7ec8e869889e590b3bfc7f05212022f5a7"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/steve_temp/part1vv.ase.x", "sha256": "e170e22e0dd30106dfa04951b1ecab7345f8f8ce093ce0af2b454d7bbf7ced5a"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/steve_temp/part2vv.ase.x", "sha256": "6adb6b9ed0435047ecb1969bc3f03ebc7d665391274f80dd58898856032a42ba"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/hellhalldown3_vv.lwo.x", "sha256": "973ad4582914a86a5c98609c495ca3a667f8a620e0615e850241e4c72c7b2d6f"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/wall04.lwo.x", "sha256": "49ee6f1c472af42a64a4a1299da01fc1bf4562e8507261fd6a2d1efd6a981f0e"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/wall03.lwo.x", "sha256": "1fd57ce24d08d8e5764e09ed9db88f39f09f69ab72fdb474e34e3c619a2cfe6b"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/wall02.lwo.x", "sha256": "b30c5506005585a0639b0fae7ab35a54474c7aaf5063417d6ca3fcc51105fe43"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/wall01.lwo.x", "sha256": "6a74782492e03c4cf5defb63ecd30d327cc0e65bafcd94500bd7eba6a938c364"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/floor.lwo.x", "sha256": "f5d584d39e91e2082dd38309b9fb2980472368b09eafbd62df465cf1a278873b"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/ribcage.lwo.x", "sha256": "891143c8339c25432471342fba8f37ffbb76c98a86d2ceed0c001fb7e0bbd298"},
+    {"member": "hell1_3:xbox_gen/models/mapobjects/hell/guardianroom/ribcage2.lwo.x", "sha256": "6b40adde58e6960dd2df84b5390a9f26ac448db9a631a284e09497b54be2e793"}
+  ],
+  "solo_overlay": {
+    "root": "work/solo-overlays-nativefix-v32",
+    "audit": "work/solo-overlays-nativefix-v32-audit.json",
+    "audit_sha256": "1ce0c9319b76bc8bf1ba58af50f4010f7c68588706da7af131b1bb832aa2cd55",
+    "maps": 41,
+    "files": 2355,
+    "bytes": 840474690,
+    "file_ledger_sha256": "908a6f84b7403498a9bf5880061a6a167d45d2722260e04d17a2485553dd139f",
+    "manifest_ledger_sha256": "5e878f44c7fe50cde1472dc8d58dc67477b8ec888ba10751d58bfc38bb26158f",
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0
+  },
+  "solo_tree": {
+    "root": "work/campaign-solo-test-tree-v32",
+    "audit": "work/campaign-solo-test-tree-v32-audit.json",
+    "audit_sha256": "15c3741a4172e715fba85ad34d54e77577be9d4cf4a9e4227beea10ecebf1340",
+    "files": 864,
+    "bytes": 742306260,
+    "ledger_sha256": "11c8b1bfaba47e5fd6b0994a9dc64f7c9e09898103c7666bba1d13d7a2f218a8",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "native_focus": {
+    "host_source_commit": "d1ae7b2",
+    "game_dll_sha256": "cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68",
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "plan_sha256": "a1fbfdbdb2ec7b5ba1d74d086922a3ddb9a62f8914dc96fa7a823e8707cc6909",
+    "fs_game": "xbox_campaign_solo_v32",
+    "launcher": "direct",
+    "window_mode": "minimized",
+    "map_command": "spawnServer",
+    "rows": [7, 14, 15, 21, 22, 32],
+    "maps": ["vv/alphalabs1_1", "vv/commoutside_1", "vv/commoutside_2", "vv/monorail_1", "vv/monorail_2", "vv/hell1_3"],
+    "passed": 6,
+    "failed": 0,
+    "minimum_idle_seconds_observed": 10.069,
+    "maximum_load_seconds": 5.57,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "missing_model_lines": 0,
+    "targeted_missing_model_lines": 0,
+    "report_sha256_by_row": {
+      "7": "b6dc7b703e1b48c308c924f7e706a7627ea7371388a3464a72f830f1bc399f95",
+      "14": "dd65f56198483935876c8ecd63965e96c3bc2e6531e16aa3364f752cd0ba9df2",
+      "15": "bf2b70aaca8529bf40afc665c002a272d3b4d055ebd0f3a350fb9cc5488dda18",
+      "21": "b16c7b3805917294b029e6cddd52e7d127dfbc2c5a7b5fb89b4843d5b1cd9222",
+      "22": "cf81d8a6b6ef38f8ccd45668c183d44da93238b06674638d6decb619936b1528",
+      "32": "eee2cfe877df6142ad93c522abe9b4eb376e4b833a67a9e5c205e89c4a312e7e"
+    }
+  },
+  "counterexample": {
+    "candidate": "v31",
+    "map": "vv/hell1_3",
+    "classification": "load_failure",
+    "error": "ERROR: *MESH_TFACELIST before *MESH_FACE_LIST",
+    "resolution": "Preserve empty Xbox material slots but omit empty PC ASE GEOMOBJECT records; rebuild the full immutable corpus as v32."
+  },
+  "remaining_boundary": [
+    "The source-absent models/mapobjects/recycle/recycwallight_broken.ase path remains unfabricated.",
+    "Focused loader survival does not establish matched-Xbox visual parity, vertex-alpha fidelity, progression, encounters, save/load or two-peer synchronization.",
+    "The prior v30 61-map one-minute sweep remains the broad loader baseline; v32 changes only source-bound static model routes in six solo maps."
+  ]
+}

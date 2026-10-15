@@ -14,7 +14,31 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 079
+## Current checkpoint: 080
+
+**Sixteen more exact Xbox static models close every source-present solo
+missing-render warning.** Full per-map GFC inventories recovered the Alpha Labs
+maggot-room cuts, both Comm Outside terrain models, Monorail's no-glass tram
+and pillow, and all ten warned Hell 1 part-3 pieces. Together with checkpoint
+078, 27 unique compiled Xbox static models now have source-bound PC ASE routes.
+
+The decoder now covers two authenticated edge cases without weakening its
+fail-closed structure checks: an exporter label such as `material #97`, and an
+authored empty material surface carrying the canonical +1e30/-1e30 bounds
+sentinel. Empty slots remain in the ASE material table and decode report but
+do not become empty `GEOMOBJECT`s, which the stock PC ASE reader rejects.
+
+The isolated v32 solo tree has 41 maps and zero unresolved dependency, missing
+compiled companion, duplicate declaration/material, untracked file or reparse
+point. Alpha Labs 1, Comm Outside 1/2, Monorail 1/2 and Hell 1 part 3 all load
+on the minimized direct GPL host with zero error/fatal or missing-model line.
+The five non-Hell maps passed the first candidate; Hell 1 exposed and verified
+the empty-surface rule before all six passed v32. The only campaign-wide warned
+static path still known absent from both Xbox and stock PC is
+`recycwallight_broken.ase`. See
+[`evidence/checkpoint-080-solo-static-model-closure.json`](evidence/checkpoint-080-solo-static-model-closure.json).
+
+## Earlier checkpoint: 079
 
 **The final isolated v30 trees pass a fresh 61/61 one-minute native sweep.**
 All 41 solo segments and all 20 co-op segments spawned on the minimized direct

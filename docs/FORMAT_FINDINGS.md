@@ -1686,3 +1686,28 @@ models loading and contain no targeted missing-model or ASE bitmap-path warning.
 This is structural/native-load evidence, not yet a matched Xbox screenshot or
 vertex-alpha acceptance test.
 
+Checkpoint 080 extends the same format over sixteen further unique solo
+payloads (seventeen archive instances because both Monorail segments contain
+the same `test_noglass.lwo.x` bytes). They contain 80 declared surfaces, 30,840
+vertices and 28,005 triangles. Eight surface slots have no indexes or vertices.
+Their bounds are the engine's canonical empty sentinel: minimum components are
+approximately `+1e30` and maximum components approximately `-1e30`. A zero
+vertex surface is accepted only with that sentinel and zero indexes; a sentinel
+on non-empty geometry and a zero-vertex surface with ordinary bounds both fail.
+
+The Xbox payload retains empty authored material slots, but the stock PC ASE
+reader rejects an empty `GEOMOBJECT`: after seeing zero faces it reports
+`*MESH_TFACELIST before *MESH_FACE_LIST`. The PC translation therefore keeps
+the slot in `MATERIAL_LIST` and in the hash-bound decode report but emits no
+geometry object for it. This loses no triangle or vertex data because the Xbox
+slot contains none. The first maggot-room surface also retains the printable
+exporter material label `material #97`; the decoder accepts only the exact
+`material #<digits>` form in addition to `textures/` and `models/` paths.
+
+These rules were exercised by the real `floor.lwo.x` and `ribcage2.lwo.x`
+members from `hell1_3.gfc`, not introduced from a synthetic assumption. The
+first v31 Hell 1 native load is retained as a counterexample and failed on the
+empty ASE object. A complete immutable v32 rebuild omitted only those empty
+objects, and all six affected maps then loaded with zero error/fatal or
+missing-model line.
+
