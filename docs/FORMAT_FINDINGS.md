@@ -1,5 +1,146 @@
 # Format findings and unknowns
 
+## Checkpoint 084 broader offline review
+
+### Host lineage is part of the input, not a filename assumption
+
+The source imported from the pristine GPL archive and extended on `master`
+still registers only stock `si_gameType` values. `idInternalCVar::UpdateValue`
+rejects unknown enumerated strings; the game-type enum/server resolver and
+paired player-definition branch also lack COOP. Adding a string comparison to
+checkpoint spawning did not make this branch reachable through normal mode
+selection. Historical first-map configurations store `deathmatch`, and the
+logs warn about absent deathmatch starts. Those receipts remain useful for
+loader survival only, not paired spawning or cooperative campaign behavior.
+
+`origin/main:vendor/doom3-gpl` contains the COOP cvar, enum, resolver, paired
+player definitions, `_coop`/`not_coop` selection, peer limits and broader
+player/AI/multiplayer behavior. It lacks some newly reconstructed map-host
+classes, including `idTrigger_Teleport`. The next host integration must combine
+the two proven source lines in an isolated successor, not replace either
+accepted lineage or merely register another mode name. The new
+`coop_host_source_audit.py` reports structural prerequisites and source hashes;
+it deliberately does not certify a DLL or runtime behavior.
+
+### Warning coverage and navigation identity
+
+The new historical warning auditor checks the recorded bytes/hash of every
+log before classifying warnings. It retains repeated summary occurrences,
+unknown categories and explicit historical-only limits. Missing spawnclasses,
+script callbacks and unsupported entity events cannot be excluded simply
+because an earlier targeted skeleton filter did not count them.
+
+Across 41 solo maps and 101 CM/AAS companions, the independent MAP geometry
+checksum computation finds exactly one mismatch: `commoutside_1.aas96` stores
+2127086718 while the MAP, CM and AAS48 identify 1317835462. The original
+authenticated AAS96.X already carries the differing header, and the decoder
+retained it. Twenty co-op maps and 50 companions pass the same check. Rewriting
+the header alone would bypass a loader safeguard without proving that the
+navigation describes the intended geometry; no such rewrite is performed.
+
+Sabaoth's two path-corner warnings also do not justify changing authored AAS.
+The direct point queries land in unwalkable leaves, but the GPL bounds-search
+fallback can reach walkable areas 23 and 36, with directed authored routes
+from area 10. This narrows the problem; it does not emulate trace-down,
+dynamic obstacles or the complete `WalkPathToGoal` behavior.
+
+### Additional offline correctness gates
+
+The recorded `stock_pk4s` inventory includes the two pre-existing Xbox MP
+add-on packages in this local base directory, not just retail `pak*.pk4`.
+Historical duplicate-material warnings name their material file. They are not
+new duplicate declarations in the generated campaign tree. A literal reference
+scan of both baseline campaign trees finds no dependency on their 59
+addon-only paths, but that does not prove their overrides are visually neutral.
+Preserve the user's installed packages and record/isolate the base VFS before
+future fidelity testing; do not silently delete those packages or call this a
+pristine-stock runtime.
+
+Mesh brace balancing was insufficient: `md5_family_audit.py` now checks every
+vertex/triangle/weight index, finite coordinate, weight span/joint and weight
+sum within decimal export precision. `md5_corpus_audit.py` checks every loose
+MD5 individually; it explicitly does not infer compatible family selection.
+The baseline solo/co-op trees pass all 838 loose-file checks (53 meshes and
+785 animations). Selected family and AF checks are separate obligations.
+
+Package validation now rejects unsafe or ambiguous Windows VFS paths, checks
+declaration keys across distinct DEF files, and binds each generated recipe
+uniquely to its recorded payload. Language entries are parsed as syntax instead
+of quoted text scraped from comments; string IDs retain the case-sensitive
+lookup semantics of `idLangDict`. Existing mode packages remain separately
+mergeable, not interchangeable combined trees.
+
+The first complete co-op rebuild exposed a Guardian DEF selected both by an
+explicit runtime profile and the newly correct typed parent traversal. The
+two transformed payloads agreed byte-for-byte, but the builder emitted two
+manifest entries. The v20n candidate is retained as rejected. The full-DEF
+shadow step now reuses a staged payload only after checking its unique receipt,
+size, hash and exact transformed bytes; it retains both source witnesses.
+Conflicting candidates fail, and a final case-insensitive duplicate-path gate
+prevents any other double-write from publishing a manifest. Three synthetic
+regressions raise the complete suite to 455 passing tests.
+
+The next co-op candidate passed strict audits but still contained an unused
+Lantern gib in every overlay. Automatic dependency demand had inspected the
+global declaration catalog instead of the declarations actually emitted.
+The scope is now the selected supplemental declarations plus whole DEF files
+that will be shadowed. An unselected catalog entry cannot add that dependency;
+explicit resource profiles remain authoritative. The valid-but-broad v20o
+candidate remains preserved separately from the final scoped build. Five
+additional scope/helper regressions bring the final offline suite to 460 tests.
+
+Co-op GUI snapshots must compare the actual local GUI dictionary with the
+authoritative value, not just the previous received value. Otherwise an
+unchanged server zero cannot undo a client-side latch. Turkey Puncher score
+synchronization likewise uses the actual restored GUI rather than an unsaved
+cache. These bounded source repairs preserve snapshot/save field layout, but
+cross-lineage save compatibility remains unaccepted: the earlier host already
+introduced custom fields under the unchanged stock build number.
+
+### Restored dependencies and selected skeleton families
+
+Typed declaration traversal now distinguishes a model from an entityDef with
+the same name, handles unquoted model inheritance and engine-supported
+`inherit*` entityDef keys. This exposes the missing Enpro `char_npc` parents.
+Both solo Enpro segments now recover exactly five hash-authenticated declaration
+slices, not the whole shared `npcs.def`. Four parent declarations receive private
+names; the bald-marine child inherits those private parents. The 49 resources
+include three 48-joint body meshes, 37 body animations, one 42-joint head mesh,
+seven head animations and the authored AF. Body hierarchy/AF checks and head
+animation hierarchy pass. The inherited head `copy_joint_world eyecontrol`
+destination still does not exist; no guessed replacement is applied.
+
+Maintenance zombies, the actual 43-joint jumpsuit/chainsaw AF consumers, and
+the Lantern scientist now select private copies of their exact Xbox AFs.
+Only AF names are changed; authored physical values and joint selectors are
+retained. Five declared jumpsuit clips remain absent from the inspected selected
+resources (`influence_eats_arm`, `influence_shake`, `influence_shake_random`,
+`startchainsaw3`, `thrownbyhk`); reachability has not been established. A
+Sawyer-family comparison is not evidence for those actual AF consumers.
+
+The generic Xbox skeleton gib and Lantern body both have 48 joints, but 20
+ordered joints differ and 14 mismatching indices carry weights. A dedicated
+Lantern-only derived gib uses exact joint-name correspondence and the selected
+body's hierarchy/bind transforms. It preserves UVs, triangles, shaders, weight
+spans/biases and world-space bind geometry within a 0.0001 game-unit tolerance.
+All 444 weight coordinates are transformed and 122 indices change. The two
+missing source joint names have no weight records, so no alias is invented.
+An independent parser and quaternion calculation measured maximum bind vertex
+coordinate drift of 0.0000020951 units. This is not motion or visual acceptance.
+The existing generic gib alias remains unchanged for other actors.
+
+Recursive literal GUI include closure recovers five missing Hellhole 2 news
+`.pd` files. It follows relative-first/global lookup, records source hashes,
+includes their language dependencies, and rejects unsafe paths, ambiguous
+macro includes and cycles. No menus or compiled scripts are substituted.
+Six Comm Outside 2 lift-panel callbacks now retain their authentic helper
+namespace instead of being captured by the segmented map's private namespace.
+Known `steamlinered`, `ceilingdust` and `longceilingdust` particle references use
+the PC `.prt` route with hash-bound stock witnesses; `sonicips.ips` remains
+unresolved. The floor-dust FX correction applies to solo Caverns 1 part 2,
+solo Caverns 2 and co-op Caverns 2. These are offline dependency/source fixes,
+not fresh evidence that historical warnings have disappeared at runtime.
+
 ## Checkpoint 083 Hazmat, Sabaoth and validation findings
 
 Hazmat's public Xbox mesh has 48 joints, compared with the PC mesh's 62. Moving

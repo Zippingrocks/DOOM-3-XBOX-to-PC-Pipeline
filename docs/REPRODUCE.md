@@ -1,3 +1,122 @@
+# Reproduce checkpoint 084
+
+## Checkpoint 084 offline-only corpus review
+
+Use the source commit recorded in
+`evidence/checkpoint-084-offline-corpus-review.json`, and synchronize its
+`tools/campaign_port` directory byte-for-byte to the local campaign-port-dev
+mirror. Run from that dev directory unless stated otherwise. Every output
+directory and receipt below must be new. These commands do not execute Doom 3,
+Steam, dmap, a native soak, or xemu. Prior loader receipts cannot be transferred
+to these new artifacts.
+
+With the same authenticated shared GFC/GOB as checkpoint 083, recover the
+additional original AF members (keep extraction manifests and assets local):
+
+```powershell
+python -B tools/campaign_port/gfc.py extract work/shared-archives/assets.gfc --out work/checkpoint-084-af-assets --include ./base/af/monster_zombie_maint.af --include ./base/af/monster_zombie_chainsaw.af --include ./base/af/char_lanternguy.af
+python -B tools/campaign_port/gfc.py extract work/shared-archives/assets.gfc --out work/checkpoint-084-enpro-af-assets --include ./base/af/char_npc_misc.af
+```
+
+Require SHA-256, respectively:
+
+- `391cc0f620d92d57a0b912bd9d7ccadb440d7fc5ca5d4f2060eda5dc1b0c20f3`
+- `9c7927a1ad78bbdc0cc1c5dbbe69f01331f8b32d691c06f57b8e5ea6ecf52150`
+- `79cc7cf2a0333b3abcda742a3cdefb9dc2a20ddaf000a38ff269ae2fa96cc8bf`
+- `493632659fbcb3e6ff183637426e47932237a5e3b27f67c91e68b66a8d34f877`
+
+Keep earlier structural, shared-text, decoded-model and recovered static-model
+roots. Enpro requires the original five authenticated `npcs.def` slices and
+decoded Enpro 2 resources; the replay driver explicitly prioritizes these for
+both segments. The Lantern gib is regenerated from exact source/target hashes,
+not copied from a previously modified mesh. Private resources are never added
+to either public repository.
+
+```powershell
+python -B tools/campaign_port/rebuild_latest_solo_overlays.py work/solo-overlays-nativefix-v39 work/solo-overlays-nativefix-v40 --work-root work --stock-dir '..\..\base' --require-maps 41 --receipt work/solo-overlays-nativefix-v40-rebuild.json
+python -B tools/campaign_port/overlay_corpus_audit.py work/solo-overlays-nativefix-v40 --expected-root work/solo-overlays-nativefix-v39 --out work/solo-overlays-nativefix-v40-audit.json
+python -B tools/campaign_port/package_solo_overlays.py work/solo-overlays-nativefix-v40 work/solo-pkg-v40 --require-maps 41 --receipt work/solo-pkg-v40-receipt.json
+python -B tools/campaign_port/build_campaign_test_tree.py work/solo-pkg-v40 work/solo-pkg-v40 work/campaign-solo-test-tree-v40 --corpus solo --receipt work/campaign-solo-test-tree-v40-receipt.json
+python -B tools/campaign_port/campaign_test_tree_audit.py work/campaign-solo-test-tree-v40 --receipt work/campaign-solo-test-tree-v40-receipt.json --output work/campaign-solo-test-tree-v40-audit.json --require-solo 41 --require-coop 0
+
+python -B tools/campaign_port/rebuild_latest_coop_overlays.py '..\..' --work-root work --input-suffix mergeguard_v20m --suffix mergeguard_v20p --require-maps 20 --receipt work/coop-mergeguard-v20p-rebuild.json
+python -B tools/campaign_port/coop_overlay_corpus_audit.py '..\..' --require-maps 20 --require-no-untracked --output work/coop-mergeguard-v20p-audit.json
+python -B tools/campaign_port/package_coop_overlays.py '..\..' work/coop-pkg-mg20p --suffix mergeguard_v20p --require-maps 20 --receipt work/coop-pkg-mg20p-receipt.json
+python -B tools/campaign_port/build_campaign_test_tree.py work/coop-pkg-mg20p work/coop-pkg-mg20p work/campaign-coop-test-tree-v32 --corpus coop --receipt work/campaign-coop-test-tree-v32-receipt.json
+python -B tools/campaign_port/campaign_test_tree_audit.py work/campaign-coop-test-tree-v32 --receipt work/campaign-coop-test-tree-v32-receipt.json --output work/campaign-coop-test-tree-v32-audit.json --require-solo 0 --require-coop 20
+python -B tools/campaign_port/campaign_package_merge_audit.py work/solo-pkg-v40 work/coop-pkg-mg20p --output work/checkpoint-084-package-merge.json
+
+python -B tools/campaign_port/md5_corpus_audit.py work/campaign-solo-test-tree-v40 --output work/checkpoint-084-md5-solo-v40.json
+python -B tools/campaign_port/md5_corpus_audit.py work/campaign-coop-test-tree-v32 --output work/checkpoint-084-md5-coop-v32.json
+python -B tools/campaign_port/campaign_companion_crc_audit.py work/campaign-solo-test-tree-v40 --output work/checkpoint-084-crc-solo-v40.json
+python -B tools/campaign_port/campaign_companion_crc_audit.py work/campaign-coop-test-tree-v32 --output work/checkpoint-084-crc-coop-v32.json
+```
+
+Read reports rather than treating an exit code as universal acceptance. The
+solo CRC check deliberately exits 1 for the preserved Comm Outside 1 AAS96
+source-header identity mismatch; do not stamp it to force a pass. Packages
+remain separately mergeable, not a combined cross-mode tree. MD5 corpus checks
+validate individual loose files, not all possible inherited animation choices.
+Separate selected-family reports retain the Enpro eyecontrol and missing
+jumpsuit-clip findings.
+
+For the corrected Lantern gib, select the actual scientist segment, Alpha
+Labs 2 part 2, and every animation from its resource profile:
+
+```powershell
+$actorRoot = 'work/solo-overlays-nativefix-v40/alphalabs2_2'
+$checks = @('--mesh', "$actorRoot/models/md5/characters/npcs/lanternskeleton_alphalabs2_xbox.md5mesh", '--af', "$actorRoot/af/char_lanternguy_xbox.af", '--output', 'work/checkpoint-084-lantern-family-reproduction.json')
+Get-Content tools/campaign_port/profiles/xbox_solo_alphalabs2_lantern.resources | Where-Object { $_ -match '\.md5anim$' } | ForEach-Object { $checks += @('--anim', "$actorRoot/$_") }
+python -B tools/campaign_port/md5_family_audit.py @checks
+```
+
+Require 48 joints, 12 matching animations and a compatible AF. The derived gib
+SHA-256 is `11c8e416e3872a9a9d994d8cbb9f7da980eed3a575980e43df7513b75fa18b9c`.
+The generic gib alias used elsewhere must not be overwritten.
+
+For Enpro, run each of the three body meshes against all 37 private body
+tracks and the authored private AF. Check the head separately:
+
+```powershell
+$actorRoot = 'work/solo-overlays-nativefix-v40/enpro_2'
+$familyRoot = "$actorRoot/models/md5/chars/enpro_npc_xbox"
+foreach ($body in @('npcs','marine','skeleton')) {
+    $checks = @('--mesh', "$familyRoot/$body.md5mesh", '--af', "$actorRoot/af/char_npc_misc_enpro_xbox.af", '--output', "work/checkpoint-084-enpro-$body-reproduction.json")
+    Get-ChildItem -LiteralPath $familyRoot -Recurse -Filter '*.md5anim' | Where-Object { $_.Directory.Name -ne 'heads' } | Sort-Object FullName | ForEach-Object { $checks += @('--anim', $_.FullName) }
+    python -B tools/campaign_port/md5_family_audit.py @checks
+}
+$checks = @('--mesh', "$familyRoot/heads/h5.md5mesh", '--required-joint', 'eyecontrol', '--output', 'work/checkpoint-084-enpro-head-reproduction.json')
+Get-ChildItem -LiteralPath "$familyRoot/heads" -Filter '*.md5anim' | Sort-Object Name | ForEach-Object { $checks += @('--anim', $_.FullName) }
+python -B tools/campaign_port/md5_family_audit.py @checks
+```
+
+The three body reports pass; the head report deliberately fails the missing
+`eyecontrol` reference even though all seven 42-joint animations match. Do not
+remove that required-joint check to claim complete family acceptance.
+
+From the source repository root, run the complete synthetic/offline unit suite:
+
+```powershell
+python -B -m unittest discover -s tools/campaign_port/tests -p 'test_*.py' -q
+```
+
+From campaign-port-dev, audit source capability and existing historical logs:
+
+```powershell
+python -B tools/campaign_port/coop_host_source_audit.py work/upstream-doom3-gpl-src/DOOM-3-master --output work/checkpoint-084-host-source-audit-reproduction.json
+python -B tools/campaign_port/campaign_warning_audit.py work/gpl-solo-private-actors-v38-full.json work/gpl-coop-textureseparator-v31-full.json --expect-solo 41 --expect-coop 20 --output work/checkpoint-084-warning-reproduction-private.json --summary work/checkpoint-084-warning-reproduction-summary.json
+```
+
+The source check intentionally exits 2 for four missing COOP prerequisites.
+The historical warning audit's `--summary` output is safe metadata for
+publication; raw local logs and full diagnostic messages are not. It must
+verify all 61 recorded log hashes/sizes. Preserve all original receipts.
+
+Compile-only verification follows the checkpoint 083 isolated MSBuild recipe,
+using new `work/checkpoint-084-source-build/bin` and separate idlib/game object
+directories. Keep the DLL uninstalled. Compiler warnings are counted, not
+concealed, and this compile is not engine execution or two-peer acceptance.
+
 # Reproduce checkpoint 083
 
 ## Checkpoint 083 offline-only review

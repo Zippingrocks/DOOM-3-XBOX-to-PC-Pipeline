@@ -1,0 +1,527 @@
+{
+  "checkpoint": "084",
+  "date": "2026-10-15",
+  "claim": "61 campaign overlays rebuilt offline with source-bound fixes. Solo v40 strict tree validation passed. Final co-op v20p geometry/resource-scope proof passed; final package/tree audit chain stopped at user request before completion. No 100% or runtime-warning-free claim.",
+  "source": {
+    "repository": "Zippingrocks/doom3-gpl-xbox-reconstruction",
+    "branch": "master",
+    "repository_commit": "c61e370365ecabd826594947afcc82ec2cfb236f",
+    "offline_tests": 460,
+    "offline_tests_passed": 460,
+    "command": "python -B -m unittest discover -s tools/campaign_port/tests -p 'test_*.py' -q",
+    "test_working_directory": "reconstruction repository root",
+    "local_tool_mirror_files_synchronized": 41
+  },
+  "execution_boundary": {
+    "doom_launched": false,
+    "steam_launched": false,
+    "dmap_launched": false,
+    "xemu_launched": false,
+    "gameplay_testing": false,
+    "xbox_comparisons": false,
+    "installed_dll_replaced": false,
+    "prior_accepted_trees_replaced": false,
+    "retail_payloads_committed": false,
+    "raw_logs_committed": false
+  },
+  "historical_warnings": {
+    "summary": "evidence/checkpoint-084-historical-warning-summary.json",
+    "sha256": "beca7a86086472f27a3282fa02e4dd7bced5971b6a0aee0c7e69deed3e48198b",
+    "solo_maps": 41,
+    "coop_maps": 20,
+    "families": 38,
+    "all_log_hashes_and_sizes_verified": true,
+    "historical_only": true
+  },
+  "repairs": [
+    "Typed model/entityDef inheritance closure, including engine-supported inherit* keys.",
+    "Enpro five authenticated declaration slices and 49 private body/head/AF resources for both solo segments.",
+    "Exact authored private maintenance-zombie, jumpsuit/chainsaw and Lantern AF selections; physics/selector values preserved.",
+    "Dedicated Lantern gib exact-name/bind-space retarget, without altering generic gib consumers.",
+    "Five recursive Hellhole2 GUI news includes and their language closure.",
+    "Six CommOutside2 lift-panel callbacks routed to their authentic helper namespace.",
+    "Source-witnessed PC particle extension routes for steamlinered, ceilingdust and longceilingdust.",
+    "Live GUI state reconciliation in co-op map host classes and Turkey Puncher.",
+    "Package VFS path safety, cross-file declaration conflicts, unique hash-bound generated recipes, parsed case-sensitive language keys and escape-concatenation guard.",
+    "Full loose-MD5 surface/index/weight audits, original-root reparse rejection and MAP/CM/AAS header identity checks.",
+    "Guardian full-DEF/runtime-resource collision coalesced only on verified byte identity, with both source witnesses and a final duplicate-manifest rejection gate.",
+    "Automatic Lantern dependencies follow emitted declarations, not the global source catalog; explicit resource profiles remain effective."
+  ],
+  "isolated_compile": {
+    "toolchain": "MSBuild 18.9.1, v145, Win32 Dedicated Release",
+    "dll": "work/checkpoint-084-source-build/bin/gamex86.dll",
+    "dll_sha256": "28fe63267b9f5587057be9bfb252464e4b32ae4d583cc280b1ed0a5e21e60376",
+    "idlib_errors": 0,
+    "idlib_warnings": 146,
+    "game_errors": 0,
+    "game_warnings": 5514,
+    "idlib_log_sha256": "aed78be08b3c46a1bfd8e130862b694306743660b90f1b51bf589b061fcf40d1",
+    "game_log_sha256": "5d926ad460e2abb3a269929d37a5991cc8b664e870ddd4e5268f329106400afd",
+    "installed_and_prior_accepted_dll_sha256": "cd85078bf3f5ce8cd4937baae48e70049a8056db59c95033bf76ee122d9ca774",
+    "installed": false,
+    "game_executed": false,
+    "native_changes_commit": "a23d1a9062abfc4fe5a1cfcd57ecd83c572fd5c8"
+  },
+  "host_blocker": {
+    "current_checked_prerequisites_passed": 2,
+    "checked_prerequisites": 6,
+    "all_present": false,
+    "older_coop_main_commit": "51d0a78bb19b6b4716726a6afc089ea57fe5741c",
+    "older_main_checked_prerequisites_passed": 6,
+    "older_main_preserved": true,
+    "required_next_step": "Deliberate isolated integration of existing COOP game/player/AI/network behavior with newer map-host classes; adding only a mode label is insufficient.",
+    "historical_loader_receipts_prove_coop_rules": false,
+    "report": "work/checkpoint-084-host-source-audit.json",
+    "report_sha256": "f67c16516773912d03571b44aa1c7eac0e7b6d1757103b898a913948e5ab6532"
+  },
+  "remaining_boundaries": [
+    "Complete final v20p overlay/package/tree/merge/MD5/CRC audits using fresh output paths before accepting that package.",
+    "CommOutside1 AAS96 source-header identity mismatch: 2127086718 versus MAP/CM/AAS48 1317835462. Original X input already differs; no header-only workaround.",
+    "Enpro and other NPC copy-joint differences, including absent eyecontrol destination, remain open.",
+    "Five declared jumpsuit clips absent from inspected selected resources; reachability not established.",
+    "Authored unsupported time/Off events, missing GUI transition destinations and dangling Delta4 callback remain open.",
+    "Source-absent recycwallight_broken.ase and unresolved sonicips.ips are not substituted speculatively.",
+    "Sabaoth nearest-area bounds find authored routes, but trace-down, dynamic obstacles and WalkPathToGoal remain unverified.",
+    "Installed base contains two existing Xbox multiplayer addon PK4s; no removals, pristine-stock claim or override-neutrality assumption.",
+    "Compilation and offline structural passes do not prove motion, AF physics, visuals/audio, progression, save/load or two-peer behavior.",
+    "Solo and co-op must remain separate mod trees; neither the data nor the new DLL inherits old loader acceptance."
+  ],
+  "selected_family_checks": {
+    "enpro": {
+      "report": "work/checkpoint-084-enpro-families-v1.json",
+      "sha256": "636872d9e72402364efd222fff8d68bc16744c95d1eb408f1882e9690cba58f0",
+      "recovered_declaration_slices": 5,
+      "private_resources": 49,
+      "body_meshes": 3,
+      "body_joints": 48,
+      "body_animations": 37,
+      "head_meshes": 1,
+      "head_joints": 42,
+      "head_animations": 7,
+      "authored_afs": 1,
+      "body_hierarchy_and_af_passed": true,
+      "head_animation_hierarchy_passed": true,
+      "head_copy_joint_gate_passed": false,
+      "missing_head_joint": "eyecontrol"
+    },
+    "maintenance": {
+      "report": "work/checkpoint-084-ragdoll-maint.json",
+      "sha256": "7d325401e3a4c8a457de26e6134e7126e348bebd06e61d89f0b6f98229ac7d19",
+      "status": "passed",
+      "joints": 50,
+      "animations": 22
+    },
+    "lantern_body": {
+      "report": "work/checkpoint-084-ragdoll-lantern.json",
+      "sha256": "ad0d8cfda02ff4691279c8c014058e407ed1ebb39819ae954151fffc075d0d4d",
+      "status": "passed",
+      "joints": 48,
+      "animations": 12
+    },
+    "chainsaw_af_consumers": {
+      "report": "work/checkpoint-084-ragdoll-chainsaw-consumers.json",
+      "sha256": "c0d8e5ce946db399bcd2d27b846c38a327d1177024d913c463ed2f8d52b5d642",
+      "status": "failed",
+      "selected_family": "43-joint jumpsuit models, not the Sawyer comparison",
+      "available_compatible_animations": 14,
+      "unresolved_declared_clips": 5,
+      "authored_af_joint_check_passed": true,
+      "reachability_of_missing_clips_established": false
+    },
+    "lantern_gib": {
+      "report": "work/checkpoint-084-ragdoll-lantern-gib-corrected.json",
+      "sha256": "fcd618b46dfa84d2d76f9156be60b686437439a08d20d39a3e517bd1a2542619",
+      "status": "passed",
+      "joints": 48,
+      "animations": 12,
+      "output_sha256": "11c8e416e3872a9a9d994d8cbb9f7da980eed3a575980e43df7513b75fa18b9c",
+      "retarget_report_sha256": "51179c8ed5d07fe09c1cfbee21c22faf5e05f20d608c33bff9bbef4b53105277",
+      "independent_bind_report_sha256": "25a1e41d076a6c32ad795b7c195dfaa1346cfec690825ee0a0cc484b2b139508",
+      "vertices": 372,
+      "weights": 444,
+      "changed_weight_indices": 122,
+      "changed_weight_positions": 444,
+      "independent_max_bind_vertex_coordinate_error": 0.0000020950403403219298,
+      "tolerance_game_units": 0.0001,
+      "original_failure_retained": true
+    },
+    "final_tree_reproduction": [
+      {
+        "report": "work/checkpoint-084-enpro-head-reproduction.json",
+        "status": "failed",
+        "reason": "missing required joint eyecontrol",
+        "animations": 7,
+        "sha256": "1edba5a68e15be366df5690a7770c7807fd9efb624746b2deeececac81e5f634"
+      },
+      {
+        "report": "work/checkpoint-084-enpro-marine-reproduction.json",
+        "status": "passed",
+        "animations": 37,
+        "sha256": "97323907c0f6177a8220633d684347a26b57709b148aeb85ba9fd842b25fb076"
+      },
+      {
+        "report": "work/checkpoint-084-enpro-npcs-reproduction.json",
+        "status": "passed",
+        "animations": 37,
+        "sha256": "c264c18b22fa927aa30c74e8d23ba082c3f9fc638f277e8d11a23f1dd3595dcd"
+      },
+      {
+        "report": "work/checkpoint-084-enpro-skeleton-reproduction.json",
+        "status": "passed",
+        "animations": 37,
+        "sha256": "67aeffce4573f1eb4f28894611fb132b51a8e13d1738a21159e6bff6733f8ca8"
+      },
+      {
+        "report": "work/checkpoint-084-lantern-family-reproduction.json",
+        "status": "passed",
+        "animations": 12,
+        "sha256": "4ebabb18bd28612ae08352dc87507d673094a8b7a8631f40793c943c93980eab"
+      }
+    ]
+  },
+  "solo": {
+    "input": "work/solo-overlays-nativefix-v39",
+    "overlays": "work/solo-overlays-nativefix-v40",
+    "package": "work/solo-pkg-v40",
+    "tree": "work/campaign-solo-test-tree-v40",
+    "build_source_commit": "a23d1a9062abfc4fe5a1cfcd57ecd83c572fd5c8",
+    "reports": [
+      {
+        "summary": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "report": "work/solo-overlays-nativefix-v40-rebuild.json",
+        "status": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "sha256": "249ff4b8ce533ec06072f9959a9f4a627340e93ab61be1dca87e72e110eb852c"
+      },
+      {
+        "summary": {
+          "bytes": 859754416,
+          "direct_authored_cm_maps": 41,
+          "file_ledger_sha256": "817d7ca5cceae5e44f1a28667100bc15baa95c5ecb3e67d11cd09830619f7a8b",
+          "files": 2696,
+          "manifest_ledger_sha256": "b2e358011dbba4606190606b0365cf59eb9699920405aabdcec4054676080b3d",
+          "maps": 41,
+          "transform_kind_counts": {
+            "anchor-segmented-helper-includes": 1,
+            "correct-unshipped-script-sound-shaders": 6,
+            "declare-xbox-run-command-event": 1,
+            "decode-xbox-static-model-x-to-pc-ase": 64,
+            "isolate-authored-enpro-xbox-af": 2,
+            "isolate-authored-xbox-ragdoll": 10,
+            "isolate-enpro-xbox-actor-family": 8,
+            "isolate-xbox-hazmat-articulated-figure": 2,
+            "isolate-xbox-solo-cough-callback": 2,
+            "isolate-xbox-solo-script-namespace": 28,
+            "neutralize-unreferenced-xbox-crane-controller-loop": 4,
+            "omit-xbox-alternate-hud-events": 19,
+            "pc-solo-script-bridge": 41,
+            "preserve-external-commoutside-lift-panel-callbacks": 6,
+            "qualify-stock-commoutside-lift-entrypoint": 1,
+            "replace-xbox-timer-clip-with-pc-noop": 4,
+            "resolve-xbox-talk-never-constant": 2,
+            "retarget-xbox-lantern-gib-by-exact-joint-name": 1,
+            "reuse-stock-pc-map-helper": 2,
+            "reuse-stock-recycling1-rev-rocket-callbacks": 2,
+            "route-segmented-helpers-through-principal-script": 3,
+            "select-authored-xbox-ragdoll": 25,
+            "select-exact-name-retargeted-lantern-gib": 1,
+            "use-pc-particle-model-extension": 8
+          },
+          "unresolved_classnames": 0,
+          "unresolved_resources": 0,
+          "unresolved_string_ids": 0
+        },
+        "report": "work/solo-overlays-nativefix-v40-audit.json",
+        "sha256": "c6b455fbb2759b2cebc66c82e9e62703d1454f93975d84631fd3f337e00b60fc"
+      },
+      {
+        "summary": {
+          "junctions_or_symlinks_created": 0,
+          "manifest_bytes": 2135691,
+          "maps": 41,
+          "payload_bytes": 859754416,
+          "payload_files": 2696
+        },
+        "report": "work/solo-pkg-v40-receipt.json",
+        "sha256": "8698fc0a27545b02c0bd78154b1aa41955d6bd52cae6b80fcd5ee8d92b4b13e5"
+      },
+      {
+        "summary": {
+          "coop_maps": 0,
+          "deduplicated_records": 1702,
+          "generated_merge_files": 1,
+          "input_records": 2696,
+          "junctions_or_symlinks_created": 0,
+          "maps": 41,
+          "output_bytes": 750358785,
+          "output_files": 994,
+          "output_ledger_sha256": "5cb4a4a6fc8d540507598f29f682b6a76c0c3e02e829156756682f840e3067bc",
+          "solo_maps": 41
+        },
+        "report": "work/campaign-solo-test-tree-v40-receipt.json",
+        "sha256": "49cf15776952a317196df755194993369819596cbe511d17350a2922163b9de8"
+      },
+      {
+        "summary": {
+          "bytes": 750358785,
+          "coop_maps": 0,
+          "def_declarations": 1448,
+          "def_files": 74,
+          "duplicate_definitions": 0,
+          "duplicate_materials": 0,
+          "files": 994,
+          "generated_files": 1,
+          "ledger_sha256": "5cb4a4a6fc8d540507598f29f682b6a76c0c3e02e829156756682f840e3067bc",
+          "maps": 41,
+          "material_files": 0,
+          "materials": 0,
+          "missing_compiled_companions": 0,
+          "reparse_points": 0,
+          "solo_maps": 41,
+          "untracked_files": 0
+        },
+        "report": "work/campaign-solo-test-tree-v40-audit.json",
+        "sha256": "e499fd8cf4c4c09d174b478963f398af54ce12ec1c6a1ca85ec3d018d33132df"
+      },
+      {
+        "summary": {
+          "files": 244,
+          "meshes": 20,
+          "animations": 224,
+          "bytes": 18831034
+        },
+        "report": "work/checkpoint-084-md5-solo-v40.json",
+        "status": "passed",
+        "sha256": "7427648e594f5f8dff89bfdb3215be33c5a364130f21972e9268682cd856c384"
+      }
+    ]
+  },
+  "companion_identity_solo": {
+    "report": "work/checkpoint-084-crc-solo-v40.json",
+    "sha256": "9bea0065240c4b972dbda64d0414d8a7d277a2dc459c943568386b9dc3011b20",
+    "status": "failed",
+    "cli_exit_code": 1,
+    "maps": 41,
+    "companions": 101,
+    "issues": [
+      {
+        "map": "maps/vv/commoutside_1.map",
+        "path": "maps/vv/commoutside_1.aas96",
+        "expected": 1317835462,
+        "actual": 2127086718,
+        "original_x_input_already_differs": true,
+        "header_not_rewritten": true,
+        "original_x_sha256": "f64ba94a1bf4dc8aed1d4a2a23607729228f7be48578547b5a68208612167b33"
+      }
+    ]
+  },
+  "counterexamples": [
+    {
+      "candidate": "co-op mergeguard_v20n",
+      "status": "rejected",
+      "reason": "Duplicate def/monster_boss_guardian.def manifest record in xc_hell1_2: runtime-resource copy and typed-parent full-DEF shadow both wrote the same bytes.",
+      "payload_sha256": "d0e2838c51cb05f6295dddaaac022adc1a83f94199de5e8e94a09b2c5ebab85e",
+      "payload_bytes": 11375,
+      "retained": true
+    }
+  ],
+  "independent_actor_verification": {
+    "report": "work/checkpoint-084-independent-actors-v40-v20n.json",
+    "sha256": "0a7170aa4e8024aff67545f6a4ee348d83ad008b7dd353412b870abb62d99cc6",
+    "scope": "Solo v40 only despite report filename",
+    "status": "passed",
+    "enpro_source_bound_resources_per_map": 49,
+    "shared_declarations_identical": 357,
+    "lantern_animations": 12,
+    "lantern_afs": 2
+  },
+  "geometry_preservation": {
+    "baseline_comparison_report": "work/checkpoint-084-independent-geometry-v40-v20n.json",
+    "baseline_comparison_sha256": "816d8ea96065d382578e3a1af6b8039fd3b74d1f11cebd606279a22a1dd9f404",
+    "solo_maps": 41,
+    "coop_candidate_maps": 20,
+    "unchanged_geometry_crcs": 61,
+    "unchanged_primitive_bytes": true,
+    "unchanged_companions": 212,
+    "companion_breakdown": {
+      "proc": 61,
+      "cm": 61,
+      "aas": 90
+    },
+    "changed_map_files": 3,
+    "changed_epairs": 10,
+    "coop_map_bytes_unchanged": true,
+    "limit": "Geometry/identity preservation only, not navigation, physics, visual or gameplay acceptance. The extension binds final v20o to the independently checked v20n geometry bytes without accepting its duplicate manifest.",
+    "coop_successor_extension": {
+      "report": "work/checkpoint-084-independent-geometry-v20o-extension.json",
+      "sha256": "5696cf5649386fa87f674f136104923a6c844a2d640a2f7fe1c09c309a967f5c",
+      "status": "passed",
+      "maps": 20,
+      "map_and_companion_files": 90,
+      "manifest_payload_hashes_and_sizes_verified": true,
+      "duplicate_manifest_paths": 0
+    },
+    "final_coop_extension": {
+      "report": "work/checkpoint-084-independent-geometry-v20p-extension.json",
+      "sha256": "a116f49a7d51c63f24e60d7273e0c516b3511d2ca24179f6d27057a4e548b9b9",
+      "status": "passed",
+      "maps": 20,
+      "map_and_companion_files": 90,
+      "unused_lantern_asset_manifest_and_transform_absent": true,
+      "manifest_payload_hashes_and_sizes_verified": true,
+      "duplicate_manifest_paths": 0
+    }
+  },
+  "intermediate_candidates": [
+    {
+      "candidate": "co-op mergeguard_v20o / tree v31",
+      "strict_tree_audit_passed": true,
+      "audit": "work/campaign-coop-test-tree-v31-audit.json",
+      "audit_sha256": "6a33a620cd91046cfe28ca1bd1e47273e5bee55b63f8e1fa21d6fc1edbd2e0e1",
+      "files": 1051,
+      "bytes": 338259652,
+      "ledger_sha256": "8d2adab01b56c898a8e546db38429705d75dc7b5b3f28869ec95fe647daf6d5a",
+      "superseded_reason": "Unneeded Lantern gib emitted into all 20 co-op overlays because demand scanned the global catalog instead of emitted declarations.",
+      "retained": true
+    }
+  ],
+  "lantern_scope_proof": {
+    "report": "work/checkpoint-084-lantern-emission-scope.json",
+    "sha256": "40c72f188fea55601468f0b68552900700c98dbc96542c2dc29d4172d8e373b3",
+    "coop_maps_without_emitted_scientist_or_automatic_demand": 20,
+    "solo_actual_scientist_retains_demand": true
+  },
+  "coop": {
+    "input_suffix": "mergeguard_v20m",
+    "output_suffix": "mergeguard_v20p",
+    "build_source_commit": "c61e370365ecabd826594947afcc82ec2cfb236f",
+    "rebuilt_maps": 20,
+    "rebuild_receipt": "work/coop-mergeguard-v20p-rebuild.json",
+    "rebuild_receipt_sha256": "3d63806d36d28726d2acc92ea4995f044f78913c90bdfa39bd6337c06e76d2bb",
+    "final_package_accepted": false,
+    "verification_interrupted_by_user": true,
+    "stop_snapshot": {
+      "receipts": [
+        {
+          "report": "work/coop-mergeguard-v20p-rebuild.json",
+          "exists": true,
+          "sha256": "3d63806d36d28726d2acc92ea4995f044f78913c90bdfa39bd6337c06e76d2bb"
+        },
+        {
+          "report": "work/coop-mergeguard-v20p-audit.json",
+          "exists": false
+        },
+        {
+          "report": "work/coop-pkg-mg20p-receipt.json",
+          "exists": false
+        },
+        {
+          "report": "work/campaign-coop-test-tree-v32-receipt.json",
+          "exists": false
+        },
+        {
+          "report": "work/campaign-coop-test-tree-v32-audit.json",
+          "exists": false
+        },
+        {
+          "report": "work/checkpoint-084-md5-coop-v32.json",
+          "exists": false
+        },
+        {
+          "report": "work/checkpoint-084-package-merge.json",
+          "exists": false
+        },
+        {
+          "report": "work/checkpoint-084-crc-coop-v32.json",
+          "exists": false
+        }
+      ],
+      "package_directory_exists": false,
+      "tree_directory_exists": false
+    }
+  },
+  "stop_reason": "User requested immediate GitHub push and wrap-up; the identified offline audit chain was stopped, with completed and intermediate outputs preserved."
+}

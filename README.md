@@ -14,7 +14,42 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 083 — offline warning-family repairs
+## Current review: 084 — broader offline checks, explicit host blockers
+
+The complete 41-map solo and 20-map co-op historical logs have now been
+inventoried with their recorded hashes verified. Broad warning classification
+exposes defects missed by earlier focused warning filters; zero error/fatal
+lines did **not** mean zero missing actors, callbacks or navigation problems.
+No game, Steam, dmap or xemu process is launched during this review.
+
+**The current reconstructed source branch is not a validated co-op host.**
+Its normal game-type enumeration/resolver cannot select COOP, despite containing
+a paired-spawn branch. Historical loader configurations actually selected a
+stock multiplayer mode. The older source repository `main` lineage contains
+the broader COOP implementation, but it does not contain every new map-host
+fix; neither tree can safely replace the other wholesale. Integration and
+later two-peer acceptance remain mandatory.
+
+The new companion-checksum gate also identifies one source-authored mismatch:
+Comm Outside 1's AAS96 checksum differs from its MAP/CM/AAS48 checksum. It is
+retained, not masked by stamping a new checksum onto potentially stale routes.
+All 20 co-op maps pass this particular identity gate. A matching checksum is
+still not proof of navigation or progression fidelity.
+
+See [the offline-review findings](docs/FORMAT_FINDINGS.md#checkpoint-084-broader-offline-review)
+and [acceptance boundaries](docs/ACCEPTANCE.md#checkpoint-084-no-runtime-acceptance).
+**Stopped for the user's immediate handoff request.** All 460 offline tests
+pass; the source fixes are pushed through `c61e370`. Solo v40 passes its strict
+41-map tree audit (994 files) and 244 loose-MD5 checks. All 20 final co-op v20p
+overlays rebuilt, and independent geometry/resource-scope checks pass, but its
+final package/tree audit chain was stopped before completion. Do not treat
+that final package as accepted. No 100% or warning-free runtime claim is made.
+
+See [the resume handoff](docs/CHECKPOINT_084_HANDOFF.md),
+[checkpoint evidence](evidence/checkpoint-084-offline-corpus-review.json), and
+[reproduction commands](docs/REPRODUCE.md#checkpoint-084-offline-only-corpus-review).
+
+## Earlier checkpoint: 083 — offline warning-family repairs
 
 **Delta 4 Hazmat and CPU 2 Sabaoth now have complete source-bound skeleton
 families, verified offline.** Hazmat uses its 48-joint Xbox mesh, matching

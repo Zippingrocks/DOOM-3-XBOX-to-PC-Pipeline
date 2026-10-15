@@ -1,5 +1,44 @@
 # Recovery order and acceptance
 
+## Checkpoint 084 no-runtime acceptance
+
+**Immediate handoff:** final co-op v20p rebuilt and passed independent geometry /
+resource-scope checks, but its full package/tree/merge/MD5/CRC audit chain was
+stopped at the user's request. Those final acceptance steps are unfinished.
+See [the resume handoff](CHECKPOINT_084_HANDOFF.md). All 460 unit tests pass.
+
+This review launches no game, Steam, dmap or xemu and performs no gameplay or
+Xbox comparison. A successful unit suite, compile or receipt audit is not a
+new loader, progression, save/load, visual or two-peer result. No installed or
+previous accepted DLL is replaced.
+
+New mandatory gates include complete warning-family inventory, typed parent
+declaration closure, GUI include closure, selected actor/AF/gib compatibility,
+MAP/CM/AAS checksum identity, and a source-capability check for the actual host
+lineage. Existing historical checks remain intact; new failures are retained
+as counterexamples instead of waivers.
+
+In particular, current `master` is missing four checked COOP selection/player
+prerequisites. The older COOP-capable `main` source and new map-host work must
+be integrated deliberately before a meaningful two-peer acceptance run.
+Comm Outside 1's authored AAS96 checksum mismatch remains a separate open gate.
+Neither blocker is solved by a clean compile or a source-package push.
+
+The rebuilt solo v40 tree passes payload/declaration/companion-presence checks
+for all 41 maps (994 files); its 244 loose MD5 files pass structural validation.
+This does not turn the separately failed AAS identity or actor-selection gates
+into passes. The initial co-op v20n candidate is rejected because a Guardian
+DEF was recorded twice. Both byte-identical sources still require one checked
+payload record with combined provenance; strict downstream duplicate rejection
+must remain in force.
+
+Other remaining investigations include authored unsupported `time`/`Off`
+events on static/AF entities, missing GUI transition destination controls,
+the authored dangling Delta 4 callback, `sonicips.ips`, the source-absent
+`recycwallight_broken.ase`, actor head/sound-joint differences, and physical,
+progression and visual behavior. Historical warnings are not automatically
+current failures, and an offline repair is not runtime warning disappearance.
+
 ## Checkpoint 083 offline-only acceptance boundary
 
 Accepted here: source-backed Hazmat/Sabaoth family isolation, exact staged
