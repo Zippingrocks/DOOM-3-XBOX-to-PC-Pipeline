@@ -15,7 +15,7 @@
   },
   "runner": {
     "local_path": "tools/campaign_port/run_native_campaign_soak.ps1",
-    "sha256": "435fbddc68fb762f15ebc9c764a03562f4a4b5527bd59b76bfc722a84e36de83",
+    "sha256": "ea08aced047e7c038e49e15ae6e5e84288161b3025bfab63c6e0f64747c8b318",
     "report_schema": "doom3-xbox-campaign-native-soak-v2",
     "launcher_modes": [
       "direct",
@@ -29,6 +29,9 @@
       "Aborts the batch after launcher_failure or bootstrap_failure.",
       "Supports StartIndex, EndIndex and identity-checked Resume only for failure-free, non-aborted reports.",
       "Actively minimizes the Doom window after the Steam-launched process creates it.",
+      "Requires the accepted 41-map solo and 20-map co-op routes and all 183 MAP/PROC/CM payloads before launch.",
+      "Rejects non-empty state for an unrecorded sequence so a stale qconsole marker cannot pass a retry.",
+      "Classifies either a fatal line or an ERROR line as runtime_log_failure.",
       "Writes the report atomically after every attempted map and hashes the plan, executable and qconsole log."
     ]
   },

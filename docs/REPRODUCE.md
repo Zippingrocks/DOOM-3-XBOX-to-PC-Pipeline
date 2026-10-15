@@ -31,6 +31,11 @@ accepts the existing report's plan, executable and `fs_game` identity and the
 report contains no failure or aborted batch. Require `window_minimized=true`
 for a normal Steam-launched run.
 
+The preflight must independently require 41 solo and 20 co-op targets, 61
+unique commands, and all 183 MAP/PROC/CM files below the selected `fs_game`.
+It must reject non-empty state for an unrecorded sequence. Treat any qconsole
+`ERROR:` line as `runtime_log_failure`, not as a passing idle.
+
 The 2026-10-14 v1 report is negative launcher evidence only: all 31 recorded
 invocations exited 4, all have zero log bytes, and none loaded or completed an
 idle. Its hash is

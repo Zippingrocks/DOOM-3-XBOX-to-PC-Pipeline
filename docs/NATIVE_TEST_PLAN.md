@@ -49,6 +49,12 @@ so the failed sequence cannot be silently bypassed. Co-op entries automatically
 set `si_gameType Coop` and `net_LANServer 1`. The runner actively minimizes the
 Doom window after Steam creates it.
 
+Before launch, the runner requires the accepted plan schema, exactly 41 unique
+solo plus 20 unique co-op targets, an existing `fs_game`, and a MAP/PROC/CM
+triplet for every target. An unrecorded sequence must have a new or empty state
+directory; stale logs are never reused. Any `ERROR:` or fatal log line fails the
+row even if the process remained alive for the full minute.
+
 Preserve one `qconsole.log` receipt per map and the incremental JSON report.
 Fail on missing declaration/resource, invalid joint, script error, fatal error,
 wrong MAP/PROC/CM selection or abnormal exit. A `bootstrap_failure` or
