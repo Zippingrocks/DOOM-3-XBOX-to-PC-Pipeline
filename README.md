@@ -14,7 +14,28 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 076
+## Current checkpoint: 077
+
+**The current co-op payload has completed a fresh 20/20 one-minute native
+soak, and the remaining observed actor-joint warnings have source-bound
+repairs.** The v26 tree contains all 20 original-Xbox co-op segments and 1,040
+files with no unresolved dependency, duplicate declaration/material, missing
+compiled companion, untracked file or reparse point. Every route row loaded on
+the minimized direct GPL host, idled at least 60.054 seconds, and recorded zero
+error/fatal lines, premature exits or aborts.
+
+That run also records zero actor model/animation mismatch, missing actor
+animation, unknown actor joint, no-model-on-actor or `Could not spawn` line.
+The v27 successor then maps the pruned Xbox Commando ragdoll endpoint and four
+pruned Guardian focus/look/smoke references to retained bind-pose joints; all
+six affected route rows pass focused native loads and those warnings are gone.
+All 322 offline tests pass. This is not final visual or two-peer gameplay
+acceptance: eight missing static-render paths, the Comm1 GUI-distance warning,
+empty-key warnings, progression, save/load and matched Xbox fidelity remain
+open. See
+[`evidence/checkpoint-077-coop-skeleton-resource-closure.json`](evidence/checkpoint-077-coop-skeleton-resource-closure.json).
+
+## Earlier checkpoint: 076
 
 **The six Xbox-only co-op gameplay classes that were missing from the GPL PC
 DLL are reconstructed, source-built and clean across the complete 20-map

@@ -1,3 +1,53 @@
+# Reproduce checkpoint 077
+
+## Checkpoint 077: rebuild, soak and close co-op skeleton resources
+
+Rebuild the complete static corpus from the accepted v20b inputs, then audit,
+package and assemble an isolated tree:
+
+```powershell
+python -m tools.campaign_port.rebuild_latest_coop_overlays ..\.. --work-root work --input-suffix mergeguard_v20b --suffix mergeguard_v20g --require-maps 20 --receipt work\coop-mergeguard-v20g-rebuild.json
+python -m tools.campaign_port.coop_overlay_corpus_audit ..\.. --require-maps 20 --require-no-untracked --output work\coop-mergeguard-v20g-audit.json
+python -m tools.campaign_port.package_coop_overlays ..\.. work\coop-pkg-mg20g --suffix mergeguard_v20g --require-maps 20 --receipt work\coop-pkg-mg20g-receipt.json
+python -m tools.campaign_port.build_campaign_test_tree work\coop-pkg-mg20g work\coop-pkg-mg20g work\campaign-coop-test-tree-v26 --corpus coop --receipt work\campaign-coop-test-tree-v26-receipt.json
+python -m tools.campaign_port.campaign_test_tree_audit work\campaign-coop-test-tree-v26 --receipt work\campaign-coop-test-tree-v26-receipt.json --output work\campaign-coop-test-tree-v26-audit.json --require-solo 0 --require-coop 20
+```
+
+Require 20 maps, 6,202 overlay payloads and zero unresolved/untracked entry.
+Require the 1,040-file tree ledger to be
+`7fcfdcffe98b433f3dde34e2eb1ae11b438b3d5326f2fb71e5bbf0d047618b3c`.
+Stage that tree as `xbox_campaign_coop_v26` and update a copy of the accepted
+native plan to use that `fs_game`, tree and a fresh isolated state root. Run:
+
+```powershell
+& .\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan work\campaign-native-coop-plan-v26.json `
+  -DoomExe 'work\upstream-doom3-gpl-src\DOOM-3-master\build\Win32\Dedicated Release\DOOM3.exe' `
+  -StateRoot work\gpl-coop-full-soak-v26-state `
+  -Output work\gpl-coop-full-soak-v26.json `
+  -GameRoot '..\..' `
+  -ExpectedGameDllSha256 cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68 `
+  -Launcher Direct -MapCommand spawnServer `
+  -StartIndex 42 -EndIndex 61 -IdleSeconds 60
+```
+
+Require 20/20 pass, minimum idle 60.054 seconds, maximum load 5.075 seconds,
+zero error/fatal line and `aborted=false`. The report SHA-256 is
+`369e00b61b81757abf65ea9987abdeacf5a164e86ac27222d6c20132db0670b7`.
+
+For v27, extract the byte-faithful stock `af/monster_zombie_commando.af` from
+`base/pak000.pk4` (SHA-256
+`a3f4b9f5a467b676d9d4f8c3dc3991702c78d4214a8bc56a3c7778d363350163`),
+rebuild as suffix `mergeguard_v20i`, and require corpus ledger
+`ab3ba6838d77ea764e8a7838128930f9c1993d8d461cf34e855e2d6c12bc48db`.
+The isolated v27 tree must have 1,041 files and ledger
+`725a720f51dfa8f570540e5b3d7c24ea68bbc7a8d4042892892845970a8ec9b2`.
+Run rows 52-57 for ten seconds each and require six passes plus zero
+`Lindex3`, `Unknown particleJoint`, error or fatal line. The focused report
+SHA-256 is
+`b8cdb6d50c3fd2edda6e316838c861214bc8c336a14ee88ca548b1d1a802e804`.
+Finally run the full unit suite and require 322 passing tests.
+
 # Reproduce checkpoint 076
 
 ## Checkpoint 076: reconstruct and soak Xbox co-op gameplay classes

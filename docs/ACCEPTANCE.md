@@ -1,5 +1,28 @@
 # Recovery order and acceptance
 
+## Checkpoint 077 co-op skeleton/resource closure
+
+The accepted v26 co-op tree contains 20 maps and 1,040 files. Its strict audit
+finds zero unresolved class/resource/string, missing compiled companion,
+duplicate definition/material, untracked file or reparse point. A fresh direct,
+minimized native run loaded route rows 42-61 and held every segment for at
+least 60.054 seconds. All 20 passed with zero error/fatal line, premature exit
+or abort. Log scanning also finds zero `Could not spawn`, actor model/animation
+mismatch, missing actor animation, unknown actor joint or no-model-on-actor
+line.
+
+The v27 successor adds a private, byte-faithful Commando AF whose missing
+`Lindex3` endpoint resolves to retained `Lhand`. It also maps the Xbox-pruned
+Guardian focus/look/smoke names to the nearest retained bind-pose joints. Rows
+52-57 all pass focused loads; the old Commando invalid-joint and Guardian
+unknown-particle-joint lines are absent. All 322 offline tests pass.
+
+This accepts static closure, complete-route one-minute process survival and the
+observed actor skeleton/resource warning repairs. It does not accept remaining
+static render props for which only collision data survives locally, Comm1's
+GUI-distance warning, empty-key warnings, two-peer progression, encounter
+fidelity, save/load or matched Xbox visual/audio/gameplay behavior.
+
 ## Checkpoint 076 Xbox co-op gameplay-class acceptance
 
 The GPL PC game DLL now registers and implements the six Xbox-only co-op
