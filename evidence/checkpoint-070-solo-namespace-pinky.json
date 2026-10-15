@@ -1,0 +1,83 @@
+{
+  "checkpoint": "070",
+  "date": "2026-10-14",
+  "claim": "Secondary Xbox solo script namespaces and the complete original-Xbox Pinky cinematic family are isolated and source-bound; focused Mars City 2 part 2 and Admin dedicated-host loads pass.",
+  "namespace_fix": {
+    "map": "mars_city2_2",
+    "principal_namespace": "map_mars_city2_2",
+    "source_secondary_namespace": "map_marscity1",
+    "runtime_secondary_namespace": "xbox_solo_mars_city2_2_marscity1",
+    "retargeted_map_references": 2,
+    "corpus_isolated_map_references": 297,
+    "corpus_isolated_script_namespaces": 28
+  },
+  "pinky_family": {
+    "maps": ["admin", "commoutside_2", "delta1_1", "delta1_2", "recycling1_1"],
+    "joint_count": 45,
+    "family_files": 22,
+    "profile_sha256": "2c741628591ce1e03b5a8bac2c8216463d42f5f96281bad085a5140be1c4dc97",
+    "admin_cinematic": "models/md5/cinematics/admin/pinkyrailing.md5anim",
+    "admin_cinematic_sha256": "7fd812c6404c7063c4692a89af4bf58cdf24ff5431b7ef12cc20c99232b1f8db",
+    "admin_profile_sha256": "145b19847c7aa6022ea41a5113431f001993cf2758a912b7a6e794dc4f1466a3"
+  },
+  "solo_overlay_corpus": {
+    "maps": 41,
+    "files": 2050,
+    "bytes": 795345091,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "file_ledger_sha256": "a30b3423fd0892db9ab8d615545296a9f75a52a5c31a3c0bf210896965ed375a",
+    "audit_sha256": "d3d3cf3da52209da76ba3ae68e4c82023bafd6d899a130c620b92ddd656942aa"
+  },
+  "solo_test_tree": {
+    "maps": 41,
+    "files": 811,
+    "bytes": 716490165,
+    "ledger_sha256": "5c5518733ac3ce92aea5a545232918635f0ff7bf99348061e2bed2feffa51a76",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0,
+    "receipt_sha256": "785f06930981e416505fbc3655453545da95f31c0ffd7d682c8b3521636538e4",
+    "audit_sha256": "b91da7b52c86522737ac2900d9ac4747316e2acd116adaf19a4d65df7db526e3"
+  },
+  "focused_native_smokes": [
+    {
+      "map": "vv/mars_city2_2",
+      "classification": "passed",
+      "load_seconds": 5.525,
+      "idle_seconds_observed": 5.006,
+      "errors": 0,
+      "fatals": 0,
+      "report_sha256": "c61fda2643c837e5bdf4ebca4b59402a39d9fdec1ff8eb225db8e1fe1dd4d5e1"
+    },
+    {
+      "map": "vv/admin",
+      "classification": "passed",
+      "load_seconds": 5.546,
+      "idle_seconds_observed": 5.007,
+      "errors": 0,
+      "fatals": 0,
+      "report_sha256": "78bc4d3c432814f1240025185da3d6812578bb55c49da107dce4f02f6fefcd70"
+    }
+  ],
+  "host": {
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "game_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34",
+    "launcher": "direct-minimized",
+    "map_command": "spawnServer"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 285,
+    "failed": 0
+  },
+  "limits": [
+    "The authoritative 41-map 60-second solo sweep remains required.",
+    "Dedicated-host loading is not visual, audio, gameplay, progression or transition-fidelity acceptance.",
+    "The 20-map co-op sweep remains required after solo is clean."
+  ]
+}

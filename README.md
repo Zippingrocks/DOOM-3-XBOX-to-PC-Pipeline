@@ -14,7 +14,29 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 069
+## Current checkpoint: 070
+
+**The first two failures found by the replacement solo sweep are now fixed as
+source-bound compatibility families and pass focused native loading.** Mars
+City 2 part 2 embeds an Xbox-only `map_marscity1` block in addition to its own
+principal namespace. The builder now preserves that block under
+`xbox_solo_mars_city2_2_marscity1` and retargets its two GUI callbacks, avoiding
+stock `doom_main` redeclarations without deleting Xbox behavior.
+
+Admin proved that the pipe and railing cinematics cannot be repaired by
+copying isolated animations onto the 72-joint PC Pinky. Five solo maps now
+package the complete authenticated 22-file, 45-joint Xbox Pinky family; Admin
+also packages its matching 45-joint `pinkyrailing` cinematic. The rebuilt
+41-map overlay has 2,050 payloads, direct authored collision everywhere and
+zero unresolved class/resource/string. Its isolated 811-file test tree has no
+missing companion, duplicate declaration, untracked file or reparse point.
+Focused GPL-dedicated smokes of `mars_city2_2` and `admin` both spawned, idled
+five seconds and exited with zero errors/fatals. All 285 offline tests pass.
+The authoritative 41-map, 60-second sweep remains required, so this is loader
+progress rather than gameplay or fidelity acceptance. See
+[`evidence/checkpoint-070-solo-namespace-pinky.json`](evidence/checkpoint-070-solo-namespace-pinky.json).
+
+## Earlier checkpoint: 069
 
 **The first native solo sweep has been turned into source-bound fixes for every
 failure family observed so far, and a replacement 41-map candidate closes those

@@ -1,3 +1,63 @@
+# Reproduce checkpoint 070
+
+## Checkpoint 070: secondary namespace and coherent Pinky families
+
+Do not mix original-Xbox Pinky animations with the stock 72-joint PC mesh.
+Every solo map whose selected declarations include `monster_demon_pinky` must
+receive the complete 22-file profile
+`tools/campaign_port/profiles/xbox_solo_pinky.resources`. Admin must additionally
+receive `xbox_solo_admin_pinky_cinematic.resources`, which supplies the matching
+45-joint `models/md5/cinematics/admin/pinkyrailing.md5anim`. The latter must hash
+to `7fd812c6404c7063c4692a89af4bf58cdf24ff5431b7ef12cc20c99232b1f8db`.
+The stock animation is not a substitute because it binds to the PC skeleton.
+
+Treat every namespace declared by a non-stock principal script as a potential
+collision with `script/doom_main.script`, not only the namespace containing
+`main`. For `script/map_mars_city2_2.script`, rename only its secondary
+`map_marscity1` declaration and qualified references to
+`xbox_solo_mars_city2_2_marscity1`. Apply the same replacement to qualified MAP
+epairs; preserve the primary `map_mars_city2_2` namespace. A second transform
+pass must make no change.
+
+Rebuild all 41 overlays directly from each map's decoded structural, script,
+model and XACT roots. Include the accepted commando and Cyberdemon retarget
+roots before raw map models, retain the prior per-map runtime profiles, and
+generate an empty EFX only because the selected Xbox archives ship no EFX
+member. Then run:
+
+```powershell
+python tools/campaign_port/overlay_corpus_audit.py `
+  work/solo-overlays-nativefix-v11 `
+  --out work/solo-overlays-nativefix-v11-audit.json
+
+python tools/campaign_port/build_campaign_test_tree.py `
+  work/solo-overlays-nativefix-v11 `
+  work/campaign-coop-packages-portable-v1 `
+  work/campaign-solo-test-tree-v15 --corpus solo `
+  --receipt work/campaign-solo-test-tree-v15-receipt.json
+
+python tools/campaign_port/campaign_test_tree_audit.py `
+  work/campaign-solo-test-tree-v15 `
+  --receipt work/campaign-solo-test-tree-v15-receipt.json `
+  --output work/campaign-solo-test-tree-v15-audit.json `
+  --require-solo 41 --require-coop 0
+```
+
+Require 2,050 overlay payloads totaling 795,345,091 bytes, 41 direct-authored
+collision maps, zero unresolved class/resource/string and overlay ledger
+`a30b3423fd0892db9ab8d615545296a9f75a52a5c31a3c0bf210896965ed375a`.
+Require the isolated tree to contain 811 files totaling 716,490,165 bytes,
+ledger `5c5518733ac3ce92aea5a545232918635f0ff7bf99348061e2bed2feffa51a76`,
+and zero missing companions, duplicate declarations/materials, untracked files
+or reparse points. Run the full offline suite and require 285 passing tests.
+
+Use the source-built dedicated Release host through the direct minimized
+launcher, never the retail Steam executable. Focused `spawnServer` runs for
+solo route rows 5 (`vv/mars_city2_2`) and 6 (`vv/admin`) must each produce a
+spawn marker, survive the requested idle, and report zero `ERROR:` or fatal
+line. These checks prove the two fixes reached the loader; they do not replace
+the complete 41-map 60-second sweep or visual/gameplay acceptance.
+
 # Reproduce checkpoint 067
 
 ## Checkpoint 067: fail-closed native soak runner
