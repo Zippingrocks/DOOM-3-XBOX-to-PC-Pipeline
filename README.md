@@ -14,6 +14,19 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
+## Device transition: reproducibility is not yet proved
+
+Read the [next-AI correction plan](docs/REPRODUCIBILITY_RECOVERY_PLAN.md) before
+resuming. Tracked checkpoint work is pushed, but the current replay recipes
+still require device-local predecessor overlays and recovered asset roots.
+A Git clone plus original inputs has not yet been proved sufficient for a
+clean-machine rebuild. No private asset backup is claimed.
+
+The handoff lists preservation priorities, exact known dependencies, remaining
+defects and acceptance gates. Five formerly local-only diagnostic sources are
+now archived in the source repository; no game or long rebuild was run for
+this documentation/preservation step.
+
 ## Current review: 084 — broader offline checks, explicit host blockers
 
 The complete 41-map solo and 20-map co-op historical logs have now been

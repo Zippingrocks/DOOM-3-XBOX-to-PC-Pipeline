@@ -1,5 +1,13 @@
 # Reproduce checkpoint 084
 
+**Incremental replay, not yet a demonstrated cold-start build.** The latest
+commands below require previous overlays and recovered local resource roots.
+Before moving machines, read the
+[reproducibility correction plan](REPRODUCIBILITY_RECOVERY_PLAN.md). It records
+the dependency audit and portability work still required. Historical native
+test commands later in this document do not override the current prohibition
+on gameplay, game/Steam/dmap launches or xemu comparisons.
+
 ## Checkpoint 084 offline-only corpus review
 
 Use the source commit recorded in

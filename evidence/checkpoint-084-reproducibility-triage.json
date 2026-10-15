@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "kind": "checkpoint-084-bounded-reproducibility-triage",
+  "observed_on": "2026-10-15",
+  "scope": "Read-only driver/dependency inspection and top-level dev/work .py/.ps1/.cpp helper inventory; not an exhaustive filesystem or recipe audit.",
+  "new_runtime_tests": false,
+  "new_corpus_rebuild": false,
+  "private_backup_performed": false,
+  "cold_start_rebuild_demonstrated": false,
+  "source_functional_baseline": "c61e370365ecabd826594947afcc82ec2cfb236f",
+  "source_diagnostic_preservation_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002",
+  "pipeline_checkpoint_baseline": "22da24992c339c5b7ae7bb0bed1eb7632b952cef",
+  "replay_predecessors": [
+    {
+      "target": "solo-v40",
+      "path_relative_to": "DEV",
+      "path": "work/solo-overlays-nativefix-v39",
+      "required_maps": 41,
+      "prior_absolute_profile_paths_observed": 12
+    },
+    {
+      "target": "coop-v20p",
+      "path_relative_to": "GAME",
+      "path_pattern": "xbox_coop_port_strict_*_mergeguard_v20m",
+      "required_maps": 20,
+      "input_suffix": "mergeguard_v20m"
+    }
+  ],
+  "helper_inventory": {
+    "roots": [
+      "DEV/*.py",
+      "DEV/*.cpp",
+      "DEV/*.ps1",
+      "DEV/work/*.py",
+      "DEV/work/*.cpp",
+      "DEV/work/*.ps1"
+    ],
+    "files_found": 9,
+    "powershell_files_found": 0,
+    "canonical_tracked_tools_compared": 172,
+    "same_basename_matches": 0,
+    "exact_hash_matches": 0,
+    "missing_production_asset_generator_identified": false,
+    "limits": "No missing generator identified within this bounded helper inventory; not a proof of complete recovery recipes.",
+    "files": [
+      {
+        "path": "work/checkpoint-084-output-independent.py",
+        "sha256": "d2f135230272caff73d9e3ea62811ad6bc8077c0716e748e8b9f1c060f74c57c",
+        "classification": "historical_offline_diagnostic",
+        "archived_source_path": "docs/checkpoint-084-diagnostics/checkpoint-084-output-independent.py.txt",
+        "archive_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002"
+      },
+      {
+        "path": "work/checkpoint-084-coop-v20o-geometry-extension.py",
+        "sha256": "534f2115b07ec234a6659f0659e6a1c0fa07159bb8071bf149d51adc08be6e31",
+        "classification": "historical_offline_diagnostic",
+        "archived_source_path": "docs/checkpoint-084-diagnostics/checkpoint-084-coop-v20o-geometry-extension.py.txt",
+        "archive_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002"
+      },
+      {
+        "path": "work/checkpoint-084-lantern-bind-independent.py",
+        "sha256": "ac910371e969018efb3ece8b50705ecc60c331985fc3cb710ba518a50e740fe0",
+        "classification": "historical_offline_diagnostic",
+        "archived_source_path": "docs/checkpoint-084-diagnostics/checkpoint-084-lantern-bind-independent.py.txt",
+        "archive_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002"
+      },
+      {
+        "path": "work/checkpoint-084-lantern-emission-scope.py",
+        "sha256": "b3f1508fe232060290962184e97a47dc863bb4ccfec57226f52ac58b9b11bfa7",
+        "classification": "historical_offline_diagnostic",
+        "archived_source_path": "docs/checkpoint-084-diagnostics/checkpoint-084-lantern-emission-scope.py.txt",
+        "archive_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002"
+      },
+      {
+        "path": "work/checkpoint-084-ragdoll-review.py",
+        "sha256": "4566a18b029b980f1de3e8e9eb1f50a95c5129bdc84753b34b988101e66cd8ba",
+        "classification": "historical_offline_diagnostic",
+        "archived_source_path": "docs/checkpoint-084-diagnostics/checkpoint-084-ragdoll-review.py.txt",
+        "archive_commit": "3db16ab0eba778ee2f3fb4b3499d7942978e9002"
+      },
+      {
+        "path": "analyze_minidump.py",
+        "sha256": "498d44c71943d6146a4ea5d81e654e96715ead6ec445a76a63e5ec888f75574b",
+        "classification": "private_memory_diagnostic",
+        "archived": false
+      },
+      {
+        "path": "capture_crash.cpp",
+        "sha256": "e20972e90fa97fd7bc1ea592672a0b4686b52092812f6032773f7b3c03f5f51b",
+        "classification": "active_debugger_launcher_not_offline_safe",
+        "archived": false
+      },
+      {
+        "path": "pdb_lookup.cpp",
+        "sha256": "4448fc0bd7ce1a050c69d6a4c44d07cd15792eb51bb3973a85cc171adbc3dfb3",
+        "classification": "local_DIA_PDB_diagnostic",
+        "archived": false
+      },
+      {
+        "path": "collision_digest_snippet.cpp",
+        "sha256": "e05199454fb0bf3470378588ff0510146229860975b0d496ae6eac45adc4ee86",
+        "classification": "runtime_instrumentation_snippet_not_confirmed_in_current_host",
+        "archived": false
+      }
+    ]
+  },
+  "pending_final_coop_outputs_at_checkpoint_stop": [
+    "work/coop-mergeguard-v20p-audit.json",
+    "work/coop-pkg-mg20p",
+    "work/coop-pkg-mg20p-receipt.json",
+    "work/campaign-coop-test-tree-v32",
+    "work/campaign-coop-test-tree-v32-receipt.json",
+    "work/campaign-coop-test-tree-v32-audit.json",
+    "work/checkpoint-084-md5-coop-v32.json",
+    "work/checkpoint-084-package-merge.json",
+    "work/checkpoint-084-crc-coop-v32.json"
+  ],
+  "preservation_limits": [
+    "Retail archives and derived game assets are excluded from public repositories.",
+    "Original raw diagnostics and four auxiliary helper sources remain local.",
+    "Five archived diagnostic snapshots were byte-hash verified, but they were not executed or promoted into supported tools.",
+    "Source checkout identity at capture is not proof of every historical receipt's imported-module revision.",
+    "Working-tree cleanliness is not complete backup or clean-machine reproduction proof."
+  ]
+}

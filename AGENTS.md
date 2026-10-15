@@ -1,7 +1,9 @@
 # Campaign recovery handoff
 
 Read README.md, docs/FORMAT_FINDINGS.md, docs/REPRODUCE.md,
-docs/ACCEPTANCE.md and the latest evidence checkpoint before continuing.
+docs/ACCEPTANCE.md, docs/REPRODUCIBILITY_RECOVERY_PLAN.md and the latest evidence
+checkpoint before continuing. Git synchronization is not a proven raw-input
+rebuild or private asset backup. Follow the handoff's offline-only restrictions.
 
 The user's priority is original-Xbox Doom 3 co-op campaign map recovery to PC,
 then the complete solo and co-op campaigns. This is not a request to keep

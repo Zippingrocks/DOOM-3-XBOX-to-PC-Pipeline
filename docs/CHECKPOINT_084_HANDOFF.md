@@ -1,5 +1,10 @@
 # Checkpoint 084 immediate handoff
 
+For device migration and missing reproducibility guarantees, read the later
+[reproducibility correction plan](REPRODUCIBILITY_RECOVERY_PLAN.md) first.
+The state below remains the checkpoint stop record, not a claim that every
+device-local dependency is backed up or reconstructible from Git alone.
+
 Stopped at the user's request to push immediately. No Doom 3, Steam, dmap or
 xemu launch occurred. No installed DLL or original/accepted assets were replaced.
 Retail-derived data and raw diagnostics stay local; Git contains source,
