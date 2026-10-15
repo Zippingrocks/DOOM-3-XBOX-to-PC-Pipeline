@@ -11,6 +11,17 @@ has passed authentic read-only preflight on this device with no output created;
 the separate runners' executed results are below. A combined end-to-end
 execution is not inferred from the preflight.
 
+The pipeline now also includes `prepare_original_archives.py`, closing the
+manual ISO-to-archive selector step. It derives 82 solo, 40 co-op and two shared
+archive selections from the locked plan. Authentic read-only preflight passed
+against the original ISO and all 124 selected spans, with no output created.
+Its extraction path has synthetic tests, not a newly executed authentic
+extraction: no duplicate original-archive copy was made on this device.
+Seventeen helper tests bring the pipeline suite to **60 passing tests**.
+Independent review caught and fixed a real metadata edge case: two sanitized
+directory-only inventory records omit their paths; only those unnamed directory
+records may be skipped, never unnamed files or missing selected archives.
+
 ## Completed original-input runs
 
 - Raw structural: **41 solo + 20 co-op maps / 525 steps / 124 original archive

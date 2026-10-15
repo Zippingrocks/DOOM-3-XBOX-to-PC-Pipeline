@@ -44,13 +44,51 @@ Obtain the original inputs independently. The supported disc image is
 A different edition or language needs a separately supported identity; do not
 reuse these offsets with it.
 
-Use the exact member-selection instructions in the
-[solo raw-input recipes](RAW_INPUT_RECIPES.md#1-original-disc-and-the-exact-41-solo-identities)
-and [co-op/shared recipes](COOP_RECOVERY_RECIPES.md#1-authenticate-and-extract-the-discarchive-inputs).
 The runners need 41 solo GFC/GOB pairs, 20 co-op pairs, and shared
 `assets.gfc`/`assets.gob`, plus the original ISO for audio/texture extents.
-The plans select exact required members; do not substitute an arbitrary old
-extraction or assume a matching filename proves identity.
+If you already have those original archives, bind their directories in step 3;
+their hashes will be checked. Otherwise the helper below selects all **124
+exact archive members** from the locked plan, with no hand-written wildcard
+or 82-argument solo selection. The output parent must already exist; here it
+is the directory containing the licensed ISO.
+
+```powershell
+$originalArgs = @(
+    '--source', 'reconstruction',
+    '--lock', $recoveryLock,
+    '--iso', 'D:/licensed/original.xiso.iso',
+    '--output-parent', 'D:/licensed',
+    '--prefix', 'd3'
+)
+python -E -s -B pipeline/tools/prepare_original_archives.py @originalArgs
+```
+
+This default is read-only: it verifies the pinned source, the whole ISO,
+selected directory extents and all 124 archive span hashes, without extracting
+or creating output. Stop on any failure. To deliberately extract the original
+inputs for local conversion, add `--execute`:
+
+```powershell
+python -E -s -B pipeline/tools/prepare_original_archives.py @originalArgs --execute
+```
+
+It invokes the pinned extractor once per group, producing `d3-solo`, `d3-coop`
+and `d3-shared`, plus private `d3-logs` and a metadata-only `d3-session.json`.
+All five destinations must be absent. It verifies the exact physical output
+sets and hashes, then reauthenticates the ISO; there is no overwrite/resume.
+Keep original archives and raw extraction logs/manifests private. This helper
+prepares selected original inputs, not a backup of the old ports or an upload.
+
+Checkpoint 087 verified this helper's authentic read-only preflight and all
+17 synthetic tests. Its opt-in authentic extraction was not repeated on the
+old device; do not misreport the preflight as an extraction result.
+
+Background member details remain in the
+[solo recipes](RAW_INPUT_RECIPES.md#1-original-disc-and-the-exact-41-solo-identities)
+and [co-op/shared recipes](COOP_RECOVERY_RECIPES.md#1-authenticate-and-extract-the-discarchive-inputs).
+The current minimal plan needs the `assets` pair, not `assets_english` or MP
+archives. Do not substitute an arbitrary old extraction or assume a matching
+filename proves identity.
 
 The three archive directories may stay anywhere: named bindings avoid copying
 them into the historical DEV layout. They must contain the archive filenames
@@ -77,9 +115,9 @@ $recoveryArgs = @(
     '--source', 'reconstruction',
     '--lock', $recoveryLock,
     '--iso', 'D:/licensed/original.xiso.iso',
-    '--archive-root', 'solo=D:/licensed/solo-archives',
-    '--archive-root', 'coop=D:/licensed/coop-archives',
-    '--archive-root', 'shared=D:/licensed/shared-archives',
+    '--archive-root', 'solo=D:/licensed/d3-solo',
+    '--archive-root', 'coop=D:/licensed/d3-coop',
+    '--archive-root', 'shared=D:/licensed/d3-shared',
     '--output-parent', 'D:/D3recovery',
     '--prefix', 'recovery'
 )

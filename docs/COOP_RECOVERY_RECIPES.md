@@ -84,6 +84,12 @@ those labels alone do not identify the exact source directory or tool revision.
 
 ## 1. Authenticate and extract the disc/archive inputs
 
+**Checkpoint 087 usability update:** use the
+[quickstart archive-preparation helper](NEXT_MACHINE_QUICKSTART.md#2-prepare-licensed-originals-not-previous-outputs)
+for exact locked selectors and output verification. The current recovery
+intermediate plan needs only `assets.gfc`/`assets.gob` from the shared group;
+the broader historical `assets_english` example below is not required by it.
+
 Authoritative local metadata:
 
 - `work/retail-xdvdfs-inventory.json`;

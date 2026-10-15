@@ -38,6 +38,13 @@ Do not attribute every historical receipt to the current checkout.
 
 ## 1. Original disc and the exact 41 solo identities
 
+**Checkpoint 087 usability update:** the
+[quickstart archive-preparation helper](NEXT_MACHINE_QUICKSTART.md#2-prepare-licensed-originals-not-previous-outputs)
+now derives the complete exact selection from locked metadata and extracts each
+group once. Prefer it to manually expanding the historical single-pair template
+below. Repeating that template into one directory fails because extraction
+correctly refuses existing outputs.
+
 The source identity recorded by checkpoint 034 is:
 
 | Item | Recorded identity |
