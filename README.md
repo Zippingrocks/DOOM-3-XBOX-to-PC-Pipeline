@@ -14,7 +14,33 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 082
+## Current checkpoint: 083 — offline warning-family repairs
+
+**Delta 4 Hazmat and CPU 2 Sabaoth now have complete source-bound skeleton
+families, verified offline.** Hazmat uses its 48-joint Xbox mesh, matching
+inherited animation slots/channels and two recovered Xbox ragdoll definitions.
+Sabaoth uses its 50-joint Xbox mesh and all 13 animations, including four pain
+tracks absent from PC data. Public PC families are left intact.
+
+The review also fixed GUI metadata being precached as numeric filenames,
+unchecked package receipt hashes, a script-include audit false pass, and native
+soak exit/resume integrity bugs. A new independent MD5-family auditor checks
+exact animation hierarchy and engine-compatible AF/actor joint lookup rules.
+All 364 offline tests pass. The 41-map solo corpus was rebuilt and audited;
+the unchanged 20-map co-op tree was reaudited. The source DLL compiles in an
+isolated output directory without replacing either installed or accepted DLL.
+See [`evidence/checkpoint-083-offline-warning-families.json`](evidence/checkpoint-083-offline-warning-families.json)
+and [reproduction instructions](docs/REPRODUCE.md#checkpoint-083-offline-only-review).
+
+**No Doom 3, Steam or xemu launch, gameplay test, or Xbox comparison was
+performed for this checkpoint.** Runtime warning disappearance is not yet
+accepted. Sabaoth's separate path-corner warnings, Xbox GUI distance/zoom
+behavior, progression, two-peer behavior and visual fidelity remain open.
+Solo/co-op remain separate mod trees: their packages are individually mergeable
+but eleven shared paths differ between modes. GitHub synchronization requires
+working authentication; the local commits and evidence are preserved.
+
+## Earlier checkpoint: 082
 
 **The source-bound Xbox Sentry and maintenance-zombie skeleton families are
 now coherent on the PC host.** The Xbox families each use 50 joints, while the

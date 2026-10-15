@@ -1,5 +1,29 @@
 # Recovery order and acceptance
 
+## Checkpoint 083 offline-only acceptance boundary
+
+Accepted here: source-backed Hazmat/Sabaoth family isolation, exact staged
+mesh/animation hierarchy and AF/actor joint-reference checks, 364 passing
+offline tests, full 41-map solo static rebuild/audit, reinspection of the
+unchanged 20-map co-op tree, and an isolated Dedicated Release DLL compile.
+The stricter audits verify actual bytes, compiled companions and declaration
+uniqueness. Both mode packages are individually mergeable; eleven shared paths
+differ across modes, so a combined solo/co-op mod tree is not accepted.
+
+No native loader, gameplay, Steam or xemu process was launched. Neither
+installed `gamex86.dll` nor the previous accepted build was replaced. The new
+DLL is compile-only evidence, with zero errors but existing compiler warnings;
+it must not inherit earlier DLL runtime receipts. The new data likewise must
+not inherit v36 runtime acceptance. Earlier one-minute sweeps remain historical
+evidence for their exact earlier artifacts, not a one-minute pass for this build.
+
+Still open: runtime confirmation of target warning removal, Sabaoth's two
+path-corner warnings, source-absent `recycwallight_broken.ase`, Xbox GUI
+distance/zoom interaction behavior, progression, save/load, two-peer behavior
+and matched visual/audio fidelity. Direct-leaf AAS queries for Sabaoth and
+`path_corner_8`/`path_corner_12` find no route, but do not implement the engine's
+nearest-area/bounds search; this is not sufficient evidence to rewrite AAS.
+
 ## Checkpoint 077 co-op skeleton/resource closure
 
 The accepted v26 co-op tree contains 20 maps and 1,040 files. Its strict audit

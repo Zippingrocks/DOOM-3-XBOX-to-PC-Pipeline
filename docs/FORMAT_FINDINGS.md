@@ -1,5 +1,59 @@
 # Format findings and unknowns
 
+## Checkpoint 083 Hazmat, Sabaoth and validation findings
+
+Hazmat's public Xbox mesh has 48 joints, compared with the PC mesh's 62. Moving
+only the mesh to a private path exposed another dependency: `delta4_hazguy`
+inherits the PC `char_hazmat`/NPC animation slots and numeric channels. The
+repair explicitly rebinds all 14 inherited animation slots, reconstructs
+channels by joint name and retains the authored `runoutcough` cinematic/frame
+commands. The cinematic Hazmat model already selects matching Xbox resources.
+Its two MAP instances explicitly select `hkgrab`/`hkthrow`, so the unused
+retail entity default `runoutcough` was not speculatively rewritten.
+
+The shared assets GFC contains the exact matching `char_hazmat.af` and
+`char_npc_base.af`. Their finger endpoints are `Rfings2/Lfings2` and
+`Rfings1/Lfings1`, respectively; stock PC AFs reference pruned
+`Rfings3/Lfings3`. Use the recovered AFs under private declaration names, not
+guessed endpoint remaps. AF declaration/settings names are the only AF text
+changes; physical values and endpoints remain authored. Replay must execute
+this narrow idempotent transform before `static-only` returns, without
+recursively re-enabling unrelated full-scope transformations.
+
+CPU 2's first Sabaoth failure is a missing `pain_chest.md5anim`, followed by a
+defaulted model and apparent missing look/focus joints. All four Xbox pain
+tracks are absent from stock PC packages. The decoded mesh and 13 animations
+share exactly 50 ordered joints; PC's public family has 73. Replaying the entire
+private Xbox family closes that asset defect, and `mech_spine_1` and
+`organic_head` remain present. The stock Sabaoth AF references only `origin` and
+is compatible with the recovered skeleton. No joint suppression or authored
+AAS alteration is justified by the defaulted-model cascade.
+
+Joint comparison rules differ by use. `idMD5Anim::CheckModelHierarchy` requires
+exact ordered names and parent indices. `idRenderModelMD5::GetJointHandle`
+resolves actor/AF references case-insensitively. An initial auditor incorrectly
+rejected valid lowercase Hazmat AF selectors such as `ruparm`; the regression
+test now preserves the distinction. The rejected audit receipt is retained as
+an auditor counterexample, not evidence of bad retail AF data.
+
+Numeric GUI warnings originate in the host precache loop treating Xbox
+`gui_distance`/`gui_zoom` spawnargs as filenames. Excluding those exact keys
+preserves ordinary `gui`/`gui2` resources and all MAP metadata. It does not
+implement Xbox interaction-distance/zoom semantics. The separate absolute-path
+warnings originate in the stock parser's failed first relative-include probe,
+followed by virtual-path fallback; inspected campaign scripts contain no
+serialized `C:/Program Files` paths. Real mixed-case asset spelling remains a
+separate portability concern.
+
+Validation must examine bytes and evidence, not labels. The merge auditor used
+manifest hashes without rehashing payloads, and the tree auditor compared full
+include directives with bare removed filenames. Both could falsely pass. Native
+soak resume also omitted idle-duration checks, and a non-aborted runtime failure
+could return exit zero. Regressions now cover changed payloads, restored
+includes, insufficient/invalid idle evidence and failure exit status. Offline
+PowerShell tests extract and execute only pure report-validation functions;
+they never execute the native runner body.
+
 ## Checkpoint 082 source-bound actor-family findings
 
 An animation's existence is not enough to make it compatible. The decoded

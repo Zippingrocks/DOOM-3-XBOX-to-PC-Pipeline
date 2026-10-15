@@ -1,3 +1,97 @@
+# Reproduce checkpoint 083
+
+## Checkpoint 083 offline-only review
+
+Use source commit `2869789962b2b02f8809bd1beb59d33245e89715` from the
+reconstruction repository. Run the following from the local campaign-port-dev
+directory, with its `tools/campaign_port` mirror synchronized byte-for-byte to
+that source commit. Use Python 3 (`-B` avoids incidental bytecode files). All
+output directories/receipts must be new. No command below launches the game,
+Steam, dmap or xemu.
+
+Recover the two authored Hazmat AFs using the existing extractor:
+
+```powershell
+python -B tools/campaign_port/gfc.py extract work/shared-archives/assets.gfc --out work/hazmat-runtime-assets --include ./base/af/char_hazmat.af --include ./base/af/char_npc_base.af
+```
+
+Require shared GFC/GOB SHA-256
+`1fc9ba77a9e54589171d83d06bc14e6ae9feee10794401d6ffccff8dbb35f14f` /
+`5c4395024835c42add37db51dfd74ca4ba3d160d81c20f106fb5294199ebc040`.
+The extracted AF hashes are
+`91769bed3531601ec0ce733e1a8cc30087ee98fcb771553a680c0a154fe1b9f3` and
+`5c893304b9cfb079e465eafc85a78450787b2a4fec5766feffd49b49c628ee70`.
+Retain the extraction manifest; do not commit the AFs.
+
+Replay accepted v36 into an isolated successor, then package and audit:
+
+```powershell
+python -B tools/campaign_port/rebuild_latest_solo_overlays.py work/solo-overlays-nativefix-v36 work/solo-overlays-nativefix-v39 --work-root work --stock-dir '..\..\base' --require-maps 41 --receipt work/solo-overlays-nativefix-v39-rebuild.json
+python -B tools/campaign_port/overlay_corpus_audit.py work/solo-overlays-nativefix-v39 --expected-root work/solo-overlays-nativefix-v36 --out work/solo-overlays-nativefix-v39-audit.json
+python -B tools/campaign_port/package_solo_overlays.py work/solo-overlays-nativefix-v39 work/solo-pkg-v39 --require-maps 41 --receipt work/solo-pkg-v39-receipt.json
+python -B tools/campaign_port/build_campaign_test_tree.py work/solo-pkg-v39 work/solo-pkg-v39 work/campaign-solo-test-tree-v39 --corpus solo --receipt work/campaign-solo-test-tree-v39-receipt.json
+python -B tools/campaign_port/campaign_test_tree_audit.py work/campaign-solo-test-tree-v39 --receipt work/campaign-solo-test-tree-v39-receipt.json --output work/campaign-solo-test-tree-v39-audit.json --require-solo 41 --require-coop 0
+python -B tools/campaign_port/campaign_test_tree_audit.py work/campaign-coop-test-tree-v30 --receipt work/campaign-coop-test-tree-v30-receipt.json --output work/checkpoint-083-coop-v30-audit.json --require-solo 0 --require-coop 20
+python -B tools/campaign_port/campaign_package_merge_audit.py work/solo-pkg-v39 work/coop-pkg-mg20m --output work/checkpoint-083-package-merge-audit-v39.json
+```
+
+The merge report must be read, not inferred from CLI exit zero: each mode is
+individually mergeable, while cross-mode compatibility is false. Keep separate
+mod trees. The v38 candidate was built before the local profile mirror was
+synchronized; v39 repeats the build using the final tool/profile inputs.
+Absolute input paths and input-profile hashes can change manifest/receipt
+hashes; payload ledgers provide the separate content-identity check.
+Require 2,579 overlay payloads totaling 851,720,500 bytes with file ledger
+`57fdfc0ae264c98babccdfaf4fe827bd85f80197fd2589e5f745ebbac9e39709`.
+The merged solo tree must contain 935 files totaling 746,291,180 bytes with
+ledger `e5049f7f0fb6d9e1f15c5f9f46e56d68aa9f571613ab9fc52f306d8a21abe50e`.
+Every MAP/PROC/CM/AAS payload remains byte-identical to v36. Only the CPU 2 and
+Delta 4 payloads plus Alpha Labs 3's shared `env.def` change.
+
+Audit every Sabaoth animation against its selected mesh. Extract only
+`af/monster_boss_sabaoth.af` from stock `base/pak000.pk4` to a new diagnostic
+directory using a ZIP reader. Its SHA-256 must be
+`52f646cdd2a6405a1a28b0bd8c6f04a5a84ebdd026bd1afd7d052639ef883e55`.
+
+```powershell
+$family = 'work/solo-overlays-nativefix-v39/cpu_2/models/md5/monsters/sabaoth_xbox'
+$checks = @('--mesh', "$family/sabaoth.md5mesh", '--required-joint', 'mech_spine_1', '--required-joint', 'organic_head', '--af', 'work/checkpoint-083-stock-af/monster_boss_sabaoth.af', '--output', 'work/checkpoint-083-sabaoth-family-audit-v39.json')
+Get-ChildItem -LiteralPath $family -Filter '*.md5anim' | Sort-Object Name | ForEach-Object { $checks += @('--anim', $_.FullName) }
+python -B tools/campaign_port/md5_family_audit.py @checks
+
+$delta = 'work/solo-overlays-nativefix-v39/delta4'
+$checks = @('--mesh', "$delta/models/md5/chars/hazmat_xbox.md5mesh", '--anim', "$delta/models/md5/chars/hazmat_af_pose_xbox.md5anim", '--af', "$delta/af/char_hazmat_xbox.af", '--af', "$delta/af/char_npc_hazmat_xbox.af", '--output', 'work/checkpoint-083-hazmat-family-audit-v39.json')
+Get-ChildItem -LiteralPath "$delta/models/md5/chars/hazmat_xbox" -Filter '*.md5anim' | Sort-Object Name | ForEach-Object { $checks += @('--anim', $_.FullName) }
+foreach ($clip in @('hkintro_runoutcough','hkintro_hazgetsgrabbed','hkintro_hazgetsthrown')) { $checks += @('--anim', "$delta/models/md5/cinematics/delta4/$clip.md5anim") }
+python -B tools/campaign_port/md5_family_audit.py @checks
+```
+
+Require 13 compatible animations for each checked family, zero missing AF/actor
+joint, and ordered joint counts 50 (Sabaoth) / 48 (Hazmat). These checks do not
+validate animation appearance, mesh weights, AF physics or gameplay. Run the
+364-test suite **from the source repository root**, where the native source
+contract test can find `neo/game/Game_local.cpp`:
+
+```powershell
+python -B -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'
+```
+
+Compile-only verification uses MSBuild 18.9.1, v145, Win32, `Dedicated Release`,
+with `PreBuildEventUseInBuild=false`. Build `neo/idlib.vcxproj` first into new
+`work/checkpoint-083-source-build/bin/` and `obj/idlib/`, then
+`neo/game.vcxproj` with the same output and `obj/game/`, adding
+`BuildProjectReferences=false`. Give each project a literal separate `IntDir`;
+a command-line `$(MSBuildProjectName)` in that property can expand inconsistently
+between compilation and linking. The host environment contained duplicate
+`PATH`/`Path` entries; launching MSBuild through Python with
+`env={key.upper(): value for key, value in os.environ.items()}` normalized only
+the child environment. The sandbox also required compiler-tracker approval.
+Neither issue required source changes or a game launch.
+
+Keep the new DLL local and uninstalled. See checkpoint evidence for its hash,
+build-log hashes and the preserved installed/previous-build DLL hash. Runtime
+testing is explicitly outside this checkpoint.
+
 # Reproduce checkpoint 077
 
 ## Checkpoint 077: rebuild, soak and close co-op skeleton resources

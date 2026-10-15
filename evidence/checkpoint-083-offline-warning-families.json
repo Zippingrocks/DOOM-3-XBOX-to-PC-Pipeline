@@ -1,0 +1,176 @@
+{
+  "checkpoint": "083",
+  "date": "2026-10-15",
+  "claim": "Source-backed Hazmat and Sabaoth skeleton-family defects repaired and verified offline; validation integrity and GUI precache metadata bugs corrected. Runtime warning disappearance is not claimed.",
+  "source": {
+    "repository_commit": "2869789962b2b02f8809bd1beb59d33245e89715",
+    "offline_tests": 364,
+    "offline_tests_passed": 364,
+    "command": "python -B -m unittest discover -s tools/campaign_port/tests -p test_*.py",
+    "test_working_directory": "reconstruction repository root",
+    "local_tool_mirror_files_synchronized": 16,
+    "local_tool_mirror_hash_mismatches": 0
+  },
+  "execution_boundary": {
+    "doom_launched": false,
+    "steam_launched": false,
+    "dmap_launched": false,
+    "xemu_launched": false,
+    "gameplay_testing": false,
+    "xbox_comparisons": false,
+    "installed_dll_replaced": false,
+    "prior_accepted_build_replaced": false,
+    "retail_payloads_committed": false
+  },
+  "hazmat": {
+    "xbox_joint_count": 48,
+    "pc_joint_count": 62,
+    "private_resource_aliases": 13,
+    "inherited_animation_slots_rebound": 14,
+    "audited_animations_including_cinematics": 13,
+    "audited_afs": 2,
+    "missing_joint_references": 0,
+    "hierarchy_mismatches": 0,
+    "staged_mesh_sha256": "b14a37d70cf15e913efdd8f799142a40cf6bbaaa387e7f6b7c42ffe0749d6f48",
+    "audit": "work/checkpoint-083-hazmat-family-audit-v39.json",
+    "audit_sha256": "580346d44f5ed13074b3b4b3ead87bb692fd5223fd0c0dd469e9e6169c1d5b65",
+    "source_gfc_sha256": "1fc9ba77a9e54589171d83d06bc14e6ae9feee10794401d6ffccff8dbb35f14f",
+    "source_gob_sha256": "5c4395024835c42add37db51dfd74ca4ba3d160d81c20f106fb5294199ebc040",
+    "extraction_receipt": "work/hazmat-runtime-assets/gfc-extraction-manifest.json",
+    "extraction_receipt_sha256": "74fb90b22e8fcc2892de953a3c2685b1d523946eaa61862a4119c616d63cbb87",
+    "authored_afs": [
+      {
+        "member": "./base/af/char_hazmat.af",
+        "gfc_first_block": 1,
+        "bytes": 5742,
+        "sha256": "91769bed3531601ec0ce733e1a8cc30087ee98fcb771553a680c0a154fe1b9f3",
+        "retained_finger_endpoints": ["Rfings2", "Lfings2"]
+      },
+      {
+        "member": "./base/af/char_npc_base.af",
+        "gfc_first_block": 3,
+        "bytes": 5742,
+        "sha256": "5c893304b9cfb079e465eafc85a78450787b2a4fec5766feffd49b49c628ee70",
+        "retained_finger_endpoints": ["Rfings1", "Lfings1"]
+      }
+    ],
+    "preserved": ["authored AF physical values", "cinematic animation tracks and frame commands", "public PC skeleton family", "MAP-selected hkgrab/hkthrow"]
+  },
+  "sabaoth": {
+    "xbox_joint_count": 50,
+    "pc_joint_count": 73,
+    "private_resources": 14,
+    "audited_animations": 13,
+    "required_joints": ["mech_spine_1", "organic_head"],
+    "missing_joint_references": 0,
+    "hierarchy_mismatches": 0,
+    "private_prefix": "models/md5/monsters/sabaoth_xbox",
+    "source_gfc_sha256": "9b304de14ba7a278d6f7428d54dc1cb348d64dd1c24b4c50bf8246af60ecc0ec",
+    "source_gob_sha256": "5af6bce1cb6e260ae693d4f26e070524ac863704867c9ba946e582a7aba15a7e",
+    "source_mdv_mesh_sha256": "374e7b792da903c0601f3315dcad6d4440bcae9a32c41e16f9c668b2ed1d966e",
+    "source_mdv_mesh_blocks": [161, 162, 163],
+    "source_pain_chest_block": 169,
+    "source_pain_chest_gob_offset": 2215936,
+    "source_pain_chest_sha256": "25e0a3b1315f6df406bfa8af975abe70840b490f47f0f8361b86b0360f201138",
+    "decoded_pain_chest_sha256": "3505c22c7d4b27750ef7fa37bce40596cdd02b4feeca486c2f1d5f0eb1fee556",
+    "staged_mesh_sha256": "12558661615b1da3a810611bff1951dfd293521ddb7b7746351afc0f78001cf6",
+    "compatible_stock_af_sha256": "52f646cdd2a6405a1a28b0bd8c6f04a5a84ebdd026bd1afd7d052639ef883e55",
+    "audit": "work/checkpoint-083-sabaoth-family-audit-v39.json",
+    "audit_sha256": "19867af3ef65490b1952946cf7380352b8dbe4727f0aa543498e2a34d530d9ae"
+  },
+  "solo_corpus": {
+    "input": "work/solo-overlays-nativefix-v36",
+    "output": "work/solo-overlays-nativefix-v39",
+    "rebuild_receipt_sha256": "f45f88f149e4dca64932683718094c8257e3b65393a9695559f44999b71c5fde",
+    "audit": "work/solo-overlays-nativefix-v39-audit.json",
+    "audit_sha256": "bb6c8ced20fe6361b937bea436d52237eb31ddf38cf051401fd6f002aa54419e",
+    "maps": 41,
+    "files": 2579,
+    "bytes": 851720500,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "file_ledger_sha256": "57fdfc0ae264c98babccdfaf4fe827bd85f80197fd2589e5f745ebbac9e39709",
+    "manifest_ledger_sha256": "6ba0f47afcdcc27e0d02a09397fc31a26c36b7e9477b4f0d496946d571b20722",
+    "package": "work/solo-pkg-v39",
+    "package_receipt_sha256": "7da3aefcca5dcbfce9f964c48be29a95a0caf3e2f6b8eaf8bd8f4d62ff465fcd",
+    "changed_payload_maps_from_v36": ["alphalabs3", "cpu_2", "delta4"],
+    "alphalabs3_change": "Shared env.def Hazmat mesh and AF references only.",
+    "changed_map_proc_cm_aas_payloads": 0,
+    "obsolete_public_hazmat_mesh_published": false,
+    "obsolete_public_sabaoth_family_published": false
+  },
+  "solo_tree": {
+    "path": "work/campaign-solo-test-tree-v39",
+    "receipt_sha256": "b6b18c2f0212af7fa83d7091f5fd500c57b43fadc822ed245a2066b957ecf5a1",
+    "audit": "work/campaign-solo-test-tree-v39-audit.json",
+    "audit_sha256": "59fb09e14f1ad26dea615ff944a44a2cb7bd0a14cbc00afe20ec9fb0d11e3346",
+    "maps": 41,
+    "files": 935,
+    "bytes": 746291180,
+    "ledger_sha256": "e5049f7f0fb6d9e1f15c5f9f46e56d68aa9f571613ab9fc52f306d8a21abe50e",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "unchanged_coop_tree": {
+    "path": "work/campaign-coop-test-tree-v30",
+    "audit": "work/checkpoint-083-coop-v30-audit.json",
+    "audit_sha256": "24715aa853c3a00879059d82fb900278f27f651337cf1712ff893eeb2f59424b",
+    "maps": 20,
+    "files": 1047,
+    "bytes": 338180747,
+    "ledger_sha256": "90ed45301bf2f7e3ce6942a2e94c1cb93bfdb9467e940fb54aba503393977fdd",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "merge_audit": {
+    "report": "work/checkpoint-083-package-merge-audit-v39.json",
+    "sha256": "60df8181e0e976e45ca5ac7f14ee2740e63edc570a7b0e55d25e3af7e703efe3",
+    "solo_individually_mergeable": true,
+    "coop_individually_mergeable": true,
+    "within_mode_semantic_conflicts": 0,
+    "cross_mode_compatible": false,
+    "cross_mode_differing_shared_paths": 11,
+    "policy": "Retain separate solo and co-op mod trees."
+  },
+  "isolated_compile": {
+    "toolchain": "MSBuild 18.9.1, v145, Win32 Dedicated Release",
+    "dll": "work/checkpoint-083-source-build/bin/gamex86.dll",
+    "dll_bytes": 2430464,
+    "dll_sha256": "c5da16a8abaf32adad2969f2b7d846e945e8af133d901d2d22bb3fe1ea9841b9",
+    "idlib_errors": 0,
+    "idlib_warnings": 146,
+    "game_errors": 0,
+    "game_warnings": 5514,
+    "idlib_log_sha256": "0af0f9146aba4ddcbbbcb1ea6ca60f2469009f4e64d4e69739b3131492999157",
+    "game_log_sha256": "7eb1b4c1a33c91f625f446dd9ca8d4c267a3735d6a2c0544111eb421c5500cbb",
+    "installed_and_prior_accepted_dll_sha256": "cd85078bf3f5ce8cd4937baae48e70049a8056db59c95033bf76ee122d9ca774",
+    "limits": "Compilation only; no installation, loader or runtime evidence."
+  },
+  "counterexamples": [
+    {
+      "report": "work/checkpoint-083-hazmat-family-audit.json",
+      "sha256": "92ddb266562414bae040ad0f776e8a74db7d61e427b39d80dfa6caa58854b1b8",
+      "result": "Rejected auditor behavior: case-sensitive AF lookup falsely rejected six valid case-variant endpoints. Fixed the auditor using engine lookup semantics, not the retail assets."
+    },
+    {
+      "candidate": "v38",
+      "result": "Payload-equivalent preliminary build before execution-profile mirror synchronization; final v39 retains the same overlay and merged-tree payload ledgers but records final input-profile provenance."
+    }
+  ],
+  "remaining_boundaries": [
+    "No runtime warning-free result is claimed for the new DLL or data.",
+    "Sabaoth path_corner_8 and path_corner_12 navigation warnings require separate analysis; direct-leaf AAS queries do not emulate engine nearest-area searches.",
+    "Xbox GUI distance/zoom metadata is preserved, but its interaction semantics are not implemented by the precache fix.",
+    "Source-absent recycwallight_broken.ase remains unresolved.",
+    "Mesh weights, AF physics, visuals, audio, progression, save/load and two-peer behavior remain separate acceptance gates.",
+    "Push attempted non-interactively; GitHub credentials unavailable. Commits and documentation preserved locally."
+  ]
+}
