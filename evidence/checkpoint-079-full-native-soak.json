@@ -1,0 +1,76 @@
+{
+  "checkpoint": "079",
+  "date": "2026-10-15",
+  "claim": "The final isolated v30 solo and co-op trees pass a fresh 61/61 one-minute native loader soak with zero errors, fatals, failed maps or aborts.",
+  "host": {
+    "source_commit": "d1ae7b2",
+    "game_dll_sha256": "cc9455c2fbe3ce54120a452eb19b2fda62db273e17f4f2a3937a591b872fcd68",
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "launcher": "direct",
+    "window_mode": "minimized",
+    "map_command": "spawnServer"
+  },
+  "solo": {
+    "tree": "work/campaign-solo-test-tree-v30",
+    "report": "work/gpl-solo-full-soak-v30.json",
+    "report_sha256": "1af349c289d21f0ca27df47d86117858ea9727a0a5e2aeab7684ae468944ac83",
+    "plan_sha256": "8a7316845a141c980f25d5dad0398768ab148b5389f6343aec719f3f9cf33ef4",
+    "route_rows": "1-41",
+    "maps_recorded": 41,
+    "maps_passed": 41,
+    "maps_failed": 0,
+    "minimum_idle_seconds_observed": 60.052,
+    "maximum_load_seconds": 6.082,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "aborted": false,
+    "warning_inventory": {
+      "missing_model_lines": 40,
+      "ase_bitmap_path_lines": 0,
+      "empty_key_lines": 168,
+      "could_not_spawn_lines": 276,
+      "model_joint_count_mismatch_lines": 3,
+      "unknown_joint_lines": 21,
+      "no_or_defaulted_model_lines": 70
+    }
+  },
+  "coop": {
+    "tree": "work/campaign-coop-test-tree-v30",
+    "report": "work/gpl-coop-full-soak-v30.json",
+    "report_sha256": "80c31df65334acc7996dcd61d1056b3e3a32987c251ca8e557eb17e2777fadcd",
+    "plan_sha256": "3c8afaa7bb30ce57e0b7e6d75ed6d6ee8390ae9e31c8f1ceb545998a8cb8b747",
+    "route_rows": "42-61",
+    "maps_recorded": 20,
+    "maps_passed": 20,
+    "maps_failed": 0,
+    "minimum_idle_seconds_observed": 60.046,
+    "maximum_load_seconds": 6.086,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "aborted": false,
+    "warning_inventory": {
+      "missing_model_lines": 3,
+      "missing_model_unique_path": "models/mapobjects/recycle/recycwallight_broken.ase",
+      "ase_bitmap_path_lines": 0,
+      "empty_key_lines": 36,
+      "could_not_spawn_lines": 0,
+      "model_joint_count_mismatch_lines": 0,
+      "unknown_joint_lines": 0,
+      "no_or_defaulted_model_lines": 0
+    }
+  },
+  "combined": {
+    "maps_recorded": 61,
+    "maps_passed": 61,
+    "maps_failed": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "targeted_recovered_static_missing_model_lines": 0,
+    "ase_bitmap_path_warning_lines": 0
+  },
+  "acceptance_boundary": [
+    "This proves bounded loader survival, not progression, encounters, save/load, two-peer synchronization or visual parity.",
+    "Solo warning closure remains active work; loader success does not waive its missing render models or gameplay-entity warnings.",
+    "The co-op recycwallight_broken path is absent from both the selected Xbox archive and stock PC source and must not be fabricated without evidence."
+  ]
+}

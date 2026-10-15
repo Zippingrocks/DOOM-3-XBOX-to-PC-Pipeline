@@ -14,9 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 078
+## Current checkpoint: 079
 
-**Eleven exact Xbox compiled static models are now decoded to PC ASE, and all
+**The final isolated v30 trees pass a fresh 61/61 one-minute native sweep.**
+All 41 solo segments and all 20 co-op segments spawned on the minimized direct
+GPL host, idled for at least 60.046 seconds, and recorded zero error/fatal line,
+failed map, premature-exit classification or abort. The recovered static-model
+paths and ASE bitmap-path warnings remain zero across the full logs.
+
+The co-op log is now narrow: its only missing-render warning is the three
+instances of stock/source-absent `recycwallight_broken.ase`; it has no missing
+class, skeleton mismatch, unknown-joint or no-model warning. Solo is loader
+clean but not warning clean: its remaining missing render models, texture
+separators, sentry/monster modelDefs/joints and empty-key warnings are the next
+porting queue before visual acceptance. See
+[`evidence/checkpoint-079-full-native-soak.json`](evidence/checkpoint-079-full-native-soak.json).
+
+## Earlier checkpoint: 078
+
+Eleven exact Xbox compiled static models are now decoded to PC ASE, and all
 eight affected solo/co-op focus loads are clean.** Full GFC inventory corrected
 checkpoint 077's selective-extraction conclusion: the archives do contain the
 renderer-compiled `.lwo.x`/`.ase.x` payloads for the keycard, co-op Caverns,
