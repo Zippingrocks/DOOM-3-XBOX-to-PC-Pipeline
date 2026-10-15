@@ -1,5 +1,11 @@
 # Reproduce checkpoint 084
 
+For reconstruction on another machine **without transferring old ports**, start
+with [checkpoint 085's asset-free recovery path](CHECKPOINT_085_ASSET_FREE_RECOVERY.md),
+[solo/raw recipes](RAW_INPUT_RECIPES.md) and
+[co-op/shared recipes](COOP_RECOVERY_RECIPES.md). The commands below retain their
+historical incremental-replay meaning.
+
 **Incremental replay, not yet a demonstrated cold-start build.** The latest
 commands below require previous overlays and recovered local resource roots.
 Before moving machines, read the
@@ -2627,8 +2633,12 @@ python tools/campaign_port/xdvdfs.py inventory `
 python tools/campaign_port/xdvdfs.py extract `
   game/campaign_port_inputs/xbox/doom3.iso `
   --out game/campaign_port_work/retail-archives `
-  --include 'base/xc_*.gfc' --include 'base/xc_*.gob'
+  --include 'xc_*.gfc' --include 'xc_*.gob'
 ```
+
+For the pinned checkpoint ISO these archive members are at the disc root, not
+under `base/`. Match the exact names in its inventory; do not transfer this
+pattern to a different disc layout without checking that inventory first.
 
 Both extractors require new output directories and never overwrite. For each
 co-op pair, select map products and scripts while retaining the full inventory

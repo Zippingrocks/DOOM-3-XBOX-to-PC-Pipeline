@@ -1,0 +1,251 @@
+{
+  "schema": "doom3-recovery-metadata-selectors-v1",
+  "purpose": "Asset-free preservation: hash originals and project only allowlisted recipe/receipt metadata. No cold-start proof or game-data backup.",
+  "selectors": [
+    {
+      "root": "DEV",
+      "pattern": "work/checkpoint-022-recycling2-1/aas-mancubus-raw/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "special-aas-extraction",
+      "expected": 1
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/d3t-*/d3t-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "texture-recovery",
+      "expected": 5
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/*.json",
+      "mode": "receipt",
+      "category": "local-receipt",
+      "expected": 759
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-retail-archives/*.gfc",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-retail-archives/*.gob",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/retail-archives/*.gfc",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 25
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/retail-archives/*.gob",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 25
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/shared-archives/*.gfc",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 2
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/shared-archives/*.gob",
+      "mode": "hash",
+      "category": "xbox-original",
+      "expected": 2
+    },
+    {
+      "root": "GAME",
+      "pattern": "base/*.pk4",
+      "mode": "hash",
+      "category": "pc-input",
+      "expected": 15
+    },
+    {
+      "root": "SOURCE",
+      "pattern": "tools/campaign_port/profiles/*.resources",
+      "mode": "hash",
+      "category": "tracked-profile",
+      "expected": 27
+    },
+    {
+      "root": "SOURCE",
+      "pattern": "tools/campaign_port/profiles/*.json",
+      "mode": "hash",
+      "category": "tracked-profile",
+      "expected": 2
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-structural/*-inventory.json",
+      "mode": "receipt",
+      "category": "solo-archive-inventory",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-structural/maps/*/core/extraction-manifest.json",
+      "mode": "receipt",
+      "category": "solo-core-extraction",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-structural/maps/*/resources/extraction-manifest.json",
+      "mode": "receipt",
+      "category": "solo-resource-extraction",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-structural/maps/*/reports/*.json",
+      "mode": "receipt",
+      "category": "solo-structural-report",
+      "expected": 224
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-structural/maps/*/models/model-corpus-manifest.json",
+      "mode": "receipt",
+      "category": "solo-model-report",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-overlays-nativefix-v40/*/xbox-solo-overlay-manifest.json",
+      "mode": "receipt",
+      "category": "solo-overlay",
+      "expected": 41
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-overlays-nativefix-v39/*/xbox-solo-overlay-manifest.json",
+      "mode": "receipt",
+      "category": "solo-overlay",
+      "expected": 41
+    },
+    {
+      "root": "GAME",
+      "pattern": "xbox_coop_port_strict_*_mergeguard_v20p/xbox-coop-overlay-manifest.json",
+      "mode": "receipt",
+      "category": "coop-overlay",
+      "expected": 20
+    },
+    {
+      "root": "GAME",
+      "pattern": "xbox_coop_port_strict_*_mergeguard_v20m/xbox-coop-overlay-manifest.json",
+      "mode": "receipt",
+      "category": "coop-overlay",
+      "expected": 20
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "root-extraction",
+      "expected": 10
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/*/extraction-manifest.json",
+      "mode": "receipt",
+      "category": "root-extraction",
+      "expected": 6
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/*/xdvdfs-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "other-disc-extraction",
+      "expected": 7
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/runtime-deps-all/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "per-map-extraction",
+      "expected": 20
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/decoded-inputs-all/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "per-map-extraction",
+      "expected": 20
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/static-model-x-v1/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "per-map-extraction",
+      "expected": 6
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/static-model-x-solo-v1/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "per-map-extraction",
+      "expected": 3
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/static-model-x-solo-v2/*/gfc-extraction-manifest.json",
+      "mode": "receipt",
+      "category": "per-map-extraction",
+      "expected": 6
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/converted-all/reports/*.json",
+      "mode": "receipt",
+      "category": "coop-structural-report",
+      "expected": 66
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/checkpoint-0*/*/xact-audio-manifest.json",
+      "mode": "receipt",
+      "category": "audio-recovery",
+      "expected": 15
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/solo-xact-audio/*/xact-audio-manifest.json",
+      "mode": "receipt",
+      "category": "audio-recovery",
+      "expected": 39
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/xact-*/xact-audio-manifest.json",
+      "mode": "receipt",
+      "category": "audio-recovery",
+      "expected": 4
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/checkpoint-069-hellhole1-pc-cyber/*.json",
+      "mode": "receipt",
+      "category": "retarget-report",
+      "expected": 1
+    },
+    {
+      "root": "DEV",
+      "pattern": "work/checkpoint-071-hellhole1-pc-cyber-pain/*.json",
+      "mode": "receipt",
+      "category": "retarget-report",
+      "expected": 2
+    }
+  ]
+}

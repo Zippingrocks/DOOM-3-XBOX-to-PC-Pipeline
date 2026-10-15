@@ -14,6 +14,20 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
+## Checkpoint 085: asset-free recovery for another machine
+
+[Start here: new-machine recovery](docs/CHECKPOINT_085_ASSET_FREE_RECOVERY.md).
+The user cannot transfer the old converted ports. Git now preserves a
+1,660-file metadata lock (1,480 sanitized receipts), all nine local diagnostic
+sources, exact solo/co-op raw-input recipes and 525 structural-plan steps for
+all 61 maps / 90 AAS files. No game assets are included. Source portability
+fixes pass 501 offline tests.
+
+The plan runs from metadata alone and does not require predecessor ports.
+Executing its conversion steps still requires licensed original inputs.
+Final overlay composition and end-to-end clean-machine equivalence remain
+unfinished; this is not a 100% reproducibility or gameplay claim.
+
 ## Device transition: reproducibility is not yet proved
 
 Read the [next-AI correction plan](docs/REPRODUCIBILITY_RECOVERY_PLAN.md) before

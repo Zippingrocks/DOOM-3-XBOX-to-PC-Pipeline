@@ -1,5 +1,18 @@
 # Recovery order and acceptance
 
+## Checkpoint 085 asset-free recovery boundaries
+
+501 offline tests pass. The 1,660-file metadata lock verifies its selected
+identities; its 525-step structural plan regenerates byte-for-byte from metadata
+alone and covers 61 map identities / 90 AAS inputs. No listed conversion step
+was executed during this checkpoint. No assets were copied or backed up.
+
+This accepts preservation/planning and tested portability helpers, not a
+raw-input-to-final-package rebuild, runtime correctness or gameplay fidelity.
+Initial-overlay composition and earlier producer provenance remain incomplete.
+Checkpoint 084's final co-op package gates and functional blockers stay open.
+See [the new-machine handoff](CHECKPOINT_085_ASSET_FREE_RECOVERY.md).
+
 ## Checkpoint 084 no-runtime acceptance
 
 **Immediate handoff:** final co-op v20p rebuilt and passed independent geometry /

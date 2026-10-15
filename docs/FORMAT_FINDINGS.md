@@ -1,5 +1,22 @@
 # Format findings and unknowns
 
+## Checkpoint 085 reconstruction provenance
+
+The pinned ISO's campaign GFC/GOB pairs are disc-root members, not
+`base/xc_*.gfc`. Exact GFC extraction selectors retain the original leading
+`./`; removing it before matching changes selection semantics.
+
+Receipt ancestry establishes the solo v12-to-v40 and 22-edge co-op chains,
+but does not establish every early producer revision or a cold-start build.
+Current solo source-MAP hashes match all 41 original structural decode reports.
+Nine special AAS outputs originate in the shared assets archive and are now
+explicit in the 90-AAS raw structural plan. Raw filename-record hex in
+extraction JSON must be discarded before public metadata preservation.
+
+See [solo/raw recipes](RAW_INPUT_RECIPES.md),
+[co-op/shared recipes](COOP_RECOVERY_RECIPES.md) and
+[checkpoint 085 preservation evidence](../evidence/checkpoint-085-asset-free-recovery.json).
+
 ## Checkpoint 084 broader offline review
 
 ### Host lineage is part of the input, not a filename assumption

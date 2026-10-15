@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "kind": "checkpoint-085-asset-free-recovery",
+  "date": "2026-10-15",
+  "source_commit": "c76f6e066d180fd9a0e63d2b02bcfe069dd57010",
+  "pipeline_parent": "8a74468a8573a3f67886dd175973e119f4afbbec",
+  "user_constraints": [
+    "No original/converted game-file backup or upload.",
+    "Old converted ports cannot be transferred to the new machine.",
+    "No gameplay, Steam, dmap, xemu or crash-launcher execution."
+  ],
+  "scope": "Non-game source snapshots, sanitised receipt projections, original-input hashes, recipe documentation, metadata-only structural planning and synthetic tool tests.",
+  "artifacts": [
+    {
+      "path": "evidence/checkpoint-085-recovery-lock.json",
+      "bytes": 42290976,
+      "sha256": "b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74"
+    },
+    {
+      "path": "evidence/checkpoint-085-recovery-selectors.json",
+      "bytes": 6605,
+      "sha256": "5331244e7a661a192f3022955411be7f981173bb372ae6c2e19b40ea1ee18c7b"
+    },
+    {
+      "path": "evidence/checkpoint-085-raw-structural-plan.json",
+      "bytes": 2918721,
+      "sha256": "7088b7934f2461aabddf0ca4dc3389918669cc9a3039c8d2587dc13f86625aad"
+    }
+  ],
+  "capture": {
+    "files": 1660,
+    "hashed_source_bytes": 2410095955,
+    "projected_receipts": 1480,
+    "redacted_external_paths": 1105
+  },
+  "categories": [
+    {
+      "category": "audio-recovery",
+      "count": 58
+    },
+    {
+      "category": "coop-overlay",
+      "count": 40
+    },
+    {
+      "category": "coop-structural-report",
+      "count": 66
+    },
+    {
+      "category": "local-receipt",
+      "count": 759
+    },
+    {
+      "category": "other-disc-extraction",
+      "count": 7
+    },
+    {
+      "category": "pc-input",
+      "count": 15
+    },
+    {
+      "category": "per-map-extraction",
+      "count": 55
+    },
+    {
+      "category": "retarget-report",
+      "count": 3
+    },
+    {
+      "category": "root-extraction",
+      "count": 16
+    },
+    {
+      "category": "solo-archive-inventory",
+      "count": 41
+    },
+    {
+      "category": "solo-core-extraction",
+      "count": 41
+    },
+    {
+      "category": "solo-model-report",
+      "count": 41
+    },
+    {
+      "category": "solo-overlay",
+      "count": 82
+    },
+    {
+      "category": "solo-resource-extraction",
+      "count": 41
+    },
+    {
+      "category": "solo-structural-report",
+      "count": 224
+    },
+    {
+      "category": "special-aas-extraction",
+      "count": 1
+    },
+    {
+      "category": "texture-recovery",
+      "count": 5
+    },
+    {
+      "category": "tracked-profile",
+      "count": 29
+    },
+    {
+      "category": "xbox-original",
+      "count": 136
+    }
+  ],
+  "structural_plan": {
+    "solo_maps": 41,
+    "coop_maps": 20,
+    "steps": 525,
+    "compiled_aas_inputs": 90,
+    "executed_conversion_steps": 0,
+    "requires_old_port_payloads_to_generate": false,
+    "requires_licensed_originals_to_execute": true,
+    "includes_shared_special_aas": true,
+    "reproduced_from_metadata_only_at_different_cwd_byte_identical": true
+  },
+  "checks": {
+    "offline_tests_passed": 501,
+    "offline_test_exit_code": 0,
+    "metadata_lock_verification": {
+      "selected": 1660,
+      "verified": 1660,
+      "issues": 0
+    },
+    "archived_source_hashes_verified": 9,
+    "git_filtered_checkout_profile_hashes_verified": 29,
+    "privacy_projection_tests_passed": true,
+    "raw_payload_hex_and_local_absolute_path_scan": "no matches in final projected lock",
+    "native_processes_launched": 0
+  },
+  "portability_fixes": [
+    "Explicit canonical solo profile root remapping with SHA-256 checks and recorded intentional hash updates.",
+    "Explicit co-op input suffix discovers only matching identities independently of timestamps.",
+    "Profile and metadata line endings pinned to preserve locked hashes across checkout.",
+    "Pinned-ISO co-op disc selectors corrected to root-level archive names."
+  ],
+  "not_completed": [
+    "Complete raw-input-to-final-overlay composition replacing all predecessor/ambient-root dependencies.",
+    "Exact historical producer revisions/options for every resource root.",
+    "Clean-machine final payload equivalence demonstration.",
+    "Final v20p overlay/package/tree acceptance.",
+    "Previously flagged functional and two-peer/gameplay/fidelity gates."
+  ],
+  "public_data_boundary": {
+    "retail_payload_bytes_copied": 0,
+    "private_raw_logs_or_captures_included": false,
+    "projection_is_lossy": true,
+    "complete_local_backup_claimed": false
+  },
+  "remaining_recipe_gaps": [
+    "Solo nativefix-v12 predecessor/early strict orchestration not fully reconstructed.",
+    "Co-op original per-map overlays must be replaced by explicit fresh initial compositions.",
+    "Audio manifests omit some input hash/extent/version fields; use pinned ISO metadata plus documented next steps.",
+    "Observed original-input lock includes reference MP pairs/addon PK4s; it is not a proven minimal required-input set."
+  ]
+}

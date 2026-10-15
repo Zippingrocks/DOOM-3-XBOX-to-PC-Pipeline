@@ -2,6 +2,14 @@
 
 Updated 2026-10-15. **Read this before continuing checkpoint 084.**
 
+**Checkpoint 085 update:** the user cannot transfer converted ports and does
+not authorize a real-game-file backup. See
+[asset-free recovery progress](CHECKPOINT_085_ASSET_FREE_RECOVERY.md) for the
+1,660-file metadata lock, 525-step raw plan, all nine archived diagnostic
+sources and implemented portability fixes. The private-backup recommendation
+below is historical, not current permission or a prerequisite for this path.
+Full raw-to-final composition and clean-machine proof remain unfinished.
+
 ## What the user actually needs
 
 Recover the original Xbox co-op campaign first, then all solo maps, with
