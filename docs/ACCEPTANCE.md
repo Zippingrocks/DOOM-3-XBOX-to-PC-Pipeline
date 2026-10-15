@@ -1,5 +1,17 @@
 # Recovery order and acceptance
 
+## Checkpoint 086 portable tooling boundary
+
+The new checkout verifier and synthetic runner checks accept tool/metadata
+identity and fail-closed execution contracts, not authentic corpus conversion.
+The runner's `completed-with-witness-gaps` status is not historical equivalence
+or a final map acceptance. No retail conversion, gameplay, dmap or xemu test
+is run in this checkpoint. GitHub CI results must be checked independently;
+the presence of a workflow is not evidence that its jobs passed.
+
+See [portable recovery](CHECKPOINT_086_PORTABLE_RECOVERY.md). A complete direct
+original-input composition and fresh-build payload comparison remain required.
+
 ## Checkpoint 085 asset-free recovery boundaries
 
 501 offline tests pass. The 1,660-file metadata lock verifies its selected

@@ -1,5 +1,9 @@
 # Reproduce checkpoint 084
 
+**Latest asset-free tooling:** [checkpoint 086](CHECKPOINT_086_PORTABLE_RECOVERY.md)
+provides a pinned checkout verifier and an opt-in structural runner. It does
+not supersede the remaining raw-to-final composition or acceptance gates.
+
 For reconstruction on another machine **without transferring old ports**, start
 with [checkpoint 085's asset-free recovery path](CHECKPOINT_085_ASSET_FREE_RECOVERY.md),
 [solo/raw recipes](RAW_INPUT_RECIPES.md) and

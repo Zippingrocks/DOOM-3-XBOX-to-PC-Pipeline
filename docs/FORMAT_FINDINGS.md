@@ -1,5 +1,19 @@
 # Format findings and unknowns
 
+## Checkpoint 086 reproducibility safeguards
+
+An empty GFC include list means extract everything, not extract nothing. The
+structural planner now rejects empty core/resource selections and duplicate
+member identities. AAS witnesses must have canonical mode-specific paths and
+unique identities; CRC witnesses must be uint32 and bind the exact decoded MAP.
+The authentic checkpoint-085 plan remains byte-identical under these checks.
+
+Model-corpus staging must be on the output volume for its final atomic rename.
+The new explicit temporary-root option rejects an incorrect volume before
+decoding; the runner supplies the new output parent. Neither this portability
+fix nor toolchain hash verification establishes retail conversion acceptance.
+See [checkpoint 086](CHECKPOINT_086_PORTABLE_RECOVERY.md).
+
 ## Checkpoint 085 reconstruction provenance
 
 The pinned ISO's campaign GFC/GOB pairs are disc-root members, not

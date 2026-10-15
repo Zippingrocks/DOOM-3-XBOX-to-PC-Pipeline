@@ -14,9 +14,21 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
+## Checkpoint 086: verify and run the portable recovery kit
+
+[Start here: portable recovery verification](docs/CHECKPOINT_086_PORTABLE_RECOVERY.md).
+The pipeline now pins every recovery tool/profile and supplies one asset-free
+checkout verifier, Windows/Linux CI, and an opt-in raw structural runner in
+the source repository. The runner defaults to read-only preflight, accepts no
+old ports, and checks available output witnesses. No game data is uploaded.
+
+This strengthens the 61-map recovery path; it does not yet complete the shared
+resource/initial-overlay composition or prove final payload equivalence on a
+fresh machine. See the checkpoint for exact commands and remaining boundaries.
+
 ## Checkpoint 085: asset-free recovery for another machine
 
-[Start here: new-machine recovery](docs/CHECKPOINT_085_ASSET_FREE_RECOVERY.md).
+[Preserved metadata and raw-input recipes](docs/CHECKPOINT_085_ASSET_FREE_RECOVERY.md).
 The user cannot transfer the old converted ports. Git now preserves a
 1,660-file metadata lock (1,480 sanitized receipts), all nine local diagnostic
 sources, exact solo/co-op raw-input recipes and 525 structural-plan steps for

@@ -2,6 +2,12 @@
 
 Updated 2026-10-15. **Read this before continuing checkpoint 084.**
 
+**Checkpoint 086 update:** [portable recovery tooling](CHECKPOINT_086_PORTABLE_RECOVERY.md)
+adds the pinned-source verifier, asset-free CI and opt-in structural runner.
+The runner never supplies the missing final-overlay composition by copying
+predecessor ports. Continue with explicit raw-derived resource roots and exact
+payload equivalence gates, not additional historical replay dependencies.
+
 **Checkpoint 085 update:** the user cannot transfer converted ports and does
 not authorize a real-game-file backup. See
 [asset-free recovery progress](CHECKPOINT_085_ASSET_FREE_RECOVERY.md) for the
