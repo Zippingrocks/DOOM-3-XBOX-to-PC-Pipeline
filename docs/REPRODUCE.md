@@ -1,3 +1,76 @@
+# Reproduce checkpoint 072
+
+## Checkpoint 072: complete 41-map solo native soak
+
+Replay from the v20 accepted provenance overlays. Private-family transforms
+must not merely change declarations: filter the corresponding obsolete public
+Campbell and ZCT resource paths from `copied_runtime_resources`, or an older
+manifest will republish them in the merged tree. Keep CPU 1's 47-joint body and
+head resources beneath the `campbell_xbox_cpu1` prefixes. Retarget ordinary
+Xbox ZCT declarations to `models/md5/monsters/zct_xbox`, but do not retarget
+`map_monorail.def`: its seated cinematic must resolve the stock public ZCT mesh
+and stock cinematic animation as one coherent PC skeleton pair. Put the two
+accepted Cyberdemon retarget roots ahead of raw structural models.
+
+```powershell
+python tools/campaign_port/rebuild_latest_solo_overlays.py `
+  work/solo-overlays-nativefix-v20 `
+  work/solo-overlays-nativefix-v26 `
+  --work-root work --stock-dir '..\..\base' --require-maps 41 `
+  --receipt work/solo-overlays-nativefix-v26-rebuild.json
+
+python tools/campaign_port/overlay_corpus_audit.py `
+  work/solo-overlays-nativefix-v26 `
+  --out work/solo-overlays-nativefix-v26-audit.json
+
+python tools/campaign_port/build_campaign_test_tree.py `
+  work/solo-overlays-nativefix-v26 `
+  work/campaign-coop-packages-portable-v1 `
+  work/campaign-solo-test-tree-v26 --corpus solo `
+  --receipt work/campaign-solo-test-tree-v26-receipt.json
+
+python tools/campaign_port/campaign_test_tree_audit.py `
+  work/campaign-solo-test-tree-v26 `
+  --receipt work/campaign-solo-test-tree-v26-receipt.json `
+  --output work/campaign-solo-test-tree-v26-audit.json `
+  --require-solo 41 --require-coop 0
+
+python -m unittest discover -s tools/campaign_port/tests -q
+```
+
+Require 41 overlays, 2,307 files, 816,923,492 bytes, all 41 direct-authored
+CMs, zero unresolved class/resource/string, file ledger
+`a635a0ac0c1f77b1305dace74e9605e50c8dbd764a73ad978f9d324a57161ca3`
+and manifest ledger
+`3c864e34da4de0f57190b15593f49b7d441ebc98e5bae09c67981d32c8cbad3b`.
+Require the test tree to contain 41 solo maps and 841 files totaling
+722,536,616 bytes, with ledger
+`e1d296ff7afd9f6f407e03da4b8d8ba436bd137d487cd4f855957400cf6b2c81`,
+and zero missing companions, duplicate definitions/materials, untracked files
+or reparse points. All 297 tests must pass.
+
+Create an `xbox_campaign_solo_v26` local alias to that audited tree, generate
+the 61-row native itinerary with that `fs_game`, then run only solo rows 1-41:
+
+```powershell
+& .\tools\campaign_port\run_native_campaign_soak.ps1 `
+  -Plan work\campaign-native-solo-plan-v26.json `
+  -DoomExe 'work\upstream-doom3-gpl-src\DOOM-3-master\build\Win32\Dedicated Release\DOOM3.exe' `
+  -StateRoot work\gpl-solo-soak-v26 `
+  -Output work\gpl-solo-soak-v26.json `
+  -GameRoot '..\..' `
+  -ExpectedGameDllSha256 bdd38cf5b05314bfeb8a98bc5ea39785f3f151680121de06dd7b7c2f9d6c1bd1 `
+  -Launcher Direct -MapCommand spawnServer `
+  -StartIndex 1 -EndIndex 41 -IdleSeconds 60
+```
+
+The report must hash to
+`78c1d984b312f8a89b1ef9cec8fd16d4245e33c195a0179f8b440989e6ab3274`,
+record 41 passes, zero failures, `aborted=false`, minimum observed idle
+60.051 seconds, zero error/fatal lines and zero premature exits. Loader survival
+does not establish visual/audio fidelity, progression, transitions, save/load,
+encounter timing or matched original-Xbox behavior. Run the 20 co-op rows next.
+
 # Reproduce checkpoint 071
 
 ## Checkpoint 071: close every solo discovery-sweep loader blocker

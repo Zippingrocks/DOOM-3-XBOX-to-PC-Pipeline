@@ -14,7 +14,33 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 071
+## Current checkpoint: 072
+
+**The complete original-Xbox solo campaign now clears the native loader-soak
+gate: 41/41 map segments each loaded and remained alive for at least 60
+seconds with zero error/fatal lines and no premature exits.** The authoritative
+v26 run uses the minimized source-built GPL dedicated host directly, never
+Steam or the retail foreground executable.
+
+The preceding v21 whole-campaign sweep was essential: although its focused
+predecessors were clean, merging all map closures exposed three shared-path
+collision families. CPU 1's 47-joint Campbell resources now live only under a
+private runtime prefix; ordinary 50-joint Xbox ZCT resources are private while
+Monorail's seated cinematic deliberately retains its coherent stock-PC mesh
+and animation pair; and Hellhole uses the accepted 78-joint Cyberdemon pain
+retargets ahead of raw Xbox tracks. Replay also filters the obsolete public
+resources recorded by older manifests so they cannot return during rebuild.
+
+The v26 overlay has 2,307 files totaling 816,923,492 bytes, all 41 direct
+authored collision files and zero unresolved class/resource/string. Its
+isolated test tree has 841 files, all 41 maps and zero missing companions,
+duplicate declarations/materials, untracked files or reparse points. All 297
+offline tests pass. This accepts solo loader survival, not visual, audio,
+progression, transition, save/load or matched-Xbox fidelity. The 20-map co-op
+60-second sweep is the next native gate. See
+[`evidence/checkpoint-072-solo-native-soak.json`](evidence/checkpoint-072-solo-native-soak.json).
+
+## Earlier checkpoint: 071
 
 **Every failure family exposed by the first complete solo native sweep now has
 a source-bound correction and a clean focused loader pass.** The original

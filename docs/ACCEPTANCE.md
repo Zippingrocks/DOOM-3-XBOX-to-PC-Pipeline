@@ -1,5 +1,26 @@
 # Recovery order and acceptance
 
+## Checkpoint 072 solo native-loader acceptance
+
+The full original-Xbox solo route now passes the native loader-soak gate. All
+41 segments loaded with the direct minimized source-built GPL dedicated host,
+reached the spawn marker, remained alive for at least 60 seconds and recorded
+zero error/fatal lines and zero premature exits. The run was one current v26
+artifact and one current DLL/host pair, not a composite of earlier focused
+receipts. Its minimum observed idle was 60.051 seconds.
+
+The accepted v26 static artifacts independently close their integrity gates:
+41 overlays and direct-authored CMs, zero unresolved dependency, and an
+841-file isolated tree with no missing compiled companion, duplicate runtime
+declaration/material, untracked file or reparse point. All 297 offline tests
+pass.
+
+This accepts solo map parsing, spawning and one-minute process survival only.
+It does not accept rendering, sound, scripted progression, transitions,
+save/load, encounter timing or matched original-Xbox fidelity. Co-op remains
+outside this checkpoint until all 20 co-op segments pass their own 60-second
+native sweep; two-peer progression/death/rejoin remains a later gate.
+
 ## Checkpoint 071 solo loader-blocker status
 
 The twelve maps that failed the first complete solo discovery sweep now each

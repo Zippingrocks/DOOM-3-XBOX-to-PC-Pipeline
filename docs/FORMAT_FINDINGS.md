@@ -1,5 +1,28 @@
 # Format findings and unknowns
 
+## Checkpoint 072 merged-campaign skeleton findings
+
+Per-map loader success does not prove that its resources are safe in a merged
+campaign tree. The first complete replacement sweep passed 31 maps but exposed
+ten failures from only three shared-path families: Campbell, ZCT and
+Cyberdemon. Older per-map manifests can preserve a now-obsolete public resource
+in `copied_runtime_resources`; changing the new declaration is insufficient if
+replay still republishes that old file. Rebuild must filter the public source
+path when the family moves to a private prefix.
+
+Skeleton isolation is also use-specific. Ordinary Xbox commandos require the
+private coherent 50-joint ZCT mesh/animation family. Monorail's seated commando
+cinematic instead uses the stock PC public mesh and stock cinematic animation;
+pointing that declaration at the private Xbox mesh creates a new mismatch. A
+logical character name therefore cannot determine the transform by itself:
+the declaration's animation family and loading context are part of its type.
+
+Finally, derived-resource root order is semantic. Hellhole's raw 50-joint Xbox
+pain tracks and accepted 78-joint PC-host retargets have the same virtual
+paths. The accepted retarget roots must precede raw structural model roots or a
+reproducible rebuild silently selects the wrong skeleton despite clean static
+dependency closure.
+
 ## Checkpoint 071 loader-closure findings
 
 Script compatibility must preserve the Xbox action rather than merely make the

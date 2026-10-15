@@ -1,0 +1,87 @@
+{
+  "checkpoint": "072",
+  "date": "2026-10-14",
+  "claim": "All 41 original-Xbox solo campaign segments pass one current minimized direct GPL-dedicated loader soak with at least 60 seconds observed idle per map, zero errors/fatals and no premature exits.",
+  "prior_full_sweep": {
+    "report": "work/gpl-solo-soak-v21.json",
+    "report_sha256": "79f63698c136cda3a2dcac9e53fb2202d57deb532cd95043d995de543bca8234",
+    "maps": 41,
+    "passed": 31,
+    "failed": 10,
+    "aborted": false,
+    "failure_families": {
+      "public_campbell_skeleton_collision": 5,
+      "public_zct_skeleton_collision": 4,
+      "raw_cyberdemon_pain_skeleton_collision": 1
+    }
+  },
+  "solo_overlay_corpus": {
+    "path": "work/solo-overlays-nativefix-v26",
+    "rebuild_receipt_sha256": "2885f9dc2ec49743c7cfaf98e2aa0d04cf2fd04e1e052c4259807b1683cd466d",
+    "audit_sha256": "70c18be4de763595b4f17471785a17a25d6d77661c5b9c3526c5b634739fcb76",
+    "maps": 41,
+    "files": 2307,
+    "bytes": 816923492,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "file_ledger_sha256": "a635a0ac0c1f77b1305dace74e9605e50c8dbd764a73ad978f9d324a57161ca3",
+    "manifest_ledger_sha256": "3c864e34da4de0f57190b15593f49b7d441ebc98e5bae09c67981d32c8cbad3b"
+  },
+  "solo_test_tree": {
+    "path": "work/campaign-solo-test-tree-v26",
+    "receipt_sha256": "5e1a2f9d974b3fad4b07e73198ddf79cfa5705e82cef64694103316467a6b1c9",
+    "audit_sha256": "a72467243d0829d60538eea15ea9e74620e3594ffcbc7ceb70378f50317a7da6",
+    "maps": 41,
+    "files": 841,
+    "bytes": 722536616,
+    "ledger_sha256": "e1d296ff7afd9f6f407e03da4b8d8ba436bd137d487cd4f855957400cf6b2c81",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "native_soak": {
+    "report": "work/gpl-solo-soak-v26.json",
+    "report_sha256": "78c1d984b312f8a89b1ef9cec8fd16d4245e33c195a0179f8b440989e6ab3274",
+    "plan": "work/campaign-native-solo-plan-v26.json",
+    "plan_sha256": "b1682c8f5bd499b6ebb4c400456f929f048428bde43c71cc24bf773d082dff2a",
+    "fs_game": "xbox_campaign_solo_v26",
+    "requested_idle_seconds": 60,
+    "maps": 41,
+    "passed": 41,
+    "failed": 0,
+    "aborted": false,
+    "minimum_observed_idle_seconds": 60.051,
+    "maximum_load_seconds": 6.083,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "premature_exits": 0
+  },
+  "host": {
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "game_dll_sha256": "bdd38cf5b05314bfeb8a98bc5ea39785f3f151680121de06dd7b7c2f9d6c1bd1",
+    "game_dll_bytes": 2417664,
+    "launcher": "direct-minimized",
+    "map_command": "spawnServer"
+  },
+  "implementation_receipts": {
+    "overlay_builder_sha256": "d1287e9ed05ba49b35d89a0445e38f6ba1677d4cca88079c1261a0dd2b689079",
+    "solo_rebuilder_sha256": "116ee53bb2752bc77810128ffebb4096cdf2f739aab481ce3bec7deef8a43e9a",
+    "native_runner_sha256": "44831774ae93a1efdf85e71101e93b09e165a22e24bf5ec7d6826a832410a695",
+    "overlay_tests_sha256": "12a3479bfa576f06de51ca6e3cddff29057b395bacd16a54d3a5db9852574777"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 297,
+    "failed": 0
+  },
+  "limits": [
+    "The 20-map co-op 60-second native soak remains required.",
+    "Dedicated-host loader survival is not visual, audio, progression, transition, save/load, encounter-timing or matched-Xbox fidelity acceptance.",
+    "Real two-peer co-op progression, death, respawn and rejoin remain required.",
+    "Retail-derived maps and logs remain local and are not included in this public evidence repository."
+  ]
+}
