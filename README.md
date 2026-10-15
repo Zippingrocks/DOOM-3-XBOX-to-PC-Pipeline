@@ -14,7 +14,23 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 059
+## Current checkpoint: 060
+
+**Every co-op segment now has source-bound paired spawn topology.** Across the
+20 final maps, all 50 player-one starts have a player-two counterpart at the
+same level, all levels are contiguous from one, every map retains exactly one
+stock start, and all 22 spawn-level advancement targets have at least one MAP
+link (31 links total). The complete 141-entity spawn/advance subset is exact to
+each manifest-bound decoded Xbox source.
+
+Three maps authentically omit a safe-spawn entity, and six paired placements
+use different facing angles. Those are explicit native-test observations, not
+conversion loss; the port does not invent safe points or rotate authored
+starts. All 249 offline tests pass, with zero spawn-topology regression. Doom 3
+and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-060-coop-spawn-topology.json`](evidence/checkpoint-060-coop-spawn-topology.json).
+
+## Earlier checkpoint: 059
 
 **The apparent shared resurrection path is now classified across all 20 co-op
 maps without inventing missing gameplay.** The bytecode decoder now covers

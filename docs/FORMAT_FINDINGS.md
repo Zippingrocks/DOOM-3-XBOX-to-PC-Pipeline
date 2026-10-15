@@ -1,5 +1,28 @@
 # Format findings and unknowns
 
+## Checkpoint 060 co-op spawn-topology findings
+
+Co-op spawn validation must use effective `spawn_level` defaults: player-one
+and player-two definitions default to level one, while the optional safe spawn
+defaults to zero. Counting only explicit MAP epairs misclassifies many authored
+initial points. Several maps also retain multiple player pairs at one level,
+including entities whose historical names still say `info_player_deathmatch`;
+the classname and effective level, not a filename-style suffix, define their
+runtime role.
+
+All 20 maps have equal player-one/player-two multiplicity at every effective
+level, a level-one pair and no gaps. There are 50 pairs total. Pairing by the
+minimum source-space separation avoids assuming that legacy entity-name suffixes
+encode identity. All spawn/start/advance entity epairs match the hash-bound
+decoded MAP sources exactly.
+
+The 22 `target_coop_increase_spawnlevel` entities have 31 incoming MAP links.
+Link presence proves topology, not how many times a trigger fires or which
+point the runtime selects. Three maps have no safe-spawn entity and six pairs
+face different angles; both patterns are authenticated source content. Native
+two-peer spawn, telefrag avoidance, progression and rejoin observation remains
+required before changing those placements.
+
 ## Checkpoint 059 co-op resurrection findings
 
 The official GPL opcode order continues from `OP_CALL` 96 to `OP_THREAD` 97

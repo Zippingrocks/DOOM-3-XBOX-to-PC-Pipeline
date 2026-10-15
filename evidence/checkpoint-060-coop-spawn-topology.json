@@ -1,0 +1,66 @@
+{
+  "checkpoint": "060",
+  "date": "2026-10-14",
+  "claim": "All 20 original-Xbox co-op maps preserve a complete source-exact paired player spawn topology with contiguous levels and linked advancement targets.",
+  "inputs": {
+    "checkpoint_059": "evidence/checkpoint-059-coop-resurrection-topology.json",
+    "overlay_suffix": "soundguard_v3",
+    "source_binding": "Each final manifest's decoded source MAP SHA-256"
+  },
+  "spawn_topology": {
+    "maps": 20,
+    "maps_with_exact_source_spawn_entities": 20,
+    "info_player_starts": 20,
+    "player1_spawns": 50,
+    "player2_spawns": 50,
+    "paired_spawns": 50,
+    "safe_spawns": 41,
+    "increase_spawnlevel_targets": 22,
+    "increase_spawnlevel_incoming_links": 31,
+    "unlinked_increase_targets": 0,
+    "port_regressions": 0,
+    "report_sha256": "8989594dd3f1bd82458a34b63b74c18ade130ec1ba8e3d549d665bb698b99c7d"
+  },
+  "level_distribution": {
+    "maps_with_max_level_1": 3,
+    "maps_with_max_level_2": 12,
+    "maps_with_max_level_3": 5,
+    "maps_with_noncontiguous_levels": 0,
+    "maps_without_initial_level_1_pair": 0
+  },
+  "source_authored_attention": {
+    "maps_without_safe_spawn": [
+      "xc_enpro_1",
+      "xc_enpro_2",
+      "xc_mars_city2_2"
+    ],
+    "maps_with_paired_angle_differences": [
+      "xc_alphalabs2_2",
+      "xc_caverns1_1",
+      "xc_enpro_1",
+      "xc_hell1_2",
+      "xc_mars_city2_1",
+      "xc_mcu"
+    ],
+    "paired_angle_difference_records": 6,
+    "decision": "Preserve authenticated positions and orientations; do not synthesize safe spawns or normalize authored facing without a gameplay witness."
+  },
+  "implementation_receipts": {
+    "coop_spawn_topology_audit_py_sha256": "42b799c4c649107db0c93ae782729b70de93bfbd9a5c6a9b7a3cc39cfb52d71d"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 249,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "Static pairing does not prove which point the runtime selects, telefrag avoidance, spawn effects or host/client synchronization.",
+    "Incoming target links do not prove activation count or order; progressive respawn remains a native two-peer test obligation.",
+    "The three maps without a safe-spawn entity and six angle differences are identical to the decoded Xbox sources, not port-introduced loss."
+  ]
+}

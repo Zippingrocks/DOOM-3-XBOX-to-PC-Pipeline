@@ -1,3 +1,28 @@
+# Reproduce checkpoint 060
+
+## Checkpoint 060: co-op paired spawn topology
+
+Bind every final spawn entity to the decoded MAP named by its overlay manifest,
+then audit starts, player pairs, safe points and spawn-level targets:
+
+```powershell
+python tools/campaign_port/coop_spawn_topology_audit.py ../.. `
+  --source-search-root work --overlay-suffix soundguard_v3 `
+  --require-maps 20 --output work/coop-spawn-topology-v3.json
+```
+
+Require 20 maps with exact source spawn-entity multisets, 20
+`info_player_start` entities, 50 player-one/player-two pairs, 41 safe spawns,
+22 advancement targets and 31 incoming advancement links. Each map must contain
+an initial level-one pair; player levels must be paired and contiguous. Require
+zero coincident pair, unlinked advancement target or port regression.
+
+Retain the three source-authored maps without safe spawns and the six
+source-authored facing-angle differences as native-test observations. Do not
+create a safe point or normalize an angle merely to make the corpus uniform.
+Run the full suite and require 249 passing tests. Do not launch Doom 3 or
+`dmap`.
+
 # Reproduce checkpoint 059
 
 ## Checkpoint 059: co-op resurrection topology

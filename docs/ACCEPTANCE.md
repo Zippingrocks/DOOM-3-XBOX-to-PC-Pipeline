@@ -1,5 +1,20 @@
 # Recovery order and acceptance
 
+## Checkpoint 060 co-op spawn-topology status
+
+The static two-player spawn gate is closed against conversion regression for
+all 20 co-op maps. Fifty player-one/player-two placements are paired at the
+same effective level, level sequences are contiguous, every map has its stock
+start, every advancement target is linked, and all relevant entities are exact
+to the manifest-bound decoded source. All 249 offline tests pass.
+
+This accepts authored topology, not runtime spawn behavior. Three maps have no
+safe-spawn entity and six pairs use different facing angles; both are retained
+source facts. Native testing still must show actual player assignment, safe
+fallback choice, teleport/target side effects, repeated spawn-level increments,
+telefrag avoidance and host/client agreement. Doom 3 and `dmap` were not
+launched while they could interrupt the user's game.
+
 ## Checkpoint 059 co-op resurrection status
 
 All 20 final co-op overlays now have a focused offline resurrection topology
