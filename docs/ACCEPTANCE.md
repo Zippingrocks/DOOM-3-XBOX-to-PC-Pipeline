@@ -1,5 +1,18 @@
 # Recovery order and acceptance
 
+## Checkpoint 061 solo player-topology status
+
+All 41 Xbox solo overlays now pass a manifest/source-bound player-entity gate.
+Every segment has one start, all 42 teleport destinations and the one legacy
+deathmatch entity are source-exact, and no player topology was lost during
+conversion. All 250 offline tests pass.
+
+This accepts preservation, not native placement. Three teleport destinations
+have no exact MAP link or direct `$name` script reference and remain
+source-authored attention records. Native progression and save/load must still
+confirm initial placement, teleport timing/side effects and collision clearance.
+Doom 3 and `dmap` were not launched while they could interrupt the user's game.
+
 ## Checkpoint 060 co-op spawn-topology status
 
 The static two-player spawn gate is closed against conversion regression for

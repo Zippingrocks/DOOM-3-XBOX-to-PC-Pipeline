@@ -14,7 +14,22 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 060
+## Current checkpoint: 061
+
+**The 41-map Xbox single-player corpus now has source-bound player-start and
+teleport topology.** Every segment contains exactly one `info_player_start`,
+and every player entity is identical to the decoded MAP selected by its overlay
+manifest hash. The corpus retains 42 teleport destinations: 38 are MAP-linked,
+one is directly script-referenced, and three are unreferenced in both static
+paths. Monorail 2 also retains one authenticated `info_player_deathmatch`.
+
+The three unreferenced teleports and deathmatch entity are Xbox-authored
+residue, not conversion loss. They remain in place pending native observation;
+deleting or wiring them would be speculative. All 250 offline tests pass, with
+zero player-topology regression. Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-061-solo-spawn-topology.json`](evidence/checkpoint-061-solo-spawn-topology.json).
+
+## Earlier checkpoint: 060
 
 **Every co-op segment now has source-bound paired spawn topology.** Across the
 20 final maps, all 50 player-one starts have a player-two counterpart at the

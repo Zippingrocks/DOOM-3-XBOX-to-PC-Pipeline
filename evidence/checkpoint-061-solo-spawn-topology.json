@@ -1,0 +1,67 @@
+{
+  "checkpoint": "061",
+  "date": "2026-10-14",
+  "claim": "All 41 original-Xbox solo segments preserve one manifest-bound player start and the complete source player/teleport entity topology with zero port regression.",
+  "inputs": {
+    "checkpoint_057": "evidence/checkpoint-057-solo-script-sound-closure.json",
+    "overlay_root": "work/solo-overlays-strict-v11",
+    "source_root": "work/solo-structural/maps",
+    "source_binding": "Each overlay manifest's decoded source MAP SHA-256"
+  },
+  "topology": {
+    "maps": 41,
+    "maps_with_exact_source_player_entities": 41,
+    "info_player_starts": 41,
+    "info_player_teleports": 42,
+    "info_player_deathmatch": 1,
+    "map_linked_teleports": 38,
+    "direct_script_referenced_teleports": 1,
+    "unreferenced_teleports": 3,
+    "port_regressions": 0,
+    "report_sha256": "968dd1ec52d8fc3aa0fae562e1dd279e7aef081d1b7d2944e585ffcacd48677c"
+  },
+  "source_authored_residue": [
+    {
+      "map": "alphalabs3",
+      "entity": "info_player_teleport_1",
+      "origin": "1256 -1776 -136"
+    },
+    {
+      "map": "hell1_3",
+      "entity": "info_player_teleport_2",
+      "origin": "2412 -4068 2"
+    },
+    {
+      "map": "hellhole_2",
+      "entity": "info_player_teleport_3",
+      "origin": "-6816 -1088 -766"
+    },
+    {
+      "map": "monorail_2",
+      "entity_class": "info_player_deathmatch",
+      "count": 1
+    }
+  ],
+  "decision": {
+    "map_edits": 0,
+    "reason": "Every player entity is identical to the manifest-hash-matched decoded Xbox source. Unreferenced records are retained rather than deleted without runtime evidence."
+  },
+  "implementation_receipts": {
+    "solo_spawn_topology_audit_py_sha256": "f8d739e4ea3858931e606d66eeff16c9ae410278b36f1e8875ca0e24cea0e834"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 250,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "limits": [
+    "Static topology does not prove native player placement, collision clearance, teleport timing, target side effects or save/load restoration.",
+    "The three unreferenced teleport destinations may still have a dynamic engine/script path outside exact MAP links and direct $name source expressions.",
+    "The Monorail 2 deathmatch entity is authenticated source residue and is not evidence of an active solo route."
+  ]
+}

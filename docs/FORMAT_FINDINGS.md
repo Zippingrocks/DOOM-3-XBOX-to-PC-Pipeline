@@ -1,5 +1,25 @@
 # Format findings and unknowns
 
+## Checkpoint 061 solo player-topology findings
+
+The final solo overlays preserve exactly one `info_player_start` in every Xbox
+segment. Player topology is bound to the decoded source through the manifest's
+source MAP hash, not inferred from the stock PC campaign. All start, teleport
+and legacy deathmatch epairs match those source maps exactly.
+
+Of 42 `info_player_teleport` entities, 38 are addressed by a MAP reference and
+one by an active direct `$entity` script expression. Three have neither static
+path: Alpha Labs 3 `info_player_teleport_1`, Hell 1 part 3
+`info_player_teleport_2` and Hellhole 2 `info_player_teleport_3`. Monorail 2
+also retains one `info_player_deathmatch`. These four records are present in the
+authenticated sources, so uniformity is not a valid reason to remove them.
+
+Exact entity preservation does not establish the runtime-selected start,
+collision clearance, teleport activation, target side effects or save/load
+state. A computed name or native path can also escape the two exact-reference
+scans. Those are gameplay observations rather than reasons for an offline map
+rewrite.
+
 ## Checkpoint 060 co-op spawn-topology findings
 
 Co-op spawn validation must use effective `spawn_level` defaults: player-one

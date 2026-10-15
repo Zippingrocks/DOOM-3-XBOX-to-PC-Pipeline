@@ -1,3 +1,28 @@
+# Reproduce checkpoint 061
+
+## Checkpoint 061: solo player-start and teleport topology
+
+Audit all final solo player entities against the decoded MAP hash selected by
+each overlay manifest:
+
+```powershell
+python tools/campaign_port/solo_spawn_topology_audit.py `
+  work/solo-overlays-strict-v11 `
+  --source-root work/solo-structural/maps --require-maps 41 `
+  --output work/solo-overlays-strict-v11-spawn-topology-v2.json
+```
+
+Require 41 maps, 41 exact source player-entity multisets and exactly one
+`info_player_start` per segment. Require 42 `info_player_teleport` records and
+one Monorail 2 `info_player_deathmatch`. Of the teleport destinations, 38 must
+have an incoming MAP link, one an active direct `$name` script reference and
+three neither static path. The latter three must be Alpha Labs 3
+`info_player_teleport_1`, Hell 1 part 3 `info_player_teleport_2` and Hellhole 2
+`info_player_teleport_3`.
+
+Do not delete or connect source-authored residue without a native witness. Run
+the full suite and require 250 passing tests. Do not launch Doom 3 or `dmap`.
+
 # Reproduce checkpoint 060
 
 ## Checkpoint 060: co-op paired spawn topology
