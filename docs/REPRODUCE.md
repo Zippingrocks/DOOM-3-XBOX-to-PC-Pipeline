@@ -1,3 +1,42 @@
+# Reproduce checkpoint 065
+
+## Checkpoint 065: unified 61-map campaign test tree
+
+First classify cross-map and cross-corpus path collisions. The audit must prove
+that only the two language files and `def/xbox_coop_runtime.def` vary, that
+their contents union without semantic conflict, and that all 115 paths shared
+between solo and co-op have identical bytes:
+
+```powershell
+python -m tools.campaign_port.campaign_package_merge_audit `
+  work/solo-overlays-packaged-v1 work/coop-overlays-packaged-v1 `
+  --output work/campaign-package-merge-audit-v2.json
+
+python -m tools.campaign_port.build_campaign_test_tree `
+  work/solo-overlays-packaged-v1 work/coop-overlays-packaged-v1 `
+  work/campaign-test-tree-v2 `
+  --receipt work/campaign-test-tree-v2-receipt.json
+
+python -m tools.campaign_port.campaign_test_tree_audit `
+  work/campaign-test-tree-v2 `
+  --receipt work/campaign-test-tree-v2-receipt.json `
+  --output work/campaign-test-tree-v2-audit-v2.json
+```
+
+Require 7,872 input records, 1,572 output files, 6,300 deduplicated records,
+1,009,071,410 output bytes and ledger
+`7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979`.
+Require 41 solo and 20 co-op MAP files, each with matching PROC and CM, zero
+untracked file/reparse point, zero duplicate among 1,500 non-export DEF
+declarations, and zero duplicate among 249 material declarations.
+
+The merged co-op runtime DEF must retain 20 declarations and exclude exactly
+five identical declarations already present in complete DEF files. A differing
+body must fail rather than be discarded. Require 101 solo and 47 co-op merged
+language entries. Run the full suite and require 272 passing tests. Keep the
+retail-derived tree local; do not commit or distribute it. Do not launch Doom 3
+or `dmap`.
+
 # Reproduce checkpoint 064
 
 ## Checkpoint 064: portable co-op test package

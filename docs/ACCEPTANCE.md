@@ -1,5 +1,21 @@
 # Recovery order and acceptance
 
+## Checkpoint 065 unified campaign-tree status
+
+One local test tree now contains all 41 solo and 20 co-op map segments without
+last-writer-wins ambiguity. It has an exact 1,572-file ledger, every MAP has its
+PROC and CM, the three varying closure files were semantically unioned, five
+identical supplemental/complete DEF overlaps were safely deduplicated, and the
+independent audit finds zero duplicate runtime definition, duplicate material,
+untracked file or reparse point. All 272 offline tests pass.
+
+This is the strongest static handoff so far, but it is not native acceptance.
+The engine still must parse the combined declarations, load every segment,
+select its AAS data, exercise collision/portals/encounters/transitions/save-load,
+and complete two-peer co-op synchronization and visual comparison. The local
+retail-derived tree is not committed or redistributable. Doom 3 and `dmap` were
+not launched while they could interrupt the user's game.
+
 ## Checkpoint 064 portable co-op-package status
 
 The final 20-map co-op corpus is now materialized locally as 6,080 ordinary,

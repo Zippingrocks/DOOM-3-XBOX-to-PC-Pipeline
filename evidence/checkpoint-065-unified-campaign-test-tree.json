@@ -1,0 +1,80 @@
+{
+  "checkpoint": "065",
+  "date": "2026-10-14",
+  "claim": "All 41 solo and 20 co-op Xbox campaign segments coexist in one deduplicated, independently rehashed local test tree with no unresolved VFS collision, duplicate runtime declaration, duplicate material, missing MAP companion, untracked file or reparse point.",
+  "merge_audit": {
+    "report": "work/campaign-package-merge-audit-v2.json",
+    "report_sha256": "95816d6e2328edfd6c7d3d8b3ac45d5f923498cafa19d49f676f6dda5c5e8d26",
+    "maps": 61,
+    "input_records": 7872,
+    "global_unique_paths": 1572,
+    "cross_corpus_shared_paths": 115,
+    "cross_corpus_varying_paths": 0,
+    "varying_paths": 3,
+    "unresolved_varying_paths": 0,
+    "semantic_conflicts": 0,
+    "solo_language_entries": 101,
+    "coop_language_entries": 47,
+    "coop_runtime_union_declarations": 25
+  },
+  "test_tree": {
+    "root": "work/campaign-test-tree-v2",
+    "receipt_sha256": "14d77317e5b6f8c37fec4e2ed4469ab01d83a97be748cd2627c00fb7eb656d5f",
+    "maps": 61,
+    "solo_maps": 41,
+    "coop_maps": 20,
+    "input_records": 7872,
+    "output_files": 1572,
+    "deduplicated_records": 6300,
+    "output_bytes": 1009071410,
+    "output_ledger_sha256": "7e5241667542fb38a76a305f1f2aafb360bde2ef854e1e824837570c0fe60979",
+    "generated_merge_files": 3,
+    "retained_coop_runtime_declarations": 20,
+    "excluded_identical_complete_declarations": 5
+  },
+  "independent_audit": {
+    "report": "work/campaign-test-tree-v2-audit-v2.json",
+    "report_sha256": "3cafe637374d20d536b42aaaf15849e8e715a4a5fd95eee39582072576d4f30e",
+    "files": 1572,
+    "bytes": 1009071410,
+    "missing_compiled_companions": 0,
+    "def_files": 78,
+    "def_declarations": 1500,
+    "duplicate_definitions": 0,
+    "material_files": 3,
+    "materials": 249,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "caught_before_acceptance": {
+    "rejected_tree": "work/campaign-test-tree-v1",
+    "issue": "Five declarations appeared both in the merged supplemental co-op DEF and complete DEF files selected by other maps.",
+    "resolution": "Exclude a supplemental copy only when its normalized declaration body exactly matches the complete copy; otherwise fail closed."
+  },
+  "implementation_receipts": {
+    "campaign_package_merge_audit_py_sha256": "1dcd4a1fdd175569ee7cddd42fde2d89f07e2cfa6fb25bd3db34f9cf5bfb46cf",
+    "build_campaign_test_tree_py_sha256": "b792b27fa25fea1fb988f64583c94fb93b61e48144500f8d58c23848be7a21c0",
+    "campaign_test_tree_audit_py_sha256": "2717285bed1793b82807f2743cdf50f52070c08b2f35d8994fffb769fc9caf87"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -p 'test_*.py'",
+    "passed": 272,
+    "failed": 0
+  },
+  "runtime_boundary": {
+    "doom3_or_dmap_launched": false,
+    "installed_gamex86_dll_bytes": 2723328,
+    "installed_gamex86_dll_sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
+  },
+  "distribution_boundary": {
+    "retail_derived_tree_committed": false,
+    "retail_derived_tree_redistributable": false,
+    "documentation_and_hash_receipts_only": true
+  },
+  "limits": [
+    "The independent audit proves a static test-tree file and declaration boundary, not native parser/load success.",
+    "AAS selection, collision, visibility, lighting, encounters, transitions, networking, death/respawn, save/load and visual fidelity remain native acceptance work.",
+    "The 1.009 GB retail-derived tree must remain local and outside Git/public distribution."
+  ]
+}

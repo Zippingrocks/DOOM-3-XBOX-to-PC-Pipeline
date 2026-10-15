@@ -1,5 +1,32 @@
 # Format findings and unknowns
 
+## Checkpoint 065 unified-tree findings
+
+Per-map closure does not imply whole-campaign merge safety. The 7,872 manifest
+records reduce to 1,572 virtual paths. Within each campaign, 455 shared paths
+are byte-identical; three paths legitimately vary by map. Across the solo/co-op
+boundary, 115 paths are shared and every one is byte-identical. The varying
+language closures union to 101 solo and 47 co-op IDs with no value conflict.
+The 20 co-op runtime DEFs union to 25 declaration keys with no body conflict.
+
+That result was still insufficient. The first unified-tree audit correctly
+rejected five runtime declarations because another map caused their complete
+source DEF file to enter the same tree. They are
+`target_coop_increase_spawnlevel`, `trigger_coop_enablegui`,
+`monster_boss_guardian_coop` (entity and model), and `trigger_teleport`.
+The accepted builder indexes every non-supplemental DEF, verifies each overlap
+has the exact normalized body, then omits only the redundant supplemental copy.
+Any difference or any duplicate among complete DEF files is fatal. Repeated
+`export fred/james` conversion directives are not runtime idDecl identities and
+are deliberately outside that collision rule.
+
+The independent v2 audit rehashes the exact file allowlist, rejects extras and
+reparse points, requires every MAP's PROC/CM companions, reparses all 78 DEF
+files, and reparses all three material files. This proves a structurally clean
+test tree, not that the engine accepts declaration order or that any map plays
+correctly. The 1.009 GB tree is local retail-derived test data and must remain
+outside Git and distribution.
+
 ## Checkpoint 064 co-op portable-package findings
 
 The final co-op generation exists as 20 separate development overlays beside

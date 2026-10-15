@@ -14,7 +14,24 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 064
+## Current checkpoint: 065
+
+**All 61 recovered campaign segments now coexist in one deduplicated local test
+tree.** A cross-package audit found 1,572 unique virtual paths and proved all
+115 solo/co-op shared paths byte-identical. Only three per-map paths varied:
+the solo/co-op language closures and the co-op runtime DEF. Their 101 strings,
+47 strings and 25 declarations union without semantic conflict.
+
+The first independent tree audit caught five declarations duplicated between
+the co-op supplemental DEF and complete DEF files pulled in by other maps. The
+accepted v2 builder removes those five only after normalized bodies match, and
+fails closed on any difference. Its 1,572 files (1,009,071,410 bytes) include
+61 MAP/PROC/CM triplets, 1,500 unique runtime declarations and 249 unique
+materials, with no untracked file or reparse point. All 272 offline tests pass;
+Doom 3 and `dmap` were not launched. Receipt:
+[`evidence/checkpoint-065-unified-campaign-test-tree.json`](evidence/checkpoint-065-unified-campaign-test-tree.json).
+
+## Earlier checkpoint: 064
 
 **The 20-map Xbox co-op campaign now has an exact manifest-only portable test
 package.** The packager selects the named final `soundguard_v3` generation
