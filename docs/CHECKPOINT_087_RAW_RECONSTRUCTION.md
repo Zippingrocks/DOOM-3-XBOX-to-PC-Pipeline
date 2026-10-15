@@ -1,7 +1,7 @@
 # Checkpoint 087: original-input reconstruction and missing resource recipes
 
-This checkpoint is in progress. Reviewed source and metadata are being pushed
-in checkpoints; authentic conversion results are recorded separately below.
+The three separate original-input reconstruction runs are complete. Reviewed
+source and metadata are pushed in checkpoints; authentic results are below.
 No Doom, Steam, dmap or xemu is launched. No old port is copied or uploaded.
 Fresh derived assets stay local and are not backups.
 
@@ -11,7 +11,16 @@ has passed authentic read-only preflight on this device with no output created;
 the separate runners' executed results are below. A combined end-to-end
 execution is not inferred from the preflight.
 
-## Completed original-resource runs
+## Completed original-input runs
+
+- Raw structural: **41 solo + 20 co-op maps / 525 steps / 124 original archive
+  files**, all completed. Available historical witnesses match. The result is
+  deliberately `completed-with-companion-identity-failures` (exit 1), not a clean
+  pass: Comm Outside 1's authored AAS96 header is `2127086718` while its fresh
+  MAP checksum is `1317835462`. No header was stamped or witness weakened.
+  Sixty co-op steps (20 MAP-CRC, 20 CM, 20 model steps) lack historical
+  witnesses and remain listed as gaps, not inferred equivalence.
+  [Sanitized raw proof](../evidence/checkpoint-087-raw-structural-proof.json).
 
 - Shared: all **23 roots / 348 member occurrences / 30 original archive files**
   pass exact extracted-payload witnesses.
@@ -23,12 +32,13 @@ execution is not inferred from the preflight.
   were authenticated before and after execution.
   [Sanitized audio/texture proof](../evidence/checkpoint-087-audio-texture-proof.json).
 
-Both runs used a fresh GitHub source checkout at the resource pin and new
+All three runs used a fresh GitHub source checkout at the resource pin and new
 isolated destinations. No previous overlay or old decoded resource was used
 as input. Outputs and logs stay private. The public proof files are strictly
 validated receipt projections; publishing them is not itself another payload
-replay. All 43 pipeline synthetic tests pass. The full 61-map raw run is still
-in progress, with both earlier numeric counterexamples now passing.
+replay. All 43 pipeline synthetic tests pass at the tested pipeline revision
+recorded below. Both earlier numeric counterexamples pass in the completed
+61-map run.
 
 ## Current portable kit: deterministic decoding and original resources
 
@@ -39,9 +49,11 @@ files and eight pipeline artifacts, including the new shared-resource plan,
 audio/texture input bindings and audio/texture plan. SHA-256:
 `35809549fb588ae7307a09603c42ea7a611cb9bc84e33b91c157376c2a085470`.
 
-Fresh authenticated GitHub source checkout verification passes all 629 source
-tests and byte-identically regenerates the structural, shared-resource,
-audio/texture and provenance plans. The current working-source 629-test suite
+Fresh authenticated GitHub checkouts of pipeline
+`e6b8efdc524bda126c777c6ddeb3aec38124b4cc` and the pinned reconstruction source
+pass all 629 source tests and all 43 pipeline tests on Windows/Python 3.12.14,
+and byte-identically regenerate the structural, shared-resource, audio/texture
+and provenance plans. The resource-pin 629-test suite
 also passes on installed Python 3.11.9, 3.12.14 and 3.13.10. This is local
 cross-runtime evidence, not a cloud/Linux CI result.
 
@@ -63,8 +75,8 @@ does not invent a final-overlay build command.
 The audio/texture capture binds all 860 previously unresolved sound/DDS final
 entries (330 distinct payload identities) to 55 XACT and seven texture recipes.
 The 173-step plan includes 111 exact metadata inputs. Every selected original
-ISO extent/input span was newly authenticated; output hashes are historical
-witnesses until execution passes. No audio/texture asset was uploaded.
+ISO extent/input span was newly authenticated; the completed execution above
+now matches those output witnesses. No audio/texture asset was uploaded.
 
 Current local shared declaration files were also checked read-only: all 137
 selected members match the original extraction hashes. There is no observed
@@ -73,10 +85,11 @@ overlay's declaration closure or unrecorded historical producer.
 
 ## Earlier structural-runner checkpoint (retained evidence)
 
-Source `87ed2b6e8a6c6509957d508686bd1ecb9cde8666` is pushed to reconstruction
+Historical source `87ed2b6e8a6c6509957d508686bd1ecb9cde8666` is pushed to reconstruction
 `master`. The [structural toolchain lock](../evidence/checkpoint-087-structural-toolchain-lock.json)
 pins 183 source files and the same five metadata artifacts as checkpoint 086.
 Its SHA-256 is `7f08e16641ee66b9da89738e9d7befcc7a918a549a0f68d5ec87658e38d9e4ce`.
+This older pin predates the numeric fix; do not select it for new reconstruction.
 The checkpoint-086 lock remains unchanged and still selects its older source.
 
 A fresh authenticated GitHub clone at this new source commit passed:
@@ -105,7 +118,7 @@ refresh a lock merely to bypass a mismatch.
 The runner accepts named directories as an alternative to `--archives`:
 
 ```powershell
-python -E -s -B reconstruction/tools/campaign_port/run_raw_structural_recipes.py --inventory pipeline/evidence/checkpoint-085-recovery-lock.json --inventory-sha256 b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74 --toolchain-lock pipeline/evidence/checkpoint-087-structural-toolchain-lock.json --archive-root 'solo=D:/licensed/solo-archives' --archive-root 'coop=D:/licensed/coop-archives' --archive-root 'shared=D:/licensed/shared-archives' --output 'D:/recovery087/raw'
+python -E -s -B reconstruction/tools/campaign_port/run_raw_structural_recipes.py --inventory pipeline/evidence/checkpoint-085-recovery-lock.json --inventory-sha256 b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74 --toolchain-lock pipeline/evidence/checkpoint-087-resource-toolchain-lock.json --archive-root 'solo=D:/licensed/solo-archives' --archive-root 'coop=D:/licensed/coop-archives' --archive-root 'shared=D:/licensed/shared-archives' --output 'D:/recovery087/raw'
 ```
 
 The output parent must already exist; the output itself must not exist. The
@@ -123,12 +136,60 @@ the remaining planned steps, then exits 1 with
 witness failures still stop with an incomplete receipt. Witness gaps remain
 separately listed; neither completion status is final-map acceptance.
 
-## Work still running at this checkpoint
+## Later source helpers and existing-output checks
 
-The initial raw runs stopped correctly on the numeric counterexample and remain
-incomplete, not passes. After the deterministic fix and a new fresh source
-clone, a new complete 61-map / 525-step run was launched. Independent fresh
-23-root shared and 173-step audio/texture runs completed with the exact results
-above. None consumes previous overlays. The final raw-map result is pending.
-Full raw-to-final composition, co-op host integration and gameplay/fidelity
-acceptance remain separate work, not promises established by a Git push.
+Source `03252a51b2c4395228f633728d32dd4a977889ba` adds an explicit
+`build_runtime_overlay.py --virtual-map` identity for flat fresh decoder output,
+with namespace/filename/traversal checks, plus a portable exact-generation
+co-op auditor. All 645 source tests pass. This successor is **not** substituted
+for the resource lock's proven `123904f` execution pin. No authentic final
+overlay has been built with the new virtual-map option yet.
+
+The read-only auditor selected exactly `mergeguard_v20p`, bound the existing
+rebuild receipt by SHA-256, and rechecked its primary tool identities at exit:
+
+- [Payload proof](../evidence/checkpoint-087-existing-coop/coop-overlay-corpus.json):
+  20 overlays, 6,218 files, 559,759,378 bytes; no untracked files or reported
+  unresolved class/resource/string references.
+- [MD5 structure proof](../evidence/checkpoint-087-existing-coop/coop-md5-structure.json):
+  4,843 physical MD5 files (158 meshes, 4,685 animations), 643 unique path/hash
+  pairs, no parse/structure issues.
+- [Companion proof](../evidence/checkpoint-087-existing-coop/coop-companion-crc.json):
+  20 maps / 50 companions, no checksum mismatches.
+
+These are checks of historical local outputs, **not inputs to the fresh runs**.
+Only sanitized metadata is saved. No package or assembled test tree was created.
+Individual MD5 structure does not prove animation-family compatibility;
+matching companion checksums do not prove collision/navigation fidelity.
+
+## Next bounded tasks, without rediscovering the formats
+
+1. Reproduce the checked intermediate stages using the quickstart and exact
+   resource lock. The initial failed numeric runs remain counterexamples, not
+   passes. Do not reuse their partial output directories.
+2. Close direct raw-to-final composition, first for one co-op map and then the
+   corpus: ordered resource roots, current transform profiles, generated script
+   bridges and individually authenticated PC fallback members. Use the shared
+   plan's 20 composition contracts and four unresolved retarget dependencies;
+   do not make the old 22-generation overlay chain a new input requirement.
+3. Bind each new producer to its source/profile/input hashes, compare final
+   logical paths and payload hashes against the preserved witnesses, and
+   retain any missing provenance as an explicit gap. The old checkpoint-086
+   provenance trace is immutable; its 1,346 unresolved entries have not been
+   globally recomputed merely because 860 audio/texture routes now have proofs.
+4. Finish fresh assembled-tree/package/merge and model-family gates. Existing
+   local-overlay checks above cannot substitute for these fresh-build checks.
+5. Integrate the map-relevant co-op host prerequisites deliberately: current
+   reconstruction `master` cannot select COOP through its normal game-type
+   resolver. The older `main` lineage has broader co-op code but must not
+   wholesale replace the newer map-host fixes. Keep the authored AAS mismatch
+   and remaining warning families documented in acceptance/format findings.
+6. Only after separate authorization, perform loader, two-peer, progression,
+   save/load and visual/audio fidelity acceptance. Cloud CI still needs an
+   owner-provided private-source read credential; neither local verification
+   nor a workflow file is a cloud/Linux matrix pass.
+
+The three authentic runs have finished; no long-running recovery process needs
+to survive device migration. Their derived assets and private logs stay local.
+Git preserves tools, exact plans, sanitized witnesses and findings, not a game
+backup or a claim that the final maps can already be reconstructed perfectly.

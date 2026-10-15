@@ -23,8 +23,10 @@ originals, not these device-local ports. No converted assets are uploaded.
 **Newer checkpoint:** [087 original-input reconstruction](docs/CHECKPOINT_087_RAW_RECONSTRUCTION.md)
 adds deterministic numeric output, exact shared-resource and audio/texture
 recipes, and checked runners. Use its newer resource toolchain lock. Authentic
-fresh reconstruction is in progress; do not interpret Git synchronization as
-final-overlay or gameplay acceptance.
+fresh reconstruction completed all 61 maps / 525 structural steps plus the
+shared and audio/texture runs. One authored AAS checksum mismatch and 60
+historical witness gaps remain explicit. Final-overlay composition and gameplay
+acceptance are not complete; do not interpret these results as perfect maps.
 
 ## Checkpoint 086: verify and run the portable recovery kit
 

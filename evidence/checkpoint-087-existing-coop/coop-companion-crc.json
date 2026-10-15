@@ -1,0 +1,756 @@
+{
+  "input_rebuild_receipt": {
+    "bytes": 6413,
+    "sha256": "3d63806d36d28726d2acc92ea4995f044f78913c90bdfa39bd6337c06e76d2bb"
+  },
+  "kind": "existing-coop-companion-crc-audit",
+  "limits": [
+    "Matching CRC is loader identity, not collision/navigation fidelity.",
+    "Stale authored checksums are neither repaired nor waived."
+  ],
+  "maps": [
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_admin",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 1929264,
+              "header_crc": 25560181,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_admin.cm",
+              "sha256": "5cfef93c02510b61383dca9f02103719546164caee851ca51a0df5ca7b8597df"
+            },
+            {
+              "bytes": 824144,
+              "header_crc": 25560181,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_admin.aas48",
+              "sha256": "ab4194f0e152ea40cccbbfa4392a53783a4b48dbb7ce51cda7a0e3c41df3f41d"
+            },
+            {
+              "bytes": 208113,
+              "header_crc": 25560181,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_admin.aas96",
+              "sha256": "b2ae58682ec87bd2fa42b22adb0081cf041d1fd73e4732fddbcf754dd2ac8a0c"
+            }
+          ],
+          "computed_geometry_crc": 25560181,
+          "map": "maps/vv/xbox_coop/xc_admin.map",
+          "map_sha256": "586e4468e32c6704a8fb3d2cee71880dacb64fd40a02e7cd408638156f0dc356"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_alphalabs2_2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 5784631,
+              "header_crc": 3745531086,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_alphalabs2_2.cm",
+              "sha256": "18b6fd6fbd746d5aae3dbf1559e67d7e4cb1f43915515848615ec17e220dfeba"
+            },
+            {
+              "bytes": 672630,
+              "header_crc": 3745531086,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_alphalabs2_2.aas48",
+              "sha256": "f56dd1520d36f818bb780fdb05286b0f1053dbb42996eebac7e0f8c389d148f9"
+            }
+          ],
+          "computed_geometry_crc": 3745531086,
+          "map": "maps/vv/xbox_coop/xc_alphalabs2_2.map",
+          "map_sha256": "ca9f74dc12b45f009cf47992d43c2b49eedd367539e7ae568d4120309eba6e79"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_caverns1_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3210559,
+              "header_crc": 3475541944,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns1_1.cm",
+              "sha256": "02b7fda215fb1b6fc615abaff4320561131d89d7ee5cd04c4c6fdcfae9756ab2"
+            },
+            {
+              "bytes": 1086868,
+              "header_crc": 3475541944,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns1_1.aas48",
+              "sha256": "d2a67a8dccd020d1f406b0ed8e1ae9a920de6b3bd92bfa2ae447f64402a976e9"
+            },
+            {
+              "bytes": 109690,
+              "header_crc": 3475541944,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns1_1.aas96",
+              "sha256": "391a6fb1b67befe3df7de69ff15db547a21a4e999df8df1859832d5af34a43fc"
+            }
+          ],
+          "computed_geometry_crc": 3475541944,
+          "map": "maps/vv/xbox_coop/xc_caverns1_1.map",
+          "map_sha256": "0435ae3f4cb9fcc1ce914997dc700b5e5522747b0630255c6ddffb1ff9e2ac5b"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_caverns2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 4113009,
+              "header_crc": 3435118695,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns2.cm",
+              "sha256": "f262f0b4f0d4c9480140f09b99b517a15c781cee6f3a7890503e2e44b34f548d"
+            },
+            {
+              "bytes": 1612017,
+              "header_crc": 3435118695,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns2.aas48",
+              "sha256": "a2929853a455977b74cd52abd6f75844c8b74dd90c73f35b0c23b8b798181cdc"
+            },
+            {
+              "bytes": 832678,
+              "header_crc": 3435118695,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_caverns2.aas96",
+              "sha256": "250d84581dca6a126c843a43baf19015918bb19f74c252361389abc9816f025d"
+            }
+          ],
+          "computed_geometry_crc": 3435118695,
+          "map": "maps/vv/xbox_coop/xc_caverns2.map",
+          "map_sha256": "3c07226c76d3abc22321457945646804633fb03ef9d15d60820ad572f381955a"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_comm1_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3359193,
+              "header_crc": 2194716150,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_comm1_1.cm",
+              "sha256": "0a94e6dfa1da827ef20bab0d592275dcfa79aac1984a72a332a5df3ab34a5562"
+            },
+            {
+              "bytes": 931385,
+              "header_crc": 2194716150,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_comm1_1.aas48",
+              "sha256": "61aeb0c553174a3681359cf4611d9be5a01f677205091f9a1eec4fe676223d07"
+            }
+          ],
+          "computed_geometry_crc": 2194716150,
+          "map": "maps/vv/xbox_coop/xc_comm1_1.map",
+          "map_sha256": "37ee5b11b91584a5564b17bda7eece20f13598f0fc2c635b4d7a88550fb48b2c"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_delta2b_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 2677242,
+              "header_crc": 4216080146,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta2b_1.cm",
+              "sha256": "77d9173411637bc2a8de0bb4482246c426129a48fbb641fef2e96be4c4d9bce5"
+            },
+            {
+              "bytes": 606188,
+              "header_crc": 4216080146,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta2b_1.aas48",
+              "sha256": "00fa76e76e79830f9d1dbe9c029d6eb3a16b5ee649ccde4559dd1cb3b4c76bac"
+            }
+          ],
+          "computed_geometry_crc": 4216080146,
+          "map": "maps/vv/xbox_coop/xc_delta2b_1.map",
+          "map_sha256": "70baa31c9bc93d3c379842d17d3c5963db95e060fcfd3b627a1150b865d1c290"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_delta2b_2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 5645593,
+              "header_crc": 3474151774,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta2b_2.cm",
+              "sha256": "eb4b5d4d8ce1ec47369fd217610a6cdfecb338584f2beaf971c23d5b5925ebcd"
+            },
+            {
+              "bytes": 680686,
+              "header_crc": 3474151774,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta2b_2.aas48",
+              "sha256": "f2824b57f2ac775fde482bf81a1691f4e48ad4b50f39c7cad8fa7471bae6bfe7"
+            }
+          ],
+          "computed_geometry_crc": 3474151774,
+          "map": "maps/vv/xbox_coop/xc_delta2b_2.map",
+          "map_sha256": "2a0a011a8ab0b40fb8abeb27ca53ce95e87249aa053d626930b7f31b7acbb11a"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_delta4",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 2194017,
+              "header_crc": 1310606134,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta4.cm",
+              "sha256": "09f22305c424730b830fe76fc55a7f960941c77c5b737f010049e8b927621eb5"
+            },
+            {
+              "bytes": 226339,
+              "header_crc": 1310606134,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta4.aas48",
+              "sha256": "fd529e4637b7f01c40392ee0cd3953fe6301d606a512f905a209289439415796"
+            },
+            {
+              "bytes": 108162,
+              "header_crc": 1310606134,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta4.aas96",
+              "sha256": "b664b956673dee6119c85551d2eb471dc2245066575aea5b2ff415cd80295eaf"
+            }
+          ],
+          "computed_geometry_crc": 1310606134,
+          "map": "maps/vv/xbox_coop/xc_delta4.map",
+          "map_sha256": "3b7357236b29a113c72d86b3126581964683d5ff111ab23495571c7fb8fa2e2a"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_delta5_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 4959693,
+              "header_crc": 1946210965,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta5_1.cm",
+              "sha256": "7a6b55c9996361b1fbe7040eb2ad6b6b5732709ad4b53ac394ee59924cd689c1"
+            },
+            {
+              "bytes": 494803,
+              "header_crc": 1946210965,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_delta5_1.aas48",
+              "sha256": "994b51b9043f9da3453cd365e37c1f03223f5cc53fea99dbc925c7ae674ea208"
+            }
+          ],
+          "computed_geometry_crc": 1946210965,
+          "map": "maps/vv/xbox_coop/xc_delta5_1.map",
+          "map_sha256": "1326f06186a13b1231e8644ec9fb70b83179c67c1671b1f70bf277e6128a34f5"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_enpro_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 5495477,
+              "header_crc": 2226283201,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_enpro_1.cm",
+              "sha256": "b79ce3b9f88d8dffdb7e8103a598a7f701738d1b32e9e9dd30e582de81f96735"
+            },
+            {
+              "bytes": 1020377,
+              "header_crc": 2226283201,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_enpro_1.aas48",
+              "sha256": "5bb7de9bd5ff8e7a4e415129d381fa60cd9b1998a92c6fde47ca20654c35f8b5"
+            }
+          ],
+          "computed_geometry_crc": 2226283201,
+          "map": "maps/vv/xbox_coop/xc_enpro_1.map",
+          "map_sha256": "5f596716399c35eb0e90d359520fba9e4bfdf341cac956f6b9f1c0aaa52cc527"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_enpro_2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3483436,
+              "header_crc": 2033356009,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_enpro_2.cm",
+              "sha256": "bf1f3526c62e499a3f8048b33a88bbc41cb09ce0426f37ae0de782359fda43f6"
+            },
+            {
+              "bytes": 861452,
+              "header_crc": 2033356009,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_enpro_2.aas48",
+              "sha256": "27fd5b19f706ea78d56d7f7f143719cd4bc10911900cba887997bb1d7ed7c7da"
+            }
+          ],
+          "computed_geometry_crc": 2033356009,
+          "map": "maps/vv/xbox_coop/xc_enpro_2.map",
+          "map_sha256": "d701763c5cd175e41c265fac304c18f7533a43cc8b78b9c9f89fa772e14b3a49"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_hell1_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 2883064,
+              "header_crc": 2355691493,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_1.cm",
+              "sha256": "251fa1c1790d40709a0e8729f960547b12a282b853c4c941cb65f1d6f8a8c3c7"
+            },
+            {
+              "bytes": 1296621,
+              "header_crc": 2355691493,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_1.aas48",
+              "sha256": "c6a80109729a6a1816aa60aaf9fb262fabac6e75d365d1bdada838121f330685"
+            },
+            {
+              "bytes": 539632,
+              "header_crc": 2355691493,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_1.aas96",
+              "sha256": "7955490e4d6273cd1a398abe86ada835dbc26ace9051a3269b9a6614c7eb5dba"
+            }
+          ],
+          "computed_geometry_crc": 2355691493,
+          "map": "maps/vv/xbox_coop/xc_hell1_1.map",
+          "map_sha256": "e695a8db59e894165c8888f3e549abdc39190e7f3dc7995c32ab3065b3f53b64"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 4,
+      "issues": [],
+      "map": "xc_hell1_2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3163536,
+              "header_crc": 3647446564,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_2.cm",
+              "sha256": "65fc159cc7be4e0231a06c8382db1c6563497731f5fc0cab52ef4e59d279aaf8"
+            },
+            {
+              "bytes": 1894591,
+              "header_crc": 3647446564,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_2.aas48",
+              "sha256": "3109cb83e9c573f5152286b2852578d3835e36f0dff1ec327c54bfc4594047fd"
+            },
+            {
+              "bytes": 170124,
+              "header_crc": 3647446564,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_2.aas_guardian",
+              "sha256": "a96b74cb5baed27dccf32167d22b85fd49f51035d97dc9ad897c9912cea69354"
+            },
+            {
+              "bytes": 437243,
+              "header_crc": 3647446564,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hell1_2.aas_mancubus",
+              "sha256": "764ef77feb6de5fa9a58eed09af9c62113157b570a5ac43d1a0db6b557c49757"
+            }
+          ],
+          "computed_geometry_crc": 3647446564,
+          "map": "maps/vv/xbox_coop/xc_hell1_2.map",
+          "map_sha256": "854fcf1a27b07060901b9b8321d4f16aaa081039bc9c6e42efc885fefdaf44c7"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_hellhole_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3485064,
+              "header_crc": 2996719210,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hellhole_1.cm",
+              "sha256": "819539cc31abcb5a725a75997ed476c93d22296faf1b24af8eeca1bfd11a2c0d"
+            },
+            {
+              "bytes": 515090,
+              "header_crc": 2996719210,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hellhole_1.aas48",
+              "sha256": "c0d11c491945d9f51d9e891602a2c34a3ee44b97d65b43971daf1f917c64dc22"
+            },
+            {
+              "bytes": 247565,
+              "header_crc": 2996719210,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_hellhole_1.aas_cyberdemon",
+              "sha256": "0178c732857e68a1fccf2e49649d2db10510675a2e129156b749a7d91227645f"
+            }
+          ],
+          "computed_geometry_crc": 2996719210,
+          "map": "maps/vv/xbox_coop/xc_hellhole_1.map",
+          "map_sha256": "f3de4d75b113f4722c05b1b1550e3fbf986c4ac64e1281d3ccc2034ed71d7c3a"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_mars_city1_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3320995,
+              "header_crc": 2410032894,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city1_1.cm",
+              "sha256": "35a8ebff563a9d449995c02a90f1e822aa9dfeb42ec289b0128b8b1132cd8931"
+            },
+            {
+              "bytes": 845853,
+              "header_crc": 2410032894,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city1_1.aas48",
+              "sha256": "aa4448e1abca303022f6e4efa6c61ced42a0445781a522ec5385488b78821168"
+            }
+          ],
+          "computed_geometry_crc": 2410032894,
+          "map": "maps/vv/xbox_coop/xc_mars_city1_1.map",
+          "map_sha256": "4ed7f6ab6ae6d11146a9905ab6b26ba2e50cfe03e65bcba83a9428d687ecf5fc"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_mars_city2_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 2927667,
+              "header_crc": 3219770337,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city2_1.cm",
+              "sha256": "dfbebaf505573f89050d3f0b4c2f3ded68ec17de79074d7a9f944a7d2b75999f"
+            },
+            {
+              "bytes": 691857,
+              "header_crc": 3219770337,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city2_1.aas48",
+              "sha256": "6e9f0b2cbd8981c3117cb20e029d390c4aa792fd449aad64ae3d241f0f70338e"
+            }
+          ],
+          "computed_geometry_crc": 3219770337,
+          "map": "maps/vv/xbox_coop/xc_mars_city2_1.map",
+          "map_sha256": "ae44f5ec94584999015a87a6f21c41f7eacc93b6b9638bd2b7753c8729e29c92"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_mars_city2_2",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 1526425,
+              "header_crc": 2356338129,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city2_2.cm",
+              "sha256": "28f66afd7f18544c18cfd59aa8bb3b34190f596660a33b44bcc6bcd98b0deed7"
+            },
+            {
+              "bytes": 349583,
+              "header_crc": 2356338129,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mars_city2_2.aas48",
+              "sha256": "bf118f9643843b369c6de0c371356aa4150b1509c6c5c2baf951c7ec4bba8657"
+            }
+          ],
+          "computed_geometry_crc": 2356338129,
+          "map": "maps/vv/xbox_coop/xc_mars_city2_2.map",
+          "map_sha256": "79925bedfb80892a39185ce024619b304e099dd6bc93d3373d9c8e7abb6678dd"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 2,
+      "issues": [],
+      "map": "xc_mcu",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3537686,
+              "header_crc": 2327495450,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mcu.cm",
+              "sha256": "98551ea432d106f5d1f60393b7856337b6d8282ddd464fa5fc516b553efc9aff"
+            },
+            {
+              "bytes": 466213,
+              "header_crc": 2327495450,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_mcu.aas48",
+              "sha256": "4b1bf8e5d89af1a013beb97de01868eaccc4ef07a20f1baa1c63f1732b37c0eb"
+            }
+          ],
+          "computed_geometry_crc": 2327495450,
+          "map": "maps/vv/xbox_coop/xc_mcu.map",
+          "map_sha256": "7eb3823884b2bf96575053b1d6c6523265df1dd162e8692607608d72748f0a49"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_recycling2_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 3515885,
+              "header_crc": 1305987032,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_recycling2_1.cm",
+              "sha256": "e8521f124483b5768c12c0a7ec16f8a053d0913e2da24dedd7f15064a7c975ab"
+            },
+            {
+              "bytes": 938578,
+              "header_crc": 1305987032,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_recycling2_1.aas48",
+              "sha256": "82e45ff243a5a141d884d2a9cd4e3f2f91a4b2a8e7f9bdc9fff1864dae23c4a4"
+            },
+            {
+              "bytes": 109391,
+              "header_crc": 1305987032,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_recycling2_1.aas_mancubus",
+              "sha256": "46db7092f6056fa56de734d31e578dcc9cb040ca0a45ac599cae78dca04c5f82"
+            }
+          ],
+          "computed_geometry_crc": 1305987032,
+          "map": "maps/vv/xbox_coop/xc_recycling2_1.map",
+          "map_sha256": "638d279a2df1553b4eaa94024e27e9fdeb22523f4ffbe360d998fdb64e1f92fc"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "companions": 3,
+      "issues": [],
+      "map": "xc_site3_1",
+      "maps": 1,
+      "rows": [
+        {
+          "companions": [
+            {
+              "bytes": 4159870,
+              "header_crc": 2465825243,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_site3_1.cm",
+              "sha256": "b39d942e1dcc955c9a4f0bf0cf95a4b2020db86ee167365ccfe989a372ebc7b0"
+            },
+            {
+              "bytes": 1601221,
+              "header_crc": 2465825243,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_site3_1.aas48",
+              "sha256": "8780818474f02829dcc806ce6af1925c45a4e25fe1f64255579c57e569c5efcb"
+            },
+            {
+              "bytes": 391348,
+              "header_crc": 2465825243,
+              "matches": true,
+              "path": "maps/vv/xbox_coop/xc_site3_1.aas96",
+              "sha256": "77bd276b549ff80fb5f2648e30b039939d27d44837c48918165ee57fec18722c"
+            }
+          ],
+          "computed_geometry_crc": 2465825243,
+          "map": "maps/vv/xbox_coop/xc_site3_1.map",
+          "map_sha256": "1cbb2ac1f672a0849341ce189f163db0007ef27c2c8fe7e413d77dac4b7d3317"
+        }
+      ],
+      "status": "passed"
+    }
+  ],
+  "primary_audit_tools": {
+    "audit_existing_coop_overlays.py": {
+      "mode": "lf",
+      "sha256": "cedeeffaa4f6c8a3e1516da8b0d55ea60977e7ac0cee1c55dcd238fc2b9d47c4"
+    },
+    "build_runtime_overlay.py": {
+      "mode": "lf",
+      "sha256": "c9cf88429774e3439a8d981ba6e79068597c43cd560e56c2744b9049efbe0405"
+    },
+    "campaign_companion_crc_audit.py": {
+      "mode": "lf",
+      "sha256": "f522591f60c74fb3a87f53e7af201468024e715e777cb616b377003722bac23b"
+    },
+    "coop_aas_requirement_audit.py": {
+      "mode": "lf",
+      "sha256": "be027807d8374803e7728318503b3fafa9c0161f2c48c72ae8b47283ecaebfec"
+    },
+    "coop_overlay_corpus_audit.py": {
+      "mode": "lf",
+      "sha256": "857abd076d55c7e5f35287064d310969312871cd6d61b7d5062b02f40edad6ee"
+    },
+    "map_geometry_crc.py": {
+      "mode": "lf",
+      "sha256": "02fff6156e59d6b197dce1f6b19370ddf768b9ae79ae41a43ab4fe5d2fd0a678"
+    },
+    "md5_corpus_audit.py": {
+      "mode": "lf",
+      "sha256": "818abfc87e90df5b5b3919147ee20e6b5c5284be222f0990acc71c80d4282c36"
+    },
+    "md5_family_audit.py": {
+      "mode": "lf",
+      "sha256": "c4af9b5879da93b9784caebf5f5297130711b6d73086190c6315b949770de42e"
+    },
+    "rebuild_latest_coop_overlays.py": {
+      "mode": "lf",
+      "sha256": "f19f830919d1d4e70503139f602f722b6ec07884a15047917821aba8dcdde71d"
+    }
+  },
+  "python": "3.11.9",
+  "schema": 1,
+  "scope": "Existing exact-generation overlays only; not package or assembled-tree acceptance.",
+  "selection": {
+    "map_ids": [
+      "xc_admin",
+      "xc_alphalabs2_2",
+      "xc_caverns1_1",
+      "xc_caverns2",
+      "xc_comm1_1",
+      "xc_delta2b_1",
+      "xc_delta2b_2",
+      "xc_delta4",
+      "xc_delta5_1",
+      "xc_enpro_1",
+      "xc_enpro_2",
+      "xc_hell1_1",
+      "xc_hell1_2",
+      "xc_hellhole_1",
+      "xc_mars_city1_1",
+      "xc_mars_city2_1",
+      "xc_mars_city2_2",
+      "xc_mcu",
+      "xc_recycling2_1",
+      "xc_site3_1"
+    ],
+    "mode": "exact-suffix",
+    "suffix": "mergeguard_v20p"
+  },
+  "status": "passed",
+  "summary": {
+    "companions": 50,
+    "issues": 0,
+    "maps": 20
+  }
+}

@@ -120,6 +120,13 @@ An arbitrary exit 1, a missing receipt, a witness mismatch, or another failure
 stops the workflow. Historical equivalence does not repair an invalid AAS/CM
 header; never stamp a checksum merely to turn the report green.
 
+For the current pinned originals, the completed reference raw run reports
+exactly one companion mismatch (solo `commoutside_1`, AAS96) and 60 historical
+witness gaps (co-op MAP-CRC, CM and model steps). Shared and audio/texture
+reference runs pass their exact selected witnesses. Use the published
+checkpoint-087 proofs to distinguish these known outcomes from a new failure;
+do not waive any additional mismatch or treat the known issues as acceptance.
+
 Keep failed trees isolated and select a different fresh prefix for another
 attempt. Do not delete or overwrite the failed evidence automatically.
 Publish only reviewed code and allowlisted metadata. The original inputs,

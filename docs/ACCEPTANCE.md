@@ -5,9 +5,16 @@
 The original-input runners authenticate source and output witnesses but do not
 compose or accept final campaign overlays. Earlier authentic runs found a real
 Python float-summation byte mismatch; its deterministic fix restored all 459
-CPU2 model witnesses. The full new run and resource runs are tracked in
+CPU2 model witnesses. The full new run completed all 61 maps / 525 steps;
+shared and audio/texture selected witnesses also pass. Exact results are in
 [checkpoint 087](CHECKPOINT_087_RAW_RECONSTRUCTION.md). Keep authored checksum
 failures and missing historical witnesses explicit; no gameplay acceptance.
+
+The later exact-v20p read-only check now closes the historical per-overlay
+payload, loose MD5 structure and companion-CRC checks: 20 maps, 6,218 payloads,
+4,843 MD5 files and 50 companions pass. It does not close final package/tree,
+cross-map merge, MD5-family compatibility or fresh-final-build equivalence.
+See checkpoint 087 for the three sanitized proofs and their exact source pin.
 
 ## Checkpoint 086 portable tooling boundary
 

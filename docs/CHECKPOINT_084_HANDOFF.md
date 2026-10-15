@@ -1,5 +1,11 @@
 # Checkpoint 084 immediate handoff
 
+**Later update:** [checkpoint 087](CHECKPOINT_087_RAW_RECONSTRUCTION.md) records
+completed read-only exact-v20p payload, loose MD5 structure and companion-CRC
+audits. Package/test-tree/merge/family acceptance still remains open. The stop
+record below is historical; do not repeat those completed overlay checks merely
+because their receipts were absent at checkpoint 084.
+
 For device migration and missing reproducibility guarantees, read the later
 [reproducibility correction plan](REPRODUCIBILITY_RECOVERY_PLAN.md) first.
 The state below remains the checkpoint stop record, not a claim that every

@@ -2,3 +2,4 @@
 checkpoint-085-*.json text eol=lf
 checkpoint-086-*.json text eol=lf
 checkpoint-087-*.json text eol=lf
+checkpoint-087-existing-coop/*.json text eol=lf

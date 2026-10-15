@@ -1,0 +1,249 @@
+{
+  "input_rebuild_receipt": {
+    "bytes": 6413,
+    "sha256": "3d63806d36d28726d2acc92ea4995f044f78913c90bdfa39bd6337c06e76d2bb"
+  },
+  "kind": "existing-coop-overlay-corpus-audit",
+  "maps": [
+    {
+      "manifest_bytes": 182583,
+      "manifest_sha256": "da745fff523ffc3912bbf9c1f3f467557693cbb604634ef6bf2b69d7126593d6",
+      "map": "xc_admin",
+      "payload_bytes": 21758007,
+      "payload_files": 330,
+      "payload_ledger_sha256": "dc1578b69f8fadca3c5d3a99d62d45d207d36473bc002dba191335d97ec4d9ec"
+    },
+    {
+      "manifest_bytes": 154552,
+      "manifest_sha256": "0c107931b08eb0ee34577d8a56dfb446c6e2e86ccd4556397b521b45a36fcc07",
+      "map": "xc_alphalabs2_2",
+      "payload_bytes": 30311568,
+      "payload_files": 280,
+      "payload_ledger_sha256": "6da6f0fff78a09eca60446d9715ce0f016ecefd607f2636477d5d9d5ce677537"
+    },
+    {
+      "manifest_bytes": 167504,
+      "manifest_sha256": "7d4ab0cd66b533ac708917f3727dc9fefdde6f306c822662efe8cdceec5a0100",
+      "map": "xc_caverns1_1",
+      "payload_bytes": 24903941,
+      "payload_files": 293,
+      "payload_ledger_sha256": "e507d1e6a809ab6338643206a110dd325e3f81fcd7e42356e03ff8df4bd13f17"
+    },
+    {
+      "manifest_bytes": 163107,
+      "manifest_sha256": "92eca256fe9c05e2b43f304e10197cd282965aaadd887c6bdfe063ddc8639dd1",
+      "map": "xc_caverns2",
+      "payload_bytes": 28926870,
+      "payload_files": 288,
+      "payload_ledger_sha256": "2c3ee62f2fe026218694d2f58305ea910023ef3fd914d119509423732cfbe34c"
+    },
+    {
+      "manifest_bytes": 164452,
+      "manifest_sha256": "e1350659a8149410de49e8120a638799bfc66e3a242e191943acea0e82b95ac7",
+      "map": "xc_comm1_1",
+      "payload_bytes": 25066644,
+      "payload_files": 292,
+      "payload_ledger_sha256": "8f580923e47fa25d2ec0a9fdad0a83c09cf3425fe3ba2138d55dbe9a4a5d8889"
+    },
+    {
+      "manifest_bytes": 166683,
+      "manifest_sha256": "ca8b487dd814c5d0896ec2ce94a6d3ed91bbc29aa3b488f1275eca78513d89c1",
+      "map": "xc_delta2b_1",
+      "payload_bytes": 27324086,
+      "payload_files": 293,
+      "payload_ledger_sha256": "031767f2ece22b163f6d789555c774491a41c83d696ff44a9fa3fe2ae9201640"
+    },
+    {
+      "manifest_bytes": 174289,
+      "manifest_sha256": "b4ef587e22da0e81aaf14aa768e159fab8567a7ceddbc47ee95c65c25657bf07",
+      "map": "xc_delta2b_2",
+      "payload_bytes": 29601087,
+      "payload_files": 302,
+      "payload_ledger_sha256": "ee9b31975cbf77555670f9bd333e6b4d910bb459972b789ddefa2c608fd9c23e"
+    },
+    {
+      "manifest_bytes": 152264,
+      "manifest_sha256": "c8a2b96390500aed2553b91c91f0d65b59466a1f420ca1fd70b8d45b3457b449",
+      "map": "xc_delta4",
+      "payload_bytes": 16874529,
+      "payload_files": 277,
+      "payload_ledger_sha256": "534e927f5e38ef4f94ff8cc0577697c6edf2fb6417f99da9db071f26b468fc70"
+    },
+    {
+      "manifest_bytes": 159351,
+      "manifest_sha256": "f0d35b7a33b42007411c6914bd1ac5f790f3cd124d9d5715f7d7572bb1a26f27",
+      "map": "xc_delta5_1",
+      "payload_bytes": 29904539,
+      "payload_files": 289,
+      "payload_ledger_sha256": "9c6314e67e621dcf908563af6bf11ac86adf38148573308e54416fd2ddd16d98"
+    },
+    {
+      "manifest_bytes": 159547,
+      "manifest_sha256": "76b11f7280f518aaa67120107a6ddac366051373e2dcbe329395aa484e7e8aff",
+      "map": "xc_enpro_1",
+      "payload_bytes": 29671129,
+      "payload_files": 289,
+      "payload_ledger_sha256": "cbec340499b74f0e661218d2cd15aa33405a055e8957835d0ee075ec409d600c"
+    },
+    {
+      "manifest_bytes": 158063,
+      "manifest_sha256": "dd47882b281538b29008b4ae69d9dd226f2fe44466811662158043d33fbcb30c",
+      "map": "xc_enpro_2",
+      "payload_bytes": 24042491,
+      "payload_files": 286,
+      "payload_ledger_sha256": "26b4b78a265d6080f2e7a3800586ccd63e63144f6c754e17eba7904ea54c13cb"
+    },
+    {
+      "manifest_bytes": 159125,
+      "manifest_sha256": "be4914f1fd72c8271df54df87fbcbcafaaaaa21a7be1c316ec3c0c9802f80629",
+      "map": "xc_hell1_1",
+      "payload_bytes": 27912960,
+      "payload_files": 290,
+      "payload_ledger_sha256": "13f3b841b2e53d6ad3307d480da15a97005f98e4325e6006373b3f98f7974200"
+    },
+    {
+      "manifest_bytes": 171044,
+      "manifest_sha256": "b99714012a8e6dea5f83793cbea95032cbf3c6ac0b5d727f7d524b7c48e886ba",
+      "map": "xc_hell1_2",
+      "payload_bytes": 33236649,
+      "payload_files": 313,
+      "payload_ledger_sha256": "93a79cb5666b90000665fc75fd52aa85467ca72e54fb2e51ef71585180e0d56d"
+    },
+    {
+      "manifest_bytes": 181880,
+      "manifest_sha256": "e33480cc79fbbe647e5fc488a8bee86ccafc947d2b50c5d3dddf688e46ce98dc",
+      "map": "xc_hellhole_1",
+      "payload_bytes": 28842058,
+      "payload_files": 299,
+      "payload_ledger_sha256": "a7c6bf97f0d8f05249f1f2054fd47180876accb3ceb0543f6480b3f3aaca59bf"
+    },
+    {
+      "manifest_bytes": 211159,
+      "manifest_sha256": "c92fdd06d3eaa8eb4ed9c9b9f4962b63f8f17217fdf2b178739cd1ce987b564f",
+      "map": "xc_mars_city1_1",
+      "payload_bytes": 34704806,
+      "payload_files": 380,
+      "payload_ledger_sha256": "5f09f1caf0ea00c89e8755df926919b9a08a2c70d7d780044a45fc824c8e2e8a"
+    },
+    {
+      "manifest_bytes": 163852,
+      "manifest_sha256": "52ac520d98e0df936f327a321d8645c3a79c6ab484f6f741c642501807cabea7",
+      "map": "xc_mars_city2_1",
+      "payload_bytes": 23128643,
+      "payload_files": 286,
+      "payload_ledger_sha256": "eec22a01e7f76f30c1acdaaada63f62b20719eb18b139bda612eb450fcdd453d"
+    },
+    {
+      "manifest_bytes": 156977,
+      "manifest_sha256": "c75ca6beec79086ec102e9499c988fe7dac05e433aad57add208bffbe047df10",
+      "map": "xc_mars_city2_2",
+      "payload_bytes": 16917710,
+      "payload_files": 281,
+      "payload_ledger_sha256": "456d4cf09671d2538488f91de78ad25f32224db2e003d8cf98980555bd4703fa"
+    },
+    {
+      "manifest_bytes": 286398,
+      "manifest_sha256": "35fb2970e679e1f9fca58a55faa40f1aef15eb28d1d32b19bd701e0f220d9aaf",
+      "map": "xc_mcu",
+      "payload_bytes": 37357346,
+      "payload_files": 548,
+      "payload_ledger_sha256": "9450a800cd6aac8a906117d57fcd2a375245cb497d384c8565dc025a26da7879"
+    },
+    {
+      "manifest_bytes": 169999,
+      "manifest_sha256": "80bea895950ab16f1dd3dfd61c49ad6af45a5475557ccda5230df792a48a2227",
+      "map": "xc_recycling2_1",
+      "payload_bytes": 34886800,
+      "payload_files": 308,
+      "payload_ledger_sha256": "249002e25ac3da412c799a678e3508ec01fafe1676baa47f25ad0866f1c21b6f"
+    },
+    {
+      "manifest_bytes": 165645,
+      "manifest_sha256": "d1769dd560f993c3f8893ea986da446a96f438a797587e94103f45e53be9817d",
+      "map": "xc_site3_1",
+      "payload_bytes": 34387515,
+      "payload_files": 294,
+      "payload_ledger_sha256": "653e6e462f9b76076638cebac16e5319e2290417445c48e6b20226708e9c9820"
+    }
+  ],
+  "primary_audit_tools": {
+    "audit_existing_coop_overlays.py": {
+      "mode": "lf",
+      "sha256": "cedeeffaa4f6c8a3e1516da8b0d55ea60977e7ac0cee1c55dcd238fc2b9d47c4"
+    },
+    "build_runtime_overlay.py": {
+      "mode": "lf",
+      "sha256": "c9cf88429774e3439a8d981ba6e79068597c43cd560e56c2744b9049efbe0405"
+    },
+    "campaign_companion_crc_audit.py": {
+      "mode": "lf",
+      "sha256": "f522591f60c74fb3a87f53e7af201468024e715e777cb616b377003722bac23b"
+    },
+    "coop_aas_requirement_audit.py": {
+      "mode": "lf",
+      "sha256": "be027807d8374803e7728318503b3fafa9c0161f2c48c72ae8b47283ecaebfec"
+    },
+    "coop_overlay_corpus_audit.py": {
+      "mode": "lf",
+      "sha256": "857abd076d55c7e5f35287064d310969312871cd6d61b7d5062b02f40edad6ee"
+    },
+    "map_geometry_crc.py": {
+      "mode": "lf",
+      "sha256": "02fff6156e59d6b197dce1f6b19370ddf768b9ae79ae41a43ab4fe5d2fd0a678"
+    },
+    "md5_corpus_audit.py": {
+      "mode": "lf",
+      "sha256": "818abfc87e90df5b5b3919147ee20e6b5c5284be222f0990acc71c80d4282c36"
+    },
+    "md5_family_audit.py": {
+      "mode": "lf",
+      "sha256": "c4af9b5879da93b9784caebf5f5297130711b6d73086190c6315b949770de42e"
+    },
+    "rebuild_latest_coop_overlays.py": {
+      "mode": "lf",
+      "sha256": "f19f830919d1d4e70503139f602f722b6ec07884a15047917821aba8dcdde71d"
+    }
+  },
+  "python": "3.11.9",
+  "schema": 1,
+  "scope": "Existing exact-generation overlays only; not package or assembled-tree acceptance.",
+  "selection": {
+    "map_ids": [
+      "xc_admin",
+      "xc_alphalabs2_2",
+      "xc_caverns1_1",
+      "xc_caverns2",
+      "xc_comm1_1",
+      "xc_delta2b_1",
+      "xc_delta2b_2",
+      "xc_delta4",
+      "xc_delta5_1",
+      "xc_enpro_1",
+      "xc_enpro_2",
+      "xc_hell1_1",
+      "xc_hell1_2",
+      "xc_hellhole_1",
+      "xc_mars_city1_1",
+      "xc_mars_city2_1",
+      "xc_mars_city2_2",
+      "xc_mcu",
+      "xc_recycling2_1",
+      "xc_site3_1"
+    ],
+    "mode": "exact-suffix",
+    "suffix": "mergeguard_v20p"
+  },
+  "status": "passed",
+  "summary": {
+    "direct_authored_cm_maps": 20,
+    "manifest_ledger_sha256": "49854df0dbcce26e4e1279f099347b07655cfa4f8db396d89500cecd853e2dc9",
+    "maps": 20,
+    "payload_bytes": 559759378,
+    "payload_files": 6218,
+    "payload_ledger_sha256": "672b81d5aa7480a3ebac92e567b49806bf4e00282851dfbcbddd353d22c2d32c",
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "untracked_files": 0
+  }
+}

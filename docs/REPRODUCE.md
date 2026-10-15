@@ -9,7 +9,8 @@ provides a pinned checkout verifier and an opt-in structural runner. It does
 not supersede the remaining raw-to-final composition or acceptance gates.
 
 For reconstruction on another machine **without transferring old ports**, start
-with [checkpoint 085's asset-free recovery path](CHECKPOINT_085_ASSET_FREE_RECOVERY.md),
+with the [next-machine quickstart](NEXT_MACHINE_QUICKSTART.md), then
+[checkpoint 085's asset-free recovery path](CHECKPOINT_085_ASSET_FREE_RECOVERY.md),
 [solo/raw recipes](RAW_INPUT_RECIPES.md) and
 [co-op/shared recipes](COOP_RECOVERY_RECIPES.md). The commands below retain their
 historical incremental-replay meaning.
