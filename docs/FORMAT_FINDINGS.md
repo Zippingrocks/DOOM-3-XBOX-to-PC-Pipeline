@@ -1,5 +1,15 @@
 # Format findings and unknowns
 
+## Checkpoint 087 numeric reproducibility
+
+Python 3.12's improved built-in floating-point summation can change serialized
+MD5 joint decimals relative to the preserved witnesses. CPU2 and Delta1_2
+expose the same Revenant input with a two-byte output difference. Explicit
+left-to-right binary64 accumulation restores the historical output without
+changing witness hashes; a fresh CPU2 model corpus passes all 459 identities.
+This identifies arithmetic behavior, not an unrecorded historical interpreter.
+See [checkpoint 087](CHECKPOINT_087_RAW_RECONSTRUCTION.md).
+
 ## Checkpoint 086 reproducibility safeguards
 
 An empty GFC include list means extract everything, not extract nothing. The

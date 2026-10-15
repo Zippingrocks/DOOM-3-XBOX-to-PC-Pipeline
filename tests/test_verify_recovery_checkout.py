@@ -46,5 +46,25 @@ class CheckoutVerifierTests(unittest.TestCase):
         lock = {"metadata_lock": "evidence/example.json", "pipeline_artifacts": [{"path": "evidence/example.json"}]}
         self.assertEqual(verify.bound_artifact(lock, "metadata_lock"), verify.PIPELINE / "evidence/example.json")
 
+    def test_optional_resources_are_explicitly_bound_and_audio_is_paired(self):
+        self.assertEqual(verify.resource_artifacts({}), {})
+        for lock in ({"audio_texture_plan": "plan.json"}, {"audio_texture_bindings": "bindings.json"},
+                     {"shared_resource_plan": "shared.json", "pipeline_artifacts": []}):
+            with self.assertRaises(ValueError): verify.resource_artifacts(lock)
+        lock = {"audio_texture_plan": "plan.json", "audio_texture_bindings": "bindings.json",
+                "shared_resource_plan": "shared.json", "pipeline_artifacts": [
+                    {"path": "plan.json"}, {"path": "bindings.json"}, {"path": "shared.json"}]}
+        self.assertEqual(set(verify.resource_artifacts(lock)),
+                         {"audio_texture_plan", "audio_texture_bindings", "shared_resource_plan"})
+
+    def test_audio_producer_binding_must_match_pinned_source(self):
+        (self.root / "file.py").write_bytes(b"example\r\n")
+        bindings = {"current_recipe_tools": [self.row(mode="lf")]}
+        verify.verify_producer_bindings(self.root, bindings)
+        for rows in ([], [self.row(mode="bytes")], [self.row(mode="lf")] * 2):
+            with self.assertRaises(ValueError): verify.verify_producer_bindings(self.root, {"current_recipe_tools": rows})
+        (self.root / "file.py").write_bytes(b"changed\n")
+        with self.assertRaises(ValueError): verify.verify_producer_bindings(self.root, bindings)
+
 
 if __name__ == "__main__": unittest.main()

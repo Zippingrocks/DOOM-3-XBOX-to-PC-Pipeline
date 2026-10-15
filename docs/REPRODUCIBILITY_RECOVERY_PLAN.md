@@ -1,5 +1,10 @@
 # Reproducibility correction plan and next-AI handoff
 
+**Checkpoint 087:** see [original-input reconstruction](CHECKPOINT_087_RAW_RECONSTRUCTION.md)
+for the newer source lock, checked resource recipes, deterministic arithmetic
+fix and authentic fresh-run evidence. Historical backup recommendations below
+remain superseded by the no-old-ports/no-game-backup constraint.
+
 Updated 2026-10-15. **Read this before continuing checkpoint 084.**
 
 **Checkpoint 086 update:** [portable recovery tooling](CHECKPOINT_086_PORTABLE_RECOVERY.md)

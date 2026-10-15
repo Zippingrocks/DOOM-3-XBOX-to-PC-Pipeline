@@ -1,5 +1,9 @@
 # Reproduce checkpoint 084
 
+**Current recovery kit:** [checkpoint 087](CHECKPOINT_087_RAW_RECONSTRUCTION.md)
+extends the pinned asset-free kit with exact resource runners and deterministic
+numeric serialization. Follow its newer lock and recorded evidence boundaries.
+
 **Latest asset-free tooling:** [checkpoint 086](CHECKPOINT_086_PORTABLE_RECOVERY.md)
 provides a pinned checkout verifier and an opt-in structural runner. It does
 not supersede the remaining raw-to-final composition or acceptance gates.

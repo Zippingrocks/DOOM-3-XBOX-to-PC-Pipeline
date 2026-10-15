@@ -8,6 +8,9 @@ Read docs/CHECKPOINT_085_ASSET_FREE_RECOVERY.md before device migration.
 Then read docs/CHECKPOINT_086_PORTABLE_RECOVERY.md and run the asset-free
 checkout verifier. Its toolchain lock, not the source default branch, pins
 the current recovery tools. Do not refresh locks merely to silence mismatches.
+Read docs/CHECKPOINT_087_RAW_RECONSTRUCTION.md for the newer default resource
+toolchain, fresh-run counterexamples and deterministic floating-point fix.
+Keep initial failed-run evidence; never replace historical hashes to force a pass.
 The user cannot transfer existing converted ports or back up real game files:
 preserve source and sanitized metadata, and build future recipes from originals.
 

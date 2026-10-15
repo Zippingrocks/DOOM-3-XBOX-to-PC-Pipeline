@@ -32,9 +32,11 @@ jobs:
         id: lock
         shell: python
         run: |
-          import json, os, re
+          import json, os, re, sys
           from pathlib import Path
-          lock = json.loads(Path('evidence/checkpoint-086-toolchain-lock.json').read_text())
+          sys.path.insert(0, 'tools')
+          from verify_recovery_checkout import LOCK
+          lock = json.loads(Path(LOCK).read_text())
           commit = lock['source_commit']
           assert re.fullmatch('[0-9a-f]{40}', commit)
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:

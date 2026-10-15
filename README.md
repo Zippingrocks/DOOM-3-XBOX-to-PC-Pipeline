@@ -16,6 +16,12 @@ campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
 ## Checkpoint 086: verify and run the portable recovery kit
 
+**Newer checkpoint:** [087 original-input reconstruction](docs/CHECKPOINT_087_RAW_RECONSTRUCTION.md)
+adds deterministic numeric output, exact shared-resource and audio/texture
+recipes, and checked runners. Use its newer resource toolchain lock. Authentic
+fresh reconstruction is in progress; do not interpret Git synchronization as
+final-overlay or gameplay acceptance.
+
 [Start here: portable recovery verification](docs/CHECKPOINT_086_PORTABLE_RECOVERY.md).
 The pipeline now pins every recovery tool/profile and supplies one asset-free
 checkout verifier, Windows/Linux CI, and an opt-in raw structural runner in

@@ -1,5 +1,14 @@
 # Recovery order and acceptance
 
+## Checkpoint 087 evidence boundary
+
+The original-input runners authenticate source and output witnesses but do not
+compose or accept final campaign overlays. Earlier authentic runs found a real
+Python float-summation byte mismatch; its deterministic fix restored all 459
+CPU2 model witnesses. The full new run and resource runs are tracked in
+[checkpoint 087](CHECKPOINT_087_RAW_RECONSTRUCTION.md). Keep authored checksum
+failures and missing historical witnesses explicit; no gameplay acceptance.
+
 ## Checkpoint 086 portable tooling boundary
 
 The new checkout verifier and synthetic runner checks accept tool/metadata

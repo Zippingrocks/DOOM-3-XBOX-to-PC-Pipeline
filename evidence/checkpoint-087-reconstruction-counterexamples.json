@@ -1,0 +1,59 @@
+{
+  "schema": "doom3-reconstruction-counterexamples-v1",
+  "date": "2026-10-15",
+  "source_commit": "87ed2b6e8a6c6509957d508686bd1ecb9cde8666",
+  "toolchain_lock_sha256": "7f08e16641ee66b9da89738e9d7befcc7a918a549a0f68d5ec87658e38d9e4ce",
+  "metadata_lock_sha256": "b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74",
+  "runtime": {"platform": "Windows", "python": "3.12.14"},
+  "runs": [
+    {
+      "label": "initial-full-corpus-attempt",
+      "status": "incomplete",
+      "verified_steps": 128,
+      "fully_verified_maps": 14,
+      "failure_step": "solo:cpu_2:models",
+      "private_receipt_sha256": "dac988999b5fc37a0b02f88905e7f7402be6bb08fa9315679cb3f53d0677de9d"
+    },
+    {
+      "label": "remaining-corpus-attempt",
+      "status": "incomplete",
+      "selected_maps": 46,
+      "verified_steps": 17,
+      "fully_verified_maps": 1,
+      "failure_step": "solo:delta1_2:models",
+      "private_receipt_sha256": "a8a13c032ca181099a25323905259f64bdb0dc0ae21e7777aa19216002d58cd0"
+    }
+  ],
+  "model_counterexample": {
+    "source_member": "base/models/md5/monsters/revenant/james/revenant.mdvmesh",
+    "source_bytes": 137667,
+    "source_sha256": "d349d6025dd6b2bed95eada0cf2d8011cdb741bbbc65edd66f9712258fb9f716",
+    "historical_output_bytes": 431320,
+    "historical_output_sha256": "3ff9985f58aab1f5ead3a318525222e8d027ab43e13d05c96d4b026986ff36af",
+    "python312_output_bytes": 431318,
+    "python312_output_sha256": "254dc1957f37aa3d43293c2757666b08c4c6fe378f151ed557a4e03151341a56",
+    "differing_lines": 1,
+    "total_lines": 9657,
+    "cause": "Python 3.12 changed builtin floating-point sum; legacy left-to-right accumulation was implicit in serialized joint math.",
+    "witness_policy": "Retain historical byte witnesses; fix deterministic accumulation rather than replace hashes or waive decimal differences."
+  },
+  "companion_identity_counterexample": {
+    "map": "solo:commoutside_1",
+    "companion": "aas96",
+    "map_crc": 1317835462,
+    "authored_header_crc": 2127086718,
+    "policy": "Preserved without stamping; remains an acceptance failure even if decoded bytes equal historical output."
+  },
+  "shared_catalog_read_only_check": {
+    "receipt_sha256": "c6c8f66b96089e654f4a2ff3faf4faf993c2ae078e0aa6c6344bc4a4df2f532d",
+    "receipt_record": "DEV/work/shared-assets-extracted/gfc-extraction-manifest.json",
+    "selected_members_checked": 137,
+    "changed_or_missing_members": 0,
+    "meaning": "Current local shared catalog matches all original extraction member hashes; this is not historical producer provenance or a complete raw-to-final closure proof."
+  },
+  "limits": [
+    "Sanitized findings only; no original or decoded payloads, raw logs, commands or local paths are included.",
+    "Incomplete runs are retained as counterexamples, not full-corpus passes.",
+    "No game, Steam, dmap or xemu was launched."
+  ]
+}
