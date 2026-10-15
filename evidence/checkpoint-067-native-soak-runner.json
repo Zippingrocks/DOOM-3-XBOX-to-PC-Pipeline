@@ -15,7 +15,7 @@
   },
   "runner": {
     "local_path": "tools/campaign_port/run_native_campaign_soak.ps1",
-    "sha256": "ea08aced047e7c038e49e15ae6e5e84288161b3025bfab63c6e0f64747c8b318",
+    "sha256": "6632ef87b96d7d5339cabf97053d2b6942451321ebf0936e7f67dd81515f549c",
     "report_schema": "doom3-xbox-campaign-native-soak-v2",
     "launcher_modes": [
       "direct",
@@ -32,6 +32,7 @@
       "Requires the accepted 41-map solo and 20-map co-op routes and all 183 MAP/PROC/CM payloads before launch.",
       "Rejects non-empty state for an unrecorded sequence so a stale qconsole marker cannot pass a retry.",
       "Classifies either a fatal line or an ERROR line as runtime_log_failure.",
+      "Hashes the executable-directory campaign gamex86.dll and can require its accepted SHA-256 before launch.",
       "Writes the report atomically after every attempted map and hashes the plan, executable and qconsole log."
     ]
   },
@@ -66,6 +67,11 @@
     "path": "Doom3.exe",
     "bytes": 5840896,
     "sha256": "02df2b274cbf6434ef58d021689343b06f2a272182d8015580b341a1aecbeace"
+  },
+  "campaign_game_dll": {
+    "path": "gamex86.dll",
+    "bytes": 2723328,
+    "sha256": "1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34"
   },
   "live_preflight": {
     "active_steam_game": "cnc3game.dat",

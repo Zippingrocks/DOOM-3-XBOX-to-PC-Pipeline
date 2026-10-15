@@ -18,6 +18,7 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-por
 .\tools\campaign_port\run_native_campaign_soak.ps1 `
   -Plan .\work\campaign-native-test-plan-v1.json `
   -DoomExe ..\..\Doom3.exe `
+  -ExpectedGameDllSha256 1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34 `
   -StateRoot .\work\native-soak-v2 `
   -Output .\work\native-soak-v2.json `
   -Launcher Steam `
@@ -35,6 +36,9 @@ The preflight must independently require 41 solo and 20 co-op targets, 61
 unique commands, and all 183 MAP/PROC/CM files below the selected `fs_game`.
 It must reject non-empty state for an unrecorded sequence. Treat any qconsole
 `ERROR:` line as `runtime_log_failure`, not as a passing idle.
+Require the report's executable-directory `gamex86.dll` hash to be
+`1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34`
+and its byte count to be 2,723,328.
 
 The 2026-10-14 v1 report is negative launcher evidence only: all 31 recorded
 invocations exited 4, all have zero log bytes, and none loaded or completed an

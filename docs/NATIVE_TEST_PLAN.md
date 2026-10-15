@@ -35,6 +35,7 @@ cd "C:\Program Files (x86)\Steam\steamapps\common\Doom 3\Work files\campaign-por
 .\tools\campaign_port\run_native_campaign_soak.ps1 `
   -Plan .\work\campaign-native-test-plan-v1.json `
   -DoomExe ..\..\Doom3.exe `
+  -ExpectedGameDllSha256 1eb641d6869cf70bf947e4bc10208949f0a8344953bf1055ded7cf3b3ef74e34 `
   -StateRoot .\work\native-soak-v2 `
   -Output .\work\native-soak-v2.json `
   -Launcher Steam `
@@ -53,7 +54,9 @@ Before launch, the runner requires the accepted plan schema, exactly 41 unique
 solo plus 20 unique co-op targets, an existing `fs_game`, and a MAP/PROC/CM
 triplet for every target. An unrecorded sequence must have a new or empty state
 directory; stale logs are never reused. Any `ERROR:` or fatal log line fails the
-row even if the process remained alive for the full minute.
+row even if the process remained alive for the full minute. The executable-
+directory campaign `gamex86.dll` is hashed into every report and the documented
+command refuses any hash other than the accepted campaign host DLL.
 
 Preserve one `qconsole.log` receipt per map and the incremental JSON report.
 Fail on missing declaration/resource, invalid joint, script error, fatal error,

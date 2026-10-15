@@ -23,7 +23,7 @@ a log or reaching a spawn marker. A Steam launch also produced no Doom process
 while another Steam game was active. No campaign map received a native verdict.
 
 The replacement runner detects an active Steam game before launch, uses Steam
-for the retail executable, records executable/plan/log hashes, requires a real
+for the retail executable, records executable/game-DLL/plan/log hashes, requires a real
 spawn marker plus the full 60-second idle, supports bounded/resumed batches and
 aborts immediately on launcher/bootstrap failure. Its non-game smoke test proves
 that one bootstrap failure attempts no later map. The accepted 61-map tree
