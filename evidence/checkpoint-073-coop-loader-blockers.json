@@ -1,0 +1,93 @@
+{
+  "checkpoint": "073",
+  "date": "2026-10-15",
+  "claim": "The co-op MCU and Delta 2B part 2 native loader crashes are diagnosed, corrected at their source-bound skeleton-family boundaries and pass focused minimized GPL-dedicated loads; Hellhole's remaining inherited Imp declaration collision is patched and awaits rebuilt native validation.",
+  "coop_overlay_corpus": {
+    "path_suffix": "mergeguard_v16",
+    "rebuild_receipt_sha256": "1f25900c1f16eacdf58c8f942b1a09bfa0c125d1303a8efc8c38fc07dc1bdef5",
+    "audit_sha256": "bcdd35dd1ac86aa6cef380c1e760ad455cb3fa0130857fc6e82efd31d0b0b996",
+    "maps": 20,
+    "payload_files": 6107,
+    "payload_bytes": 547338318,
+    "direct_authored_cm_maps": 20,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "untracked_files": 0,
+    "payload_ledger_sha256": "8eb11890322ce0a884fecf6a99c955861a1f116b3637f220e75c8c9499f8114f"
+  },
+  "coop_test_tree": {
+    "path": "work/campaign-coop-test-tree-v18",
+    "receipt_sha256": "d7176d8a36d4a09cf187004fbd28ffb66decd8e7e9fa7b57265a6a27c1d08496",
+    "audit_sha256": "742cac64fbebd7f443bcb61429151f6a3f5033d23bda599d234a0dd7c888b250",
+    "maps": 20,
+    "files": 1000,
+    "bytes": 327747280,
+    "ledger_sha256": "13e129bd9224422a0337eee38d3db26d920a4058dae5dfbbc9189c53043c2edd",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "native_focus": {
+    "mcu": {
+      "map": "vv/xbox_coop/xc_mcu",
+      "report": "work/gpl-coop-focus-v17-43.json",
+      "report_sha256": "136d074a4db2407eb46ca320e25c83db24757188e976bac3decd3aeffaeb6700",
+      "passed": true,
+      "load_seconds": 5.534,
+      "idle_seconds_observed": 10.015,
+      "error_lines": 0,
+      "fatal_lines": 0
+    },
+    "delta2b_2": {
+      "map": "vv/xbox_coop/xc_delta2b_2",
+      "report": "work/gpl-coop-focus-v18-53.json",
+      "report_sha256": "856704fa9ca7814741793e5984be6113394367575de42862ad8dd1d0a8fa5f9f",
+      "passed": true,
+      "load_seconds": 5.543,
+      "idle_seconds_observed": 10.009,
+      "error_lines": 0,
+      "fatal_lines": 0
+    },
+    "hellhole_1_pre_fix": {
+      "map": "vv/xbox_coop/xc_hellhole_1",
+      "report": "work/gpl-coop-focus-v18-61.json",
+      "report_sha256": "b8690a633d9b0f6e800b3cfbad0f29b10e1ba6edf95de1ea90f4fff028ea12f2",
+      "passed": false,
+      "failure": "stock map_hellhole.def inherited the private 41-joint Xbox Imp mesh but retained the public 71-joint impcyberwakeup animation",
+      "fix_status": "builder and regression test patched; rebuilt native result pending"
+    }
+  },
+  "findings": {
+    "mcu": "When a derived declaration replaces an inherited mesh, the engine retains inherited numeric channel-joint indices. Re-declare torso and legs channels by joint name after selecting the private Xbox mesh.",
+    "delta2b_2": "The public-source-bound 50-joint Xbox ZCT family must outrank an older generated private 63-joint alias during replay.",
+    "hellhole_1": "Shadow and narrowly retarget the hellhole_imp cybercrawl declaration so its animation and mesh remain in the same private 41-joint Xbox Imp family."
+  },
+  "host": {
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "game_dll_sha256": "96b4cd946f460bc99434544565d84ce6882fcd7768149acdffacd0dda8a3b7f9",
+    "game_dll_bytes": 2417664,
+    "launcher": "direct-minimized",
+    "map_command": "spawnServer"
+  },
+  "implementation_receipts": {
+    "overlay_builder_sha256": "df5e5f63b35a045efada028fb50043f19d908a1624dede965ddc727d8e91f771",
+    "coop_rebuilder_sha256": "2d5414b0ffea8345ddcdf59b96776c0d11b8e358e4b47e3abf74467d33450870",
+    "native_runner_sha256": "44831774ae93a1efdf85e71101e93b09e165a22e24bf5ec7d6826a832410a695",
+    "overlay_tests_sha256": "f1d123ee4e3a5e7f469c206ecbda56c958721332ea83e96ca8740da49aa4941b"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 316,
+    "failed": 0
+  },
+  "limits": [
+    "Hellhole's patched declaration must pass a rebuilt focused native load before acceptance.",
+    "A fresh current-artifact 20-map co-op soak with at least 60 seconds idle per segment remains required.",
+    "Missing Xbox co-op spawnclass warnings still require source-level implementation or compatibility validation.",
+    "Dedicated-host loader survival is not visual, audio, progression, transition, save/load, encounter-timing, real two-peer or matched-Xbox fidelity acceptance.",
+    "Retail-derived maps and logs remain local and are not included in this public evidence repository."
+  ]
+}

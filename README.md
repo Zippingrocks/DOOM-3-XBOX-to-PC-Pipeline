@@ -14,7 +14,33 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 072
+## Current checkpoint: 073
+
+**The two confirmed co-op crash families are now source-bound fixes with clean
+focused native loads; the final observed loader blocker is patched and queued
+for rebuilt validation.** MCU now rebuilds inherited animation channels after
+selecting a private Xbox NPC mesh, preventing stale numeric joint indices from
+walking beyond its 48-joint animation. Delta 2B part 2 now always reconstructs
+its private ZCT alias from the authenticated public-source-bound 50-joint Xbox
+family rather than replaying a contaminated 63-joint generated alias.
+
+MCU and Delta 2B part 2 each spawned on the minimized direct GPL-dedicated host,
+idled at least ten seconds and exited with zero error/fatal lines. Hellhole then
+exposed a stock `map_hellhole.def` child declaration that inherited the private
+41-joint Xbox Imp mesh while retaining the public 71-joint cyber-wakeup track.
+The builder now shadows only that source and retargets `hellhole_imp` to the
+coherent private animation family; all 316 offline tests pass. The v16 static
+corpus has all 20 direct-authored CMs and zero unresolved dependency, and its
+isolated tree has 1,000 files with no missing companion, duplicate declaration
+or material, untracked file or reparse point.
+
+This is a truthful loader-blocker checkpoint, not co-op acceptance. Hellhole
+still needs its rebuilt native focus run, followed by one current 20-map sweep
+with at least 60 seconds idle per map and then source-level closure of remaining
+Xbox co-op spawnclass warnings. See
+[`evidence/checkpoint-073-coop-loader-blockers.json`](evidence/checkpoint-073-coop-loader-blockers.json).
+
+## Earlier checkpoint: 072
 
 **The complete original-Xbox solo campaign now clears the native loader-soak
 gate: 41/41 map segments each loaded and remained alive for at least 60

@@ -1,5 +1,26 @@
 # Recovery order and acceptance
 
+## Checkpoint 073 co-op loader-blocker status
+
+Two independently reproduced co-op crash families now have source-bound fixes
+and clean focused native receipts. MCU spawned and idled 10.015 seconds after
+the builder began re-declaring inherited animation channels by joint name when
+a derived model selects a private Xbox mesh. Delta 2B part 2 spawned and idled
+10.009 seconds after replay was forced to reconstruct the private ZCT alias
+from its authenticated 50-joint source family. Both runs recorded zero errors
+or fatals.
+
+Hellhole's subsequent focused load identified one final declaration collision:
+stock `map_hellhole.def` inherited the private 41-joint Xbox Imp mesh while its
+child `hellhole_imp` declaration retained the public 71-joint cyber-wakeup
+animation. The transform and regression test are patched, but that fix is not
+accepted until a rebuilt native focus run passes. All 316 offline tests pass.
+
+This checkpoint accepts only the two clean focus results and the reproducible
+diagnosis. It does not accept Hellhole, the complete 20-map route, warned
+Xbox-only co-op spawnclasses, progression, networking, visual/audio fidelity or
+matched original-Xbox behavior.
+
 ## Checkpoint 072 solo native-loader acceptance
 
 The full original-Xbox solo route now passes the native loader-soak gate. All

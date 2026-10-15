@@ -1,5 +1,27 @@
 # Format findings and unknowns
 
+## Checkpoint 073 inherited-model and replay findings
+
+Replacing an inherited model mesh is not sufficient on the PC host. Doom 3's
+derived model declaration can retain the parent's already-resolved numeric
+`channelJoints` arrays even when the child mesh has a smaller skeleton. The MCU
+failure appeared inside `idMD5Anim::GetInterpolatedFrame`: a valid 48-joint
+Xbox animation was indexed through inherited PC channel entries reaching joint
+59. Any private Xbox NPC mesh override must therefore re-declare torso and legs
+channels by joint name so the engine resolves them against the selected mesh.
+
+A generated private alias is also not proof of provenance. Delta 2B part 2 had
+a contaminated 63-joint ZCT under the desired private path; ordinary Xbox ZCT
+is a 50-joint family. Source-bound aliases must be regenerated from the decoded
+public source path ahead of prior-overlay fallbacks, even when the fallback
+already has the requested destination name.
+
+Finally, stock child declarations can reintroduce public resources after a
+private base-family transform. Hellhole's stock child added the 71-joint public
+`impcyberwakeup` animation to the private 41-joint Xbox Imp base. The compatible
+solution shadows that one stock DEF and retargets only the affected child
+animation, keeping the rest of the stock declaration behavior intact.
+
 ## Checkpoint 072 merged-campaign skeleton findings
 
 Per-map loader success does not prove that its resources are safe in a merged

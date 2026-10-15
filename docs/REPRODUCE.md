@@ -1,3 +1,48 @@
+# Reproduce checkpoint 073
+
+## Checkpoint 073: co-op skeleton loader blockers
+
+Rebuild all 20 overlays from the v16 provenance generation after applying the
+three source-bound rules: re-declare inherited animation channels when choosing
+a private Xbox NPC mesh; regenerate Delta 2B part 2's private ZCT aliases from
+the decoded public 50-joint source family; and shadow `map_hellhole.def` only for
+`xc_hellhole_1`, retargeting its `hellhole_imp` cyber-wakeup animation into the
+private Xbox Imp family.
+
+```powershell
+python -m tools.campaign_port.rebuild_latest_coop_overlays ..\.. `
+  --work-root work --input-suffix mergeguard_v16 `
+  --suffix mergeguard_v17 --require-maps 20 `
+  --receipt work\coop-mergeguard-v17-rebuild.json
+
+python -m tools.campaign_port.coop_overlay_corpus_audit ..\.. `
+  --require-maps 20 --require-no-untracked `
+  --output work\coop-mergeguard-v17-audit.json
+
+python -m tools.campaign_port.package_coop_overlays ..\.. work\coop-pkg-mg17 `
+  --suffix mergeguard_v17 --require-maps 20 `
+  --receipt work\coop-pkg-mg17-receipt.json
+
+python -m tools.campaign_port.build_campaign_test_tree `
+  work\coop-pkg-mg17 work\coop-pkg-mg17 `
+  work\campaign-coop-test-tree-v19 --corpus coop `
+  --receipt work\campaign-coop-test-tree-v19-receipt.json
+
+python -m tools.campaign_port.campaign_test_tree_audit `
+  work\campaign-coop-test-tree-v19 `
+  --receipt work\campaign-coop-test-tree-v19-receipt.json `
+  --output work\campaign-coop-test-tree-v19-audit.json `
+  --require-solo 0 --require-coop 20
+
+python -m unittest discover -s tools/campaign_port/tests -q
+```
+
+Before accepting the rebuilt candidate, require focused minimized direct-host
+passes of MCU (route row 43), Delta 2B part 2 (row 53) and Hellhole (row 61),
+then run rows 42-61 with `IdleSeconds 60`. A successful focused result is not a
+substitute for that one current complete sweep. Preserve and investigate any
+missing-spawnclass warnings even when the runner records no error/fatal line.
+
 # Reproduce checkpoint 072
 
 ## Checkpoint 072: complete 41-map solo native soak
