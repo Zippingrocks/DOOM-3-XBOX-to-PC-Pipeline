@@ -1,5 +1,23 @@
 # Recovery order and acceptance
 
+## Checkpoint 071 solo loader-blocker status
+
+The twelve maps that failed the first complete solo discovery sweep now each
+have a clean focused native receipt after source-bound corrections. Together
+the receipts cover MCU 1/2, Alpha Labs 2 part 2, Comm Outside part 2,
+Recycling 1/2, Delta 4, CPU 1, Site 3, Caverns 1/2 and Hellhole 1. Every run
+reached an entity-spawn marker, survived its five-second idle, exited normally
+and recorded zero error or fatal line.
+
+The final v17 overlay and v21 isolated tree independently close their static
+integrity gates, and the full 294-test suite passes. This accepts the known
+loader-blocker fixes and their focused integration only. It does not promote
+the 29 earlier discovery passes or the twelve focused passes into one current
+all-map result. Acceptance still requires a fresh v21 41-map run with at least
+60 seconds idle per map, followed by the co-op campaign run. Visual, audio,
+progression, transition, save/load, two-peer and matched-Xbox fidelity gates
+remain open after loader soak success.
+
 ## Checkpoint 067 native-soak runner status
 
 The runtime gate now distinguishes the environment from the content. The

@@ -1,3 +1,79 @@
+# Reproduce checkpoint 071
+
+## Checkpoint 071: close every solo discovery-sweep loader blocker
+
+Use `tools/campaign_port/rebuild_latest_solo_overlays.py` to replay the accepted
+overlay generation from the immutable decoded structural, script, model and
+XACT roots. A prior overlay may supply previously selected runtime resources,
+but it must not become the source of MAP/script provenance. The replay must
+retain or regenerate the per-map PC bridge even when the input already contains
+one, and must fail if the runtime worldspawn no longer dispatches the recorded
+entrypoint.
+
+The PC-host script declaration and source DLL must expose
+`scriptEvent void runCommand(string command);` / `sys.runCommand`. The event
+queues the supplied console command through the engine command buffer. Preserve
+the authenticated Xbox call; do not replace it with a no-op. Qualify the two
+Comm Outside part-2 `lift_main` calls to `map_commoutside::lift_main` only after
+namespace isolation so the stock helper remains addressable.
+
+Keep incompatible skeleton families private. Alpha Labs 2's Lantern scientist
+uses the exact Xbox skeleton under
+`models/md5/characters/npcs/lanternskeleton_xbox.md5mesh`. Delta 4's Hazmat
+ragdoll, bind pose and gib model use private Xbox paths. CPU part 1 receives the
+complete Campbell and 50-joint ZCT families; Vagary maps receive the complete
+Xbox Vagary/web family. Do not place an Xbox animation on a stock mesh merely
+because the logical model name matches.
+
+Build and audit the final solo candidate:
+
+```powershell
+python tools/campaign_port/rebuild_latest_solo_overlays.py
+
+python tools/campaign_port/overlay_corpus_audit.py `
+  work/solo-overlays-nativefix-v17 `
+  --out work/solo-overlays-nativefix-v17-audit.json
+
+python tools/campaign_port/build_campaign_test_tree.py `
+  work/solo-overlays-nativefix-v17 `
+  work/campaign-coop-packages-portable-v1 `
+  work/campaign-solo-test-tree-v21 --corpus solo `
+  --receipt work/campaign-solo-test-tree-v21-receipt.json
+
+python tools/campaign_port/campaign_test_tree_audit.py `
+  work/campaign-solo-test-tree-v21 `
+  --receipt work/campaign-solo-test-tree-v21-receipt.json `
+  --output work/campaign-solo-test-tree-v21-audit.json `
+  --require-solo 41 --require-coop 0
+```
+
+Require 41 overlays, 2,095 payloads, 802,031,692 bytes, 41 direct-authored CMs,
+zero unresolved class/resource/string, payload ledger
+`7a176816d9bb362e9aabc5931b28ea5a3765089476aeb1dc195dd44325e7e5db`
+and manifest ledger
+`469dd79465646546df6af0f08693108886a54bcd72f33ed93240924a1a968e90`.
+Require the isolated tree to contain 41 solo maps, 839 files and 721,822,296
+bytes with ledger
+`0e7c152c1a9c9f00a52035213d6801ca17aedc6b869c988f6fc3a9abac341a36`.
+It must have zero missing compiled companions, duplicate declarations/materials,
+untracked files and reparse points. PowerShell AST parsing of
+`run_native_campaign_soak.ps1` must produce zero error and all 294 Python tests
+must pass.
+
+Use the source-built dedicated Release host directly and minimized. Its SHA-256
+is `6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb`;
+the source-built `gamex86.dll` SHA-256 is
+`bdd38cf5b05314bfeb8a98bc5ea39785f3f151680121de06dd7b7c2f9d6c1bd1`.
+The twelve maps named in checkpoint-071 evidence must each have a focused
+`classification=passed` receipt, a spawn marker, at least five observed idle
+seconds and zero error/fatal lines.
+
+Those focused results replace the twelve failures in the v15 discovery report;
+they do not replace the authoritative full-corpus run. Run all 41 v21 solo rows
+with `IdleSeconds 60`, then do the separate 20-map co-op run. Loader survival
+does not establish rendering, audible correctness, transitions, save/load,
+encounter timing, two-peer synchronization or Xbox fidelity.
+
 # Reproduce checkpoint 070
 
 ## Checkpoint 070: secondary namespace and coherent Pinky families

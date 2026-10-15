@@ -14,7 +14,31 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 070
+## Current checkpoint: 071
+
+**Every failure family exposed by the first complete solo native sweep now has
+a source-bound correction and a clean focused loader pass.** The original
+41-map/60-second discovery run passed 29 maps and identified twelve failures.
+The final candidates preserve the Xbox script behavior while adding the PC-host
+`runCommand` event, qualifying the split Comm Outside lift entrypoint, and
+isolating Lantern, Hazmat, Campbell/ZCT, Vagary and other map-local skeleton
+families instead of mixing Xbox animations with incompatible stock-PC meshes.
+
+The v17 overlay contains 2,095 payloads totaling 802,031,692 bytes, selects
+direct authored collision for all 41 maps and has zero unresolved class,
+resource or string. Its v21 isolated runtime tree has 839 files and zero
+missing companion, duplicate declaration/material, untracked file or reparse
+point. All twelve maps that failed the discovery sweep subsequently spawned,
+idled at least five seconds and exited with zero error/fatal lines on the
+minimized direct GPL-dedicated host. All 294 offline tests pass.
+
+This closes the known solo loader blockers, not the authoritative soak or
+gameplay boundary. A fresh v21 pass of all 41 maps with a full 60-second idle
+per map is still required, followed by the 20-map co-op soak and later visual,
+audio, progression and two-peer acceptance. See
+[`evidence/checkpoint-071-solo-loader-blocker-closure.json`](evidence/checkpoint-071-solo-loader-blocker-closure.json).
+
+## Earlier checkpoint: 070
 
 **The first two failures found by the replacement solo sweep are now fixed as
 source-bound compatibility families and pass focused native loading.** Mars

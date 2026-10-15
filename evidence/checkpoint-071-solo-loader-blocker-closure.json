@@ -1,0 +1,99 @@
+{
+  "checkpoint": "071",
+  "date": "2026-10-14",
+  "claim": "All twelve solo maps that failed the first complete native discovery sweep have source-bound corrections and clean focused GPL-dedicated loader passes; the fresh 41-map/60-second v21 soak remains pending.",
+  "discovery_sweep": {
+    "report": "work/gpl-solo-soak-v15.json",
+    "report_sha256": "8fa1129ca2a566ce6b8c9f7e2ed3a7b2ab79828f3ad4cc9b0d843947f5189a82",
+    "maps": 41,
+    "idle_seconds_requested": 60,
+    "passed": 29,
+    "failed": 12,
+    "aborted": false
+  },
+  "solo_overlay_corpus": {
+    "path": "work/solo-overlays-nativefix-v17",
+    "audit_sha256": "1a38ce013df6b3cb4f2ab5aa880afbe133416e644b3628f90e8e10ae05604c4e",
+    "maps": 41,
+    "files": 2095,
+    "bytes": 802031692,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "file_ledger_sha256": "7a176816d9bb362e9aabc5931b28ea5a3765089476aeb1dc195dd44325e7e5db",
+    "manifest_ledger_sha256": "469dd79465646546df6af0f08693108886a54bcd72f33ed93240924a1a968e90"
+  },
+  "solo_test_tree": {
+    "path": "work/campaign-solo-test-tree-v21",
+    "receipt_sha256": "a1fbc855cd51793391743e907958e6153c1976ed4ff2916142cd07f10db39303",
+    "audit_sha256": "8207cc4513b1e1ad8edad28c317f32a51ab22ac0febe16e1aab8ca3b0993e42d",
+    "maps": 41,
+    "files": 839,
+    "bytes": 721822296,
+    "ledger_sha256": "0e7c152c1a9c9f00a52035213d6801ca17aedc6b869c988f6fc3a9abac341a36",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0
+  },
+  "focused_native_passes": [
+    {"sequence": 2, "map": "vv/mcu_1", "report_sha256": "dc7bd9f21892102f209790e25fb59b70e6f552ea38624641f3f16c46a38b3a70", "load_seconds": 5.530, "idle_seconds_observed": 5.007, "spawned": 1035, "inhibited": 1},
+    {"sequence": 3, "map": "vv/mcu_2", "report_sha256": "59427b3e81a14345ebbe37435a3a3aec27875386a31583fd8a4754dd103cbc56", "load_seconds": 5.543, "idle_seconds_observed": 5.008, "spawned": 1182, "inhibited": 1},
+    {"sequence": 10, "map": "vv/alphalabs2_2", "report_sha256": "c2f19b2f9ff9d321366e4aa755cc5b5e95f7bf329395965ab2ab6fce6a9ed1b4", "load_seconds": 5.593, "idle_seconds_observed": 5.007, "spawned": 611, "inhibited": 1},
+    {"sequence": 15, "map": "vv/commoutside_2", "report_sha256": "9733153dbb5f38133360a59e9029d89b29b9965b806ad4b7f51a821d73176cb3", "load_seconds": 5.069, "idle_seconds_observed": 5.004, "spawned": 1134, "inhibited": 1},
+    {"sequence": 18, "map": "vv/recycling1_1", "report_sha256": "4a718bebd06c6c4368f545356ee95ddf07b990f39156a36185440868dce1bac4", "load_seconds": 5.540, "idle_seconds_observed": 5.006, "spawned": 1065, "inhibited": 1},
+    {"sequence": 19, "map": "vv/recycling2_1", "report_sha256": "34d36f55a9e216fbd685a64e4a76a3968ae8702f47bd3f71a2c68a43607928df", "load_seconds": 5.531, "idle_seconds_observed": 5.007, "spawned": 879, "inhibited": 1},
+    {"sequence": 29, "map": "vv/delta4", "report_sha256": "473d74479a7dc291ede0a4221c1d00426320f49a51a4f7bcd1594ac2afc2340b", "load_seconds": 5.541, "idle_seconds_observed": 5.008, "spawned": 526, "inhibited": 2},
+    {"sequence": 34, "map": "vv/cpu_1", "report_sha256": "79f9e835a86321fe974b3647d8160b0b9810a8812c18de780b45213f5b7c5ffa", "load_seconds": 5.072, "idle_seconds_observed": 5.004, "spawned": 1393, "inhibited": 1},
+    {"sequence": 36, "map": "vv/site3_1", "report_sha256": "7bc779d8e6104cfdc9c575898e5853ddff708d09794b9f798388f6eae7e7e47b", "load_seconds": 5.073, "idle_seconds_observed": 5.004, "spawned": 921, "inhibited": 3},
+    {"sequence": 37, "map": "vv/caverns1_1", "report_sha256": "c030273e25fba6826317a6c4c30f9f2f3b85ab3aabfa742894498a5bce03e876", "load_seconds": 5.539, "idle_seconds_observed": 5.010, "spawned": 919, "inhibited": 2},
+    {"sequence": 39, "map": "vv/caverns2", "report_sha256": "4a3016c6cd990037d0298983cdabb94500ed6f3b5ccea4155ea2cca5d0d7f0a2", "load_seconds": 5.069, "idle_seconds_observed": 5.001, "spawned": 769, "inhibited": 2},
+    {"sequence": 40, "map": "vv/hellhole_1", "report_sha256": "89b1a870eca7f470e445926cc53edaeadc7967f79bd8116abbe20904d736acf9", "load_seconds": 5.532, "idle_seconds_observed": 5.008, "spawned": 778, "inhibited": 4}
+  ],
+  "focused_pass_invariants": {
+    "classification": "passed",
+    "loaded": true,
+    "alive_for_full_idle": true,
+    "process_exit_code": 0,
+    "error_lines": 0,
+    "fatal_lines": 0,
+    "window_minimized": true
+  },
+  "host": {
+    "doom_exe_sha256": "6404c1e74355e1b1a60abc13bb792ea2d998460a2fd4adc80946c1b8b35cfefb",
+    "game_dll_sha256": "bdd38cf5b05314bfeb8a98bc5ea39785f3f151680121de06dd7b7c2f9d6c1bd1",
+    "game_dll_bytes": 2417664,
+    "launcher": "direct-minimized",
+    "map_command": "spawnServer"
+  },
+  "plan": {
+    "path": "work/campaign-native-solo-plan-v21.json",
+    "sha256": "06407bc44e5849c5566e6aa249daf36bf2ac2ad6f1cf86ca2e24e351b2a06207",
+    "schema": "doom3-xbox-campaign-native-test-plan-v1",
+    "fs_game": "xbox_campaign_solo_v21",
+    "solo_maps": 41,
+    "solo_start": "mars_city1_1",
+    "solo_terminal": "hellhole_2"
+  },
+  "implementation_receipts": {
+    "overlay_builder_sha256": "2daddc309a63bc9a2543c4d3e249e262e45c0e8968835029e16b80f3e85188a1",
+    "solo_rebuilder_sha256": "40cf0d7efff5170894d4e4030b8ab8832396d6ec575dd7691b16c2cb550d65ad",
+    "native_runner_sha256": "44831774ae93a1efdf85e71101e93b09e165a22e24bf5ec7d6826a832410a695",
+    "script_thread_cpp_sha256": "f32ce13fb7ac153fc373f055385a3629cd259c07f3d44acf7b4a6991042b84a3",
+    "script_thread_h_sha256": "2b47c0ccb9a0b16c45cd7388027c522537fd74a47e29419a7f71c0b687e1d0c1",
+    "runner_powershell_ast_errors": 0
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 294,
+    "failed": 0
+  },
+  "limits": [
+    "The authoritative fresh v21 41-map 60-second solo soak remains required.",
+    "The 20-map co-op soak remains required after the solo soak is clean.",
+    "Dedicated-host loader survival is not visual, audio, progression, transition, save/load, two-peer or matched-Xbox fidelity acceptance.",
+    "Retail-derived maps and logs remain local and are not included in this public evidence repository."
+  ]
+}

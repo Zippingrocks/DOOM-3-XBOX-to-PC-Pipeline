@@ -1,5 +1,34 @@
 # Format findings and unknowns
 
+## Checkpoint 071 loader-closure findings
+
+Script compatibility must preserve the Xbox action rather than merely make the
+source compile. Site 3 calls `sys.runCommand` to issue a host command, but the
+stock PC script event table has no such event. Adding a narrow string-taking
+event to the reconstructed game DLL and buffering the command keeps the Xbox
+script intact and crosses the PC loader boundary. A declaration-only shim or a
+script no-op would hide the missing behavior.
+
+Namespace isolation can also expose an intentionally external helper. Comm
+Outside part 2 declares a map-local namespace while its two `lift_main` calls
+belong to the stock `map_commoutside` helper. Renaming every identifier into the
+private namespace is wrong; those two calls require an evidence-scoped
+qualification after isolation.
+
+Model compatibility is a family constraint, not a file-by-file dependency
+problem. Lantern, Hazmat, Campbell/ZCT and Vagary failures all resulted from a
+valid Xbox animation, AF or bind pose being paired with a different PC skeleton
+under the same logical model family. The accepted method gives incompatible
+Xbox families private runtime paths and closes every selected animation/mesh/AF
+member coherently. This avoids global declaration collisions and prevents a
+later map's stock definition from silently changing an earlier map's skeleton.
+
+Finally, replaying a generated overlay is not equivalent to replaying its
+authenticated provenance. A rebuild may use the old overlay as a late runtime
+resource root, but original structural/script/model roots must remain earlier,
+and an existing generated bridge must be recognized and regenerated rather
+than mistaken for a retail-authored direct map script.
+
 ## Checkpoint 066 native-itinerary findings
 
 Transition inventory alone overstates the playable graph. The co-op Site 3 map
