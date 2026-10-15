@@ -11,6 +11,10 @@ the current recovery tools. Do not refresh locks merely to silence mismatches.
 Read docs/CHECKPOINT_087_RAW_RECONSTRUCTION.md for the newer default resource
 toolchain, fresh-run counterexamples and deterministic floating-point fix.
 Keep initial failed-run evidence; never replace historical hashes to force a pass.
+Start new-machine setup with docs/NEXT_MACHINE_QUICKSTART.md. The current
+separate raw/shared/audio runs have completed; see checkpoint 087's final
+handoff observations before repeating work. The archive-preparation helper
+defaults to read-only and requires explicit --execute for extraction.
 The user cannot transfer existing converted ports or back up real game files:
 preserve source and sanitized metadata, and build future recipes from originals.
 

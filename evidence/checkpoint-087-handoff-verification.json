@@ -1,0 +1,100 @@
+{
+  "schema": "doom3-recovery-handoff-observations-v1",
+  "recorded_date": "2026-10-15",
+  "kind": "recorded-command-results-not-a-new-payload-replay",
+  "pipeline_verified_from_github": "01be0cf4bb48c2be47697e71c2fb2af96542ebab",
+  "source_verified_from_github": "123904fa5862e3299b81504ee5d836c394953f2c",
+  "source_followup_commit": "03252a51b2c4395228f633728d32dd4a977889ba",
+  "toolchain_lock": "evidence/checkpoint-087-resource-toolchain-lock.json",
+  "toolchain_lock_sha256": "35809549fb588ae7307a09603c42ea7a611cb9bc84e33b91c157376c2a085470",
+  "checkout_verification": {
+    "status": "asset-free-verification-passed",
+    "platform": "Windows",
+    "python": "3.12.14",
+    "source_files_verified": 195,
+    "pipeline_artifacts_verified": 8,
+    "byte_identical_regeneration": [
+      "raw_structural_plan",
+      "provenance_trace",
+      "shared_resource_plan",
+      "audio_texture_plan"
+    ],
+    "source_pin_tests_passed": 629,
+    "pipeline_tests_passed": 60,
+    "game_inputs_opened": 0,
+    "converted_assets_written": 0
+  },
+  "source_followup_tests": {
+    "tests_passed": 645,
+    "scope": "Working source at the follow-up commit; not a substitution for the resource lock execution pin."
+  },
+  "authentic_preflight_checks": {
+    "combined_recovery_entry_point": "preflight-only-no-output-created",
+    "archive_preparation_helper": "preflight-only-no-output-created",
+    "archive_preparation_selected_spans_verified": 124,
+    "archive_preparation_execute_run": false,
+    "combined_recovery_execute_run": false
+  },
+  "separate_authentic_runs": {
+    "raw": {
+      "status": "completed-with-companion-identity-failures",
+      "exit_code": 1,
+      "solo_maps": 41,
+      "coop_maps": 20,
+      "steps": 525,
+      "archive_files_verified": 124,
+      "historical_witness_gaps": 60,
+      "companion_identity_failures": 1
+    },
+    "shared": {
+      "status": "original-member-witnesses-verified",
+      "extraction_roots": 23,
+      "verified_member_occurrences": 348,
+      "original_archive_files": 30
+    },
+    "audio_texture": {
+      "status": "historical-output-witnesses-verified",
+      "steps": 173,
+      "files": 441,
+      "target_entries": 860,
+      "unresolved_target_entries": 0,
+      "verified_disc_extents": 387
+    }
+  },
+  "public_proofs": [
+    {
+      "path": "evidence/checkpoint-087-raw-structural-proof.json",
+      "sha256": "7ed997fbaee99ad3d4ed32375daa03dd5a3f27b83a84e80b0a2a555ec49949ae"
+    },
+    {
+      "path": "evidence/checkpoint-087-shared-resource-proof.json",
+      "sha256": "26fa25560d3e57cb94fa6a38538f115c8de6f7ff1808a1ad638db146f172071b"
+    },
+    {
+      "path": "evidence/checkpoint-087-audio-texture-proof.json",
+      "sha256": "944770e1b9f7f46c114c7042b4441a498bf1f89c24fea6063d17c064f0cc5798"
+    },
+    {
+      "path": "evidence/checkpoint-087-existing-coop/coop-overlay-corpus.json",
+      "sha256": "2c8dc34544db62c7c9f03342f18bbca0c9222aafcae8069c2eac1fa6e7647ff1"
+    },
+    {
+      "path": "evidence/checkpoint-087-existing-coop/coop-md5-structure.json",
+      "sha256": "3088c100726544e7701b38097e66d5af254b8dfce8573e3ded3b8788f03b1470"
+    },
+    {
+      "path": "evidence/checkpoint-087-existing-coop/coop-companion-crc.json",
+      "sha256": "c7e05d41eaa0d4883edec1f91f5da14e0d9dafe15d056b0caded72902e467196"
+    }
+  ],
+  "remaining_boundaries": [
+    "Direct raw-to-final overlay composition and exact final payload equivalence are unfinished.",
+    "The source-authored Comm Outside 1 AAS96 checksum mismatch is retained, not repaired or waived.",
+    "Sixty co-op MAP-CRC/CM/model steps lack historical output witnesses.",
+    "Existing-output audits do not prove new package/tree/merge/model-family acceptance.",
+    "Current master is not a validated co-op host; deliberate integration with the older COOP lineage is needed.",
+    "Cloud CI has not been accepted; owner-provided private source read access remains a separate prerequisite.",
+    "No gameplay, native engine launch, dmap or xemu comparison was performed.",
+    "No old port or game asset backup/upload was made; fresh derived assets and private logs stay local."
+  ]
+}

@@ -5,6 +5,12 @@ source and metadata are pushed in checkpoints; authentic results are below.
 No Doom, Steam, dmap or xemu is launched. No old port is copied or uploaded.
 Fresh derived assets stay local and are not backups.
 
+[Final handoff observations](../evidence/checkpoint-087-handoff-verification.json)
+bind the six public proof hashes and record successful verification of GitHub
+pipeline `01be0cf4bb48c2be47697e71c2fb2af96542ebab` with the resource-pinned
+source: 629 source tests, 60 pipeline tests and four byte-identical regenerated
+plans/traces. This is a recorded command result, not another payload replay.
+
 For the shortest practical route, use the
 [next-machine quickstart](NEXT_MACHINE_QUICKSTART.md). Its combined entry point
 has passed authentic read-only preflight on this device with no output created;
