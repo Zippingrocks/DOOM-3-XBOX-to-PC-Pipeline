@@ -14,7 +14,25 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Current checkpoint: 068
+## Current checkpoint: 069
+
+**The first native solo sweep has been turned into source-bound fixes for every
+failure family observed so far, and a replacement 41-map candidate closes those
+dependencies without weakening the corpus boundary.** The fixes retain
+Xbox-only principal scripts, preserve coherent animation skeleton families,
+reuse the co-op reconstruction's audited 50-to-63-joint commando retarget, and
+scope recovered assets only to maps that instantiate them.
+
+The replacement overlay corpus contains 1,887 files and all 41 direct-authored
+collision files, with zero unresolved class, resource or string dependency. Its
+isolated runtime tree contains 741 files with zero missing compiled companion,
+duplicate declaration/material, untracked file or reparse point. All 283 offline
+tests pass. The discovery sweep is still running; the replacement has not yet
+completed a clean 41-map native pass, so no all-map or fidelity claim is made.
+See
+[`evidence/checkpoint-069-solo-native-resource-families.json`](evidence/checkpoint-069-solo-native-resource-families.json).
+
+## Earlier checkpoint: 068
 
 **The campaign now has a source-built GPL dedicated diagnostic host and
 corpus-isolated native-test trees.** A first hidden load of Xbox

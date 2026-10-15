@@ -1,0 +1,82 @@
+{
+  "checkpoint": "069",
+  "date": "2026-10-14",
+  "claim": "The first solo native sweep converted six load/runtime failures into source-bound compatibility fixes, and the replacement 41-map candidate closes every presently known script and skeleton-family dependency without mixing the solo and co-op runtime trees.",
+  "native_failure_families": [
+    {
+      "maps": ["mars_city2_1", "mars_city2_2", "delta5_1"],
+      "failure": "namespaced worldspawn main not found",
+      "resolution": "retain every Xbox-only principal map script and omit only exact scripts already compiled by stock PC doom_main"
+    },
+    {
+      "maps": ["admin"],
+      "failure": "the absent glassbreak_idle member invalidated the complete Pinky modelDef",
+      "resolution": "remove only the absent idle member while retaining the shipped glassbreak cinematic"
+    },
+    {
+      "maps": ["alphalabs2_2"],
+      "failure": "the inherited PC scientist gib skeleton had a different joint count",
+      "resolution": "restore the stock PC lantern-scientist gib model selected by the corresponding PC definition"
+    },
+    {
+      "maps": ["admin", "alphalabs2_1", "commoutside_1", "delta2a_2", "monorail_2"],
+      "failure": "the Xbox jumpsuit-zombie definition selected an original-Xbox mesh/animation family absent from PC",
+      "resolution": "ship the complete 15-file authenticated Xbox family only in maps that instantiate it"
+    },
+    {
+      "maps": ["delta1_1"],
+      "failure": "the PC archives omit the map's 122-joint scientist-pull mesh and animations",
+      "resolution": "ship the recovered mesh and both matching 122-joint animations as one family"
+    },
+    {
+      "maps": ["recycling1_1"],
+      "failure": "the Xbox definition selected a 50-joint Revenant-intro mesh while the PC PK4 supplied incompatible 109/110-joint animations",
+      "resolution": "ship the recovered 50-joint mesh and both matching Xbox cinematic animations as one family"
+    },
+    {
+      "maps": ["monorail_1", "monorail_2", "delta1_1", "delta1_2", "delta2b_2", "delta3_1", "delta3_2", "delta5_1", "cpu_1"],
+      "failure": "the Xbox commando definition references head_butt.md5anim, absent from PC and incompatible in raw 50-joint form with the stock 63-joint PC mesh",
+      "resolution": "reuse the audited name-matched 50-to-63-joint retarget already accepted by the co-op reconstruction"
+    },
+    {
+      "maps": ["delta4"],
+      "failure": "the PC archives omit the Xbox-selected hazmat mesh, bind pose and three 48-joint cinematics",
+      "resolution": "ship all five recovered 48-joint files as one map-scoped family"
+    }
+  ],
+  "replacement_solo_overlay_corpus": {
+    "maps": 41,
+    "files": 1887,
+    "bytes": 788756871,
+    "direct_authored_cm_maps": 41,
+    "unresolved_classnames": 0,
+    "unresolved_resources": 0,
+    "unresolved_string_ids": 0,
+    "file_ledger_sha256": "d2170e24241f994e3dfa62248b9462e7a3adc5ce6c854a0126f53a0c176afdc2",
+    "manifest_ledger_sha256": "7ee0362d8161857b5ff3bcaac3af59b073b240beb5bf021262d1ad1b918d5e2f",
+    "audit_sha256": "03504dfee3e82e6452d3ef921677e13f141e0ed386722990b349b61ab082a48a"
+  },
+  "replacement_solo_test_tree": {
+    "maps": 41,
+    "files": 741,
+    "bytes": 714372034,
+    "ledger_sha256": "c9b730d564fde8b1a5d8959f4ae064c184a13f33340a2c2b53da9a83001186f8",
+    "missing_compiled_companions": 0,
+    "duplicate_definitions": 0,
+    "duplicate_materials": 0,
+    "untracked_files": 0,
+    "reparse_points": 0,
+    "receipt_sha256": "f2709ad1432920c0b47b7860e255cdb7c89ae105ac570546d7f8c07d3234f1d0",
+    "audit_sha256": "d5680ad0ea3537967d02b581fb750d93e951130230ed6cadca32891fa5de4d6f"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tools/campaign_port/tests -q",
+    "passed": 283,
+    "failed": 0
+  },
+  "limits": [
+    "The replacement tree has not yet completed a clean 41-map 60-second native sweep.",
+    "Dedicated-host loading is crash and spawn evidence, not visual, audio, gameplay or transition-fidelity acceptance.",
+    "The 20-map co-op replacement sweep remains required after solo is clean."
+  ]
+}
