@@ -5,6 +5,31 @@ in checkpoints; authentic conversion results are recorded separately below.
 No Doom, Steam, dmap or xemu is launched. No old port is copied or uploaded.
 Fresh derived assets stay local and are not backups.
 
+For the shortest practical route, use the
+[next-machine quickstart](NEXT_MACHINE_QUICKSTART.md). Its combined entry point
+has passed authentic read-only preflight on this device with no output created;
+the separate runners' executed results are below. A combined end-to-end
+execution is not inferred from the preflight.
+
+## Completed original-resource runs
+
+- Shared: all **23 roots / 348 member occurrences / 30 original archive files**
+  pass exact extracted-payload witnesses.
+  [Sanitized shared proof](../evidence/checkpoint-087-shared-resource-proof.json).
+- Audio/texture: all **173 steps / 441 files** pass exact expected hashes,
+  including 111 metadata inputs and 330 WAV/DDS payloads. They cover all 860
+  targeted final-map sound/DDS entries, with zero unresolved entries in this
+  bounded selection. Two original archives and 387 distinct ISO extents/spans
+  were authenticated before and after execution.
+  [Sanitized audio/texture proof](../evidence/checkpoint-087-audio-texture-proof.json).
+
+Both runs used a fresh GitHub source checkout at the resource pin and new
+isolated destinations. No previous overlay or old decoded resource was used
+as input. Outputs and logs stay private. The public proof files are strictly
+validated receipt projections; publishing them is not itself another payload
+replay. All 43 pipeline synthetic tests pass. The full 61-map raw run is still
+in progress, with both earlier numeric counterexamples now passing.
+
 ## Current portable kit: deterministic decoding and original resources
 
 Use [the resource toolchain lock](../evidence/checkpoint-087-resource-toolchain-lock.json),
@@ -100,10 +125,10 @@ separately listed; neither completion status is final-map acceptance.
 
 ## Work still running at this checkpoint
 
-The initial runs stopped correctly on the numeric counterexample and remain
+The initial raw runs stopped correctly on the numeric counterexample and remain
 incomplete, not passes. After the deterministic fix and a new fresh source
 clone, a new complete 61-map / 525-step run was launched. Independent fresh
-23-root shared and 173-step audio/texture runs were also launched. They consume
-no previous overlays. Their final results are not yet recorded in this section.
+23-root shared and 173-step audio/texture runs completed with the exact results
+above. None consumes previous overlays. The final raw-map result is pending.
 Full raw-to-final composition, co-op host integration and gameplay/fidelity
 acceptance remain separate work, not promises established by a Git push.

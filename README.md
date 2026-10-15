@@ -14,13 +14,19 @@ Map-related implementation lives in
 Changes there are limited to recovering, converting, loading or validating Xbox
 campaign maps. Existing accepted engine/frontend/co-op profiles remain intact.
 
-## Checkpoint 086: verify and run the portable recovery kit
+## Start on another machine
+
+[Next-machine quickstart](docs/NEXT_MACHINE_QUICKSTART.md) provides exact clone,
+pin, verification and original-input recovery commands. It requires licensed
+originals, not these device-local ports. No converted assets are uploaded.
 
 **Newer checkpoint:** [087 original-input reconstruction](docs/CHECKPOINT_087_RAW_RECONSTRUCTION.md)
 adds deterministic numeric output, exact shared-resource and audio/texture
 recipes, and checked runners. Use its newer resource toolchain lock. Authentic
 fresh reconstruction is in progress; do not interpret Git synchronization as
 final-overlay or gameplay acceptance.
+
+## Checkpoint 086: verify and run the portable recovery kit
 
 [Start here: portable recovery verification](docs/CHECKPOINT_086_PORTABLE_RECOVERY.md).
 The pipeline now pins every recovery tool/profile and supplies one asset-free

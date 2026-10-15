@@ -1,0 +1,2065 @@
+{
+  "schema": "doom3-resource-run-proof-v1",
+  "kind": "shared",
+  "status": "original-member-witnesses-verified",
+  "receipt_sha256": "db3bf9ff305827a423c1ebec5cb85a3db9b44caa4884dab87a56e2e4656b7bc6",
+  "toolchain": {
+    "source_commit": "123904fa5862e3299b81504ee5d836c394953f2c",
+    "files_verified": 195,
+    "lock_sha256": "35809549fb588ae7307a09603c42ea7a611cb9bc84e33b91c157376c2a085470"
+  },
+  "plan_sha256": "49f73ac70cf99e5beeefb58801c07d00287895239749de8a54f79c12f664b050",
+  "metadata_lock_sha256": "b171a2b843fad7d7a51ebd0fbfd2b6ff32c84f6cb410eeab84adad6c81ab4a74",
+  "authenticated_inputs": {
+    "archives": [
+      {
+        "path": "coop/xc_caverns1_1.gfc",
+        "sha256": "5c6394f7536ced1b9e7600d9142218f0198401c9380fae232afdae766f2ddb01",
+        "bytes": 200812
+      },
+      {
+        "path": "coop/xc_caverns1_1.gob",
+        "sha256": "bfbc9c03ae39dcf0416a473c19f3cf25371c0f55b519b1c29f2f025f1b8fd005",
+        "bytes": 9312256
+      },
+      {
+        "path": "coop/xc_comm1_1.gfc",
+        "sha256": "f7c83c4f3481b32f4d98e8bfd3328cc667d2de39d793ff793bc2894c23255320",
+        "bytes": 218768
+      },
+      {
+        "path": "coop/xc_comm1_1.gob",
+        "sha256": "5b2fb949d7910a2c009c953b41ec4ffa433c4b0702aca525c10d01940925069b",
+        "bytes": 9140224
+      },
+      {
+        "path": "coop/xc_hellhole_1.gfc",
+        "sha256": "5ea56c78bbfe40fdb15b61cf81772e404cc9a51ce01fb903de994ed72185e30f",
+        "bytes": 164760
+      },
+      {
+        "path": "coop/xc_hellhole_1.gob",
+        "sha256": "1c8c1cedb7d0c9ba3ad1d0df851b00da81a946e87f1568aa63070a5b8db55371",
+        "bytes": 9529344
+      },
+      {
+        "path": "coop/xc_mars_city1_1.gfc",
+        "sha256": "26a58dc78d8018c7a87cdfca13544d56bf7ab62fdf176b3e1ad34288dc85d10f",
+        "bytes": 173380
+      },
+      {
+        "path": "coop/xc_mars_city1_1.gob",
+        "sha256": "1bf5d2f861b9b5ac9afafe48b51e7a932b44b9142a6d9746491bff771950efd6",
+        "bytes": 8105984
+      },
+      {
+        "path": "coop/xc_recycling2_1.gfc",
+        "sha256": "960f4a494be1bcb40890f53525ea785f12b41c3b2a1dae3872282a38a6df51c9",
+        "bytes": 164144
+      },
+      {
+        "path": "coop/xc_recycling2_1.gob",
+        "sha256": "3eafec054af28591de0da0a5e62eb8030251c7bebfdd06b72d6a09275df4ad8e",
+        "bytes": 8417280
+      },
+      {
+        "path": "coop/xc_site3_1.gfc",
+        "sha256": "d288dfb5b4b04f55cb5b5b86bcca33b84ba8fa3cf9365c87b930d988f77fd9bb",
+        "bytes": 174052
+      },
+      {
+        "path": "coop/xc_site3_1.gob",
+        "sha256": "9a8e4a53dbb705a6af2de7360a083d31dbe896188b47c4a8b290375aee97167a",
+        "bytes": 9211904
+      },
+      {
+        "path": "shared/assets.gfc",
+        "sha256": "1fc9ba77a9e54589171d83d06bc14e6ae9feee10794401d6ffccff8dbb35f14f",
+        "bytes": 408444
+      },
+      {
+        "path": "shared/assets.gob",
+        "sha256": "5c4395024835c42add37db51dfd74ca4ba3d160d81c20f106fb5294199ebc040",
+        "bytes": 5244928
+      },
+      {
+        "path": "solo/alphalabs1_1.gfc",
+        "sha256": "f89bb461f6674d296c78c59e4175a111c068a7fa6c35f5abd0d38ec48cfb5441",
+        "bytes": 231620
+      },
+      {
+        "path": "solo/alphalabs1_1.gob",
+        "sha256": "f5ec897eb52fc66eda90ad0c3078fb5d82fab4d1ab0d475beadf233ea643b2f3",
+        "bytes": 11241472
+      },
+      {
+        "path": "solo/commoutside_1.gfc",
+        "sha256": "54e379c784ab02cc692682851bb3a5a627e751092a4549b8e85c57b186efd915",
+        "bytes": 239216
+      },
+      {
+        "path": "solo/commoutside_1.gob",
+        "sha256": "760981c327045a4d201d2d777cac3add65cd5d94b3b2af7f7bdc40b1d3c9ecfe",
+        "bytes": 11239424
+      },
+      {
+        "path": "solo/commoutside_2.gfc",
+        "sha256": "8eb8c9e21e0bd00b2338fff852679398026b46d0a1697d3beccb7b5302a204b9",
+        "bytes": 244616
+      },
+      {
+        "path": "solo/commoutside_2.gob",
+        "sha256": "8ae6381685ea3d16e16b6359adbfad304b49498368a116ebca6f7866d35f16ef",
+        "bytes": 11220992
+      },
+      {
+        "path": "solo/hell1_3.gfc",
+        "sha256": "eea1bdf5cfb6c0dedd52efe61d8a969f151c8689e59c5dda09b1a6a910847cb1",
+        "bytes": 147908
+      },
+      {
+        "path": "solo/hell1_3.gob",
+        "sha256": "44c53b53fb1081171f13faa7fdfbfeda56d04833e08f87e77d3e468a9790f274",
+        "bytes": 9058304
+      },
+      {
+        "path": "solo/hellhole_1.gfc",
+        "sha256": "a441f4a2ce306187f6d0350c738479e4e19ee3187e2651d8fef168511bfabe64",
+        "bytes": 194628
+      },
+      {
+        "path": "solo/hellhole_1.gob",
+        "sha256": "7c79a98405a165617069160a2bf52082642d0ac1c5b48873c771b9fe819a9d60",
+        "bytes": 11923456
+      },
+      {
+        "path": "solo/monorail_1.gfc",
+        "sha256": "1cd5c48d0ed135415b7e8a62356da3245d4811e7db619ef2fb2eca34895a7828",
+        "bytes": 228532
+      },
+      {
+        "path": "solo/monorail_1.gob",
+        "sha256": "25ee1fe1b80bfc06a6b8020ca5c308c1b0e51f401015f18f63fe2fd1948882f2",
+        "bytes": 12384256
+      },
+      {
+        "path": "solo/monorail_2.gfc",
+        "sha256": "b1cf2e7c0b90a03daa9de796d92687eeea2494891bb42a23bebb1f9dd221a8dc",
+        "bytes": 238888
+      },
+      {
+        "path": "solo/monorail_2.gob",
+        "sha256": "2a9ed12b1ee494d07a622221d8e7da7b478c946432ba8e08997dc6d00f663258",
+        "bytes": 11384832
+      },
+      {
+        "path": "solo/site3_1.gfc",
+        "sha256": "4038a7be3bf73a35c9c5ab1cf0dcbe418f855dd529659ab9b71976ea27a06399",
+        "bytes": 209448
+      },
+      {
+        "path": "solo/site3_1.gob",
+        "sha256": "f95e052364dfa9e5dc7032acd2e2504895ed0464292abe242887d9a2a664d475",
+        "bytes": 11075584
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "shared-declarations",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/def/aas.def",
+          "sha256": "2ef200f126648cfc26401d918eafc769e4b066b3aba3a7641fdfde31cbdc707d",
+          "bytes": 3548
+        },
+        {
+          "path": "base/def/ammo.def",
+          "sha256": "a6a9e9af4b23995d928693a9658d8e7713284383b2beef58f2cab99543a53eb5",
+          "bytes": 7982
+        },
+        {
+          "path": "base/def/cache.def",
+          "sha256": "b6894c6e9a82f241e52b03624447eef5fa9543fc61b5f7670a049214c96d2676",
+          "bytes": 89
+        },
+        {
+          "path": "base/def/char_sentry.def",
+          "sha256": "f27e60c0c3254a0a02cc287d2f44d875a3806ef7f74b0fcccaa53ee0247479fb",
+          "bytes": 13492
+        },
+        {
+          "path": "base/def/characters.def",
+          "sha256": "f00302817b194261e796ead2b2d78588f2a080d4ea8b7d1af6a85bf35454de81",
+          "bytes": 60
+        },
+        {
+          "path": "base/def/characters_eric.def",
+          "sha256": "fe8dec56665375507c6b3686f777000b1c1cbdf6550f4a9d04ff7d55dd63628a",
+          "bytes": 14915
+        },
+        {
+          "path": "base/def/characters_james.def",
+          "sha256": "a8aaea2eb40ea33d209f86b53e19e4b28dfcb0b6e65bf7925f3d60572d66e138",
+          "bytes": 23950
+        },
+        {
+          "path": "base/def/chartest.def",
+          "sha256": "d61d4b376ea797a2752bdd5d5c4ad8110174bcc5bd4ef60c111308dbf76adf4d",
+          "bytes": 10
+        },
+        {
+          "path": "base/def/cinematics.def",
+          "sha256": "971639e11b50721d7e201f0b3981d30b1514b57f0eefabb4f9aa54e677dd8d31",
+          "bytes": 30043
+        },
+        {
+          "path": "base/def/commo_hellgoo1.def",
+          "sha256": "089f99d9a5eaa832f264c13f943fd4b6b740ee0efb87bc8e9a74881ae403ef86",
+          "bytes": 768
+        },
+        {
+          "path": "base/def/coop_defs_engineering.def",
+          "sha256": "ce8028d5357467755ba4bc9d5e7d424499a60ad048056ad615ab79d27f00830e",
+          "bytes": 3757
+        },
+        {
+          "path": "base/def/damage.def",
+          "sha256": "a9b733c60608afcfbda7dbb0e5dc4dbc5f1a85ae80292ac0ee78d7adc48acce1",
+          "bytes": 6591
+        },
+        {
+          "path": "base/def/debris.def",
+          "sha256": "e21ad888288634b118461deb6b2be27208f6c0d2dec56e18d7d856c46826596c",
+          "bytes": 5600
+        },
+        {
+          "path": "base/def/env.def",
+          "sha256": "4199413239e4bad4b6099c848ad466d8b42dcf4628b10be91aa86a91b89e8b82",
+          "bytes": 67606
+        },
+        {
+          "path": "base/def/env_eric.def",
+          "sha256": "6d6d7f1c08aad56045b45ffa928d9cc36f7c77c8d202237ea27082e2960ac43c",
+          "bytes": 22329
+        },
+        {
+          "path": "base/def/func.def",
+          "sha256": "e0de422c5aaca9d1aa9d2288413428b763bb95aaeb86268433cebeb0b59ef90d",
+          "bytes": 32934
+        },
+        {
+          "path": "base/def/gibs.def",
+          "sha256": "446d6e31877716466460f22307cf2a68038957dae036a80fd9183aabdacc7df8",
+          "bytes": 7580
+        },
+        {
+          "path": "base/def/heads.def",
+          "sha256": "0abda99a51a4af9a49a1f341c2025e780e61e230c34e979c1f279d1f354278cf",
+          "bytes": 78292
+        },
+        {
+          "path": "base/def/heads_coop.def",
+          "sha256": "ae312961c5a4d2dc22b58500920d8c4a9ea022cba57c0718b6dcc7118d45f4a7",
+          "bytes": 2228
+        },
+        {
+          "path": "base/def/hellhole_seneca.def",
+          "sha256": "a7f6bd1806c36ae02cb85c4787a6eba234b7ffc5218bbfe2450a8f562ed71c83",
+          "bytes": 36
+        },
+        {
+          "path": "base/def/info.def",
+          "sha256": "00f0bf14621413d3e6177defee707e706fbde5650c13706d8877f5fc466d9d3a",
+          "bytes": 3607
+        },
+        {
+          "path": "base/def/items.def",
+          "sha256": "54d8bb08fce8ce3ef830b2673e8adb81b22e4cf31f6b0422d2de25742295f026",
+          "bytes": 13331
+        },
+        {
+          "path": "base/def/johnc.def",
+          "sha256": "469cac9ea2537a4fd232e1adbf446cb558d2bb2743d28bee0ccd7ee161608fd5",
+          "bytes": 1864
+        },
+        {
+          "path": "base/def/map_admin.def",
+          "sha256": "a31a305b120740e59214a3a95d8ec29d9ec5007b4f2bab8f1440b1590d5df5d1",
+          "bytes": 20210
+        },
+        {
+          "path": "base/def/map_alphalabs1.def",
+          "sha256": "c67dfcf1269f53e314cc0a7e395e58055b013aeb392c00995674edf7dadecc32",
+          "bytes": 18501
+        },
+        {
+          "path": "base/def/map_alphalabs2.def",
+          "sha256": "b7d1c89728c7da8f3db541e861c86e4d5dc54d35c7ba7a16c68af59f2aa451c4",
+          "bytes": 30358
+        },
+        {
+          "path": "base/def/map_alphalabs3.def",
+          "sha256": "eb9426271cbcf0f9d0fba23c08ab5a3874a34758460a16f891fecd73163a8d2c",
+          "bytes": 39
+        },
+        {
+          "path": "base/def/map_alphalabs4.def",
+          "sha256": "f9e5547aca8dfa2dee306290ae5f577619e4f58e8bb176c73da7b2b5d58a2e93",
+          "bytes": 11042
+        },
+        {
+          "path": "base/def/map_caverns2.def",
+          "sha256": "3c50c66ca479a87e81668de2ce7d721bec22cbdf62f4ab9700476ad4344f6b6f",
+          "bytes": 16403
+        },
+        {
+          "path": "base/def/map_comm1.def",
+          "sha256": "c0fd1b87afa94ec853a2696e09261067ed7c6e7ff86b1fe67ccfce8ca1293c17",
+          "bytes": 4392
+        },
+        {
+          "path": "base/def/map_commoutside.def",
+          "sha256": "48d72705a35368c63c1def419302f6453b79c771cc015fb095268a2f25557177",
+          "bytes": 6206
+        },
+        {
+          "path": "base/def/map_cpu1.def",
+          "sha256": "4ed93479e6eaa0c60373d74a9262ba03a854bc0eee9ac9c18c54503aa8840c18",
+          "bytes": 13687
+        },
+        {
+          "path": "base/def/map_cpuboss.def",
+          "sha256": "5df60f935cbe1a7bd79f63e2fa91c1763f6ac1e32dddc24e4e73ca6781d1d03b",
+          "bytes": 1434
+        },
+        {
+          "path": "base/def/map_delta1.def",
+          "sha256": "30b7f3b09e6d1ccd8d87d2a1c2cfea6b01013997231ba6727c92949b485940b3",
+          "bytes": 5973
+        },
+        {
+          "path": "base/def/map_delta2a.def",
+          "sha256": "753df6a5b640004cf5b0fd087d02cf682d7471af19c1c9dd56a6019422e8b4fb",
+          "bytes": 22512
+        },
+        {
+          "path": "base/def/map_delta2b.def",
+          "sha256": "378af40d494f9cc4758954740b34ed64620b01e1f1a0621f045be98af5acc970",
+          "bytes": 7457
+        },
+        {
+          "path": "base/def/map_delta3.def",
+          "sha256": "2a119f768aedcdc927c2e13cd271d89c1010cfdc3f15d6ec6079965ae6099a7f",
+          "bytes": 1019
+        },
+        {
+          "path": "base/def/map_delta4.def",
+          "sha256": "bbeafe76d640c03e2123fec0d6ab6bf6683dea085ef785f8ea47e3aae8b12faa",
+          "bytes": 7449
+        },
+        {
+          "path": "base/def/map_delta5.def",
+          "sha256": "78661541edd5161eb3ac5bf13989231d4370a75d7d69850125a3446b36494c53",
+          "bytes": 4087
+        },
+        {
+          "path": "base/def/map_enpro.def",
+          "sha256": "77101dbfba2feb33b37ae4cd5dbb215ebd556366ea240c6fe35f643eac0c3c5a",
+          "bytes": 44097
+        },
+        {
+          "path": "base/def/map_fragchamber.def",
+          "sha256": "bf9a82cc3685010b95fccbbcc87bcbda6a70b8544744c441305ffe6e8c0f10ab",
+          "bytes": 512
+        },
+        {
+          "path": "base/def/map_hell1.def",
+          "sha256": "21da89c00eb92a8788bdb69729e053e3a6c49ab873ee7302ecce9f191212bc8f",
+          "bytes": 6375
+        },
+        {
+          "path": "base/def/map_hellhole.def",
+          "sha256": "58ebc8b8ef82382264acaa0dfb6cb7d53821500da66872beefdadcd6737349aa",
+          "bytes": 27967
+        },
+        {
+          "path": "base/def/map_hellhole_xbox.def",
+          "sha256": "127a7e4dd710cf7c2bea76d351896dd5bf637b36523a896e8ee1d40173deec54",
+          "bytes": 13042
+        },
+        {
+          "path": "base/def/map_intro.def",
+          "sha256": "96197a77af3af0b932e4c4eb4dc62914e5af7bf4465e27cc2d95838e9b2379df",
+          "bytes": 4053
+        },
+        {
+          "path": "base/def/map_maledict.def",
+          "sha256": "0bda418f7aeda44cb1df31d9cdef8337c14f1b58395bcdc6f3ff1461d8f74006",
+          "bytes": 1363
+        },
+        {
+          "path": "base/def/map_marscity.def",
+          "sha256": "7e089a258230e767a8e84c02210d565779b0d960665a27fd2cac9b3cc0b9bb27",
+          "bytes": 108746
+        },
+        {
+          "path": "base/def/map_marscity2.def",
+          "sha256": "6b8339a03b36bec4e408df006d9742a8a9b59caba7e90e38bfd36696d05c960b",
+          "bytes": 7514
+        },
+        {
+          "path": "base/def/map_marscity_xbox_coop.def",
+          "sha256": "fa3e0cb452e1149b6bfaace49e5ed12b229200b9a379f4952158bb81c3fe522e",
+          "bytes": 18356
+        },
+        {
+          "path": "base/def/map_marscity_xbox_sp.def",
+          "sha256": "471f998ece1b550acb046f8ce50ed1b879e0dd9f93a8486e46e7d1421c3bb35f",
+          "bytes": 5948
+        },
+        {
+          "path": "base/def/map_monorail.def",
+          "sha256": "81cd78626054c40afa0f9ea8fcd32ba55a37101547aa88bc0b72a8cfde04a715",
+          "bytes": 9103
+        },
+        {
+          "path": "base/def/map_recycling.def",
+          "sha256": "a3a4e1ea6ff839964fccfd95200d1994b53a2d5d9a07fe073fa46a79865ee2fe",
+          "bytes": 3669
+        },
+        {
+          "path": "base/def/map_recycling2.def",
+          "sha256": "4047ed2ab271276f2279fbc33125d054e583d8f03a9fb3dfadbe08fdded004a5",
+          "bytes": 8710
+        },
+        {
+          "path": "base/def/map_site3.def",
+          "sha256": "3e5b8fd2a27edfa2440381f8bf40cb199833cc7f2a00cde0e31c1721e2ead8f4",
+          "bytes": 4990
+        },
+        {
+          "path": "base/def/map_space.def",
+          "sha256": "e5951053b13a21b4fa5539b4823a6c68d23537edf4a745954966773d5f807323",
+          "bytes": 6729
+        },
+        {
+          "path": "base/def/map_underground.def",
+          "sha256": "0eb40119df8dd525c41b0d615c040d62f431f87b4e1212dcd1eddc4427468f2f",
+          "bytes": 69657
+        },
+        {
+          "path": "base/def/map_underground_xbox_coop.def",
+          "sha256": "2a952c4d886501e6fa3f4a42fce5ea8b819ca81b9688a637ee02fb287e45feb2",
+          "bytes": 9346
+        },
+        {
+          "path": "base/def/maps.def",
+          "sha256": "ed392e88d36b86838d7a65fd8cbab88187d957e56b4b9e2c1c0a5fe048561441",
+          "bytes": 5341
+        },
+        {
+          "path": "base/def/misc.def",
+          "sha256": "3691d3c27b6625424ed407476e1c872f8e910fdc0aac4c97107336328ecc8de8",
+          "bytes": 5785
+        },
+        {
+          "path": "base/def/monster_boss_cyberdemon.def",
+          "sha256": "9f538a62cbc92c23856e7d8e044c614bb817c5e477c4649b9ab82669dbe86c5b",
+          "bytes": 14597
+        },
+        {
+          "path": "base/def/monster_boss_guardian.def",
+          "sha256": "1c936fe86c8a3e714a3cc200de8f05963259f7fef8bac61ddcdd3ccaed14ff51",
+          "bytes": 11373
+        },
+        {
+          "path": "base/def/monster_boss_guardian_seeker.def",
+          "sha256": "c1011ebbe6ee0eeca3602530f1890b11918c530fdfc47723e5ea3d880faacbe0",
+          "bytes": 2411
+        },
+        {
+          "path": "base/def/monster_boss_maledict.def",
+          "sha256": "faba092756503ec1d0e4ff97e1d2965bdb313a7984bd7707b81fba6549c20ef3",
+          "bytes": 3157
+        },
+        {
+          "path": "base/def/monster_boss_sabaoth.def",
+          "sha256": "f03feff8a298e0f1dcf723c19d883010e960651a45b381718095f4afdda7002e",
+          "bytes": 5795
+        },
+        {
+          "path": "base/def/monster_boss_vagary.def",
+          "sha256": "c6d06817bc602ff622e4e7c35e1ca1ed4e4c7f62b343c1b30db9facb8afd3476",
+          "bytes": 16969
+        },
+        {
+          "path": "base/def/monster_default.def",
+          "sha256": "fbbfc10e90d1d67156002146cb8f57981ec499845873ed0b0d3e4e31b49bbd43",
+          "bytes": 14293
+        },
+        {
+          "path": "base/def/monster_demon_archvile.def",
+          "sha256": "0db23cbceeb873948f3d6ef0210bf8261d06499f09ce3abcc9b6e5656b976129",
+          "bytes": 11227
+        },
+        {
+          "path": "base/def/monster_demon_cherub.def",
+          "sha256": "eb1fa8881a9fb4b2dc1cae8902becf595a1484114a0aeef5686e22981392216e",
+          "bytes": 6794
+        },
+        {
+          "path": "base/def/monster_demon_hellknight.def",
+          "sha256": "58c245aafea083b2ed963cf7875fe996001aa314e6705fb30155f78097ce8536",
+          "bytes": 13875
+        },
+        {
+          "path": "base/def/monster_demon_imp.def",
+          "sha256": "6077394bae9bdb7b95b9fe723c11bddb16a406810e39fb7da427d51eca4efb82",
+          "bytes": 33026
+        },
+        {
+          "path": "base/def/monster_demon_maggot.def",
+          "sha256": "e1f367f678b02ac391afce2b6d5a0dafbffd3713fa9c2b00667884ba622cc90d",
+          "bytes": 10957
+        },
+        {
+          "path": "base/def/monster_demon_mancubus.def",
+          "sha256": "aaba2d14ee3c0576887435704f58f4d7094fd6161c14c4a5c114f4b0135fac9b",
+          "bytes": 10640
+        },
+        {
+          "path": "base/def/monster_demon_pinky.def",
+          "sha256": "3293409588d49bf0dafaa1fbcb8442cc561c66564d305097f86dd4911c17601b",
+          "bytes": 12993
+        },
+        {
+          "path": "base/def/monster_demon_revenant.def",
+          "sha256": "98469a858e3c9c23672c7706edbc384bf00fe65457908047aecbee97031daa3d",
+          "bytes": 16647
+        },
+        {
+          "path": "base/def/monster_demon_sentry.def",
+          "sha256": "a47cd1165f9c8e8d1183c5b1d573f50a1866de3c49291f4a56b35746a4f5a49f",
+          "bytes": 7950
+        },
+        {
+          "path": "base/def/monster_demon_tick.def",
+          "sha256": "01b5713140b74e72a1c56989df74a9b97c565f022e46255b26cf9bd898542a9d",
+          "bytes": 14796
+        },
+        {
+          "path": "base/def/monster_demon_trite.def",
+          "sha256": "d7457fe2af5083f6f8d5bd3c4db6da83cf9d9e84fbac9b5bbd2ecf99d05bb96f",
+          "bytes": 18647
+        },
+        {
+          "path": "base/def/monster_demon_vulgar.def",
+          "sha256": "86b2af41549860202c2838c3dfa7e761d4bba899c9677b4b28366bc852084c84",
+          "bytes": 10079
+        },
+        {
+          "path": "base/def/monster_demon_wraith.def",
+          "sha256": "d26dc13fe4c55f24839a0c2c37e232796e21e5f13e35ebdd5f35b71489b556e8",
+          "bytes": 9326
+        },
+        {
+          "path": "base/def/monster_flying_cacodemon.def",
+          "sha256": "068abd0e15a2a701ebcf6e586f4412fe2d401d64687eb3105222cb58815b1782",
+          "bytes": 8778
+        },
+        {
+          "path": "base/def/monster_flying_lostsoul.def",
+          "sha256": "38661727fd4332bc3be2d7b1c79fe51e267c82012ba55d3a843cd4748708f706",
+          "bytes": 4317
+        },
+        {
+          "path": "base/def/monster_turret.def",
+          "sha256": "4f6341fd3a4301250d4e7909249f22744e52ec09919ab4699fcb75619ad77853",
+          "bytes": 3970
+        },
+        {
+          "path": "base/def/monster_zombie_base.def",
+          "sha256": "2543aa63cc81ba37f0b88e74b0dc5e90841b92581632f9a32f19eb1c959d619e",
+          "bytes": 13010
+        },
+        {
+          "path": "base/def/monster_zombie_bernie.def",
+          "sha256": "282619bf3e593606f901b3963e8391ded58bff8ef2a8b3ec47b0b367dab39784",
+          "bytes": 7251
+        },
+        {
+          "path": "base/def/monster_zombie_boney.def",
+          "sha256": "9ca9f2cbe3728764dae7a955403b16d296c9d89b16759240f67d7fc5e50b34b1",
+          "bytes": 6885
+        },
+        {
+          "path": "base/def/monster_zombie_chainsaw.def",
+          "sha256": "0fdbe37ff561cc7f39eb53287e8a54d407b5cdfa9581ba853b72f4b0ed3ae3c3",
+          "bytes": 7419
+        },
+        {
+          "path": "base/def/monster_zombie_commando.def",
+          "sha256": "abc41335ec7c4290e7f1aa1497b8eb2f70c031f826965e19311a20e4ef521621",
+          "bytes": 15388
+        },
+        {
+          "path": "base/def/monster_zombie_commando_cgun.def",
+          "sha256": "6e92599a2b667ea070fb61202dd64f80ad6299d519b19cedc26fada29f9dc2d3",
+          "bytes": 42352
+        },
+        {
+          "path": "base/def/monster_zombie_fat.def",
+          "sha256": "d19e77f01dd18a67a67d78048035710226e074f8dcfc83dc7524d185af40e31b",
+          "bytes": 14118
+        },
+        {
+          "path": "base/def/monster_zombie_fem.def",
+          "sha256": "d0b17dff4ad2dbc345fd163cb243de870d587f58a55b4f6505321162466ab21d",
+          "bytes": 9839
+        },
+        {
+          "path": "base/def/monster_zombie_generic.def",
+          "sha256": "2ecdf46f851d70a19f8e459f14722a860b4339d68accb0dbfc42d261cb5f0652",
+          "bytes": 21416
+        },
+        {
+          "path": "base/def/monster_zombie_jumpsuit.def",
+          "sha256": "bfb48084768d56a3c83e61830d2236df81955ae2693b3ec66f507c36cd2c9289",
+          "bytes": 16499
+        },
+        {
+          "path": "base/def/monster_zombie_maint.def",
+          "sha256": "5ddc1100cb2277a0f12020f4b1fbb43c59618e662514fcec1b12a4ecb3b45a97",
+          "bytes": 8528
+        },
+        {
+          "path": "base/def/monster_zombie_morgue.def",
+          "sha256": "a672971bb6f895854682f13e2875ed99ecded713e9bf4318dfd30575a5897a85",
+          "bytes": 4144
+        },
+        {
+          "path": "base/def/monster_zombie_sawyer.def",
+          "sha256": "ad4a95e499b1280385c5b46367642db04bfc35d03203d8938f88061729d9ee3e",
+          "bytes": 12490
+        },
+        {
+          "path": "base/def/monster_zsec_machinegun.def",
+          "sha256": "10a82cd9fe509d703f0d46ecb22fc1058caae2a366e94ab98eac7c87ff607576",
+          "bytes": 39447
+        },
+        {
+          "path": "base/def/monster_zsec_pistol.def",
+          "sha256": "dae5f8827c47996c3829d76659e56ead765ae4283a8063586692617e6a7f05fa",
+          "bytes": 30735
+        },
+        {
+          "path": "base/def/monster_zsec_shield.def",
+          "sha256": "b80db7a7ff7b470bfd170278440c4e9048b56b3dc370a5843dfd339c0fde8862",
+          "bytes": 21313
+        },
+        {
+          "path": "base/def/monster_zsec_shotgun.def",
+          "sha256": "3efb0798fccf8f5913f01f781c3707e6eb2cc2dfc20007bb7753447bee528eca",
+          "bytes": 25412
+        },
+        {
+          "path": "base/def/moveable.def",
+          "sha256": "bfd783dfcc065992414e747daee2b97da04c0f3fea466759acfadb3ac19d74b1",
+          "bytes": 34930
+        },
+        {
+          "path": "base/def/moveable_items.def",
+          "sha256": "c60d11463d00bdaaf7a78c88697e8d3d26fc1fa6cb1f421634a025a811fca8df",
+          "bytes": 4168
+        },
+        {
+          "path": "base/def/mp.def",
+          "sha256": "46f20c39d6e9742402de352becc21fea36f739f6e49a11bcadfdd5a7f41d91c4",
+          "bytes": 12743
+        },
+        {
+          "path": "base/def/mpsounds.def",
+          "sha256": "b1bc2b4f6aaca71d2a2c972e73655bc2ff07a00e3b435cbf23b055798fd734c7",
+          "bytes": 5176
+        },
+        {
+          "path": "base/def/npcs.def",
+          "sha256": "1d8ff09157b35ffb271b57d632d7ae7eccc84b48b09aa3b8aa5f913c27447b0f",
+          "bytes": 82512
+        },
+        {
+          "path": "base/def/npcs_coop.def",
+          "sha256": "109f4a1a8381cf596d9ca6a9e31650098d36e52966105728a32ad993b81499a9",
+          "bytes": 48
+        },
+        {
+          "path": "base/def/npcs_james.def",
+          "sha256": "58ae5dad9357185b4feb82c24df961c89ab269b3a40513ca4e7d56063e03b6e3",
+          "bytes": 3525
+        },
+        {
+          "path": "base/def/path.def",
+          "sha256": "2d2bb6ee5c9295cb921241788c6ea4190ec5f10cb4953cb2dc9f45c181f052c9",
+          "bytes": 11000
+        },
+        {
+          "path": "base/def/pda.def",
+          "sha256": "2ecc24bac4647b95a96fa48c137a13c09994f75f30bcb8d50ed53fc5075ee247",
+          "bytes": 3577
+        },
+        {
+          "path": "base/def/player.def",
+          "sha256": "4e7a26f7f6708cb18a96ac5097c2226c5b4aa29c3e81256d2518f3d899afe478",
+          "bytes": 62349
+        },
+        {
+          "path": "base/def/player_cinematics.def",
+          "sha256": "a21755a2573b1d2ad7b5a72d51164b8b5afe6dcfb7651a0e8d1e3107e77a9e33",
+          "bytes": 4325
+        },
+        {
+          "path": "base/def/powerups.def",
+          "sha256": "e68cd0e7001765a9061645a521958f015964645ac64c3e1441eede3f1f52f881",
+          "bytes": 4154
+        },
+        {
+          "path": "base/def/recycling1_seneca.def",
+          "sha256": "49bf43d348b169a8f2e1543a75ee1130099ebb0999c7f26b962b210b67f7866c",
+          "bytes": 1180
+        },
+        {
+          "path": "base/def/rumble.def",
+          "sha256": "a3933c2611907adf00988837edd7ae01bccbfc8990509a72bdb94d26fc1666a7",
+          "bytes": 1288
+        },
+        {
+          "path": "base/def/screenshots.def",
+          "sha256": "6b4269f263aa45d3890d6a4e70ae916cfc8b3e6d856394801ceaf66a5f8d2448",
+          "bytes": 18267
+        },
+        {
+          "path": "base/def/target.def",
+          "sha256": "0b9bb81a501842b301f164cc52352cd682d223e6d97567e9275572faa9562ada",
+          "bytes": 15045
+        },
+        {
+          "path": "base/def/test.def",
+          "sha256": "fa30eb2f396caa8c2fd17d43ee90a4d0bb2b5985a94281b560af15ac5e1c21eb",
+          "bytes": 2108
+        },
+        {
+          "path": "base/def/triggers.def",
+          "sha256": "6ebf176a778a17ddd0b16299b362d5dfc05278dae11a9ddf9babd8f0c6fcadee",
+          "bytes": 14271
+        },
+        {
+          "path": "base/def/vvcache.def",
+          "sha256": "423a9b93a48be81064f5a9729d5a5e47a3e733be705938d8ab90b61e864c82db",
+          "bytes": 2763
+        },
+        {
+          "path": "base/def/weapon_bfg.def",
+          "sha256": "ff550704d7945f6a1daa352c9ad00768923e0b170107b57966aba95c334f9ccb",
+          "bytes": 9316
+        },
+        {
+          "path": "base/def/weapon_chaingun.def",
+          "sha256": "5c4a4f9c4573d7d2196626531840855f0e0cf8b4e6a88f9668832430e54d8ff3",
+          "bytes": 8649
+        },
+        {
+          "path": "base/def/weapon_chainsaw.def",
+          "sha256": "ee855b1bf0e25d4684ee2b639aa6cb4f27a04734d61dad2c1b435ac87533ede4",
+          "bytes": 6545
+        },
+        {
+          "path": "base/def/weapon_fists.def",
+          "sha256": "3a055657ccfb5719eb6dd70cab9272ed998072804bdf33ac4d06b07c6d3db425",
+          "bytes": 4150
+        },
+        {
+          "path": "base/def/weapon_flashlight.def",
+          "sha256": "9af91b4eabc8b868b8a6dc3993966af71acdda60b4cb9b2cc979b24b6ff8803f",
+          "bytes": 8291
+        },
+        {
+          "path": "base/def/weapon_handgrenade.def",
+          "sha256": "d8cc11960ac5e82ad484c06763cb360626c22794defabb7b8212abc4795d99c0",
+          "bytes": 8772
+        },
+        {
+          "path": "base/def/weapon_machinegun.def",
+          "sha256": "fa7fe4e2be5014a5005161d7bd93a5fd705d032cc0dbfabfc1055b17e6a23e84",
+          "bytes": 8315
+        },
+        {
+          "path": "base/def/weapon_pda.def",
+          "sha256": "53b5273f9013fd37b6012df84f2e31d5c14a19eff8487bdac65765e45c7540fa",
+          "bytes": 2368
+        },
+        {
+          "path": "base/def/weapon_pistol.def",
+          "sha256": "f14d55e936b226478ac3bf517750511e459fba3688fbbfc481ddc4b6cbdb2c24",
+          "bytes": 7721
+        },
+        {
+          "path": "base/def/weapon_plasmagun.def",
+          "sha256": "f4a2f69dad8b31aacb1dacd2f8f05bd147a41b79f0cdbde86f4dad10671fe312",
+          "bytes": 12604
+        },
+        {
+          "path": "base/def/weapon_rocketlauncher.def",
+          "sha256": "a4ffd82659ad77789145c0e9d3b900eecf9ddbb86c9d53e50788273962ae4da6",
+          "bytes": 9175
+        },
+        {
+          "path": "base/def/weapon_shotgun.def",
+          "sha256": "bd5e8d9635c7bb47b697175e71fff1cd26f99b33c8281553031c5c0d3104e371",
+          "bytes": 10460
+        },
+        {
+          "path": "base/def/weapon_soulcube.def",
+          "sha256": "7f2b27b933949d01a1ef73b37e35300c536f9a4557bf46d054ba8adba964ae8e",
+          "bytes": 7984
+        },
+        {
+          "path": "base/particles/coop.prt",
+          "sha256": "8f14f8371ef3d7714c03c0bd45e49d5706b1b74235688ac9082026393f73bafa",
+          "bytes": 3086
+        },
+        {
+          "path": "base/skins/skins_player_xbox_coop.skin",
+          "sha256": "930af182c961740dd813e2b7f27f9d624b9fd024bcd770af772e9bdf42514262",
+          "bytes": 107
+        },
+        {
+          "path": "base/strings/english.lang",
+          "sha256": "738dd6f4f8707bd72a7b954d73d9cb6e5bbbd4ddf7da4e84688e71f2bc8ab635",
+          "bytes": 255502
+        },
+        {
+          "path": "base/strings/english_vv.lang",
+          "sha256": "ce5b52f05f59bc5a55ce17d7c27e38df877accc1e7954f403bdf984e30280257",
+          "bytes": 57064
+        },
+        {
+          "path": "base/strings/english_vv_live.lang",
+          "sha256": "b7c87adb054bff25a20d56618a9613aa3d0d8f8687c8a5b4f977f720d17f1bb9",
+          "bytes": 3227
+        },
+        {
+          "path": "base/strings/english_vv_popup.lang",
+          "sha256": "2044a20bf8a8be0d02f671d164eaaedda52d931fe6c9d19b6224dd7dedd5ab62",
+          "bytes": 9463
+        }
+      ]
+    },
+    {
+      "id": "shared-materials",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/materials/aaduffytest.mtr",
+          "sha256": "4ecafbb64f550b3626a9cefea81c894cab53ae5c9b36cf0485569108908f1fa7",
+          "bytes": 18985
+        },
+        {
+          "path": "base/materials/alphalabs.mtr",
+          "sha256": "e41d0f58b25b97b2d06967957eea875e1808fefb8ca964c89054e38b7941c85d",
+          "bytes": 4273
+        },
+        {
+          "path": "base/materials/andy.mtr",
+          "sha256": "567f7079b230b6a65a03ecbb056f7c55d6682074d3aaed211ba33a276478889d",
+          "bytes": 175943
+        },
+        {
+          "path": "base/materials/atest.mtr",
+          "sha256": "a5ae3948f15885abb770c70dce3d37a511de0238f5b2df0ef1fe248df156dc1f",
+          "bytes": 10480
+        },
+        {
+          "path": "base/materials/attract.mtr",
+          "sha256": "d35e470984541c359cf199451ee1b09e3dca195bb9d1358776b4e4262ec69d1b",
+          "bytes": 74
+        },
+        {
+          "path": "base/materials/base_door.mtr",
+          "sha256": "c1f57b9f5255ffc0318771d8142122c485ca73e4e797fc3163c8b4b131cd4758",
+          "bytes": 7600
+        },
+        {
+          "path": "base/materials/base_floor.mtr",
+          "sha256": "d9693a1121f3770781e4db4c442ba747ccab27390230a7716bf0af739ea5c9c0",
+          "bytes": 48098
+        },
+        {
+          "path": "base/materials/base_light.mtr",
+          "sha256": "0a59193c9238c256f0c1f1464ac7591ec1ae1ff2ca78545ec365f0be68a23ddd",
+          "bytes": 26859
+        },
+        {
+          "path": "base/materials/base_trim.mtr",
+          "sha256": "932e85e7d0810536ef5f4bda00f8482e6d36d28fef277ebb7af99f43196c70cf",
+          "bytes": 49722
+        },
+        {
+          "path": "base/materials/base_wall.mtr",
+          "sha256": "70377a90aa18ef692435a2e291d563f01b886b37d23f4835c3a9a6925c3feda8",
+          "bytes": 63258
+        },
+        {
+          "path": "base/materials/caves.mtr",
+          "sha256": "d8dd1c13d25386d890c295cc641803c05ba8022036933b66330503b3cec49c35",
+          "bytes": 3579
+        },
+        {
+          "path": "base/materials/char_common.mtr",
+          "sha256": "20eaa8efbb5d424c57f71076fef31717117ded6d5e8f77b090f8d8e3f1aaa26f",
+          "bytes": 16129
+        },
+        {
+          "path": "base/materials/characters.mtr",
+          "sha256": "82d29aba1a89f56c2bb3630ca4acfe9865876720afb869e1dad6bb6a564d3149",
+          "bytes": 73687
+        },
+        {
+          "path": "base/materials/decals.mtr",
+          "sha256": "d8d4b5491ab50b51d1f908110d9458cf5582fe8543a36ecadca2f2b9c1195ac4",
+          "bytes": 89172
+        },
+        {
+          "path": "base/materials/doom1.mtr",
+          "sha256": "aa2adc9d22b9e7f234658167e452dda5410dae8a556bf68b28676506edf33e2f",
+          "bytes": 1797
+        },
+        {
+          "path": "base/materials/door.mtr",
+          "sha256": "ccb55d42891d99078fc8fd4dca0adc561cfac621b7251e08b39e1ca404adc73f",
+          "bytes": 546
+        },
+        {
+          "path": "base/materials/duffytest.mtr",
+          "sha256": "26849787857da40deb3bd63817ab2f65111fcf7158693167a94c5f48bc59092a",
+          "bytes": 1719
+        },
+        {
+          "path": "base/materials/fogs.mtr",
+          "sha256": "dff359c3c3de6134503b3ee4eac5483c795250fdf749d0754ece6f1909203af1",
+          "bytes": 3233
+        },
+        {
+          "path": "base/materials/gfx.mtr",
+          "sha256": "51605de3964d5f8d2f0f098cb4f12e44b1a03eded6182a3939b5442d29778c8a",
+          "bytes": 5668
+        },
+        {
+          "path": "base/materials/glass.mtr",
+          "sha256": "53401d41120a85d6ae0d69e928a237b8f4565fafa84ab76923704249901f47a4",
+          "bytes": 5043
+        },
+        {
+          "path": "base/materials/hell.mtr",
+          "sha256": "7ff30cc2b6af59ae304f3c23500cfbb15feb990c1430f39af5e3b034856a51e1",
+          "bytes": 66692
+        },
+        {
+          "path": "base/materials/hud.mtr",
+          "sha256": "b5dca38bd8b4c9c64bb3cc6aac6d4030aa261aac1e8424c2a2047f7ed3a7ca0a",
+          "bytes": 264
+        },
+        {
+          "path": "base/materials/invisible.mtr",
+          "sha256": "a69a73a9ff042c35f1e87a3f290dd8139babe242a23bf945e34a839ee36b0a08",
+          "bytes": 9949
+        },
+        {
+          "path": "base/materials/jerry.mtr",
+          "sha256": "f976cf3487bb834c919ab33bb0eacc8fe49461aa69ed640aa1a134ee1577eaa5",
+          "bytes": 2412
+        },
+        {
+          "path": "base/materials/kentest.mtr",
+          "sha256": "010b925e05dbf5becff59ef9673e4fa82730758b3ca5d5628068e8e1a797e6f8",
+          "bytes": 20604
+        },
+        {
+          "path": "base/materials/ktest.mtr",
+          "sha256": "e713982974d39ee0fc92a004e8d4974ce9332a7ac3b1d0ceabccc6876ac85698",
+          "bytes": 20186
+        },
+        {
+          "path": "base/materials/lab.mtr",
+          "sha256": "b0ce6c88336c17caa432e6287b011e80ed9a8e2f12e48f9468d6b9d985da091b",
+          "bytes": 12009
+        },
+        {
+          "path": "base/materials/lab_floor.mtr",
+          "sha256": "a20ebbd5e7610f71f0258577543b760eb84bf4c5fa48723b97a6a61ca7f5e831",
+          "bytes": 219
+        },
+        {
+          "path": "base/materials/levelloading.mtr",
+          "sha256": "9f761385c16b969d33950b0ccb026a2b7846bd59bb33a13331c8476d6d070ac9",
+          "bytes": 942
+        },
+        {
+          "path": "base/materials/lights.mtr",
+          "sha256": "a7362253ef0a67c26fe3f714f3b06e7db0797b9009325c75c3694bf5d96e6196",
+          "bytes": 39202
+        },
+        {
+          "path": "base/materials/mainmenu.mtr",
+          "sha256": "5fc9201af2a5b9005311aeee44a4a7f83f0184cb04a65e8f0400a3576e481d49",
+          "bytes": 34959
+        },
+        {
+          "path": "base/materials/mal.mtr",
+          "sha256": "9df4a00e3fa0679d7e449351538ab8b44c1b063b3e2a129a92676142ee54bd15",
+          "bytes": 6829
+        },
+        {
+          "path": "base/materials/mapobjects.mtr",
+          "sha256": "ba7271835702913dfab0bb7778c885d86ab20f60322d20af0d72c7ef962688bd",
+          "bytes": 167023
+        },
+        {
+          "path": "base/materials/maxtextures.mtr",
+          "sha256": "8aaeaef05797e167a1d990ec7fc46315cd059d48f60e489183b12df623cc263a",
+          "bytes": 5966
+        },
+        {
+          "path": "base/materials/monsters.mtr",
+          "sha256": "0017fa2a41864cd9d9b684793f2b2d14fa90fd788a1b4ef239aae5b52a5f07d1",
+          "bytes": 127317
+        },
+        {
+          "path": "base/materials/morgue.mtr",
+          "sha256": "1eef2626caf1ac75959683f1d223990cd338cbc46b1da655575d02d5ecea7955",
+          "bytes": 1775
+        },
+        {
+          "path": "base/materials/mp_gui.mtr",
+          "sha256": "37d4dad8d9aec3e45cba6579301a6ffeca6968d711da41635036cd235aabc855",
+          "bytes": 319
+        },
+        {
+          "path": "base/materials/mp_lights.mtr",
+          "sha256": "c0672699fab9d5a1820acd1bfa44eafb7b6b16988506f3ec585f3645027ecbae",
+          "bytes": 8192
+        },
+        {
+          "path": "base/materials/mre.mtr",
+          "sha256": "24213d65e6f26a9b43aec47cb9c5b69b80365acd9347e48b59c4abddecfed9d8",
+          "bytes": 1110
+        },
+        {
+          "path": "base/materials/object.mtr",
+          "sha256": "35ccbc22dcc8c4a5456861feed8a2d3d9c75c9717d1a41d5e002b53f12f5e6a6",
+          "bytes": 40022
+        },
+        {
+          "path": "base/materials/outside.mtr",
+          "sha256": "2cf1165912d24e645aa63de5e38e29bfe4cb3de7514ba2c11a1e358d4c336d33",
+          "bytes": 2554
+        },
+        {
+          "path": "base/materials/patd.mtr",
+          "sha256": "eb9607ecdb86ef27d04459a41694e3a0d6ba1659bcaba94e02d67915eeabd145",
+          "bytes": 127766
+        },
+        {
+          "path": "base/materials/patricktest.mtr",
+          "sha256": "4f76bb6611224e8fe54c4d5986e4a8c1df62345d17b9f04daa43aa5028070f6e",
+          "bytes": 85744
+        },
+        {
+          "path": "base/materials/pause.mtr",
+          "sha256": "4b66118152edf04c592443f4eed1e73070237a35c252d063eeb9e15dde87b843",
+          "bytes": 15828
+        },
+        {
+          "path": "base/materials/pda.mtr",
+          "sha256": "b531765611ce384e188f16fc47f1d2a02f8e1eece1c84216459b1193faf3da03",
+          "bytes": 4514
+        },
+        {
+          "path": "base/materials/pdtest.mtr",
+          "sha256": "4f55b02a4822ac5db3b3cb9470c029a7f7b63d0dfa7285bf5ac24706a35dfe5e",
+          "bytes": 2349
+        },
+        {
+          "path": "base/materials/phook.mtr",
+          "sha256": "c39dbd491805dbf08fe8f05efb67a43bacb9a9413b87a97c95fe03e9bce2f1af",
+          "bytes": 1252
+        },
+        {
+          "path": "base/materials/popup.mtr",
+          "sha256": "a998d35855e9f7b3dac7e1d3c198f61b3ef8b14133a2aeba7e35f08f54dc573c",
+          "bytes": 296
+        },
+        {
+          "path": "base/materials/recyc_door.mtr",
+          "sha256": "031bbcb3fc815f1de07841f946e12479900b1925a5247a9ac13c3914579a6e00",
+          "bytes": 458
+        },
+        {
+          "path": "base/materials/recyc_floor.mtr",
+          "sha256": "006e1c4fc65b9aeb9b0488be9f2387033ccc9ceb21a9234f3b29223ba443c4c9",
+          "bytes": 5089
+        },
+        {
+          "path": "base/materials/recyc_light.mtr",
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+          "bytes": 2
+        },
+        {
+          "path": "base/materials/recyc_trim.mtr",
+          "sha256": "47df49fcf67349365187a6cd80fb38d55b528e8965ffc3d560f25e85eb1d7b2d",
+          "bytes": 1617
+        },
+        {
+          "path": "base/materials/recyc_wall.mtr",
+          "sha256": "f5c70fbc3679cf204455b6b37ac2b69c9793cb941f1e9730fcc045c35cb7fbf8",
+          "bytes": 19360
+        },
+        {
+          "path": "base/materials/restart.mtr",
+          "sha256": "0736d7b9b3b5ccbdbef9689ab35652ffc6dd1f13df2c9772c0600d7c92b6aa3e",
+          "bytes": 6575
+        },
+        {
+          "path": "base/materials/rock.mtr",
+          "sha256": "9d169e231c6d1da6f90cb48559a21f310afd86cdf94f6328cf635056f868f319",
+          "bytes": 7002
+        },
+        {
+          "path": "base/materials/sean.mtr",
+          "sha256": "3ed70e98c191a5eca64128af771b628dd423cb0ec5243e2a4f3a7a567591a868",
+          "bytes": 1784
+        },
+        {
+          "path": "base/materials/senetemp.mtr",
+          "sha256": "46ef71bb8ef962e2403c765e4efe5cae04a2fbd92f7b98f555e5928c676b65b7",
+          "bytes": 430813
+        },
+        {
+          "path": "base/materials/sfx.mtr",
+          "sha256": "37b0e869437dad159b3247391d71aeb5deed19aa4b2da8b02efb825c56b9e5e8",
+          "bytes": 63849
+        },
+        {
+          "path": "base/materials/sfx_multiplayer.mtr",
+          "sha256": "bbc2be7ac6d0fd1c91bafb91bbeb502b75105791d480d76fc6ed54375a1201f3",
+          "bytes": 981
+        },
+        {
+          "path": "base/materials/shaderdemo.mtr",
+          "sha256": "164043eb730d0e0a561cd6b377e8958a266fc28b7daabcc7dc2a9ae32e38e68d",
+          "bytes": 27203
+        },
+        {
+          "path": "base/materials/skies.mtr",
+          "sha256": "b3339803b75e1e5f5538d29e4f8c3cff3f678f2546be80db860aa0bf73900c00",
+          "bytes": 3374
+        },
+        {
+          "path": "base/materials/sound.mtr",
+          "sha256": "d7a5e5878b91fb1b5787bfdc54547a4bdb372e09499c576a70bedb76d7a3f263",
+          "bytes": 4500
+        },
+        {
+          "path": "base/materials/specialcase.mtr",
+          "sha256": "ef7503bf06ca83362e115a34f1305d1ce2b16812dd520ebb92cd5e4678f5346b",
+          "bytes": 8205
+        },
+        {
+          "path": "base/materials/stevetest.mtr",
+          "sha256": "aae2168f01b19656a5710ecd69801e2f031a7c83ba9483997c99bd96a47dfb60",
+          "bytes": 11952
+        },
+        {
+          "path": "base/materials/stone.mtr",
+          "sha256": "c5273ce04df2d63604de602e210eb2c34157b32b56edaa28fb4dd0d144608f5e",
+          "bytes": 472
+        },
+        {
+          "path": "base/materials/testinteractions.mtr",
+          "sha256": "8c8cd6c1b607715322f21d86ff997304dfb7b9b13898d928e2e1f756f1358ce9",
+          "bytes": 3957
+        },
+        {
+          "path": "base/materials/tim.mtr",
+          "sha256": "6c471536cab352d12d12af544621e87cbbd2ffdef6981b835fe30a0294733501",
+          "bytes": 7392
+        },
+        {
+          "path": "base/materials/tools.mtr",
+          "sha256": "598f4bed65d029a60f958f0d562d2c01d8ac712895d05d196ac80b79cf1d09e8",
+          "bytes": 167
+        },
+        {
+          "path": "base/materials/vehicles.mtr",
+          "sha256": "1818d85188cfc56cbb8a3fb022f2a44f2c5a40f01f1d6a4861a750b51e555c16",
+          "bytes": 2220
+        },
+        {
+          "path": "base/materials/video.mtr",
+          "sha256": "e86886c9ee37dcca2b20739db5db82616d60a5016dca41a68886724488bbe164",
+          "bytes": 7778
+        },
+        {
+          "path": "base/materials/vp_materials.mtr",
+          "sha256": "78ddf49af5ca476d767aef5d08a3d6eca0b92c2136f1feef9f6304b63c9868b5",
+          "bytes": 10358
+        },
+        {
+          "path": "base/materials/washroom.mtr",
+          "sha256": "ffa1b7cb38737afc35ba96d6eb0fb19929d397236b2ac1c9ad6dd0fbc3688f49",
+          "bytes": 8472
+        },
+        {
+          "path": "base/materials/weapons.mtr",
+          "sha256": "2a9294f81e9ae1b48eb4a3b44b7c790e2b21666674f40f5ce57aabcf327cbeea",
+          "bytes": 92357
+        },
+        {
+          "path": "base/materials/xbox_decals.mtr",
+          "sha256": "65089ac278c7646ccb6acde7fc8bd34bbf13b10c88205fb9339c79befcd99dcd",
+          "bytes": 316
+        },
+        {
+          "path": "base/materials/zgraeme.mtr",
+          "sha256": "a55573a2efd95c88cd15b919b17ea807fe1ffa4dd9c250bd376a4829f48be1d3",
+          "bytes": 11300
+        }
+      ]
+    },
+    {
+      "id": "npc-af",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/af/char_npc_base.af",
+          "sha256": "5c893304b9cfb079e465eafc85a78450787b2a4fec5766feffd49b49c628ee70",
+          "bytes": 5742
+        }
+      ]
+    },
+    {
+      "id": "player-af",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/af/player_npcs.af",
+          "sha256": "ae9beb8611b98aec22143aec3b7d7e9523a5e6be2b71eaf5e7e614d5767fdd42",
+          "bytes": 5835
+        }
+      ]
+    },
+    {
+      "id": "checkpoint-084-af",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/af/char_lanternguy.af",
+          "sha256": "79cc7cf2a0333b3abcda742a3cdefb9dc2a20ddaf000a38ff269ae2fa96cc8bf",
+          "bytes": 5823
+        },
+        {
+          "path": "base/af/monster_zombie_chainsaw.af",
+          "sha256": "9c7927a1ad78bbdc0cc1c5dbbe69f01331f8b32d691c06f57b8e5ea6ecf52150",
+          "bytes": 5820
+        },
+        {
+          "path": "base/af/monster_zombie_maint.af",
+          "sha256": "391cc0f620d92d57a0b912bd9d7ccadb440d7fc5ca5d4f2060eda5dc1b0c20f3",
+          "bytes": 5796
+        }
+      ]
+    },
+    {
+      "id": "enpro-af",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/af/char_npc_misc.af",
+          "sha256": "493632659fbcb3e6ff183637426e47932237a5e3b27f67c91e68b66a8d34f877",
+          "bytes": 5838
+        }
+      ]
+    },
+    {
+      "id": "hazmat-af",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/af/char_hazmat.af",
+          "sha256": "91769bed3531601ec0ce733e1a8cc30087ee98fcb771553a680c0a154fe1b9f3",
+          "bytes": 5742
+        },
+        {
+          "path": "base/af/char_npc_base.af",
+          "sha256": "5c893304b9cfb079e465eafc85a78450787b2a4fec5766feffd49b49c628ee70",
+          "bytes": 5742
+        }
+      ]
+    },
+    {
+      "id": "first-map-resources",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/guis/chat.gui",
+          "sha256": "69de737c611aaaf6b119f63023b4b4e633fe9cb662cda0cd4fcd84793b41fd08",
+          "bytes": 2812
+        },
+        {
+          "path": "base/guis/cursor.gui",
+          "sha256": "528b4cce8ae00ca3c7e303ddbccb62a9229dd0072153d524552dc9b930c0907b",
+          "bytes": 3563
+        },
+        {
+          "path": "base/guis/doors/aco_door_green.gui",
+          "sha256": "f126ad2a661f8a6b9ab1e1ad94d3402a918c71de9980d8ac11346d4b08cfc6d8",
+          "bytes": 5357
+        },
+        {
+          "path": "base/guis/doors/aco_door_open.gui",
+          "sha256": "f126ad2a661f8a6b9ab1e1ad94d3402a918c71de9980d8ac11346d4b08cfc6d8",
+          "bytes": 5357
+        },
+        {
+          "path": "base/guis/doors/airlock_coop.gui",
+          "sha256": "cb0c218c1dcfd076cf5b8a05dd40bac4de0a85d1b657195429866789fde284b5",
+          "bytes": 19099
+        },
+        {
+          "path": "base/guis/doors/airlock_door_coop.gui",
+          "sha256": "31ea3932ccdb34897dd7ce093a9ce6018cc5985bc82a7273862939de2c8e6f09",
+          "bytes": 3287
+        },
+        {
+          "path": "base/guis/doors/doorstatus.gui",
+          "sha256": "84b42f60f846eb047f431f4434829815b701c6d232b1082be8d874691b3b5502",
+          "bytes": 3178
+        },
+        {
+          "path": "base/guis/doors/elevatorcall.gui",
+          "sha256": "b011a3ae1fef00ebf253973f22dd1ac144d3a9568a3d691eb35453bbb12a4194",
+          "bytes": 10965
+        },
+        {
+          "path": "base/guis/doors/elevatortop2.gui",
+          "sha256": "262d5c1a818dd0a873f247b2cc8f469babac06e94df9958ba1440d3c17a610a1",
+          "bytes": 2756
+        },
+        {
+          "path": "base/guis/doors/marquee.gui",
+          "sha256": "dcedf112854563e534ae5669115448ac371c445fe8b5a920b590011f84efa6e3",
+          "bytes": 6486
+        },
+        {
+          "path": "base/guis/doors/uac_door.gui",
+          "sha256": "2dbcd814a7535a0f4112494ab86694077c3378116057ac97874358af4a641fbc",
+          "bytes": 20134
+        },
+        {
+          "path": "base/guis/doors/uac_door_coop.gui",
+          "sha256": "8516579f1aeb157d7565473aa9bf8bebd74d54f517bac98f0e306d2f1e2cf2b3",
+          "bytes": 20314
+        },
+        {
+          "path": "base/guis/doors/uac_doorparm.gui",
+          "sha256": "ae3eff26e3ea7076901458cee1bc12ad5a8dc7a8d35c70cb8178eb237f85a5b6",
+          "bytes": 20100
+        },
+        {
+          "path": "base/guis/doors/uac_general.gui",
+          "sha256": "3ec167b27319d12f456e3b1628213bcda1f472ab806a86de2401bf3d4a6a6d3c",
+          "bytes": 13714
+        },
+        {
+          "path": "base/guis/doors/uac_general_alt.gui",
+          "sha256": "f35e4f7c25b2095fd4349e7f63c9612ff2fc2335ae8e1e14aefa19b4fcd4525d",
+          "bytes": 12974
+        },
+        {
+          "path": "base/guis/doors/uac_general_click.gui",
+          "sha256": "b46e5b16ae46c1945fd13c6fbf1f60a71949a6f228625cc20650a466b3ac4a0f",
+          "bytes": 13848
+        },
+        {
+          "path": "base/guis/doors/uac_general_multiclick.gui",
+          "sha256": "d96f92b48ef075c5b8650e40307c6b45800f0406338461b91f48d3b4e7526a43",
+          "bytes": 18334
+        },
+        {
+          "path": "base/guis/doors/uac_locked.gui",
+          "sha256": "62149d1971b07b3277a9fddeb3e196ae4252f0b0db523285b9195bfb4c94187d",
+          "bytes": 12328
+        },
+        {
+          "path": "base/guis/gameover.gui",
+          "sha256": "3f976cc07f63077ad37c69c13137fdf427b36385e5432547f50547e78dac6c5c",
+          "bytes": 183
+        },
+        {
+          "path": "base/guis/hud.gui",
+          "sha256": "ede557dba8ab56fce36c251de861dbb8b5cd9da6f51d44a8325f004e4b37e1b9",
+          "bytes": 83560
+        },
+        {
+          "path": "base/guis/intro.gui",
+          "sha256": "f7e744883f0bf88cac6e3ecdcae53beb1bc3913cd2b73a164244b2115a260c61",
+          "bytes": 20509
+        },
+        {
+          "path": "base/guis/lvlmaps/genericmap.gui",
+          "sha256": "8c1c98b65553d6a6abc643919b0e84ab2aaec66944c027018d6f6f5b6637c749",
+          "bytes": 3189
+        },
+        {
+          "path": "base/guis/mainmenu.gui",
+          "sha256": "358f32a727e1198bb004565a7d76e5f253a98ebeee7a65827b55140885c8cb96",
+          "bytes": 717935
+        },
+        {
+          "path": "base/guis/map/level_loading.gui",
+          "sha256": "15bc2a8461eda5afff538cec691c1905789c7a6cb3445bd31db25b91d0746ca1",
+          "bytes": 5256
+        },
+        {
+          "path": "base/guis/marscity/comm1.gui",
+          "sha256": "a15c9c4c40a47af1008aa2f53e901676c00a2efb1ef839869e91977d3255f250",
+          "bytes": 9877
+        },
+        {
+          "path": "base/guis/marscity/comm2.gui",
+          "sha256": "922a95b82454d6e2e2176f8b82aa18036035351074f2471695422cf7aada6a41",
+          "bytes": 8740
+        },
+        {
+          "path": "base/guis/marscity/flightschedule.gui",
+          "sha256": "17c298e7848e9daebebc36598b5b133971df225a99294d263b9305d7374a41a2",
+          "bytes": 6093
+        },
+        {
+          "path": "base/guis/marscity/kellyrequest.gui",
+          "sha256": "b91f6061f0ed289212c50441e5319817f55ad4e3e713dc09a43e7c230cfb39de",
+          "bytes": 27406
+        },
+        {
+          "path": "base/guis/marscity/pressure.gui",
+          "sha256": "b411bebf96024c2d8fc7daf788b941582d73b31e187f2d7c0001423bfd5ec4f3",
+          "bytes": 20954
+        },
+        {
+          "path": "base/guis/marscity/reception.gui",
+          "sha256": "47a012c39ce2682e64b1292cad78c24db789080a0921e1410f5aa8e0648e8032",
+          "bytes": 8470
+        },
+        {
+          "path": "base/guis/marscity/sttp1_coop.gui",
+          "sha256": "35a4fa53c6e87598d8ae7abd40881539ab40463834c2a753cd81656a81d5a874",
+          "bytes": 30238
+        },
+        {
+          "path": "base/guis/marscity/sttp2_coop.gui",
+          "sha256": "b791c18631d82c2e5338204803bbcd2a6ff9ac3b61646e56d6743510bfac727c",
+          "bytes": 30236
+        },
+        {
+          "path": "base/guis/marscity/sttpscore_coop.gui",
+          "sha256": "6062cc9fc27b0be9a4aeb0628c6df24cd52d625f535d52500984be231e8cbe47",
+          "bytes": 10449
+        },
+        {
+          "path": "base/guis/movies/uac_welcome.gui",
+          "sha256": "a29cfd68b37eec7eb6e2f44e93e73584b9f921dbd5964f82ddf90da0cdab4941",
+          "bytes": 5381
+        },
+        {
+          "path": "base/guis/mphud.gui",
+          "sha256": "0f5d3da10b237e6f457cea9b424479b25624f4d97b2963ebecb7ebfa5b6ba431",
+          "bytes": 39094
+        },
+        {
+          "path": "base/guis/mpmain.gui",
+          "sha256": "03e514add2d9c7002f3db669fdc9c5b4af6d5271a0b38219044f5a5f362df80a",
+          "bytes": 137364
+        },
+        {
+          "path": "base/guis/mpmsgmode.gui",
+          "sha256": "c36731b77d4007445c456e67ac345e7e3d5905e06caaf7610c474d6a24daf4ad",
+          "bytes": 1432
+        },
+        {
+          "path": "base/guis/msg.gui",
+          "sha256": "152648507fe2d604c0e2abc4e0aa1f2547880978f3a0f4a6a6215c071f7fd610",
+          "bytes": 12902
+        },
+        {
+          "path": "base/guis/netmenu.gui",
+          "sha256": "bd7c7d9a0031ef083218a03e42ce55268679ed197ea687ffa8db5ec2ae918672",
+          "bytes": 4765
+        },
+        {
+          "path": "base/guis/pda.gui",
+          "sha256": "a9a95c2f62bf08947c9f98352c9f7a58d98075811ba09510f7a2d4ce446cba78",
+          "bytes": 137249
+        },
+        {
+          "path": "base/guis/pda/tablet_npc.gui",
+          "sha256": "3490794325fa7e652b8a1c816889171939fe5b4af4e646f37616b3d908b88252",
+          "bytes": 9227
+        },
+        {
+          "path": "base/guis/restart.gui",
+          "sha256": "c4c4ca094e11a62f3f7380d8959a9f59905098c8689a0fa9f0c8305f5b8f36a4",
+          "bytes": 21443
+        },
+        {
+          "path": "base/guis/scoreboard.gui",
+          "sha256": "c17b23380687ed715eaf46ce3a2f7e4fc0c9c5afeae4a320dfaab3da900c27d9",
+          "bytes": 12629
+        },
+        {
+          "path": "base/guis/screens/bluescan3.gui",
+          "sha256": "a363016d701f623a4c909556348b5622c3423e713143aa50a8d2c2747507aaac",
+          "bytes": 5558
+        },
+        {
+          "path": "base/guis/screens/bluescan4.gui",
+          "sha256": "794fcf375297d87a86043c1afd88606a20a7a80422bfe8953edc8f74320f89c3",
+          "bytes": 5433
+        },
+        {
+          "path": "base/guis/screens/cpu_eight.gui",
+          "sha256": "8ec81a3c3e39416f2bf172bcf263f2ce0e9d98f296ad4e8cf984bd65fd64224a",
+          "bytes": 4003
+        },
+        {
+          "path": "base/guis/screens/cpu_five.gui",
+          "sha256": "7e7a117a26a00802db92d1583f43ea34bfdca4c49f2dfa2522d8b16f7a589c57",
+          "bytes": 4660
+        },
+        {
+          "path": "base/guis/screens/cpu_mars2.gui",
+          "sha256": "63cc692961a419be849f24fb7268b1cda9e9fb18f3218b3c3606c93b41478e92",
+          "bytes": 2105
+        },
+        {
+          "path": "base/guis/screens/cpu_marsmap.gui",
+          "sha256": "791b1d4991ff2cb0196b8e56ff3bb0c45d03d4688ff2125630352282986e4fc7",
+          "bytes": 1770
+        },
+        {
+          "path": "base/guis/screens/cpu_marsmap2.gui",
+          "sha256": "2a0a0750a1f8c72edda2ed585df6c9915ef055b0124b10845d639c4a86641bf8",
+          "bytes": 2386
+        },
+        {
+          "path": "base/guis/screens/cpu_nine.gui",
+          "sha256": "14f9a0fda5f4f684165ec7eded683943de9b5b74c2b4ab098765ffb2843ffeb0",
+          "bytes": 6540
+        },
+        {
+          "path": "base/guis/screens/cpu_one.gui",
+          "sha256": "196b3ce9652baf1d83e865da9ccd29a5b48f17f87450dc5ec393cf98cdb57666",
+          "bytes": 3986
+        },
+        {
+          "path": "base/guis/screens/cpu_seven.gui",
+          "sha256": "2d0bc015d7ca6a03d384b748a06677fd060ab8303e83b586762556d789b531f5",
+          "bytes": 3493
+        },
+        {
+          "path": "base/guis/screens/cpu_six.gui",
+          "sha256": "ae88cddcde80315bd4ba16431b0b0d5e51ded784d889dc5f180254b703eee48f",
+          "bytes": 1247
+        },
+        {
+          "path": "base/guis/screens/cpu_top.gui",
+          "sha256": "7d23bfc42d9610807123b021cf82d2ee337fbf861782e2ce5a0ea65d05da4707",
+          "bytes": 836
+        },
+        {
+          "path": "base/guis/screens/cpu_two.gui",
+          "sha256": "5e2ebd01790df2b8bff2cf4495b6cd1251a6d113e152068d8e07f279c3615a1f",
+          "bytes": 3859
+        },
+        {
+          "path": "base/guis/screens/laptop.gui",
+          "sha256": "07b116b7c2e97d8a36bea7156f1dbcb7031c7b7c2286e0f8fbbc96c975186d62",
+          "bytes": 2401
+        },
+        {
+          "path": "base/guis/screens/scan2.gui",
+          "sha256": "83d6e5397ecd73261a21771da208d5b5b93157ef5390127de1cfdb39584bc1ff",
+          "bytes": 7463
+        },
+        {
+          "path": "base/guis/screens/scan4.gui",
+          "sha256": "c1d2ed48e35104aeaf901169a81edf19c0617903ffcce4a5a20f110933435fad",
+          "bytes": 12579
+        },
+        {
+          "path": "base/guis/signs/directional.gui",
+          "sha256": "7567775c1073939f11d7d36a64a990f5b04e7dc05f91ce7360dba4af9ea746d9",
+          "bytes": 9412
+        },
+        {
+          "path": "base/guis/signs/directionalback.gui",
+          "sha256": "2e2cbbbfbe5bc0650a7e30e0f1f5ea8aa26a8a320050d42b27d104595678f260",
+          "bytes": 9412
+        },
+        {
+          "path": "base/guis/spectate.gui",
+          "sha256": "d9af023fa30663cb9b0b79bebafd1c2b7f10062adad9c79e55109e5dfbeaf564",
+          "bytes": 1079
+        },
+        {
+          "path": "base/guis/takenotes.gui",
+          "sha256": "9d24c807215eed009ec5219da5e3846d5def311293c244de3cce573f26fba13d",
+          "bytes": 758
+        },
+        {
+          "path": "base/guis/transfer/exit_mars_city1_coop.gui",
+          "sha256": "b335d1afd1143abc177913b7443c0c03dbcf7d7b414777c81deaf6578752bba4",
+          "bytes": 11993
+        },
+        {
+          "path": "base/guis/weapons/machinegun.gui",
+          "sha256": "8ab0f11e9a2a1c2a43ba6e9aa0b30a3de61b7aa5e69c9642ca69c0f874957df3",
+          "bytes": 3198
+        },
+        {
+          "path": "base/guis/weapons/plasmagun.gui",
+          "sha256": "fc4836f6da61fe245018a72e3cd0599ada801e618711a40adb6f7cf9cd14f9ef",
+          "bytes": 3638
+        },
+        {
+          "path": "base/guis/xbox/pause_screen.gui",
+          "sha256": "5c5ec2ecc0c265f2207b352160e89da6a3452c4341f1ec6fc5f893fcb85f27c9",
+          "bytes": 205288
+        },
+        {
+          "path": "base/guis/xbox/popup.gui",
+          "sha256": "9380dc0542b13c93b18fbf7916288bee84084b6afb1ed0c01a09caa43056d9bb",
+          "bytes": 725
+        },
+        {
+          "path": "base/guis/xbox/syslink_pause.gui",
+          "sha256": "a7a24576a2d4862a88833b4e1646baec684286d74db10a6752412929294277f4",
+          "bytes": 220086
+        },
+        {
+          "path": "base/maps/vv/xbox_coop/xc_mars_city1_1.script",
+          "sha256": "85769a95558cf9c794b94a6150246bf4fa6453fd5fcf0f63b2705cb3aaa3e8c5",
+          "bytes": 1986
+        },
+        {
+          "path": "base/script/ai_base.script",
+          "sha256": "7578dff4fb9885be72b8a6ade0e5c7d3a39e03ffcb10a355bc6a235fa372bdf8",
+          "bytes": 3918
+        },
+        {
+          "path": "base/script/ai_character.script",
+          "sha256": "b21524f32ea7c7318f0da9b3dd0ff75eb46243141ccae5cff0dd19bf3f64e738",
+          "bytes": 45158
+        },
+        {
+          "path": "base/script/ai_character_sentry.script",
+          "sha256": "f5d2bd2f3b925abacfde7cb88db10eafd88f93dfb7f4688cc732cba78ad9a042",
+          "bytes": 28653
+        },
+        {
+          "path": "base/script/ai_monster_base.script",
+          "sha256": "15e892f7907f08304aadbcd4731bc6e1877ca12b099b260936b8e880840e519f",
+          "bytes": 45614
+        },
+        {
+          "path": "base/script/ai_player.script",
+          "sha256": "2738345fa876e952d02274996046cc6ba625c1b2ce0ec02afa7a01cb48ff9e07",
+          "bytes": 20650
+        },
+        {
+          "path": "base/script/coop.script",
+          "sha256": "e291d3a88f2a4cf11ea6cd8d5c27517c0923fab2ae5af3c4dbedccd7ca8e8853",
+          "bytes": 4182
+        },
+        {
+          "path": "base/script/doom_defs.script",
+          "sha256": "f38020faaa759f96cd79a48b056d6fd7084c939429f26fc9e99e22497e78876f",
+          "bytes": 5918
+        },
+        {
+          "path": "base/script/doom_events.script",
+          "sha256": "4abe301250567a4e304e0f1370020d80e73fe46f5340a6944be3523de0e6f812",
+          "bytes": 49377
+        },
+        {
+          "path": "base/script/doom_main_vv.script",
+          "sha256": "4f9bee4b9b59069ff0fab3ada10fcfaccff1739ea1edc09f6853caba2307e593",
+          "bytes": 1819
+        },
+        {
+          "path": "base/script/doom_util.script",
+          "sha256": "62c859a97871b5d5bfd44d801a259f3e9e322cdc9ec07518280b37ba6361ca05",
+          "bytes": 7031
+        },
+        {
+          "path": "base/script/maps/vv/xbox_coop/xc_mars_city1_1_main.script",
+          "sha256": "c5a67b5d769f1b61f948c1fda4d2aad88e04bf50075144f1ce39ef247bd56bfc",
+          "bytes": 1508
+        },
+        {
+          "path": "base/script/weapon_base.script",
+          "sha256": "ec1bfa63c781217540f3afc36b7e9a079069431e286d1d14b3967ce4b742bfe6",
+          "bytes": 2633
+        },
+        {
+          "path": "base/script/weapon_bfg.script",
+          "sha256": "98d31536786bd93bb0ae2705d5f2b9ea01afcba3d6332b13fe130ce95dd8884e",
+          "bytes": 5348
+        },
+        {
+          "path": "base/script/weapon_chaingun.script",
+          "sha256": "ae459bc150f6dcf6ec53c71c21a378ae314176d6bbded961a1f995c341869410",
+          "bytes": 6387
+        },
+        {
+          "path": "base/script/weapon_chainsaw.script",
+          "sha256": "62dd87c5095e24f5020f3804ed7845ebbf6ae815544b94b45cf88af797e9e8c6",
+          "bytes": 3213
+        },
+        {
+          "path": "base/script/weapon_fists.script",
+          "sha256": "8d2ab17d12c01672c5969a247e964d5f51e1aca38b689a1b5fb9f934bffb0c34",
+          "bytes": 1743
+        },
+        {
+          "path": "base/script/weapon_flashlight.script",
+          "sha256": "73cf871ce231cd51048d5d803072fdc0d0800bdb9f56dfd3dd74731514e37ecc",
+          "bytes": 5491
+        },
+        {
+          "path": "base/script/weapon_handgrenade.script",
+          "sha256": "e1aa44346c616570240578b24b3ddbb186ad7f74fa913c722f4328bc93ab4a9c",
+          "bytes": 6411
+        },
+        {
+          "path": "base/script/weapon_machinegun.script",
+          "sha256": "4f63662acf41107162dbc451cee052405a68d66d760bace8f414c877c6f0d3b8",
+          "bytes": 4122
+        },
+        {
+          "path": "base/script/weapon_pda.script",
+          "sha256": "1dfb4fbd91d180ab6109cbde905c83fd41733c66d1688e38cd17211091717f39",
+          "bytes": 1138
+        },
+        {
+          "path": "base/script/weapon_pistol.script",
+          "sha256": "e245959efd2b68a6b89ad4c74dd42c73e999ca11a8a57c97cf7246eab69ff8a9",
+          "bytes": 3075
+        },
+        {
+          "path": "base/script/weapon_plasmagun.script",
+          "sha256": "0e081fef010fb815b8b4021f55276d97df85f0b1aa4493b0d8f6fee254ba50ad",
+          "bytes": 4289
+        },
+        {
+          "path": "base/script/weapon_rocketlauncher.script",
+          "sha256": "7d3a734d693794b0e2baafbacab9abebf7ed9b9f1390d697347740da1e90b786",
+          "bytes": 4129
+        },
+        {
+          "path": "base/script/weapon_shotgun.script",
+          "sha256": "a9713a1cd2f1f703d75ac6083150ab262b368f4ab24ef0e2b40cd3d4f34142d3",
+          "bytes": 5148
+        },
+        {
+          "path": "base/script/weapon_soulcube.script",
+          "sha256": "dcf7fee38471485b00604b0be70c133d04b7dd3268d413f2289ab64949aa0cad",
+          "bytes": 2230
+        }
+      ]
+    },
+    {
+      "id": "static-coop-caverns1-keycard",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/items/keycard/keycard2.lwo.x",
+          "sha256": "8d7523b51179b6c6cea2506c427077668906546ac5bd7e8445402b6372d8c350",
+          "bytes": 11912
+        }
+      ]
+    },
+    {
+      "id": "static-coop-caverns1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/caves/caves1_6b.ase.x",
+          "sha256": "984ab79e0eeaa52e31e4b53931209854389f03a92e4335a9c7f429a67e4bc3d2",
+          "bytes": 323
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/xbox_coop/xc_caves1_6.ase.x",
+          "sha256": "953bc55437f46f17a1c6017d5c13a833c251e9a7c69772253517b141655e7e08",
+          "bytes": 31103
+        }
+      ]
+    },
+    {
+      "id": "static-coop-comm1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/items/keycard/keycard2.lwo.x",
+          "sha256": "8d7523b51179b6c6cea2506c427077668906546ac5bd7e8445402b6372d8c350",
+          "bytes": 11912
+        }
+      ]
+    },
+    {
+      "id": "static-coop-hellhole1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hellhole/hellhole_cyb_chop3.lwo.x",
+          "sha256": "7370abacc306ca228b008a9d1cea384e078465ece09a27705f0c4aeb9a7b0780",
+          "bytes": 415943
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hellhole/hellhole_firstroom_cordsa.lwo.x",
+          "sha256": "5fc818aed229b54ea54b8ff422d6f7855737f087a76b5806e70c299098330370",
+          "bytes": 60121
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hellhole/hellhole_firstroom_halfa.lwo.x",
+          "sha256": "46da42f59771be378920ad4df94b5eaac22e61909f4ed8eed4d0e8919564b72d",
+          "bytes": 44337
+        }
+      ]
+    },
+    {
+      "id": "static-coop-recycling2",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/recycle/recycwallight.ase.x",
+          "sha256": "8b34e7d46d20c7e09e5fe417e9b459f7a7bb4c5bcbe01f5f96314f80b1b60154",
+          "bytes": 2100
+        }
+      ]
+    },
+    {
+      "id": "static-coop-site3",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/archviletemple/mouth_vv.lwo.x",
+          "sha256": "68ad5e5b9512f72f5f0b1e00772536255c32bef4baf5daa10ec96367bb89ca14",
+          "bytes": 51762
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/stoneroom/blobfingers_vv.lwo.x",
+          "sha256": "9ff01650b28e5d888918539186181ef94449161aeebeda0278a0eeeeb2604423",
+          "bytes": 93223
+        }
+      ]
+    },
+    {
+      "id": "static-solo-hellhole1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hellhole/hellhole_cyb_chopvv.lwo.x",
+          "sha256": "2f6f39251bb033b669b28f00cfc44f3aa337ed9a5c569038d968baeb2347fc84",
+          "bytes": 415515
+        }
+      ]
+    },
+    {
+      "id": "static-solo-site3-extra",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/archviletemple/candlestand_lo_vv.lwo.x",
+          "sha256": "3945b7a36a05a7071c2374e402bde8ef0b70ee52199f6fca82f22b5ce2452ecc",
+          "bytes": 70800
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/landscapesradar/canyona_vv.lwo.x",
+          "sha256": "439bb690522419f6550fe65d3e27ddec170dcef8ba87be85e24e9bac848a71a8",
+          "bytes": 25025
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/landscapesradar/canyonaa_vv.lwo.x",
+          "sha256": "421bcfa0f06abe3e8942f2fc8a6dc82751c084fb105955e298caf26679600f25",
+          "bytes": 3945
+        }
+      ]
+    },
+    {
+      "id": "static-solo-site3",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/archviletemple/mouth_vv.lwo.x",
+          "sha256": "68ad5e5b9512f72f5f0b1e00772536255c32bef4baf5daa10ec96367bb89ca14",
+          "bytes": 51762
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/site3/stoneroom/blobfingers_vv.lwo.x",
+          "sha256": "9ff01650b28e5d888918539186181ef94449161aeebeda0278a0eeeeb2604423",
+          "bytes": 93223
+        }
+      ]
+    },
+    {
+      "id": "static-solo-alphalabs1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/maggotroom/worm_cutbttm.lwo.x",
+          "sha256": "a395b337b79804906df4674ed01d536ad8ae80832c3df161eab6b98e665cebce",
+          "bytes": 151318
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/maggotroom/worm_cuttop.lwo.x",
+          "sha256": "9a58156af833e71b01a23f0bd9180f36cfcafe4a030d47772c2e56c8ae6bc9d0",
+          "bytes": 40891
+        }
+      ]
+    },
+    {
+      "id": "static-solo-commoutside1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/outdoors/commoutside/commoutside2_xbox.lwo.x",
+          "sha256": "5a5ae914e854ebeae8856d6b2da3fec47544a0aaea1f96cc04213f295648e12c",
+          "bytes": 330721
+        }
+      ]
+    },
+    {
+      "id": "static-solo-commoutside2",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/outdoors/commoutside/commoutside_xbox.lwo.x",
+          "sha256": "500a5f117b45b958cdcd09ee54f505fe0bf3626db0d50a31c6b5ba2d51e74586",
+          "bytes": 337893
+        }
+      ]
+    },
+    {
+      "id": "static-solo-hell1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/floor.lwo.x",
+          "sha256": "f5d584d39e91e2082dd38309b9fb2980472368b09eafbd62df465cf1a278873b",
+          "bytes": 157158
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/ribcage.lwo.x",
+          "sha256": "891143c8339c25432471342fba8f37ffbb76c98a86d2ceed0c001fb7e0bbd298",
+          "bytes": 17855
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/ribcage2.lwo.x",
+          "sha256": "6b40adde58e6960dd2df84b5390a9f26ac448db9a631a284e09497b54be2e793",
+          "bytes": 33578
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/wall01.lwo.x",
+          "sha256": "6a74782492e03c4cf5defb63ecd30d327cc0e65bafcd94500bd7eba6a938c364",
+          "bytes": 38842
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/wall02.lwo.x",
+          "sha256": "b30c5506005585a0639b0fae7ab35a54474c7aaf5063417d6ca3fcc51105fe43",
+          "bytes": 51254
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/wall03.lwo.x",
+          "sha256": "1fd57ce24d08d8e5764e09ed9db88f39f09f69ab72fdb474e34e3c619a2cfe6b",
+          "bytes": 46950
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/guardianroom/wall04.lwo.x",
+          "sha256": "49ee6f1c472af42a64a4a1299da01fc1bf4562e8507261fd6a2d1efd6a981f0e",
+          "bytes": 43750
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/hell/hellhalldown3_vv.lwo.x",
+          "sha256": "973ad4582914a86a5c98609c495ca3a667f8a620e0615e850241e4c72c7b2d6f",
+          "bytes": 330844
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/steve_temp/part1vv.ase.x",
+          "sha256": "e170e22e0dd30106dfa04951b1ecab7345f8f8ce093ce0af2b454d7bbf7ced5a",
+          "bytes": 54245
+        },
+        {
+          "path": "base/xbox_gen/models/mapobjects/steve_temp/part2vv.ase.x",
+          "sha256": "6adb6b9ed0435047ecb1969bc3f03ebc7d665391274f80dd58898856032a42ba",
+          "bytes": 6645
+        }
+      ]
+    },
+    {
+      "id": "static-solo-monorail1",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/outdoors/tram/test_noglass.lwo.x",
+          "sha256": "ee7a8ded203aeb28cb2b1ff9bab244adfe08fd424e164986086c4e6e049c90ae",
+          "bytes": 314265
+        }
+      ]
+    },
+    {
+      "id": "static-solo-monorail2",
+      "status": "original-member-witnesses-verified",
+      "files": [
+        {
+          "path": "base/xbox_gen/models/mapobjects/tables/bunkbed/pillow.lwo.x",
+          "sha256": "40d258b26d06d5707d538d37017b3a7ec8e869889e590b3bfc7f05212022f5a7",
+          "bytes": 3720
+        },
+        {
+          "path": "base/xbox_gen/models/outdoors/tram/test_noglass.lwo.x",
+          "sha256": "ee7a8ded203aeb28cb2b1ff9bab244adfe08fd424e164986086c4e6e049c90ae",
+          "bytes": 314265
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "extraction_roots": 23,
+    "verified_member_occurrences": 348,
+    "original_archive_files": 30
+  },
+  "publication_checks": {
+    "exact_planned_steps": true,
+    "exact_planned_output_identities": true,
+    "exact_planned_input_identities": true,
+    "payload_files_opened": 0,
+    "independent_payload_verification": false,
+    "final_overlay_equivalence": false
+  },
+  "limits": [
+    "Typed projection of a completed execution receipt, not independent payload verification.",
+    "No commands, logs, local paths or payload content are published.",
+    "Original-member and historical-output witnesses do not establish final-overlay or gameplay acceptance."
+  ]
+}
